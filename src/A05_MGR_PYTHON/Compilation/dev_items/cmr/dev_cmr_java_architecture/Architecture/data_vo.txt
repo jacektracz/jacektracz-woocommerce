@@ -1,0 +1,300 @@
+TenorDataVO
+public class TenorDataVO extends ValueObject implements CoverageNameDataVOInt {
+	private static final long serialVersionUID = 103000011L;
+	public static final int MSG_ID = 32362;
+	public static final Integer MSG_ID_INTEGER = Integer.valueOf(32362);
+		
+	
+ 	/** 
+	 * Id: 1
+	 * Name: id
+	 * Type: opaque
+	 * null: 1
+	 * Info: part of key
+      
+ 	 */
+ 	 
+	protected String id;		
+			
+ 	/** 
+	 * Id: 2
+	 * ImplInterf: true
+	 * Link: CoverageNameData
+	 * Name: coverage
+	 * Type: msg
+	 * This Field is mandatory
+	 * null: 0
+	 * Info: part of key
+      
+ 	 */
+ 	 
+	protected CoverageNameDataVO coverage;		
+			
+ 	/** 
+	 * Id: 3
+	 * Name: calendarDays
+	 * Type: integer
+	 * This Field is mandatory
+	 * null: 0
+	 * Info: mandatory
+      
+ 	 */
+ 	 
+	protected Integer calendarDays;		
+			
+ 	/** 
+	 * Id: 4
+	 * Link: AccessibleData
+	 * MaxOcc: *
+	 * Name: access
+	 * Type: msg
+	 * null: 1
+	 * Info: List of acces rights
+      
+ 	 */
+ 	 
+	protected java.util.Collection<AccessibleDataVO> accessCollection;		
+			
+ 	
+ 	/**
+ 	 * Construct an empty TenorDataVO Value Object
+ 	 */
+ 	public TenorDataVO() {
+ 	}
+ 	
+	
+ 	/**
+ 	 * Construct an TenorDataVO Value Object with initials values
+ 	 */
+ 	public TenorDataVO(String id,
+			CoverageNameDataVO coverage,
+			Integer calendarDays,
+			java.util.Collection<AccessibleDataVO> accessCollection) {
+	
+		setId(id);
+		setCoverage(coverage);
+		setCalendarDays(calendarDays);
+		setAccessCollection(accessCollection);
+ 	}
+ 	
+ 	/**
+ 	 * Construct an TenorDataVO Value Object only with mandatory fields
+ 	 */
+ 	public TenorDataVO(CoverageNameDataVO coverage,
+			Integer calendarDays) {
+	
+		setCoverage(coverage);
+		setCalendarDays(calendarDays);
+ 	}
+ 	
+	public Integer getMsgId() {
+		return MSG_ID_INTEGER;
+	}
+	
+ 	/** 
+ 	 * id Getter 
+ 	 * return String 
+ 	 */
+ 	public String  getId() {
+		return this.id;
+ 	}
+
+ 	/** 
+ 	 * id Setter
+ 	 */
+ 	public void setId(String id) {
+		this.id=id;
+ 	}
+	
+ 	/** 
+ 	 * coverage Getter 
+ 	 * return CoverageNameDataVO 
+ 	 */
+ 	public CoverageNameDataVO  getCoverage() {
+		return this.coverage;
+ 	}
+
+ 	/** 
+ 	 * coverage Setter
+ 	 */
+ 	public void setCoverage(CoverageNameDataVO coverage) {
+		this.coverage=coverage;
+ 	}
+	
+ 	/** 
+ 	 * coverage Getter For interface CoverageNameDataVOInt
+ 	 * return CoverageNameDataVO
+ 	 */
+ 	public CoverageNameDataVO getCoverageNameDataVO() {
+		return this.coverage;
+ 	}
+
+ 	/** 
+ 	 * coverage Setter For interface CoverageNameDataVOInt
+ 	 */
+ 	public void setCoverageNameDataVO(CoverageNameDataVO coverageNameDataVO) {
+		if (coverageNameDataVO!=null)
+			this.coverage=coverageNameDataVO;
+	}
+	
+ 	/** 
+ 	 * calendarDays Getter 
+ 	 * return Integer 
+ 	 */
+ 	public Integer  getCalendarDays() {
+		return this.calendarDays;
+ 	}
+
+ 	/** 
+ 	 * calendarDays Setter
+ 	 */
+ 	public void setCalendarDays(Integer calendarDays) {
+		this.calendarDays=calendarDays;
+ 	}
+	
+ 	/** 
+ 	 * access Getter 
+ 	 * return java.util.Collection<AccessibleDataVO> 
+ 	 */
+ 	public java.util.Collection<AccessibleDataVO>  getAccessCollection() {
+		return this.accessCollection;
+ 	}
+
+ 	/** 
+ 	 * access Setter
+ 	 */
+ 	public void setAccessCollection(java.util.Collection<AccessibleDataVO> accessCollection) {
+		this.accessCollection=accessCollection;
+ 	}
+	
+
+	public Object clone() {
+		
+		TenorDataVO cloneVO = null;
+		try {
+			cloneVO = this.getClass().newInstance();
+		} catch (Throwable t) {
+			cloneVO = new TenorDataVO();
+		} 
+		
+		cloneVO.id = this.id;
+		cloneVO.coverage = (this.coverage != null) ? (CoverageNameDataVO ) this.coverage.clone() : null;
+		cloneVO.calendarDays = this.calendarDays;
+		if (this.accessCollection != null) {
+			java.util.Collection<AccessibleDataVO> accessCollectionColl = new java.util.ArrayList<AccessibleDataVO>();
+			accessCollectionColl.addAll(this.accessCollection);
+			cloneVO.accessCollection = accessCollectionColl;
+		}
+		return cloneVO;
+	}
+	
+ 	public String toString() {
+		StringBuilder sb = new StringBuilder(1024);
+		
+		sb.append(" id = " + id);
+		sb.append(" coverage = " + coverage);
+		sb.append(" calendarDays = " + calendarDays);
+		sb.append(" accessCollection = " + accessCollection);
+		return sb.toString();
+	}
+	
+	public boolean equals(Object object) {
+		boolean value = true;
+		if (null == object) return false;
+		if (!(object instanceof TenorDataVO)) return false;
+
+		TenorDataVO vo = (TenorDataVO) object;
+		
+		if ( (getId() != null) && (!getId().equals(vo.getId()))  )
+			return false;
+		if ( (getCoverage() != null) && (!getCoverage().equals(vo.getCoverage()))  )
+			return false;
+		if ( (getCoverage() == null) && (vo.getCoverage() != null))
+			return false;
+		if ( (getCalendarDays() != null) && (!getCalendarDays().equals(vo.getCalendarDays()))  )
+			return false;
+		if ( (getCalendarDays() == null) && (vo.getCalendarDays() != null))
+			return false;
+		if ( (getAccessCollection() != null) && (!getAccessCollection().equals(vo.getAccessCollection()))  )
+			return false;
+		if ( (getAccessCollection() == null) && (vo.getAccessCollection() != null))
+			return false;
+		return value;
+	}
+
+	public int hashCode() {
+		return new HashCodeBuilder(17, 37).
+		append(id).
+		append(coverage).
+		append(calendarDays).
+		append(accessCollection).
+		toHashCode();
+	}
+
+	public ValueObject diff(ValueObject aVO) {
+        return diff((TenorDataVO)aVO);
+    }
+
+	public TenorDataVO diff(TenorDataVO voToCompare) {
+		if (null == voToCompare) return this;
+		TenorDataVO diffVO = new TenorDataVO();
+		
+		if (getId()!=null && false == getId().equals(voToCompare.getId()))
+		{
+			diffVO.setId(getId());
+		}
+	
+		if (getCoverage()!=null && false == getCoverage().equals(voToCompare.getCoverage()))
+		{
+			diffVO.setCoverage(getCoverage());
+		}
+	
+		if (getCalendarDays()!=null && false == getCalendarDays().equals(voToCompare.getCalendarDays()))
+		{
+			diffVO.setCalendarDays(getCalendarDays());
+		}
+	
+		if (getAccessCollection()!=null && false == getAccessCollection().equals(voToCompare.getAccessCollection()))
+		{
+			diffVO.setAccessCollection(getAccessCollection());
+		}
+	
+		return diffVO;
+	}
+
+	public boolean isValid() {
+		boolean valid = true;
+		
+		if( coverage!=null ) {
+			valid = coverage.isValid();
+			if (valid==false) return false; 
+		} else {
+			return false;
+		}
+	
+		if( null == calendarDays )
+			return false;
+	
+		return valid;
+	}
+
+	public String toNodeXML() {
+		StringBuilder sb = new StringBuilder(1024);
+		
+		sb.append("<FLD Id='1' Name='id' Type='Binary'>" + id + "</FLD>");
+		sb.append("<MSG Id='2' Name='coverage' linkedName='CoverageNameData'>" + ((null==coverage) ? "null" : coverage.toNodeXML()) + "</MSG>");
+		sb.append("<FLD Id='3' Name='calendarDays' Type='Integer'>" + calendarDays + "</FLD>");
+		sb.append("<FLD Id='4' Name='access' Type='Binary*'>" + accessCollection + "</FLD>");
+		return sb.toString();
+	}
+
+	public String toXML() {
+		String myXML = 
+			"<MDC Version='3.0'>" + 
+				"<MSG Id='32362'  Name='TenorData'>" + 
+					toNodeXML() + 
+				"</MSG>" + 
+			"</MDC>";
+		return myXML;
+	}
+}

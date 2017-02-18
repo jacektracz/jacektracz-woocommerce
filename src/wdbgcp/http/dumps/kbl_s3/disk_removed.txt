@@ -1,0 +1,92 @@
+Break instruction exception - code 80000003 (first chance)
+*******************************************************************************
+*                                                                             *
+*   You are seeing this message because you pressed either                    *
+*       CTRL+C (if you run console kernel debugger) or,                       *
+*       CTRL+BREAK (if you run GUI kernel debugger),                          *
+*   on your debugger machine's keyboard.                                      *
+*                                                                             *
+*                   THIS IS NOT A BUG OR A SYSTEM CRASH                       *
+*                                                                             *
+* If you did not intend to break into the debugger, press the "g" key, then   *
+* press the "Enter" key now.  This message might immediately reappear.  If it *
+* does, press "g" and "Enter" again.                                          *
+*                                                                             *
+*******************************************************************************
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for ntkrnlmp.exe - 
+nt!DbgBreakPointWithStatus:
+fffff802`4d35f330 cc              int     3
+*** ERROR: Module load completed but symbols could not be loaded for ntdll.dll
+3: kd> g
+[ETW_AHCI] [AHCI Port 0] COM RESET REQUESTED BY HOST
+[ETW_AHCI] [PortStateMachine] {Enumeration Started} Port: 0 Synchronous:0
+[ETW_AHCI] [PortStateMachine] {start state machine} Port: 0 TimeStamp: 1356281(ms) Px(Tfd 0xffffffff : Sig 0xffffffff : Ssts 0xffffffff : Sctl 0xffffffff : Serr 0xffffffff : IS 0xffffffff : IE 0xffffffff : Cmd 0xffffffff)
+
+*** Assertion failed: FALSE
+***   Source File: d:\qba1\workspace\1393\sse_storage_ahci\implementation\source\AhciPort.h, line 772
+
+Break repeatedly, break Once, Ignore, terminate Process, or terminate Thread (boipt)? i
+i
+[ETW_AHCI] [PortStateMachine] {State Change} Port: 0 Previous=StateReset(37), Next=StateResetClearStart(38), Retries=0 Start Time=13562812500
+[ETW_AHCI] [PortStateMachine] {Time Out} Port: 0 State: 38 Start Time: 13562812500 Current Time: 13567968750 Retries: 67 Timeout: 5000000
+[ETW_AHCI] [PortStateMachine] {start state machine} Port: 0 TimeStamp: 1356281(ms) Px(Tfd 0xffffffff : Sig 0xffffffff : Ssts 0xffffffff : Sctl 0xffffffff : Serr 0xffffffff : IS 0xffffffff : IE 0xffffffff : Cmd 0xffffffff)
+[ETW_AHCI] [PortStateMachine] {State Change} Port: 0 Previous=StateResetClearStart(38), Next=StateStoppedTrying(47), Retries=67 Start Time=13567968750
+[ETW_AHCI] EndDevice::~EndDevice object destroyed!
+[ETW_AHCI] PortStateMachine port 0: Giving up No Device Found... PhyMode=ACTIVE, CurState=47, NextState=47, Retries=1, Start Time=13567968750usec
+[ETW_AHCI] [PortStateMachine] {Complete} prevMode: Enumerating(2) mCurrentMode: NoDeviceFound(5) Port: 0
+[ETW_AHCI] [PortStateMachine] {Complete} Port: 0 Elapsed Time: 15(ms) Px(Tfd 0xffffffff : Sig 0xffffffff : Ssts 0xffffffff : Sctl 0xffffffff : Serr 0xffffffff : IS 0xffffffff : IE 0xffffffff : Cmd 0xffffffff)
+[ETW_RAIDPORT] RPI: bus change detected path=2
+[ETW_RAIDPORT] RAIDPORT: Transport: BCD detected. Transport NOT enumerating. start Raidport enumeration
+[ETW_RAIDPORT] Starting enumeration
+[ETW_RAIDPORT] RAIDPORT: Invoking enumerate() for path 0
+[ETW_RAIDPORT] RAIDPORT: Invoking enumerate() for path 1
+[ETW_RAIDPORT] RAIDPORT: Invoking enumerate() for path 2
+[ETW_RAIDPORT] RAIDPORT: Invoking enumerate() for path 3
+[ETW_AHCI] [AHCI Port 0] No Device
+[ETW_AHCI] AhciHwStorStartIo: [AHCI Port 0] Completing SRB at StartIo (FFFFE0014674D018). Function=0x0 Status=0x8
+[ETW_RAIDPORT] RAIDPORT: Transport: calling Raidport device removed - Pathid 2 -- target ID 0 -- Lun 0 -- FFFFE00144C471C0
+[ETW_RAIDPORT] Removed device: path = 2, target = 0
+[ETW_RAIDPORT] Raidport::deleteTarget: deleting raidport target with PTL=200, type=RaidportTargetType_PassthroughTarget
+[ETW_RAIDPORT] PassthroughTarget::~PassthroughTarget: mType=RaidportTargetType_PassthroughTarget, PTL=200
+[ETW_RAIDPORT] PassthroughTarget::sendRtd3AcpiPortMaskToBios: entered, deleteTarget=1, PTL=200
+10:03:20.153 RaidIsm - DiskRemoved received for Disk serial `S1X3NYAFA00108'
+Wcdl::ACPI::RSTD: volNumber=0, rtd3AcpiPortMask=0x200, func=SET_RTD3_VOL_MASK
+10:03:20.153 RaidIsm - Disk::removed() being called for disk (S1X3NYAFA00108)
+[ETW_RAIDPORT] PassthroughTarget::sendRtd3AcpiPortMaskToBios: can't send RTD3 RAID port mask for PTL=200 to BIOS, rtd3AcpiPortMask=0x200, volNumber=0
+[ETW_VOLPORT] Starting enumeration
+[ETW_RAIDPORT] RAIDPORT: Transportpath: DiskRemoveDone -- freeing target FFFFE00144C471C0 -- DeviceType 0 -- Path 2 -- Target 0 -- Lun 0
+[ETW_RAIDPORT] Scpi: bus change detected path=0
+[ETW_RAIDPORT] RAIDPORT: Transport: Enumeration Complete.
+10:03:20.170 RaidIsm - RaidIsm::suspend called - suspending all arrays
+10:03:20.170 RaidIsm - RaidIsm::suspend done
+10:03:20.170 RaidIsm - IntervalTimer::removeEvent attempting to add an event that is already there
+10:03:20.170 RaidMpb - Starting updateConfig...
+10:03:20.170 RaidMpb - DiskTable::replaceAnyPlaceholders
+10:03:20.170 CfgDisk - DISCARDING UNUSED DISK S1X3NYAFA00108
+10:03:20.187 RaidIsm - Done updateConfig
+10:03:20.187 RaidIsm - RaidIsm::resume called - resuming all arrays
+10:03:20.187 RaidDev - makeRaidDevsOperational done - calling host::enumComplete
+[ETW_RAIDPORT] RAIDPORT: Enumeration complete.
+[ETW_VOLPORT] Volume[2][0][0] removed
+[ETW_VOLPORT] Enumeration completed
+[ETW_SECPORT] secport::SecPort::removeDevice: PTL=200
+IoctlRequest::construct - Unsupported IOCTL Signature Requested
+IOCTL Signature = IntelHisè
+[ETW_AHCI] AhciHwStorResetBus: entered, PathId: 0
+[ETW_AHCI] [PortStateMachine] {Enumeration Started} Port: 0 Synchronous:1
+[ETW_AHCI] [PortStateMachine] {start state machine} Port: 0 TimeStamp: 1386281(ms) Px(Tfd 0xffffffff : Sig 0xffffffff : Ssts 0xffffffff : Sctl 0xffffffff : Serr 0xffffffff : IS 0xffffffff : IE 0xffffffff : Cmd 0xffffffff)
+
+*** Assertion failed: FALSE
+***   Source File: d:\qba1\workspace\1393\sse_storage_ahci\implementation\source\AhciPort.h, line 772
+
+Break repeatedly, break Once, Ignore, terminate Process, or terminate Thread (boipt)? i
+i
+[ETW_AHCI] [PortStateMachine] {State Change} Port: 0 Previous=StateReset(37), Next=StateResetClearStart(38), Retries=1 Start Time=13862812500
+[ETW_AHCI] [PortStateMachine] {Time Out} Port: 0 State: 38 Start Time: 13862812500 Current Time: 13867968750 Retries: 56255 Timeout: 5000000
+[ETW_AHCI] [PortStateMachine] {start state machine} Port: 0 TimeStamp: 1386281(ms) Px(Tfd 0xffffffff : Sig 0xffffffff : Ssts 0xffffffff : Sctl 0xffffffff : Serr 0xffffffff : IS 0xffffffff : IE 0xffffffff : Cmd 0xffffffff)
+[ETW_AHCI] [PortStateMachine] {State Change} Port: 0 Previous=StateResetClearStart(38), Next=StateStoppedTrying(47), Retries=56255 Start Time=13867968750
+[ETW_AHCI] PortStateMachine port 0: Giving up No Device Found... PhyMode=ACTIVE, CurState=47, NextState=47, Retries=1, Start Time=13867968750usec
+[ETW_AHCI] [PortStateMachine] {Complete} prevMode: Enumerating(2) mCurrentMode: NoDeviceFound(5) Port: 0
+[ETW_AHCI] [PortStateMachine] {Complete} Port: 0 Elapsed Time: 0(ms) Px(Tfd 0xffffffff : Sig 0xffffffff : Ssts 0xffffffff : Sctl 0xffffffff : Serr 0xffffffff : IS 0xffffffff : IE 0xffffffff : Cmd 0xffffffff)
+Terminating critical process 0xFFFFE0015935E7C0 (svchost.exe)
+Break, or Ignore (bi)? 

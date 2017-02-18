@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /home/kdeveloper/FR/CMR/etc
+./stopjms
+./stoptibems
+./stopKGRWeb
+kh_kns
+

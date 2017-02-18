@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/stopo/a002_alls.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a002_alls.txt

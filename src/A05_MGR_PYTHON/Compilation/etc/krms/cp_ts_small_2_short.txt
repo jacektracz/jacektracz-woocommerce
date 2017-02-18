@@ -1,0 +1,2 @@
+rm /jenkins/dist/FR/CMR/data/interface/rate/gettimeseries*
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-2/gettimeseries-1417785193318-EUR_SWAP_SHORT.xml /jenkins/dist/FR/CMR/data/interface/rate

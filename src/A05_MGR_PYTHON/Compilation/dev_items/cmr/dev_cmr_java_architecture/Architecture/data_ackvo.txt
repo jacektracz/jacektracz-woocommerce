@@ -1,0 +1,141 @@
+public class GenericTenorACKVO extends ValueObject {
+	private static final long serialVersionUID = 103000011L;
+	public static final int MSG_ID = 32037;
+	public static final Integer MSG_ID_INTEGER = Integer.valueOf(32037);
+		
+	
+ 	/** 
+	 * Id: 1
+	 * Link: TenorData
+	 * Name: data
+	 * Type: msg
+	 * This Field is mandatory
+	 * null: 0
+	 * Info: Identity class
+      
+ 	 */
+ 	 
+	protected TenorDataVO data;		
+			
+ 	
+ 	/**
+ 	 * Construct an empty GenericTenorACKVO Value Object
+ 	 */
+ 	public GenericTenorACKVO() {
+ 	}
+ 	
+	
+ 	/**
+ 	 * Construct an GenericTenorACKVO Value Object with initials values
+ 	 */
+ 	public GenericTenorACKVO(TenorDataVO data) {
+	
+		setData(data);
+ 	}
+ 	
+	public Integer getMsgId() {
+		return MSG_ID_INTEGER;
+	}
+	
+ 	/** 
+ 	 * data Getter 
+ 	 * return TenorDataVO 
+ 	 */
+ 	public TenorDataVO  getData() {
+		return this.data;
+ 	}
+
+ 	/** 
+ 	 * data Setter
+ 	 */
+ 	public void setData(TenorDataVO data) {
+		this.data=data;
+ 	}
+	
+
+	public Object clone() {
+		
+		GenericTenorACKVO cloneVO = null;
+		try {
+			cloneVO = this.getClass().newInstance();
+		} catch (Throwable t) {
+			cloneVO = new GenericTenorACKVO();
+		} 
+		
+		cloneVO.data = (this.data != null) ? (TenorDataVO ) this.data.clone() : null;
+		return cloneVO;
+	}
+	
+ 	public String toString() {
+		StringBuilder sb = new StringBuilder(1024);
+		
+		sb.append(" data = " + data);
+		return sb.toString();
+	}
+	
+	public boolean equals(Object object) {
+		boolean value = true;
+		if (null == object) return false;
+		if (!(object instanceof GenericTenorACKVO)) return false;
+
+		GenericTenorACKVO vo = (GenericTenorACKVO) object;
+		
+		if ( (getData() != null) && (!getData().equals(vo.getData()))  )
+			return false;
+		if ( (getData() == null) && (vo.getData() != null))
+			return false;
+		return value;
+	}
+
+	public int hashCode() {
+		return new HashCodeBuilder(17, 37).
+		append(data).
+		toHashCode();
+	}
+
+	public ValueObject diff(ValueObject aVO) {
+        return diff((GenericTenorACKVO)aVO);
+    }
+
+	public GenericTenorACKVO diff(GenericTenorACKVO voToCompare) {
+		if (null == voToCompare) return this;
+		GenericTenorACKVO diffVO = new GenericTenorACKVO();
+		
+		if (getData()!=null && false == getData().equals(voToCompare.getData()))
+		{
+			diffVO.setData(getData());
+		}
+	
+		return diffVO;
+	}
+
+	public boolean isValid() {
+		boolean valid = true;
+		
+		if( data!=null ) {
+			valid = data.isValid();
+			if (valid==false) return false; 
+		} else {
+			return false;
+		}
+	
+		return valid;
+	}
+
+	public String toNodeXML() {
+		StringBuilder sb = new StringBuilder(1024);
+		
+		sb.append("<MSG Id='1' Name='data' linkedName='TenorData'>" + ((null==data) ? "null" : data.toNodeXML()) + "</MSG>");
+		return sb.toString();
+	}
+
+	public String toXML() {
+		String myXML = 
+			"<MDC Version='3.0'>" + 
+				"<MSG Id='32037'  Name='Generic Tenor ACK'>" + 
+					toNodeXML() + 
+				"</MSG>" + 
+			"</MDC>";
+		return myXML;
+	}
+}

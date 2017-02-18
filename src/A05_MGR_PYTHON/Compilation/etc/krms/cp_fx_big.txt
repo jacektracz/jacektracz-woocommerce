@@ -1,0 +1,9 @@
+
+rm /jenkins/dist/FR/CMR/data/interface/rate/*xml*
+#	cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-2/gettimeseries-1417785537243-FX_EUR_USD.xml /jenkins/dist/FR/CMR/data/interface/rate
+#	ls /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/xml-ts/
+#	CAPEUR.xml  COCA_COLA_VOL.xml  COCA_COLA.xml  FXEURUSD.xml  FXVOLEURUSD.xml  IREUR.xml  SWOEUR.xml
+
+# cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/xml-ts/FXEURUSD.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/xml-ts/CAPEUR.xml /jenkins/dist/FR/CMR/data/interface/rate

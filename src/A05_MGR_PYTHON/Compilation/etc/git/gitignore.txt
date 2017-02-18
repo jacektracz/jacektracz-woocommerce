@@ -1,0 +1,2 @@
+gg /jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/.gitignore
+

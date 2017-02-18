@@ -1,0 +1,2 @@
+create or replace SYNONYM GetDealPerimeterByUser FOR rknet.GetDealPerimeterByUser;
+create or replace SYNONYM GetDataSetByUser FOR rknet.GetDataSetByUser;

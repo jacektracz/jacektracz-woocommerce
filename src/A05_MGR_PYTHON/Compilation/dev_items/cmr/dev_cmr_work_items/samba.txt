@@ -1,0 +1,4 @@
+pliki:
+10.22.11.89
+kgr/Kondor_123
+hdd2/samba

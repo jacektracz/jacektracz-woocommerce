@@ -1,0 +1,92 @@
+		1)
+		
+			git checkout feature
+			git rebase master
+			
+				everything to master
+				
+				
+			git merge <branch> ( merge to current )
+			
+			git merge --no-ff <branch>
+			
+			
+		example
+		
+			# Start a new feature
+			git checkout -b new-feature master
+			
+			# Edit some files
+			git add <file>
+			git commit -m "Start a feature"
+			
+			# Edit some files
+			git add <file>
+			git commit -m "Finish a feature"
+			
+			# Merge in the new-feature branch
+			git checkout master
+			git merge new-feature
+			git branch -d new-feature
+		
+		
+		PULL ETC	
+			
+			git pull <remote>
+			git fetch <remote> followed by
+		
+		
+		EXAMPLE:
+		
+			git checkout master
+			git fetch origin master
+			git rebase -i origin/master
+			# Squash commits, fix up commit messages etc.
+			git push origin master
+		
+		
+			git checkout master
+			git pull --rebase origin
+		 
+		git merge origin/<current-branch>.	
+		
+		
+		
+		
+		git pull --rebase origin master
+			
+			
+		git push -u origin marys-feature	
+		
+		
+WLD:
+
+		GIT procedure:
+		
+		Sorry, zapomniałem dodać kroku na zaciągnięcie zmian z serwera na mastera:
+		
+		1.	Start from updating the repo or copy a new one 
+		git pull OR git clone …
+		2.	Always work on your dev branch. 
+		git branch wmasilun
+		# make some changes
+		3.	Add and commit files to your local dev branch:
+		git add –A
+		git commit
+		4.	Check your commit hash
+		git log (f.e. let’s say it was d78b959773e261fb4ffdebb519ada196a8828163)
+		5.	Switch to the khepri branchgit 
+		git branch khepri
+		6.	Pull latest changes on master (this must be always done without any conflicts as you have not modified the master branch!)
+		git pull
+		7.	Apply your commit on the master branch (if there are no conflicts it will just make your changes without any questions/errors)
+		git cherry-pick d78b959773e261fb4ffdebb519ada196a8828163
+		8.	Push changes to thegi server
+		git push
+
+
+
+LOG:
+	git log --graph --pretty=oneline --abbrev-commit
+			
+		

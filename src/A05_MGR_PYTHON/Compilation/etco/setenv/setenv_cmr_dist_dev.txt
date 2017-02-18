@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export KREDITNETHOME=/jenkins/dist/FR/CMRO
+export KREDITNET_CONFIG_PATH=/jenkins/dist/FR/CMRO/config
+export KREDITNETLOG=/jenkins/dist/FR/CMRO/log
+export FREETDS=/jenkins/dist/FR/CMRO/3rdparty/freetds
+export FREETDSCONF=/jenkins/dist/FR/CMRO/config/freetds.conf
+export ARCH=x86Linux
+
+export LD_LIBRARY_PATH=${FREETDS}/lib/${ARCH}:$LD_LIBRARY_PATH
+export PATH=${FREETDS}/bin/${ARCH}:$PATH
+

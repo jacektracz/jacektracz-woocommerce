@@ -1,0 +1,67 @@
+#!/bin/bash
+
+
+# source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cmpj/krms_all.txt
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+echo 'KRMS_INFO::STOP KRMS'
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/stopo/a08_krms.txt
+
+echo 'KRMS_INFO::AFTER STOPPED KRMS'
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/lsserv/a00_alls.txt
+
+echo 'KRMS_INFO::KRMS COMPILATION STARTED'
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cmpj/krms.txt
+
+echo 'KRMS_INFO::KRMS COPYING FILES STARTED'
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cpdev/krms.txt
+
+echo 'KRMS_INFO::KRMS SERVER STARTED'
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a08_krms.txt
+
+#	echo 'KRMS_INFO::KRMS SERVER OPT STARTED'
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a09_krms_opt.txt
+
+echo 'KRMS_INFO::SERVERS'
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/lsserv/a00_alls.txt
+
+echo 'KRMS_INFO::CP_TS'
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_small_2_selector.txt
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_big_fxvol.txt
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_small_2.txt
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_small_2_swaption.txt
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_small_2_fxvol.txt
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_small_2_assetvol.txt
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_small_2_swaption_short.txt
+
+
+#source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_small_2_short.txt
+
+#source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_fx_big.txt
+
+#source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/krms/cp_ts_big.txt
+
+echo 'KRMS::TAIL_LOG'
+tail -f /jenkins/dist/FR/CMR/data/log/RateManagerServer.stdout.log
+
+# grep refresh_cache_start /jenkins/dist/FR/CMR/data/log/RateManagerServer.stdout.log
+
+# grep cache_size /jenkins/dist/FR/CMR/data/log/RateManagerServer.stdout.log
+
+# grep yield_curve_id /jenkins/dist/FR/CMR/data/log/RateManagerServer.stdout.log 
+# grep S_CurveName /jenkins/dist/FR/CMR/data/log/RateManagerServer.stdout.log
+# grep point_value /jenkins/dist/FR/CMR/data/log/RateManagerServer.stdout.log | grep 4.275139525484636
+	

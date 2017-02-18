@@ -1,0 +1,17 @@
+rm /jenkins/dist/FR/CMR/data/interface/rate/*
+#	292131615 / 543285  
+#	92020
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_ASSETVOLSURFACE.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_ASSET.BHP_ADR.EQUITY.USD.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_CAPLETVOLSURFACE_YC_EUR.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_FXVOLSURFACE_EURUSD.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_YIELDCURVE_KGR_EURSWAP.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_FXSPOTPRICE.AUD.CAD.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_SWAPTIONCUBE_KGR_EURSWO.xml /jenkins/dist/FR/CMR/data/interface/rate 
+  

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+echo 'start copying gui data'
+
+cp -r /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/install/gui/* /jenkins/dist/FR/CMR/gui
+echo 'gui data copied successfully'

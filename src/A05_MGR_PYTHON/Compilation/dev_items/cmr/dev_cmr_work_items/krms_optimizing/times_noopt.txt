@@ -1,0 +1,185 @@
+ INFO | HHH000397: Using ASTQueryTranslatorFactory
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 1
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 65 Point
+ INFO | (YieldCurve) - elapsedTime 876
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1950 Point
+ INFO | (YieldCurve) - elapsedTime 18284
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1885 Point
+ INFO | (YieldCurve) - elapsedTime 29768
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1950 Point
+ INFO | (YieldCurve) - elapsedTime 45712
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1560 Point
+ INFO | (YieldCurve) - elapsedTime 43485
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1365 Point
+ INFO | (YieldCurve) - elapsedTime 42772
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 51712
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1560 Point
+ INFO | (YieldCurve) - elapsedTime 63486
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1950 Point
+ INFO | (YieldCurve) - elapsedTime 86723
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1950 Point
+ INFO | (YieldCurve) - elapsedTime 97603
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1885 Point
+ INFO | (YieldCurve) - elapsedTime 104811
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1690 Point
+ INFO | (YieldCurve) - elapsedTime 103884
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 1
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 910 Point
+ INFO | (YieldCurve) - elapsedTime 59790
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 97800
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1300 Point
+ INFO | (YieldCurve) - elapsedTime 94334
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1300 Point
+ INFO | (YieldCurve) - elapsedTime 100200
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 116840
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1365 Point
+ INFO | (YieldCurve) - elapsedTime 118728
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1365 Point
+ INFO | (YieldCurve) - elapsedTime 126545
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 139456
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 142673
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1300 Point
+ INFO | (YieldCurve) - elapsedTime 135154
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 156168
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 161428
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1365 Point
+ INFO | (YieldCurve) - elapsedTime 162098
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1365 Point
+ INFO | (YieldCurve) - elapsedTime 168034
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1430 Point
+ INFO | (YieldCurve) - elapsedTime 181738
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1365 Point
+ INFO | (YieldCurve) - elapsedTime 177983
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 1040 Point
+ INFO | (YieldCurve) - elapsedTime 136315
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 1
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 1
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 1
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | (YieldCurve) attempting insertion of 0 Point
+ INFO | (YieldCurve) - elapsedTime 0
+ INFO | YieldCurve import successful for mnemonic: YIELDCURVE.EUR-SWAP.ZERO.EUR, alias: 17953
+ INFO | TimeSeries auto synchronization disabled

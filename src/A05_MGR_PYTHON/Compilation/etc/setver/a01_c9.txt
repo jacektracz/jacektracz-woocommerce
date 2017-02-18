@@ -1,0 +1,3 @@
+#!/bin/bash
+export CMRVER=cmr_khepri_g9
+

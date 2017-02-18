@@ -1,0 +1,4 @@
+git fetch origin
+git merge origin/khepri
+git push origin khepri
+

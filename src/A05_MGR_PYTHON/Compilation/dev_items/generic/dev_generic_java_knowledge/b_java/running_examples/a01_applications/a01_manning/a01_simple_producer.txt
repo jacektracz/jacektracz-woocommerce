@@ -1,0 +1,54 @@
+	Application
+	
+		Goal
+			Build chapter 1 exeample1 from maning book
+		Description
+			Based on active mq
+		Workspace
+			E:\a01_java\workspaces\2015\a01_10_lakida_library
+		Project
+			E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\pom.xml
+		Steps	
+			Step 1
+					
+		Date
+			Start
+				2015-01-09
+		Actions
+			Action 1
+				Category
+					mv
+				Goal				
+					compiling				
+				Action
+					cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\
+					mvn clean install
+				Output:
+					executed
+					
+			Action 2
+				Category
+					mv run application
+				Goal				
+					run application
+				Steps
+					Step_1
+						cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-simple-producer\
+					Step_2
+						Action
+							mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter"
+						Output
+							Working!
+					
+					Step_3
+						Action
+							cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-simple-producer\
+							mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter" -Dexec.args="queue producer 10"
+						Output
+					Step_4
+						Action
+							cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-simple-producer\
+							mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter" -Dexec.args="queue consumer 10"
+						Output
+							Working!
+																				

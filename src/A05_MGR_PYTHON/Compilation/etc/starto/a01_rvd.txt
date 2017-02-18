@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/Common/RV/bin/
+
+/jenkins/dist/FR/Common/RV/bin/rvd -listen tcp:kenvngServer:7500
+
+sleep 10s
+
+cd /jenkins/dist/FR/CMR/etc
+
+/jenkins/dist/FR/CMR/etc/startjms
+
+sleep 10s
+
+

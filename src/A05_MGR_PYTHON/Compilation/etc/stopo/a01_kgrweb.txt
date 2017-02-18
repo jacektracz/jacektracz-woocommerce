@@ -1,0 +1,25 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/CMR/etc
+
+echo 'stopping kgr server'
+
+/jenkins/dist/FR/CMR/etc/stopKGRWeb
+echo 'stopping kgr server - success'
+
+PIDSERV=$(ps -ef | grep 'web' | grep kgrserver | grep 'kgr.application.server.name=kgrserver' | grep -v 'grep'|  grep -v 'ratemanager'| grep -v 'rtm_ear'| awk '{print $2}')
+
+if [[ -z "$PIDSERV" ]]; then
+	echo "KGRWEB_PID_NULL"
+else
+	echo "KILL_KGRWEB_PID:$PIDSERV"
+	kill -9 $PIDSERV
+fi
+
+#echo 'killing kgr server'
+#kill -9 $(ps -ef | grep 'web' | grep kgrserver| awk '{print $2}')
+#echo 'killing kgr server - done'
+
+

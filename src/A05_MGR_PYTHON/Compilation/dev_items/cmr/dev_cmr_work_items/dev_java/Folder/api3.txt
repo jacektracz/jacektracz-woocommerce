@@ -1,0 +1,83 @@
+	public FolderACKVO folderGetDelta(FolderGetDeltaVO requestVO)
+	 public ACKVO folderAcceptByIdentifier(FolderAcceptByIdentifierVO requestVO)
+	 public ACKVO folderRejectByIdentifier(FolderRejectByIdentifierVO requestVO)
+	 public InsertACKVO folderInsert(FolderInsertVO requestVO)
+	 public UpdateACKVO folderUpdate(FolderUpdateVO requestVO)
+	 public RemoveACKVO folderRemove(FolderRemoveVO requestVO)
+	 public FolderGetACKVO folderGetByIdentifier(FolderGetByIdentifierVO requestVO)
+	 public FolderGetACKVO folderGetByName(FolderGetByNameVO requestVO)
+	 public FolderGetACKVO folderGetByShortName(FolderGetByShortNameVO requestVO)
+	 public GetIdentityACKVO folderGetIdentityByName(FolderGetIdentityByNameVO requestVO)
+	 public GetIdentityACKVO folderGetIdentityByShortName(FolderGetIdentityByShortNameVO requestVO)
+	 public GetIdentityACKVO folderGetIdentityByIdentifier(FolderGetIdentityByIdentifierVO requestVO)
+	 public QueryIdentityACKVO folderQueryIdentityByShortName(FolderQueryIdentityByShortNameVO requestVO)
+	 public QueryIdentityACKVO folderQueryIdentityByName(FolderQueryIdentityByNameVO requestVO)
+	 public QueryIdentityACKVO folderQueryIdentityByCode(FolderQueryIdentityByCodeVO requestVO)
+	 public InsertLinkACKVO folderLink(FolderLinkVO requestVO)
+	 public RemoveACKVO folderRemoveLink(FolderRemoveLinkVO requestVO)
+	 public QueryLinkACKVO folderQueryDirectChildren(FolderQueryDirectChildrenVO requestVO)
+	 public QueryLinkACKVO folderQueryDirectParents(FolderQueryDirectParentsVO requestVO)
+	 public QueryLinkTreeACKVO folderQueryChildren(FolderQueryChildrenVO requestVO)
+	 public QueryLinkTreeACKVO folderQueryParents(FolderQueryParentsVO requestVO)
+	 public CollFolderACKVO folderQueryDV(FolderQueryDVVO requestVO)
+	 public GetIdentityACKVO folderGetEntityIdentityByName(FolderGetEntityIdentityByNameVO requestVO)
+	 public GetIdentityACKVO folderGetEntityIdentityByShortName(FolderGetEntityIdentityByShortNameVO requestVO)
+	 public QueryIdentityACKVO folderQueryEntityIdentityByShortName(FolderQueryEntityIdentityByShortNameVO requestVO)
+	 public QueryIdentityACKVO folderQueryEntityIdentityByName(FolderQueryEntityIdentityByNameVO requestVO)
+	 public InsertCodifierElementACKVO folderInsertCodifierElement(FolderInsertCodifierElementVO requestVO)
+	 public UpdateCodifierElementACKVO folderUpdateCodifierElement(FolderUpdateCodifierElementVO requestVO)
+	 public RemoveACKVO folderRemoveCodifierElement(FolderRemoveCodifierElementVO requestVO)
+	 public QueryCodifierElementACKVO folderQueryCodifierElement(FolderQueryCodifierElementVO requestVO)
+	 public IsChildACKVO folderIsChild(FolderIsChildVO requestVO)
+	 public AccessInsertACKVO folderAccessInsert(FolderAccessInsertVO requestVO)
+	 public AccessUpdateACKVO folderAccessUpdate(FolderAccessUpdateVO requestVO)
+	 public RemoveACKVO folderAccessRemove(FolderAccessRemoveVO requestVO)
+	 public AccessMultiQueryACKVO folderQueryAccess(FolderQueryAccessVO requestVO)
+	 public InsertACKVO folderInsertFolderCapitalConstants(FolderInsertFolderCapitalConstantsVO requestVO)
+	 public UpdateACKVO folderUpdateFolderCapitalConstants(FolderUpdateFolderCapitalConstantsVO requestVO)
+	 public RemoveACKVO folderRemoveFolderCapitalConstants(FolderRemoveFolderCapitalConstantsVO requestVO)
+	 public FolderCapitalConstantsQueryACKVO folderQueryFolderCapitalConstants(FolderQueryFolderCapitalConstantsVO requestVO)
+	 public LockInsertACKVO folderLockInsert(FolderLockInsertVO requestVO)		 
+	 public LockUpdateACKVO folderLockUpdate(FolderLockUpdateVO requestVO)
+	 public RemoveACKVO folderLockRemove(FolderLockRemoveVO requestVO)
+	 public LockQueryACKVO folderQueryLocks(FolderQueryLocksVO requestVO)
+	 public void folderQueryDVDB (FolderQueryDVDBVO requestVO)
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	     public ValueObject handle(final ValueObject object) {
+        try {
+            //PrintStateEx("FolderHandler::handle");
+        	log_info("FolderHandler::handle::method_start::14_14");
+            final Integer msgId = object.getMsgId();
+            switch (msgId) {
+            case FolderInsertVO.MSG_ID:
+                return knel_folderInsert_32738((FolderInsertVO) object);
+            case FolderUpdateVO.MSG_ID:
+                return knel_folderUpdate_32739((FolderUpdateVO) object);
+            case FolderRemoveVO.MSG_ID:
+                return knel_removeFolder_32740((FolderRemoveVO) object);
+            case FolderGetByIdentifierVO.MSG_ID:
+                return knel_folderGetByIdentifier_32741((FolderGetByIdentifierVO) object);
+            case FolderGetIdentityByIdentifierVO.MSG_ID:
+                return knel_folderGetIdentityByIdentifier_32750((FolderGetIdentityByIdentifierVO) object);
+            case FolderGetByNameVO.MSG_ID:
+                return knel_folderGetByName_32751((FolderGetByNameVO) object);
+            case FolderGetByShortNameVO.MSG_ID:
+                return knel_folderGetByShortName_32610((FolderGetByShortNameVO) object);
+            case FolderGetIdentityByNameVO.MSG_ID:
+                return knel_folderGetIdentityByName_32753((FolderGetIdentityByNameVO) object);
+            case FolderGetIdentityByShortNameVO.MSG_ID:
+                return knel_folderGetIdentityByShortName_32612((FolderGetIdentityByShortNameVO) object);
+            case FolderQueryIdentityByShortNameVO.MSG_ID:
+                return knel_folderQueryIdentityByShortName_32622((FolderQueryIdentityByShortNameVO) object);
+            case FolderQueryIdentityByNameVO.MSG_ID:
+                return knel_folderQueryIdentityByName_32755((FolderQueryIdentityByNameVO) object);
+	 

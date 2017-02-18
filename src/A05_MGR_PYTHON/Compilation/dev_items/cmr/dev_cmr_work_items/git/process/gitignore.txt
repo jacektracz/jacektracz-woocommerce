@@ -1,0 +1,26 @@
+cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerData.class
+cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketApp.class
+cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketClient.class
+cmr-acceptance-test/pricer-websocket-client/target/test-classes/com/misys/mgr/pricerwsclient/ParserTest.class
+
+
+
+git checkout CMR/src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerData.class
+src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketApp.class
+src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketClient.class
+src/java/cmr-acceptance-test/pricer-websocket-client/target/test-classes/com/misys/mgr/pricerwsclient/ParserTest.class
+src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/Parser.class
+src/java/kgr-karma-components/wfSignonKGR/src/main/java/com/reuters/kgl/presentation/signon/dao/Default_SignonHelperDAOImpl.java
+src/java/kgr-server/src/main/resources/META-INF/persistence.xml
+
+
+#src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerData.class
+#src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketApp.class
+#src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketClient.class
+#src/java/cmr-acceptance-test/pricer-websocket-client/target/test-classes/com/misys/mgr/pricerwsclient/ParserTest.class
+#src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/Parser.class
+#src/java/kgr-karma-components/wfSignonKGR/src/main/java/com/reuters/kgl/presentation/signon/dao/Default_SignonHelperDAOImpl.java
+#src/java/kgr-server/src/main/resources/META-INF/persistence.xml
+
+
+ls CMR/src/java/cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerData.class

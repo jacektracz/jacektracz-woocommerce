@@ -1,0 +1,9 @@
+c:\app\administrator\product\dbhome_1\bin
+
+
+C:\app\Administrator\product\11.2.0\dbhome_1\BIN
+
+C:\jt_dev\oracle\sqldeveloper-4.0.3.16.84-x64\sqldeveloper\sqldeveloper.exe
+
+
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=160k

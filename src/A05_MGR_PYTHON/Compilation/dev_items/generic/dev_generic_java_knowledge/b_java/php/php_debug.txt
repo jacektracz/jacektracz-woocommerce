@@ -1,0 +1,17 @@
+zend_extension_ts="C:\PHP\ext\php_xdebug_ts.dll"
+xdebug.remote_enable=true
+xdebug.remote_host=localhost
+xdebug.remote_port=9001
+xdebug.remote_handler=dbgp
+xdebug.profiler_enable=1
+xdebug.profiler_output_dir="C:\xampp\tmp"`
+
+
+
+php_xdebug-2.2.6-5.2-vc9-nts.dll
+
+
+E:\a01_java\a01_servers\php_env\php_toolos\php_xdebug-2.2.6-5.2-vc9.dll
+
+
+http://dev.piwik.org/trac/wiki/HowToSetupDevelopmentEnvironmentWindows

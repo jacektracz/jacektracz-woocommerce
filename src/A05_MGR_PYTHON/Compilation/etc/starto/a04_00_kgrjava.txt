@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-server/
+
+#echo "show props"
+#ls /jenkins/dist/FR/CMR/config/kgrserver.properties
+echo "run"
+#java -Dlog4j.debug -Dlog4j.configuration=/jenkins/dist/FR/CMR/config/log4j.properties -Dkgr.configuration.kgrserver=/jenkins/dist/FR/CMR/config/kgrserver.properties -jar /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-server/target/kgr-server-1.04.00.00.05-SNAPSHOT-jar-with-dependencies.jar
+
+java -Dlog4j.debug -Dlog4j.configuration=file:/jenkins/dist/FR/CMR/config/log4j.properties -Dkgr.server.log=true -Dkgr.configuration.kgrserver=/jenkins/dist/FR/CMR/config/kgrserver.properties -Dkgr.configuration.persistence=/jenkins/dist/FR/CMR/config/persistence.properties -jar /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-server/target/kgr-server-1.04.00.00.05-SNAPSHOT-jar-with-dependencies.jar 
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+export DD=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dist_dev.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_compilation_dev.txt
+
+echo "KGRCPP: $KGRCPP"
+echo "WORKSPACE: $WORKSPACE"
+cd /jenkins/jt_dev/cmr/cmr_khepri_h1/kgr-khepri/cmr/CMR/src/java/kgr-server/
+java -Dkgr.configuration.kgrserver=/jenkins/dist/FR/CMR/config/kgrserver.properties -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5044 -jar /jenkins/jt_dev/cmr/cmr_khepri_h1/kgr-khepri/cmr/CMR/src/java/kgr-server/target/kgr-server-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar 

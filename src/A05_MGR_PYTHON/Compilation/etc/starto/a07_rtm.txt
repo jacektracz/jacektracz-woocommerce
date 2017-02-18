@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/CMR/etc/
+
+rm /jenkins/dist/FR/CMR/data/J2EE/JettyConfig2/jetty.pid
+rm /jenkins/dist/FR/CMR/data/J2EE/JettyConfig/jetty.pid
+/jenkins/dist/FR/CMR/etc/startRTM
+
+
+
+

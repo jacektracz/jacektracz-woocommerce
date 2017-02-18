@@ -1,0 +1,21 @@
+workspace for tools
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_tools
+
+workspace for c++
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_trunk_cpp
+
+
+workspace for java - develop branch
+	workspace
+		/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_develop_g9
+	code
+		/jenkins/jt_dev/cmr/cmr_develop_g9/kgr-khepri/cmr/CMR/src/java/
+	
+	
+workspace for java - khepri branch
+	
+	workspace
+		/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_khepri_g9
+		
+	code
+		/jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/src/java/

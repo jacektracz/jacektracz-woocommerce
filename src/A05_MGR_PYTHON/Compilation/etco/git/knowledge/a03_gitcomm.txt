@@ -1,0 +1,1 @@
+git log origin/khepri...origin/HEAD --author=Szymon --shortstat | sed -n -e 's/^.*changed, \([0-9]*\) insertions.*$/\1/p' | awk -F: '{total+=$1} END{print total}'

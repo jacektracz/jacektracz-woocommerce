@@ -1,0 +1,1 @@
+tail -f /jenkins/dist/FR/CMR/log/KGRServer_master_stdout.log

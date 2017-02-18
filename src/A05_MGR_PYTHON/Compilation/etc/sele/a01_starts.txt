@@ -1,0 +1,20 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/jt_dev/tools/selenium
+java -jar /jenkins/jt_dev/tools/selenium/selenium-server-standalone-2.44.0.jar
+
+
+gdncdwmgrqa0046
+
+
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_tenor.txt
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_stresstest.txt
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_stresstestclass.txt
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_stressshift.txt
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_sensitivitytype.txt
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_sensitivityset.txt
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_riskclass.txt
+ pybot --argumentfile /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/conf_plset.txt
+

@@ -1,0 +1,9 @@
+http://almtools/jira/browse/MGR-1210
+
+
+stories
+
+http://almtools/jira/secure/RapidBoard.jspa?rapidView=815 
+
+
+http://almtools/jira/secure/RapidBoard.jspa?rapidView=815&view=planning&selectedIssue=MGKS-271

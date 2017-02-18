@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/CMR/etc
+/jenkins/dist/FR/CMR/etc/stoptibems
+

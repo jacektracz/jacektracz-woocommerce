@@ -1,0 +1,3 @@
+# source $DDSQL/cpdev/webapp.txt
+# source $DDSQL/cpdev/gui.txt
+cp /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/install/gui/webapps/* /jenkins/dist/FR/CMR/gui/webapps

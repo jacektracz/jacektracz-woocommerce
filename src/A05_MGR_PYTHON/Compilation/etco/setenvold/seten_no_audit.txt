@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export KHE_AUD_NO_ALLOC=KH_SET
+export KHE_AUD_NO_TB=KH_SET

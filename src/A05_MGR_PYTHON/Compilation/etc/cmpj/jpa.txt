@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-jpa-model
+
+mvn -f ${WORKSPACE}/src/java/kgr-jpa-model/pom.xml -e -s ${WORKSPACE}/src/java/settings.xml -Dmaven.test.skip=true -Ddist.dir=${WORKSPACE}/install -Dkns.src.dir=${KGRCPP} -P release,generated-libs,default,package clean install
+
+
+	

@@ -1,0 +1,13 @@
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/gettimeseries-1417785193318-EUR_SWAP.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+
+
+ INFO | P_1-cache_key_created::2011-03-22 curve_id:618edc5400000000a01f87f2 point_value:4.275139525484636 point_id:618edc5400030000a01f87f2
+ 
+ select * from YieldPoint where 
+ 
+ select Id from YieldPoint where yieldCurveid = '618EDC5400000000a01F87F2'
+ 
+ cp /jenkins/dist/FR/CMR/etc/startRateManager /jenkins/dist/FR/CMR/etc/startRateManagerOptim
+ 
+ gg /jenkins/dist/FR/CMR/etc/startRateManagerOptim

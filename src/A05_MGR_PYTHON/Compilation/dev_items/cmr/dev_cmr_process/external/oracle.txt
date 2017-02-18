@@ -1,0 +1,19 @@
+jacek_tracz@wp.pl;
+Russelcouts9
+
+Kondor_123instalacja:
+user:orcl;
+password:Kondor_123
+
+database  https://localhost:1158/em
+SYSTEM;Kondor_123
+
+
+Enterprise Manager Database Control URL - (orcl) :
+https://localhost:1158/em
+
+Your database configuration files have been installed in C:\app\Administrator while other components selected for installation have been installed in C:\app\Administrator\product\11.2.0\dbhome_2.  Be cautious not to accidentally delete these configuration files.
+
+cd /jenkins/jt_dev/cmr/cmr_khepri_h1/kgr-khepri/cmr/CMR/src/java
+
+mvn install:install-file -s settings.xml -Dfile=/jenkins/jt_dev/oracle/ojdbc6_g.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4.0 -Dpackaging=jar

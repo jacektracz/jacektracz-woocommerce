@@ -1,0 +1,16 @@
+
+
+
+ 	
+	 public GenericIdACKVO stressTestInsert( StressTestInsertVO requestVO)
+	 public GenericACKVO stressTestUpdate( StressTestUpdateVO requestVO)
+	 public GenericACKVO stressTestRemove( StressTestRemoveVO requestVO)
+	 public GenericStressTestACKVO stressTestGetByIdentifier( StressTestGetByIdentifierVO requestVO)
+	 public GenericIdentityACKVO stressTestGetIdentityByIdentifier( StressTestGetIdentityByIdentifierVO requestVO)
+	 public GenericStressTestACKVO stressTestGetByName( StressTestGetByNameVO requestVO)
+	 public GenericStressTestACKVO stressTestGetByShortName( StressTestGetByShortNameVO requestVO)
+	 public GenericIdentityACKVO stressTestGetIdentityByName( StressTestGetIdentityByNameVO requestVO)
+	 public GenericIdentityACKVO stressTestGetIdentityByShortName( StressTestGetIdentityByShortNameVO requestVO)
+	 public GenericIdentityVectorACKVO stressTestQueryIdentityByName( StressTestQueryIdentityByNameVO requestVO)
+	 public GenericIdentityVectorACKVO stressTestQueryIdentityByShortName( StressTestQueryIdentityByShortNameVO requestVO)
+	 public GenericHandleACKVO stressTestGetAccessHandle( StressTestGetAccessHandleVO requestVO)

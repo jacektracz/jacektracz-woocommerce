@@ -1,0 +1,6 @@
+	python  /rksup/config/kgr35s/jut/python/find.py
+	python  /rksup/config/kgr35jut/python/v3/JT_ReadJavaObjects.py
+
+logs and status
+	cd /rksup/config/kgr35jut/python/v3
+	python  /rksup/config/kgr35jut/python/v3/JT_ReadJavaObjects.py 

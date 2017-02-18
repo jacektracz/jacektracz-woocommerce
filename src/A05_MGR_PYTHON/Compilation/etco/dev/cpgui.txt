@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etco/setenv/setenv_cmr_dev.txt
+
+echo 'stopped web'
+
+cd /jenkins/dist/FR/CMR/etc
+./stopKGRWeb
+
+echo 'start copying data'
+
+cp -r /jenkins/jt_dev/cmr/cmr_khepri_h1/kgr-khepri/cmr/CMR/install/gui/* /jenkins/dist/FR/CMR/gui
+
+echo 'stopped web'
+
+cd /jenkins/dist/FR/CMR/etc
+
+./startKGRWeb
+
+
+

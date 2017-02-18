@@ -1,0 +1,30 @@
+create or replace PROCEDURE GetDealPerimeterByUser
+(
+  v_shortName IN VARCHAR2 DEFAULT NULL ,
+  cv_1 IN OUT SYS_REFCURSOR
+)
+AS
+   v_userId RAW(12);
+
+BEGIN
+
+   SELECT Id 
+
+     INTO v_userId
+     FROM KNUser 
+    WHERE ShortName = v_shortName;
+   OPEN cv_1 FOR
+      SELECT Id ,
+             ShortName ,
+             NAME ,
+             Coverage 
+        FROM DealPerimeter 
+       WHERE Id IN ( SELECT DISTINCT DealPerimeterId 
+                     FROM KNUser 
+                      WHERE Id = v_userId
+                              OR Id IN ( SELECT L.KNUserIdParent 
+                                         FROM LinkedKNUser L
+                                          WHERE L.KNUserIdChild = v_userId )
+              )
+   ;
+END;

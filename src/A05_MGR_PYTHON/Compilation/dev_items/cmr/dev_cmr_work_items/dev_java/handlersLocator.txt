@@ -1,0 +1,13 @@
+        handlerMapping.put(TenorHandler.KNEL_TENOR_GET_BY_IDENTIFIER, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_INSERT, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_UPDATE, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_REMOVE, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_GET_BY_IDENTIFIER, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_GET_IDENTITY_BY_IDENTIFIER, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_GET_BY_NAME, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_GET_BY_SHORT_NAME, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_GET_IDENTITY_BY_NAME, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_GET_IDENTITY_BY_SHORT_NAME, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_QUERY_IDENTITY_BY_NAME, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_QUERY_IDENTITY_BY_SHORT_NAME, TenorHandler.class);
+        handlerMapping.put(TenorHandler.KNEL_TENOR_QUERY_TENORY_BY_SHORT_NAME, TenorHandler.class);

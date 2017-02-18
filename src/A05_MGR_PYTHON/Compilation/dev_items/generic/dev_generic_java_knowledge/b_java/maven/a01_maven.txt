@@ -1,0 +1,64 @@
+	mvn exec:java -Dexec.mainClass="com.vineetmanohar.module.Main"
+
+	mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter" -Dexec.args="queue producer 10"
+	
+	mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter" -Dexec.args="queue consumer 10"
+	
+	mvn exec:java -Dexec.mainClass="com.vineetmanohar.module.Main" -Dexec.classpathScope=runtime
+	
+
+<build>  
+ <plugins>  
+  <plugin>  
+   <groupId>org.codehaus.mojo</groupId>  
+   <artifactId>exec-maven-plugin</artifactId>  
+   <version>1.1.1</version>  
+   <executions>  
+    <execution>  
+     <phase>test</phase>  
+     <goals>  
+      <goal>java</goal>  
+     </goals>  
+     <configuration>  
+      <mainClass>com.vineetmanohar.module.CodeGenerator</mainClass>  
+      <arguments>  
+       <argument>arg0</argument>  
+       <argument>arg1</argument>  
+      </arguments>  
+     </configuration>  
+    </execution>  
+   </executions>  
+  </plugin>  
+ </plugins>  
+</build>  
+
+	
+<profiles>
+ <profile>  
+  <id>code-generator</id>  
+  <build>  
+   <plugins>  
+    <plugin>  
+     <groupId>org.codehaus.mojo</groupId>  
+     <artifactId>exec-maven-plugin</artifactId>  
+     <version>1.1.1</version>  
+     <executions>  
+      <execution>  
+       <phase>test</phase>  
+       <goals>  
+        <goal>java</goal>  
+       </goals>  
+       <configuration>  
+        <mainClass>com.vineetmanohar.module.CodeGenerator</mainClass>  
+        <arguments>  
+         <argument>arg0</argument>  
+         <argument>arg1</argument>  
+        </arguments>  
+       </configuration>  
+      </execution>  
+     </executions>  
+    </plugin>  
+   </plugins>  
+  </build>  
+ </profile>  
+</profiles>

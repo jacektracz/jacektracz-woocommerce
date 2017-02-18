@@ -1,0 +1,754 @@
+Protocol Error !  Msg sent :  seal = 5f6c5a3862464c445a4d33465359624c35765923586230237877385357625964345779506a635376445f00 data =  dataId = JT-A5 shortName = JT-A5 name = JT-A5 isEntity = true legalStatus = 0 currencyAlias = null country = null countryId = null countryAlias = null annotation = null purpose = 0 status = null approvingUser = null approvingDate = null requestingUser = null requestingDate = null id = JT-A5 alias = null , Received :  category = 2 reason = IdConvertion::fromDigit() : invalid hex digit 'J' requestId = null
+	
+	
+	
+	RiskClassClientApi	->
+				RiskClassService->
+						ApiRiskClass->
+								KNSServiceLocatorJava
+
+
+
+
+/********************************************************************************/
+/*
+/*					RiskClassClientApi
+/*			
+/********************************************************************************/
+
+
+kgr-business
+	/src/main/java/com/reuters/kgl/presentation/api/riskclass/RiskClassClientApi.java
+
+
+kgr-business
+		com.reuters.kgl.presentation.api.riskclass
+			
+			RiskClassClientApi implements PropertiesAPIInt, HelpGroupApiInt
+			{
+			 
+				@Override
+			    public ValueObject getDataByShortName(
+			    	final Connection connection
+			    	, final String shortName) throws TechnicalException, NACKException, NotLoggedInException, UnexpectedResponseException, RemoteException, TimedOutException {
+					final RiskClassService service = KNSServiceFactoryGen.getRiskClassService();
+					final GenericRiskClassACKVO ackVO =
+						service.riskClassGetByShortName(connection, new RiskClassGetByShortNameVO(shortName));
+					return ackVO;
+				}
+				
+				
+				@Override
+			    public ValueObject getDataById(final Connection connection, final String id) throws TechnicalException, NACKException, NotLoggedInException, UnexpectedResponseException, RemoteException, TimedOutException {
+					final RiskClassService service = KNSServiceFactoryGen.getRiskClassService();
+					final GenericRiskClassACKVO ackVO =
+						service.riskClassGetByIdentifier(connection, new RiskClassGetByIdentifierVO(id));
+					return ackVO;
+				}
+				
+				
+			}
+		
+
+
+final RiskClassService service = KNSServiceFactoryGen.getRiskClassService();
+			
+/********************************************************************************/
+/*
+/*					RiskClassServiceBean
+/*			
+/********************************************************************************/
+		
+		
+		
+		
+kgr-generated-kns-service		
+		com.reuters.kgl.business.service
+		
+		public class RiskClassServiceBean implements RiskClassService
+		{ 
+		
+			public GenericRiskClassACKVO riskClassGetByIdentifier(Connection connection, RiskClassGetByIdentifierVO requestVO)
+				throws TechnicalException, NACKException, NotLoggedInException, UnexpectedResponseException, TimedOutException {
+				ApiRiskClass api = new ApiRiskClass();
+				GenericRiskClassACKVO ackVO  = api.riskClassGetByIdentifier(
+					connection,
+					requestVO );
+				return ackVO;
+			 }			
+		}
+		
+/********************************************************************************/
+/*
+/*					ApiRiskClass
+/*			
+/********************************************************************************/
+		
+		
+kgr-generated-libs/kgr-generated-api-kns-service
+
+		com.reuters.kgl.business.api
+		
+		
+		public class ApiRiskClass 
+		{
+			
+			 public GenericRiskClassACKVO riskClassGetByIdentifier(
+			 	Connection connection
+			 	, RiskClassGetByIdentifierVO requestVO)
+				throws TechnicalException, NACKException, NotLoggedInException, UnexpectedResponseException, TimedOutException {
+				// Send ValueObject synchronously
+				try {
+					KNSService knsService = KNSServiceLocator.getKNSService(connection);
+					ValueObject voResponse = knsService.sendAndWaitVO(connection, requestVO);
+					switch(voResponse.getMsgId().intValue()) {
+						case GenericRiskClassACKVO.MSG_ID:
+							return (GenericRiskClassACKVO)voResponse;
+						case GenericNACKVO.MSG_ID:
+							GenericNACKVO nackVO = (GenericNACKVO)voResponse;
+							throw new NACKException(nackVO.getReason(), nackVO.getCategory());
+						default:
+							if(voResponse.getMsgId().intValue() == AuthenticationNACKVO.MSG_ID) {
+								AuthenticationNACKVO authenticationNackVO = (AuthenticationNACKVO)voResponse;
+								if (authenticationNackVO.getCategory() == NACKException.SESSION_EXPIRED) {
+									throw new NACKException(authenticationNackVO.getReason(), authenticationNackVO.getCategory());
+								}
+								else {
+									throw new UnexpectedResponseException("Protocol Error !  Msg sent : " + requestVO + " , Received : " + voResponse);
+								}
+							}
+							else {
+								throw new UnexpectedResponseException("Protocol Error !  Msg sent : " + requestVO + " , Received : " + voResponse);
+							}
+					}
+				} catch (UnavailableKNSServiceException e) {
+					throw new NotLoggedInException(e.getMessage(), e);
+				} catch (KNSDownException e) {
+					throw new NotLoggedInException(e.getMessage(), e);
+				}
+			 }
+		
+		}
+	
+/********************************************************************************/
+/*
+/*					KNSServiceLocatorJava
+/*			
+/********************************************************************************/
+						
+	/jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-communication/src/main/java/com/reuters/kgl/communication/util/KNSServiceLocatorJava.java
+	
+/********************************************************************************/
+	package com.reuters.kgl.communication.util;
+		
+	public class KNSServiceLocatorJava {
+	
+		private static final  HashMap<String,KNSService> knsServices = new HashMap<>();
+	
+		public static KNSService getKNSService(final String urlProvider, final int heartbeatIntervals) throws UnavailableKNSServiceException {
+			KNSService knsService = knsServices.get(urlProvider);
+			if (knsService == null ) {
+				try {
+				    knsService = new KNSServerJava();
+					knsService.connect(urlProvider,heartbeatIntervals);
+				} catch (final Exception e) {
+					throw new UnavailableKNSServiceException(e.getMessage(),e);
+				}
+				knsServices.put(urlProvider, knsService);
+			}
+			return knsService;
+		}
+	}
+	
+	
+	
+/********************************************************************************/
+/*
+/*					KNSServerJava
+/*			
+/********************************************************************************/
+						
+	
+/********************************************************************************/
+	
+	
+	/jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-communication/src/main/java/com/reuters/kgl/communication/impl/KNSServerJava.java
+	
+		/********************************************************************************/
+		/*
+		/*					GenericRiskClassACKVO
+		/*			
+		/********************************************************************************/
+	
+	kgr-generated-vo
+	
+		com.reuters.kgl.facade.beans
+		
+		package com.reuters.kgl.facade.beans;
+		
+		import org.apache.commons.lang.builder.HashCodeBuilder;
+		
+		
+			public class GenericRiskClassACKVO extends ValueObject {
+				private static final long serialVersionUID = 103000011L;
+				public static final int MSG_ID = 32101;
+				public static final Integer MSG_ID_INTEGER = Integer.valueOf(32101);
+				
+				protected RiskClassDataVO data;		
+				
+			}	
+			
+		/********************************************************************************/
+		/*
+		/*					RiskClassDataVO
+		/*			
+		/********************************************************************************/
+
+			
+		package com.reuters.kgl.facade.beans
+		
+		public class RiskClassDataVO extends ValueObject implements RiskClassVOInt, HierarchyDataVOInt, RawData, CoverageNameDataVOInt {
+			private static final long serialVersionUID = 103000011L;
+			public static final int MSG_ID = 32210;
+			public static final Integer MSG_ID_INTEGER = Integer.valueOf(32210);		
+			
+		}
+		
+		protected String id;		
+				
+	 	/** 
+		 * Id: 2
+		 * ImplInterf: true
+		 * Link: CoverageNameData
+		 * Name: coverage
+		 * Type: msg
+		 * This Field is mandatory
+		 * null: 0
+	 	 */
+	 	 
+		protected CoverageNameDataVO coverage;		
+				
+	 	/** 
+		 * Id: 3
+		 * Name: isTotal
+		 * Type: bool
+		 * This Field is mandatory
+		 * null: 0
+	 	 */
+	 	 
+		protected Boolean isTotal;		
+				
+	 	/** 
+		 * Id: 4
+		 * Name: isEntity
+		 * Type: bool
+		 * This Field is mandatory
+		 * null: 0
+	 	 */
+	 	 
+		protected Boolean isEntity;		
+				
+	 	/** 
+		 * Id: 5
+		 * Name: isComputed
+		 * Type: bool
+		 * This Field is mandatory
+		 * null: 0
+	 	 */
+	 	 
+		protected Boolean isComputed;		
+				
+	 	/** 
+		 * Id: 6
+		 * Name: annotation
+		 * Type: string
+		 * null: 1
+		 * Info: mandatory
+	      
+	 	 */
+	 	 
+		protected String annotation;		
+				
+	 	/** 
+		 * Id: 7
+		 * Link: AccessibleData
+		 * MaxOcc: *
+		 * Name: access
+		 * Type: msg
+		 * null: 1
+		 * Info: List of acces rights
+	      
+	 	 */
+	 	 
+		protected java.util.Collection<AccessibleDataVO> accessCollection;		
+	
+				
+
+				
+				
+				
+/********************************************************************************/
+/*
+/*					Server
+/*			
+/********************************************************************************/
+
+
+
+/********************************************************************************/
+/*
+/*					KNSVD_RiskClass OPERATIONS_ON_RISK_CLASS
+/*			
+/********************************************************************************/
+
+
+	/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNS/KNSBusiness/KNSVarData/KNSVD_RiskClass.cpp				
+					
+		class FX_EXPORT_KNSVarData KNSVD_RiskClass  
+		{
+			void getByIdentifier(KNEL_InMessage const& msg, KGLRV_RequestHandle * handle, KNEL_MessageDesc const* mDesc);
+		}
+
+	/********************************************************************************/
+	/*					KNSVD_RiskClass::getByIdentifier
+	/********************************************************************************/
+
+
+		void
+		KNSVD_RiskClass::getByIdentifier(KNEL_InMessage const& msg, KGLRV_RequestHandle * handle, KNEL_MessageDesc const* mDesc)
+		{
+			KGL_RiskClassBinding * binding = KGL_RiskClassBinding::instance();
+			KGLB_Opaque seal;
+			KRKB_Opaque::instance().rv2kgl(msg, *mDesc->getFieldDesc("seal"),seal);
+			KGLB_Id dataId;
+			KRKB_Id::instance().rv2kgl(msg, *mDesc->getFieldDesc("dataId"),dataId);
+			// check the seal :
+			{
+				KGLB_Id userId, sourceId;
+				KNC_Result res = 
+					KNSC_SealManager::getInstance().checkSeal(seal,userId,sourceId);
+				handle->setUser(userId);
+				handle->setSource(sourceId);
+				KNSC_SealManager::getInstance().handleCheckSealResult(handle, res);
+				if(!res) return;
+			}
+					
+/********************************************************************************/
+/*					KNSVD_RiskClass::insert
+/********************************************************************************/
+					
+void
+KNSVD_RiskClass::insert(KNEL_InMessage const& msg, KGLRV_RequestHandle * handle, KNEL_MessageDesc const* mDesc)
+{
+	KGL_RiskClassBinding * binding = KGL_RiskClassBinding::instance();
+	KGLB_Opaque seal;
+	KRKB_Opaque::instance().rv2kgl(msg, *mDesc->getFieldDesc("seal"),seal);
+	KGL_RiskClass data;
+	KRK_RiskClass::instance().rv2kgl(msg, *mDesc->getFieldDesc("data"),data);
+	// check the seal :
+	{
+		KGLB_Id userId, sourceId;
+		KNC_Result res = 
+			KNSC_SealManager::getInstance().checkSeal(seal,userId,sourceId);
+		handle->setUser(userId);
+		handle->setSource(sourceId);
+		KNSC_SealManager::getInstance().handleCheckSealResult(handle, res);
+		if(!res) return;
+	}
+//args available: insert(seal,data, handle, binding);
+// EDITED insert BEGIN
+	try
+	{
+		KNDC_VarDB_RiskClassImpl * dataImpl =new KNDC_VarDB_RiskClassImpl(*handle,
+																	*binding);
+		assert(dataImpl);
+		KNMC_VarDB_InsertDataIdImpl<KNDC_VarDB_RiskClassImpl,KGL_RiskClass> * request
+			= new KNMC_VarDB_InsertDataIdImpl<KNDC_VarDB_RiskClassImpl,KGL_RiskClass>(*dataImpl,
+																				data,true);
+		delete dataImpl;
+		delete request;
+	}
+	catch(...)
+	{
+		assert(!"pb with catch");
+	}
+// EDITED insert END
+}
+
+					
+static void delegate_insert(KNEL_InMessage const& msg, KGLRV_RequestHandle * handle, KNEL_MessageDesc const* mDesc)
+{
+	KNSVD_RiskClass::instance()->insert(msg, handle, mDesc);
+}
+					
+KNC_Result 
+KNSVD_RiskClass::init()
+{
+// EDITED init BEGIN
+// EDITED init END
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_INSERT, (KGLRV_Mapper::OperationMethod) delegate_insert);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_UPDATE, (KGLRV_Mapper::OperationMethod) delegate_update);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_REMOVE, (KGLRV_Mapper::OperationMethod) delegate_remove);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_BY_IDENTIFIER, (KGLRV_Mapper::OperationMethod) delegate_getByIdentifier);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_IDENTITY_BY_IDENTIFIER, (KGLRV_Mapper::OperationMethod) delegate_getIdentityByIdentifier);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_BY_NAME, (KGLRV_Mapper::OperationMethod) delegate_getByName);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_BY_SHORT_NAME, (KGLRV_Mapper::OperationMethod) delegate_getByShortName);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_IDENTITY_BY_NAME, (KGLRV_Mapper::OperationMethod) delegate_getIdentityByName);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_IDENTITY_BY_SHORT_NAME, (KGLRV_Mapper::OperationMethod) delegate_getIdentityByShortName);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_QUERY_IDENTITY_BY_NAME, (KGLRV_Mapper::OperationMethod) delegate_queryIdentityByName);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_QUERY_IDENTITY_BY_SHORT_NAME, (KGLRV_Mapper::OperationMethod) delegate_queryIdentityByShortName);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_LINK_HANDLE, (KGLRV_Mapper::OperationMethod) delegate_getLinkHandle);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_INSERT_RISK_CLASS_ASSOCIATION, (KGLRV_Mapper::OperationMethod) delegate_insertRiskClassAssociation);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_UPDATE_RISK_CLASS_ASSOCIATION, (KGLRV_Mapper::OperationMethod) delegate_updateRiskClassAssociation);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_REMOVE_RISK_CLASS_ASSOCIATION, (KGLRV_Mapper::OperationMethod) delegate_removeRiskClassAssociation);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_QUERY_RISK_CLASS_ASSOCIATION_BY_RATE_TYPE, (KGLRV_Mapper::OperationMethod) delegate_queryRiskClassAssociationByRateType);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_QUERY_ALL_RISK_CLASS_ASSOCIATION, (KGLRV_Mapper::OperationMethod) delegate_queryAllRiskClassAssociation);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_SEARCH, (KGLRV_Mapper::OperationMethod) delegate_search);
+	KGLRV_Mapper::addCallback(KNEL_RISKCLASS_GET_RISK_CLASS_TOTAL, (KGLRV_Mapper::OperationMethod) delegate_getRiskClassTotal);
+	return KNC_Result();
+}
+
+#ifndef WINNT
+	static KNC_Result initResult = KNSVD_RiskClass::instance()->init();
+#endif
+
+					
+/********************************************************************************/
+/*				
+/*					KGR_Init
+/*			
+/********************************************************************************/
+
+
+
+/********************************************************************************/
+/*			
+/*				
+/*					KGL_RiskClassBinding
+/*			
+/*			
+/********************************************************************************/
+
+
+
+	/cpp/libs/KGL/KGLApiServices/KGLRvService/KGL_RiskClassBinding.cpp
+
+	void
+	KGL_RiskClassBinding::getByIdentifierResponse(
+					KGL_RiskClass const & data,
+					KGL_RequestHandle * handle)
+	{
+		KNEL_MessageDesc const* mDesc = 
+			KNEL_MessageDescContainer::getInstance().getMessageDesc(KNEL_GENERIC_RISKCLASS_ACK,"2.6");
+		KNEL_OutMessage outMsg(*mDesc);
+		KKR_RiskClass::instance().kgl2rv(data,"data", outMsg);
+		getSender()->sendResponse(outMsg,handle);
+	}
+
+
+
+
+/********************************************************************************/
+/*				
+/*					KGL_RiskClass
+/*			
+/********************************************************************************/
+
+	/cpp/libs/KGL/KGLData/KGL_RiskClass.h
+
+
+		class FX_EXPORT_KGLData KGL_RiskClass : public KGL_Data
+		{
+		 public:
+		    KGL_RiskClass * clone() const;
+		    KGL_RiskClass();
+		    virtual ~KGL_RiskClass();
+		    typedef std::vector<KGL_Accessible> KGL_Accessible_Vector;
+		
+			// setters for mandatory fields
+			void setCoverage(KGL_CoverageName const& coverage);
+			void setIsTotal(bool isTotal);
+			void setIsEntity(bool isEntity);
+			void setIsComputed(bool isComputed);
+		
+			// setters for non mandatory fields
+			void setId(KGLB_Id const& id);
+			void setAnnotation(string const& annotation);
+			void setAccess(KGL_Accessible_Vector const& access);
+		
+			// getters
+			KGLB_Id getId() const;
+			KGL_CoverageName getCoverage() const;
+			bool getIsTotal() const;
+			bool getIsEntity() const;
+			bool getIsComputed() const;
+			string getAnnotation() const;
+			KGL_Accessible_Vector getAccess() const;
+		
+			// isNulls
+			bool isIdNULL() const;
+			bool isCoverageNULL() const;
+			bool isIsTotalNULL() const;
+			bool isIsEntityNULL() const;
+			bool isIsComputedNULL() const;
+			bool isAnnotationNULL() const;
+			bool isAccessNULL() const;
+		
+			// setNulls
+			void setIdNULL();
+			void setCoverageNULL();
+			void setIsTotalNULL();
+			void setIsEntityNULL();
+			void setIsComputedNULL();
+			void setAnnotationNULL();
+			void setAccessNULL();
+		
+		
+		    virtual KNC_Result validate() const;
+		 private:
+		    KGLB_Id id_; // part of key
+		    bool idNULL_;
+		    KGL_CoverageName coverage_; 
+		    bool coverageNULL_;
+		    bool isTotal_; 
+		    bool isTotalNULL_;
+		    bool isEntity_; 
+		    bool isEntityNULL_;
+		    bool isComputed_; 
+		    bool isComputedNULL_;
+		    string annotation_; // mandatory
+		    bool annotationNULL_;
+		    KGL_Accessible_Vector access_; // List of acces rights
+		    bool accessNULL_;
+		};
+
+		
+		KNMC_VarDB_InsertDataIdImpl:KNDB_Transaction
+		
+/********************************************************************************/
+/*				
+/*					KNMC_VarDB_InsertDataIdImpl:KNDB_Transaction
+/*			
+/********************************************************************************/
+		
+template <class COMPUTE,class DATA>
+class KNMC_VarDB_InsertDataIdImpl:KNDB_Transaction
+{
+public :
+  KNMC_VarDB_InsertDataIdImpl(COMPUTE & object,
+			      DATA const& data,
+			      bool isWriteImmediate = false);
+
+	~KNMC_VarDB_InsertDataIdImpl();
+
+	virtual bool process();
+	virtual void sendFailure (KNDB_Error const & error )
+		{
+			KGL_Failure  fail((KGL_Failure::Category)error.category_,error.error_);
+			object_->binding_->failure(fail,&(object_->handle_));
+		};
+
+private :
+
+  	KNMC_VarDB_InsertDataIdImpl();
+	DATA const * data_;
+	COMPUTE  * object_;
+	bool isWI_;
+};
+
+		
+/********************************************************************************/
+/*				
+/*					KNMC_VarDB_InsertDataIdImpl.cpp
+/*			
+/********************************************************************************/
+		
+cpp/libs/KNETCallbacks/KNETDataVarDBCallbacks/KNMC_VarDB_DataId.cpp
+		
+template <class COMPUTE,class DATA>
+67bool KNMC_VarDB_InsertDataIdImpl<COMPUTE,DATA>::process()
+68{
+69	VarDB_hasTableAccess(INS,
+70				   object_->factory_->className(),
+71				   object_->handle_);
+72	object_->isValid(*data_,INSERT);
+73	if(isWI_)
+74		writeImmediate();
+75	else
+76		write();
+77	object_->obj_=createFromKNET(*data_,
+78								 object_->obj_,
+79								 object_->handle_);
+80	commit();
+81	object_->logInsert(object_->obj_,object_->handle_);
+82	object_->id_=PSToKNETId(object_->obj_,
+83							object_->id_,object_->handle_);
+84	object_->success(object_->id_);
+85	return true;
+86}
+87	
+
+
+
+
+/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KGL/KGLMappings/KGLRv2Kgl/KRK_RiskClass.h
+
+/********************************************************************************/
+/*				
+/*					KRK_RiskClass
+/*
+/*					FROM RDV to KGL_RiskClass
+/*
+/*							
+/********************************************************************************/
+
+NC_Result
+KRK_RiskClass::rv2kgl(KNEL_InMessage const& rv,
+		                      string const& fieldName,
+		                      KGL_RiskClass & kgl) const
+{
+    KNEL_InMessage nestedMessage;
+    KNC_Result res;
+    res = KGL_Util::result(fieldName,
+                           rv.getFieldValue(fieldName.c_str(),
+                                            nestedMessage));
+    KGLM_Util::setErrorOnFieldType(KGLM_Util::null,
+                                   res);
+    returnIfError(res,"");
+
+	return rv2kgl(nestedMessage,
+				  kgl);
+}
+	
+/********************************************************************************/
+/*				
+/*					KRK_RiskClass
+/*
+/*					FROM RDV to KGL_RiskClass
+/*
+/*							
+/********************************************************************************/	
+	
+	JMS => RV
+	
+	KJS_JmsMessageListener
+	
+	KJS_JmsMessageHandler
+	
+	
+/********************************************************************************/
+/*
+/*				
+/*				Message translator JMS => RV
+/*
+/*							
+/********************************************************************************/
+
+/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNETApi/KNETJmsService/KJS_MessageTranslator.h
+
+	class FX_EXPORT_KNETJmsService KJS_MessageTranslator : public KGL_BaseClass
+	{
+	 public:
+		static KJS_MessageTranslator *  getInstance();
+	
+	
+		KNC_Result jms2rv(const MapMessage & jmsMsg,
+							KNEL_OutMessage & rvMsg,
+							KJS_JmsMessageHandler * handler);
+	
+		KNC_Result rv2jms(MapMessage& jmsMsg,
+							KNEL_InMessage const& rvMsg,
+							KJS_RvMessageHandler * handler);
+	
+		Session* getSession();
+	
+	private:
+		friend class KJS_BigBoss;
+	
+		KJS_MessageTranslator(KJS_BridgeParams const& bridgeParams,
+							  Session *session);
+		virtual ~KJS_MessageTranslator();
+	
+		KNC_Result jms2rv(const KJS_SerializedMessage & jmsMsg,
+						  KNEL_OutMessage & rvMsg,
+						  KJS_JmsMessageHandler * handler);
+	
+		KNC_Result rv2jms(KJS_SerializedMessage & jmsMsg,
+						  KNEL_InMessage const& rvMsg,
+						  KJS_RvMessageHandler * handler);
+	
+		KNC_Result result(string const& error,
+						  string const& dataType,
+						  int msgId,
+						  string const& msgName,
+						  string const& fieldName,
+						  const CMSException& ex) const;
+		KNC_Result result(string const& error,
+						  string const& dataType,
+						  int msgId,
+						  string const& msgName,
+						  string const& fieldName,
+						  KNC_Result res) const;
+	
+		Session *session_;
+		KJS_BridgeParams const& bridgeParams_;
+		
+		static KJS_MessageTranslator * instance_;
+	
+		static const KJS_BridgeParams::FieldsPolicy ignoreAndForward_;
+		static const KJS_BridgeParams::FieldsPolicy warnAndForward_;
+		static const KJS_BridgeParams::FieldsPolicy errorAndForward_;
+		static const KJS_BridgeParams::FieldsPolicy warn_;
+		static const KJS_BridgeParams::FieldsPolicy error_;
+		static const KJS_BridgeParams::FieldsPolicy exit_;
+	
+	};
+	
+	inline Session* KJS_MessageTranslator::getSession(){
+		return session_;
+		
+	}
+	
+	
+	grep 'Message Id' /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-generated-libs/kgr-generated-api-kns-service/target/generated-sources/java/com/reuters/kgl/business/api/ApiTenor.java
+
+	 * Message Id : 32738
+	 * Message Id : 32739
+	 * Message Id : 32740
+	 * Message Id : 32741
+	 * Message Id : 32750
+	 * Message Id : 32751
+	 * Message Id : 32752
+	 * Message Id : 32753
+	 * Message Id : 32754
+	 * Message Id : 32755
+	 * Message Id : 32756
+	 * Message Id : 32757
+	 
+	 public GenericIdACKVO tenorInsert(Connection connection, TenorInsertVO requestVO)
+	 public GenericACKVO tenorUpdate(Connection connection, TenorUpdateVO requestVO)
+	 public GenericACKVO tenorRemove(Connection connection, TenorRemoveVO requestVO)
+	 public GenericTenorACKVO tenorGetByIdentifier(Connection connection, TenorGetByIdentifierVO requestVO)
+	 public GenericIdentityACKVO tenorGetIdentityByIdentifier(Connection connection, TenorGetIdentityByIdentifierVO requestVO)
+	 public GenericTenorACKVO tenorGetByName(Connection connection, TenorGetByNameVO requestVO)
+	 public GenericTenorACKVO tenorGetByShortName(Connection connection, TenorGetByShortNameVO requestVO)
+	 public GenericIdentityACKVO tenorGetIdentityByName(Connection connection, TenorGetIdentityByNameVO requestVO)
+	 public GenericIdentityACKVO tenorGetIdentityByShortName(Connection connection, TenorGetIdentityByShortNameVO requestVO)
+	 public GenericIdentityVectorACKVO tenorQueryIdentityByName(Connection connection, TenorQueryIdentityByNameVO requestVO)
+	 public GenericIdentityVectorACKVO tenorQueryIdentityByShortName(Connection connection, TenorQueryIdentityByShortNameVO requestVO)
+	 public GenericTenorVectorACKVO tenorQueryTenoryByShortName(Connection connection, TenorQueryTenoryByShortNameVO requestVO)
+	 
+	 
+	 
+	 
+tenor:
+
+	/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNS/KNSBusiness/KNSKrmsData/KNSKD_Tenor.cpp
+
+
+		/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNETCallbacks/KNETDataRateDBCallbacks/KNDC_RateDB_TenorImpl.cpp
+
+			/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNETCallbacks/KNETDataRateDBCallbacks/KNMC_RateDB_DataId.h
+				 
+				 
+	

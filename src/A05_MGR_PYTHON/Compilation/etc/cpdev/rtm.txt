@@ -1,0 +1,17 @@
+#!/bin/bash
+#export CMRVER=cmr_khepri_g9
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+echo 'start copying rtm data'
+#ls /jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/install/gui/rtm_ear
+
+#ls /jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/install/gui/
+
+#ls /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/install/gui/
+
+#ls  /jenkins/dist/FR/CMR/gui/rtm_ear
+
+#cp /jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/install/gui/rtm_ear/* /jenkins/dist/FR/CMR/gui/rtm_ear
+
+cp -r /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/install/gui/rtm_ear/* /jenkins/dist/FR/CMR/gui/rtm_ear
+ 

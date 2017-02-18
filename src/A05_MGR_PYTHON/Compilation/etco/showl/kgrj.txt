@@ -1,0 +1,1 @@
+ tail -f /jenkins/jt_dev/cmr/cmr_khepri_h1/kgr-khepri/cmr/CMR/src/java/tt.log

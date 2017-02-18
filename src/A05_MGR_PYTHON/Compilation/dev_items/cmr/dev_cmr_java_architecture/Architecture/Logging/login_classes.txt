@@ -1,0 +1,10 @@
+Default_SignonHelperDAOImpl
+
+
+public UserModel login(final String loginName, final String password, final String sessionId, final Map<String, String[]> parameters)
+            throws Exception 
+{
+
+		SpecificAuthenticationACKVO specificAuthenticationACKVO = null;
+		
+}		

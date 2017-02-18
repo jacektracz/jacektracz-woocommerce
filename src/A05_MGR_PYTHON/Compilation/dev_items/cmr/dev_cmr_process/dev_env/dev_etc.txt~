@@ -1,0 +1,36 @@
+workspace for tools
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_tools
+
+workspace for c++
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_trunk_cpp
+
+workspace for java
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_khepri_v2_1
+	
+		Maven user settings:
+		/jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/settings.xml
+
+git workspace
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_khepri_g6
+	
+		/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_khepri_g6/src/java/settings.xml
+
+git workspace eclipse		
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_khepri_g6_4
+
+cmr sources git
+	/jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/src/java
+	
+
+	cat /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/src/main/resources/META-INF/*xml
+	cat /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server-api-handlers/src/main/resources/META-INF/*xml
+
+export GIT_SSL_NO_VERIFY=1
+git clone https://jactracz@scm-git-eur.misys.global.ad/scm/risk/cmr.git /jenkins/jt_dev/cmr/cmr_khepri_g6/kgr-khepri/
+
+
+rsync -avz kdeveloper@10.22.11.18:/jenkins/jt_dev .
+
+jacek@GDNWJMST35:/media/6692d55f-26cf-41f2-9c7c-e807a63d803d/jenkins$ rsync -avz kdeveloper@10.22.11.18:/jenkins/jt_dev .
+
+mount /dev/fd0 /mnt/floppy

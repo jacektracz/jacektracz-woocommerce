@@ -1,0 +1,17 @@
+
+ant start
+ant load-demo
+http://127.0.0.1:8080/ecommerce/control/main
+https://127.0.0.1:8443/catalog/control/main
+https://127.0.0.1:8443/webtools/control/main
+
+
+Message: Could not find the serviceengine.xml file
+
+
+konakart 
+liferay
+http://holisticsecurity.wordpress.com/2013/06/25/building-social-ecommerce-solution/
+
+softslate:
+C:\Program Files\Apache Software Foundation\Tomcat 7.0\logs\

@@ -1,0 +1,64 @@
+H:\a01_java\ycart\v1\yes-cart-read-only\trunk\web\store\pom.xml
+
+cd H:\a01_java\ycart\v1\yes-cart-read-only\trunk\
+
+
+http://www.inspire-software.com/confluence/display/YC2/From+source#Fromsource-Checkouttheproject
+
+ATTEMPT:2:
+	cd E:\a01_java\shops\yes_cart\v1
+
+	svn checkout http://yes-cart.googlecode.com/svn/trunk/ 
+	
+	cd trunk
+	
+	mvn install -Pmysql
+	
+	[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.
+3.2:compile (default-compile) on project core-module-payment-capp: Compilation f
+ailure: Compilation failure:
+[ERROR] error: error reading C:\Documents and Settings\jacek\.m2\repository\payp
+al\payflow\payflow-client\4.31\payflow-client-4.31.jar; error in opening zip fil
+e
+[ERROR] error: error reading C:\Documents and Settings\jacek\.m2\repository\com\
+paypal\paypal-client\5.1.1\paypal-client-5.1.1.jar; error in opening zip file
+[ERROR] error: error reading C:\Documents and Settings\jacek\.m2\repository\net\
+authorize\authorize-client\1.4.2\authorize-client-1.4.2.jar; error in opening zi
+p file
+[ERROR] error: error reading C:\Documents and Settings\jacek\.m2\repository\com\
+cybersource\cybersource-client\1.5\cybersource-client-1.5.jar; error in opening
+zip file
+[ERROR] error: error reading C:\Documents and Settings\jacek\.m2\repository\com\
+cybersource\cybersource-security\1.5\cybersource-security-1.5.jar; error in open
+ing zip file
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e swit
+ch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please rea
+d the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureExc
+eption
+[ERROR]
+[ERROR] After correcting the problems, you can resume the build with the command
+
+[ERROR]   mvn <goals> -rf :core-module-payment-capp
+E:\a01_java\shops\yes_cart\v1\trunk>
+
+	
+	INSTALLATION:
+		HTTP:8099
+		HTPS:8449
+		
+		
+Use appropriate icon or open http://localhost:8080/yes-manager
+
+Default login and password are: admin@yes-cart.com  /  1234567
+
+Open storefront
+
+After that open storefront using icon or url http://localhost:8099/yes-shop/
+		

@@ -1,0 +1,60 @@
+/===========================================================================/
+/*
+/*          DASHBOARD
+/*
+/===========================================================================/
+
+    PS C:\lkd\wmtgit\v06\requests-backend>
+    git checkout  -b wmt-rq-master-02
+    Switched to a new branch 'wmt-rq-master-02'
+
+/===========================================================================/
+/*
+/*          DASHBOARD
+/*
+/===========================================================================/
+
+
+    Switched to a new branch 'wmt-rq-master-02'
+    root@b0909aa8a5b7:/var/www/ember/requests-dashboard# git status
+    On branch wmt-rq-master-02
+    Your branch is up-to-date with 'remotes/origin/wmt-rq-master-02'.
+    nothing to commit, working directory clean
+    root@b0909aa8a5b7:/var/www/ember/requests-dashboard#
+
+
+/===========================================================================/
+/*
+/*          BACKEND
+/*
+/===========================================================================/
+
+
+    Unpacking objects: 100% (7/7), done.
+    From https://github.intel.com/WMT/requests-backend
+     * [new branch]      wmt-rq-master-01 -> origin/wmt-rq-master-01
+     * [new branch]      wmt-rq-master-02 -> origin/wmt-rq-master-02
+    Already up-to-date.
+    root@1e7ea1bcde0b:/var/www/requests-backend# git checkout wmt-rq-master-02
+    M       src/Core/logs/log-2.txt
+    M       src/Core/logs/logs-2.txt
+    Branch wmt-rq-master-02 set up to track remote branch wmt-rq-master-02 from origin.
+    Switched to a new branch 'wmt-rq-master-02'
+    root@1e7ea1bcde0b:/var/www/requests-backend#
+
+
+
+class LocalConfig extends GlobalConfig
+{
+    public function __construct()
+    {
+        $this->user = 'admin';
+        $this->password = '4ES0MO7nTyec';
+        $this->dbname = 'wmt_test';
+        $this->port = '3306';
+                $this->host = 'productionDb';
+        $this->isDevMode = true;
+
+                $this->memcachedHost = 'cacheengine';
+    }
+}

@@ -1,0 +1,18 @@
+http://almtools/jira/browse/MGR-1210
+
+
+confluence
+	jactracz; Welcome12
+	http://almtools/confluence/display/ENG/Historical+Simulation+Test+Case+with+Forward+Summit+trade
+	
+	
+ZOD:
+
+	https://zod.france.effix.fr/gui/	
+	
+	
+	security
+	
+	https://talentcloud.sumtotalsystems.com/scripts/lightyearisapi.dll?buildworkspaceframeset
+	
+	http://almtools/confluence/display/ENG/KGRWeb:+List+of+MarketRisk+screens

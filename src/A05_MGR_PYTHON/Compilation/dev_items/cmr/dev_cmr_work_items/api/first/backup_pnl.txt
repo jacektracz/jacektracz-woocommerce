@@ -1,0 +1,556 @@
+package com.misys.kgrserver.handler;
+
+import java.util.Collection;
+import java.util.Set;
+
+import java.util.List;
+import com.reuters.kgr.util.IdConvertion;
+
+import com.google.common.collect.Lists;
+
+import com.misys.model.rate.*;
+
+import com.misys.dao.rknet.SensitivityPnlSetupDAO;
+import com.misys.dao.rknet.RtableDAO;
+import com.misys.dao.rknet.SensitivityPnlStressTestsDAO;
+import com.misys.dao.rknet.StressTestDAO;
+import com.reuters.kgl.facade.beans.*;
+
+import com.reuters.kgl.facade.beans.ValueObject;
+import com.reuters.kgl.facade.exception.NACKException;
+import com.sun.tools.javac.code.Attribute.Array;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
+import com.misys.kgrserver.translator.FolderLogger;
+import com.misys.kgrserver.translator.IdentityDataTranslator;
+import com.misys.kgrserver.translator.StressTestDataTranslator;
+
+private final Supplier<OID> oidFactory;
+
+oidFactory = OIDS.createOIDFactory();
+
+//AccessSensitivityPnlSetup
+public class SensitivityPnlSetupHandler extends AbstractValueObjectHandler 
+{
+	SensitivityPnlSetupDAO stcDao;
+	StressTestDAO stDao;
+	RtableDAO rTableDAO;
+	SensitivityPnlStressTestsDAO stsDao;
+	
+    FolderLogger logger = new FolderLogger();
+    public SensitivityPnlSetupHandler() {
+        super();
+        
+        logger.log_info("SensitivityPnlSetupHandler::SensitivityPnlSetupHandler::method_start");
+        stcDao = new SensitivityPnlSetupDAO(jpa_getEmRate_1());
+        stDao = new StressTestDAO(jpa_getEmRate_1());
+        rTableDAO = new RtableDAO(jpa_getEmRate_1());
+        stsDao =  new SensitivityPnlStressTestsDAO(jpa_getEmRate_1());
+        logger.log_info("SensitivityPnlSetupHandler::SensitivityPnlSetupHandler::method_end");
+    }
+    
+    
+    public EntityManager jpa_getEmRate_1()
+    {
+    	return emRate;
+    }
+    
+    
+    public EntityTransaction jpa_getTransactionRate_1()
+    {
+    	return etRate;
+    }
+    
+    
+    @Override
+    public ValueObject handle(final ValueObject object) {
+        try {
+            //PrintStateEx("FolderHandler::handle");
+        	logger.log_info("FolderHandler::handle::method_start::14_14");
+            final Integer msgId = object.getMsgId();
+            switch (msgId) {
+         	case SensitivityPnlSetupInsertVO.MSG_ID:
+                return sensitivityPnlSetupInsert((SensitivityPnlSetupInsertVO) object);
+            case SensitivityPnlSetupUpdateVO.MSG_ID:
+                return sensitivityPnlSetupUpdate((SensitivityPnlSetupUpdateVO) object);
+            case SensitivityPnlSetupRemoveVO.MSG_ID:
+                return sensitivityPnlSetupRemove((SensitivityPnlSetupRemoveVO) object);
+            case SensitivityPnlSetupGetByIdentifierVO.MSG_ID:
+                return sensitivityPnlSetupGetByIdentifier((SensitivityPnlSetupGetByIdentifierVO) object);                
+            case SensitivityPnlSetupGetIdentityByIdentifierVO.MSG_ID:
+                return sensitivityPnlSetupGetIdentityByIdentifier((SensitivityPnlSetupGetIdentityByIdentifierVO) object);
+            case SensitivityPnlSetupGetByNameVO.MSG_ID:
+                return sensitivityPnlSetupGetByName((SensitivityPnlSetupGetByNameVO) object);
+            case SensitivityPnlSetupGetByShortNameVO.MSG_ID:
+                return sensitivityPnlSetupGetByShortName((SensitivityPnlSetupGetByShortNameVO) object);
+            case SensitivityPnlSetupGetIdentityByNameVO.MSG_ID:
+                return sensitivityPnlSetupGetIdentityByName((SensitivityPnlSetupGetIdentityByNameVO) object);
+            case SensitivityPnlSetupGetIdentityByShortNameVO.MSG_ID:
+                return sensitivityPnlSetupGetIdentityByShortName((SensitivityPnlSetupGetIdentityByShortNameVO) object);
+            case SensitivityPnlSetupQueryIdentityByNameVO.MSG_ID:
+                return sensitivityPnlSetupQueryIdentityByName((SensitivityPnlSetupQueryIdentityByNameVO) object);
+            case SensitivityPnlSetupGetAccessHandleVO.MSG_ID:
+                return sensitivityPnlSetupGetAccessHandle((SensitivityPnlSetupGetAccessHandleVO) object);                
+            case SensitivityPnlSetupQueryIdentityByShortNameVO.MSG_ID:
+            	return sensitivityPnlSetupQueryIdentityByShortName((SensitivityPnlSetupQueryIdentityByShortNameVO) object);
+            	
+            default:
+                return new GenericNACKVO(NACKException.NOTFOUND, "Unknown message id");
+            }
+            
+        } catch (final Exception e) {
+            logger.log_info_exception("SensitivityPnlSetupHandler::handle::exception:", e);
+            return new GenericNACKVO(NACKException.SYSTEM, e.getMessage());
+        }
+     }
+    
+	 public GenericIdACKVO sensitivityPnlSetupInsert( SensitivityPnlSetupInsertVO requestVO)
+	 {
+		 
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupInsert::method_start");
+	        
+	        try {	        	
+	            //PrintStateEx("FolderHandler::knel_folderInsert::s1");
+	        	SensitivityPnlSetupDataVO data = requestVO.getData();
+	        	//data.get
+	        	SensitivityPnlSetup ddst = new SensitivityPnlSetup();
+	        	
+	        	ddst.setId(get_id());
+	        	
+	        	vo2db_getRow(
+	        			data
+	        			, ddst);
+	        	
+	        	stcDao.persist( ddst );
+	        	//SensitivityPnlStressTests
+	        	Set<SensitivityPnlStressTests> vv = ddst.getSensitivityPnlStressTestses();
+	        	for(SensitivityPnlStressTests dd : vv)
+	        	{
+	        		stsDao.persist(dd);
+	        	}
+	        	
+	        	GenericIdACKVO result = new GenericIdACKVO();
+	        	result.setData(id2s(ddst.getId()));
+	        	
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupInsert::method_end");            
+	            return result;
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupInsert::exception:", ee);            
+	            throw ee;
+	        }	 
+	 }
+	 
+	 
+	 public GenericACKVO sensitivityPnlSetupUpdate( SensitivityPnlSetupUpdateVO requestVO)
+	 {
+		 
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupUpdate::method_start");
+	        
+	        try 
+	        {
+	        	
+	        	SensitivityPnlSetupDataVO data = requestVO.getData();
+	        	String sId = data.getId();
+	        	
+	        	jpa_ClearChildCollsInUpdate( sId );
+	        	
+	        	SensitivityPnlSetup dd = jpa_InsertChildCollsInUpdate( data );
+	        	
+	        	stcDao.update( dd );
+	        	
+	        	GenericACKVO result = new GenericACKVO();	        	
+
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupUpdate::method_end");
+	            
+	            return result;
+	            
+	        } 
+	        catch (final Exception ee) 
+	        {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupUpdate::exception:", ee);            
+	            throw ee;
+	        }	 	 
+	 }
+	 
+	 public void jpa_ClearChildCollsInUpdate( String sid)
+	 {
+		 
+		 try{
+			 logger.log_info("SensitivityPnlSetupHandler::jpa_ClearChildCollsInUpdate::method_start");
+			 SensitivityPnlSetup ddst = stcDao.findById(s2id(sid));	        	
+	         Set<SensitivityPnlStressTests> vv = ddst.getSensitivityPnlStressTestses();
+	         for(SensitivityPnlStressTests dd : vv)
+	         {
+	        		stsDao.remove(dd);
+	         }
+	         vv.clear();	        	
+        	logger.log_info("SensitivityPnlSetupHandler::jpa_ClearChildCollsInUpdate::method_end");
+			 
+		   } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::jpa_ClearChildCollsInUpdate::exception:", ee);            
+	            throw ee;
+	        }	
+	 }
+	 
+	 public SensitivityPnlSetup jpa_InsertChildCollsInUpdate( SensitivityPnlSetupDataVO data)
+	 {
+		 
+	        logger.log_info("SensitivityPnlSetupHandler::jpa_InsertChildCollsInUpdate::method_start");
+	        
+	        SensitivityPnlSetup stc_to_update;
+	        try 
+	        {
+	        		        	     
+	        	stc_to_update = stcDao.findById(s2id(data.getId()));
+	        	
+	        	vo2db_getRow(
+	        			data
+	        			,	stc_to_update);
+	        		        	
+	        	logger.log_info("sts_update::get_row_ok");
+	        	
+	        	Set<SensitivityPnlStressTests> vv_update = stc_to_update.getSensitivityPnlStressTestses();
+	        	for(SensitivityPnlStressTests dd_update : vv_update)
+	        	{
+	        		stsDao.persist(dd_update);
+	        	}
+	        		        	
+	        	logger.log_info("sts_update::update_ok");
+
+	            logger.log_info("SensitivityPnlSetupHandler::jpa_InsertChildCollsInUpdate::method_end");
+	            
+	            return stc_to_update;
+	            
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::jpa_InsertChildCollsInUpdate::exception:", ee);            
+	            throw ee;
+	        }	 	 
+	 }
+	 
+	 public GenericACKVO sensitivityPnlSetupRemove( SensitivityPnlSetupRemoveVO requestVO)
+	 {
+	        
+		 logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupRemove::method_start");
+	        
+	        try {
+	        	
+	        	String sId = requestVO.getDataId();
+	        	SensitivityPnlSetup ddst = stcDao.findById(s2id(sId));
+	        	
+	        	jpa_ClearChildCollsInUpdate( sId );
+	        	
+	        	stcDao.remove(ddst);
+	        	
+	        	GenericACKVO result = new GenericACKVO();
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupRemove::method_end");            
+	            return result;
+	            
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupRemove::exception:", ee);            
+	            throw ee;
+	        }	 	 
+	 }
+	 
+	 public GenericSensitivityPnlSetupACKVO sensitivityPnlSetupGetByIdentifier( SensitivityPnlSetupGetByIdentifierVO requestVO)
+	 {
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByIdentifier::method_start");
+	        
+	        try {
+	        	
+	        	SensitivityPnlSetup ddst = stcDao.findById(s2id(requestVO.getDataId()));
+	        	GenericSensitivityPnlSetupACKVO result = new GenericSensitivityPnlSetupACKVO();
+	        	SensitivityPnlSetupDataVO data = new SensitivityPnlSetupDataVO();	        	
+	        	db2vo_getRow(ddst,data);
+	        	result.setData(data);
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByIdentifier::method_end::" + result.toString());            
+	            return result;
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByIdentifier::exception:", ee);            
+	            throw ee;
+	        }	 	 
+	 }
+	 
+	 
+	 
+	 public GenericIdentityACKVO sensitivityPnlSetupGetIdentityByIdentifier( SensitivityPnlSetupGetIdentityByIdentifierVO requestVO)
+	 {
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByIdentifier::method_start");
+	        
+	        try {
+	        	
+	            //PrintStateEx("FolderHandler::knel_folderInsert::s1");
+	        	GenericIdentityACKVO result = new GenericIdentityACKVO();
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByIdentifier::method_end");            
+	            return result;
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByIdentifier::exception:", ee);            
+	            throw ee;
+	        }	 
+		 
+	 }
+	 
+	 public GenericSensitivityPnlSetupACKVO sensitivityPnlSetupGetByName( SensitivityPnlSetupGetByNameVO requestVO)
+	 {
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByName::method_start");
+	        
+	        try {
+	        	
+	            //PrintStateEx("FolderHandler::knel_folderInsert::s1");
+	        	GenericSensitivityPnlSetupACKVO result = new GenericSensitivityPnlSetupACKVO();
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByName::method_end");            
+	            return result;
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByName::exception:", ee);            
+	            throw ee;
+	        }	 
+		 
+	 }
+	 
+	 public GenericSensitivityPnlSetupACKVO sensitivityPnlSetupGetByShortName( SensitivityPnlSetupGetByShortNameVO requestVO)
+	 {
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByShortName::method_start");
+	        
+	        try {
+	        	
+	            //PrintStateEx("FolderHandler::knel_folderInsert::s1");
+	        	GenericSensitivityPnlSetupACKVO result = new GenericSensitivityPnlSetupACKVO();
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByShortName::method_end");            
+	            return result;
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupGetByShortName::exception:", ee);            
+	            throw ee;
+	        }	 
+		 
+	 }
+	 
+	 public GenericIdentityACKVO sensitivityPnlSetupGetIdentityByName( SensitivityPnlSetupGetIdentityByNameVO requestVO)
+	 {
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByName::method_start");
+	        
+	        try {
+	        	
+	            //PrintStateEx("FolderHandler::knel_folderInsert::s1");
+	        	GenericIdentityACKVO result = new GenericIdentityACKVO();
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByName::method_end");            
+	            return result;
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByName::exception:", ee);            
+	            throw ee;
+	        }	 
+		 
+	 }
+	 
+	 public GenericIdentityACKVO sensitivityPnlSetupGetIdentityByShortName( SensitivityPnlSetupGetIdentityByShortNameVO requestVO)
+	 {
+		 
+        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByShortName::method_start");
+        
+        try 
+        {        	
+        	GenericIdentityACKVO result = new GenericIdentityACKVO();
+            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByShortName::method_end");            
+            return result;
+        } catch (final Exception ee) {
+            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupGetIdentityByShortName::exception:", ee);            
+            throw ee;
+        }
+        
+	 }
+	 
+	 public GenericIdentityVectorACKVO sensitivityPnlSetupQueryIdentityByName( SensitivityPnlSetupQueryIdentityByNameVO requestVO)
+	 {
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupQueryIdentityByName::method_start");
+	        
+	        try {
+	        	
+	            //PrintStateEx("FolderHandler::knel_folderInsert::s1");
+	        	
+		        final List<SensitivityPnlSetup> tests = stcDao.findByNameLike(
+		        		requestVO.getName()
+		        		, requestVO.getMaxLength());
+		        		        
+		        GenericIdentityVectorACKVO result = db2vo_getGenericIdentityVectorACKVO(
+		        		tests
+		        		,	requestVO.getMaxLength());
+		        
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupQueryIdentityByName::method_end::" + result.toString());
+	            
+	            return result;
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupQueryIdentityByName::exception:", ee);            
+	            throw ee;
+	        }	 
+		 
+	 }
+	 
+	 public GenericIdentityVectorACKVO sensitivityPnlSetupQueryIdentityByShortName( 
+			 SensitivityPnlSetupQueryIdentityByShortNameVO requestVO)
+	 {
+		 
+	        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupQueryIdentityByShortName::method_start");
+	        
+	        try {
+	        	
+	        	
+		        final List<SensitivityPnlSetup> tests = stcDao.findByShortNameLike(
+		        		requestVO.getShortName()
+		        		, requestVO.getMaxLength());
+		        		        
+		        GenericIdentityVectorACKVO result = db2vo_getGenericIdentityVectorACKVO(
+		        		tests
+		        		,	requestVO.getMaxLength());		        
+		        
+	            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupQueryIdentityByShortName::method_end");            
+	            return result;
+	            
+	        } catch (final Exception ee) {
+	            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupQueryIdentityByShortName::exception:", ee);            
+	            throw ee;	            
+	        }	 		 
+	 }
+	 
+	 public GenericHandleACKVO sensitivityPnlSetupGetAccessHandle( SensitivityPnlSetupGetAccessHandleVO requestVO)
+	 {
+		 
+        logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetAccessHandle::method_start");
+        
+        try 
+        {
+        	
+        	final Rtable rtable = rTableDAO.findByTableName("SensitivityPnlSetup");
+        	final String rtableId = IdConvertion.getHexStringFromByte(rtable.getId());
+        	GenericHandleACKVO result =  new GenericHandleACKVO(new HandleDataVO(rtableId));        	
+            logger.log_info("SensitivityPnlSetupHandler::sensitivityPnlSetupGetAccessHandle::method_end");            
+            return result;
+        } catch (final Exception ee) {
+            logger.log_info_exception("SensitivityPnlSetupHandler::sensitivityPnlSetupGetAccessHandle::exception:", ee);            
+            throw ee;
+        }		 
+	 }
+    
+    
+	 public void db2vo_getRow(
+			 SensitivityPnlSetup ddst
+			 ,	SensitivityPnlSetupDataVO data)
+	 {
+		 logger.log_info("SensitivityPnlSetupHandler::db2vo_getRow::method_start");
+		 
+		 StressTestDataTranslator tt = new StressTestDataTranslator();
+
+         //PrintStateEx("FolderHandler::knel_folderInsert::s1");
+     	data.setId(id2s(ddst.getId()));     	  	
+     	data.setName( ddst.getName());
+     	data.setShortName( ddst.getShortName());
+     	
+     	Collection<StressTestDataVO> coll = Lists.newArrayList();
+     	Set<SensitivityPnlStressTests> coll_sts = ddst.getSensitivityPnlStressTestses();
+     	for (SensitivityPnlStressTests dd_sts: coll_sts)
+     	{
+     		
+     		StressTests stressTests = dd_sts.getStressTests();
+     		
+     		StressTestDataVO dd_vo = new StressTestDataVO();     		
+     		tt.db2vo_getRow( stressTests,dd_vo);
+
+     		coll.add(dd_vo);
+     		
+     	}
+     	
+     	data.setStressTestsCollection(coll);
+     	
+     	logger.log_info("SensitivityPnlSetupHandler::db2vo_getRow::method_end");
+	 }
+	 
+	 public GenericIdentityVectorACKVO db2vo_getGenericIdentityVectorACKVO(
+			 List<SensitivityPnlSetup> tests
+			 ,int maxLength)
+	 {
+		 
+		 logger.log_info("SensitivityPnlSetupHandler::db2vo_getGenericIdentityVectorACKVO::method_start");
+		 
+		 Collection<IdentityDataVO> idColl = db2vo_getIdentityColl(
+				 tests
+				 ,	maxLength);
+		 
+		 GenericIdentityVectorACKVO result = new GenericIdentityVectorACKVO();
+		 result.setDataCollection(idColl);
+		 result.setMaxLength(maxLength);
+		 
+		 logger.log_info("SensitivityPnlSetupHandler::db2vo_getGenericIdentityVectorACKVO::method_end");
+		 return result;
+	 }
+	 
+	 public Collection<IdentityDataVO> db2vo_getIdentityColl(
+			 List<SensitivityPnlSetup> tests
+			 ,int maxLength)
+	 {
+		 logger.log_info("SensitivityPnlSetupHandler::db2vo_getIdentityColl::method_start");
+		 IdentityDataTranslator tt = new IdentityDataTranslator();
+		 Collection<IdentityDataVO> idColl = Lists.newArrayList();
+		 for ( SensitivityPnlSetup dd: tests )
+         {
+        	
+			 IdentityDataVO idd = tt.modelToVo(dd);
+        	 idColl.add(idd);        	
+         }
+		 logger.log_info("SensitivityPnlSetupHandler::db2vo_getIdentityColl::method_end");
+		 return idColl;
+	 }
+	 
+	 public void vo2db_getRow(	        	
+			 	SensitivityPnlSetupDataVO data 
+			 	, SensitivityPnlSetup ddst)
+	 {
+		 	logger.log_info("SensitivityPnlSetupHandler::vo2db_getRow::method_start"); 
+	  		ddst.setName(data.getName());
+	  		ddst.setShortName(data.getShortName());     	
+	  		ddst.setOca(0);
+	  		ddst.setStatus("E");
+	  	
+	  		Collection<StressTestDataVO> coll = data.getStressTestsCollection();
+	  	
+		    //StressTestDataTranslator tt = new StressTestDataTranslator();
+		  	//for(StressTestDataVO stvo : coll)
+		  	//{
+		  	//	 StressTests st = stDao.findById(s2id(stvo.getId()));
+		  	//	 stDao.remove(st);
+		  	//}	  	
+		  	
+		  	for(StressTestDataVO stvo : coll)
+		  	{
+		  		 StressTests st = stDao.findById(s2id(stvo.getId()));
+		  		 SensitivityPnlStressTestsId sts_id = new SensitivityPnlStressTestsId();
+		  		 sts_id.setSensitivityPnlSetupId(ddst.getId());
+		  		 sts_id.setStressTestId(st.getId());
+		  		
+		  		 SensitivityPnlStressTests sts = new SensitivityPnlStressTests();
+		  		 sts.setStressTests(st);
+		  		 sts.setSensitivityPnlSetup(ddst);
+		  		 sts.setId(sts_id);	  		 
+				 ddst.getSensitivityPnlStressTestses().add(sts);			 
+		  	}		  		  		
+		  	
+		  	logger.log_info("SensitivityPnlSetupHandler::vo2db_getRow::method_end");
+	  	
+	 }
+	 
+	
+    protected byte[] get_id()
+    {
+        byte[] byteId = oidFactory.get().bytes();
+        return byteId;
+    }
+    
+    public String id2s(byte[] id)
+    {
+        return IdConvertion.getHexStringFromByte(id);
+    }
+    
+    public byte[] s2id(String id)
+    {
+        return IdConvertion.getByteFromHexString(id);
+    }
+    
+}

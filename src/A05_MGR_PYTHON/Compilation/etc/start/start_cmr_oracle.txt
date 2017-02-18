@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#source $DDSQL/start/start_cmr_oracle.txt
+
+echo 'cmr stopping'
+source $DDSQL/stop/stop_cmr_dev.txt
+echo 'cmr stopped'
+
+source $DDSQL/start/start_cmr_devo_1.txt
+
+echo 'kgr starting'
+source $DDSQL/startj/kgr_back.txt
+echo 'kgr started'
+
+sleep 15
+
+source $DDSQL/start/start_cmr_devo_2.txt

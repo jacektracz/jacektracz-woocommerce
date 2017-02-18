@@ -1,0 +1,13 @@
+2014-12-28
+
+i'v started from exlipse ant buil, start,load
+
+source code:
+	H:\a01_java\ofbiz\ofbiz_trunc\src\build.xml\
+	
+workspace:
+	H:\a01_java\eclipse_workspaces_3\ofbiz_kepler_trunk	
+	
+	
+and works
+	http://127.0.0.1:8080/ecommerce/control/main	

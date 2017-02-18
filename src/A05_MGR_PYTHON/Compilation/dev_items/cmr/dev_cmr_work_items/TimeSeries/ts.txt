@@ -1,0 +1,5 @@
+
+./rtmBatch -U kgr -P df5cd27e7a6fd470beabe817abe86ee9b876be300222c27e1e6d48f65605a3be /jenkins/dist/FR/CMR/data/interface/rate/gettimeseries-1417785193318-EUR_SWAP.xml-updated.req
+
+
+./rtmBatch -U kgr -P df5cd27e7a6fd470beabe817abe86ee9b876be300222c27e1e6d48f65605a3be /jenkins/dist/FR/CMR/data/interface/rate/gettimeseries-1417785537243-FX_EUR_USD.xml-updated.req

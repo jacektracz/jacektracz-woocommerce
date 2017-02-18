@@ -1,0 +1,20 @@
+ INFO | started RateFileImportJob with /jenkins/dist/FR/CMR/data/interface/rate/SWOEUR.xml
+ INFO | HANDLERcom.misys.rate.manager.timeseries.optimized.handlers.TimeSeriesHandler@64397337
+ INFO | P_7-TimeSeriesHandler::TIME_SERIES_DATA[size:1][Numbers:1][Current item:1][Percentage:100][Time:0 in milsecs][Full time:0 in secs][Remained time:0 in secs]
+ INFO | P_7-TimeSeriesHandler::TIME_SERIES_TYPE[size:2475][Numbers:2475][Current item:1][Percentage:0][Time:0 in milsecs][Full time:0 in secs][Remained time:0 in secs]
+ INFO | attempting insertion of 725 Point
+ INFO | P_7-SwaptionCubePointHandler::[NumOfPoints::725][Inserted::0][Updated::725] 27623
+ INFO | SwaptionCube import successful for mnemonic: SWAPTIONCUBE.EUR-SWVOL.EUR, alias: SWOEUR
+ INFO | P_7-[MarketDataHandled][Current_volume:] [Points:725][Inserted:0][Updated:725]
+ INFO | P_7-TimeSeriesHandler::TIME_SERIES_TYPE[size:2475][Numbers:2475][Current item:2][Percentage:0][Time:27878 in milsecs][Full time:34499 in secs][Remained time:34471 in secs]
+ INFO | attempting insertion of 725 Point
+ INFO | P_7-SwaptionCubePointHandler::[NumOfPoints::725][Inserted::0][Updated::725] 44582
+ INFO | SwaptionCube import successful for mnemonic: SWAPTIONCUBE.EUR-SWVOL.EUR, alias: SWOEUR
+ INFO | P_7-[MarketDataHandled][Current_volume:] [Points:1450][Inserted:0][Updated:1450]
+ INFO | P_7-TimeSeriesHandler::TIME_SERIES_TYPE[size:2475][Numbers:2475][Current item:3][Percentage:0][Time:72501 in milsecs][Full time:59813 in secs][Remained time:59740 in secs]
+ INFO | attempting insertion of 725 Point
+ INFO | P_7-SwaptionCubePointHandler::[NumOfPoints::725][Inserted::0][Updated::725] 43530
+ INFO | SwaptionCube import successful for mnemonic: SWAPTIONCUBE.EUR-SWVOL.EUR, alias: SWOEUR
+ INFO | P_7-[MarketDataHandled][Current_volume:] [Points:2175][Inserted:0][Updated:2175]
+ INFO | P_7-TimeSeriesHandler::TIME_SERIES_TYPE[size:2475][Numbers:2475][Current item:4][Percentage:0][Time:116076 in milsecs][Full time:71822 in secs][Remained time:71705 in secs]
+ INFO | attempting insertion of 725 Point

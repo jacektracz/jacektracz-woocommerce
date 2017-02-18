@@ -1,0 +1,14 @@
+https://zod.france.effix.fr/gui/
+
+http://mgrv092:8080/kgr/manageWorkspace.do
+
+a po ssh:
+ 
+ssh kgr@mgrv092
+haslo Kondor_123
+
+ssh kgr@mgrv092
+/thomsonreuters/home/kgr
+
+http://mgrv092:8080/kgr/
+

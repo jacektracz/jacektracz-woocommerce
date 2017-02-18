@@ -1,0 +1,211 @@
+CPP
+scons generation
+scons --no-cache -j 8 > build.txt 2>&1
+
+Java
+unalias mvn
+export MAVEN_OPTS="-Xmx4g -XX:MaxPermSize=1g"
+export WORKSPACE=/home/kdeveloper/repos/kgr
+export KGRCPP=/home/developer/repos/kgr/src/cpp
+mvn -f ${WORKSPACE}/pom.xml -s ${WORKSPACE}/src/java/settings.xml -Dmaven.test.skip=true -Ddist.dir=${WORKSPACE}/install -Dkns.src.dir=${KGRCPP} -P release,generated-libs,default,package clean install
+
+
+mkdir /home/kdeveloper/repos/kgr
+
+ls /home/kdeveloper/jt_dev
+
+
+ /home/kdeveloper/jt_dev/cmr/v1/kgr-trunk/src/java/
+ 
+export KGRCPP=/home/kdeveloper/jt_dev/cmr/v1/kgr-trunk/src/cpp
+
+
+
+export WORKSPACE=/home/kdeveloper/jt_dev/cmr/v1/kgr-trunk/
+export KGRCPP=/home/kdeveloper/jt_dev/cmr/v1/kgr-trunk/src/cpp
+mvn -f ${WORKSPACE}/pom.xml -s ${WORKSPACE}/src/java/settings.xml -Dmaven.test.skip=true -Ddist.dir=${WORKSPACE}/install -Dkns.src.dir=${KGRCPP} -P release,generated-libs,default,package clean install
+
+
+
+
+JENKINS_INFO:
+
+	http://150.151.145.203:8380/jenkins/
+	
+	
+	
+	mvn -f ${WORKSPACE}/pom.xml -e -s ${WORKSPACE}/src/java/settings.xml -Dmaven.test.skip=true -Ddist.dir=${WORKSPACE}/install -Dkns.src.dir=${KGRCPP} -P release,generated-libs,default,package clean install
+	
+	
+	my ip : 10.22.11.18
+
+	
+RVD_START:	
+
+	./rvd -listen tcp:kenvngServer:7500
+	
+	tibrvlisten - service -19037 daemon tcp:kenvngServer:7500 -network localhost
+	
+	
+	mkdir /home/kdeveloper/FR/CMR/jtetc
+	cd /home/kdeveloper/FR/CMR/jtetc
+	cp /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/* /home/kdeveloper/FR/CMR/jtetc
+	
+	cp /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/*txt /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/
+	
+KreditNet.Config.Client.*.Report.Transport.Daemon: tcp:kenvngServer:7500
+KreditNet.Config.Client.*.Trading.Transport.Daemon: tcp:kenvngServer:7500
+KreditNet.Config.Server.*.Report.Transport.Daemon: tcp:kenvngServer:7500
+KreditNet.Config.Server.*.Trading.Transport.Daemon: tcp:kenvngServer:7500
+
+
+KreditNet.Config.ClientCluster.*.Trading.
+.Service: 19037
+
+	 
+			
+kdeveloper@kworkstation:~/FR/Common/RV/bin$ ./tibrvlisten -service 19037 daemon tcp:kenvngServer:7500 -network localhost
+sh: 1: rvd: not found
+./tibrvlisten: Failed to initialize transport: Not connected to daemon
+kdeveloper@kworkstation:~/FR/Common/RV/bin$ ./tibrvlisten -service 19037 daemon tcp:kenvngServer:7500 -network localhost
+
+
+http:10.22.11.18:19080/kgr
+
+http:10.22.11.48:19080/kgr
+
+SVN_GET:
+
+    svn checkout svn://rfssvn.france.effix.fr/kgr/branches/khepri kgr-khepri
+
+COMPILATION:
+
+	cd /home/kdeveloper/jt_dev/cmr/v1/kgr-trunk/
+	cd /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/
+	
+	echo $WORKSPACE/install
+	
+	ls /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk//install
+	
+	cp /home/kdeveloper/FR/CMR/jtetc* cp /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/
+	
+	
+	compilation dest:
+		/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk//install
+	edited source:
+		 
+		 
+Copying dashboard-war-20.00.000.016.war to /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/install/gui/webapps/dashboard-war.war
+
+COMPILATION_CPP:
+	cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp		 
+	
+	
+SVN:
+	
+	
+cp kgr-rknetdbinit/src/main/java/com/misys/model kgr-persistence/src/main/java/com/misys/model
+
+
+kdiff3 kgr-rknetdbinit/src/main/java/com/misys/model/rknet/AccessBackTestPnlset.java kgr-model/src/main/java/com/misys/model/rknet/AccessBackTestPnlset.java  
+ 
+ 
+ 
+COMPILATION:
+source /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/compile_khepri_java.sh
+source /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/compile_khepri_cpp.sh
+source /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/compile_khepri_2_java.sh
+source /jenkins/jt_dev/cmr/prjsv1/cmr/cmr3_dev/Compilation/compile_khepri_2_cpp.sh
+
+COMPILATION_NEW_SCRIPTS:
+
+
+    source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_khepri_2_cpp.sh
+    source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_khepri_2_java.sh
+
+
+COMPILATION_NEW_SCRIPTS:
+    cd /jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/src/cpp
+    source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_khepri_cpp.sh
+
+    source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_khepri_java.sh
+
+
+    source  /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_khepri_java.sh
+
+ 
+ tail -f /jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/src/cpp/build.txt
+ 
+ 
+ SQL_SERVER:
+
+SHARE_SOURCE:
+
+smb:\\
+
+kgr WORKGROUP Kondor_123
+
+JAVA_SOURCE:
+
+	/jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/src/java
+
+	cd /jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/src/java/
+
+    cd /jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/src/java/kgr-ratemanager-war
+
+	mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest -Dmaven.surefire.debug clean test
+
+
+    mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest clean test
+
+	 mv /jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/.repository /jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/repository_backup
+
+
+    ls /jenkins/jt_dev/cmr/cmr_khepri_v1/kgr-khepri/.repository
+
+
+JAVA_SOURCE:
+    /opt/eclipse/eclipse-java/eclipse
+
+
+
+MGR-669
+
+    ls -ltr /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/install/lib/x86Linux
+
+    ls /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/
+
+
+    cp /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/install/lib/libKNETCreditCallbacks.so /home/kdeveloper/FR/CMR/lib/x86Linux
+
+SCONS_IN_DIR:
+
+    cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNETCallbacks/KNETCreditCallbacks/
+    
+    
+    ls /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-generated-libs/kgr-generated-vo/src/main/java/com/reuters/kgl/facade/beans
+    
+    ls /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-generated-libs/kgr-generated-vo/src/main/java/com/reuters/kgl/facade/beans
+    
+    ls /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-generated-libs/kgr-generated-vo/
+    
+    
+    mvn -f ${WORKSPACE}/pom.xml -e -s ${WORKSPACE}/src/java/settings.xml -Dmaven.test.skip=true -Ddist.dir=${WORKSPACE}/install -Dkns.src.dir=${KGRCPP} -P release,generated-libs,default,package clean install
+    
+    
+    mvn eclipse:eclipse -s ${WORKSPACE}/src/java/settings.xml
+    
+    ls $WORKSPACE/src/java/settings.xml
+    
+    
+    
+    ls /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-generated-libs/kgr-generated-vo/target/generated-sources/java/com/reuters/kgl/facade/beans/
+     
+     
+    ls /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-generated-libs/kgr-generated-vo/target/generated-sources/java/com/reuters/kgl/facade/beans/
+    
+    
+    ln -s 
+    
+    
+    

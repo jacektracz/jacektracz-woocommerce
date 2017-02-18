@@ -1,0 +1,194 @@
+package com.misys.kgrserver.auth;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.misys.kgrserver.handler.AbstractValueObjectHandler;
+import com.misys.kgrserver.license.LicenseTypeEnum;
+import com.misys.model.rknet.Knuser;
+import com.reuters.kgl.facade.beans.AuthenticationACKVO;
+import com.reuters.kgl.facade.beans.AuthenticationNACKVO;
+import com.reuters.kgl.facade.beans.ClientLeavingVO;
+import com.reuters.kgl.facade.beans.GenericACKVO;
+import com.reuters.kgl.facade.beans.GenericNACKVO;
+import com.reuters.kgl.facade.beans.InitAuthenticationACKVO;
+import com.reuters.kgl.facade.beans.InitAuthenticationVO;
+import com.reuters.kgl.facade.beans.ModernAuthenticationVO;
+import com.reuters.kgl.facade.beans.ServerVersionACKVO;
+import com.reuters.kgl.facade.beans.ServerVersionVO;
+import com.reuters.kgl.facade.beans.UserAuthenticationVO;
+import com.reuters.kgl.facade.beans.ValueObject;
+import com.reuters.kgl.facade.exception.NACKException;
+import com.reuters.kgr.enumeration.multichoice.KGLMC_LicenseType;
+import com.reuters.kgr.util.IdConvertion;
+
+public class AuthenticationHandler extends AbstractValueObjectHandler {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationHandler.class);
+    private static final Map<String, ConfidentUUID> actualuuidList = new HashMap<>();
+    private static final Map<String, AuthenticationService> serviceForUser = new HashMap<>();
+    // TODO: Implement this!
+    private final Integer siteLicenses = LicenseTypeEnum.MULTI_LICENSETYPE_ALL.getVal() - LicenseTypeEnum.MULTI_LICENSETYPE_ELS_NOT_PRESENT.getVal();
+
+    public static long calculateHash(final long in) {
+        return (in) % 402555543L % 402555541L;
+    }
+
+    @Override
+    public ValueObject handle(final ValueObject object) {
+        try {
+            switch (object.getMsgId()) {
+            case ClientLeavingVO.MSG_ID:
+                return handleUserLogout((ClientLeavingVO) object);
+            case ServerVersionVO.MSG_ID:
+                return handleVersionRequest();
+            case InitAuthenticationVO.MSG_ID:
+                return handleInitAuthenticationRequest(object);
+            case ModernAuthenticationVO.MSG_ID:
+                return handleModernAuthenticationRequest(object);
+            case UserAuthenticationVO.MSG_ID:
+                return handleUserAuthenticationRequest(object);
+            default:
+                return new GenericNACKVO(NACKException.NOTFOUND, "Unknown message id" + object.getMsgId());
+            }
+        } catch (final Exception e) {
+            return new GenericNACKVO(NACKException.SYSTEM, e.getMessage());
+        }
+    }
+
+    private ValueObject handleUserLogout(final ClientLeavingVO object) {
+        final String seal = object.getSeal();
+        ConnectionManager.getInstance().removeConnectionBySea(seal);
+        return new GenericACKVO();
+    }
+
+    ValueObject handleModernAuthenticationRequest(final ValueObject object) {
+        final ModernAuthenticationVO o = (ModernAuthenticationVO) object;
+        final long time2 = Long.valueOf(o.getSecret());
+        final StringBuilder keyToStore = new StringBuilder();
+        keyToStore.append(o.getUserName());
+        keyToStore.append('.');
+        keyToStore.append(o.getSourceName());
+        keyToStore.append(time2);
+
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("time2: " + time2 + ", hashed: " + calculateHash(time2));
+        }
+        boolean valid = false;
+        if (actualuuidList.containsKey(keyToStore.toString())) {
+            final ConfidentUUID element = actualuuidList.get(keyToStore.toString());
+            final Date end = new Date();
+            final long dif = end.getTime() - element.getTime().getTime();
+            // max one second delay between Init and Modern AuthenticationVO
+            if (dif < 1000 && calculateHash(element.getUuid()) == time2) {
+                actualuuidList.remove(keyToStore.toString());
+                valid = true;
+            } else {
+                actualuuidList.remove(keyToStore.toString());
+            }
+        }
+        if (!valid) {
+           // return new AuthenticationNACKVO("BAD UUID Exchanged", NACKException.LOGICAL);
+        }
+
+        final AuthenticationService authService = new AuthenticationService(o.getUserName(), o.getSecret(), o.getSourceName(), true);
+        serviceForUser.put(o.getUserName(), authService);
+        try {
+            authService.checkSource();
+            authService.checkLoginNoPassword();
+            authService.checkMaxConcurrentConnections();
+            authService.isAllowedToLogIn();
+        } catch (final NACKException e) {
+            serviceForUser.remove(authService);
+            return new AuthenticationNACKVO(e.getReason(), e.getCategory());
+        }
+
+        String message = authService.getKnuser().getAnnouncement();
+        final Short isNewMsg = authService.getKnuser().getIsNewMsg();
+        if (isNewMsg != null && isNewMsg != 0) {
+            message = "";
+        }
+
+        return new AuthenticationACKVO(null, false, authService.isAdministrator(), message, authService.getUserLicenseType(), o.getUserName(),
+                o.getSourceName(), IdConvertion.getHexStringFromByte(authService.getKnuser().getId()), IdConvertion.getHexStringFromByte(authService
+                        .getSource().getId()), authService.getUserName(), authService.getAuthenticationMode(), siteLicenses, authService.isOldSessionClosed());
+    }
+
+    ValueObject handleVersionRequest() {
+        return new ServerVersionACKVO(ServerVersion.getMainVersion());
+    }
+
+    ValueObject handleInitAuthenticationRequest(final ValueObject object) {
+        final Random r = new Random();
+        final InitAuthenticationVO o = (InitAuthenticationVO) object;
+        final Long time2 = Long.valueOf(o.getSecret()) + r.nextInt() + (r.nextInt() * 65000l);
+        final String reencryptedKey = time2.toString();
+        final String keyToStore = o.getUserName() + '.' + o.getSourceName() + calculateHash(time2);
+
+        final ConfidentUUID cfUUID = new ConfidentUUID();
+        cfUUID.setTime(new Date());
+        cfUUID.setUuid(time2);
+        actualuuidList.put(keyToStore, cfUUID);
+
+        final InitAuthenticationACKVO response = new InitAuthenticationACKVO();
+        response.setSecret(reencryptedKey);
+        if (LOGGER.isDebugEnabled()) {
+            LOGGER.debug("time2: " + time2 + ", hashed: " + calculateHash(time2));
+        }
+        return response;
+    }
+
+    ValueObject handleUserAuthenticationRequest(final ValueObject object) {
+        final UserAuthenticationVO o = (UserAuthenticationVO) object;
+        final AuthenticationService authService = serviceForUser.get(o.getUserName());
+        final Knuser user = authService.getKnuser();
+        Integer maxLoginAttempts = authService.getSetup().getLoginTryMaxNumber();
+        if (maxLoginAttempts == null) {
+            maxLoginAttempts = Integer.MAX_VALUE;
+        }
+        int userLoginAttempts = user.getLoginTryWrongNumber();
+
+        if (user.getActive() != 1) {
+            serviceForUser.remove(authService);
+            return new AuthenticationNACKVO("Inactive user are not allowed to login!", NACKException.LOGIN_DISABLED);
+        }
+
+        final String encryptedPassword = IdConvertion.getStringFromHexString(o.getPassword());
+
+        if (user.getPassword().equals(encryptedPassword)) {
+            // reset wrong login attempts number
+            user.setLoginTryWrongNumber(0);
+            user.setLastLogin(new Date());
+            authService.updateUser(user);
+            final String seal = authService.generateSeal();
+            serviceForUser.remove(authService);
+
+            String message = authService.getKnuser().getAnnouncement();
+            final Short isNewMsg = authService.getKnuser().getIsNewMsg();
+            if (isNewMsg != null && isNewMsg != 0) {
+                message = "";
+            }
+
+            return new AuthenticationACKVO(seal, false, authService.isAdministrator(), message, authService.getUserLicenseType(), user.getLoginName(),
+                    authService.getSourceShortName(), IdConvertion.getHexStringFromByte(user.getId()), IdConvertion.getHexStringFromByte(authService
+                            .getSource().getId()), user.getName(), authService.getAuthenticationMode(), siteLicenses, authService.isOldSessionClosed());
+        } else {
+            userLoginAttempts++;
+            user.setLoginTryWrongNumber(userLoginAttempts);
+            if (userLoginAttempts + 1 > maxLoginAttempts) {
+                user.setActive((short) 0);
+                authService.updateUser(user);
+                serviceForUser.remove(authService);
+                return new AuthenticationNACKVO("Final login attempt failed, account locked. Please contact administrator.", NACKException.LOGIN_DISABLED);
+            } else {
+                authService.updateUser(user);
+                serviceForUser.remove(authService);
+                return new AuthenticationNACKVO("Login attempt failed, attempts left: " + (maxLoginAttempts - userLoginAttempts), NACKException.LOGIN_DISABLED);
+            }
+        }
+    }
+}

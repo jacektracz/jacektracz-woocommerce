@@ -1,0 +1,5 @@
+git add kgr-jpa-model/src/main/java/com/misys/dao/rknet/GenericDAO.java
+#git add kgr-server/src/main/java/com/misys/kgrserver/core/KGRServer.java
+git add kgr-server/src/main/java/com/misys/kgrserver/handler/HandlersLocator.java
+git add kgr-server/src/main/java/com/misys/kgrserver/handler/TenorHandler.java
+## source $DD2/git/git_add_1.txt

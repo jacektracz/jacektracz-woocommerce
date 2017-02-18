@@ -1,0 +1,38 @@
+SOURCE :
+	E:\a01_java\shops\broadleaf\Broadleaf-3.06-3\Broadleaf-3.06-GA-SRC-1\admin\broadleaf-open-admin-platform\pom.xml
+	
+WORKSPACE:
+	E:\a01_java\workspaces\2015\broadleaf-src-1
+	
+COMPILATION:
+	cd E:\a01_java\shops\broadleaf\Broadleaf-3.06-3\Broadleaf-3.06-GA-SRC-1
+	mvn clean install
+	
+	
+	n-3.0.6-GA-tests.jar
+	[INFO] ------------------------------------------------------------------------
+	[INFO] Reactor Summary:
+	[INFO]
+	[INFO] BroadleafCommerce ................................. SUCCESS [4.047s]
+	[INFO] BroadleafCommerce Common Libraries ................ SUCCESS [1:50.125s]
+	[INFO] BroadleafCommerce Core ............................ SUCCESS [0.046s]
+	[INFO] BroadleafCommerce Profile ......................... SUCCESS [4.188s]
+	[INFO] BroadleafCommerce Profile Web ..................... SUCCESS [2.062s]
+	[INFO] BroadleafCommerce Admin ........................... SUCCESS [0.094s]
+	[INFO] BroadleafCommerce Open Admin Platform ............. SUCCESS [13.016s]
+	[INFO] BroadleafCommerce CMS Module ...................... SUCCESS [7.578s]
+	[INFO] BroadleafCommerce Framework ....................... SUCCESS [18.141s]
+	[INFO] BroadleafCommerce Framework Web ................... SUCCESS [9.531s]
+	[INFO] BroadleafCommerce Admin Module .................... SUCCESS [6.187s]
+	[INFO] BroadleafCommerce Integration ..................... SUCCESS [1:02.016s]
+	[INFO] ------------------------------------------------------------------------
+	[INFO] BUILD SUCCESS
+	[INFO] ------------------------------------------------------------------------
+	[INFO] Total time: 3:57.422s
+	[INFO] Finished at: Thu Jan 01 11:18:01 CET 2015
+	[INFO] Final Memory: 186M/247M
+	[INFO] ------------------------------------------------------------------------
+	E:\a01_java\shops\broadleaf\Broadleaf-3.06-3\Broadleaf-3.06-GA-SRC-1>
+	
+	
+	

@@ -1,0 +1,910 @@
+
+
+/********************************************************************************/
+/*																				*/
+/*							MAIN												*/
+/*																				*/
+/********************************************************************************/
+	--------------------------------------
+	libs/KNS/KNSBusiness/KNSKrmsData/KNSKD_TimeSeriesServices.cpp
+	KNSKD_TimeSeriesServices::getRateCurve
+		(callbacks jms )
+		
+		--------------------------------------
+		
+		->	KNDC_RateDB_TimeSeriesImpl::getRateCurve		
+		
+				--------------------------------------
+				libs/KNETCallbacks/KNETDataRateDBCallbacks/KNDC_RateDB_RateCurve.cpp						
+				-> KNDC_RateCurve::getRateCurve
+
+
+
+/********************************************************************************/
+/*																				*/
+/*							DETAILS 0											*/
+/*																				*/
+/********************************************************************************/
+
+
+
+get rate curve
+
+
+
+	-------------------------------------------------------------------------------
+	libs/KNS/KNSBusiness/KNSKrmsData/KNSKD_TimeSeriesServices.cpp
+	KNSKD_TimeSeriesServices
+	
+	-------------------------------------------------------------------------------
+	
+	
+	
+			-----------------------------------------------------------------------	
+			delegate_getRateCurve
+			
+			static void delegate_getRateCurve(KNEL_InMessage const& msg, KGLRV_RequestHandle * handle, KNEL_MessageDesc const* mDesc)
+			{
+				KNSKD_TimeSeriesServices::instance()->getRateCurve(msg, handle, mDesc);
+			}
+			
+			-----------------------------------------------------------------------
+						
+			void
+			KNSKD_TimeSeriesServices::getRateCurve(KNEL_InMessage const& msg, KGLRV_RequestHandle * handle, KNEL_MessageDesc const* mDesc)
+			{
+			
+				KNDC_RateDB_TimeSeriesImpl ts;
+				ts.getRateCurve(seal, timeSeriesId, rateTypeId,  riskFactorId, riskFactorId2, from, to, fixedData, doSpread, isInterpolated, handle, binding);
+			}
+			
+
+
+			
+	-------------------------------------------------------------------------------
+	
+	libs/KNETCallbacks/KNETDataRateDBCallbacks/KNDC_RateDB_TimeSeriesImpl.cpp	
+	KNDC_RateDB_TimeSeriesImpl
+	
+	
+	-------------------------------------------------------------------------------
+	
+	
+		---------------------------------------------------------------------------
+		void
+		KNDC_RateDB_TimeSeriesImpl::getRateCurve(KGLB_Opaque const & seal,
+												 KGLB_Id const * pTimeSeriesId,
+												 KGLB_Id const & rateTypeId,
+												 KGLB_Id const & riskFactorId,
+												 KGLB_Id const * pRiskFactorId2,
+												 KGLB_Date const * from,
+												 KGLB_Date const * to,
+												 KGL_FixedCurveData const * fixedData,
+												 bool * doSpread,
+												 bool * isInterpolated,
+												 KGL_RequestHandle * handle,
+												 KGL_TimeSeriesServicesBinding * binding)
+		{
+			KNDC_RateCurve *pRateCurve;
+			pRateCurve->getRateCurve
+			
+			binding->getRateCurveResponse(ratesSet, handle);
+			pRateCurve->freePoints(dataSet);
+		}
+
+
+
+
+
+	-------------------------------------------------------------------------------	
+	
+	libs/KNETCallbacks/KNETDataRateDBCallbacks/KNDC_RateDB_RateCurve.cpp	
+	KNDC_RateCurve
+	
+	-------------------------------------------------------------------------------
+	
+			-----------------------------------------------------------------------
+			vector<KGL_RateCurve *> &
+			KNDC_RateCurve::getRateCurve(const KGLB_Date * from,
+										 const KGLB_Date * to,
+										 vector<KGL_RateCurve *> &dataSet,
+										 bool * doSpread,
+										 bool * isInterpolated)
+			{
+				vector<KGL_RateCurve *> dataSet2;
+				std_list<KGLB_Date> dateList;
+				std_list<KGL_Tenor> expiryList;
+				std_list<KGL_Tenor> maturityList;
+				int i;
+			
+				//  Extract Dates List
+				string						sTableRate	= getTableRate();
+				string						sTablePoint	= getTablePoint();
+				KGLB_Date					FromDate, ToDate;
+				KGLDB_DBConnectionUser *	RateDBCon 	= KNSC_DBConnection::instance().getRateDbConnection();
+				KNDC_AsOfDateTools			RF1Dates(*RateDBCon, timeSeriesId_, riskFactorId_);
+			
+				if (from != NULL)
+					FromDate = *from;
+				if (to != NULL)
+					ToDate = *to;
+			
+				dateList.clear();
+				RF1Dates.runAsOfDate(sTableRate, FromDate, ToDate);
+				const set<KGLB_Date> & DatesList1	= RF1Dates.getAsOfDate();
+				set<KGLB_Date>::const_iterator	itDate1;
+				for (itDate1 = DatesList1.begin(); itDate1 != DatesList1.end(); ++itDate1)
+					dateList.push_front(*itDate1);
+			
+				if(riskFactorId2IsNULL_ == false)
+				{
+					KNDC_AsOfDateTools	RF2Dates(*RateDBCon, timeSeriesId_, riskFactorId2_);
+			
+					RF2Dates.runAsOfDate(sTableRate, FromDate, ToDate);
+					const set<KGLB_Date> & DatesList2	= RF2Dates.getAsOfDate();
+					set<KGLB_Date>::const_iterator	itDate2;
+					for (itDate2 = DatesList2.begin(); itDate2 != DatesList2.end(); ++itDate2)
+						dateList.push_front(*itDate2);
+				}
+			
+				// Sort Dates
+				dateList.sort();
+				dateList.unique(KNDC_RateDB_TimeSeriesImpl::isDate1EqualDate2);
+			
+				//  Extract Tenors
+				expiryList.clear();
+				maturityList.clear();
+				if (isInterpolated != NULL && *isInterpolated == true)
+				{
+					KGLB_Id	*pRiskFactorId2 = NULL;
+			
+					if (riskFactorId2IsNULL_ == false)
+						pRiskFactorId2	=  &riskFactorId2_;
+			
+					bool	bUseFixedData = (pFixedData_ != NULL && pFixedData_->isTenorIdNULL() == false);
+					if  (sTableRate == string("YieldCurve")         ||
+			             sTableRate == string("DefaultProbaCurve")  )
+						getMaturityListFromRiskFactor12(riskFactorId_, pRiskFactorId2, maturityList, bUseFixedData);
+					else
+						getTenorListFromRiskFactor12(riskFactorId_, pRiskFactorId2, expiryList, bUseFixedData);
+				}
+				else
+				{
+					//  Extract Tenor List of RiskFactor1
+					KGLB_Date					FromDate, ToDate;
+					KGLDB_DBConnectionUser *	RateDBCon 	= KNSC_DBConnection::instance().getRateDbConnection();
+			
+					if (from != NULL)
+						FromDate = *from;
+					if (to != NULL)
+						ToDate = *to;
+			
+					KNDC_TenorTools		TenorFetcher(*RateDBCon, timeSeriesId_, riskFactorId_);
+					TenorFetcher.runTenorCurve(sTableRate, sTablePoint, FromDate, ToDate);
+			
+					set<KGL_SortTenor>::const_iterator	itTenor;
+					const set<KGL_SortTenor> & tenorList1	= TenorFetcher.getExpiryTenor();
+					const set<KGL_SortTenor> & tenorList2	= TenorFetcher.getMaturityTenor();
+					if (pFixedData_ != NULL && pFixedData_->isTenorIdNULL() == false)
+					{
+						for (itTenor = tenorList1.begin(); itTenor != tenorList1.end(); ++itTenor)
+							if (!itTenor->isIdNULL()  && itTenor->getId() == pFixedData_->getTenorId())
+								expiryList.push_front(*itTenor);
+			
+						for (itTenor = tenorList2.begin(); itTenor != tenorList2.end(); ++itTenor)
+							if (itTenor->getId() == pFixedData_->getTenorId())
+								maturityList.push_front(*itTenor);
+					}
+					else
+					{
+						for (itTenor = tenorList1.begin(); itTenor != tenorList1.end(); ++itTenor)
+							expiryList.push_front(*itTenor);
+			
+						for (itTenor = tenorList2.begin(); itTenor != tenorList2.end(); ++itTenor)
+							maturityList.push_front(*itTenor);
+					}
+			
+					//  Extract Tenor List of RiskFactor2
+					if(riskFactorId2IsNULL_ == false)
+					{
+						KNDC_TenorTools		TenorFetcher2(*RateDBCon, timeSeriesId_, riskFactorId2_);
+						TenorFetcher2.runTenorCurve(sTableRate, sTablePoint, FromDate, ToDate);
+			
+						const set<KGL_SortTenor> & tenorList3	= TenorFetcher2.getExpiryTenor();
+						const set<KGL_SortTenor> & tenorList4	= TenorFetcher2.getMaturityTenor();
+						if (pFixedData_ != NULL)
+						{
+							for (itTenor = tenorList3.begin(); itTenor != tenorList3.end(); ++itTenor)
+								if (itTenor->getId() == pFixedData_->getTenorId())
+									expiryList.push_front(*itTenor);
+			
+							for (itTenor = tenorList4.begin(); itTenor != tenorList4.end(); ++itTenor)
+								if (itTenor->getId() == pFixedData_->getTenorId())
+									maturityList.push_front(*itTenor);
+						}
+						else
+						{
+							for (itTenor = tenorList3.begin(); itTenor != tenorList3.end(); ++itTenor)
+								expiryList.push_front(*itTenor);
+			
+							for (itTenor = tenorList4.begin(); itTenor != tenorList4.end(); ++itTenor)
+								maturityList.push_front(*itTenor);
+						}
+					}
+				}
+			
+				if (maturityList.size() == 0 && expiryList.size() == 0)
+					throw KNDB_Error("This RiskFactor is empty or its definition is not correct.", EM_DATA_NOT_FOUND);
+			
+				maturityList.unique(KNDC_RateDB_TimeSeriesImpl::isTenor1EqualTenor2);
+				expiryList.unique(KNDC_RateDB_TimeSeriesImpl::isTenor1EqualTenor2);
+			
+				// Get RateCurve
+				if (riskFactorId2IsNULL_)
+				{
+			        // Risk Factor 2 is null => fetch only one curve
+					getRateCurve(riskFactorId_, from, to, dataSet, dateList, maturityList, expiryList, isInterpolated);
+					if (dataSet.size() == 0)
+						throw KNDB_Error("This RiskFactor is empty or its definition is not correct.", EM_DATA_NOT_FOUND);
+			
+					return dataSet;
+				}
+			
+				TRACE_LOG<<"Risk Factor 1 = "<<riskFactorId_.toStringId().c_str()<<endl;
+				TRACE_LOG<<"Risk Factor 2 = "<<riskFactorId2_.toStringId().c_str()<<endl;
+			
+				getRateCurve(riskFactorId_, from, to, dataSet, dateList, maturityList, expiryList, isInterpolated);
+				getRateCurve(riskFactorId2_, from, to, dataSet2, dateList, maturityList, expiryList, isInterpolated);
+			
+				if (dataSet.size() == 0)
+					throw KNDB_Error("Risk Factor 1 : This RiskFactor is empty or its definition is not correct.", EM_DATA_NOT_FOUND);
+				if (dataSet2.size() == 0)
+					throw KNDB_Error("Risk Factor 2 : This RiskFactor is empty or its definition is not correct.", EM_DATA_NOT_FOUND);
+			
+				// Infos
+				#if DEBUG
+				std_list<KGLB_Date>::iterator itr;
+				TRACE_LOG<<"List of spread date:"<<endl;
+				for(itr = dateList.begin(); itr != dateList.end(); ++itr){
+			
+					TRACE_LOG<<"- "<<itr->toString().c_str()<<endl;
+				}
+				TRACE_LOG<<"List of spread date: END"<<endl;
+			
+				std_list<KGL_Tenor>::iterator itr2;
+				TRACE_LOG<<"List of Expiry:"<<endl;
+				for(itr2 = expiryList.begin(); itr2 != expiryList.end(); ++itr2){
+			
+					KGL_Identity id = KNDC_RateDB_TimeSeriesImpl::getTenor2Identity(*itr2);
+					TRACE_LOG<<"- "<<id.getShortName().getValue().c_str()<<endl;
+				}
+				TRACE_LOG<<"List of Expiry: END"<<endl;
+			
+				TRACE_LOG<<"List of Maturity:"<<endl;
+				for(itr2 = maturityList.begin(); itr2 != maturityList.end(); ++itr2){
+			
+					KGL_Identity id = KNDC_RateDB_TimeSeriesImpl::getTenor2Identity(*itr2);
+					TRACE_LOG<<"- "<<id.getShortName().getValue().c_str()<<endl;
+				}
+				TRACE_LOG<<"List of Maturity: END"<<endl;
+				#endif
+			
+				// Compute Spread
+				if (doSpread != NULL && *doSpread == true)
+				{
+					int nSize = dateList.size();
+					for(i = 0; i < nSize; ++i)
+						computeSpread(*dataSet[i], *dataSet2[i]);
+				}
+			
+				return dataSet;
+			}
+	
+	
+			void KNDC_RateCube::getMaturityListFromRiskFactor12(const KGLB_Id & riskFactorId,
+																   const KGLB_Id * pRiskFactorId2,
+																   std_list<KGL_Tenor> & dataList,
+																   bool bUseFixedData)
+			{
+				getMaturityListFromRiskFactor(riskFactorId, dataList, bUseFixedData);
+				if (pRiskFactorId2 != NULL)
+					getMaturityListFromRiskFactor(*pRiskFactorId2, dataList, bUseFixedData);
+			}
+	
+			-----------------------------------------------------------------------
+			
+			vector<KGL_RateCurve *> &
+			KNDC_Rates_YieldCurve::getRateCurve(KGLB_Id riskFactorId,
+												const KGLB_Date * from,
+												const KGLB_Date * to,
+												vector<KGL_RateCurve *> &dataSet,
+												std_list<KGLB_Date> dateList,
+												std_list<KGL_Tenor> & maturityList,
+												std_list<KGL_Tenor> & expiryList,
+												bool * isInterpolated)
+			{
+			
+				const char *pFunc = "KNDC_Rates_YieldCurve::getRateCurve";
+				bool bisInterpolated = false;
+			
+				if (isInterpolated != NULL)
+					bisInterpolated = *isInterpolated;
+			
+				if (bisInterpolated)
+				{
+					// Get the Tenor list from the riskFactorDefinition
+					std::set<KGL_SortTenor> setSortTenors;
+			
+					std_list<KGL_Tenor>::iterator	it;
+					for (it = maturityList.begin(); it != maturityList.end(); ++it)
+						setSortTenors.insert(*static_cast<KGL_SortTenor *>(&(*it)));
+			
+					KGLB_Id  taskId;
+					KRMSM_CurveTSMap tsMap;
+					KRMSC_YieldCurveTSFetcher fetcher(NULL);
+					KNC_Date MinDate, MaxDate;
+			
+					if (from)
+					{
+						KNC_Date tmpMinDate(from->day_, from->month_, from->year_, 0, 0, 0);
+						MinDate = tmpMinDate;
+					}
+					if (to)
+					{
+						KNC_Date tmpMaxDate(to->day_, to->month_, to->year_, 0, 0, 0);
+						MaxDate = tmpMaxDate;
+					}
+			
+					// Retrieve Data from Database
+					if (!fetcher.exec(tsMap, timeSeriesId_, riskFactorId, MinDate, MaxDate, 1))
+					{
+						TRACE_LOG << pFunc << " : Error while fetching time series : " << endl;
+						return dataSet;
+					}
+			
+					// Gapfill some missing Dates
+					std_list<KGLB_Date>::iterator 		itDateList;
+					KRMSM_CurveTSMap::iterator 			itFind, itPrev;
+					KRMSM_CurveTSMap::iterator 			itBegin	= tsMap.begin();
+					KRMSM_CurveTSMap::reverse_iterator 	itEnd	= tsMap.rbegin();
+					for (itDateList = dateList.begin(); itDateList != dateList.end(); ++itDateList)
+					{
+						KNC_Date	DateIndex((*itDateList).day_, (*itDateList).month_, (*itDateList).year_, 0, 0, 0);
+						itFind	= tsMap.find(DateIndex);
+						if (itFind == tsMap.end())
+						{
+							if (itBegin != tsMap.end() && DateIndex < itBegin->first)
+								copyTenors(tsMap, DateIndex, itBegin->second);
+							else if (itEnd != tsMap.rend() && DateIndex > itEnd->first)
+								copyTenors(tsMap, DateIndex, itEnd->second);
+							else if (itPrev != tsMap.end())
+								copyTenors(tsMap, DateIndex, itPrev->second);
+						}
+						else
+							itPrev = itFind;
+					}
+			
+					// Interpolate Data and remove Tenor which are not into the Tenor list of the riskfactordefinition
+					tsMap.interpolateDayByDay(setSortTenors, 1, true);
+			
+					// Copy the Date into dataSet
+					KGL_Tenor tenor;
+					KGL_RateCurve::KGL_RatePoint_VectorOfPointers points;
+					KRMSM_CurveTSMap::iterator itTSMap;
+					KRMSM_CurveMap::iterator itMap;
+					KGL_RateCurve *pCurve;
+					KGL_RateCurvePoint *pData;
+					const KGL_TSValue *pValue;
+					double rRate;
+					string sComment;
+			
+					for (itTSMap = tsMap.begin(); itTSMap != tsMap.end(); ++itTSMap)
+					{
+						KGLB_Date AsOfDateB(itTSMap->first.getYear(), itTSMap->first.getMonth(),itTSMap->first.getDay());
+						KNC_Date AsOfDate(itTSMap->first);
+			
+						pCurve = new KGL_RateCurve();
+						pCurve->setRateTypeId(rateTypeId_);
+						pCurve->setRiskFactorId(riskFactorId_);
+			
+						pCurve->setAsOfDate(AsOfDateB);
+			
+						points.resize(0);
+						for (itMap = itTSMap->second.begin(); itMap != itTSMap->second.end(); itMap++)
+						{
+							KNC_Date ExpiryDate = itMap->first.getCalendarDays() + AsOfDate;
+							KGLB_Date ExpiryDateB(ExpiryDate.getYear(), ExpiryDate.getMonth(), ExpiryDate.getDay());
+			
+							pData = new KGL_RateCurvePoint();
+			
+							if (itMap->second->isIdNULL() == false)
+								pData->setId(itMap->second->getId());
+			
+							pData->setDate(ExpiryDateB);
+			
+							pValue = itMap->second->getTSValue();
+							if (pValue != NULL)
+								if (pValue->isValueNULL() == false)
+								{
+									rRate = pValue->getValue();
+									pData->setRate(rRate);
+								}
+			
+							if (itMap->second->isCommentNULL() == false)
+							{
+								sComment = itMap->second->getComment();
+								pData->setComment(sComment);
+							}
+			
+							std::set<KGL_SortTenor>::iterator itMaturityTenor = setSortTenors.find(itMap->first);
+			
+							if (itMaturityTenor != setSortTenors.end())
+								pData->setTenor(*itMaturityTenor);
+			
+							points.push_back(pData);
+						}
+			
+						pCurve->setPoints(points);
+						dataSet.push_back(pCurve);
+					}
+			
+				#if DEBUG
+					TRACE_LOG << pFunc << " : nb of Rate Point: "<< dataSet.size() << endl;
+				#endif
+			
+					return dataSet;
+				}
+				else
+				{
+					YieldPoint_Factory_var pFactory = YieldPoint_Factory::instance();
+					YieldCurve_Factory_var pCUFactory = YieldCurve_Factory::instance();
+					TimeSeriesData_Factory_var pTSFactory = TimeSeriesData_Factory::instance();
+					MarketData_Factory_var pMDFactory = MarketData_Factory::instance();
+					Tenor_Factory_var pTEFactory = Tenor_Factory::instance();
+			
+					PS_ClassId_Cltn joinTableLst;
+			
+					joinTableLst += pFactory->makeClassId((const char *)"master");
+					joinTableLst += pCUFactory->makeClassId((const char *)"cu");
+					joinTableLst += pTSFactory->makeClassId((const char *)"ts");
+					joinTableLst += pMDFactory->makeClassId((const char*) "md");
+					joinTableLst += pTEFactory->makeClassId((const char*) "te");
+			
+				#if 0
+					PS_ArcId_Cltn arcLst;
+					arcLst +=  (pFactory->makeArcId((const char *)"arcYieldPointToYieldCurve"));
+					arcLst +=  (pFactory->makeArcId((const char *)"arcTenor"));
+					arcLst +=  (pCUFactory->makeArcId((const char *)"arcYieldCurveToMarketData"));
+				#endif
+			
+					std::string fromClause;
+					fromClause = " \n\t MarketData md ";
+					fromClause += "\n\t INNER JOIN TimeSeriesData ts on md.TimeSeriesDataId = ts.Id ";
+					fromClause += "\n\t AND  ts.Id = ";
+					fromClause += timeSeriesId_.toStringId();
+					fromClause += "\n\t INNER JOIN YieldCurve cu on cu.MarketDataId = md.Id ";
+					fromClause += "\n\t INNER JOIN YieldPoint master on master.YieldCurveId = cu.Id ";
+					fromClause += "\n\t and cu.DefinitionId = ";
+					fromClause += riskFactorId.toStringId();
+					
+					fromClause += "\n\t LEFT OUTER JOIN Tenor te on te.Id = master.MaturityTenorId";
+			
+					string whereClause;
+			
+					
+					if(from || to){
+						whereClause = "\n\t ";
+						whereClause += KNDC_RatePoint::getSQLDateCondition("md", from, to);
+					}
+			
+				
+			
+			
+					if(pFixedData_){
+						if(!pFixedData_->isTenorIdNULL()){
+							whereClause += "\n\t and master.MaturityTenorId = ";
+							whereClause += pFixedData_->getTenorId().toStringId();
+						}
+			
+						if(!pFixedData_->isDateNULL()){
+							whereClause += "\n\t and datediff(dd, master.MaturityDate, '";
+							whereClause += pFixedData_->getDate().toString();
+							whereClause += "') = 0";
+						}
+					}
+			
+					whereClause += "\n\t  order by md.AsOfDate, te.CalendarDays asc";
+			
+					YieldPoint_Iter_var pRatePointSet = pFactory->query(joinTableLst, fromClause.c_str(), whereClause.c_str(), NULL);
+					pRatePointSet->prefetchResults();
+			
+					if(!PS_is_nil(pRatePointSet) ){
+						YieldPoint_Cltn_var pRatePointCltn =  pRatePointSet;
+						int size = pRatePointCltn->length();
+				#if DEBUG
+						TRACE_LOG<<pFunc<<": nb of Rate Point: "<<size<<endl;
+				#endif
+						if(size) PSToKNETData(pRatePointCltn, dataSet, size);
+					}
+			
+					return dataSet;
+				}
+			}
+			
+			-----------------------------------------------------------------------			
+														
+			void KNDC_RateCube::getMaturityListFromRiskFactor12(const KGLB_Id & riskFactorId,
+																   const KGLB_Id * pRiskFactorId2,
+																   std_list<KGL_Tenor> & dataList,
+																   bool bUseFixedData)
+			{
+				getMaturityListFromRiskFactor(riskFactorId, dataList, bUseFixedData);
+				if (pRiskFactorId2 != NULL)
+					getMaturityListFromRiskFactor(*pRiskFactorId2, dataList, bUseFixedData);
+			}
+		
+			-----------------------------------------------------------------------			
+			void KNDC_Rates_YieldCurve::getMaturityListFromRiskFactor(const KGLB_Id & riskFactorId, std_list<KGL_Tenor> & dataList, bool bUseFixedData)
+			{
+				const char *pFunc = "KNDC_Rates_YieldCurve::getMaturityListFromRiskFactor";
+			    dataList.clear();
+			
+				string query = "Id = ";
+				query += riskFactorId.toStringId();
+			
+				YieldCurveDefinition_Iter_var definitionIter_var = YieldCurveDefinition_Factory::instance()->querySQLWhere(query.c_str());
+				definitionIter_var->prefetchResults();
+				if ( definitionIter_var->hasNext() )
+				{
+			        YieldCurveDefinition_var  currentDefinition = definitionIter_var->next();
+			        KGLE_Yesno useRateTypeDefault(currentDefinition->UseRateTypeDefaultValues()[0]);
+			        
+			        KGLB_Id tempId;
+			        KGLW_Convert::PS_Oid2KGLB_Id( *(currentDefinition->RateTypeId()), tempId); 
+			
+			        if (useRateTypeDefault == KGLE_Yesno::YES)
+			        {
+			            getMaturityListFromRateType(tempId,dataList, bUseFixedData);
+			        }
+			        else
+			        {
+			          	KGL_SortTenor maturityTenor;
+			
+			            query = "DefinitionId = ";
+					    query += riskFactorId.toStringId();
+			
+					    YieldCurveScenarioMaturity_Iter_var  tenorIter = YieldCurveScenarioMaturity_Factory::instance()->querySQLWhere(query.c_str());
+					    tenorIter->prefetchResults();
+					    if (!PS_is_nil(tenorIter))
+					    {
+			    			
+						    while(tenorIter->hasNext())
+						    {
+							    KGLB_Id tenorId;
+							    KGLW_Convert::PS_Oid2KGLB_Id(*(tenorIter->next()->arcTenor()->Id()),tenorId);
+			
+							    if(bUseFixedData && pFixedData_)
+								    if(pFixedData_->isTenorIdNULL() == false)
+									    if (pFixedData_->getTenorId() != tenorId)
+										    continue;
+			
+							    if (KGLRC_Tenor::instance()->GetTenorById(tenorId, maturityTenor))
+							    {
+								    maturityTenor.setId(tenorId);
+								    dataList.push_back(maturityTenor);
+							    }
+						    }
+					    }
+			        }	
+				}
+				else
+				{
+					TRACE_LOG << pFunc << " : Can't retrieve Maturity list of the riskFactoDefinition from database" << endl;
+				}
+			}
+			
+	
+			-----------------------------------------------------------------------			
+			void KNDC_RateCurve::getMaturityListFromRateType(const KGLB_Id & rateTypeId, std::list<KGL_Tenor> & dataList, bool bUseFixedData)
+			{
+			    string queryMaturityDefRate("RateTypeId = ");
+			    queryMaturityDefRate += rateTypeId.toStringId();
+			   	KGL_SortTenor maturityTenor;
+			
+			    RateTypeDefaultMaturity_Iter_var tenorIter = RateTypeDefaultMaturity_Factory::instance()->querySQLWhere(queryMaturityDefRate.c_str());
+			    tenorIter->prefetchResults();
+			
+			    if (!PS_is_nil(tenorIter))
+			    {
+			        while(tenorIter->hasNext())
+				    {
+			            KGLB_Id tenorId;
+					    KGLW_Convert::PS_Oid2KGLB_Id(*(tenorIter->next()->TenorId() ),tenorId);
+			            if(bUseFixedData && pFixedData_)
+						        if(pFixedData_->isTenorIdNULL() == false)
+							        if (pFixedData_->getTenorId() != tenorId)
+								        continue;
+			
+				        if (KGLRC_Tenor::instance()->GetTenorById(tenorId, maturityTenor))
+				        {
+					        maturityTenor.setId(tenorId);
+					        dataList.push_back(maturityTenor);
+				        }
+			        }
+			    }
+			}
+			
+
+
+
+		  ------------------------------------------------------------------------
+		  
+		  libs/KRMS/KRMSCurve/KRMSC_YieldCurveTSFetcher.cpp
+		  KRMSC_YieldCurveTSFetcher
+		  
+		  ------------------------------------------------------------------------
+		  wlasnie 
+		  
+		  
+		  		------------------------------------------------------------------
+				KNC_Result
+				KRMSC_YieldCurveTSFetcher::exec(KRMSM_CurveTSMap & tsMap, const KGLB_Id & timeSeriesDataId, const KGLB_Id & definitionId,
+						const KNC_Date & beginDate, const KNC_Date & endDate, int flag, const bool bAcceptSizeOfZero, string riskFactorName)
+				{
+					KNC_Result res;
+					string trace;
+				
+					TRACE_LOG << "Entering KRMSC_YieldCurveTSFetcher::exec" << endl;
+					if( !(res = initCallableStmt(timeSeriesDataId, definitionId, beginDate, endDate, flag)))
+					{
+						trace = "KRMSC_YieldCurveTSFetcher::exec : couldn't call getYieldCurveTimeSerie stored procedure : ";
+						trace += res.text();
+						ERROR_LOG << trace << endl;
+						stmt_->Cancel(1);
+						return res;
+					}
+				
+					// try making stmt_ parameter pointing to the next "ROW" result set
+					if( !(res = gotoNextRowResultSet()) )
+					{
+						trace = "KRMSC_YieldCurveTSFetcher::exec : something went wrong during stored procedure call : ";
+						trace += res.text();
+						ERROR_LOG << trace << endl;
+						stmt_->Cancel(1);
+						return res;
+					}
+				
+					KRMSC_YieldCurveTSBuilder builder(*stmt_.get(), tsMap, bWantNULLValue_);
+					builder.SetFlag(flag);
+					returnIfError(builder.run(), "KRMSC_YieldCurveTSFetcher::run : error while fetching the results of the stored procedure");
+				
+					stmt_->Cancel(1);
+				
+					if (bAcceptSizeOfZero == false)
+						if (tsMap.size() == 0)
+						{
+							string err = string("No rates could be found between ")+Str(beginDate)+string(" and ")+Str(endDate)+string(" for ") + riskFactorName;
+							ERROR_LOG << err << endl;
+							return KNC_Result(err.c_str());
+						}
+					
+					TRACE_LOG << "Leaving KRMSC_YieldCurveTSFetcher::exec" << endl;
+					return res;
+				}
+				
+				
+				
+				------------------------------------------------------------------
+							
+				KNC_Result
+				KRMSC_YieldCurveTSFetcher::initCallableStmt(const KGLB_Id & timeSeriesDataId, const KGLB_Id & definitionId,
+						const KNC_Date & beginDate, const KNC_Date & endDate, int flag)
+				{
+					int pos = 0;
+					date_t dateNull;
+					date_t mdBegin;
+					date_t mdEnd;
+					dateNull.dtdays = 0; dateNull.dttime = 0 ;
+				
+					if( stmt_.get() == NULL )
+					{
+						// create a callable statement & clear it ... just in case
+						stmt_.reset( dbConn_->getClbStmt() );
+						stmt_->freeStmt();
+					}
+				
+					// init stored proc name and parameters
+					stmt_->Prepare( "getYieldCurveTimeSerie" );
+				
+					stmt_->BindParam_binary(  ++pos, (char *)(timeSeriesDataId.getValue()), 12 );
+					stmt_->BindParam_binary(  ++pos, (char *)(definitionId.getValue()), 12 );
+				
+					if(!beginDate.isNULL())
+					{
+						mdBegin = beginDate.getDate();
+						stmt_->BindParam_date(  ++pos, &mdBegin );
+					}
+					
+					else
+						stmt_->BindParam_date(  ++pos, &dateNull );
+				
+					if(!endDate.isNULL())
+					{
+						mdEnd = endDate.getDate();
+						stmt_->BindParam_date(  ++pos, &mdEnd );
+					}
+					else
+						stmt_->BindParam_date(  ++pos, &dateNull );
+				
+					stmt_->BindParam_int(  ++pos, &flag );
+				
+				#ifdef DEBUG
+				
+					TRACE_LOG<< "Calling getYieldCurveTimeSerie "
+						<< " 0x"<<timeSeriesDataId.toString()
+						<< ", 0x"<<definitionId.toString();
+				
+					if(!beginDate.isNULL())
+						TRACE_LOG << " , " << beginDate.getDateTimeStrFmt();
+					else
+						TRACE_LOG << " , " << " NULL ";
+				
+					if(!endDate.isNULL())
+						TRACE_LOG << " , " << endDate.getDateTimeStrFmt();
+					else
+						TRACE_LOG << " , " << " NULL ";
+				
+					TRACE_LOG << " , " << flag << endl;
+				#endif
+					// then, try to exec this stored proc
+					int res = 0;
+				
+					// handle result
+				    res = stmt_->Exec();
+				    KNC_Result KNC_res = KDBT_ResultSetFetcher::IdaToKNCResult( res );
+				
+					return KNC_res;
+				}
+				
+		  
+/********************************************************************************/
+/*																				*/
+/*							DETAILS 1											*/
+/*																				*/
+/********************************************************************************/
+
+
+
+	-------------------------------------------------------------------------------
+	libs/KGL/KGLApiServices/KGLRvService/KGL_TimeSeriesServicesBinding.cpp
+
+			KGL_TimeSeriesServicesBinding.cpp
+			
+		void
+		KGL_TimeSeriesServicesBinding::getRateCurveResponse(vector<KGL_Rates *> & rateCurve,
+						KGL_RequestHandle * handle)
+		{
+			// get the message description :
+			KNEL_MessageDesc const* mDesc = 
+				KNEL_MessageDescContainer::getInstance().getMessageDesc(KNEL_TIMESERIESSERVICES_GET_RATE_CURVE_ACK,
+								"2.6");
+			KNC_Result res;
+			KNEL_OutMessage outMsg(*mDesc);
+			KKRB_VectorOfPointers<KKR_Rates,KGL_Rates>::instance().kgl2rv(rateCurve,"rateCurve",outMsg);
+			getSender()->sendResponse(outMsg, handle);
+		}	
+
+	-------------------------------------------------------------------------------
+
+	libs/KNS/KNSBusiness/KNSKrmsData/KNSKD_TimeSeriesServices.cpp
+	
+		void
+		KNSKD_TimeSeriesServices::getRateCurve(KNEL_InMessage const& msg, KGLRV_RequestHandle * handle, KNEL_MessageDesc const* mDesc)
+		{
+			KGL_TimeSeriesServicesBinding * binding = KGL_TimeSeriesServicesBinding::instance();
+			KGLB_Opaque seal;
+			KRKB_Opaque::instance().rv2kgl(msg, *mDesc->getFieldDesc("seal"),seal);
+			KGLB_Id * timeSeriesId = NULL;
+			KRKB_Id::instance().rv2kgl(msg, *mDesc->getFieldDesc("timeSeriesId"),timeSeriesId);
+			KGLB_Id rateTypeId;
+			KRKB_Id::instance().rv2kgl(msg, *mDesc->getFieldDesc("rateTypeId"),rateTypeId);
+			KGLB_Id riskFactorId;
+			KRKB_Id::instance().rv2kgl(msg, *mDesc->getFieldDesc("riskFactorId"),riskFactorId);
+			KGLB_Id * riskFactorId2 = NULL;
+			KRKB_Id::instance().rv2kgl(msg, *mDesc->getFieldDesc("riskFactorId2"),riskFactorId2);
+			KGLB_Date * from = NULL;
+			KRKB_Date::instance().rv2kgl(msg, *mDesc->getFieldDesc("from"),from);
+			KGLB_Date * to = NULL;
+			KRKB_Date::instance().rv2kgl(msg, *mDesc->getFieldDesc("to"),to);
+			KGL_FixedCurveData * fixedData = NULL;
+			KRK_FixedCurveData::instance().rv2kgl(msg, *mDesc->getFieldDesc("fixedData"),fixedData);
+			bool * doSpread = NULL;
+			KRKB_Bool::instance().rv2kgl(msg, *mDesc->getFieldDesc("doSpread"),doSpread);
+			bool * isInterpolated = NULL;
+			KRKB_Bool::instance().rv2kgl(msg, *mDesc->getFieldDesc("isInterpolated"),isInterpolated);
+			// check the seal :
+			{
+				KGLB_Id userId, sourceId;
+				KNC_Result res = 
+					KNSC_SealManager::getInstance().checkSeal(seal,userId,sourceId);
+				handle->setUser(userId);
+				handle->setSource(sourceId);
+				KNSC_SealManager::getInstance().handleCheckSealResult(handle, res);
+				if(!res) return;
+			}
+		//args available: getRateCurve(seal,timeSeriesId,rateTypeId,riskFactorId,riskFactorId2,from,to,fixedData,doSpread,isInterpolated, handle, binding);
+		// EDITED getRateCurve BEGIN
+			KNDC_RateDB_TimeSeriesImpl ts;
+			ts.getRateCurve(seal, timeSeriesId, rateTypeId,  riskFactorId, riskFactorId2, from, to, fixedData, doSpread, isInterpolated, handle, binding);
+		// EDITED getRateCurve END
+			delete doSpread;
+			delete fixedData;
+			delete from;
+			delete isInterpolated;
+			delete riskFactorId2;
+			delete timeSeriesId;
+			delete to;
+		}
+
+
+		KNC_Result 
+		KNSKD_TimeSeriesServices::init()
+		{
+		// EDITED init BEGIN
+		// EDITED init END
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_INSERT, (KGLRV_Mapper::OperationMethod) delegate_insert);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_UPDATE, (KGLRV_Mapper::OperationMethod) delegate_update);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_REMOVE, (KGLRV_Mapper::OperationMethod) delegate_remove);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_BY_IDENTIFIER, (KGLRV_Mapper::OperationMethod) delegate_getByIdentifier);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_IDENTITY_BY_IDENTIFIER, (KGLRV_Mapper::OperationMethod) delegate_getIdentityByIdentifier);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_BY_NAME, (KGLRV_Mapper::OperationMethod) delegate_getByName);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_BY_SHORT_NAME, (KGLRV_Mapper::OperationMethod) delegate_getByShortName);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_IDENTITY_BY_NAME, (KGLRV_Mapper::OperationMethod) delegate_getIdentityByName);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_IDENTITY_BY_SHORT_NAME, (KGLRV_Mapper::OperationMethod) delegate_getIdentityByShortName);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_IDENTITY_BY_NAME, (KGLRV_Mapper::OperationMethod) delegate_queryIdentityByName);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_IDENTITY_BY_SHORT_NAME, (KGLRV_Mapper::OperationMethod) delegate_queryIdentityByShortName);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_INSERT_RATE, (KGLRV_Mapper::OperationMethod) delegate_insertRate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_INSERT_RATE_BY_DATE, (KGLRV_Mapper::OperationMethod) delegate_insertRateByDate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_UPDATE_RATE, (KGLRV_Mapper::OperationMethod) delegate_updateRate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_REMOVE_RATE, (KGLRV_Mapper::OperationMethod) delegate_removeRate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_RATE_PRICE, (KGLRV_Mapper::OperationMethod) delegate_getRatePrice);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_RATE_CURVE, (KGLRV_Mapper::OperationMethod) delegate_getRateCurve);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_RATE_SURFACE, (KGLRV_Mapper::OperationMethod) delegate_getRateSurface);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_RATING_SURFACE, (KGLRV_Mapper::OperationMethod) delegate_getRatingSurface);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_ENTITY_INDEX, (KGLRV_Mapper::OperationMethod) delegate_getEntityIndex);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_AS_OF_DATE, (KGLRV_Mapper::OperationMethod) delegate_queryAsOfDate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_STRIKE, (KGLRV_Mapper::OperationMethod) delegate_queryStrike);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_STRIKE_BY_DATE, (KGLRV_Mapper::OperationMethod) delegate_queryStrikeByDate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_MATURITY_TENOR, (KGLRV_Mapper::OperationMethod) delegate_queryMaturityTenor);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_MATURITY_TENOR_BY_DATE, (KGLRV_Mapper::OperationMethod) delegate_queryMaturityTenorByDate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_EXPIRY_TENOR, (KGLRV_Mapper::OperationMethod) delegate_queryExpiryTenor);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_EXPIRY_TENOR_BY_DATE, (KGLRV_Mapper::OperationMethod) delegate_queryExpiryTenorByDate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_QUERY_RATING_BY_DATE, (KGLRV_Mapper::OperationMethod) delegate_queryRatingByDate);
+			KGLRV_Mapper::addCallback(KNEL_TIMESERIESSERVICES_GET_RATE_CUBE, (KGLRV_Mapper::OperationMethod) delegate_getRateCube);
+			return KNC_Result();
+		}
+
+	-------------------------------------------------------------------------------
+	libs/KNETCallbacks/KNETDataRateDBCallbacks/KNDC_RateDB_RateCurve.cpp
+
+		vector<KGL_RateCurve *> &
+		KNDC_RateCurve::getRateCurve(const KGLB_Date * from,
+									 const KGLB_Date * to,
+									 vector<KGL_RateCurve *> &dataSet,
+									 bool * doSpread,
+									 bool * isInterpolated)
+		{
+			vector<KGL_RateCurve *> dataSet2;
+			std_list<KGLB_Date> dateList;
+			std_list<KGL_Tenor> expiryList;
+			std_list<KGL_Tenor> maturityList;
+			int i;
+		
+			( ... )
+		
+	-------------------------------------------------------------------------------
+	libs/KNETCallbacks/KNETDataRateDBCallbacks/KNDC_RateDB_TimeSeriesImpl.cpp
+		
+		KNDC_RateDB_TimeSeriesImpl
+
+	

@@ -1,0 +1,1 @@
+vi /jenkins/dist/FR/CMR/config/gui.properties

@@ -1,0 +1,1 @@
+"E:\a01_java\netbeans\nb802\NetBeans 8.0.2\bin\netbeans.exe" --userdir E:\a01_java\nb_userdir\8.0.2.2

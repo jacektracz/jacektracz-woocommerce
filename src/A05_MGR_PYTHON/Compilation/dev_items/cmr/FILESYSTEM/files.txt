@@ -1,0 +1,4 @@
+media/1.0/kdeveloper/jt_dev/vc_r_2
+211/shared
+
+/media/cff76e62-1dc8-4f88-8174-14270948d63a/kdeveloper/jt_dev_old/all/A03_MGR_ENVS

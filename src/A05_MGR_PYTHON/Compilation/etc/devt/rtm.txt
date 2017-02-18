@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/stopo/a07_rtm.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cmpj/rtm_all.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cpdev/rtm.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a07_rtm.txt
+
+

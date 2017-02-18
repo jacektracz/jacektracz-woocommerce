@@ -1,0 +1,89 @@
+http://www.shopizer.com/documentation.html#!/
+	
+	cd sm-core
+
+     mvn clean
+
+     mvn generate-sources 
+     
+     //only the first build to generate proxy classes
+
+     mvn install
+
+     cd sm-shop
+
+     mvn clean install
+     
+FIRST_TRYING OLD VERSION:
+
+	cd E:\a01_java\shops\shopizer\shopizer-1.1.5\sm-core     
+	
+	
+NEW_SOURCES:	
+
+	https://github.com/shopizer-ecommerce/shopizer
+	
+SECOND:
+
+	cd E:\a01_java\shops\shopizer\shopizer-v2\shopizer-master\sm-core	
+
+
+		cd sm-core
+
+		mvn clean
+
+		mvn generate-sources 
+	     
+		//only the first build to generate proxy classes
+
+		mvn install
+
+		cd sm-shop
+
+		mvn clean install
+		
+	working 2015-01-03
+	
+	
+	
+http://www.shopizer.com/documentation.html#!/
+
+	Install on tomcat
+	
+	
+	db:
+		a01_shopizer
+		
+Edit sm-shop/src/main/resources/database.properties
+
+     db.jdbcUrl=jdbc:mysql://localhost:3306/SALESMANAGER?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+     db.user=YOUR USERNAME
+     db.password=YOUR PASSWORD
+     db.driverClass=com.mysql.jdbc.Driver
+     hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+     db.preferredTestQuery=SELECT 1
+
+     db.schema=SALESMANAGER
+     hibernate.hbm2ddl.auto=update
+     		
+     		
+db.jdbcUrl=jdbc:mysql://localhost:3306/a01_shopizer?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+db.user=carlito
+db.password=ninetrails
+hibernate.hbm2ddl.auto=update
+db.driverClass=com.mysql.jdbc.Driver
+hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+db.preferredTestQuery=SELECT 1
+db.schema=a01_shopizer
+     		
+
+
+WORKING!!!
+
+	http://localhost:8099/sm-shop/shop
+	
+	
+	admin;password
+	
+	http://localhost:8099/sm-shop/admin/home.html
+	

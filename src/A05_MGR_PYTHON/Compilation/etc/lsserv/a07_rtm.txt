@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+PIDSERV=$(ps -ef | grep 'rtm_ear' | grep -v 'grep'| awk '{print $2}')
+
+if [[ -z "$PIDSERV" ]]; then
+	echo "RTM_PID::NULL"
+else
+	echo "RTM_PID:$PIDSERV"
+fi	
+

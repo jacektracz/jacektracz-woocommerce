@@ -1,0 +1,466 @@
+#Thomson Reuters: [50]rksup36@ptxsksup35 /rksup/config/ForCharles/Python/FUN/SOAP $  python encodePassword.py
+#URL:  http://ptxslvsup04:3540/KGRWebServices/LoginService
+#NS :  LoginService
+
+
+#        Encoding password
+#        ==> Clear PWD   :  charles
+#        ==> Algorithm   :  sha-256
+#*** Outgoing SOAP ******************************************************
+
+
+
+
+http://ptxslvsup04:3540/KGRWebServices/LoginService
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns OAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
+  xmlns OAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+>
+<SOAP-ENV:Body>
+    <ns1:encodePassword xmlns:ns1="LoginService" SOAP-ENC oot="1">
+    <v1 xsi:type="xsd tring">charles</v1>
+    <v2 xsi:type="xsd tring">sha-256</v2>
+    </ns1:encodePassword>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+<soap:Envelope xmlns oap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<soap:Body>
+    <ns1:encodePasswordResponse xmlns:ns1="LoginService">
+    <ns1:encrypted_password>10fe82adb964fa73c3c60be251181c421193f56ae01ba671974d82365a08a410</ns1:encrypted_password>
+    </ns1:encodePasswordResponse>
+</soap:Body>
+</soap:Envelope>
+
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:log="LoginService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <log:login>
+         <log:username>kgr_owner</log:username>
+         <log:encrypted_password>4e1b74fa85f37d8ae2e93a7206af836478c5ad556c4b2c267401176ab0c7c8f5</log:encrypted_password>
+         <log:source>MASTER_KREDITNET</log:source>
+         <log:connectionType>0</log:connectionType>
+      </log:login>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+http://ptxslvsup04:3540/KGRWebServices/LoginService
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:log="LoginService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <log:login>
+         <log:username>kgr35</log:username>
+         <log:encrypted_password>234330834c41105ad5ed794fa036e085b40225c44f9228bb9e2692f427917605</log:encrypted_password>
+         <log:source>MASTER_KREDITNET</log:source>
+         <log:connectionType>0</log:connectionType>
+      </log:login>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+
+
+
+
+
+
+
+: [50]rksup36@ptxsksup35 /rksup/config/ForCharles/Python/FUN/SOAP $  python encodePassword.py
+URL:  http://ptxslvsup04:3540/KGRWebServices/LoginService
+NS :  LoginService
+
+
+        Encoding password
+        ==> Clear PWD   :  charles
+        ==> Algorithm   :  sha-256
+*** Outgoing SOAP ******************************************************
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+  SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns OAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
+  xmlns OAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+>
+<SOAP-ENV:Body>
+<ns1:encodePassword xmlns:ns1="LoginService" SOAP-ENC oot="1">
+<v1 xsi:type="xsd tring">charles</v1>
+<v2 xsi:type="xsd tring">sha-256</v2>
+</ns1:encodePassword>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+************************************************************************
+*** Incoming SOAP ********************
+Charles Best - Thomson Reuters: <soap:Envelope xmlns oap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><ns1:encodePasswordResponse xmlns:ns1="LoginService"><ns1:encrypted_password>10fe82adb964fa73c3c60be251181c421193f56ae01ba671974d82365a08a410</ns1:encrypted_password></ns1:encodePasswordResponse></soap:Body></soap:Envelope>
+************************************************************************
+        <== Encoded PWD :  10fe82adb964fa73c3c60be251181c421193f56ae01ba671974d82365a08a410
+
+
+
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:log="LoginService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <log:login>
+         <log:username>kgr35</log:username>
+         <log:encrypted_password>234330834c41105ad5ed794fa036e085b40225c44f9228bb9e2692f427917605</log:encrypted_password>
+         <log:source>MASTER_KREDITNET</log:source>
+         <log:connectionType>0</log:connectionType>
+      </log:login>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soap:Body>
+      <ns1:loginResponse xmlns:ns1="LoginService">
+         <ns1:seal>5f64587745685668436558625343445a644c41777949525375762468507565366d41445a75613079785f00</ns1:seal>
+      </ns1:loginResponse>
+   </soap:Body>
+</soap:Envelope>
+
+
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:kns="KNSHeader" xmlns:rat="RatingAgencyService">
+  <soap:Header>
+    <kns:seal>5f64587745685668436558625343445a644c41777949525375762468507565366d41445a75613079785f00</kns:seal>
+  </soap:Header>
+  <soap:Body>
+    <rat:ratingAgencyUpdateRating>
+      <RatingAgencyUpdateRating>
+        <ratingAgencyId>04581c4a002d000082dab315</ratingAgencyId>
+        <alias/>
+        <rating>
+          <isEntity>true</isEntity>
+          <name>Caa2</name>
+          <probabilityDefault>0.0</probabilityDefault>
+          <ratingAgencyAlias></ratingAgencyAlias>
+          <ratingAgencyId>04581c4a002d000082dab315</ratingAgencyId>
+          <riskDate>1980-12-27T00:00:00.000+04:00</riskDate>
+          <shortName>Caa2</shortName>
+          <term>2</term>
+          <weight>0.0</weight>
+        </rating>
+      </RatingAgencyUpdateRating>
+    </rat:ratingAgencyUpdateRating>
+  </soap:Body>
+</soap:Envelope>
+
+
+
+
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:kns="KNSHeader" xmlns:rat="RatingAgencyService">
+  <soap:Header>
+    <kns:seal>5f64587745685668436558625343445a644c41777949525375762468507565366d41445a75613079785f00</kns:seal>
+  </soap:Header>
+  <soap:Body>
+      <RatingAgencyUpdateRating>
+        <ratingAgencyId>04581c4a002d000082dab315</ratingAgencyId>
+        <alias/>
+        <rating>
+          <isEntity>true</isEntity>
+          <name>Caa2</name>
+          <probabilityDefault>0.0</probabilityDefault>
+          <ratingAgencyAlias></ratingAgencyAlias>
+          <ratingAgencyId>04581c4a002d000082dab315</ratingAgencyId>
+          <riskDate>1980-12-27T00:00:00.000+04:00</riskDate>
+          <shortName>Caa2</shortName>
+          <term>2</term>
+          <weight>0.0</weight>
+        </rating>
+      </RatingAgencyUpdateRating>
+  </soap:Body>
+</soap:Envelope>
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:kns="KNSHeader" xmlns:rat="RatingAgencyService">
+   <soap:Header>
+      <kns:seal>5f64587745685668436558625343445a644c41777949525375762468507565366d41445a75613079785f00</kns:seal>
+   </soap:Header>
+   <soap:Body>
+      <rat:ratingAgencyUpdateRating>
+         <!--Optional:-->
+         <ratingAgencyId>1</ratingAgencyId>
+         <!--Optional:-->
+         <ratingAgencyAlias>1</ratingAgencyAlias>
+         <!--Optional:-->
+         <id>?</id>
+         <!--Optional:-->
+         <alias>1</alias>
+         <!--Optional:-->
+         <rating>
+            <!--Optional:-->
+            <dataId>1</dataId>
+            <!--Optional:-->
+            <isEntity>1</isEntity>
+            <!--Optional:-->
+            <name>1</name>
+            <!--Optional:-->
+            <position>1</position>
+            <!--Optional:-->
+            <probabilityDefault>1</probabilityDefault>
+            <!--Optional:-->
+            <ratingAgency>
+               <!--Optional:-->
+               <id>1</id>
+               <!--Optional:-->
+               <name>1</name>
+               <!--Optional:-->
+               <shortName>1</shortName>
+            </ratingAgency>
+            <!--Optional:-->
+            <ratingAgencyAlias>1</ratingAgencyAlias>
+            <!--Optional:-->
+            <ratingAgencyId>1</ratingAgencyId>
+            <!--Optional:-->
+            <riskDate>1</riskDate>
+            <!--Optional:-->
+            <shortName>1</shortName>
+            <!--Optional:-->
+            <term>1</term>
+            <!--Optional:-->
+            <user>
+               <!--Optional:-->
+               <id>1</id>
+               <!--Optional:-->
+               <name>1</name>
+               <!--Optional:-->
+               <shortName>1</shortName>
+            </user>
+            <!--Optional:-->
+            <userAlias>1</userAlias>
+            <!--Optional:-->
+            <userId>1</userId>
+            <!--Optional:-->
+            <weight>1</weight>
+         </rating>
+      </rat:ratingAgencyUpdateRating>
+   </soap:Body>
+</soap:Envelope>
+
+
+
+====================== request , response =================================
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:kns="KNSHeader" xmlns:rat="RatingAgencyService">
+   <soap:Header>
+      <kns:seal>5f64587745685668436558625343445a644c41777949525375762468507565366d41445a75613079785f00</kns:seal>
+   </soap:Header>
+   <soap:Body>
+      <rat:ratingAgencyUpdateRating>
+         <!--Optional:-->
+         <ratingAgencyId>1</ratingAgencyId>
+         <!--Optional:-->
+         <ratingAgencyAlias>1</ratingAgencyAlias>
+         <!--Optional:-->
+         <id>?</id>
+         <!--Optional:-->
+         <alias>1</alias>
+         <!--Optional:-->
+         <rating>
+            <!--Optional:-->
+            <dataId>1</dataId>
+            <!--Optional:-->
+            <isEntity>1</isEntity>
+            <!--Optional:-->
+            <name>1</name>
+            <!--Optional:-->
+            <position>1</position>
+            <!--Optional:-->
+            <probabilityDefault>1</probabilityDefault>
+            <!--Optional:-->
+            <ratingAgency>
+               <!--Optional:-->
+               <id>1</id>
+               <!--Optional:-->
+               <name>1</name>
+               <!--Optional:-->
+               <shortName>1</shortName>
+            </ratingAgency>
+            <!--Optional:-->
+            <ratingAgencyAlias>1</ratingAgencyAlias>
+            <!--Optional:-->
+            <ratingAgencyId>1</ratingAgencyId>
+            <!--Optional:-->
+            <riskDate>1</riskDate>
+            <!--Optional:-->
+            <shortName>1</shortName>
+            <!--Optional:-->
+            <term>1</term>
+            <!--Optional:-->
+            <user>
+               <!--Optional:-->
+               <id>1</id>
+               <!--Optional:-->
+               <name>1</name>
+               <!--Optional:-->
+               <shortName>1</shortName>
+            </user>
+            <!--Optional:-->
+            <userAlias>1</userAlias>
+            <!--Optional:-->
+            <userId>1</userId>
+            <!--Optional:-->
+            <weight>1</weight>
+         </rating>
+      </rat:ratingAgencyUpdateRating>
+   </soap:Body>
+</soap:Envelope>
+
+
+# ==============================================================================
+# ==
+# ==
+# ==
+# ==============================================================================
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soap:Body>
+      <soap:Fault>
+         <soap:Code>
+            <soap:Value>soap:Receiver</soap:Value>
+         </soap:Code>
+         <soap:Reason>
+            <soap:Text xml:lang="en">Seal is null</soap:Text>
+         </soap:Reason>
+         <soap:Detail>
+            <NACKException xmlns="RatingAgencyService">
+               <category ns1:nil="true" xmlns:ns1="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://exception.facade.kgl.reuters.com"/>
+               <message xmlns="http://exception.facade.kgl.reuters.com">Seal is null</message>
+               <reason xmlns="http://exception.facade.kgl.reuters.com">Seal is null</reason>
+               <source ns1:nil="true" xmlns:ns1="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://exception.facade.kgl.reuters.com"/>
+            </NACKException>
+         </soap:Detail>
+      </soap:Fault>
+   </soap:Body>
+</soap:Envelope>
+
+
+
+
+# ==============================================================================
+# ==
+# ==
+# ==
+# ==============================================================================
+
+
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:kns="KNSHeader" xmlns:rat="RatingAgencyService">
+   <soap:Header>
+      <kns:seal>5f6c4c34584268576f61356b4144713334356b6b33425746397a656765414749786d4e654d453855375f00</kns:seal>
+   </soap:Header>
+   <soap:Body>
+      <rat:ratingAgencyUpdateRating>
+         <!--Optional:-->
+         <ratingAgencyId>1</ratingAgencyId>
+         <!--Optional:-->
+         <ratingAgencyAlias>1</ratingAgencyAlias>
+         <!--Optional:-->
+         <id>1</id>
+         <!--Optional:-->
+         <alias>1</alias>
+         <!--Optional:-->
+         <rating>
+            <!--Optional:-->
+            <dataId>1</dataId>
+            <!--Optional:-->
+            <isEntity>1</isEntity>
+            <!--Optional:-->
+            <name>1</name>
+            <!--Optional:-->
+            <position>1</position>
+            <!--Optional:-->
+            <probabilityDefault>1</probabilityDefault>
+            <!--Optional:-->
+            <ratingAgency>
+               <!--Optional:-->
+               <id>1</id>
+               <!--Optional:-->
+               <name>1</name>
+               <!--Optional:-->
+               <shortName>1</shortName>
+            </ratingAgency>
+            <!--Optional:-->
+            <ratingAgencyAlias>1</ratingAgencyAlias>
+            <!--Optional:-->
+            <ratingAgencyId>1</ratingAgencyId>
+            <!--Optional:-->
+            <riskDate>1</riskDate>
+            <!--Optional:-->
+            <shortName>1</shortName>
+            <!--Optional:-->
+            <term>1</term>
+            <!--Optional:-->
+            <user>
+               <!--Optional:-->
+               <id>1</id>
+               <!--Optional:-->
+               <name>1</name>
+               <!--Optional:-->
+               <shortName>1</shortName>
+            </user>
+            <!--Optional:-->
+            <userAlias>1</userAlias>
+            <!--Optional:-->
+            <userId>1</userId>
+            <!--Optional:-->
+            <weight>1</weight>
+         </rating>
+      </rat:ratingAgencyUpdateRating>
+   </soap:Body>
+</soap:Envelope>
+
+
+# ==============================================================================
+# ==
+# ==
+# ==
+# ==============================================================================
+
+
+
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:kns="KNSHeader" xmlns:rat="RatingAgencyService">
+   <soap:Header>
+      <kns:seal>5f6c4c34584268576f61356b4144713334356b6b33425746397a656765414749786d4e654d453855375f00</kns:seal>
+   </soap:Header>
+   <soap:Body>
+        <RatingAgencyUpdateRating>
+            <ratingAgencyId>04581c4a002d000082dab315</ratingAgencyId>
+                  <alias/>
+            <rating>
+                <isEntity>true</isEntity>
+                <name>Caa2</name>
+                <probabilityDefault>0.0</probabilityDefault>
+                <ratingAgencyAlias></ratingAgencyAlias>
+                <ratingAgencyId>04581c4a002d000082dab315</ratingAgencyId>
+                <riskDate>1980-12-27T00:00:00.000+04:00</riskDate>
+                <shortName>Caa2</shortName>
+                <term>2</term>
+                <weight>0.0</weight>
+            </rating>
+        </RatingAgencyUpdateRating>
+      
+   </soap:Body>
+</soap:Envelope>
+
+# ==============================================================================
+# ==
+# ==
+# ==
+# ==============================================================================
+
+

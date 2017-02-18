@@ -1,0 +1,80 @@
+rm /jenkins/dist/FR/CMR/data/interface/rate/*
+#	292131615 / 543285  
+#	92020
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_ASSETVOLSURFACE.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_ASSET.BHP_ADR.EQUITY.USD.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_CAPLETVOLSURFACE_YC_EUR.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_FXVOLSURFACE_EURUSD.xml /jenkins/dist/FR/CMR/data/interface/rate
+#head -200 /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_FXVOLSURFACE_EURUSD.xml
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_YIELDCURVE_KGR_EURSWAP.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_FXSPOTPRICE.AUD.CAD.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_SWAPTIONCUBE_KGR_EURSWO.xml /jenkins/dist/FR/CMR/data/interface/rate 
+
+#+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/HS_ASSET.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#ls -ll /jenkins/dist/FR/CMR/data/interface/rate_backup/small-ts/
+
+#ls -ll /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big/gettimeseries-1417785193318-EUR_SWAP.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#CAPEUR.xml  COCA_COLA_VOL.xml  COCA_COLA.xml  FXEURUSD.xml  FXVOLEURUSD.xml  IREUR.xml  SWOEUR.xml
+
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/SWOEUR.xml  /jenkins/dist/FR/CMR/data/interface/rate
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/FXEURUSD.xml  /jenkins/dist/FR/CMR/data/interface/rate
+
+# head -200 /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/FXEURUSD.xml
+
+#++
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/FXVOLEURUSD.xml  /jenkins/dist/FR/CMR/data/interface/rate
+
+# head -200 cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/FXVOLEURUSD.xml
+#++
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/COCA_COLA.xml  /jenkins/dist/FR/CMR/data/interface/rate
+
+#head -4 /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/COCA_COLA.xml
+
+#++
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/COCA_COLA_VOL.xml  /jenkins/dist/FR/CMR/data/interface/rate
+
+
+# head -10 /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/COCA_COLA_VOL.xml
+
+#++
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/CAPEUR.xml  /jenkins/dist/FR/CMR/data/interface/rate
+
+#head -10 /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/CAPEUR.xml
+#17953
+#gg /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/CAPEUR.xml
+
+#++ 
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/IREUR.xml  /jenkins/dist/FR/CMR/data/interface/rate
+
+#head -10 /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/IREUR.xml
+
+#swaption
+
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-2/HS_SWAPTIONCUBE_KGR_EURSWO.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#++
+#yc (points:2)
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-2/gettimeseries-1417785193318-EUR_SWAP_SHORT.xml /jenkins/dist/FR/CMR/data/interface/rate
+
+#++
+#yc (points:41 000)
+#cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big/gettimeseries-1417785193318-EUR_SWAP.xml /jenkins/dist/FR/CMR/data/interface/rate

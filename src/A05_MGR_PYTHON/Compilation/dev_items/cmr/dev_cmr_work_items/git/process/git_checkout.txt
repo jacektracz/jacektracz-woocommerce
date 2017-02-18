@@ -1,0 +1,19 @@
+git checkout --	cmr-acceptance-test/cmr-mrp-test/target/
+git checkout --		cmr-acceptance-test/pricer-websocket-client/target/classes/META-INF/
+git checkout --		cmr-acceptance-test/pricer-websocket-client/target/classes/test4.json
+git checkout --		cmr-acceptance-test/pricer-websocket-client/target/classes/test5.json
+git checkout --		cmr-acceptance-test/pricer-websocket-client/target/classes/test6.json
+#git checkout --		kgr-jpa-model/src/main/java/com/misys/dao/rknet/AccessTenorDAO.java
+git checkout --		kgr-jpa-model/target/
+git checkout --		kgr-messages/cva/target/
+git checkout --		kgr-messages/trade/target/
+git checkout --		kgr-ratemanager-war/target/
+git checkout --		kgr-rknetdbinit/target/
+git checkout --		kgr-server-api-handlers/*
+git checkout --		kgr-server/target/
+git checkout --		kgr-war/src/main/webapp/images/kiwi/
+git checkout --		riskinsight-packager/target/
+
+git checkout -- cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/Parser.class cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerData.class cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketApp.class cmr-acceptance-test/pricer-websocket-client/target/classes/com/misys/mgr/pricerwsclient/PricerWebSocketClient.class cmr-acceptance-test/pricer-websocket-client/target/test-classes/com/misys/mgr/pricerwsclient/ParserTest.class
+
+# source $DD2/git/git_checkout.txt

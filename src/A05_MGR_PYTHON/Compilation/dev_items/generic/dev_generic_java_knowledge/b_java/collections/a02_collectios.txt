@@ -1,0 +1,1 @@
+http://www.javatpoint.com/HashMap-class-in-collection-framework

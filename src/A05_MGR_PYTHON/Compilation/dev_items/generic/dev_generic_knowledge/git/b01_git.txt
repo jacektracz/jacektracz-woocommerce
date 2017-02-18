@@ -1,0 +1,23 @@
+http://www.sbf5.com/~cduan/technical/git/git-4.shtml
+
+https://people.gnome.org/~federico/news-2008-12.html#pushing-and-pulling-with-git-2
+
+
+
+http://longair.net/blog/2009/04/16/git-fetch-and-merge/
+
+
+git merge origin/master
+
+git diff master origin/master
+
+git push origin experimental
+
+
+
+
+Aside
+
+If the branch has a different name in the remote repository (“experiment-by-bob”, say) you’d do this with:
+
+      git push origin experimental:experiment-by-bob

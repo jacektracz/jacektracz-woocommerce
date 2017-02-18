@@ -1,0 +1,1 @@
+jdbc:jtds:Sybase://mgrv092:5000/rknet

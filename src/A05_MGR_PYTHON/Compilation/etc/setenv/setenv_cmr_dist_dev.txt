@@ -1,0 +1,21 @@
+#!/bin/bash
+export DD=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/
+export KREDITNETHOME=/jenkins/dist/FR/CMR
+export KREDITNET_CONFIG_PATH=/jenkins/dist/FR/CMR/config
+export KREDITNETLOG=/jenkins/dist/FR/CMR/log
+export FREETDS=/jenkins/dist/FR/CMR/3rdparty/freetds
+export FREETDSCONF=/jenkins/dist/FR/CMR/config/freetds.conf
+export ARCH=x86Linux
+
+export LD_LIBRARY_PATH=${FREETDS}/lib/${ARCH}:$LD_LIBRARY_PATH
+export PATH=${FREETDS}/bin/${ARCH}:$PATH
+
+echo "KREDITNET_CONFIG_PATH : ${KREDITNET_CONFIG_PATH}"
+echo "KREDITNETHOME : ${KREDITNETHOME}"
+echo "KREDITNETLOG : ${KREDITNETLOG}"
+echo "FREETDS : ${FREETDS}"
+echo "FREETDSCONF : ${FREETDSCONF}"
+echo "ARCH : ${ARCH}"
+echo 'CATALINA_HOME=/jenkins/dist/FR/Common/Tomcat/'
+
+

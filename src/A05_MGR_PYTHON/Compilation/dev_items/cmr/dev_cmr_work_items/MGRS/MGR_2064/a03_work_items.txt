@@ -1,0 +1,38 @@
+SL-1 - imported
+
+select * from Trade where TypeOfDeal like 'FXO%' order by DealStamp desc
+
+select * from Trade where DealStamp = 'FXOPTION:17'
+
+select * from Trade where DealStamp = 'CAPFLOOR:499'
+
+select * from Trade where DealStamp like 'SUMMIT%'
+
+select * from Trade
+
+select * from SettlementLimit
+
+select * from SettlementLimitLog
+
+
+select * from SettlementLimit where ShortName in('JT-SL-1','AQUREJSCH','JT-SL-2')
+
+JT-SL-2
+select * from SettlementLimit where Id=0x73b7e154000400008b9fc9aa
+
+JT-SL-1
+select * from SettlementLimit where Id=0x36ade15400000000a5037196
+
+-- from null
+
+update SettlementLimit set LastReviewDate = '2015-02-16 09:25:07.0' where ShortName in('JT-SL-1')
+
+
+QueryUltraData 'SettlementLimit','%',0x000000000000000000000000,'0x000000000000000000000000','LimitKind=''S''',0x68eeb64d00190000be68ab90,'0x68eeb64d00190000be68ab90',250,0,'1','0','0','1',1,0,'0'
+
+
+SL-2
+select * from AccessSettlementLimit where DataId = 0x73b7e154000400008b9fc9aa
+
+SL-1
+select * from AccessSettlementLimit where DataId = 0x36ade15400000000a5037196

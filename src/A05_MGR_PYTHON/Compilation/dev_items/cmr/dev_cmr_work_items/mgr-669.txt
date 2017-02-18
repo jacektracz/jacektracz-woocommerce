@@ -1,0 +1,193 @@
+SELECT  ModuleId, KNTableId from KModuleTable  where  KNTableId = 0x95ad494d006100001648f133
+SELECT  MessageLong from AuditMsg  where  ( Id = 0x51286b54001400004126041d )
+
+
+SELECT  MessageLong from AuditMsg  where  ( Id = 0x51286b54001400004126041d )
+select top 1 * from AuditMsg
+SELECT  MessageLong from AuditMsg  where  ( Id = 0xBE206B54001A00004126041D )
+SELECT  MessageLong from AuditMsg  where  ( Id =0x0030E652001F00008DDFEC33 )
+select * from CreditLimitMaster where ShortName like 'JT-69-1'
+
+
+# ###################################################################################
+#
+#			START
+#
+# ###################################################################################
+alias kh_ca="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/aliases_cmr_khepri_v2.txt"
+export KHCA=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/
+ 
+#develompmen mgr-699
+
+
+alias kh_envtrunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_trunk_v1.sh"
+alias kh_tailcpp="tail -f cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/build.txt"
+alias kh_cp="cp /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/install/lib/x86Linux/libKNETCreditCallbacks.so /home/kdeveloper/FR/CMR/lib/x86Linux"
+alias kh_ltr="ls -ltr /home/kdeveloper/FR/CMR/lib/x86Linux"
+alias kh_setnoaudit_all="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/seten_no_audit.txt"
+alias kh_a="alias | grep -i kh"
+alias kh_debkh="tail -f  /home/kdeveloper/FR/CMR/log/KGRServer_master_stdout.log | grep -i KH_DE"
+alias kh_kns="ps -ef | grep -i kgrserver | grep -i x86"
+alias kh_scons="scons --no-cache -j 8 > build.txt 2>&1"
+alias kh_kill="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/kill_cmr_kns_trunk.sh"
+alias kh_s_kns="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/start_cmr_fr.sh"
+alias kh_show_kns="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/kill_cmr_kns_trunk.sh"
+alias kh_kill_kns="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/kill_cmr_kns_trunk.sh"
+alias kh_rcp="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_restart_kns_trunk.sh"
+alias kh_tail="tail -f  /home/kdeveloper/FR/CMR/log/KGRServer_master_stdout.log"
+
+#tests
+alias kh_t1="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest clean test"
+alias kh_t3t="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest clean test -X"
+alias kh_t1t="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest -Dmaven.surefire.debug clean test"
+alias kh_t2t="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest -Dmaven.surefire.debug clean test -X"
+
+#compilation
+alias kh_compile_trunk_cpp="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_trunk_cpp.sh"
+alias kh_compile_gen_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_trunk_cpp_gen.sh"
+alias kh_compile_cpp_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_trunk_cpp.sh"
+alias kh_compile_jkns="/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_khepri_v2_kgrserver.sh"
+alias kh_compile_server="mvn -f ${WORKSPACE}/pom.xml -e -s ${WORKSPACE}/src/java/settings.xml -Dmaven.test.skip=true -Ddist.dir=${WORKSPACE}/install -Dkns.src.dir=${KGRCPP} -P release,generated-libs,default,package clean install"
+alias kh_compile_java_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_khepri_v2_java.sh"
+
+#startstop
+alias kh_start_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/start_cmr_dev.txt"
+alias kh_stop_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/stop_cmr_dev.txt"
+alias kh_stop_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/stop_cmr_trunk_v1.txt"
+
+#cd
+alias kh_cd_server="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server"
+alias kh_cd_target="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target"
+
+alias kh_cd_too="cd /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation"
+alias kh_cd_cpp="cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp"
+alias kh_cd_etc_kdev="cd /home/kdeveloper/FR/CMR/etc"
+alias kh_cd_log_kdev="cd /home/kdeveloper/FR/CMR/data/log"
+
+alias kh_cd_j="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/"
+alias kh_cd_rate="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-ratemanager-war"
+
+#cd - dev
+alias kh_cd_log_dev="cd /jenkins/dist/FR/CMR/data/log"
+alias kh_cd_etc_dev="cd /jenkins/dist/FR/CMR/etc"
+
+alias kh_cd_devl_dev="cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNETCallbacks/KNETCreditCallbacks"
+alias kh_cd_devl_rate="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-ratemanager-war"
+alias kh_cd_devl_etc="cd /jenkins/dist/FR/CMR/etc"
+
+
+
+#setenv
+
+alias kh_setenv_khepri="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_khepri_v2.sh"
+alias kh_setenv_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_dev.txt"
+alias kh_setenv_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_trunk_v1.sh"
+
+alias kh_start_jkns="java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target/kgr-server-core-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar"
+
+alias kh_start_jkns2="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/start_jkns.txt"
+
+# ###################################################################################
+alias kh_cp_cl="cp /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNETCallbacks/KNETCreditCallbacks/KNCB_CreditLimit.cpp /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/devs"
+
+KH_DBG::dbg("");
+
+
+		kntcAudit_->logPrepareDelete(
+			(const unsigned char*) handle->getUser().getValue()
+			,TimeBandOldElt
+			,TimeBandCoverageElt_Factory::instance()->getParentTable()
+			,creditLimitMaster->Id()
+			,TimeBandCoverageElt_Factory::instance()->getCoverage(creditLimitMaster->Id(),creditLimitMaster->Id())
+			);
+
+
+			kntcAudit_->logInsertImmediate(
+				(const unsigned char*) handle->getUser().getValue()
+				,TimeBandNewElt
+				,TimeBandCoverageElt_Factory::instance()->getParentTable()
+				,creditLimitMaster->Id()
+				,TimeBandCoverageElt_Factory::instance()->getCoverage(creditLimitMaster->Id(),TimeBandNewElt->TimeBandId())
+				,false // desactivate action
+			    ,true // write immediate);
+				);
+
+
+void
+KNCB_CreditLimit::AuditInsertTBCoverageElt( CreditLimitMaster_var            creditLimitMaster,
+										   KNET_RequestHandle               handle )
+{
+
+	KH_DBG::dbg("KNCB_CreditLimit::AuditInsertTBCoverageElt::start");
+
+	TimeBandCoverageElt_var TimeBandNewElt;
+	TimeBandCoverageElt_Cltn_var TBCoverageCollNew_ = creditLimitMaster->arcTimeBandCoverageElts();
+	unsigned long size = TBCoverageCollNew_->length();
+	for (unsigned long idx2=0; idx2 < size ;++idx2) {
+			TimeBandNewElt = TBCoverageCollNew_[idx2];
+
+			kntcAudit_->logInsertImmediate(
+				(const unsigned char*) handle->getUser().getValue()
+				,TimeBandNewElt
+				,TimeBandCoverageElt_Factory::instance()->getParentTable()
+				,creditLimitMaster->Id()
+				,TimeBandCoverageElt_Factory::instance()->getCoverage(creditLimitMaster->Id(),TimeBandNewElt->TimeBandId())
+				,false // desactivate action
+			    ,true // write immediate);
+				);
+	 }
+
+	KH_DBG::dbg("KNCB_CreditLimit::AuditInsertTBCoverageElt::end");
+
+}
+
+
+void
+KNCB_CreditLimit::insertAllocationSchedule(
+	CreditLimitMasterBase_var        creditLimitMaster,
+    RELATED_KNET_CLASS_CHANGE const &data,
+    KNET_RequestHandle               handle )
+{
+  KH_DBG::dbg("KNCB_CreditLimit::insertAllocationSchedule::method_start");
+  hasTableAccessOrThrow( INS,
+                         CreditAllocSchedElt_Factory::instance()->className(),
+                         handle->getUser() );
+
+  KGR_Collection<KGL_AllocationSchedule> const &allocationScheduleColl =
+    data.getAllocationSchedule();
+
+  int size = allocationScheduleColl.size();
+
+  for( int idx = 0; idx < size; ++idx )
+  {
+      CreditAllocSchedElt_Factory_var factory =
+        CreditAllocSchedElt_Factory::instance();
+
+      CreditAllocSchedElt_var object =
+        factory->create( allocationScheduleColl[ idx ].getAllocation(),
+                         creditLimitMaster );
+
+      object->BeginDate( KNET_DateToPS( allocationScheduleColl[ idx ].getBeginDate() ).c_str() );
+
+      object->EndDate( KNET_DateToPS( allocationScheduleColl[ idx ].getEndDate() ).c_str() );
+
+      	  //JT_TODO
+      kntcAudit_->logInsertImmediate(
+			(const unsigned char*) handle->getUser().getValue()
+			,TimeBandNewElt
+			,CreditAllocSchedElt_Factory::instance()->getParentTable()
+			,creditLimitMaster->Id()
+			,TimeBandCoverageElt_Factory::instance()->getCoverage(creditLimitMaster->Id(),TimeBandNewElt->TimeBandId())
+			,false // desactivate action
+		    ,true // write immediate);
+			);
+
+  }
+  KH_DBG::dbg("KNCB_CreditLimit::insertAllocationSchedule::method_end");
+
+}
+
+
+select * from AuditMsg order by AuditDate desc
+
+delete from AuditMsg where AuditDate > '2014-11-20 07:00:10.000'

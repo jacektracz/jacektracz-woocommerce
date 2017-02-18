@@ -1,0 +1,4 @@
+1. p&l set, jest juz z wczesniej puszczonego MRP np historical
+2. jak p&l jest historical to wybierasz Scenario Type -> Historical Simulation
+3. Mtm date jest z wczesniej wypelnionego Sensitivity Set (jak wybierzesz Sensitivity Set klikniesz na lupke kolo mtm date to znajdzie ci dla jakich dat zostalo puszczone)
+4. jak wybrales scenario type jako historical to wypelniasz zakladke -> Historical Simulation 

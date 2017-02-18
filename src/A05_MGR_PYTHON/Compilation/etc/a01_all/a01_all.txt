@@ -1,0 +1,5 @@
+# source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/aliases_cmr_khepri_v2.txt
+# source $DDSQL/stop/stop_cmr_dev.txt
+# cd /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-server/
+# cd /jenkins/dist/FR/CMR/etc
+# http://10.22.11.48:19080/kgr/

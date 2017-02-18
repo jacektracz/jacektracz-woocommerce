@@ -1,0 +1,904 @@
+package com.misys.kgrserver.handler;
+
+import java.io.CharArrayWriter;
+import java.io.PrintWriter;
+import org.apache.commons.lang.NotImplementedException;
+
+import java.util.Collection;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+
+import com.reuters.kgr.util.IdConvertion;
+
+import com.google.common.collect.Lists;
+import com.misys.dao.rknet.KnuserDAO;
+import com.misys.dao.rknet.TenorDAO;
+import com.misys.dao.rknet.AccessTenorDAO;
+import com.misys.kgrserver.persistence.JPAFactory;
+import com.misys.model.rate.AccessTenor;
+import com.misys.model.rate.Tenor;
+import com.misys.model.rknet.Knuser;
+import com.reuters.kgl.facade.beans.AccessibleDataVO;
+import com.reuters.kgl.facade.beans.CoverageNameDataVO;
+import com.reuters.kgl.facade.beans.GenericACKVO;
+import com.reuters.kgl.facade.beans.GenericIdACKVO;
+import com.reuters.kgl.facade.beans.GenericIdentityACKVO;
+import com.reuters.kgl.facade.beans.GenericIdentityVectorACKVO;
+import com.reuters.kgl.facade.beans.GenericNACKVO;
+import com.reuters.kgl.facade.beans.GenericTenorACKVO;
+import com.reuters.kgl.facade.beans.GenericTenorVectorACKVO;
+import com.reuters.kgl.facade.beans.IdentifierDataVO;
+import com.reuters.kgl.facade.beans.IdentityDataVO;
+import com.reuters.kgl.facade.beans.NameDataVO;
+import com.reuters.kgl.facade.beans.RiskClassInsertVO;
+import com.reuters.kgl.facade.beans.RiskClassUpdateVO;
+import com.reuters.kgl.facade.beans.ShortNameDataVO;
+
+import com.reuters.kgl.facade.beans.FolderAcceptByIdentifierVO;
+import com.reuters.kgl.facade.beans.FolderAccessInsertVO;
+import com.reuters.kgl.facade.beans.FolderACKVO;
+
+import com.reuters.kgl.facade.exception.NACKException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import com.reuters.kgl.facade.beans.ValueObject;
+//import com.reuters.kgl.facade.exception.NACKException;
+//import javax.persistence.EntityManager;
+//import javax.persistence.EntityTransaction;
+
+
+//import com.reuters.kgl.facade.beans.FolderHandlerVO;//extends;//AbstractValueObjectHandler;//{
+//import com.reuters.kgl.facade.beans.FolderACKVO;//folderGetDelta(FolderGetDeltaVO;//requestVO)
+import com.reuters.kgl.facade.beans.ACKVO;//folderAcceptByIdentifier(FolderAcceptByIdentifierVO;//requestVO)
+//import com.reuters.kgl.facade.beans.ACKVO;//folderRejectByIdentifier(FolderRejectByIdentifierVO;//requestVO)
+import com.reuters.kgl.facade.beans.InsertACKVO;//folderInsert(FolderInsertVO;//requestVO)
+import com.reuters.kgl.facade.beans.UpdateACKVO;//folderUpdate(FolderUpdateVO;//requestVO)
+import com.reuters.kgl.facade.beans.RemoveACKVO;//folderRemove(FolderRemoveVO;//requestVO)
+import com.reuters.kgl.facade.beans.FolderGetACKVO;//folderGetByIdentifier(FolderGetByIdentifierVO;//requestVO)
+//import com.reuters.kgl.facade.beans.FolderGetACKVO;//folderGetByName(FolderGetByNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.FolderGetACKVO;//folderGetByShortName(FolderGetByShortNameVO;//requestVO)
+import com.reuters.kgl.facade.beans.GetIdentityACKVO;//folderGetIdentityByName(FolderGetIdentityByNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.GetIdentityACKVO;//folderGetIdentityByShortName(FolderGetIdentityByShortNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.GetIdentityACKVO;//folderGetIdentityByIdentifier(FolderGetIdentityByIdentifierVO;//requestVO)
+import com.reuters.kgl.facade.beans.QueryIdentityACKVO;//folderQueryIdentityByShortName(FolderQueryIdentityByShortNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.QueryIdentityACKVO;//folderQueryIdentityByName(FolderQueryIdentityByNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.QueryIdentityACKVO;//folderQueryIdentityByCode(FolderQueryIdentityByCodeVO;//requestVO)
+import com.reuters.kgl.facade.beans.InsertLinkACKVO;//folderLink(FolderLinkVO;//requestVO)
+//import com.reuters.kgl.facade.beans.RemoveACKVO;//folderRemoveLink(FolderRemoveLinkVO;//requestVO)
+import com.reuters.kgl.facade.beans.QueryLinkACKVO;//folderQueryDirectChildren(FolderQueryDirectChildrenVO;//requestVO)
+//import com.reuters.kgl.facade.beans.QueryLinkACKVO;//folderQueryDirectParents(FolderQueryDirectParentsVO;//requestVO)
+import com.reuters.kgl.facade.beans.QueryLinkTreeACKVO;//folderQueryChildren(FolderQueryChildrenVO;//requestVO)
+//import com.reuters.kgl.facade.beans.QueryLinkTreeACKVO;//folderQueryParents(FolderQueryParentsVO;//requestVO)
+import com.reuters.kgl.facade.beans.CollFolderACKVO;//folderQueryDV(FolderQueryDVVO;//requestVO)
+//import com.reuters.kgl.facade.beans.GetIdentityACKVO;//folderGetEntityIdentityByName(FolderGetEntityIdentityByNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.GetIdentityACKVO;//folderGetEntityIdentityByShortName(FolderGetEntityIdentityByShortNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.QueryIdentityACKVO;//folderQueryEntityIdentityByShortName(FolderQueryEntityIdentityByShortNameVO;//requestVO)
+//import com.reuters.kgl.facade.beans.QueryIdentityACKVO;//folderQueryEntityIdentityByName(FolderQueryEntityIdentityByNameVO;//requestVO)
+import com.reuters.kgl.facade.beans.InsertCodifierElementACKVO;//folderInsertCodifierElement(FolderInsertCodifierElementVO;//requestVO)
+import com.reuters.kgl.facade.beans.UpdateCodifierElementACKVO;//folderUpdateCodifierElement(FolderUpdateCodifierElementVO;//requestVO)
+//import com.reuters.kgl.facade.beans.RemoveACKVO;//folderRemoveCodifierElement(FolderRemoveCodifierElementVO;//requestVO)
+import com.reuters.kgl.facade.beans.QueryCodifierElementACKVO;//folderQueryCodifierElement(FolderQueryCodifierElementVO;//requestVO)
+import com.reuters.kgl.facade.beans.IsChildACKVO;//folderIsChild(FolderIsChildVO;//requestVO)
+import com.reuters.kgl.facade.beans.AccessInsertACKVO;//folderAccessInsert(FolderAccessInsertVO;//requestVO)
+import com.reuters.kgl.facade.beans.AccessUpdateACKVO;//folderAccessUpdate(FolderAccessUpdateVO;//requestVO)
+//import com.reuters.kgl.facade.beans.RemoveACKVO;//folderAccessRemove(FolderAccessRemoveVO;//requestVO)
+import com.reuters.kgl.facade.beans.AccessMultiQueryACKVO;//folderQueryAccess(FolderQueryAccessVO;//requestVO)
+//import com.reuters.kgl.facade.beans.InsertACKVO;//folderInsertFolderCapitalConstants(FolderInsertFolderCapitalConstantsVO;//requestVO)
+//import com.reuters.kgl.facade.beans.UpdateACKVO;//folderUpdateFolderCapitalConstants(FolderUpdateFolderCapitalConstantsVO;//requestVO)
+//import com.reuters.kgl.facade.beans.RemoveACKVO;//folderRemoveFolderCapitalConstants(FolderRemoveFolderCapitalConstantsVO;//requestVO)
+import com.reuters.kgl.facade.beans.FolderCapitalConstantsQueryACKVO;//folderQueryFolderCapitalConstants(FolderQueryFolderCapitalConstantsVO;//requestVO)
+import com.reuters.kgl.facade.beans.LockInsertACKVO;//folderLockInsert(FolderLockInsertVO;//requestVO)		;//
+import com.reuters.kgl.facade.beans.LockUpdateACKVO;//folderLockUpdate(FolderLockUpdateVO;//requestVO)
+//import com.reuters.kgl.facade.beans.RemoveACKVO;//folderLockRemove(FolderLockRemoveVO;//requestVO)
+import com.reuters.kgl.facade.beans.LockQueryACKVO;//folderQueryLocks(FolderQueryLocksVO;//requestVO)
+
+import com.reuters.kgl.facade.beans.*;
+
+
+public class FolderHandler extends AbstractValueObjectHandler {
+
+    public final static int KNEL_TENOR_INSERT = 32738;
+
+    
+    public FolderHandler() {
+        super();
+        log_info("TenorHandler::TenorHandler::method_start");
+        //PrintStateEx("TenorHandler::TenorHandler::start");
+        //PrintStateEx("TenorHandler::TenorHandler::end");
+        log_info("TenorHandler::TenorHandler::method_end");
+    }
+    
+    public EntityManager jpa_getEmRate_1()
+    {
+    	return emRate;
+    }
+    
+    public EntityTransaction jpa_getTransactionRate_1()
+    {
+    	return etRate;
+    }
+    
+    public EntityManager jpa_getEmRate_2()
+    {
+    	return emRate;
+    }
+    
+    public EntityTransaction jpa_getTransactionRate_2()
+    {
+    	return etRate;
+    }
+    
+    @Override
+    public ValueObject handle(final ValueObject object) {
+        try {
+            //PrintStateEx("TenorHandler::handle");
+        	log_info("TenorHandler::handle::method_start::14_14");
+            final Integer msgId = object.getMsgId();
+            switch (msgId) {
+            case FolderGetDeltaVO.MSG_ID:
+                return folderGetDelta((FolderGetDeltaVO) object);
+            case FolderAcceptByIdentifierVO.MSG_ID:
+                return folderAcceptByIdentifier((FolderAcceptByIdentifierVO) object);
+            case FolderRejectByIdentifierVO.MSG_ID:
+                return folderRejectByIdentifier((FolderRejectByIdentifierVO) object);
+            case FolderInsertVO.MSG_ID:
+                return folderInsert((FolderInsertVO) object);
+            case FolderUpdateVO.MSG_ID:
+                return folderUpdate((FolderUpdateVO) object);
+                
+            case FolderRemoveVO.MSG_ID:
+                return folderRemove((FolderRemoveVO) object);
+                
+            case FolderGetByIdentifierVO.MSG_ID:
+                return folderGetByIdentifier((FolderGetByIdentifierVO) object);
+                                
+            case FolderGetByNameVO.MSG_ID:
+                return folderGetByName((FolderGetByNameVO) object);
+                
+                
+            case FolderGetByShortNameVO.MSG_ID:
+                return folderGetByShortName((FolderGetByShortNameVO) object);
+                
+            case FolderGetIdentityByNameVO.MSG_ID:
+                return folderGetIdentityByName((FolderGetIdentityByNameVO) object);
+                
+            case FolderGetIdentityByShortNameVO.MSG_ID:
+                return folderGetIdentityByShortName((FolderGetIdentityByShortNameVO) object);
+                
+            case FolderGetIdentityByIdentifierVO.MSG_ID:
+                return folderGetIdentityByIdentifier((FolderGetIdentityByIdentifierVO) object);
+                
+            case FolderQueryIdentityByShortNameVO.MSG_ID:
+                return folderQueryIdentityByShortName((FolderQueryIdentityByShortNameVO) object);
+                
+            case FolderQueryIdentityByNameVO.MSG_ID:
+                return folderQueryIdentityByName((FolderQueryIdentityByNameVO) object);
+                
+            case FolderQueryIdentityByCodeVO.MSG_ID:
+                return folderQueryIdentityByCode((FolderQueryIdentityByCodeVO) object);
+                
+            case FolderLinkVO.MSG_ID:
+                return folderLink((FolderLinkVO) object);
+                
+            case FolderRemoveLinkVO.MSG_ID:
+                return folderRemoveLink((FolderRemoveLinkVO) object);
+                
+            case FolderQueryDirectChildrenVO.MSG_ID:
+                return folderQueryDirectChildren((FolderQueryDirectChildrenVO) object);
+                
+            case FolderQueryDirectParentsVO.MSG_ID:
+                return folderQueryDirectParents((FolderQueryDirectParentsVO) object);
+                
+            case FolderQueryChildrenVO.MSG_ID:
+                return folderQueryChildren((FolderQueryChildrenVO) object);
+                
+            case FolderQueryParentsVO.MSG_ID:
+                return folderQueryParents((FolderQueryParentsVO) object);
+                
+            case FolderQueryDVVO.MSG_ID:
+                return folderQueryDV((FolderQueryDVVO) object);
+                
+            case FolderGetEntityIdentityByNameVO.MSG_ID:
+                return folderGetEntityIdentityByName((FolderGetEntityIdentityByNameVO) object);
+
+
+            case FolderGetEntityIdentityByShortNameVO.MSG_ID:
+                return folderGetEntityIdentityByShortName((FolderGetEntityIdentityByShortNameVO) object);
+                
+            case FolderQueryEntityIdentityByShortNameVO.MSG_ID:
+                return folderQueryEntityIdentityByShortName((FolderQueryEntityIdentityByShortNameVO) object);
+                
+            case FolderQueryEntityIdentityByNameVO.MSG_ID:
+                return folderQueryEntityIdentityByName((FolderQueryEntityIdentityByNameVO) object);
+                
+            case FolderInsertCodifierElementVO.MSG_ID:
+                return folderInsertCodifierElement((FolderInsertCodifierElementVO) object);
+                
+            case FolderUpdateCodifierElementVO.MSG_ID:
+                return folderUpdateCodifierElement((FolderUpdateCodifierElementVO) object);
+                
+            case FolderRemoveCodifierElementVO.MSG_ID:
+                return folderRemoveCodifierElement((FolderRemoveCodifierElementVO) object);
+                
+            case FolderQueryCodifierElementVO.MSG_ID:
+                return folderQueryCodifierElement((FolderQueryCodifierElementVO) object);
+                
+            case FolderIsChildVO.MSG_ID:
+                return folderIsChild((FolderIsChildVO) object);
+                
+            case FolderAccessInsertVO.MSG_ID:
+                return folderAccessInsert((FolderAccessInsertVO) object);
+                
+            case FolderAccessUpdateVO.MSG_ID:
+                return folderAccessUpdate((FolderAccessUpdateVO) object);
+                
+            case FolderAccessRemoveVO.MSG_ID:
+                return folderAccessRemove((FolderAccessRemoveVO) object);
+                
+            case FolderQueryAccessVO.MSG_ID:
+                return folderQueryAccess((FolderQueryAccessVO) object);
+                
+            case FolderInsertFolderCapitalConstantsVO.MSG_ID:
+                return folderInsertFolderCapitalConstants((FolderInsertFolderCapitalConstantsVO) object);
+                
+            case FolderUpdateFolderCapitalConstantsVO.MSG_ID:
+                return folderUpdateFolderCapitalConstants((FolderUpdateFolderCapitalConstantsVO) object);
+                
+            case FolderRemoveFolderCapitalConstantsVO.MSG_ID:
+                return folderRemoveFolderCapitalConstants((FolderRemoveFolderCapitalConstantsVO) object);
+
+                
+            case FolderQueryFolderCapitalConstantsVO.MSG_ID:
+                return folderQueryFolderCapitalConstants((FolderQueryFolderCapitalConstantsVO) object);
+                
+            case FolderLockInsertVO.MSG_ID:
+                return folderLockInsert((FolderLockInsertVO) object);
+                
+                
+                
+            case FolderLockRemoveVO.MSG_ID:
+                return folderLockRemove((FolderLockRemoveVO) object);
+
+
+            case FolderQueryLocksVO.MSG_ID:
+                return folderQueryLocks((FolderQueryLocksVO) object);
+                
+            case FolderQueryDVDBVO.MSG_ID:
+                folderQueryDVDB((FolderQueryDVDBVO) object);
+                return new GenericACKVO();
+                
+            default:
+                return new GenericNACKVO(NACKException.NOTFOUND, "Unknown message id");
+            }            
+        } catch (final Exception e) {
+            log_info_exception("TenorHandler::handle::exception:", e);
+            return new GenericNACKVO(NACKException.SYSTEM, e.getMessage());
+        }
+    }
+
+
+    
+ 	/**
+ 	 * Folder Get Delta Request
+ 	 * 
+	 * Message Id : 1348
+	 * return FolderACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public FolderACKVO folderGetDelta(FolderGetDeltaVO requestVO)
+	 {
+		 throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Accept By Identifier Request
+ 	 * 
+	 * Message Id : 1349
+	 * return ACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public ACKVO folderAcceptByIdentifier(FolderAcceptByIdentifierVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Reject By Identifier Request
+ 	 * 
+	 * Message Id : 1350
+	 * return ACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public ACKVO folderRejectByIdentifier(FolderRejectByIdentifierVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Insert Request
+ 	 * Folder insertion into the global database
+    
+	 * Message Id : 1351
+	 * return InsertACKVO
+	 * throws NackException if the server response is Insert NACK
+ 	 */
+	 public InsertACKVO folderInsert(FolderInsertVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Update Request
+ 	 * Folder update into the global database
+    
+	 * Message Id : 1352
+	 * return UpdateACKVO
+	 * throws NackException if the server response is Update NACK
+ 	 */
+	 public UpdateACKVO folderUpdate(FolderUpdateVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Remove Request
+ 	 * Folder remove from the global database
+    
+	 * Message Id : 1353
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove NACK
+ 	 */
+	 public RemoveACKVO folderRemove(FolderRemoveVO requestVO)
+	 {
+		 throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Get By Identifier Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1354
+	 * return FolderGetACKVO
+	 * throws NackException if the server response is Get NACK
+ 	 */
+	 public FolderGetACKVO folderGetByIdentifier(FolderGetByIdentifierVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Get By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1355
+	 * return FolderGetACKVO
+	 * throws NackException if the server response is Get NACK
+ 	 */
+	 public FolderGetACKVO folderGetByName(FolderGetByNameVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Get By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1356
+	 * return FolderGetACKVO
+	 * throws NackException if the server response is Get NACK
+ 	 */
+	 public FolderGetACKVO folderGetByShortName(FolderGetByShortNameVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Get Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1357
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetIdentityByName(FolderGetIdentityByNameVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Get Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1358
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetIdentityByShortName(FolderGetIdentityByShortNameVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Get Identity By Identifier Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1359
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetIdentityByIdentifier(FolderGetIdentityByIdentifierVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Query Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1360
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryIdentityByShortName(FolderQueryIdentityByShortNameVO requestVO)
+	 {
+	        log_info("TenorHandler::folderQueryIdentityByShortName::start_method");
+	        //final int maxLength = requestVO.getMaxLength();
+	        //final List<Tenor> Tenor = JPAFactory.getMaxAmountFields(jpa_getEmRate_2(), Tenor.class, maxLength, "shortName", requestVO.getShortName());        
+	        //QueryIdentityACKVO dd_out = db2vo_TenorsIdVector(Tenor, maxLength);
+	        QueryIdentityACKVO dd_out = new QueryIdentityACKVO();	        
+	        log_info("TenorHandler::folderQueryIdentityByShortName::end_method");
+	        return dd_out;		 
+		 
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1361
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryIdentityByName(FolderQueryIdentityByNameVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Query Identity By Code Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1362
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryIdentityByCode(FolderQueryIdentityByCodeVO requestVO)
+{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Link Request
+ 	 * Folder link between two countries.
+    
+	 * Message Id : 1363
+	 * return InsertLinkACKVO
+	 * throws NackException if the server response is Insert NACK
+ 	 */
+	 public InsertLinkACKVO folderLink(FolderLinkVO requestVO)
+	 {
+		 throw new NotImplementedException();
+     }
+	
+	
+ 	/**
+ 	 * Folder Remove Link Request
+ 	 * Folder unlink.
+    
+	 * Message Id : 1364
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove NACK
+ 	 */
+	 public RemoveACKVO folderRemoveLink(FolderRemoveLinkVO requestVO)
+	 {
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Query Direct Children Request
+ 	 * Folder query direct link identities.
+    
+	 * Message Id : 1365
+	 * return QueryLinkACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkACKVO folderQueryDirectChildren(FolderQueryDirectChildrenVO requestVO)
+	 {
+		 throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Direct Parents Request
+ 	 * Folder query direct parent identities.
+    
+	 * Message Id : 1366
+	 * return QueryLinkACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkACKVO folderQueryDirectParents(FolderQueryDirectParentsVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Query Children Request
+ 	 * Folder query every children links.        
+    
+	 * Message Id : 1367
+	 * return QueryLinkTreeACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkTreeACKVO folderQueryChildren(FolderQueryChildrenVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Query Parents Request
+ 	 * Folder query every parents links.        
+    
+	 * Message Id : 1368
+	 * return QueryLinkTreeACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkTreeACKVO folderQueryParents(FolderQueryParentsVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder QueryDV Request
+ 	 * 
+	 * Message Id : 1370
+	 * return CollFolderACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public CollFolderACKVO folderQueryDV(FolderQueryDVVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Get Entity Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1373
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetEntityIdentityByName(FolderGetEntityIdentityByNameVO requestVO)
+	{
+		 throw new NotImplementedException();
+	}
+	
+	
+ 	/**
+ 	 * Folder Get Entity Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1374
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetEntityIdentityByShortName(FolderGetEntityIdentityByShortNameVO requestVO)
+	 {
+		 throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Entity Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1375
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryEntityIdentityByShortName(FolderQueryEntityIdentityByShortNameVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Query Entity Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1376
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryEntityIdentityByName(FolderQueryEntityIdentityByNameVO requestVO)
+	{
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Insert Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1382
+	 * return InsertCodifierElementACKVO
+	 * throws NackException if the server response is Insert Codifier Element NACK
+ 	 */
+	 public InsertCodifierElementACKVO folderInsertCodifierElement(FolderInsertCodifierElementVO requestVO)
+	{
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Update Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1383
+	 * return UpdateCodifierElementACKVO
+	 * throws NackException if the server response is Update Codifier Element NACK
+ 	 */
+	 public UpdateCodifierElementACKVO folderUpdateCodifierElement(FolderUpdateCodifierElementVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Remove Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1384
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove Codifier Element NACK
+ 	 */
+	 public RemoveACKVO folderRemoveCodifierElement(FolderRemoveCodifierElementVO requestVO)
+	{
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1385
+	 * return QueryCodifierElementACKVO
+	 * throws NackException if the server response is Query Codifier Element NACK
+ 	 */
+	 public QueryCodifierElementACKVO folderQueryCodifierElement(FolderQueryCodifierElementVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Is Child Request
+ 	 * Country is Child.
+    
+	 * Message Id : 1386
+	 * return IsChildACKVO
+	 * throws NackException if the server response is Is Child NACK
+ 	 */
+	public IsChildACKVO folderIsChild(FolderIsChildVO requestVO)
+	{
+		throw new NotImplementedException();
+	}
+	
+	
+ 	/**
+ 	 * Folder Access Insert Request
+ 	 * Folder Insert Access.        
+    
+	 * Message Id : 7030
+	 * return AccessInsertACKVO
+	 * throws NackException if the server response is Access Insert NACK
+ 	 */
+	 public AccessInsertACKVO folderAccessInsert(FolderAccessInsertVO requestVO)
+	{
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Access Update Request
+ 	 * Folder Update Lock.        
+    
+	 * Message Id : 7031
+	 * return AccessUpdateACKVO
+	 * throws NackException if the server response is Access Update NACK
+ 	 */
+	 public AccessUpdateACKVO folderAccessUpdate(FolderAccessUpdateVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Access Remove Request
+ 	 * Folder Remove Lock.        
+    
+	 * Message Id : 7032
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Access Remove NACK
+ 	 */
+	 public RemoveACKVO folderAccessRemove(FolderAccessRemoveVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Access Request
+ 	 * Folder Query Locks.        
+    
+	 * Message Id : 7033
+	 * return AccessMultiQueryACKVO
+	 * throws NackException if the server response is Access Multi Query NACK
+ 	 */
+	 public AccessMultiQueryACKVO folderQueryAccess(FolderQueryAccessVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Insert Folder Capital Constants Request
+ 	 * Settlement Netting insertion into the global database
+    
+	 * Message Id : 10463
+	 * return InsertACKVO
+	 * throws NackException if the server response is Insert NACK
+ 	 */
+	 public InsertACKVO folderInsertFolderCapitalConstants(FolderInsertFolderCapitalConstantsVO requestVO)
+	 {
+	 throw new NotImplementedException();}
+	
+	
+ 	/**
+ 	 * Folder Update Folder Capital Constants Request
+ 	 * Settlement Netting update into the global database
+    
+	 * Message Id : 10464
+	 * return UpdateACKVO
+	 * throws NackException if the server response is Update NACK
+ 	 */
+	 public UpdateACKVO folderUpdateFolderCapitalConstants(FolderUpdateFolderCapitalConstantsVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Remove Folder Capital Constants Request
+ 	 * Settlement Netting remove from the global database
+    
+	 * Message Id : 10465
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove NACK
+ 	 */
+	 public RemoveACKVO folderRemoveFolderCapitalConstants(FolderRemoveFolderCapitalConstantsVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Folder Capital Constants Request
+ 	 * Settlement Netting search into the global database
+    
+	 * Message Id : 10467
+	 * return FolderCapitalConstantsQueryACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public FolderCapitalConstantsQueryACKVO folderQueryFolderCapitalConstants(FolderQueryFolderCapitalConstantsVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Lock Insert Request
+ 	 * Folder Insert Lock.
+    
+	 * Message Id : 11012
+	 * return LockInsertACKVO
+	 * throws NackException if the server response is Lock Insert NACK
+ 	 */
+	 public LockInsertACKVO folderLockInsert(FolderLockInsertVO requestVO)		 
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Lock Update Request
+ 	 * Folder Update Lock.
+    
+	 * Message Id : 11013
+	 * return LockUpdateACKVO
+	 * throws NackException if the server response is Lock Update NACK
+ 	 */
+	 public LockUpdateACKVO folderLockUpdate(FolderLockUpdateVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Lock Remove Request
+ 	 * Folder Remove Lock.
+    
+	 * Message Id : 11014
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Lock Remove NACK
+ 	 */
+	 public RemoveACKVO folderLockRemove(FolderLockRemoveVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Locks Request
+ 	 * Folder Query Locks.
+    
+	 * Message Id : 11015
+	 * return LockQueryACKVO
+	 * throws NackException if the server response is Lock Query NACK
+ 	 */
+	 public LockQueryACKVO folderQueryLocks(FolderQueryLocksVO requestVO)
+	 {
+	 	throw new NotImplementedException();
+	 }
+	
+	/**
+	 * Folder QueryDV DB Request
+	 * 
+	 * Message Id : 11027
+	 * This is an asynchronous request.
+	 */
+	 public void folderQueryDVDB (FolderQueryDVDBVO requestVO)
+	 {
+		 return ;
+	 }
+
+    public static void log_info(final String ss) {
+        System.out.println(ss);
+    }
+
+    public static void log_info(final String ss, final Exception ex) {
+        log_info_exception(ss, ex);
+    }
+
+    public static void log_info_exception(final String ss, final Exception ex) {
+        try{
+            System.out.println(ss);
+
+	        final CharArrayWriter cw = new CharArrayWriter();
+	        final PrintWriter w = new PrintWriter(cw);
+	        ex.printStackTrace(w);
+	        w.close();
+	        final String trace = cw.toString();
+	        System.out.println(ss + " " + trace);
+		}catch(Exception ee){
+		
+		}
+    }
+
+    public void PrintStateEx(final String ss) {
+
+    }
+}

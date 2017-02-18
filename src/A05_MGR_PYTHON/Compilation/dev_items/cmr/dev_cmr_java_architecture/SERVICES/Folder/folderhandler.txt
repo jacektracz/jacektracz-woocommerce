@@ -1,0 +1,581 @@
+ 	/**
+ 	 * Folder Get Delta Request
+ 	 * 
+	 * Message Id : 1348
+	 * return FolderACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public FolderACKVO folderGetDelta(FolderGetDeltaVO requestVO)
+	 {
+		 return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Accept By Identifier Request
+ 	 * 
+	 * Message Id : 1349
+	 * return ACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public ACKVO folderAcceptByIdentifier(FolderAcceptByIdentifierVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Reject By Identifier Request
+ 	 * 
+	 * Message Id : 1350
+	 * return ACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public ACKVO folderRejectByIdentifier(FolderRejectByIdentifierVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Insert Request
+ 	 * Folder insertion into the global database
+    
+	 * Message Id : 1351
+	 * return InsertACKVO
+	 * throws NackException if the server response is Insert NACK
+ 	 */
+	 public InsertACKVO folderInsert(FolderInsertVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Update Request
+ 	 * Folder update into the global database
+    
+	 * Message Id : 1352
+	 * return UpdateACKVO
+	 * throws NackException if the server response is Update NACK
+ 	 */
+	 public UpdateACKVO folderUpdate(FolderUpdateVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Remove Request
+ 	 * Folder remove from the global database
+    
+	 * Message Id : 1353
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove NACK
+ 	 */
+	 public RemoveACKVO folderRemove(FolderRemoveVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Get By Identifier Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1354
+	 * return FolderGetACKVO
+	 * throws NackException if the server response is Get NACK
+ 	 */
+	 public FolderGetACKVO folderGetByIdentifier(FolderGetByIdentifierVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Get By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1355
+	 * return FolderGetACKVO
+	 * throws NackException if the server response is Get NACK
+ 	 */
+	 public FolderGetACKVO folderGetByName(FolderGetByNameVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Get By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1356
+	 * return FolderGetACKVO
+	 * throws NackException if the server response is Get NACK
+ 	 */
+	 public FolderGetACKVO folderGetByShortName(FolderGetByShortNameVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Get Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1357
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetIdentityByName(FolderGetIdentityByNameVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Get Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1358
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetIdentityByShortName(FolderGetIdentityByShortNameVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Get Identity By Identifier Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1359
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetIdentityByIdentifier(FolderGetIdentityByIdentifierVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1360
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryIdentityByShortName(FolderQueryIdentityByShortNameVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1361
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryIdentityByName(FolderQueryIdentityByNameVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Identity By Code Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1362
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryIdentityByCode(FolderQueryIdentityByCodeVO requestVO)
+{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Link Request
+ 	 * Folder link between two countries.
+    
+	 * Message Id : 1363
+	 * return InsertLinkACKVO
+	 * throws NackException if the server response is Insert NACK
+ 	 */
+	 public InsertLinkACKVO folderLink(FolderLinkVO requestVO)
+	 {
+		 return null;
+     }
+	
+	
+ 	/**
+ 	 * Folder Remove Link Request
+ 	 * Folder unlink.
+    
+	 * Message Id : 1364
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove NACK
+ 	 */
+	 public RemoveACKVO folderRemoveLink(FolderRemoveLinkVO requestVO)
+	 {
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Direct Children Request
+ 	 * Folder query direct link identities.
+    
+	 * Message Id : 1365
+	 * return QueryLinkACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkACKVO folderQueryDirectChildren(FolderQueryDirectChildrenVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Direct Parents Request
+ 	 * Folder query direct parent identities.
+    
+	 * Message Id : 1366
+	 * return QueryLinkACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkACKVO folderQueryDirectParents(FolderQueryDirectParentsVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Children Request
+ 	 * Folder query every children links.        
+    
+	 * Message Id : 1367
+	 * return QueryLinkTreeACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkTreeACKVO folderQueryChildren(FolderQueryChildrenVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Parents Request
+ 	 * Folder query every parents links.        
+    
+	 * Message Id : 1368
+	 * return QueryLinkTreeACKVO
+	 * throws NackException if the server response is Query Link NACK
+ 	 */
+	 public QueryLinkTreeACKVO folderQueryParents(FolderQueryParentsVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder QueryDV Request
+ 	 * 
+	 * Message Id : 1370
+	 * return CollFolderACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public CollFolderACKVO folderQueryDV(FolderQueryDVVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Get Entity Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1373
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetEntityIdentityByName(FolderGetEntityIdentityByNameVO requestVO)
+	{
+	return null;}
+	
+	
+ 	/**
+ 	 * Folder Get Entity Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1374
+	 * return GetIdentityACKVO
+	 * throws NackException if the server response is Get Identity NACK
+ 	 */
+	 public GetIdentityACKVO folderGetEntityIdentityByShortName(FolderGetEntityIdentityByShortNameVO requestVO)
+	 {
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Entity Identity By ShortName Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1375
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryEntityIdentityByShortName(FolderQueryEntityIdentityByShortNameVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Query Entity Identity By Name Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1376
+	 * return QueryIdentityACKVO
+	 * throws NackException if the server response is Query Identity NACK
+ 	 */
+	 public QueryIdentityACKVO folderQueryEntityIdentityByName(FolderQueryEntityIdentityByNameVO requestVO)
+	{
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Insert Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1382
+	 * return InsertCodifierElementACKVO
+	 * throws NackException if the server response is Insert Codifier Element NACK
+ 	 */
+	 public InsertCodifierElementACKVO folderInsertCodifierElement(FolderInsertCodifierElementVO requestVO)
+	{
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Update Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1383
+	 * return UpdateCodifierElementACKVO
+	 * throws NackException if the server response is Update Codifier Element NACK
+ 	 */
+	 public UpdateCodifierElementACKVO folderUpdateCodifierElement(FolderUpdateCodifierElementVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Remove Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1384
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove Codifier Element NACK
+ 	 */
+	 public RemoveACKVO folderRemoveCodifierElement(FolderRemoveCodifierElementVO requestVO)
+	{
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Codifier Element Request
+ 	 * Folder search into the global database
+    
+	 * Message Id : 1385
+	 * return QueryCodifierElementACKVO
+	 * throws NackException if the server response is Query Codifier Element NACK
+ 	 */
+	 public QueryCodifierElementACKVO folderQueryCodifierElement(FolderQueryCodifierElementVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Is Child Request
+ 	 * Country is Child.
+    
+	 * Message Id : 1386
+	 * return IsChildACKVO
+	 * throws NackException if the server response is Is Child NACK
+ 	 */
+	public IsChildACKVO folderIsChild(FolderIsChildVO requestVO)
+	{
+		return null;
+	}
+	
+	
+ 	/**
+ 	 * Folder Access Insert Request
+ 	 * Folder Insert Access.        
+    
+	 * Message Id : 7030
+	 * return AccessInsertACKVO
+	 * throws NackException if the server response is Access Insert NACK
+ 	 */
+	 public AccessInsertACKVO folderAccessInsert(FolderAccessInsertVO requestVO)
+	{
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Access Update Request
+ 	 * Folder Update Lock.        
+    
+	 * Message Id : 7031
+	 * return AccessUpdateACKVO
+	 * throws NackException if the server response is Access Update NACK
+ 	 */
+	 public AccessUpdateACKVO folderAccessUpdate(FolderAccessUpdateVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Access Remove Request
+ 	 * Folder Remove Lock.        
+    
+	 * Message Id : 7032
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Access Remove NACK
+ 	 */
+	 public RemoveACKVO folderAccessRemove(FolderAccessRemoveVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Access Request
+ 	 * Folder Query Locks.        
+    
+	 * Message Id : 7033
+	 * return AccessMultiQueryACKVO
+	 * throws NackException if the server response is Access Multi Query NACK
+ 	 */
+	 public AccessMultiQueryACKVO folderQueryAccess(FolderQueryAccessVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Insert Folder Capital Constants Request
+ 	 * Settlement Netting insertion into the global database
+    
+	 * Message Id : 10463
+	 * return InsertACKVO
+	 * throws NackException if the server response is Insert NACK
+ 	 */
+	 public InsertACKVO folderInsertFolderCapitalConstants(FolderInsertFolderCapitalConstantsVO requestVO)
+	 {
+	 return null;}
+	
+	
+ 	/**
+ 	 * Folder Update Folder Capital Constants Request
+ 	 * Settlement Netting update into the global database
+    
+	 * Message Id : 10464
+	 * return UpdateACKVO
+	 * throws NackException if the server response is Update NACK
+ 	 */
+	 public UpdateACKVO folderUpdateFolderCapitalConstants(FolderUpdateFolderCapitalConstantsVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Remove Folder Capital Constants Request
+ 	 * Settlement Netting remove from the global database
+    
+	 * Message Id : 10465
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Remove NACK
+ 	 */
+	 public RemoveACKVO folderRemoveFolderCapitalConstants(FolderRemoveFolderCapitalConstantsVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Folder Capital Constants Request
+ 	 * Settlement Netting search into the global database
+    
+	 * Message Id : 10467
+	 * return FolderCapitalConstantsQueryACKVO
+	 * throws NackException if the server response is NACK
+ 	 */
+	 public FolderCapitalConstantsQueryACKVO folderQueryFolderCapitalConstants(FolderQueryFolderCapitalConstantsVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Lock Insert Request
+ 	 * Folder Insert Lock.
+    
+	 * Message Id : 11012
+	 * return LockInsertACKVO
+	 * throws NackException if the server response is Lock Insert NACK
+ 	 */
+	 public LockInsertACKVO folderLockInsert(FolderLockInsertVO requestVO)		 
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Lock Update Request
+ 	 * Folder Update Lock.
+    
+	 * Message Id : 11013
+	 * return LockUpdateACKVO
+	 * throws NackException if the server response is Lock Update NACK
+ 	 */
+	 public LockUpdateACKVO folderLockUpdate(FolderLockUpdateVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Lock Remove Request
+ 	 * Folder Remove Lock.
+    
+	 * Message Id : 11014
+	 * return RemoveACKVO
+	 * throws NackException if the server response is Lock Remove NACK
+ 	 */
+	 public RemoveACKVO folderLockRemove(FolderLockRemoveVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	
+ 	/**
+ 	 * Folder Query Locks Request
+ 	 * Folder Query Locks.
+    
+	 * Message Id : 11015
+	 * return LockQueryACKVO
+	 * throws NackException if the server response is Lock Query NACK
+ 	 */
+	 public LockQueryACKVO folderQueryLocks(FolderQueryLocksVO requestVO)
+	 {
+	 	return null;
+	 }
+	
+	/**
+	 * Folder QueryDV DB Request
+	 * 
+	 * Message Id : 11027
+	 * This is an asynchronous request.
+	 */
+	 public void folderQueryDVDB (FolderQueryDVDBVO requestVO)
+	 {
+		 return null;
+	 }

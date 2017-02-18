@@ -1,0 +1,121 @@
+setup - 0
+data & setup - 3
+nothing - 0
+
+
+package com.misys.kgrserver.handler;
+
+import com.misys.dao.rknet.SensitivitySetDAO;
+import com.misys.kgrserver.translator.GenericIdentityVectorACKTranslator;
+import com.misys.model.rate.SensitivitySet;
+import com.reuters.kgl.facade.beans.*;
+import com.reuters.kgl.facade.exception.NACKException;
+import org.apache.commons.lang.NotImplementedException;
+
+import java.util.List;
+
+public class SensitivitySetHandler extends AbstractValueObjectHandler {
+
+    private final SensitivitySetDAO sensitivitySetDAO;
+
+    private final GenericIdentityVectorACKTranslator genericIdentityVectorACKTranslator;
+
+    public SensitivitySetHandler() {
+        sensitivitySetDAO = new SensitivitySetDAO(emRate);
+        genericIdentityVectorACKTranslator = new GenericIdentityVectorACKTranslator();
+    }
+
+    @Override
+    public ValueObject handle(final ValueObject valueObject) {
+        try {
+            switch (valueObject.getMsgId()) {
+                case SensitivitySetInsertVO.MSG_ID:
+                    return insertSensitivitySet((SensitivitySetInsertVO)valueObject);
+                case SensitivitySetUpdateVO.MSG_ID:
+                    return updateSensitivitySet((SensitivitySetUpdateVO)valueObject);
+                case SensitivitySetRemoveVO.MSG_ID:
+                    return removeSensitivitySet((SensitivitySetRemoveVO)valueObject);
+                case SensitivitySetGetByIdentifierVO.MSG_ID:
+                    return getSensitivitySetByIdentifier((SensitivitySetGetByIdentifierVO)valueObject);
+                case SensitivitySetGetIdentityByIdentifierVO.MSG_ID:
+                    return getSensitivitySetIdentityByIdentifier((SensitivitySetGetIdentityByIdentifierVO)valueObject);
+                case SensitivitySetGetByNameVO.MSG_ID:
+                    return getSensitivitySetByName((SensitivitySetGetByNameVO)valueObject);
+                case SensitivitySetGetByShortNameVO.MSG_ID:
+                    return getSensitivitySetByShortName((SensitivitySetGetByShortNameVO)valueObject);
+                case SensitivitySetGetIdentityByNameVO.MSG_ID:
+                    return getSensitivitySetIdentityByName((SensitivitySetGetIdentityByNameVO)valueObject);
+                case SensitivitySetGetIdentityByShortNameVO.MSG_ID:
+                    return getSensitivitySetIdentityByShortName((SensitivitySetGetIdentityByShortNameVO) valueObject);
+                case SensitivitySetQueryIdentityByShortNameVO.MSG_ID:
+                    return querySensitivitySetIdentityByShortName((SensitivitySetQueryIdentityByShortNameVO) valueObject);
+                case SensitivitySetQueryIdentityByNameVO.MSG_ID:
+                    return querySensitivitySetIdentityByName((SensitivitySetQueryIdentityByNameVO) valueObject);
+                case SensitivitySetHasDataAccessVO.MSG_ID:
+                    return hasSensitivitySetDataAccess((SensitivitySetHasDataAccessVO)valueObject);
+                case SensitivitySetSearchDataSetTaskVO.MSG_ID:
+                    return searchDataSetTask((SensitivitySetSearchDataSetTaskVO)valueObject);
+                default:
+                    return new GenericNACKVO(NACKException.NOTFOUND, "Unknown message id");
+            }
+        /*} catch (final NotFoundException e) {
+            return new GenericNACKVO(NACKException.NOTFOUND, e.getMessage());*/
+        } catch (final Exception e) {
+            return new GenericNACKVO(NACKException.SYSTEM, e.getMessage());
+        }
+    }
+
+    private ValueObject searchDataSetTask(final SensitivitySetSearchDataSetTaskVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject hasSensitivitySetDataAccess(final SensitivitySetHasDataAccessVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject getSensitivitySetIdentityByShortName(final SensitivitySetGetIdentityByShortNameVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject getSensitivitySetIdentityByName(final SensitivitySetGetIdentityByNameVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject getSensitivitySetByShortName(final SensitivitySetGetByShortNameVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject getSensitivitySetByName(final SensitivitySetGetByNameVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject getSensitivitySetIdentityByIdentifier(final SensitivitySetGetIdentityByIdentifierVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject getSensitivitySetByIdentifier(final SensitivitySetGetByIdentifierVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject removeSensitivitySet(final SensitivitySetRemoveVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject updateSensitivitySet(final SensitivitySetUpdateVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private ValueObject insertSensitivitySet(final SensitivitySetInsertVO valueObject) {
+        throw new NotImplementedException();
+    }
+
+    private GenericIdentityVectorACKVO querySensitivitySetIdentityByName(final SensitivitySetQueryIdentityByNameVO valueObject) {
+        List<SensitivitySet> sensitivitySets = sensitivitySetDAO.findByNameLike(valueObject.getName(), valueObject.getMaxLength());
+        return genericIdentityVectorACKTranslator.modelToVo(sensitivitySets);
+    }
+
+    private GenericIdentityVectorACKVO querySensitivitySetIdentityByShortName(final SensitivitySetQueryIdentityByShortNameVO valueObject) {
+        List<SensitivitySet> sensitivitySets = sensitivitySetDAO.findByShortName(valueObject.getShortName(), valueObject.getMaxLength());
+        return genericIdentityVectorACKTranslator.modelToVo(sensitivitySets);
+    }
+}

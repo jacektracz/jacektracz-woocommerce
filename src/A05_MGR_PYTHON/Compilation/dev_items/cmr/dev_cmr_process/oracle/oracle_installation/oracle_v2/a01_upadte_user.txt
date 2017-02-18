@@ -1,0 +1,1 @@
+update KNUser set SHORTNAME='KGR',NAME='KGR' where loginname='kgr'

@@ -1,0 +1,107 @@
+alias kh_ca="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/aliases_cmr_khepri_v2.txt"
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+export DD=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/
+export DDSQL=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc
+export DDORCL=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etco
+export KHCA=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/
+
+alias gg="/usr/bin/gedit"
+
+alias lsk="ls $DDSQL"
+
+#tests
+
+alias kh_t1="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest clean test"
+alias kh_t3t="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest clean test -X"
+alias kh_t1t="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest -Dmaven.surefire.debug clean test"
+alias kh_t2t="mvn -s ../settings.xml -Dtest=MarketDataIntegrationTest -Dmaven.surefire.debug clean test -X"
+
+#compilation
+
+alias kh_compile_trunk_cpp="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_trunk_cpp.sh"
+alias kh_compile_gen_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_trunk_cpp_gen.sh"
+alias kh_compile_cpp_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_trunk_cpp.sh"
+alias kh_compile_cpp_khepri_v2="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_khepri_v2_cpp.sh"
+
+alias kh_compile_java="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_khepri_v2_java.sh"
+alias kh_compile_java_kgrserver="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_khepri_v2_kgrserver.sh"
+alias kh_compile_java_api="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_cmr_khepri_v2_kgrserverapi.txt"
+
+#startstop
+
+alias kh_start_cmr_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/start_cmr_dev.txt"
+alias kh_stop_cmr_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/stop_cmr_dev.txt"
+alias kh_stop_cmr_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/stop_cmr_trunk_v1.txt"
+
+#cd
+alias kh_cd_java="cd /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/src/java/"
+
+alias kh_cd_server="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server"
+alias kh_cd_target="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target"
+
+alias kh_cd_too="cd /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation"
+alias kh_cd_cpp="cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp"
+
+alias kh_cd_log_kdev="cd /home/kdeveloper/FR/CMR/data/log"
+
+
+alias kh_cd_rate="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-ratemanager-war"
+
+#cd - dev
+
+alias kh_cd_log_dev="cd /jenkins/dist/FR/CMR/data/log"
+alias kh_cd_etc_dev="cd /jenkins/dist/FR/CMR/etc"
+
+alias kh_cd_trunk_callbacks="cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/KNETCallbacks/KNETCreditCallbacks"
+
+alias kh_cd_khepri_rate="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-ratemanager-war"
+alias kh_cd_e="cd /jenkins/dist/FR/CMR/etc"
+alias kh_cd_l="cd /jenkins/dist/FR/CMR/log"
+alias kh_cd_dl="cd /jenkins/dist/FR/CMR/data/log"
+
+#setenv
+
+alias kh_setenv_khepri="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_khepri_v2.sh"
+alias kh_setenv_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_dev.txt"
+alias kh_setenv_trunk="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_trunk_v1.sh"
+alias kh_start_jkns="java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target/kgr-server-core-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar"
+alias kh_start_jkns2="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/start_jkns.txt"
+alias kh_start_java_api="java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server-api-handlers/target/kgr-server-api-handlers-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar"
+
+#generic
+alias kh_a="alias | grep -i kh"
+
+#develompmen mgr-699
+
+alias kh_dev_trunk_tailcpp="tail -f cd /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/build.txt"
+alias kh_dev_trunk_cp="cp /jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/install/lib/x86Linux/libKNETCreditCallbacks.so /home/kdeveloper/FR/CMR/lib/x86Linux"
+alias kh_dev_trunkltr="ls -ltr /home/kdeveloper/FR/CMR/lib/x86Linux"
+alias kh_dev_trunk_setnoaudit_all="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/seten_no_audit.txt"
+alias kh_dev_trunk_a="alias | grep -i kh"
+alias kh_dev_trunk_debkh="tail -f  /home/kdeveloper/FR/CMR/log/KGRServer_master_stdout.log | grep -i KH_DE"
+alias kh_dev_trunk_kns="ps -ef | grep -i kgrserver | grep -i x86"
+alias kh_dev_trunk_scons="scons --no-cache -j 8 > build.txt 2>&1"
+alias kh_dev_trunk_kill="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/kill_cmr_kns_trunk.sh"
+alias kh_dev_trunk_start_kns="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/start_cmr_fr.sh"
+alias kh_dev_trunk_show_kns="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/kill_cmr_kns_trunk.sh"
+alias kh_dev_trunk_kill_kns="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/kill_cmr_kns_trunk.sh"
+alias kh_dev_trunk_rcp="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/compile_restart_kns_trunk.sh"
+alias kh_dev_trunk_tail="tail -f  /home/kdeveloper/FR/CMR/log/KGRServer_master_stdout.log"
+
+
+#kgr-server dev
+alias kh_start_java_api="java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server-api-handlers/target/kgr-server-api-handlers-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar -Dkgr.configuration.kgrserver=/jenkins/dist/FR/CMR/config/kgrserver.properties"
+
+
+alias kh_cd_java="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/"
+alias kh_cd_server="cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server"
+alias kh_setenv_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_dev.txt"
+alias kh_start_jkns="java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target/kgr-server-core-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar"
+alias kh_cp_gui="cp -r /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/install/gui/* /jenkins/dist/FR/CMR/gui"
+alias kh_start_java_kgrserver="java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/target/kgr-server-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar"
+alias kh_start_java_api_deb="java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5044 -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server-api-handlers/target/kgr-server-api-handlers-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar -Dkgr.configuration.kgrserver=/jenkins/dist/FR/CMR/config/kgrserver.properties"
+alias kh_start_java_kgrserver_deb="java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=1044 -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/target/kgr-server-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar -Dkgr.configuration.kgrserver=/jenkins/dist/FR/CMR/config/kgrserver.properties"
+alias kh_start_java_kgrserver_rel="java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/target/kgr-server-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar -Dkgr.configuration.kgrserver=/jenkins/dist/FR/CMR/config/kgrserver.properties"
+alias kh_install_gui_dev="source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/cpy_install_gui_khepri_v2_dev.txt"
+alias kh_vi_gui="vi /jenkins/dist/FR/CMR/config/gui.properties"
+alias khgg="gg /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/dev_items/cmr/dev_cmr_work_items/dev_java/RiskFactorGroup/rfg_jms_1.xml"

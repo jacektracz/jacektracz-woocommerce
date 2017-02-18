@@ -1,0 +1,4 @@
+kgr-business/src/main/java/com/reuters/kgl/presentation/api/SensitivityPnLMTMDateHGClientApi.java
+
+
+http://almtools/confluence/display/ENG/Test+Cases+with+Forward+Summit+trade

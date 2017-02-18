@@ -1,0 +1,437 @@
+FolderHandler::handle::method_start::14_14
+handlerMapping.put(TimeSeriesServicesInsertVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesUpdateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesRemoveVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetByIdentifierVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetIdentityByIdentifierVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetByNameVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetByShortNameVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetIdentityByNameVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetIdentityByShortNameVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryIdentityByNameVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryIdentityByShortNameVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesInsertRateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesInsertRateByDateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesUpdateRateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesRemoveRateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetRatePriceVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetRateCurveVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetRateSurfaceVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetRatingSurfaceVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetEntityIndexVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryAsOfDateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryStrikeVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryStrikeByDateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryMaturityTenorVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryMaturityTenorByDateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryExpiryTenorVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryExpiryTenorByDateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesQueryRatingByDateVO.MSG_ID, TimeSeriesServicesHandler.class););
+handlerMapping.put(TimeSeriesServicesGetRateCubeVO.MSG_ID, TimeSeriesServicesHandler.class););
+case GenericIdACKVO.MSG_ID:
+return timeSeriesServicesInsert((TimeSeriesServicesInsertVO) object);
+case GenericACKVO.MSG_ID:
+return timeSeriesServicesUpdate((TimeSeriesServicesUpdateVO) object);
+case GenericACKVO.MSG_ID:
+return timeSeriesServicesRemove((TimeSeriesServicesRemoveVO) object);
+case GenericTimeSeriesACKVO.MSG_ID:
+return timeSeriesServicesGetByIdentifier((TimeSeriesServicesGetByIdentifierVO) object);
+case GenericIdentityACKVO.MSG_ID:
+return timeSeriesServicesGetIdentityByIdentifier((TimeSeriesServicesGetIdentityByIdentifierVO) object);
+case GenericTimeSeriesACKVO.MSG_ID:
+return timeSeriesServicesGetByName((TimeSeriesServicesGetByNameVO) object);
+case GenericTimeSeriesACKVO.MSG_ID:
+return timeSeriesServicesGetByShortName((TimeSeriesServicesGetByShortNameVO) object);
+case GenericIdentityACKVO.MSG_ID:
+return timeSeriesServicesGetIdentityByName((TimeSeriesServicesGetIdentityByNameVO) object);
+case GenericIdentityACKVO.MSG_ID:
+return timeSeriesServicesGetIdentityByShortName((TimeSeriesServicesGetIdentityByShortNameVO) object);
+case GenericIdentityVectorACKVO.MSG_ID:
+return timeSeriesServicesQueryIdentityByName((TimeSeriesServicesQueryIdentityByNameVO) object);
+case GenericIdentityVectorACKVO.MSG_ID:
+return timeSeriesServicesQueryIdentityByShortName((TimeSeriesServicesQueryIdentityByShortNameVO) object);
+case GenericIdACKVO.MSG_ID:
+return timeSeriesServicesInsertRate((TimeSeriesServicesInsertRateVO) object);
+case GenericIdACKVO.MSG_ID:
+return timeSeriesServicesInsertRateByDate((TimeSeriesServicesInsertRateByDateVO) object);
+case GenericACKVO.MSG_ID:
+return timeSeriesServicesUpdateRate((TimeSeriesServicesUpdateRateVO) object);
+case GenericACKVO.MSG_ID:
+return timeSeriesServicesRemoveRate((TimeSeriesServicesRemoveRateVO) object);
+case TimeSeriesServicesGetRatePriceACKVO.MSG_ID:
+return timeSeriesServicesGetRatePrice((TimeSeriesServicesGetRatePriceVO) object);
+case TimeSeriesServicesGetRateCurveACKVO.MSG_ID:
+return timeSeriesServicesGetRateCurve((TimeSeriesServicesGetRateCurveVO) object);
+case TimeSeriesServicesGetRateSurfaceACKVO.MSG_ID:
+return timeSeriesServicesGetRateSurface((TimeSeriesServicesGetRateSurfaceVO) object);
+case TimeSeriesServicesGetRatingSurfaceACKVO.MSG_ID:
+return timeSeriesServicesGetRatingSurface((TimeSeriesServicesGetRatingSurfaceVO) object);
+case TimeSeriesServicesGetEntityIndexACKVO.MSG_ID:
+return timeSeriesServicesGetEntityIndex((TimeSeriesServicesGetEntityIndexVO) object);
+case TimeSeriesServicesQueryAsOfDateACKVO.MSG_ID:
+return timeSeriesServicesQueryAsOfDate((TimeSeriesServicesQueryAsOfDateVO) object);
+case TimeSeriesServicesQueryStrikeACKVO.MSG_ID:
+return timeSeriesServicesQueryStrike((TimeSeriesServicesQueryStrikeVO) object);
+case TimeSeriesServicesQueryStrikeByDateACKVO.MSG_ID:
+return timeSeriesServicesQueryStrikeByDate((TimeSeriesServicesQueryStrikeByDateVO) object);
+case GenericIdentityVectorACKVO.MSG_ID:
+return timeSeriesServicesQueryMaturityTenor((TimeSeriesServicesQueryMaturityTenorVO) object);
+case GenericIdentityVectorACKVO.MSG_ID:
+return timeSeriesServicesQueryMaturityTenorByDate((TimeSeriesServicesQueryMaturityTenorByDateVO) object);
+case GenericIdentityVectorACKVO.MSG_ID:
+return timeSeriesServicesQueryExpiryTenor((TimeSeriesServicesQueryExpiryTenorVO) object);
+case GenericIdentityVectorACKVO.MSG_ID:
+return timeSeriesServicesQueryExpiryTenorByDate((TimeSeriesServicesQueryExpiryTenorByDateVO) object);
+case GenericIdentityVectorACKVO.MSG_ID:
+return timeSeriesServicesQueryRatingByDate((TimeSeriesServicesQueryRatingByDateVO) object);
+case TimeSeriesServicesGetRateCubeACKVO.MSG_ID:
+return timeSeriesServicesGetRateCube((TimeSeriesServicesGetRateCubeVO) object);
+public GenericIdACKVO timeSeriesServicesInsert( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesInsert::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesInsert::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesInsert::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesUpdate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesUpdate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesUpdate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesUpdate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesRemove( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesRemove::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesRemove::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesRemove::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetByIdentifier( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetByIdentifier::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetByIdentifier::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetByIdentifier::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetIdentityByIdentifier( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByIdentifier::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByIdentifier::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByIdentifier::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetByName( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetByName::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetByName::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetByName::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetByShortName( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetByShortName::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetByShortName::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetByShortName::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetIdentityByName( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByName::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByName::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByName::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetIdentityByShortName( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByShortName::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByShortName::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetIdentityByShortName::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryIdentityByName( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryIdentityByName::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryIdentityByName::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryIdentityByName::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryIdentityByShortName( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryIdentityByShortName::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryIdentityByShortName::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryIdentityByShortName::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesInsertRate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesInsertRate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesInsertRate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesInsertRate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesInsertRateByDate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesInsertRateByDate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesInsertRateByDate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesInsertRateByDate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesUpdateRate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesUpdateRate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesUpdateRate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesUpdateRate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesRemoveRate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesRemoveRate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesRemoveRate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesRemoveRate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetRatePrice( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRatePrice::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRatePrice::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetRatePrice::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetRateCurve( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRateCurve::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRateCurve::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetRateCurve::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetRateSurface( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRateSurface::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRateSurface::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetRateSurface::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetRatingSurface( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRatingSurface::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRatingSurface::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetRatingSurface::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetEntityIndex( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetEntityIndex::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetEntityIndex::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetEntityIndex::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryAsOfDate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryAsOfDate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryAsOfDate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryAsOfDate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryStrike( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryStrike::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryStrike::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryStrike::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryStrikeByDate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryStrikeByDate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryStrikeByDate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryStrikeByDate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryMaturityTenor( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryMaturityTenor::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryMaturityTenor::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryMaturityTenor::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryMaturityTenorByDate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryMaturityTenorByDate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryMaturityTenorByDate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryMaturityTenorByDate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryExpiryTenor( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryExpiryTenor::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryExpiryTenor::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryExpiryTenor::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryExpiryTenorByDate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryExpiryTenorByDate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryExpiryTenorByDate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryExpiryTenorByDate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesQueryRatingByDate( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryRatingByDate::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesQueryRatingByDate::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesQueryRatingByDate::exception::", ee);
+throw ee;
+}
+}
+public GenericIdACKVO timeSeriesServicesGetRateCube( TimeSeriesServicesInsertVO requestVO)
+{
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRateCube::method_start");
+try {
+GenericIdACKVO result = new GenericIdACKVO();
+logger.log_info("TimeSeriesServicesHandler::timeSeriesServicesGetRateCube::method_end:: " result.toString());
+return result;
+} catch (final Exception ee) {
+logger.log_info_exception(TimeSeriesServicesHandler::timeSeriesServicesGetRateCube::exception::", ee);
+throw ee;
+}
+}
+

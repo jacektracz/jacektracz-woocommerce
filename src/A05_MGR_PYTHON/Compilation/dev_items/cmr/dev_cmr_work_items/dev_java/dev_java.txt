@@ -1,0 +1,41 @@
+java -jar <sciezka do jara>
+
+cd /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target
+
+java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target/kgr-server-core-1.03.00.00.11-SNAPSHOT.jar
+
+
+java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/kgr-server-core/target/kgr-server-core-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar
+
+
+java -jar /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server-api-handlers/target/kgr-server-api-handlers-1.03.00.00.11-SNAPSHOT-jar-with-dependencies.jar
+
+
+ActiveMQ
+
+	http://localhost:8161/admin/
+	
+	
+	
+ls /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/install/gui/webapps
+ls /jenkins/dist/FR/CMR/gui/libs
+
+
+ls -ltr /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/install/gui/webaps
+
+
+cp -r /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/install/gui/* /jenkins/dist/FR/CMR/gui
+cp -r /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/install/interface/* /jenkins/dist/FR/CMR/interface
+
+
+ls /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/install/gui/ 	
+ls /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/install/interface/
+
+
+mkdir /jenkins/dist/FR/CMR/gui_backup_2
+cp -r /jenkins/dist/FR/CMR/gui/* /jenkins/dist/FR/CMR/gui_backup_2
+
+ls /jenkins/dist/FR/CMR/gui_backup_2
+
+
+http://10.22.11.18:19080/kgr/

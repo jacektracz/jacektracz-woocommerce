@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/aliases_cmr_khepri_v2.txt
+#source $DDSQL/stop/stop_cmr_dev.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/CMR/etc
+/jenkins/dist/FR/CMR/etc/stopjms
+/jenkins/dist/FR/CMR/etc/stoptibems
+/jenkins/dist/FR/CMR/etc/stopKGRWeb
+
+echo 'killing kgr server'
+kill -9 $(ps -ef | grep 'bin/x86Linux/KGRServer' | awk '{print $2}')
+echo 'killing kgr server - done'
+
+echo 'killing rvd'
+kill -9 $(ps -ef | grep '/jenkins/dist/FR/Common/RV/bin/rvd' | awk '{print $2}')
+echo 'killing rvd - done'
+

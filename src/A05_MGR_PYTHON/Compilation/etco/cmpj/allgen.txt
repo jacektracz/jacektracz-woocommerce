@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etco/setenv/setenv_cmr_dev.txt
+cd /jenkins/jt_dev/cmr/cmr_release_13/kgr-khepri/cmr/CMR/src/cpp
+
+echo "KGRCPP: $KGRCPP"
+echo "WORKSPACE: $WORKSPACE"
+
+scons generation
+
+#scons --no-cache -j 8 > build.txt 2>&1
+
+
+	

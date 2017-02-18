@@ -1,0 +1,1 @@
+git clone https://jactracz@scm-git-eur.misys.global.ad/scm/risk/cmr.git /jenkins/jt_dev/cmr/cmr_develop_g9/kgr-khepri/

@@ -1,0 +1,13 @@
+	Application
+		Goal
+			Build active mq all exeamples from maning book
+		Workspace
+			E:\a01_java\workspaces\2015\a01_09_activmqbook
+		Project
+			E:\a01_java\jee_projects\a2015_01_09_activemq\v1\all_samples\pom.xml
+		Outcome
+			Doesn't compile
+		Date
+			Start
+				2015-01-09
+			

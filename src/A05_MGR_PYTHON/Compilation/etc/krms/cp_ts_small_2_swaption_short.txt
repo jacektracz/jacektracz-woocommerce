@@ -1,0 +1,4 @@
+rm /jenkins/dist/FR/CMR/data/interface/rate/HS_SWAPTIONCUBE_KGR_EURSWO*
+#	292131615 / 543285  
+#	92020
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-2/HS_SWAPTIONCUBE_KGR_EURSWO-SHORT.xml /jenkins/dist/FR/CMR/data/interface/rate

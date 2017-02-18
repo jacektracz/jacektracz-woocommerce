@@ -1,0 +1,198 @@
+workspace for tools
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_tools
+
+workspace for c++
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_trunk_cpp
+
+workspace for java
+
+	WORKSPACE:	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_khepri_v2_1
+	SRC:		/jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/
+	
+	Maven user settings:
+		/jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/settings.xml
+
+workspace for java - develop
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_develop_g9
+	
+	
+workspace for java - khepri	
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_develop_g9
+	
+workspace for java - khepri		
+	/jenkins/jt_dev/cmr/prjsv1/cmr/cmr_khepri_g9
+/****************************************************************/
+/*																*/
+/*					MAIN JAVA WORKSPACE 						*/
+/*																*/	
+/****************************************************************/
+git workspace
+	/jenkins/jt_dev/cmr/prjsv1/cmr/${CMRVER}
+	
+		/jenkins/jt_dev/cmr/prjsv1/cmr/${CMRVER}/src/java/settings.xml
+
+git workspace eclipse		
+	/jenkins/jt_dev/cmr/prjsv1/cmr/${CMRVER}
+
+cmr sources git
+	/jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java
+	
+
+	cat /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server/src/main/resources/META-INF/*xml
+	cat /jenkins/jt_dev/cmr/cmr_khepri_v2/kgr-khepri/src/java/kgr-server-api-handlers/src/main/resources/META-INF/*xml
+
+DEV_GIT:
+
+	export GIT_SSL_NO_VERIFY=1
+	git clone https://jactracz@scm-git-eur.misys.global.ad/scm/risk/cmr.git /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/
+
+
+	rsync -avz kdeveloper@10.22.11.18:/jenkins/jt_dev .
+	
+	
+	jacek@GDNWJMST35:/media/6692d55f-26cf-41f2-9c7c-e807a63d803d/jenkins$ rsync -avz kdeveloper@10.22.11.18:/jenkins/jt_dev .
+	
+	mount -t ext3 /media/74189739-32a1-4a9c-b0f0-37767f24128b /jenkins
+	
+	ln -s /media/74189739-32a1-4a9c-b0f0-37767f24128b/jt_dev_old /jenkins/jt_dev_old
+	
+	ln -s /media/74189739-32a1-4a9c-b0f0-37767f24128b/vc_reutek_old /jenkins/vc_reutek_old
+
+
+ActiveMQ
+
+	http://localhost:8161/admin/
+	
+	
+SWITCH:
+	gui.properties
+	devtest.kgr.serverjava.api.avalibable=ApiTenor
+	
+	export GIT_SSL_NO_VERIFY=1
+
+ALMTOOLS:
+
+	https://scm-git-eur.misys.global.ad/projects
+	https://scm-git-eur.misys.global.ad/projects/RISK/repos/cmr/browse
+	
+GIT:
+
+
+	https://github.com/tgrteam/bsgjee
+	git remote add bsgjee https://github.com/tgrteam/bsgjee
+
+	
+	touch README.md
+	git init
+	git add README.md
+	git commit -m "first commit"
+	git remote add origin https://github.com/tgrteam/cv.git
+	git push -u bsgjee master
+
+	
+	user	:	tgrteam	
+	passwd	:	Russelcouts1
+	
+	 git config --global alias.lga "log --graph --oneline --all --decorate"
+	
+	
+	
+	bsgen$ git checkout -b feature2
+	
+	git push -u bsgjee feature2
+	
+	git mergetool
+	
+vi /jenkins/dist/FR/CMR/config/kgrserver.properties
+cat /jenkins/dist/FR/CMR/config/kgrserver.properties
+cat /jenkins/dist/FR/CMR/config/log4j.properties
+
+########################################
+# Logger File: #
+# Define the logger configuration file #
+########################################
+kgr.log4j.file=$V(WEBAPP_CONFIG_DIR)/kgrserver.log4j.properties
+##################
+## JMS Provider ##
+##################
+kgr.jms.provider.contextfactory = org.apache.activemq.jndi.ActiveMQInitialContextFactory
+kgr.jms.provider.url = tcp://kenvngServer:61616
+kgr.jms.timeout=30000
+kgr.jms.provider.username=admin
+kgr.jms.provider.password=admin
+kgr.jms.reconnect.interval=10000
+##################
+## Heartbeats ##
+##################
+kgr.jms.heartbeat.interval=10000
+kns.heartbeat.servers.topic=KREDITNET.2.6.HEARTBEAT.SERVERS
+kns.heartbeat.ping.interval=30000
+	
+	
+	
+	
+do /etc/fstab sobie takie cos wrzuc:
+
+//gdnshp46/public /media/gdnshare cifs iocharset=utf8,credentials=/etc/.smbcredentials,uid=1000 0 0
+
+
+sudo mkdir /media/gdnshare
+
+gdzie /media/gdnshare to lokalny folder, upewnij sie ze sciezka istnieje
+a do /etc/.smbcredentials sobie wrzuc:
+sudo vi /etc/.smbcredentials
+username=jactracz
+password=Welcome12
+domain=MISYSROOT
+
+kgr.krms.heartbeat.servers.topic
+
+
+sudo mount -t cifs -o user=jactracz //gdnsnetapp01/mgr /mnt/gdnsnetapp01
+
+
+
+
+# Root logger option
+log4j.rootLogger=INFO, stdout
+
+# Direct log messages to stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+
+vi /jenkins/dist/FR/CMR/config/log4j.properties
+cp /jenkins/dist/FR/CMR/config/log4j.properties /jenkins/dist/FR/CMR/config/log4j.full.properties
+
+vi /jenkins/dist/FR/CMR/config/log4j.simple.properties
+mv /jenkins/dist/FR/CMR/config/log4j.simple.properties /jenkins/dist/FR/CMR/config/log4j.properties
+	
+	
+	
+ *.iml
+ *.project
+ *.settings
+ *.classpath
+ *.checkstyle
+ 
+git difftool -t kdiff3 --cached 	
+
+
+
+
+http://think-like-a-git.net/sections/rebase-from-the-ground-up.html
+
+
+
+7f6de4eef06e99ee826c85f941be43971b4e0b61
+
+
+
+ln -s /home/szyzyrek /jenkins/jt_dev
+
+
+
+
+git clone https://jactracz@scm-git-eur.misys.global.ad/scm/risk/cmr.git /jenkins/jt_dev/cmr/cmr_khepri_h2/kgr-khepri/

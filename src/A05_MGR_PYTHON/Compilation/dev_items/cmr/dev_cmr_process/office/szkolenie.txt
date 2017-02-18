@@ -1,0 +1,55 @@
+Welcome, jacek.tracz@misys.com!
+An account has been created for you at Pluralsight.
+Our service is provided on the web. Just surf to our website and click the login link in the upper-right corner of the page to log in.
+http://www.pluralsight.com
+User name: jacekxtraczxmisysxco
+Password: nPYr83nk 
+
+
+Cześć,
+
+Treningi poniżej zacznijcie robić już od teraz.
+
+Tutaj jest lista treningów wymaganych:
+http://www.pluralsight.com/training/Courses/TableOfContents/git-fundamentals
+http://www.pluralsight.com/training/Courses/TableOfContents/maven-fundamentals
+http://www.pluralsight.com/training/Courses/TableOfContents/java1
+http://www.pluralsight.com/training/Courses/TableOfContents/java2
+http://www.pluralsight.com/training/Courses/TableOfContents/test-first-development-1
+http://www.pluralsight.com/training/Courses/TableOfContents/test-first-development-2
+łącznie około 18h(2.25dni) czyli powinniście zdążyć to zrobić przez 3 dni z przykładami. Jeżeli potrzebujecie więcej czasu, to dajcie znać.
+
+Powtarzajcie sobie przykłady z tutoriali w eclipse/w terminalu żebyście załapali całe podstawy. Wszystko już mamy w GIT. GIT działa zupełnie inaczej niż CVS/SVN jeżeli chodzi o commity/branche/merge i to podstawa w naszej pracy żebyście zrozumieli jego podstawy. Dodatkowe materiały do gita to książka GIT PRO dostępna tutaj:
+http://git-scm.com/book/en/v2
+Po przerobieniu szkolenia GIT z pluralsight fajnie jakbyście przeczytali sobie jeszcze z książki (i dokładnie przeanalizowali tamte przykłady) z rozdziału 3. Git Branching i 7. Git Tools.
+
+
+Jacek, dla Ciebie dodatkowym obowiązkowym szkoleniem będzie:
+http://www.pluralsight.com/courses/java-persistence-api-21
+http://www.pluralsight.com/courses/hibernate-introduction
+pierwsze obejmuje JPA w ogólności, a drugie bardziej dokładnie hibernate’a. 
+My piszemy zgodnie z JPA, ale warto znać oba podejścia. 
+Ta sama uwaga co do GIT – rób przykłady żebyś wszystko ogarniał i zapamiętał.
+
+
+Marcin, dla Ciebie dodatkowym obowiązkowym szkoleniem będzie:
+http://www.pluralsight.com/courses/restful-services-java-using-jersey
+http://www.pluralsight.com/courses/build-asynchronous-restful-services-jersey
+http://www.pluralsight.com/training/Courses/TableOfContents/scrum-fundamentals
+to samo, co wyżej – rób przykłady żeby zapamiętać.
+
+Best regards,
+Waldek
+
+
+
+Waldemar Masilunas
+Software Engineer P3
+ 
+..................................................................................................
+Misys Luzycka 6D, Gdynia 81-537, Poland
+
+Ext: 29745 M: +48 505 365 093 E: waldemar.masilunas@misys.com
+www.misys.com
+       
+

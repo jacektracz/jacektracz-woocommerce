@@ -1,0 +1,19 @@
+last dev : ${CMRVER}
+	
+	last pull: cmr_khepri_h1
+	
+	cd /jenkins/jt_dev/cmr/cmr_khepri_h1
+	
+	
+	
+	
+	/jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-server/
+	
+	
+	cat /jt_dev/cmr/cmr_khepri_h1/kgr-khepri/cmr/CMR/src/java/kgr-server/src/main/java/com/misys/kgrserver/handler/CptyHandler.java
+
+	
+	
+	import org.hibernate.annotations.Type;
+	@Type(type="com.misys.model.ByteArrayType")
+	

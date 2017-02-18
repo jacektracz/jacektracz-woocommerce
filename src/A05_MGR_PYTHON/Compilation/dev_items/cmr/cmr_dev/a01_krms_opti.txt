@@ -1,0 +1,4 @@
+KGR_OPTS="$KGR_OPTS -Dkgr.rtm.opti=true"
+KGR_OPTS="$KGR_OPTS -Dkgr.rtm.log.lvl=0"
+KGR_OPTS="$KGR_OPTS -Dkgr.rtm.log.mod=1000"
+KGR_OPTS="$KGR_OPTS -Dkgr.server.log=true"

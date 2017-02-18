@@ -1,0 +1,2 @@
+ vi /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/.git/info/excludeno tak
+ 

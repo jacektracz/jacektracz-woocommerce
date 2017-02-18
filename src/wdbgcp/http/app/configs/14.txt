@@ -1,0 +1,11 @@
+[mainconfig]
+m_out_file_name = iastora14
+m_version = 14
+m_log_all_errors = 0
+m_exit_on_exception = 0
+m_system_target = 0
+m_root_dir = D:/lkd/komodo/apps/srt_accelerated/
+m_prefix = iastora14.conf
+m_file = 14
+m_raid_targets_arr = 2d
+

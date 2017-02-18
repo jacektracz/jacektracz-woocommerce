@@ -1,0 +1,4 @@
+
+cd /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java
+
+mvn install:install-file -s settings.xml -Dfile=/jenkins/jt_dev/oracle/ojdbc6_g.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4.0 -Dpackaging=jar

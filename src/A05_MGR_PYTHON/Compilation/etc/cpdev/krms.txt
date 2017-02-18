@@ -1,0 +1,7 @@
+#!/bin/bash
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+echo 'start copying krms data'
+
+cp -r /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/install/gui/krms_ear/* /jenkins/dist/FR/CMR/gui/krms_ear
+ 

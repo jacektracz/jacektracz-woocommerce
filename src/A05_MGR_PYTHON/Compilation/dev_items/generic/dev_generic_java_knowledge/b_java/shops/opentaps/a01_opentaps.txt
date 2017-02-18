@@ -1,0 +1,3 @@
+cd H:\a01_java\opentaps\2013_12_28\opentaps-1.5.0
+
+startofbiz.bat

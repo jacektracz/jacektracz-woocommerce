@@ -1,0 +1,94 @@
+djalina@wp.pl
+
+bp iastora!AHCI_IOCTL_CSMI_Get_PhyInfo
+
+1: kd> ?? ((iastora!raiddev*)0xffffe00117e95d78)
+class RaidDev * 0xffffe001`17e95d78
+   +0x000 __VFN_table : 0xfffff800`8cbaee90 
+   +0x008 hostIoTarget     : (null) 
+   +0x010 serialNo         : [17]  "Volume2"
+   +0x024 hostPowerState   : 0 ( PowerUp )
+   +0x028 raidDevNum       : 0n0
+   +0x02c ismPTL           : ISM_PATH_TARGET_LUN
+   +0x030 raidIsm          : 0xffffe001`17e00000 RaidIsm
+   +0x038 mode             : 3 ( Active )
+   +0x040 cfgRaidDev       : 0xffffe001`17ecb7b0 CfgRaidDev
+   +0x048 array            : 0xffffe001`17ef89c8 CfgArray
+   +0x050 migrPriority     : 0 ( Medium )
+   +0x054 migrType         : 0 ( Initializing )
+   +0x058 migrDestRaidMaps : [2] (null) 
+   +0x068 raidVol          : 0xffffe001`17e96330 RaidVol
+   +0x070 puisState        : PuisState
+   +0x078 aoacInfo         : AoacInfo
+   +0x084 waitingForDirty  : 0n0
+   +0x088 writesUnreplied  : 0
+   +0x08c secondsWithNoWrites : 0x312
+   +0x090 readCount        : 0
+   +0x094 writeCount       : 0
+   +0x098 flushCount       : 0
+   +0x0a0 numDataBlocks    : 0x1dcf6000
+   +0x0a8 numUserDataBlocks : 0x1dcf6000
+   +0x0b0 errLogPtr        : 0xffffe001`17e96c90 ErrorLog
+   +0x0b8 deletePending    : 0n0
+   +0x0bc deleted          : 0n0
+   +0x0c0 deleteSuspended  : 0n0
+   +0x0c4 initialized      : 0n1
+   +0x0c8 onlyVolInArray   : 0n0
+   +0x0d0 arraySemReq      : ArraySemReq
+   +0x138 ioPathSemReq     : ArraySemReq
+   +0x1a0 idData           : _DiskIdentityData
+   +0x260 opCtlAutoReassign : 0x1 ''
+   +0x261 opCtlReassignTolerance : 0x1 ''
+   +0x262 opCtlRetryAttempts : 0
+   +0x264 opCtlExpectedTimeout : 0x3938700
+   +0x268 opCtlOrderedRequestDepth : 1
+   +0x26c opCtlAtomicWriteSize : 0x200
+   +0x270 numCacheFlushesCompleted : 0n0
+   +0x278 ckptMgr          : (null) 
+   +0x280 oweArrayLockPreemptReq : 0n0
+   +0x284 oweGetArrayLock  : 0n0
+   +0x288 hostMpbIoSelect  : 0n0
+   +0x28c migrStartNotify  : 0n0
+   +0x290 numMigrsToStart  : 0n0
+   +0x294 numMigrSuspendsInProgress : 0n0
+   +0x298 migrStartEvent   : Event
+   +0x2b8 suspendMigrComp  : Event
+   +0x2d8 startDeleteComp  : Event
+   +0x2f8 deleteComp       : Event
+   +0x318 utilCmdComp      : Event
+   +0x338 utilCmdsInProgress : 0n0
+   +0x33c utilCmdReqStatus : 0
+   +0x340 smartAttributesInProgress : 0n0
+   +0x348 patrolSuspendComp : Event
+   +0x368 shutdownState    : 0 ( ShutdownStateRunning )
+   +0x370 pendingRepliesList : RaidReqList
+   +0x380 shutdownWriteCleanInProgress : 0n0
+   +0x384 deviceResetInProgress : 0n0
+   +0x388 allDiskDeviceResetsDone : 0n0
+   +0x38c lunResetInProgress : 0n0
+   +0x390 allDiskLunResetsDone : 0n0
+   +0x394 cacheFlushInProgress : 0n0
+   +0x398 senseUnitAttention : 0n0
+   +0x39c updateDeviceInProgress : 0n0
+   +0x3a0 ioPathMgr        : 0xffffe001`17e96cd8 IoPathMgr
+   +0x3a8 cngPartnerDiskState : 0 ( CngNormal )
+   +0x3ac cngMasterDiskNum : 0n0
+   +0x3b0 dismountCngPartnerComp : Event
+   +0x3d0 breakCngCloneInProgress : 0n0
+   +0x3d4 haveBreakCngCloneSem : 0n0
+   +0x3d8 breakCngCloneComp : Event
+   +0x3f8 breakCngCloneArraySemReq : ArraySemReq
+   +0x460 cngSyncInProgress : 0n0
+   +0x464 haveCngSyncSem   : 0n0
+   +0x468 cngSyncComp      : Event
+   +0x488 cngSyncArraySemReq : ArraySemReq
+   +0x4f0 cngDelayedFailWrite : 0n0
+   +0x4f4 cngStatesNeedUpdating : 0n0
+   +0x4f8 diskPwrMgr       : DiskPwrMgr
+   +0x500 patrolState      : 0 ( Stopped )
+   +0x504 patrolReady      : 0n1
+   +0x508 patrolIntervalTimer : TimerEvent
+   +0x558 patrolIterationTimer : TimerEvent
+   +0x5a8 trimSupported    : 0n0
+   +0x5ac lbprzSupported   : 0n0
+   +0x5b0 rtd3State        : 0 ( PowerOn )

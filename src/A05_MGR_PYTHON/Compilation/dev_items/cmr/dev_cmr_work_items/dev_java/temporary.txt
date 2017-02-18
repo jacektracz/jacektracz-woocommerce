@@ -1,0 +1,41 @@
+TenorHandler::saveAccessTenorJPA_ForInsert::method_start
+    AccessTenor_log__start
+        AccessTenor::id:09fa6a4400000000dbda8415
+        AccessTenor::id_byte:[B@2ab03951
+        AccessTenor::getOca:0
+        AccessTenor::getAccessMode:I
+        AccessTenor::getAccessRightRead:89
+        AccessTenor::getAccessRightWrite:89
+        AccessTenor:Tenor:id:f8648054000000005e49f37a
+    Knuser_log__start
+        Knuser::id:88316d4d007b25005eb2092d
+        Knuser::getOca:0
+        Knuser::id:GROUP-BES_NY_BO
+    Knuser_log__end
+    AccessTenor_log__end
+Hibernate: 
+    /* insert com.misys.model.rate.AccessTenor
+        */ insert 
+        into
+            rate.dbo.AccessTenor
+            (AccessMode, AccessRightRead, AccessRightWrite, KNUserId, OCA, DataId, Id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?)
+TenorHandler::saveAccessTenorJPA_ForInsert::method_end
+
+
+ AccessTenor_log__start
+        AccessTenor::id:09fa6a4400000000dbda8415
+        AccessTenor::id_byte:[B@17830abc
+        AccessTenor::getOca:0
+        AccessTenor::getAccessMode:E
+        AccessTenor::getAccessRightRead:89
+        AccessTenor::getAccessRightWrite:89
+        AccessTenor:Tenor:id:f8648054000000005e49f37a
+    Knuser_log__start
+        Knuser::id:8d316d4d008f25005eb2092d
+        Knuser::getOca:0
+        Knuser::id:GROUP-BES_CV
+    Knuser_log__end
+    AccessTenor_log__end
+

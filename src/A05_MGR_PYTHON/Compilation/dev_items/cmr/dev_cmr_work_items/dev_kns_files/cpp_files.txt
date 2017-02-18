@@ -1,0 +1,3 @@
+credit limit master class
+
+/jenkins/jt_dev/cmr/cmr_trunk_v1/kgr-trunk/src/cpp/libs/Database/KreditNetDB/server/business/ps-private/CreditLimitMasterBase-x.cpp

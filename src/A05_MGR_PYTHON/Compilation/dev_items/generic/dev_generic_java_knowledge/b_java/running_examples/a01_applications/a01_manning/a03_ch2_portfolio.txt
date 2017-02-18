@@ -1,0 +1,35 @@
+Application
+
+	Goal
+		Build chapter 1 exeample1 from maning book
+	Description
+		Based on active mq
+	Workspace
+		E:\a01_java\workspaces\2015\a01_10_lakida_library
+	Project
+		E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\pom.xml
+	Steps	
+		Step 1
+			Goal
+				Run orginall
+			Actions
+			
+				cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-simple-producer
+				mvn exec:java -Dexec.mainClass="org.apache.activemq.book.ch3.portfolio.Publisher" -Dexec.args="CSO ORCL"
+				
+				
+				cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-simple-producer
+				mvn exec:java -Dexec.mainClass="org.apache.activemq.book.ch3.portfolio.Consumer" -Dexec.args="CSO ORCL"				
+		Step 1
+			Goal
+				Run my
+			
+			Actions
+			
+				cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-simple-producer
+				mvn exec:java -Dexec.mainClass="org.apache.activemq.book.ch3.portfolio.lkd.Publisher" -Dexec.args="CSO ORCL"
+				
+				
+				cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-simple-producer
+				mvn exec:java -Dexec.mainClass="org.apache.activemq.book.ch3.portfolio.lkd.Consumer" -Dexec.args="CSO ORCL"				
+															

@@ -1,0 +1,9 @@
+#!/bin/bash
+#export CMRVER=${CMRVER}
+export KGRCPP=/jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/cpp
+export WORKSPACE=/jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/
+export GIT_SSL_NO_VERIFY=true
+
+echo "KGRCPP: $KGRCPP"
+echo "WORKSPACE: $WORKSPACE"
+echo "GIT_SSL_NO_VERIFY: $GIT_SSL_NO_VERIFY"

@@ -1,0 +1,3 @@
+cd E:\a01_java\a01_servers\apache-activemq-5.10.0\bin
+
+activemq start

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source $DDSQL/stop/stop_cmr_dev.txt
+
+cp -r /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/install/gui/* /jenkins/dist/FR/CMR/gui
+
+source $DDSQL/start/start_cmr_devo_1.txt
+source $DDSQL/startj/kgr.txt
+source $DDSQL/start/start_cmr_devo_2.txt

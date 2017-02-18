@@ -1,0 +1,59 @@
+Assumed environment:
+oracle db:
+host: kenvngServer
+port: 1521
+users: rknet, rate, kgr
+passwords for users: Kondor_123
+sid: orcl
+I - BEFORE COMPILATION PROCESS
+Firstly we need to configure the compilation environment before deploying it on CMR environment
+Deploying missing ojdbc6_g.jar into local repository
+cd $WORKSPACE/java
+Download ojdbc6_g.jar
+mvn install:install-file -s settings.xml -Dfile=ojdbc6_g.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4.0 -Dpackaging=jar
+now you cal delete ojdbc6_g.jar file from this location
+Configuring persistence.xml in kgr-server
+cd $WORKSPACE/java/kgr-server/src/main/resources/META-INF
+open persistence.xml
+in Persistence units, change these values:
+
+            <property name="javax.persistence.jdbc.password" value="Kondor_123" />
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@kenvngServer:1521:orcl" />
+            <property name="javax.persistence.jdbc.user" value="kgr" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+
+Where kenvngServer is you machine hostname, 1512 is oracle db port and orcl is you oracle db SID
+
+Now compile java and after that copy install directory content to your CMR environment
+ 
+II - Configuring environment
+cd $KREDITNETHOME/3rdparty/J2EE/tomcat_kgr/templates
+open server.xml.template
+Replace "jdbc/kgrDbDataSource" with this:
+
+        <Resource name="jdbc/kgrDbDataSource"
+              auth="Container"
+              type="javax.sql.DataSource"
+              username="$V(KGR_DB_USER_NAME)"
+              password="$V(KGR_DB_USER_PWD)"
+              driverClassName="oracle.jdbc.driver.OracleDriver"
+              url="jdbc:oracle:thin://$V(KGR_DB_HOST):$V(KGR_DB_PORT):orcl"
+              defaultCatalog="rknet"
+              />
+EDIT: on my environment it only worked after setting url a little bit differently:
+          url="jdbc:oracle:thin:@//$V(KGR_DB_HOST):$V(KGR_DB_PORT)/orcl"
+           notice "@" after "thin:" and "/" instead of ":" before "orcl"
+           
+
+to override.properties add:
+
+kgr.kgrDbUri=jdbc:oracle:thin://kenvngServer:1521:orcl?user=kgr&password=Kondor_123
+rate.rateDbUri=jdbc:oracle:thin://kenvngServer:1521:orcl?user=kgr&password=Kondor_123
+
+Copy the content of git repository cmr/CMR/features/3rdparty to $KREDITNETHOME/3rdparty
+
+
+ cp -r /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/features/3rdparty/* $KREDITNETHOME/3rdparty
+
+

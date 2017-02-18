@@ -1,0 +1,6 @@
+cd E:\a01_java\a01_servers\apache-activemq-5.10.0\bin
+
+
+admin:
+	http://localhost:8161/admin/
+	admin;admin

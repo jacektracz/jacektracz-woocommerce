@@ -1,0 +1,4 @@
+rm /jenkins/dist/FR/CMR/data/interface/rate/HS_FXVOLSURFACE_EURUSD*
+#	292131615 / 543285  
+#	92020
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/small-2/HS_FXVOLSURFACE_EURUSD.xml /jenkins/dist/FR/CMR/data/interface/rate

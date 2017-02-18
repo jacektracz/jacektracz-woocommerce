@@ -1,0 +1,9 @@
+ <SwaptionCube insertMode='UPDATE' alias='SWOEUR' dimensionType='DAYS'>
+      <SwaptionCubeDefinition basisCode='EUR-SWVOL' currency='EUR' />
+       	<SwaptionCubePoint asOfDate='2009-10-26' expiry='0' maturity='0' strikeParam='0.0' vol='56.400002' />
+      
+ <SwaptionCube insertMode='UPDATE' alias='SWOEUR' dimensionType='DAYS'>
+      <SwaptionCubeDefinition basisCode='EUR-SWVOL' currency='EUR' />
+	      <SwaptionCubePoint asOfDate='2009-10-26' expiry='0' maturity='0' strikeParam='0.5' vol='56.400002' />
+    		  
+      

@@ -1,0 +1,85 @@
+http://mgrv076:19096/api/doc/
+
+http://10.22.11.48:19096/api/data/1.0/SettlementLimit?action=create
+
+http://mgrv092:19096/api/data/1.0/SettlementLimit?action=create
+
+{
+    "folderCoverage": "id/JO_MM",
+    "shortName": "JO_ARABXX_ALL",
+    "currency": "id/USD",
+    "allocationDate": "2015-01-06T12:00:00Z",
+    "cptyCoverage": "id/ARABXX",
+    "settlementProductExposure": "id/MM",
+    "accesses": [
+	{                                 
+		"canRead": true,                                 
+		"user": null
+		,"canWrite": true
+		,"accessCoverage": "GLOBAL"                 
+		}
+	],
+    "name": "JO_BARCLAYS BANK PLC_ALL",
+  "computeLiquidity": false,
+  "allocatedAmount": 10000.00,
+  "allocatedAmountLiquidity": 0
+}
+
+
+{
+"allocatedAmountLiquidity": 0,
+"shortName": "JT-SL-1",
+"lockDate": null,
+"currencyCoverage": null,
+"endDate": null,
+"lockMessage": null,
+"cptyRefMode": "ANY",
+"enforced": false,
+"validationRequestDate": null,
+"instrumentRefMode": "ANY",
+"approvalDate": null,
+"dvStatus": "ENABLED",
+"settlementProductExposure": "id/JT-PE-1",
+"batchOnly": false,
+"liquidityRiskLag": "0_DAYS",
+"annotation": null,
+"locked": false,
+"currency": "id/EUR",
+"industryRefMode": "ANY",
+"industryCoverage": null,
+"folderCoverage": null,
+"instrumentCoverage": null,
+"cptyCoverage": null,
+"name": "EVY_API COMPLEX",
+"currencyRefMode": "ANY",
+"countryCoverage": null,
+"startDate": null,
+"reviews": [],
+"approvingUser": null,
+"folderRefMode": "ANY",
+"validationRequestingUser": null,
+"countryRefMode": "ANY",
+"sovereignKind": "NONE",
+"limitKind": "STANDARD",
+"userCoverageRefMode": "ANY",
+"allocationDate": "2012-10-10T12:20:43Z",
+"allocatedAmount": 100000000,
+"userCoverage": null,
+"computeLiquidity": false,
+"dailyAllocationSchedule": [],
+"reviewer": null,
+"ratingCoverage": null
+}
+
+
+
+select * from SettlementLimit where ShortName in('JT-SL-1','AQUREJSCH')
+
+
+
+
+QueryUltraData 'SettlementLimit','%',0x000000000000000000000000,'0x000000000000000000000000','LimitKind=''S''',0x68eeb64d00190000be68ab90,'0x68eeb64d00190000be68ab90',250,0,'1','0','0','1',1,0,'0'
+
+
+
+

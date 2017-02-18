@@ -1,0 +1,6 @@
+#!/bin/bash
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/CMR/etc
+./startKNS
+tail -f /home/kdeveloper/FR/CMR/log/KGRServer_master_stdout.log

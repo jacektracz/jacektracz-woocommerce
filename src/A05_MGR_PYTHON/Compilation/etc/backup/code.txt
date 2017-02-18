@@ -1,0 +1,5 @@
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="ReportId", nullable=false, insertable=false, updatable=false)
+    public Report getReport() {
+        return this.report;
+    }

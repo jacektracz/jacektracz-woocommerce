@@ -1,0 +1,10 @@
+grep public /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java/kgr-generated-libs/kgr-generated-api-kns-service/target/generated-sources/java/com/reuters/kgl/business/api/ApiStressTestClass.java
+
+
+grep public /jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/src/java/kgr-generated-libs/kgr-generated-api-kns-service/target/generated-sources/java/com/reuters/kgl/business/api/ApiSensitivityPnl.java
+
+
+ls /jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/src/java/kgr-generated-libs/kgr-generated-api-kns-service/target/generated-sources/java/com/reuters/kgl/business/api/ApiSensitivity*
+
+
+grep public /jenkins/jt_dev/cmr/cmr_khepri_g9/kgr-khepri/cmr/CMR/src/java/kgr-generated-libs/kgr-generated-api-kns-service/target/generated-sources/java/com/reuters/kgl/business/api/ApiSensitivityPnlSetup.java

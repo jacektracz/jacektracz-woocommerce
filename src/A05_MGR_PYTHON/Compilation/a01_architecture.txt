@@ -1,0 +1,7 @@
+http://localhost:8161/admin/
+http://10.22.11.18:19080/kgr/logout.do?m=Your+session+has+expired.+Please+try+again
+
+
+507 037 777 	- 		penthause
+505 218 622 	-		malgosia
+

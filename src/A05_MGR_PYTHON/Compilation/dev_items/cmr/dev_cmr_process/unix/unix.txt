@@ -1,0 +1,2 @@
+mkdir /new-disk
+mount -t ext2 /dev/hdb1 /new-disk

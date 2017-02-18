@@ -1,0 +1,30 @@
+INFO  JMSMessageListener - Received object: RiskFactorGroupInsertVO seal = 7439667043766e327451714c767332593932534200 data =  id = null coverage =  shortName = JT-66 name = JT-66 rateType = _classType : 4Name : nullShortName : nullAlias : nullIdentity :  id = 000000000000000000000001 name =  value = YIELDCURVE shortName =  value = YIELDCURVEId : 000000000000000000000001 automatic = Y elementCollection = [] filter =  id = null curveType = null basisCode = null instrument = null assetName = null currency = null currency2 = null underlying = null underlyingId = null beginDate = null endDate = null user = null complete = null backFill = null assetType = null activated = null accessCollection = [ id = null dataId = _classType : 4Name : nullShortName : nullAlias : nullIdentity : nullId : 0x09FA6A4400000000DBDA8415 user = null accessMode = G accessRightRead = Y accessRightWrite = Y]
+::TRACE_INFO::Received object: RiskFactorGroupInsertVO seal = 7439667043766e327451714c767332593932534200 
+data =  id = null coverage =  shortName = JT-66 name = JT-66 rateType = _classType : 4Name : 
+nullShortName : nullAlias : nullIdentity :  id = 000000000000000000000001 name =  
+value = YIELDCURVE shortName =  value = YIELDCURVEId : 000000000000000000000001 automatic = Y 
+elementCollection = [] filter =  id = null curveType = null 
+basisCode = null instrument = null assetName = null currency = null 
+currency2 = null underlying = null underlyingId = null beginDate = null 
+endDate = null user = null complete = null backFill = null 
+assetType = null activated = null 
+accessCollection = [ id = null dataId = _classType : 4Name : nullShortName : 
+nullAlias : nullIdentity : nullId : 0x09FA6A4400000000DBDA8415 
+user = null accessMode = G accessRightRead = Y accessRightWrite = Y]
+
+
+
+INFO  JMSMessageListener - Received object: RiskFactorGroupInsertVO seal = 7439667043766e327451714c767332593932534200 
+data =  id = null coverage =  shortName = JT-68 name = JT-68 rateType = _classType : 4Name : nullShortName : nullAlias : 
+nullIdentity :  id = 000000000000000000000001 name =  value = YIELDCURVE shortName =  
+value = YIELDCURVEId : 000000000000000000000001 automatic = Y elementCollection = [] filter = null accessCollection = 
+[ id = null dataId = _classType : 4Name : nullShortName : nullAlias : nullIdentity : nullId : 0x09FA6A4400000000DBDA8415 
+user = null accessMode = G accessRightRead = Y accessRightWrite = Y]
+::TRACE_INFO::Received object: RiskFactorGroupInsertVO seal = 7439667043766e327451714c767332593932534200 
+data =  id = null coverage =  shortName = JT-68 name = JT-68 rateType = _classType : 
+4Name : nullShortName : nullAlias : nullIdentity :  id = 000000000000000000000001 
+name =  value = YIELDCURVE shortName =  value = YIELDCURVEId : 000000000000000000000001 
+automatic = Y elementCollection = [] filter = null accessCollection = [ id = null 
+dataId = _classType : 4Name : nullShortName : nullAlias : 
+nullIdentity : nullId : 0x09FA6A4400000000DBDA8415 user = null accessMode = G accessRightRead = Y accessRightWrite = Y]
+

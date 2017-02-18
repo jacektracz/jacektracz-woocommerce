@@ -1,0 +1,29 @@
+Tracz, Jacek [10:31]: 
+probuje wbic sie vnc na pricery
+jaki host podac ?
+PRICER MASTER OWNER [10:31]: 
+hist
+?
+host?
+ip
+Tracz, Jacek [10:31]: 
+host
+tak, sorki
+PRICER MASTER OWNER [10:32]: 
+chyba nie masz interst rate 
+ja tam siedze teraz
+USD
+Tracz, Jacek [10:32]: 
+moze nie mam , fakt
+nie moge podejrzec w sumie, bo nie mamy tego okienka
+PRICER MASTER OWNER [10:32]: 
+Jacek, przechodz krok po kroku przez stey
+stepy 
+bo inaczej ci se zawsze bedzie wypierdzielac
+sql z bazy syknie by to sprawdzic
+Tracz, Jacek [10:33]: 
+acha to nie da rady zaczac od tylu ?
+kurcze
+PRICER MASTER OWNER [10:33]: 
+nie 
+macie robic krok po kroku

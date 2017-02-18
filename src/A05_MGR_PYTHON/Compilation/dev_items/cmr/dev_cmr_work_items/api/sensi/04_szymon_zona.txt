@@ -1,0 +1,3 @@
+http://mgrv032:8080/kgr/
+
+https://zod.france.effix.fr/gui/

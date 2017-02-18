@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etco/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/CMR/etc
+./stopjms
+./stoptibems
+./stopKGRWeb
+kh_kns
+

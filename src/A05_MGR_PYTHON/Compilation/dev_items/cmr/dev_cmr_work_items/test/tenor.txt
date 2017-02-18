@@ -1,0 +1,630 @@
+package com.misys.kgrserver.handler;
+
+import java.io.CharArrayWriter;
+import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import javax.xml.bind.DatatypeConverter;
+
+import com.google.common.collect.Lists;
+import com.misys.dao.rknet.TenorDAO;
+import com.misys.kgrserver.persistence.JPAFactory;
+import com.misys.model.rate.AccessTenor;
+import com.misys.model.rate.Tenor;
+import com.misys.model.rknet.AccessRiskClass;
+import com.misys.model.rknet.Knuser;
+import com.reuters.kgl.facade.beans.AccessibleDataVO;
+import com.reuters.kgl.facade.beans.CoverageNameDataVO;
+import com.reuters.kgl.facade.beans.GenericACKVO;
+import com.reuters.kgl.facade.beans.GenericIdACKVO;
+import com.reuters.kgl.facade.beans.GenericIdentityACKVO;
+import com.reuters.kgl.facade.beans.GenericIdentityVectorACKVO;
+import com.reuters.kgl.facade.beans.GenericNACKVO;
+import com.reuters.kgl.facade.beans.GenericTenorACKVO;
+import com.reuters.kgl.facade.beans.GenericTenorVectorACKVO;
+import com.reuters.kgl.facade.beans.IdentifierDataVO;
+import com.reuters.kgl.facade.beans.IdentityDataVO;
+import com.reuters.kgl.facade.beans.NameDataVO;
+import com.reuters.kgl.facade.beans.ShortNameDataVO;
+import com.reuters.kgl.facade.beans.TenorDataVO;
+import com.reuters.kgl.facade.beans.TenorGetByIdentifierVO;
+import com.reuters.kgl.facade.beans.TenorGetByNameVO;
+import com.reuters.kgl.facade.beans.TenorGetByShortNameVO;
+import com.reuters.kgl.facade.beans.TenorGetIdentityByIdentifierVO;
+import com.reuters.kgl.facade.beans.TenorGetIdentityByNameVO;
+import com.reuters.kgl.facade.beans.TenorGetIdentityByShortNameVO;
+import com.reuters.kgl.facade.beans.TenorInsertVO;
+import com.reuters.kgl.facade.beans.TenorQueryIdentityByNameVO;
+import com.reuters.kgl.facade.beans.TenorQueryIdentityByShortNameVO;
+import com.reuters.kgl.facade.beans.TenorQueryTenoryByShortNameVO;
+import com.reuters.kgl.facade.beans.TenorRemoveVO;
+import com.reuters.kgl.facade.beans.TenorUpdateVO;
+import com.reuters.kgl.facade.beans.ValueObject;
+import com.reuters.kgl.facade.exception.NACKException;
+
+public class TenorHandler extends AbstractValueObjectHandler {
+
+    public final static int KNEL_TENOR_INSERT = 32738;
+    public final static int KNEL_TENOR_UPDATE = 32739;
+    public final static int KNEL_TENOR_REMOVE = 32740;
+    public final static int KNEL_TENOR_GET_BY_IDENTIFIER = 32741;
+    public final static int KNEL_TENOR_GET_IDENTITY_BY_IDENTIFIER = 32750;
+    public final static int KNEL_TENOR_GET_BY_NAME = 32751;
+    public final static int KNEL_TENOR_GET_BY_SHORT_NAME = 32752;
+    public final static int KNEL_TENOR_GET_IDENTITY_BY_NAME = 32753;
+    public final static int KNEL_TENOR_GET_IDENTITY_BY_SHORT_NAME = 32754;
+    public final static int KNEL_TENOR_QUERY_IDENTITY_BY_NAME = 32755;
+    public final static int KNEL_TENOR_QUERY_IDENTITY_BY_SHORT_NAME = 32756;
+    public final static int KNEL_TENOR_QUERY_TENORY_BY_SHORT_NAME = 32757;
+
+    private final static int KNEL_TENOR_GET_BY_SHORTNAME = 32610;
+    private final static int KNEL_TENOR_GET_IDENTITY_BY_SHORTNAME = 32612;
+    private final static int KNEL_TENOR_QUERY_IDENTITY_BY_SHORTNAME = 32622;
+
+    TenorDAO tenorDao;
+
+    public TenorHandler() {
+        super();
+        TenorHandler.log_info("TenorHandler::TenorHandler::method_start");
+        PrintStateEx("TenorHandler::TenorHandler::start");
+        tenorDao = new TenorDAO(emRate, Tenor.class);
+        PrintStateEx("TenorHandler::TenorHandler::end");
+        TenorHandler.log_info("TenorHandler::TenorHandler::method_end");
+    }
+
+    @Override
+    public ValueObject handle(final ValueObject object) {
+        try {
+            PrintStateEx("TenorHandler::handle");
+            final Integer msgId = object.getMsgId();
+            switch (msgId) {
+            case KNEL_TENOR_INSERT:
+                return tenorInsert((TenorInsertVO) object);
+            case KNEL_TENOR_UPDATE:
+                return tenorUpdate((TenorUpdateVO) object);
+            case KNEL_TENOR_REMOVE:
+                return removeTenor((TenorRemoveVO) object);
+            case KNEL_TENOR_GET_BY_IDENTIFIER:
+                return tenorGetByIdentifier((TenorGetByIdentifierVO) object);
+            case KNEL_TENOR_GET_IDENTITY_BY_IDENTIFIER:
+                return tenorGetIdentityByIdentifier((TenorGetIdentityByIdentifierVO) object);
+            case KNEL_TENOR_GET_BY_NAME:
+                return tenorGetByName((TenorGetByNameVO) object);
+            case KNEL_TENOR_GET_BY_SHORTNAME:
+                return tenorGetByShortName((TenorGetByShortNameVO) object);
+            case KNEL_TENOR_GET_IDENTITY_BY_NAME:
+                return tenorGetIdentityByName((TenorGetIdentityByNameVO) object);
+            case KNEL_TENOR_GET_IDENTITY_BY_SHORTNAME:
+                return tenorGetIdentityByShortName((TenorGetIdentityByShortNameVO) object);
+            case KNEL_TENOR_QUERY_IDENTITY_BY_SHORTNAME:
+                return tenorQueryIdentityByShortName((TenorQueryIdentityByShortNameVO) object);
+            case KNEL_TENOR_QUERY_IDENTITY_BY_NAME:
+                return tenorQueryIdentityByName((TenorQueryIdentityByNameVO) object);
+            case KNEL_TENOR_QUERY_TENORY_BY_SHORT_NAME:
+                return tenorQueryTenoryByShortName((TenorQueryTenoryByShortNameVO) object);
+            default:
+                return new GenericNACKVO(NACKException.NOTFOUND, "Unknown message id");
+            }
+        } catch (final Exception e) {
+        	TenorHandler.log_info_exception("TenorHandler::handle::exception:", e);
+            return new GenericNACKVO(NACKException.SYSTEM, e.getMessage());
+        }
+    }
+
+
+    
+    /* INSERT TENOR */
+
+
+    /**
+     * Call insertTenorWithTenorDataVO to convert VO to model class and then
+     * call JPAFactory to insert and commit transaction
+     * 
+     * @param requestVO
+     *            request value object
+     * @return value object
+     */
+    
+    
+    public ValueObject tenorInsert(final TenorInsertVO requestVO) {
+        TenorHandler.log_info("TenorHandler::tenorInsert::method_start");
+        try {
+            PrintStateEx("TenorHandler::tenorInsert::s1");
+            final TenorDataVO data = requestVO.getData();
+            final Tenor Tenor = insertTenorWithTenorDataVO(data);            
+            PrintStateEx("TenorHandler::tenorInsert::s2");
+            saveTenorJPA(Tenor);
+            final String TenorId = DatatypeConverter.printHexBinary(Tenor.getId());
+            final GenericIdACKVO dd_out = new GenericIdACKVO(TenorId);
+            TenorHandler.log_info("TenorHandler::tenorInsert::method_end");
+            return dd_out;
+        } catch (final Exception ee) {
+            TenorHandler.log_info_exception("TenorHandler::tenorInsert::exception:", ee);
+            throw ee;
+        }
+    }
+
+    public void saveTenorJPA(final Tenor entity) throws RuntimeException {
+        TenorHandler.log_info("TenorHandler::saveTenorJPA::method_start");
+        PrintStateEx("TenorHandler::saveTenorJPA::s1");
+        try {
+
+            //tenorDao.persist(entity);
+
+            etRate.begin();
+            emRate.persist(entity);
+            etRate.commit();
+             
+            TenorHandler.log_info("TenorHandler::saveTenorJPA::method_end");
+            
+        } catch (final Exception re) {
+        	
+            TenorHandler.log_info_exception("TenorHandler::saveTenorJPA::exception:" + re.getMessage(), re);
+            
+            if (etRate.isActive()) {
+                etRate.rollback();
+            }
+            throw re;
+        }
+    }
+    /**
+     * @param TenorData
+     *            ew data vo to insert
+     * @return inserted Tenor
+     */
+    private Tenor insertTenorWithTenorDataVO(final TenorDataVO tenorData) {
+        TenorHandler.log_info("TenorHandler::insertTenorWithTenorDataVO::start_method");
+        final Tenor tenor = new Tenor();
+        tenor.setName(tenorData.getCoverage().getName());
+        tenor.setShortName(tenorData.getCoverage().getShortName());
+        tenor.setCalendarDays(tenorData.getCalendarDays());
+        tenor.setOca(0);
+
+        byte[] id = oidFactory.get().bytes();
+        final String TenorId = tenorData.getId();
+        if (TenorId != null) {
+            id = DatatypeConverter.parseHexBinary(tenorData.getId());
+        }
+        tenor.setId(id);
+
+        // JPAFactory.insertAndCommit(emRate, Tenor);
+        // tenorDAO.
+        updateAccess(tenor,tenorData,true);
+        TenorHandler.log_info("Tenor:Name:" + tenor.getName());
+        TenorHandler.log_info("Tenor:ShortName:" + tenor.getShortName());
+        TenorHandler.log_info("getCalendarDays:" + Integer.toString(tenor.getCalendarDays()));
+        TenorHandler.log_info("getOca:" + Integer.toString(tenor.getOca()));
+        TenorHandler.log_info("TenorHandler::insertTenorWithTenorDataVO::end_method");
+        return tenor;
+    }
+
+    /* UPDATE TENOR */
+    
+    public ValueObject tenorUpdate(final TenorUpdateVO requestVO) {
+        TenorHandler.log_info("TenorHandler::tenorUpdate::start_method");
+
+        final TenorDataVO data = requestVO.getData();
+        final byte[] id = DatatypeConverter.parseHexBinary(requestVO.getDataId());
+
+        Tenor tenor = JPAFactory.getById(emRate, Tenor.class, id);
+        TenorHandler.log_info("TenorHandler::retrieved_tenor::shortName" + tenor.getShortName());
+        tenor = updateTenorWithTenorDataVO(tenor, data);        
+        updateTenorJPA(tenor);
+        final String TenorId = DatatypeConverter.printHexBinary(tenor.getId());
+
+        final GenericACKVO genericIdACKVO_out_2 = new GenericACKVO();
+        final GenericIdACKVO genericIdACKVO_out = new GenericIdACKVO(TenorId);
+        final int out_msg = genericIdACKVO_out.getMsgId().intValue();
+        TenorHandler.log_info("TenorHandler::tenorUpdate::end_method:" + Integer.toString(out_msg));
+        return genericIdACKVO_out_2;
+
+    }
+    
+    public void updateTenorJPA(final Tenor entity) throws RuntimeException {
+        TenorHandler.log_info("TenorHandler::updateTenorJPA::method_start");
+        PrintStateEx("TenorHandler::updateTenorJPA::s1");
+        try {
+            // emRate.merge(entity);
+            tenorDao.update(entity);
+            TenorHandler.log_info("TenorHandler::updateTenor::method_end");
+        } catch (final Exception re) {
+            TenorHandler.log_info_exception("TenorHandler::updateTenor::exception:" + re.getMessage(), re);
+            throw re;
+        }
+    }
+
+    private Tenor updateTenorWithTenorDataVO(final Tenor tenor, final TenorDataVO tenorData) {
+        TenorHandler.log_info("TenorHandler::updateTenorWithTenorDataVO::start_method");
+        tenor.setName(tenorData.getCoverage().getName());
+        tenor.setShortName(tenorData.getCoverage().getShortName());
+        tenor.setCalendarDays(tenorData.getCalendarDays());
+        tenor.setOca(0);
+        updateAccess(tenor,tenorData,true);
+        TenorHandler.log_info("TenorHandler::updateTenorWithTenorDataVO::end_method");
+        return tenor;
+    }
+    
+    private void updateAccess(final Tenor tenor, final TenorDataVO tenorData, final Boolean execute_update) {
+    	TenorHandler.log_info("TenorHandler::updateAccess::start_method");
+	    final Collection<AccessibleDataVO> accessCollection = tenorData.getAccessCollection();
+	    final Set<AccessTenor> accessTenors = tenor.getAccessTenors();
+	    accessTenors.clear();
+	
+	    if (accessCollection != null) {
+	        for (final AccessibleDataVO accessibleDataVO : accessCollection) {
+	            final AccessTenor accessTenor = accessibleDataVOToAccessTenor(accessibleDataVO);
+	            accessTenors.add(accessTenor);
+	        }
+	    }
+	    TenorHandler.log_info("TenorHandler::updateAccess::end_method");
+    }
+    /**
+     * @param accessibleDataVO
+     *            accessible data VO
+     * @return access risk class
+     */
+    private AccessTenor accessibleDataVOToAccessTenor(final AccessibleDataVO accessibleDataVO) {
+    	TenorHandler.log_info("TenorHandler::accessibleDataVOToAccessTenor::method_start");
+    	try{
+	        final AccessTenor accessTenor = new AccessTenor();
+	
+	        accessTenor.setAccessMode(accessibleDataVO.getAccessMode().toString());
+	        accessTenor.setAccessRightRead((short) (char) accessibleDataVO.getAccessRightRead());
+	        accessTenor.setAccessRightWrite((short) (char) accessibleDataVO.getAccessRightWrite());
+	        accessTenor.setOca(0);
+	
+	        final String stringId = accessibleDataVO.getId();
+	        byte[] byteId;
+	        if (stringId == null) {
+	            byteId = oidFactory.get().bytes();
+	            final IdentifierDataVO dataId = accessibleDataVO.getDataId();
+	            final String TenorId = dataId.getId();
+	            if (TenorId != null) {
+	                byteId = DatatypeConverter.parseHexBinary(accessibleDataVO.getId());
+	            }
+	        } else {
+	            byteId = DatatypeConverter.parseHexBinary(stringId);
+	        }
+	        accessTenor.setId(byteId);
+	
+	        final IdentifierDataVO user = accessibleDataVO.getUser();
+	        if (user != null) {
+	            final Knuser knuser = JPAFactory.getOneByFields(emRate, Knuser.class, "shortName", user.getShortName().getValue());
+	            accessTenor.setKnuser(knuser);
+	        }
+	        TenorHandler.log_info("TenorHandler::accessibleDataVOToAccessTenor::method_end");
+	        return accessTenor;
+	    	
+	    } catch (final Exception ee) {
+	        TenorHandler.log_info_exception("TenorHandler::accessibleDataVOToAccessTenor::exception:", ee);
+	        throw ee;
+	    }
+        
+    }
+    
+
+    private void insertTenorAccessibleData(final TenorDataVO TenorData, final Boolean add_accessible) {
+        TenorHandler.log_info("TenorHandler::insertTenorAccessibleData::start_method");
+
+        if (add_accessible) {
+            final Collection<AccessibleDataVO> accessCollection = TenorData.getAccessCollection();
+                // final Set<AccessTenor> accessTenors =
+                // Tenor.getAccessTenors();
+                final Set<AccessTenor> accessTenors = new HashSet<AccessTenor>();
+                final Iterator<AccessibleDataVO> iterator = accessCollection.iterator();
+                while (iterator.hasNext()) {
+                    final AccessibleDataVO accessibleDataVO = iterator.next();
+                    final AccessTenor accessTenor = accessibleDataVOToAccessTenor(accessibleDataVO);
+                }
+        }
+        TenorHandler.log_info("TenorHandler::insertTenorAccessibleData::end_method");
+    }
+
+    /**
+     * @param Tenor
+     *            - object to update
+     * @param TenorData
+     *            - new data vo to update
+     * @return risk class
+     */
+    
+
+    
+    private void updateAccessTenors(final Tenor tenor, final TenorDataVO tenorData, final Boolean execute_update) {
+    	TenorHandler.log_info("TenorHandler::updateAccessTenors::start_method");
+        if (execute_update) {
+            final Collection<AccessibleDataVO> accessCollection = tenorData.getAccessCollection();
+            final Set<AccessTenor> accessTenors = new HashSet<AccessTenor>();
+            accessTenors.clear();
+            final Iterator<AccessibleDataVO> iterator = accessCollection.iterator();
+            while (iterator.hasNext()) {
+                final AccessibleDataVO accessibleDataVO = iterator.next();
+                final AccessTenor accessTenor = accessibleDataVOToAccessTenor(
+                			accessibleDataVO);
+                accessTenors.add(accessTenor);
+            }
+        }
+        TenorHandler.log_info("TenorHandler::updateAccessTenors::end_method");
+    }
+
+    public ValueObject removeTenor(final TenorRemoveVO requestVO) {
+
+        try {
+            TenorHandler.log_info("TenorHandler::removeTenor::start_method");
+
+            final byte[] id = DatatypeConverter.parseHexBinary(requestVO.getDataId());
+            final Tenor Tenor = JPAFactory.getById(emRate, Tenor.class, id);
+            if (Tenor == null) {
+                return new GenericNACKVO();
+            }
+
+            // etRate.begin();
+            // emRate.remove(Tenor);
+            // etRate.commit();
+
+            tenorDao.remove(Tenor);            
+            GenericACKVO dd_out = new GenericACKVO();
+            TenorHandler.log_info("TenorHandler::removeTenor::end_method");
+            return dd_out;
+        } catch (final Exception e) {
+            TenorHandler.log_info_exception("TenorHandler::removeTenor::exception:" + e.getMessage(), e);
+            throw e;
+        }
+
+    }
+
+    public ValueObject tenorGetByIdentifier(final TenorGetByIdentifierVO requestVO) {
+    	TenorHandler.log_info("TenorHandler::tenorGetByIdentifier::start_method");
+        final byte[] id = DatatypeConverter.parseHexBinary(requestVO.getDataId());
+        final Tenor tenor = JPAFactory.getById(emRate, Tenor.class, id);
+        if (tenor == null) {
+            return new GenericNACKVO();
+        }
+        
+        GenericTenorACKVO dd_out =  tenorGetToTenorVO(tenor);
+        TenorHandler.log_info("TenorHandler::tenorGetByIdentifier::end_method");
+        return dd_out;
+    }
+
+    public ValueObject tenorGetIdentityByIdentifier(final TenorGetIdentityByIdentifierVO requestVO) {
+    	TenorHandler.log_info("TenorHandler::tenorGetIdentityByIdentifier::start_method");
+        final byte[] id = DatatypeConverter.parseHexBinary(requestVO.getDataId());
+        final Tenor tenor = JPAFactory.getById(emRate, Tenor.class, id);
+        if (tenor == null) {
+            return new GenericNACKVO();
+        }
+        final IdentityDataVO identityData = new IdentityDataVO(requestVO.getDataId(), new NameDataVO(tenor.getName()),
+                new ShortNameDataVO(tenor.getShortName()));
+        
+        ValueObject dd_out = new GenericIdentityACKVO(identityData);
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityByIdentifier::start_method");
+        return dd_out;
+    }
+
+    public ValueObject tenorGetByName(final TenorGetByNameVO requestVO) {
+    	TenorHandler.log_info("TenorHandler::tenorGetByName::start_method");
+        final Tenor Tenor = JPAFactory.getOneByFields(emRate, Tenor.class, "name", requestVO.getName());
+        if (Tenor == null) {
+            return new GenericNACKVO();
+        }
+        
+        ValueObject dd_out = tenorGetToTenorVO(Tenor);
+        TenorHandler.log_info("TenorHandler::tenorGetByName::end_method");
+        return dd_out;
+    }
+
+    public ValueObject tenorGetByShortName(final TenorGetByShortNameVO requestVO) {
+    	TenorHandler.log_info("TenorHandler::tenorGetByName::start_method");
+        final Tenor tenor = JPAFactory.getOneByFields(emRate, Tenor.class, "shortName", requestVO.getShortName());
+        if (tenor == null) {
+            return new GenericNACKVO();
+        }
+        GenericTenorACKVO dd_out =  tenorGetToTenorVO(tenor);
+        TenorHandler.log_info("TenorHandler::tenorGetByName::end_method");
+        return dd_out;
+    }
+
+    public ValueObject tenorGetIdentityByName(final TenorGetIdentityByNameVO requestVO) {
+    	TenorHandler.log_info("TenorHandler::tenorGetIdentityByName::start_method");
+        final Tenor tenor = JPAFactory.getOneByFields(emRate, Tenor.class, "name", requestVO.getName());
+        if (tenor == null) {
+            return new GenericNACKVO();
+        }
+        final String tenorId = DatatypeConverter.printHexBinary(tenor.getId());
+        final IdentityDataVO identityData = new IdentityDataVO(tenorId, new NameDataVO(tenor.getName()), new ShortNameDataVO(tenor.getShortName()));
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityByName::end_method");
+        return new GenericIdentityACKVO(identityData);
+    }
+
+    public ValueObject tenorGetIdentityByShortName(final TenorGetIdentityByShortNameVO requestVO) {
+    	TenorHandler.log_info("TenorHandler::tenorGetIdentityByShortName::start_method");
+        final Tenor tenor = JPAFactory.getOneByFields(emRate, Tenor.class, "shortName", requestVO.getShortName());
+        if (tenor == null) {
+            return new GenericNACKVO();
+        }
+        final String TenorId = DatatypeConverter.printHexBinary(tenor.getId());
+        final IdentityDataVO identityData = new IdentityDataVO(TenorId, new NameDataVO(tenor.getName()), new ShortNameDataVO(tenor.getShortName()));        
+        GenericIdentityACKVO dd_out = new GenericIdentityACKVO(identityData);
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityByShortName::end_method");
+        return dd_out;
+    }
+
+    public ValueObject tenorQueryIdentityByName(final TenorQueryIdentityByNameVO requestVO) {
+
+        TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName_2::start_method:");
+        final int maxLength = requestVO.getMaxLength();
+        final String name = requestVO.getName();
+        
+        TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName::parameters:name:" + name + ":maxlength:" + Integer.toString(maxLength));
+        
+        final List<Tenor> tenors = tenorDao.findByShortNameLike(name, maxLength);
+
+        // final List<Tenor> Tenors = JPAFactory.getMaxAmountFields(emRate,
+        // Tenor.class, maxLength, "name", requestVO.getName());
+
+        TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName::tenorDao.findByName:" + Integer.toString(tenors.size()));
+        try {
+
+            final GenericIdentityVectorACKVO vv_out = tenorGetIdentityVector(tenors, maxLength);
+
+            TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName::vector_created_by_tenorGetIdentityVector:" + Integer.toString(vv_out.getDataCollection().size()));
+            return vv_out;
+        } catch (final Exception e) {
+            TenorHandler.log_info_exception("TenorHandler::tenorQueryIdentityByName::exception:" + e.getMessage(), e);
+            throw e;
+        }
+    }
+
+    public ValueObject tenorQueryIdentityByShortName(final TenorQueryIdentityByShortNameVO requestVO) {
+    	TenorHandler.log_info("TenorHandler::tenorQueryIdentityByShortName::start_method");
+        final int maxLength = requestVO.getMaxLength();
+        final List<Tenor> Tenor = JPAFactory.getMaxAmountFields(emRate, Tenor.class, maxLength, "shortName", requestVO.getShortName());        
+        GenericIdentityVectorACKVO dd_out = tenorGetIdentityVector(Tenor, maxLength);
+        TenorHandler.log_info("TenorHandler::tenorQueryIdentityByShortName::end_method");
+        return dd_out;
+    }
+
+    private GenericIdentityVectorACKVO tenorGetIdentityVector(final List<Tenor> tenorList, final int maxLength) {
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::method_start:tenorList_size:" + tenorList.size());
+        final Iterator<Tenor> iterator = tenorList.iterator();
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::tenorGetIdentityVector:1");
+        final Collection<IdentityDataVO> identityDataCollection = Lists.newArrayList();
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::before_iterator");
+        while (iterator.hasNext()) {
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::while_start");
+
+            final Tenor tenor = iterator.next();
+
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::Tenor:" + tenor.getName());
+
+            final String tenorId = DatatypeConverter.printHexBinary(tenor.getId());
+
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::TenorId:" + tenorId);
+
+            final IdentityDataVO identityData = new IdentityDataVO(tenorId, new NameDataVO(tenor.getName()), new ShortNameDataVO(tenor.getShortName()));
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::IdentityDataVO:id" + identityData.getId());
+            identityDataCollection.add(identityData);
+
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::while_end");
+        }
+
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::before_GenericIdentityVectorACKVO:identity_coll:" + identityDataCollection.size());
+        
+        try {
+            final GenericIdentityVectorACKVO dd_out = new GenericIdentityVectorACKVO(identityDataCollection, maxLength);
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::after_GenericIdentityVectorACKVO:" + dd_out.getDataCollection().size());
+            return dd_out;
+        } catch (final Exception e) {
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::exception_5:" + e.getMessage());
+            throw e;
+        }
+    }
+
+    private GenericTenorVectorACKVO tenorGetTenorsVector(final List<Tenor> tenorList, final int maxLength) {
+        TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::method_start");
+        final Iterator<Tenor> iterator = tenorList.iterator();
+        TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::tenorGetIdentityVector:1");
+        final Collection<TenorDataVO> identityDataCollection = Lists.newArrayList();
+        TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::2");
+        while (iterator.hasNext()) {
+            TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::while_start");
+
+            final Tenor tenor = iterator.next();
+
+            TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::Tenor:" + tenor.getName());
+
+            final String TenorId = DatatypeConverter.printHexBinary(tenor.getId());
+
+            TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::TenorId:" + TenorId);
+            final CoverageNameDataVO ddc = new CoverageNameDataVO();
+            ddc.setName(tenor.getName());
+            ddc.setShortName(tenor.getShortName());
+            final TenorDataVO identityData = new TenorDataVO(ddc, tenor.getCalendarDays());
+            TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::IdentityDataVO:id" + identityData.getId());
+            identityDataCollection.add(identityData);
+            TenorHandler.log_info("TenorHandler::tenorGetTenorsVector::while_end");
+        }
+
+        TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::before_GenericIdentityVectorACKVO:" + identityDataCollection.size());
+        
+        try {
+        	
+            final GenericTenorVectorACKVO dd_out = new GenericTenorVectorACKVO(identityDataCollection, maxLength);
+            
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::after_GenericIdentityVectorACKVO" + dd_out.getDataCollection().size());
+            
+            return dd_out;
+            
+        } catch (final Exception e) {
+            TenorHandler.log_info("TenorHandler::tenorGetIdentityVector::exception_5:" + e.getMessage(), e);
+            throw e;
+        }
+    }
+
+    private GenericTenorVectorACKVO tenorQueryTenoryByShortName(final TenorQueryTenoryByShortNameVO requestVO) {
+        TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName_2::start_method:");
+        final int maxLength = requestVO.getMaxLength();
+        final String name = requestVO.getShortName();
+        TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName::parameters:" + name + ":" + Integer.toString(maxLength));
+        final List<Tenor> tenors = tenorDao.findByShortName(name, maxLength);
+
+        TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName::tenors_founded:" + Integer.toString(tenors.size()));
+        try {
+
+            final GenericTenorVectorACKVO vv_out = tenorGetTenorsVector(tenors, maxLength);
+
+            TenorHandler.log_info("TenorHandler::tenorQueryIdentityByName::vector_created_in_tenorGetTenorsVector:" + Integer.toString(vv_out.getDataCollection().size()));
+            return vv_out;
+        } catch (final Exception e) {
+            TenorHandler.log_info_exception("TenorHandler::tenorQueryIdentityByName::exception:" + e.getMessage(), e);
+            throw e;
+        }
+    }
+    private GenericTenorACKVO tenorGetToTenorVO(final Tenor tenor) {
+    	TenorHandler.log_info("TenorHandler::tenorGetToTenorVO::method_start");
+
+        final TenorDataVO data = new TenorDataVO();
+        final String TenorId = DatatypeConverter.printHexBinary(tenor.getId());
+        data.setId(TenorId);
+        final CoverageNameDataVO coverage = new CoverageNameDataVO(tenor.getShortName(), tenor.getName());
+        data.setCoverage(coverage);
+        data.setCalendarDays(tenor.getCalendarDays());
+        tenor.getAccessTenors();
+        Collection<AccessibleDataVO> accessCollection = Lists.newArrayList();
+        data.setAccessCollection(accessCollection);
+        Set<AccessTenor> ac = tenor.getAccessTenors();
+        TenorHandler.log_info("TenorHandler::tenorGetToTenorVO::method_end");
+        return new GenericTenorACKVO(data);
+    }
+
+    public static void log_info(final String ss) {
+        System.out.println(ss);
+    }
+
+    public static void log_info(final String ss, final Exception ex) {
+        log_info_exception(ss, ex);
+    }
+
+    public static void log_info_exception(final String ss, final Exception ex) {
+        System.out.println(ss);
+
+        final CharArrayWriter cw = new CharArrayWriter();
+        final PrintWriter w = new PrintWriter(cw);
+        ex.printStackTrace(w);
+        w.close();
+        final String trace = cw.toString();
+        System.out.println(ss + " " + trace);
+    }
+
+    public void PrintStateEx(final String ss) {
+
+        TenorHandler.log_info(ss + "::AbstractValueObjectHandler::PrintState::start_method");
+        TenorHandler.log_info("etRate_isActive:" + etRate.isActive());
+        TenorHandler.log_info(ss + "::AbstractValueObjectHandler::PrintState::end_method");
+    }
+
+}

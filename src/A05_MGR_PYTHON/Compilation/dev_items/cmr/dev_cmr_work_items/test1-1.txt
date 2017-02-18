@@ -1,0 +1,565 @@
+package com.misys.rate.manager;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
+
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.List;
+import java.util.Set;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import mockit.Mocked;
+import mockit.NonStrictExpectations;
+
+import org.hibernate.Query;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Supplier;
+
+import com.misys.model.rate.CapletVolSurface;
+import com.misys.model.rate.CapletVolPoint;
+import com.misys.model.rate.CapletVolSurfaceDefinition;
+
+import com.misys.model.rate.YieldCurve;
+import com.misys.model.rate.YieldPoint;
+import com.misys.model.rate.YieldCurveDefinition;
+
+import com.misys.model.rate.AssetDefinition;
+import com.misys.model.rate.AssetPrice;
+import com.misys.model.rate.AssetVolPoint;
+import com.misys.model.rate.AssetVolSurface;
+import com.misys.model.rate.AssetVolSurfaceDefinition;
+import com.misys.model.rate.FxSpotPrice;
+import com.misys.model.rate.FxSpotPriceDefinition;
+import com.misys.model.rate.MarketData;
+import com.misys.model.rate.RateType;
+import com.misys.model.rate.Rtable;
+import com.misys.model.rate.TimeSeriesData;
+import com.misys.model.rknet.Currency;
+import com.misys.model.rknet.Source;
+import com.misys.rate.manager.RateManagerConfig.Config;
+import com.misys.rate.manager.persistence.JPAFactory;
+import com.misys.rate.manager.timeseries.parsing.TimeSeriesLoader;
+import com.reuters.kgr.configuration.types.Date;
+import com.reuters.kgr.tools.KGRDate;
+import com.trmsys.kawa.perdb.OID;
+import com.trmsys.kawa.perdb.OIDS;
+import com.misys.model.rate.Tenor;
+
+public class MarketDataIntegrationTest {
+    private static EntityManagerFactory emfRknet;
+    private static EntityManagerFactory emfRate;
+    private static EntityManager emRknet;
+    private static EntityManager emRate;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MarketDataIntegrationTest.class);
+
+    //private final Supplier<OID> oidFactory;
+
+    @Mocked
+    Config configMock;
+
+    private String schemaXsdPath;
+
+    public MarketDataIntegrationTest() {
+        schemaXsdPath = getFile("TimeSeriesImport.xsd").getAbsolutePath();
+    }
+
+    public static void log_info(String ss)
+    {
+        System.out.println(ss);
+    }
+    @BeforeClass
+    public static void init() {
+        try {
+
+            // workaround for HSQLDB schema/catalog issue
+            Class.forName("org.hsqldb.jdbcDriver");
+            Connection conn = DriverManager.getConnection("jdbc:hsqldb:mem:testdb", "sa", "Kondor_123");
+            Statement st = conn.createStatement();
+            st.executeUpdate("CREATE SCHEMA rate AUTHORIZATION sa");
+            st.executeUpdate("CREATE SCHEMA rknet AUTHORIZATION sa");
+            st.close();
+            conn.close();
+            // end of workaround
+
+            emfRknet = JPAFactory.getRknetEntityManagerFactory();
+            emfRate = JPAFactory.getRateEntityManagerFactory();
+
+            emRknet = emfRknet.createEntityManager();
+            emRate = emfRate.createEntityManager();
+
+            initData(); // TODO: try to handle it within .sql file
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @AfterClass
+    public static void dispose() {
+        emRknet.close();
+        emRate.close();
+
+        emfRknet.close();
+        emfRate.close();
+    }
+
+    @Before
+    public void before() {
+
+        new NonStrictExpectations() {
+            {
+                configMock.getTimeSeriesXsd();
+                returns(schemaXsdPath);
+
+                RateManagerConfig.getConfig();
+                returns(configMock);
+            }
+        };
+    }
+
+    public void CapletVolSurface_Load() throws Exception
+    {
+
+
+
+        try {
+            log_info("YCTT::CapletVolSurface_Load::start");
+            File file = getFile("HS_CapletVolSurface.EUR.SWAP.xml");
+
+            TimeSeriesLoader tsLoader = new TimeSeriesLoader();
+            tsLoader.load(file);
+            log_info("YCTT::CapletVolSurface_Load::stop::ok");
+
+        } catch (Exception e) {
+            fail("LOAD_CAPLET_SURF_EXCEPTION:" + e.getMessage());
+            throw e;
+        }
+        log_info("YCTT::CapletVolSurface_Load::exit");
+    }
+
+    @Test
+    public void CapletVolSurfaceInsert()
+    {
+         //this.initData(); // TODO: try to handle it within .sql file
+
+         try {
+
+             log_info("YCTT::CapletVolSurfaceInsert::start");
+
+             this.CapletVolSurface_Load();
+             final CriteriaBuilder cb = emRate.getCriteriaBuilder();
+
+             final CriteriaQuery<CapletVolSurfaceDefinition> queryFXSPDef = cb.createQuery(CapletVolSurfaceDefinition.class);
+
+             queryFXSPDef.from(CapletVolSurfaceDefinition.class);
+             final List<CapletVolSurfaceDefinition> listFXSPDef = emRate.createQuery(queryFXSPDef).getResultList();
+             assertEquals(listFXSPDef.size(), 1);
+
+             final CapletVolSurfaceDefinition definition = listFXSPDef.get(0);
+
+             //assertEquals("AUD", definition.getBaseCurrency().getShortName());
+             // assertEquals("CAD", definition.getForeignCurrency().getShortName());
+             assertEquals("CapletVolSurface", definition.getRateType().getName());
+             assertEquals("CapletVolSurface.HS_EURSWAP.ZERO.EUR", definition.getRiskFactorMnemonic());
+             assertEquals("N", definition.getIsComplete());
+             assertEquals("N", definition.getIsBackFilled());
+             assertEquals("Y", definition.getUseRateTypeDefaultValues());
+
+             final CriteriaQuery<CapletVolSurface> queryFXSP = cb.createQuery(CapletVolSurface.class);
+             queryFXSP.from(CapletVolSurface.class);
+
+             final List<CapletVolSurface> CapletVolSurfaces = emRate.createQuery(queryFXSP).getResultList();
+
+             assertEquals(CapletVolSurfaces.size(), 13);
+             final CapletVolSurface CapletVolSurface = CapletVolSurfaces.get(0);
+
+             log_info("YCTT::CAPLET_SURF_POINTS_JPQ_QUERY_START");
+             List<YieldPoint> llqq = JPAFactory.getListByFieldAndOrder(
+                         emRate
+                         ,YieldPoint.class
+                         ,"CapletVolSurface"
+                         , CapletVolSurface
+                         ,"maturityDate");
+
+             //
+             //checking third element
+             //
+
+             int ii = 0;
+             for (YieldPoint pp : llqq)
+             {
+                 Double vv = pp.getValue();
+                 java.util.Date dd =  pp.getMaturityDate() ;
+                 if(ii == 2)
+                 {
+                     assertEquals(0, Double.compare(0.825633239304047, vv));
+                     //assertEquals(0, Double.compare(0.725633239304047, vv));
+                 }
+                 log_info("YCTT::BYTQ::CAPLET_SURF_POINT_value: " + vv + " Date:"  + dd );
+                 ii++;
+                 //0.825633239304047
+             }
+
+             log_info("YCTT::CAPLET_SURF_POINTS_JPA_QUERY_END");
+
+             log_info("CapletVolSurfaceInsert::stop::ok");
+
+         } catch (Exception e) {
+             fail(e.getMessage());
+         }
+         log_info("YCTT::CapletVolSurfaceInsert::exit");
+    }
+
+    public void YieldCurve_Load() throws Exception
+    {
+
+
+
+        try {
+            log_info("YCTT::YieldCurve_Load::start");
+            File file = getFile("HS_YIELDCURVE.EUR.SWAP.xml");
+
+            TimeSeriesLoader tsLoader = new TimeSeriesLoader();
+            tsLoader.load(file);
+            log_info("YCTT::YieldCurve_Load::stop::ok");
+
+        } catch (Exception e) {
+            fail("LOAD_YIELD_CURVE_EXCEPTION:" + e.getMessage());
+            throw e;
+        }
+        log_info("YCTT::YieldCurve_Load::exit");
+    }
+
+    @Test
+    public void YieldCurveInsert()
+    {
+    	 //this.initData(); // TODO: try to handle it within .sql file
+
+         try {
+
+             log_info("YCTT::YieldCurveInsert::start");
+
+             this.YieldCurve_Load();
+             final CriteriaBuilder cb = emRate.getCriteriaBuilder();
+
+             final CriteriaQuery<YieldCurveDefinition> queryFXSPDef = cb.createQuery(YieldCurveDefinition.class);
+
+             queryFXSPDef.from(YieldCurveDefinition.class);
+             final List<YieldCurveDefinition> listFXSPDef = emRate.createQuery(queryFXSPDef).getResultList();
+             assertEquals(listFXSPDef.size(), 1);
+
+             final YieldCurveDefinition definition = listFXSPDef.get(0);
+
+             //assertEquals("AUD", definition.getBaseCurrency().getShortName());
+             // assertEquals("CAD", definition.getForeignCurrency().getShortName());
+             assertEquals("YIELDCURVE", definition.getRateType().getName());
+             assertEquals("YIELDCURVE.HS_EURSWAP.ZERO.EUR", definition.getRiskFactorMnemonic());
+             assertEquals("N", definition.getIsComplete());
+             assertEquals("N", definition.getIsBackFilled());
+             assertEquals("Y", definition.getUseRateTypeDefaultValues());
+
+             final CriteriaQuery<YieldCurve> queryFXSP = cb.createQuery(YieldCurve.class);
+             queryFXSP.from(YieldCurve.class);
+
+             final List<YieldCurve> yieldCurves = emRate.createQuery(queryFXSP).getResultList();
+
+             assertEquals(yieldCurves.size(), 13);
+             final YieldCurve yieldCurve = yieldCurves.get(0);
+
+             log_info("YCTT::YIELD_CURVE_POINTS_JPQ_QUERY_START");
+             List<CapletVolPoint> llqq = JPAFactory.getListByFieldAndOrder(
+                         emRate
+                         ,CapletVolPoint.class
+                         ,"yieldCurve"
+                         , yieldCurve
+                         ,"maturityDate");
+
+             //
+             //checking third element
+             //
+
+             int ii = 0;
+             for (CapletVolPoint pp : llqq)
+             {
+                 Double vv = pp.getVol();
+                 java.util.Date dd =  pp.getExpiryDate();
+                 if(ii == 2)
+                 {
+                     assertEquals(0, Double.compare(0.825633239304047, vv));
+                     //assertEquals(0, Double.compare(0.725633239304047, vv));
+                 }
+                 log_info("YCTT::BYTQ::YIELD_CURVE_POINT_value: " + vv + " Date:"  + dd );
+                 ii++;
+                 //0.825633239304047
+             }
+
+             log_info("YCTT::YIELD_CURVE_POINTS_JPA_QUERY_END");
+
+             log_info("YieldCurveInsert::stop::ok");
+
+         } catch (Exception e) {
+             fail(e.getMessage());
+         }
+         log_info("YCTT::YieldCurveInsert::exit");
+    }
+
+    @After
+    public void after() {
+        emRate.getTransaction().begin();
+        emRate.createNativeQuery("truncate table rate.AssetPrice").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.AssetDefinition").executeUpdate();
+
+        emRate.createNativeQuery("truncate table rate.AssetVolSurface").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.AssetVolSurfaceDefinition").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.AssetVolPoint").executeUpdate();
+
+        emRate.createNativeQuery("truncate table rate.CapletVolSurface").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.CapletVolSurfaceDefinition").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.CapletVolPoint").executeUpdate();
+
+        emRate.createNativeQuery("truncate table rate.FxSpotPrice").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.FxSpotPriceDefinition").executeUpdate();
+
+        emRate.createNativeQuery("truncate table rate.FxVolSurface").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.FxVolSurfaceDefinition").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.FxVolPoint").executeUpdate();
+
+        emRate.createNativeQuery("truncate table rate.SwaptionCube").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.SwaptionCubeDefinition").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.SwaptionCubePoint").executeUpdate();
+
+        emRate.createNativeQuery("truncate table rate.YieldCurve").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.YieldCurveDefinition").executeUpdate();
+        emRate.createNativeQuery("truncate table rate.YieldPoint").executeUpdate();
+
+        emRate.createNativeQuery("truncate table rate.MarketData").executeUpdate();
+
+        emRate.getTransaction().commit();
+    }
+
+
+    @Test
+    public void FxSpotPriceInsert() {
+        TimeSeriesLoader tsLoader = new TimeSeriesLoader();
+
+        File file = getFile("HS_FXSPOTPRICE.AUD.CAD.xml");
+
+        try {
+            tsLoader.load(file);
+
+            final CriteriaBuilder cb = emRate.getCriteriaBuilder();
+            final CriteriaQuery<FxSpotPriceDefinition> queryFXSPDef = cb.createQuery(FxSpotPriceDefinition.class);
+            queryFXSPDef.from(FxSpotPriceDefinition.class);
+
+            final List<FxSpotPriceDefinition> listFXSPDef = emRate.createQuery(queryFXSPDef).getResultList();
+            assertEquals(listFXSPDef.size(), 1);
+
+            final FxSpotPriceDefinition definition = listFXSPDef.get(0);
+
+            assertEquals("AUD", definition.getBaseCurrency().getShortName());
+            assertEquals("CAD", definition.getForeignCurrency().getShortName());
+            assertEquals("FXSPOTPRICE", definition.getRateType().getName());
+            assertEquals("FXSPOTPRICE.AUD.CAD", definition.getRiskFactorMnemonic());
+            assertEquals("N", definition.getIsComplete());
+            assertEquals("N", definition.getIsBackFilled());
+            assertEquals("Y", definition.getUseRateTypeDefaultValues());
+
+            final CriteriaQuery<FxSpotPrice> queryFXSP = cb.createQuery(FxSpotPrice.class);
+            queryFXSP.from(FxSpotPrice.class);
+
+            final List<FxSpotPrice> listFXSP = emRate.createQuery(queryFXSP).getResultList();
+
+            assertEquals(listFXSP.size(), 1);
+
+            final FxSpotPrice point = listFXSP.get(0);
+
+            assertEquals(0, Double.compare(1.00795, point.getSpotPrice()));
+            assertEquals("2004-08-05", KGRDate.fromDate(point.getSpotDate()).toString());
+
+            final CriteriaQuery<MarketData> queryMarketData = cb.createQuery(MarketData.class);
+            queryMarketData.from(MarketData.class);
+
+            final List<MarketData> listMarketData = emRate.createQuery(queryMarketData).getResultList();
+
+            assertEquals(listMarketData.size(), 1);
+
+            MarketData marketData = listMarketData.get(0);
+
+            assertEquals("2004-08-05", KGRDate.fromDate(marketData.getAsOfDate()).toString());
+
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void AssetPriceInsert() {
+        TimeSeriesLoader tsLoader = new TimeSeriesLoader();
+
+        File file = getFile("HS_ASSET.EQUITY.USD.xml");
+
+        try {
+            tsLoader.load(file);
+
+            final CriteriaBuilder cb = emRate.getCriteriaBuilder();
+            final CriteriaQuery<AssetDefinition> queryAssetDef = cb.createQuery(AssetDefinition.class);
+            queryAssetDef.from(AssetDefinition.class);
+
+            final List<AssetDefinition> listAssetDef = emRate.createQuery(queryAssetDef).getResultList();
+            assertEquals(listAssetDef.size(), 1);
+
+            AssetDefinition assetDefinition = listAssetDef.get(0);
+
+            assertEquals("HS", assetDefinition.getName());
+            assertEquals("Y", assetDefinition.getActivated());
+            assertEquals("E", assetDefinition.getAssetType());
+            assertEquals("USD", assetDefinition.getCurrency().getShortName());
+            assertEquals("ASSET.HS.EQUITY.USD", assetDefinition.getRiskFactorMnemonic());
+            assertEquals("N", assetDefinition.getIsComplete());
+            assertEquals("N", assetDefinition.getIsBackFilled());
+            assertEquals("Y", assetDefinition.getUseRateTypeDefaultValues());
+
+            final CriteriaQuery<AssetPrice> queryAssetPrice = cb.createQuery(AssetPrice.class);
+            queryAssetPrice.from(AssetPrice.class);
+
+            final List<AssetPrice> listAssetPrice = emRate.createQuery(queryAssetPrice).getResultList();
+
+            assertEquals(listAssetPrice.size(), 1);
+
+            AssetPrice assetPrice = listAssetPrice.get(0);
+
+            assertEquals(0, Double.compare(81.340000, assetPrice.getPrice()));
+
+        } catch(Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void AssetVolSurfaceInsert() {
+        TimeSeriesLoader tsLoader = new TimeSeriesLoader();
+
+        File file = getFile("HS_ASSETVOLSURFACE.xml");
+
+        try {
+            tsLoader.load(file);
+
+            final CriteriaBuilder cb = emRate.getCriteriaBuilder();
+            final CriteriaQuery<AssetVolSurfaceDefinition> queryAssetDef = cb.createQuery(AssetVolSurfaceDefinition.class);
+            queryAssetDef.from(AssetVolSurfaceDefinition.class);
+
+            final List<AssetVolSurfaceDefinition> listAssetDef = emRate.createQuery(queryAssetDef).getResultList();
+            assertEquals(listAssetDef.size(), 1);
+
+            AssetVolSurfaceDefinition assetVolDef = listAssetDef.get(0);
+            assertEquals("E", assetVolDef.getAssetType());
+            assertEquals("EUR", assetVolDef.getCurrency().getShortName());
+            assertEquals("HS", assetVolDef.getName());
+            assertEquals("ASSET.HS.EQUITY.EUR", assetVolDef.getRiskFactorMnemonic());
+
+            final CriteriaQuery<AssetVolSurface> queryAssetVolSurface = cb.createQuery(AssetVolSurface.class);
+            queryAssetVolSurface.from(AssetVolSurface.class);
+
+            final List<AssetVolSurface> listAssetVolSurface = emRate.createQuery(queryAssetVolSurface).getResultList();
+            assertEquals(listAssetVolSurface.size(), 1);
+
+            final CriteriaQuery<AssetVolPoint> queryAssetVolPoint = cb.createQuery(AssetVolPoint.class);
+            queryAssetVolPoint.from(AssetVolPoint.class);
+
+            final List<AssetVolPoint> listAssetVolPoint = emRate.createQuery(queryAssetVolPoint).getResultList();
+            assertEquals(listAssetVolPoint.size(), 1);
+
+            AssetVolPoint assetVolPoint = listAssetVolPoint.get(0);
+            assertEquals(0, Double.compare(15.554, assetVolPoint.getStrike()));
+            assertEquals(0, Double.compare(37.533773728, assetVolPoint.getVol()));
+            assertNull(assetVolPoint.getTenor());
+
+        } catch(Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    private File getFile(String fileName) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(fileName).getFile());
+
+        return file;
+    }
+
+    private static void initData() {
+        Supplier<OID> oidFactory = OIDS.createOIDFactory();
+
+        emRknet.getTransaction().begin();
+        Source source = new Source(oidFactory.get().bytes(), "KONDOR", "KONDOR", 0, 'L', (short)1, 0);
+        emRknet.persist(source);
+
+        Currency currency1 = new Currency(oidFactory.get().bytes(), "AUD", "AUSTRALIAN DOLLAR", (short)1, (short)0, 'E', 0);
+        Currency currency2 = new Currency(oidFactory.get().bytes(), "CAD", "CANADIAN DOLLAR", (short)1, (short)0, 'E', 0);
+
+        //Currency currency3 = new Currency(oidFactory.get().bytes(), "EUR", "EUR", (short)1, (short)0, 'E', 0);
+
+        Currency usdCurrency = new Currency(oidFactory.get().bytes(), "USD", "UNITED STATES DOLLAR", (short)1, (short)0, 'E', 0);
+        Currency eurCurrency = new Currency(oidFactory.get().bytes(), "EUR", "EUR", (short)1, (short)1, 'E', 0);
+
+        emRknet.persist(currency1);
+        emRknet.persist(currency2);
+        //emRknet.persist(currency3);
+
+        emRknet.persist(usdCurrency);
+        emRknet.persist(eurCurrency);
+
+        emRknet.getTransaction().commit();
+
+
+        emRate.getTransaction().begin();
+
+        Rtable rtable = new Rtable(oidFactory.get().bytes(), "RateType", "RateType", 0);
+        emRate.persist(rtable);
+
+        Rtable rtable2 = new Rtable(oidFactory.get().bytes(), "FxSpotPriceDefinition", "FxSpotPriceDefinition", 0);
+        Rtable assetDefinitionRtable = new Rtable(oidFactory.get().bytes(), "AssetDefinition", "AssetDefinition", 0);
+        Rtable assetVolSurfaceDefinitionRtable = new Rtable(oidFactory.get().bytes(), "AssetVolSurfaceDefinition", "AssetVolSurfaceDefinition", 0);
+
+        emRate.persist(rtable2);
+
+        Rtable rtableycd = new Rtable(oidFactory.get().bytes(), "YieldCurveDefinition", "YieldCurveDefinition", 0);
+        emRate.persist(rtableycd);
+
+        RateType rateType = new RateType(oidFactory.get().bytes(), rtable, "FXSPOTPRICE", "FXSPOTPRICE", "A", "R", 0);
+        emRate.persist(assetDefinitionRtable);
+        emRate.persist(assetVolSurfaceDefinitionRtable);
+
+        //RateType rateType = new RateType(oidFactory.get().bytes(), rtable, "FXSPOTPRICE", "FXSPOTPRICE", "A", "R", 0);
+        //RateType rateType = new RateType(oidFactory.get().bytes(), rtable, "FXSPOTPRICE", "FXSPOTPRICE", "A", "R", 0);
+        RateType assetRateType = new RateType(oidFactory.get().bytes(), rtable, "ASSET", "ASSET", "R", "R", 0);
+        RateType assetVolSurfaceRateType = new RateType(oidFactory.get().bytes(), rtable, "ASSETVOLSURFACE", "ASSETVOLSURFACE", "R", "P", 0);
+
+        emRate.persist(rateType);
+        emRate.persist(assetRateType);
+        emRate.persist(assetVolSurfaceRateType);
+
+        RateType rateTypeYC = new RateType(oidFactory.get().bytes(), rtableycd, "YIELDCURVE", "YIELDCURVE", "A", "R", 0);
+        emRate.persist(rateTypeYC);
+
+
+        TimeSeriesData tsd = new TimeSeriesData(oidFactory.get().bytes(), "DEMO DAY", "DEMO DAY", "R", (short)1, 0);
+        emRate.persist(tsd);
+
+        emRate.getTransaction().commit();
+    }
+}

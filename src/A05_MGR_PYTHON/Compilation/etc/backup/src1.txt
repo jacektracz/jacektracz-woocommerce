@@ -1,0 +1,250 @@
+package com.misys.rate.manager;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import java.util.Set;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import mockit.Mocked;
+import mockit.NonStrictExpectations;
+
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.google.common.base.Supplier;
+import com.misys.model.rate.YieldCurve;
+import com.misys.model.rate.YieldPoint;
+import com.misys.model.rate.YieldCurveDefinition;
+import com.misys.model.rate.FxSpotPrice;
+import com.misys.model.rate.FxSpotPriceDefinition;
+import com.misys.model.rate.RateType;
+import com.misys.model.rate.Rtable;
+import com.misys.model.rate.TimeSeriesData;
+import com.misys.model.rknet.Currency;
+import com.misys.model.rknet.Source;
+import com.misys.rate.manager.RateManagerConfig.Config;
+import com.misys.rate.manager.persistence.JPAFactory;
+import com.misys.rate.manager.timeseries.parsing.TimeSeriesLoader;
+import com.trmsys.kawa.perdb.OID;
+import com.trmsys.kawa.perdb.OIDS;
+
+public class MarketDataIntegrationTest {
+    private static EntityManagerFactory emfRknet;
+    private static EntityManagerFactory emfRate;
+    private static EntityManager emRknet;
+    private static EntityManager emRate;
+
+    private final Supplier<OID> oidFactory;
+
+    @Mocked
+    Config configMock;
+
+    private String schemaXsdPath;
+
+    public MarketDataIntegrationTest() {
+        oidFactory = OIDS.createOIDFactory();
+        schemaXsdPath = getFile("TimeSeriesImport.xsd").getAbsolutePath();
+    }
+
+    @BeforeClass
+    public static void init() {
+        try {
+
+            // workaround for HSQLDB schema/catalog issue
+            Class.forName("org.hsqldb.jdbcDriver");
+            Connection conn = DriverManager.getConnection("jdbc:hsqldb:mem:testdb", "sa", "Kondor_123");
+            Statement st = conn.createStatement();
+            st.executeUpdate("CREATE SCHEMA rate AUTHORIZATION sa");
+            st.executeUpdate("CREATE SCHEMA rknet AUTHORIZATION sa");
+            st.close();
+            conn.close();
+            // end of workaround
+
+            emfRknet = JPAFactory.getRknetEntityManagerFactory();
+            emfRate = JPAFactory.getRateEntityManagerFactory();
+
+            emRknet = emfRknet.createEntityManager();
+            emRate = emfRate.createEntityManager();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @AfterClass
+    public static void dispose() {
+        emRknet.close();
+        emRate.close();
+
+        emfRknet.close();
+        emfRate.close();
+    }
+
+    @Before
+    public void before() {
+
+        new NonStrictExpectations() {
+            {
+                configMock.getTimeSeriesXsd();
+                returns(schemaXsdPath);
+
+                RateManagerConfig.getConfig();
+                returns(configMock);
+            }
+        };
+    }
+
+
+    @Test
+    public void YieldCurveInsert() {
+    	 initData(); // TODO: try to handle it within .sql file
+
+         TimeSeriesLoader tsLoader = new TimeSeriesLoader();
+
+         File file = getFile("HS_YIELDCURVE.EUR.SWAP.xml");
+
+         try {
+             tsLoader.load(file);
+
+             final CriteriaBuilder cb = emRate.getCriteriaBuilder();
+
+             final CriteriaQuery<YieldCurveDefinition> queryFXSPDef = cb.createQuery(YieldCurveDefinition.class);
+
+             queryFXSPDef.from(YieldCurveDefinition.class);
+
+             final List<YieldCurveDefinition> listFXSPDef = emRate.createQuery(queryFXSPDef).getResultList();
+             assertEquals(listFXSPDef.size(), 1);
+
+             final YieldCurveDefinition definition = listFXSPDef.get(0);
+
+             //assertEquals("AUD", definition.getBaseCurrency().getShortName());
+             // assertEquals("CAD", definition.getForeignCurrency().getShortName());
+             assertEquals("YieldCurve", definition.getRateType().getName());
+             assertEquals("YieldCurve.AUD.CAD", definition.getRiskFactorMnemonic());
+             assertEquals("N", definition.getIsComplete());
+             assertEquals("N", definition.getIsBackFilled());
+             assertEquals("Y", definition.getUseRateTypeDefaultValues());
+
+             final CriteriaQuery<YieldCurve> queryFXSP = cb.createQuery(YieldCurve.class);
+             queryFXSP.from(YieldCurve.class);
+
+             final List<YieldCurve> listFXSP = emRate.createQuery(queryFXSP).getResultList();
+
+             assertEquals(listFXSP.size(), 1);
+
+             final YieldCurve point = listFXSP.get(0);
+             Set<YieldPoint> points = point.getYieldPoints();
+
+             /*
+             YieldPoint[] yieldPoints = point.getYieldPoints().toArray( new YieldPoint[0]);
+             YieldPoint yp = yieldPoints[0];
+             assertEquals(0, Double.compare(0.865519528510728, yp.getValue()));
+             */
+
+             for (YieldPoint pp : points)
+             {
+            	 assertEquals(0, Double.compare(0.865519528510728, pp.getValue()));
+            	 break;
+             }
+
+         } catch (Exception e) {
+             fail(e.getMessage());
+         }
+    }
+
+    @Test
+    public void FxSpotPriceInsert() {
+
+        initData(); // TODO: try to handle it within .sql file
+
+        TimeSeriesLoader tsLoader = new TimeSeriesLoader();
+
+        File file = getFile("HS_FXSPOTPRICE.AUD.CAD.xml");
+
+        try {
+            tsLoader.load(file);
+
+            final CriteriaBuilder cb = emRate.getCriteriaBuilder();
+            final CriteriaQuery<FxSpotPriceDefinition> queryFXSPDef = cb.createQuery(FxSpotPriceDefinition.class);
+            queryFXSPDef.from(FxSpotPriceDefinition.class);
+
+            final List<FxSpotPriceDefinition> listFXSPDef = emRate.createQuery(queryFXSPDef).getResultList();
+            assertEquals(listFXSPDef.size(), 1);
+
+            final FxSpotPriceDefinition definition = listFXSPDef.get(0);
+
+            assertEquals("AUD", definition.getBaseCurrency().getShortName());
+            assertEquals("CAD", definition.getForeignCurrency().getShortName());
+            assertEquals("FXSPOTPRICE", definition.getRateType().getName());
+            assertEquals("FXSPOTPRICE.AUD.CAD", definition.getRiskFactorMnemonic());
+            assertEquals("N", definition.getIsComplete());
+            assertEquals("N", definition.getIsBackFilled());
+            assertEquals("Y", definition.getUseRateTypeDefaultValues());
+
+            final CriteriaQuery<FxSpotPrice> queryFXSP = cb.createQuery(FxSpotPrice.class);
+            queryFXSP.from(FxSpotPrice.class);
+
+            final List<FxSpotPrice> listFXSP = emRate.createQuery(queryFXSP).getResultList();
+
+            assertEquals(listFXSP.size(), 1);
+
+            final FxSpotPrice point = listFXSP.get(0);
+
+            assertEquals(0, Double.compare(1.00795, point.getSpotPrice()));
+
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    private File getFile(String fileName) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(fileName).getFile());
+
+        return file;
+    }
+
+    private void initData() {
+        emRknet.getTransaction().begin();
+        Source source = new Source(oidFactory.get().bytes(), "KONDOR", "KONDOR", 0, 'L', (short)1, 0);
+        emRknet.persist(source);
+
+        Currency currency1 = new Currency(oidFactory.get().bytes(), "AUD", "AUSTRALIAN DOLLAR", (short)1, (short)0, 'E', 0);
+        Currency currency2 = new Currency(oidFactory.get().bytes(), "CAD", "CANADIAN DOLLAR", (short)1, (short)0, 'E', 0);
+
+        emRknet.persist(currency1);
+        emRknet.persist(currency2);
+
+        emRknet.getTransaction().commit();
+
+
+        emRate.getTransaction().begin();
+
+        Rtable rtable = new Rtable(oidFactory.get().bytes(), "RateType", "RateType", 0);
+        emRate.persist(rtable);
+
+        Rtable rtable2 = new Rtable(oidFactory.get().bytes(), "FxSpotPriceDefinition", "FxSpotPriceDefinition", 0);
+        emRate.persist(rtable2);
+
+        RateType rateType = new RateType(oidFactory.get().bytes(), rtable, "FXSPOTPRICE", "FXSPOTPRICE", "A", "R", 0);
+
+        emRate.persist(rateType);
+
+        TimeSeriesData tsd = new TimeSeriesData(oidFactory.get().bytes(), "DEMO DAY", "DEMO DAY", "R", (short)1, 0);
+        emRate.persist(tsd);
+
+        emRate.getTransaction().commit();
+    }
+}

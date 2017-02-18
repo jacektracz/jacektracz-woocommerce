@@ -1,0 +1,25 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+echo 'killing krms server'
+
+PIDSERV=$(ps -ef | grep 'ratemanager' | grep -v 'grep'| awk '{print $2}')
+
+if [[ -z "$PIDSERV" ]]; then
+	echo "KRMS_PID::NULL"	
+else
+	echo "KRMS_PID:$PIDSERV"
+	kill -9 $PIDSERV
+fi
+
+rm /jenkins/dist/FR/CMR/data/J2EE/JettyConfig/jetty.pid
+
+echo 'killing krms - done'
+
+#echo 'killing krms server'
+#kill -9 $(ps -ef | grep 'ratemanager' | awk '{print $2}')
+#echo 'killing krms - done'
+#rm /jenkins/dist/FR/CMR/data/J2EE/JettyConfig/jetty.pid
+
+

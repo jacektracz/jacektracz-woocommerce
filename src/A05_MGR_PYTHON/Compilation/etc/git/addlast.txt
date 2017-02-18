@@ -1,0 +1,14 @@
+# source $DDSQL/git/addlast.txt
+# a292f0b99790bbe0e5fed85896bff1e52d6a6e32
+
+git add kgr-jpa-model/src/main/java/com/misys/dao/rknet/RtableDAO.java
+git add kgr-ratemanager-war/src/main/java/com/misys/rate/manager/timeseries/optimized/handlers/AssetVolPointHandler.java
+git add kgr-ratemanager-war/src/main/java/com/misys/rate/manager/timeseries/optimized/handlers/CapletVolPointHandler.java
+git add kgr-ratemanager-war/src/main/java/com/misys/rate/manager/timeseries/optimized/handlers/FxVolPointHandler.java
+git add kgr-ratemanager-war/src/main/java/com/misys/rate/manager/timeseries/optimized/handlers/SwaptionCubePointHandler.java
+git add kgr-ratemanager-war/src/main/java/com/misys/rate/manager/timeseries/optimized/handlers/YieldPointHandler.java
+git add kgr-server/src/main/java/com/misys/kgrserver/handler/StressShiftHandler.java
+git add kgr-server/src/main/java/com/misys/kgrserver/jms/JMSMessageListener.java
+git add kgr-server/src/main/java/com/misys/kgrserver/translator/RiskFactorGroupDataTranslator.java
+
+--	assetvol ??

@@ -1,0 +1,11 @@
+#!/bin/bash
+#source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+PIDSERV=$(ps -ef | grep 'ratemanager' | grep -v 'grep'| awk '{print $2}')
+if [[ -z "$PIDSERV" ]]; then
+	echo "KRMS_PID::NULL"
+else
+	echo "KRMS_PID:$PIDSERV"
+fi
+
+

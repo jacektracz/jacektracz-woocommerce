@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+PIDSERV=$(ps -ef | grep 'bin/x86Linux/KGRServer' | grep -v 'grep'| awk '{print $2}')
+
+if [[ -z "$PIDSERV" ]]; then
+	echo "KGR_CPP_PID::NULL"
+else
+	echo "KGR_CPP_PID:$PIDSERV"
+fi
+

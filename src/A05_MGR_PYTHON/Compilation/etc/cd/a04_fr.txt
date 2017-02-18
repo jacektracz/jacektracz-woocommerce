@@ -1,0 +1,1 @@
+cd /jenkins/dist/FR/CMR/config

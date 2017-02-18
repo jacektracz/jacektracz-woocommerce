@@ -1,0 +1,1 @@
+cd /jenkins/jt_dev/cmr/qa_khepri_g9/fr_qa/CMR_robotFWK/bin/khepri/

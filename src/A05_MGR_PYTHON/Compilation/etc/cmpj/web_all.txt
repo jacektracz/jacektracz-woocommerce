@@ -1,0 +1,33 @@
+#!/bin/bash
+
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+echo 'WEB_INFO::STOP KRMS'
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/stopo/a01_kgrweb.txt
+
+echo 'WEB_INFO::AFTER STOPPED KRMS'
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/lsserv/a00_alls.txt
+
+echo 'WEB_INFO::WEB COMPILATION STARTED'
+
+#source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cmpj/krms.txt
+
+echo 'WEB_INFO::WEB COPYING FILES STARTED'
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cpdev/webapp.txt
+
+echo 'WEB_INFO::KRMS SERVER STARTED'
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a05_kgrweb.txt
+
+echo 'WEB_INFO::SERVERS:SLEEP_10'
+
+sleep 10
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/lsserv/a00_alls.txt
+
+
+echo 'WEB::TAIL_LOG'
+#tail -f /jenkins/dist/FR/CMR/data/log/RateManagerServer.stdout.log
+
+	

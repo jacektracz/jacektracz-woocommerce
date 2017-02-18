@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+source $DDSQL/lsserv/a01_kgrweb.txt
+source $DDSQL/lsserv/a02_kgrcpp.txt
+source $DDSQL/lsserv/a03_kgrjava.txt
+source $DDSQL/lsserv/a04_jms.txt
+source $DDSQL/lsserv/a05_tibems.txt
+source $DDSQL/lsserv/a06_rvd.txt
+source $DDSQL/lsserv/a07_rtm.txt
+source $DDSQL/lsserv/a08_krms.txt

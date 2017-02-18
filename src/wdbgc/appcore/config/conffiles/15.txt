@@ -1,0 +1,17 @@
+[mainconfig]
+m_out_file_name = iastora_srt
+m_version = 15
+m_log_all_errors = 0
+m_print_all_errors = 0
+m_exit_on_exception = 0
+m_system_target = 0
+m_root_dir = d:/lkd/komodo/apps/srt_accelerated/
+m_prefix = iastora2.conf
+m_file = 15
+m_raid_targets_arr = 3d
+m_store_errors = 1
+m_max_g_stored_errors = 2
+m_max_obj_stored_errors = 2
+m_print_all_targets = 1
+m_dbg_all = 0
+m_dbg_all_logger = 0

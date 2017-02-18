@@ -1,0 +1,46 @@
+KJS_BigBoss
+	main class
+	initializes/starts KJS_Params, KJS_ParamsLoader, KJS_JmsLayerManager, KJS_HandlersManager, KJS_MessageTranslator
+	
+KJS_Params
+	stores parameters for JMS connection (brokerURI, session parameters)
+	
+KJS_JmsLayerManager
+	initializes and stores tibco EMS connection (connection, session, consumers)
+	initializes consumers (KJS_JmsMessageConsumer)
+	
+KJS_HandlersManager
+	stores RV handlers (question)
+	
+KJS_JmsMessageHandler
+	input: JMS message (tibemsMapMsg)
+	translates jms message -> KNEL_InMessage via KJS_MessageTranslator
+	sends message to Tibco RV (via KNET_Encapsulation)
+	
+KJS_JmsMessageListener
+	contains consumer object (tibemsMsgConsumer)
+	implements onMessageCallback() method
+	listens to new jms messages and processes it via KJS_JmsMessageHandler
+	
+KJS_MessageTranslator
+	translates messages (rv->jms, jms->rv)
+	rv->jms (recursively translates KNEL_InMessage->tibemsMapMsg)
+	jms->rv (recursively translates tibemsMapMsg->KNEL_InMessage)
+	
+KJS_RvMessageHandler
+	input: RV message (KNEL_InMessage)
+	translates KNEL_InMessage->tibemsMsg via KJS_MessageTranslator
+	sends message to Tibco EMS via KJS_JmsMessageSender
+	
+KJS_JmsMessageSender
+	stores tibems session and vitalSession (question)
+	sends message to Tibco EMS
+	
+KJS_JmsMessageConsumer
+	stores KJS_JmsMessageListener
+	
+KJS_JmsConnectionParams
+	stores JMS parameters (brokerUrl, clientId, username, password)
+	
+KJS_Consts
+	stores static const fields that are used in other classes

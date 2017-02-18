@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/stopo/a03_kgrjava.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cmpj/kgr.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a04_00_kgrjava.txt
+
+
+

@@ -1,0 +1,10 @@
+1)
+	
+	/jenkins/jt_dev/cmr/cmr_khepri_h1/cmr
+
+		for pull, for checkings
+
+2)
+	/jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/src/java
+	
+	for development

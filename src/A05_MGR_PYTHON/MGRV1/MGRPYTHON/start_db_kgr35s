@@ -1,0 +1,7 @@
+setenv SYBASE_ASE ASE-15_0
+setenv SYBASE /nfs/vol5/support/sybase/15.0.3.ESD2/sun4sol/			
+setenv HOSTNAME gdnssun23
+setenv DISPLAY 10.2.135.165:0
+setenv DSQUERY GDN_KGR35S
+setenv KREDITNET_CONFIG_PATH /rksup/config/kgr35s
+

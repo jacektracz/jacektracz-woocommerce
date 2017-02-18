@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cmpj/krms_all.txt
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+#	echo 'KRMS_INFO::STOP KRMS'
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/stopo/a08_krms.txt
+
+echo 'KRMS_INFO::AFTER STOPPED KRMS'
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/lsserv/a00_alls.txt
+
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/cmpj/kgr.txt
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a04_00_kgrjava.txt
+
+#	source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/starto/a04_02_kgrjava_deb.txt

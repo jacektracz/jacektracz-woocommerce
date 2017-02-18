@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export DD=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/
+export DD2=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc
+
+export DDO=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etco
+export DDG=/jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dist_dev_git_g4.txt

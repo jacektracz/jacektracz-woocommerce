@@ -1,0 +1,73 @@
+select * from sensitivitypnlsetup
+
+select * from SimuPnlset
+
+
+select * from sensitivitypnlsensitype
+select * from SensitivityPnlRiskClass
+
+select * from from SensitivityPnlStressTests
+
+delete from sensitivitypnlsensitype
+
+
+delete from SensitivityPnlRiskClass
+
+delete from SensitivityPnlStressTests
+
+
+
+
+
+	 public void bus_ClearCollections_GlobalTrans( 			 
+			  SensitivityPnlSetup sensiPnlEntity)
+	 {
+		 
+	        logger.log_info("SensitivityPnlSetupHandler::bus_Remove_ClearCollections::method_start");	        
+	        try 
+	        {
+	        	
+	        	//Set<AccessSensitivityPnlSetup> vv_acc = sensiPnlEntity.getAccessSensitivityPnlSetups();
+	        	//for(AccessSensitivityPnlSetup dd_acc:vv_acc)
+	        	//{
+	        		//vv_acc.remove(dd_acc);
+	        	//}	        	
+	        	sensiPnlEntity.getAccessSensitivityPnlSetups().clear();
+	        	
+	        	//Set<SensitivityPnlRiskClass> vv_rc = sensiPnlEntity.getSensitivityPnlRiskClasses();
+	        	//for(SensitivityPnlRiskClass dd_rc:vv_rc)
+	        	//{
+	        		//vv_rc.remove(dd_rc);
+	        	//}	        	
+	        	sensiPnlEntity.getSensitivityPnlRiskClasses().clear();
+	        	
+	        	//Set<SensitivityPnlSensiType> vv_type = sensiPnlEntity.getSensitivityPnlSensiTypes();
+	        	//for(SensitivityPnlSensiType dd_type:vv_type)
+	        	//{
+	        		//vv_type.remove(dd_type);
+	        	//}	        	
+	        	sensiPnlEntity.getSensitivityPnlSensiTypes().clear();
+	        	
+	        	//Set<SensitivityPnlStressTests> vv_test = sensiPnlEntity.getSensitivityPnlStressTestses();
+	        	//for(SensitivityPnlStressTests dd_test:vv_test)
+	        	//{
+	        		//vv_test.remove(dd_test);
+	        	//}	        	
+	        	sensiPnlEntity.getSensitivityPnlStressTestses().clear();
+	        	
+	        	//Set<SensitivityPnlSetupInterval> vv_si = sensiPnlEntity.getSensitivityPnlSetupIntervals();
+	        	//for(SensitivityPnlSetupInterval dd_si:vv_si)
+	        	//{
+	        		//vv_si.remove(dd_si);
+	        	//}
+	        	
+	        	sensiPnlEntity.getSensitivityPnlSetupIntervals().clear();	        		        	
+	            logger.log_info("SensitivityPnlSetupHandler::bus_Remove_ClearCollections::method_end");            
+	        } 
+	        catch (final Exception ee) 
+	        {
+	            logger.log_info_exception("FolderHandler::bus_Remove_ClearCollections::exception:", ee);            
+	            throw ee;
+	        }	 
+	 }
+

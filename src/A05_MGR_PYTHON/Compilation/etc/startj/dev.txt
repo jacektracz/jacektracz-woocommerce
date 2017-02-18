@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/Common/RV/bin/
+/jenkins/dist/FR/Common/RV/bin/rvd -listen tcp:kenvngServer:7500
+sleep 10s
+#cd /jenkins/dist/FR/Common/RV/bin
+#./rvd -listen tcp:kenvngServer:7500
+
+cd /jenkins/dist/FR/CMR/etc
+#./startjms
+#sleep 10sHi
+#./startKGRServer
+#sleep 4s
+#./startKGRWeb
+
+/jenkins/dist/FR/CMR/etc/jt_startjms
+sleep 2s
+/jenkins/dist/FR/CMR/etc/startKGRServer
+sleep 2s
+/jenkins/dist/FR/CMR/etc/startKGRWeb
+#/jenkins/dist/FR/CMR/etc/startKGRWeb_deb
+
+# http://10.22.11.48:19080/kgr
+
+

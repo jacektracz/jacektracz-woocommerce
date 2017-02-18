@@ -1,0 +1,10 @@
+#!/bin/bash
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etco/setenv/setenv_cmr_compilation_dev.txt
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etco/setenv/setenv_cmr_dist_dev.txt
+
+echo "KGRCPP: $KGRCPP"
+echo "WORKSPACE: $WORKSPACE"
+
+#mvn -f ${WORKSPACE}/pom.xml -e -s ${WORKSPACE}/src/java/settings.xml -Dmaven.test.skip=true -Ddist.dir=${WORKSPACE}/install -Dkns.src.dir=${KGRCPP} -P release,generated-libs,default,package clean install
+#scons generation
+#scons --no-cache -j 8 > build.txt 2>&1

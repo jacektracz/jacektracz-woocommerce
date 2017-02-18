@@ -1,0 +1,15 @@
+git add kgr-jpa-model/src/main/java/com/misys/dao/rknet/FolderLinkDAO.java
+git add kgr-jpa-model/src/main/java/com/misys/dao/rknet/FolderLockDAO.java
+git add kgr-jpa-model/src/main/java/com/misys/dao/rknet/GenericDAO.java
+git add kgr-jpa-model/src/main/java/com/misys/model/rknet/Folder.java
+git add kgr-jpa-model/src/main/java/com/misys/model/rknet/FolderCode.java
+git add kgr-jpa-model/src/main/java/com/misys/model/rknet/FolderCodeId.java
+git add kgr-jpa-model/src/main/java/com/misys/model/rknet/FolderLink.java
+git add kgr-jpa-model/src/main/java/com/misys/model/rknet/FolderLinkId.java
+git add kgr-jpa-model/src/main/java/com/misys/model/rknet/FolderLock.java
+git add kgr-jpa-model/src/main/java/com/misys/model/rknet/FolderLockId.java
+git add kgr-server/src/main/java/com/misys/kgrserver/handler/FolderHandler.java
+#git add kgr-server/src/main/java/com/misys/kgrserver/handler/HandlersLocator.java
+git add kgr-server/src/main/java/com/misys/kgrserver/translator/FolderLogger.java
+git add kgr-server/src/main/java/com/misys/kgrserver/translator/FolderMapper.java
+git add kgr-server/src/main/java/com/misys/kgrserver/translator/FolderTranslator.java

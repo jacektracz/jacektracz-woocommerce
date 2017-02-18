@@ -1,0 +1,548 @@
+package com.misys.kgrserver.handler;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.EntityManager;
+
+import org.apache.commons.lang.NotImplementedException;
+
+import com.google.common.collect.Lists;
+import com.misys.dao.rknet.AssetClassDAO;
+import com.misys.dao.rknet.AssetSubClassDAO;
+import com.misys.dao.rknet.CountryDAO;
+import com.misys.dao.rknet.CptyClassDAO;
+import com.misys.dao.rknet.CptyDAO;
+import com.misys.dao.rknet.CptyLinkDAO;
+import com.misys.dao.rknet.CptyLockDAO;
+import com.misys.dao.rknet.CurrencyDAO;
+import com.misys.dao.rknet.IndustryDAO;
+import com.misys.dao.rknet.InstrumentDAO;
+import com.misys.dao.rknet.KnuserDAO;
+import com.misys.kgrserver.auth.ConnectionManager;
+import com.misys.kgrserver.persistence.JPAFactory;
+import com.misys.kgrserver.translator.IdentityTranslator;
+import com.misys.model.rknet.AssetClass;
+import com.misys.model.rknet.AssetSubClass;
+import com.misys.model.rknet.CountryAlias;
+import com.misys.model.rknet.Cpty;
+import com.misys.model.rknet.CptyAlias;
+import com.misys.model.rknet.CptyClassAlias;
+import com.misys.model.rknet.CptyLink;
+import com.misys.model.rknet.CptyLock;
+import com.misys.model.rknet.CurrencyAlias;
+import com.misys.model.rknet.IndustryAlias;
+import com.misys.model.rknet.InstrumentAlias;
+import com.misys.model.rknet.Knuser;
+import com.misys.model.rknet.KnuserAlias;
+import com.misys.model.rknet.Source;
+import com.reuters.kgl.facade.beans.CptyDataVO;
+import com.reuters.kgl.facade.beans.CptyGetACKVO;
+import com.reuters.kgl.facade.beans.CptyGetByIdentifierVO;
+import com.reuters.kgl.facade.beans.CptyGetByNameVO;
+import com.reuters.kgl.facade.beans.CptyGetByShortNameVO;
+import com.reuters.kgl.facade.beans.CptyInsertVO;
+import com.reuters.kgl.facade.beans.CptyLinkDataVO;
+import com.reuters.kgl.facade.beans.CptyLockDataVO;
+import com.reuters.kgl.facade.beans.CptyQueryChildrenVO;
+import com.reuters.kgl.facade.beans.CptyQueryIdentityByCodeVO;
+import com.reuters.kgl.facade.beans.CptyQueryIdentityByNameVO;
+import com.reuters.kgl.facade.beans.CptyQueryIdentityByShortNameVO;
+import com.reuters.kgl.facade.beans.CptyQueryLocksVO;
+import com.reuters.kgl.facade.beans.GenericNACKVO;
+import com.reuters.kgl.facade.beans.IdentityVO;
+import com.reuters.kgl.facade.beans.LockDataVO;
+import com.reuters.kgl.facade.beans.LockQueryACKVO;
+import com.reuters.kgl.facade.beans.QueryCptyLinkACKVO;
+import com.reuters.kgl.facade.beans.QueryIdentityACKVO;
+import com.reuters.kgl.facade.beans.ValueObject;
+import com.reuters.kgl.facade.exception.NACKException;
+import com.reuters.kgl.presentation.mask.common.view.LockView;
+
+import com.reuters.kgr.enumeration.integer.RefModeCpty;
+
+import com.reuters.kgr.util.IdConvertion;
+import com.rfs.wffield.exception.IllegalValueException;
+
+public class CptyHandler extends AbstractValueObjectHandler {
+    private EntityManager emRknet = JPAFactory.getRknetEntityManagerFactory().createEntityManager();
+    private CptyDAO cptyData = new CptyDAO(emRknet);
+    private CptyLinkDAO cptyLinkData = new CptyLinkDAO(emRknet);
+    private CptyLockDAO cptyLockData = new CptyLockDAO(emRknet);
+    private InstrumentDAO instrumentData = new InstrumentDAO(emRknet);
+    private IndustryDAO industryData = new IndustryDAO(emRknet);
+    private CountryDAO countryData = new CountryDAO(emRknet);
+    private KnuserDAO userData = new KnuserDAO(emRknet);
+    private CptyClassDAO cptyClassData = new CptyClassDAO(emRknet);
+    private CurrencyDAO currencyData = new CurrencyDAO(emRknet);
+    private AssetSubClassDAO assetSubClassData = new AssetSubClassDAO(emRknet);
+    private AssetClassDAO assetClassData = new AssetClassDAO(emRknet);
+    
+    private IdentityTranslator identityTranslator = new IdentityTranslator();
+    @Override
+    public ValueObject handle(final ValueObject valueObject) {
+        try {
+            switch (valueObject.getMsgId()) {
+            case CptyQueryIdentityByShortNameVO.MSG_ID:
+                return queryCptyIdentityByShortName((CptyQueryIdentityByShortNameVO) valueObject);
+            case CptyGetByIdentifierVO .MSG_ID:
+                return getCptyByIdentifier((CptyGetByIdentifierVO) valueObject);
+            case CptyGetByNameVO .MSG_ID:
+                return getCptyByName((CptyGetByNameVO) valueObject);
+            case CptyGetByShortNameVO .MSG_ID:
+                return getCptyByShortName((CptyGetByShortNameVO) valueObject);
+            case CptyInsertVO.MSG_ID:
+                return insertCpty((CptyInsertVO) valueObject);
+            case CptyQueryIdentityByCodeVO.MSG_ID:
+                return queryCptyIdentityByCode((CptyQueryIdentityByCodeVO) valueObject);
+            case CptyQueryIdentityByNameVO.MSG_ID:
+                return queryCptyIdentityByName((CptyQueryIdentityByNameVO) valueObject);
+            case CptyQueryChildrenVO.MSG_ID:
+                return queryCptyChildren((CptyQueryChildrenVO)valueObject);
+            case CptyQueryLocksVO.MSG_ID:
+                return queryCptyLocks((CptyQueryLocksVO)valueObject);
+            default:
+                return new GenericNACKVO(NACKException.NOTFOUND, "Unknown message id");
+            }
+        } catch (final Exception e) {
+            return new GenericNACKVO(NACKException.SYSTEM, e.getMessage());
+        }
+    }
+    
+    private ValueObject queryCptyLocks(CptyQueryLocksVO valueObject) {
+        LockQueryACKVO result = new LockQueryACKVO();
+        List<LockDataVO> locks = new ArrayList<LockDataVO>();
+        List<CptyLockDataVO> cptyLocks = new ArrayList<CptyLockDataVO>();
+        Source theSource = ConnectionManager.getInstance().findConnectionBySeal(valueObject.getSeal()).getSource();
+
+        Cpty queriedCpty = cptyData.findById(IdConvertion.getByteFromHexString(valueObject.getDataId()));
+        if (queriedCpty == null){
+            queriedCpty = cptyData.findByAlias(valueObject.getDataAlias());
+        }
+        if (queriedCpty == null){
+            throw new IllegalArgumentException("Queried counterparty does not exist: (id="+valueObject.getDataId()+",alias="+valueObject.getDataAlias()+")");
+        }
+        for (CptyLock lock: cptyLockData.queryByCpty(queriedCpty)){
+            CptyLockDataVO cptyLockData = new CptyLockDataVO();
+            cptyLockData.setCpty(identityTranslator.modelToVo(queriedCpty));
+            cptyLockData.setCptyId(IdConvertion.getHexStringFromByte(queriedCpty.getId()));
+            if (getCptyAlias(queriedCpty, theSource)!=null){
+                cptyLockData.setCptyAlias(getCptyAlias(queriedCpty, theSource).getId().getObjectAlias());
+            }
+            cptyLockData.setCptyRefMode(getRefModeAsInt(lock.getRefModeCpty()));
+            cptyLockData.setDataId(IdConvertion.getHexStringFromByte(lock.getId()));
+            cptyLockData.setLockDate(lock.getLockDate());
+            cptyLockData.setMessage(lock.getMsg());
+            if (lock.getKnuser()!=null){
+                cptyLockData.setUser(identityTranslator.modelToVo(lock.getKnuser()));
+                cptyLockData.setUserId(IdConvertion.getHexStringFromByte(lock.getKnuser().getId()));
+                if (getLockUserAlias(lock, theSource)!=null){
+                    cptyLockData.setUserAlias(getLockUserAlias(lock, theSource).getId().getObjectAlias());
+                }
+                cptyLockData.setUserRefMode(getRefModeAsInt(lock.getRefModeKnuser()));
+            }
+            if (lock.getInstrument()!=null){
+                cptyLockData.setInstrument(identityTranslator.modelToVo(lock.getInstrument()));
+                cptyLockData.setInstrumentId(IdConvertion.getHexStringFromByte(lock.getInstrument().getId()));
+                if (getLockInstrumentAlias(lock, theSource)!=null){
+                    cptyLockData.setInstrumentAlias(getLockInstrumentAlias(lock, theSource).getId().getObjectAlias());
+                }
+                cptyLockData.setInstrumentRefMode(getRefModeAsInt(lock.getRefModeInstrument()));
+            }
+            cptyLocks.add(cptyLockData);
+        }
+        result.setCptyLockCollection(cptyLocks);
+        result.setCount(cptyLocks.size());
+        return result;
+    }
+
+    private ValueObject queryCptyChildren(CptyQueryChildrenVO valueObject) {
+        QueryCptyLinkACKVO response = new QueryCptyLinkACKVO();
+        Cpty queriedCpty = cptyData.findById(IdConvertion.getByteFromHexString(valueObject.getParentid()));
+        
+        if (queriedCpty == null){
+            queriedCpty = cptyData.findByAlias(valueObject.getParentalias());
+        }
+        List<CptyLinkDataVO> counterpartyChildrenData = new ArrayList<CptyLinkDataVO>();
+        
+        for (CptyLink cptyLink: cptyLinkData.queryChildren(queriedCpty.getId())){
+            CptyLinkDataVO data = new CptyLinkDataVO(
+                    identityTranslator.modelToVo(queriedCpty),
+                    cptyLink.getLinkHierarchy() == 1 ? true : false,
+                    null,   //netToParrent
+                    cptyLink.getOwnedPart(),
+                    null ); //isEntity
+            counterpartyChildrenData.add(data);
+        }
+        response.setCptyLinkCollection(counterpartyChildrenData);
+        response.setCount(counterpartyChildrenData.size());
+        return response;
+    }
+
+    private ValueObject queryCptyIdentityByShortName(CptyQueryIdentityByShortNameVO requestVO){     
+            final int maxLength = requestVO.getMaxLength();
+            final List<Cpty> matches = cptyData.findByShortNameLike(requestVO.getShortName(), maxLength);
+            final Collection<IdentityVO> identityDataCollection = Lists.newArrayList();
+            for (Cpty match: matches){
+                identityDataCollection.add(identityTranslator.modelToVo(match));
+            }
+            return new QueryIdentityACKVO(identityDataCollection, identityDataCollection.size());
+    }
+    
+    private ValueObject queryCptyIdentityByName(CptyQueryIdentityByNameVO valueObject) {
+        throw new NotImplementedException("Not implemented yet!");
+    }
+
+    private ValueObject queryCptyIdentityByCode(CptyQueryIdentityByCodeVO valueObject) {
+        throw new NotImplementedException("Not implemented yet!");
+    }
+
+    private ValueObject insertCpty(CptyInsertVO valueObject) {
+        throw new NotImplementedException("Not implemented yet!");
+    }
+
+    private ValueObject getCptyByShortName(CptyGetByShortNameVO valueObject) {
+        throw new NotImplementedException("Not implemented yet!");
+    }
+
+    private ValueObject getCptyByName(CptyGetByNameVO valueObject) {
+        throw new NotImplementedException("Not implemented yet!");
+    }
+
+    private IndustryAlias getIndustryAlias(Cpty cpty, Source source){
+        IndustryAlias industryAlias = null;
+        
+        List<IndustryAlias> industryAliases = new ArrayList<IndustryAlias>();
+        industryAliases.addAll(industryData.findById(cpty.getIndustryId()).getIndustryAliases());
+        
+        for(IndustryAlias alias: industryAliases){
+            if (alias.getSource()==source){
+                industryAlias = alias;
+            }
+        }
+        return industryAlias;
+    }
+
+    private InstrumentAlias getLockInstrumentAlias(CptyLock queriedLock, Source theSource) {
+        InstrumentAlias lockInstrumentAlias = null;
+        List<InstrumentAlias> instrumentAliases = new ArrayList<InstrumentAlias>();
+        instrumentAliases.addAll(instrumentData.findById(queriedLock.getInstrument().getId()).getInstrumentAliases());
+        for(InstrumentAlias alias: instrumentAliases){
+            if (alias.getSource()==theSource){
+                lockInstrumentAlias = alias;
+            }
+        }
+        return lockInstrumentAlias;
+    }
+    
+    private KnuserAlias getLockUserAlias(CptyLock queriedLock, Source theSource) {
+        KnuserAlias lockUserAlias = null;
+        List<KnuserAlias> userAliases = new ArrayList<KnuserAlias>();
+        userAliases.addAll(userData.findById(queriedLock.getKnuser().getId()).getKnuserAliases());
+        for(KnuserAlias alias: userAliases){
+            if (alias.getSource()==theSource){
+                lockUserAlias = alias;
+            }
+        }
+        return lockUserAlias;
+    }
+    
+    private CptyAlias getCptyAlias(Cpty queriedCpty, Source theSource) {
+        CptyAlias cptyAlias = null;
+        List<CptyAlias> cptyAliases = new ArrayList<CptyAlias>();
+        cptyAliases.addAll(cptyData.findById(queriedCpty.getId()).getCptyAliases());
+        for(CptyAlias alias: cptyAliases){
+            if (alias.getSource()==theSource){
+                cptyAlias = alias;
+            }
+        }
+        return cptyAlias;
+    }
+    
+    private CountryAlias getDomesticCountryAlias(Cpty cpty, Source source){
+        CountryAlias domesticCountryAlias = null;
+        List<CountryAlias> countryAliases = new ArrayList<CountryAlias>();
+        countryAliases.addAll(countryData.findById(cpty.getCountryIdDomestic()).getCountryAliases());
+        for(CountryAlias alias: countryAliases){
+            if (alias.getSource()==source){
+                domesticCountryAlias = alias;
+            }
+        }
+        return domesticCountryAlias;
+    }
+    
+    private CountryAlias getUltimateCountryAlias(Cpty cpty, Source source){
+        CountryAlias ultimateCountryAlias = null;
+        List<CountryAlias> countryAliases = new ArrayList<CountryAlias>();
+        countryAliases.addAll(countryData.findById(cpty.getCountryIdUltimate()).getCountryAliases());
+        for(CountryAlias alias: countryAliases){
+            if (alias.getSource()==source){
+                ultimateCountryAlias = alias;
+            }
+        }
+        return ultimateCountryAlias;
+    }
+    
+    private KnuserAlias getUserApplicantAlias(Cpty cpty, Source source){
+        KnuserAlias userApplicantAlias = null;
+        List<KnuserAlias> userAliases = new ArrayList<KnuserAlias>();
+        userAliases.addAll(userData.findById(cpty.getKnuserIdApplicant()).getKnuserAliases());
+        for(KnuserAlias alias: userAliases){
+            if (alias.getSource()==source){
+                userApplicantAlias = alias;
+            }
+        }
+        return userApplicantAlias;
+    }
+    
+    private CptyClassAlias getCptyClassAlias(Cpty cpty, Source source){
+        CptyClassAlias cptyClassAlias = null;
+        List<CptyClassAlias> cptyAliases = new ArrayList<CptyClassAlias>();
+        cptyAliases.addAll(cptyClassData.findById(cpty.getCptyClassId()).getCptyClassAliases());
+        for(CptyClassAlias alias: cptyAliases){
+            if (alias.getSource()==source){
+                cptyClassAlias = alias;
+            }
+        }
+        return cptyClassAlias;
+    }
+    
+    private CurrencyAlias getCurrencyAlias(Cpty cpty, Source source){
+        CurrencyAlias currencyAlias = null;
+        List<CurrencyAlias> currencyAliases = new ArrayList<CurrencyAlias>();
+        currencyAliases.addAll(currencyData.findById(cpty.getCurrencyId()).getCurrencyAliases());
+        for(CurrencyAlias alias: currencyAliases){
+            if (alias.getSource()==source){
+                currencyAlias = alias;
+            }
+        }
+        return currencyAlias;
+    }
+    
+    private CptyAlias getHeadquaterAlias(Cpty cpty, Source source){
+        CptyAlias headquaterAlias = null;
+        List<CptyAlias> cptyAliases = new ArrayList<CptyAlias>();
+        cptyAliases.addAll(cptyData.findById(cpty.getCptyIdHeadquarter()).getCptyAliases());
+        for(CptyAlias alias: cptyAliases){
+            if (alias.getSource()==source){
+                headquaterAlias = alias;
+            }
+        }
+        return headquaterAlias;
+    }
+    
+
+    private ValueObject getCptyByIdentifier(CptyGetByIdentifierVO valueObject) {
+        byte[] id= IdConvertion.getByteFromHexString(valueObject.getId());
+        Cpty match = cptyData.findById(id);
+        Source theSource = ConnectionManager.getInstance().findConnectionBySeal(valueObject.getSeal()).getSource();
+       
+        Set noRiskCol = new HashSet<Integer>();
+        noRiskCol.add(match.getNoRisk());
+        
+        CptyDataVO data = new CptyDataVO(
+                valueObject.getId(),
+                match.getShortName(),
+                match.getName(),
+                match.getIsEntity() == 1 ? true : false,
+                match.getCloselyWatched() == 1 ? true : false,
+                noRiskCol,
+                match.getIntraGroup() == 1 ? true : false,
+                getLegalEntityAsInt(match.getLegalEntity()),
+                match.getDefaultStatus() == 1 ? true : false,
+                match.getDilutionExpectedLoss(),
+                match.getHistoricalDate(),
+                match.getDilutionCapital(),
+                ValidationStatus.getValue(ValidationStatus.getLabel(match.getStatus())));
+        
+                if (match.getCptyType()!=null){
+                    data.setType(getCptyTypeAsInt(match.getCptyType()));
+                }
+                if (match.getMsg()!=null){
+                    data.setMessage(match.getMsg());
+                }
+                if (match.getMsgExpiryDate()!=null){                    
+                    data.setMsgExpiryDate(match.getMsgExpiryDate().getTime());
+                }
+                if (match.getAnnotation() != null){
+                    data.setAnnotation(match.getAnnotation());
+                }
+                if (match.getTotalAnnualSales()!=null){
+                    data.setTotalAnnualSales(match.getTotalAnnualSales());
+                }
+                if (match.getKnuser()!=null) {
+                    data.setApprovingUser(identityTranslator.modelToVo(match.getKnuser()));
+                }
+                if (match.getValidationRequestingUserId()!=null){
+                    data.setRequestingUser(identityTranslator.modelToVo((Knuser) userData.findById(match.getValidationRequestingUserId())));
+                }
+                if (match.getApprovalDate()!=null){
+                    data.setApprovingDate(match.getApprovalDate());
+                }
+                if (match.getValidationRequestDate()!=null){
+                    data.setRequestingDate(match.getValidationRequestDate());
+                }
+                if (match.getIndustryId()!=null){
+                    data.setIndustryId(IdConvertion.getHexStringFromByte(match.getIndustryId()));
+                    data.setIndustry(identityTranslator.modelToVo(industryData.findById(match.getIndustryId())));
+                    if (getIndustryAlias(match, theSource)!=null){
+                        data.setIndustryAlias(getIndustryAlias(match, theSource).getId().getObjectAlias());
+                    }
+                }
+                if (match.getCountryIdDomestic()!=null){
+                    data.setDomesticCountryId(IdConvertion.getHexStringFromByte(match.getCountryIdDomestic()));
+                    data.setDomesticCountry(identityTranslator.modelToVo(countryData.findById(match.getCountryIdDomestic())));
+                    if (getDomesticCountryAlias(match, theSource)!=null){
+                        data.setDomesticCountryAlias(getDomesticCountryAlias(match, theSource).getId().getObjectAlias());
+                    }
+                }
+                if (match.getCountryIdUltimate()!=null){
+                    data.setUltimateCountryId(IdConvertion.getHexStringFromByte(match.getCountryIdUltimate()));
+                    data.setUltimateCountry(identityTranslator.modelToVo(countryData.findById(match.getCountryIdUltimate())));
+                    if (getUltimateCountryAlias(match, theSource)!=null){
+                        data.setUltimateCountryAlias(getUltimateCountryAlias(match, theSource).getId().getObjectAlias());
+                    }
+                }
+                if (match.getKnuserIdApplicant()!=null){
+                    data.setUserApplicantId(IdConvertion.getHexStringFromByte(match.getKnuserIdApplicant()));
+                    data.setUserApplicant(identityTranslator.modelToVo(userData.findById(match.getKnuserIdApplicant())));
+                    if (getUserApplicantAlias(match, theSource)!=null){
+                        data.setUserApplicantAlias(getUserApplicantAlias(match, theSource).getId().getObjectAlias());
+                    }
+                }
+                if (match.getCptyClassId()!=null){
+                    data.setCptyClassId(IdConvertion.getHexStringFromByte(match.getCptyClassId()));
+                    data.setCptyClass(identityTranslator.modelToVo(cptyClassData.findById(match.getCptyClassId())));
+                    if (getCptyClassAlias(match, theSource)!=null){
+                        data.setCptyClassAlias(getCptyClassAlias(match, theSource).getId().getObjectAlias());
+                    }
+                }
+                if (match.getCurrencyId()!=null){
+                    data.setCurrencyId(IdConvertion.getHexStringFromByte(match.getCurrencyId()));
+                    data.setCurrency(identityTranslator.modelToVo(currencyData.findById(match.getCurrencyId())));
+                    if (getCurrencyAlias(match, theSource)!=null){
+                        data.setCurrencyAlias(getCurrencyAlias(match, theSource).getId().getObjectAlias());
+                    }
+                }
+                if (match.getCptyIdHeadquarter()!=null){
+                    data.setHeadquarterId(IdConvertion.getHexStringFromByte(match.getCptyIdHeadquarter()));
+                    data.setHeadquarter(identityTranslator.modelToVo(cptyData.findById(match.getCptyIdHeadquarter())));
+                    if (getHeadquaterAlias(match, theSource)!=null){
+                        data.setHeadquarterAlias(getHeadquaterAlias(match, theSource).getId().getObjectAlias());
+                    }
+                }
+                if (match.getAssetSubClassIdAdvanced()!=null){
+                    data.setAssetSubClassAdvancedId(IdConvertion.getHexStringFromByte(match.getAssetSubClassIdAdvanced()));
+                    data.setAssetSubClassAdvanced(identityTranslator.modelToVo((AssetSubClass) assetSubClassData.findById(match.getAssetSubClassIdAdvanced())));
+                }
+                if (match.getAssetSubClassIdEconomic()!=null){
+                    data.setAssetSubClassEconomicId(IdConvertion.getHexStringFromByte(match.getAssetSubClassIdEconomic()));
+                    data.setAssetSubClassEconomic(identityTranslator.modelToVo((AssetSubClass) assetSubClassData.findById(match.getAssetSubClassIdEconomic())));
+                }
+                if (match.getAssetSubClassIdFundation()!=null){
+                    data.setAssetSubClassFundationId(IdConvertion.getHexStringFromByte(match.getAssetSubClassIdFundation()));
+                    data.setAssetSubClassFundation(identityTranslator.modelToVo((AssetSubClass) assetSubClassData.findById(match.getAssetSubClassIdFundation())));
+                }
+                if (match.getAssetSubClassIdStandard()!=null){
+                    data.setAssetSubClassStandardId(IdConvertion.getHexStringFromByte(match.getAssetSubClassIdStandard()));
+                    data.setAssetSubClassStandard(identityTranslator.modelToVo((AssetSubClass) assetSubClassData.findById(match.getAssetSubClassIdStandard())));
+                }
+                if (match.getAssetClassIdAdvanced()!=null){
+                    data.setAssetClassAdvancedId(IdConvertion.getHexStringFromByte(match.getAssetClassIdAdvanced()));
+                    data.setAssetClassAdvanced(identityTranslator.modelToVo((AssetClass) assetClassData.findById(match.getAssetClassIdAdvanced())));
+                }
+                if (match.getAssetClassIdEconomic()!=null){
+                    data.setAssetClassEconomicId(IdConvertion.getHexStringFromByte(match.getAssetClassIdEconomic()));
+                    data.setAssetClassEconomic(identityTranslator.modelToVo((AssetClass) assetClassData.findById(match.getAssetClassIdEconomic())));
+                }
+                if (match.getAssetClassIdFundation()!=null){
+                    data.setAssetClassFundationId(IdConvertion.getHexStringFromByte(match.getAssetClassIdFundation()));
+                    data.setAssetClassFundation(identityTranslator.modelToVo((AssetClass) assetClassData.findById(match.getAssetClassIdFundation())));
+                }
+                if (match.getAssetClassIdStandard()!=null){
+                    data.setAssetClassStandardId(IdConvertion.getHexStringFromByte(match.getAssetClassIdStandard()));
+                    data.setAssetClassStandard(identityTranslator.modelToVo((AssetClass) assetClassData.findById(match.getAssetClassIdStandard())));
+                }
+                
+        CptyGetACKVO response = new CptyGetACKVO(data, valueObject.getId());
+        return response;
+    }
+ 
+    public enum PAGE{
+        SIGN_CREATE(0),
+        SIGN_CREATE_BONUS(1),
+        HOME_SCREEN(2),
+        REGISTER_SCREEN(3);
+
+        private final int value;
+
+        private PAGE(final int newValue) {
+            value = newValue;
+        }
+
+        public int getValue() { return value; }
+    }
+    
+    public enum LegalStatus {
+        KNET_BRANCH(0),
+        KNET_SUBSIDIARY(1);
+        private final int value;
+        private LegalStatus(final int newValue) {
+            value = newValue;
+        }
+        public int getValue() { return value; }     
+    }
+    
+    public Integer getLegalEntityAsInt(Character legalEntityAsChar){
+        if (legalEntityAsChar == null) {
+            throw new IllegalValueException("Legal Entity cant be null");
+        }
+        switch (legalEntityAsChar) {
+            case 'B' : return LegalStatus.KNET_BRANCH.getValue();
+            case 'S' : return LegalStatus.KNET_SUBSIDIARY.getValue();
+            default:
+                throw new IllegalValueException("Wrong value for LegalEntity in Cpty table: "+legalEntityAsChar);       
+        }
+    }
+    
+    public Integer getLegaStastusAsInt(Character legalStatusAsChar){
+        if (legalStatusAsChar == null) {
+           return null;
+        }
+        switch (legalStatusAsChar) {
+            case 'B' : return LegalStatus.KNET_BRANCH.getValue();
+            case 'S' : return LegalStatus.KNET_SUBSIDIARY.getValue();
+            default:
+                throw new IllegalValueException("Wrong value for LegalStatus in Cpty table: "+legalStatusAsChar);       
+        }
+    }
+    
+    private Integer getCptyTypeAsInt(Character cptyTypeChar) {
+        if (cptyTypeChar == null) {
+            throw new IllegalValueException("CptyType cant be null");
+        }
+        switch (cptyTypeChar) {
+            case 'P' : return CptyType.PRIVATE;
+            case 'S' : return CptyType.SOVEREIGN;
+            default:
+                throw new IllegalValueException("Wrong value for CptyType in Cpty table: "+cptyTypeChar);       
+        }
+    }
+
+    private Integer getRefModeAsInt(Character refMode) {
+        if (refMode == null) {
+            throw new IllegalValueException("RefModeCpty cant be null");
+        }
+        switch (refMode){
+        case 'E': return RefModeCpty.ENTITY;
+        case 'H': return RefModeCpty.HIERARCHY;
+        case 'P': return RefModeCpty.PARTIAL;
+        default:
+            throw new IllegalValueException("Wrong value for RefMode: "+refMode);
+        }
+    }
+    
+}

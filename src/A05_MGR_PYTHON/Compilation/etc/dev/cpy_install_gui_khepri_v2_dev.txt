@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/setenv_cmr_dev.txt
+
+cd /jenkins/dist/FR/CMR/etc
+echo 'i m stopping kgrweb'
+./stopKGRWeb
+echo 'kgrweb stopped'
+echo 'starting copy data'
+cp -r /jenkins/jt_dev/cmr/${CMRVER}/kgr-khepri/cmr/CMR/install/gui/* /jenkins/dist/FR/CMR/gui
+echo 'data copied'
+echo 'starting kgr web'
+./startKGRWeb
+echo 'kgr web started'
+

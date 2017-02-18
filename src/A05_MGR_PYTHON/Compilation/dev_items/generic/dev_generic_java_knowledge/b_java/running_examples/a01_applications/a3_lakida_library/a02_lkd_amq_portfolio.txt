@@ -1,0 +1,125 @@
+	Application
+	
+		Goal
+			Build chapter 1 exeample1 from maning book
+		Description
+			Based on active mq
+		Workspace
+			E:\a01_java\workspaces\2015\a01_10_lakida_library
+		Project
+			E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\pom.xml
+		Steps	
+			Step 1
+					
+		Date
+			Start
+				2015-01-09
+		Actions
+			Action 1
+				Category
+					mv
+				Goal				
+					compiling				
+				Action
+					cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\
+					mvn clean install
+				Output:
+					Success !					
+					
+			Action 2
+				Category
+					mv run application
+				Goal				
+					run application
+				Steps
+					Step_1
+						cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\
+					Step_2
+						Action
+							cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\
+							mvn exec:java -Dexec.mainClass="lkd.amq.portfolio.starters.LkdAmqPortfolioStarter"
+						Output
+							Working!
+					
+					Step_3
+						Goal
+							Run publisher
+						Action
+							cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\
+							mvn exec:java -Dexec.mainClass="lkd.amq.portfolio.starters.LkdAmqPortfolioStarter" -Dexec.args="queue producer 10"
+						Output
+							Working!
+					Step_4
+						Goal
+							Run simple consumer					
+							
+						Action
+							cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\
+							mvn -Dlog4j.debug exec:java -Dexec.mainClass="lkd.amq.portfolio.starters.LkdAmqPortfolioStarter" -Dexec.args="queue consumer 10"
+							
+						Output
+							
+					Step_5
+						Goal
+							Run simple publisher
+						Action
+							cd E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\
+							mvn -Dlog4j.debug exec:java -Dexec.mainClass="lkd.amq.portfolio.starters.LkdAmqPortfolioStarter" -Dexec.args="queue sproducer 10"
+						Output
+							Working!
+							
+							
+					Step_6
+						Goal:
+						
+							Creating log4j for client
+							
+						Environment
+						
+							E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\src\main\java\log4j.properties
+							
+						Commad for step 6
+						
+							mvn exec:java -DLog4j.configuration=file:"E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\src\main\java\lkd\amq\server\settings\log4j.properties" -Dexec.mainClass="lkd.amq.portfolio.starters.LkdAmqPortfolioStarter" -Dexec.args="queue sproducer 10"
+							
+							mvn exec:java -Dlog4j.debug -Dexec.mainClass="lkd.amq.portfolio.starters.LkdAmqPortfolioStarter" -Dexec.args="queue sproducer 10"
+							
+						Eviroment for loggers
+							E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\target\lkd-amq-portfolio-1.0.0.jar												
+							E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\src\main\java\lkd\amq\server\settings\log4j.properties						
+							file:E:\a01_java\lakida\va_lakida_library\vc_lakida_library\dt\lakida-library\lakida-amq-library\lkd-amq-portfolio\src\main\java\log4j.properties
+						
+									
+
+
+
+
+
+	APPENDIXES
+		APPENDIX_1
+			GOAL
+			
+				Set Log4j for activemq 
+
+				log4j:WARN No appenders could be found for logger (org.apache.activemq.transport.WireFormatNegotiator).
+				log4j:WARN Please initialize the log4j system properly.
+				log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
+				
+				
+				
+				fo.
+				
+				eption: Connection reset
+				 WARN | Transport Connection to: tcp://127.0.0.1:3756 failed: java.net.SocketExc
+				eption: Connection reset
+				 WARN | Transport Connection to: tcp://127.0.0.1:3763 failed: java.net.SocketExc
+				eption: Connection reset
+				 WARN | Transport Connection to: tcp://127.0.0.1:3766 failed: java.net.SocketExc
+				eption: Connection reset
+				 WARN | Transport Connection to: tcp://127.0.0.1:3767 failed: java.net.SocketException: Connection reset
+
+
+
+
+						
+																				

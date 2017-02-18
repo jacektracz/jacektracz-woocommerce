@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source /jenkins/jt_dev/tools/python/A05_MGR_PYTHON/Compilation/etc/setenv/setenv_cmr_dev.txt
+
+echo 'startjms-starting'
+echo 'cd /jenkins/dist/FR/CMR/etc'
+cd /jenkins/dist/FR/CMR/etc
+
+echo 'rm /jenkins/dist/FR/CMR/config//datastore/activemq-kworkstation.pid'
+
+rm /jenkins/dist/FR/CMR/config//datastore/activemq-kworkstation.pid
+
+echo '/jenkins/dist/FR/CMR/etc/startjms'
+
+/jenkins/dist/FR/CMR/etc/startjms
+
+echo 'startjms-success'
+
+
+
+

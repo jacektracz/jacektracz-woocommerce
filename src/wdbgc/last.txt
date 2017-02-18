@@ -1,0 +1,27 @@
+array:
+        def set_parent_names(self,tt):
+                self.xx_dbg("DBG_NvCacheFrameHdr_PyArray::set_parent_names::method_in::")
+                self.xx_set_class_name ( tt )
+                self.xx_set_full_class_name ( "iastora!" + tt )
+                self.xx_dbg("DBG_NvCacheFrameHdr_PyArray::set_parent_names::method_out::")
+                
+        def set_selectors(self,p_table,p_num):
+                self.xx_dbg("DBG_NvCacheFrameHdr_PyArray::set_selectors::method_in::")
+                self.m_tbl_selector = p_table #"currRaidDevMembers"
+                self.m_num_items_selector = p_num #"currRaidDevNumMembers"
+                self.xx_dbg("DBG_NvCacheFrameHdr_PyArray::set_selectors::method_out::")
+
+DBG_NvCacheVolConfigMd_PyArray
+
+
+                self.allDisksTbl = DBG_MpbDisk_PyArray("DBG_RaidMpbTbl",self)
+                self.allDisksTbl.set_parent_names("RaidMpbTbl")
+                self.allDisksTbl.set_selectors("allDisksTbl","numDisks")
+                self.allDisksTbl.init_object_fields()
+
+
+                        self.allDisksTbl.set_addr(self,"SELF")
+                        self.allDisksTbl.prepare_object(self)
+
+
+self.allDisksTbl.print_object()

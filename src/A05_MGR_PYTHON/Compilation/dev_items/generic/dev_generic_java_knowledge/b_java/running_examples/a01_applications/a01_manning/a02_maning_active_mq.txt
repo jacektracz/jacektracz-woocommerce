@@ -1,0 +1,31 @@
+	Application
+	
+		Goal
+			Build chapter library based on maning book
+		Description
+			Based on active mq		
+		Workspace
+			E:\a01_java\workspaces\2015\a01_10_jee_simple
+		Project
+			E:\a01_java\jee_tutorial\jeetut_eclipse\jms_simple\tut_jms\jms\pom.xml
+		Steps	
+			Step 1
+				Action
+					Opening jee tutorial jee
+				Outcome
+					Compiled
+			Step 2
+				Creatig new active mq module	
+					
+		Date
+			Start
+				2015-01-09
+		Mvn
+		
+			cd E:\a01_java\jee_tutorial\jeetut_eclipse\jms_simple\tut_jms\jms\simple\amq-simple-producer\
+			mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter"
+			
+
+			mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter" -Dexec.args="queue producer 10"
+			
+			mvn exec:java -Dexec.mainClass="lkd.jms.producers.starter.LkdJmsProducerStarter" -Dexec.args="queue consumer 10"

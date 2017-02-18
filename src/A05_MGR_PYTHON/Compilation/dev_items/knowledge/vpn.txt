@@ -1,0 +1,6 @@
+sudo apt-get install vpnc
+sudo apt-get install openconnect
+sudo openconnect https://ukrassl.misys.com/misysvpn
+tam podajesz username: misysroot\<login>
+i haslo (naturalnie domenowe)
+i VPN sie laczy i dooki jest polaczony to mozecie "na okolo" zlapac nexusa 

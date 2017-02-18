@@ -1,0 +1,4 @@
+rm /jenkins/dist/FR/CMR/data/interface/rate/FXVOLEURUSD*
+#	292131615 / 543285  
+#	92020
+cp /jenkins/dist/FR/CMR/data/interface/rate_backup/big-ts/FXVOLEURUSD.xml /jenkins/dist/FR/CMR/data/interface/rate

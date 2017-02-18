@@ -1,0 +1,1 @@
+tail -f /jenkins/dist/FR/CMR/data/log/KGRWebServer.log

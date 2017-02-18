@@ -1,0 +1,6 @@
+self:text("composer install -o --prefer-dist");
+self:text("composer update -o");
+
+self:text(@"C:\lkd\wmt\backend> php -S 127.0.0.1:8886 -t .\web\");
+self:text(@"C:\lkd\wmt\wmt_backend> php -S 127.0.0.1:8888 -t .\web\");
+self:text(@"C:\lkd\wmt\wmt_backend> php -S 127.0.0.1:8888 -t .\web\");

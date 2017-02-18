@@ -1,0 +1,19 @@
+Reopen on popper.
+Validation HTR :
+
+1) Inserting data
+
+        Inserted data:
+            Inserted limit: JT-V1
+            Inserted exposure: JT-V1
+            Inserted deal: 
+                               time stamp:193
+                               table: JT-V1
+
+2) Checking enquiry on deal:
+           Overdraft mode is Deal
+
+3) Checking enquiry
+           Overdraft mode is NONE for limit JT-V1
+           Overdraft mode is Deal for time band 0D+ for limit JT-V1 
+
