@@ -1,0 +1,514 @@
+PS C:\lkd\wmt\backend> ^C
+PS C:\lkd\wmt\backend> .\bin\doctrine
+The system cannot find the path specified.
+PS C:\lkd\wmt\backend> ls
+
+
+    Directory: C:\lkd\wmt\backend
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       10/25/2016   2:57 PM                .settings
+d-----        9/15/2016   9:11 AM                bin
+d-----       11/14/2016   2:10 PM                cache
+d-----        6/16/2016  12:29 PM                config
+d-----       11/10/2016   5:34 PM                db
+d-----         8/3/2016   2:57 PM                migrations
+d-----       10/21/2016   6:20 PM                src
+d-----        4/12/2016  12:41 PM                tests
+d-----       10/18/2016   3:07 PM                vendor
+d-----       10/12/2016  10:09 AM                web
+-a----       10/25/2016   2:57 PM            174 .buildpath
+-a----        2/17/2016   9:55 AM            272 .gitattributes
+-a----         6/2/2016  11:42 AM             80 .gitignore
+-a----       10/25/2016   2:57 PM            521 .project
+-a----        6/16/2016  12:23 PM            219 bootstrap.php
+-a----        6/16/2016  12:17 PM            829 cli-config.php
+-a----        10/4/2016   1:58 PM           1241 composer.json
+-a----       10/18/2016   3:01 PM         139639 composer.lock
+-a----        6/16/2016  12:29 PM            152 migrations.yml
+-a----        3/22/2016   9:27 AM            358 queue_consumer.php
+
+
+PS C:\lkd\wmt\backend> .\bin\doctrine
+The system cannot find the path specified.
+PS C:\lkd\wmt\backend> .\bin\doctrine
+Doctrine Command Line Interface version 2.5.4
+
+Usage:
+  command [options] [arguments]
+
+Options:
+  -h, --help            Display this help message
+  -q, --quiet           Do not output any message
+  -V, --version         Display this application version
+      --ansi            Force ANSI output
+      --no-ansi         Disable ANSI output
+  -n, --no-interaction  Do not ask any interactive question
+  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for deb
+ug
+
+Available commands:
+  help                            Displays help for a command
+  list                            Lists commands
+ dbal
+  dbal:import                     Import SQL file(s) directly to Database.
+  dbal:run-sql                    Executes arbitrary SQL directly from the command line.
+ migrations
+  migrations:diff                 Generate a migration by comparing your current database to your mapping information.
+  migrations:execute              Execute a single migration version up or down manually.
+  migrations:generate             Generate a blank migration class.
+  migrations:migrate              Execute a migration to a specified version or the latest available version.
+  migrations:status               View the status of a set of migrations.
+  migrations:version              Manually add and delete migration versions from the version table.
+ orm
+  orm:clear-cache:metadata        Clear all metadata cache of the various cache drivers.
+  orm:clear-cache:query           Clear all query cache of the various cache drivers.
+  orm:clear-cache:result          Clear all result cache of the various cache drivers.
+  orm:convert-d1-schema           Converts Doctrine 1.X schema into a Doctrine 2.X schema.
+  orm:convert-mapping             Convert mapping information between supported formats.
+  orm:convert:d1-schema           Converts Doctrine 1.X schema into a Doctrine 2.X schema.
+  orm:convert:mapping             Convert mapping information between supported formats.
+  orm:ensure-production-settings  Verify that Doctrine is properly configured for a production environment.
+  orm:generate-entities           Generate entity classes and method stubs from your mapping information.
+  orm:generate-proxies            Generates proxy classes for entity classes.
+  orm:generate-repositories       Generate repository classes from your mapping information.
+  orm:generate:entities           Generate entity classes and method stubs from your mapping information.
+  orm:generate:proxies            Generates proxy classes for entity classes.
+  orm:generate:repositories       Generate repository classes from your mapping information.
+  orm:info                        Show basic information about all mapped entities
+  orm:mapping:describe            Display information about mapped objects
+  orm:run-dql                     Executes arbitrary DQL directly from the command line.
+  orm:schema-tool:create          Processes the schema and either create it directly on EntityManager Storage Connection
+ or generate the SQL output.
+  orm:schema-tool:drop            Drop the complete database schema of EntityManager Storage Connection or generate the
+corresponding SQL output.
+  orm:schema-tool:update          Executes (or dumps) the SQL needed to update the database schema to match the current
+mapping metadata.
+  orm:validate-schema             Validate the mapping files.
+PS C:\lkd\wmt\backend> .\bin\doctrine migrations:diff
+Loading configuration from file: migrations.yml
+PHP Fatal error:  Cannot declare class Domain\Models\Request, because the name is already in use in C:\lkd\wmt\backend\s
+rc\Domain\Models\Revision.php on line 19
+
+Fatal error: Cannot declare class Domain\Models\Request, because the name is already in use in C:\lkd\wmt\backend\src\Do
+main\Models\Revision.php on line 19
+PS C:\lkd\wmt\backend> .\bin\doctrine migrations:diff
+Loading configuration from file: migrations.yml
+PHP Fatal error:  Cannot declare class Domain\Models\Request, because the name is already in use in C:\lkd\wmt\backend\s
+rc\Domain\Models\Revision.php on line 19
+
+Fatal error: Cannot declare class Domain\Models\Request, because the name is already in use in C:\lkd\wmt\backend\src\Do
+main\Models\Revision.php on line 19
+PS C:\lkd\wmt\backend> .\bin\doctrine migrations:diff
+Loading configuration from file: migrations.yml
+Generated new migration class to "C:\lkd\wmt\backend\migrations/Version20161114223853.php" from schema differences.
+PS C:\lkd\wmt\backend> .\bin\doctrine migrations:migrate --no-interaction
+Loading configuration from file: migrations.yml
+
+                    Doctrine Sandbox Migrations
+
+
+Migrating up to 20161114223853 from 20160803125741
+
+  ++ migrating 20161114223853
+
+     -> CREATE TABLE request_form (id INT AUTO_INCREMENT NOT NULL, changed_by INT DEFAULT NULL, created_by INT DEFAULT N
+ULL, revision INT DEFAULT NULL, type INT DEFAULT NULL, created_at INT NOT NULL, changed_at INT NOT NULL, hash VARCHAR(25
+5) NOT NULL, body VARCHAR(4000) NOT NULL, INDEX IDX_2D2FDAB58CDE5729 (type), INDEX requestform_created_by (created_by),
+INDEX requestform_changed_by (changed_by), INDEX requestform_revision (revision), PRIMARY KEY(id)) DEFAULT CHARACTER SET
+ utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB
+     -> ALTER TABLE request_form ADD CONSTRAINT FK_2D2FDAB510BC6D9F FOREIGN KEY (changed_by) REFERENCES user (id)
+     -> ALTER TABLE request_form ADD CONSTRAINT FK_2D2FDAB5DE12AB56 FOREIGN KEY (created_by) REFERENCES user (id)
+     -> ALTER TABLE request_form ADD CONSTRAINT FK_2D2FDAB56D6315CC FOREIGN KEY (revision) REFERENCES revision (id)
+     -> ALTER TABLE request_form ADD CONSTRAINT FK_2D2FDAB58CDE5729 FOREIGN KEY (type) REFERENCES type (id)
+
+  ++ migrated (2.38s)
+
+  ------------------------
+
+  ++ finished in 2.38s
+  ++ 1 migrations executed
+  ++ 5 sql queries
+PS C:\lkd\wmt\backend> php -S 127.0.0.1:8886 -t .\web\
+PHP 7.0.11 Development Server started at Mon Nov 14 23:41:03 2016
+Listening on http://127.0.0.1:8886
+Document root is C:\lkd\wmt\backend\web
+Press Ctrl-C to quit.
+PS C:\lkd\wmt\backend> composer update -o
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Removing symfony/yaml (v2.8.12)
+  - Installing symfony/yaml (v2.8.13)
+    Downloading: Failed
+    Downloading: Failed
+    Downloading: Failed
+    Update failed (The "https://api.github.com/repos/symfony/yaml/zipball/396784cd06b91f3db576f248f2402d547a077787" file
+ could not be downloaded (HTTP/1.1 302 Found))
+    Would you like to try reinstalling the package instead [yes]? yes
+  - Removing symfony/yaml (v2.8.12)
+  - Installing symfony/yaml (v2.8.13)
+    Downloading: Failed
+    Downloading: Failed
+    Downloading: Failed
+    Failed to download symfony/yaml from dist: The "https://api.github.com/repos/symfony/yaml/zipball/396784cd06b91f3db5
+76f248f2402d547a077787" file could not be downloaded (HTTP/1.1 302 Found)
+    Now trying to download from source
+  - Installing symfony/yaml (v2.8.13)
+    Cloning 396784cd06b91f3db576f248f2402d547a077787
+
+
+  [RuntimeException]
+  Failed to clone https://github.com/symfony/yaml.git via https, ssh protocols, aborting.
+  - https://github.com/symfony/yaml.git
+    Cloning into 'C:\lkd\wmt\backend\vendor\symfony\yaml'...
+    fatal: unable to access 'https://github.com/symfony/yaml.git/': Failed to connect to github.com port 443: Timed o
+  ut
+  - git@github.com:symfony/yaml.git
+    Cloning into 'C:\lkd\wmt\backend\vendor\symfony\yaml'...
+    ssh: connect to host github.com port 22: Connection timed out
+    fatal: Could not read from remote repository.
+
+    Please make sure you have the correct access rights
+    and the repository exists.
+
+
+update [--prefer-source] [--prefer-dist] [--dry-run] [--dev] [--no-dev] [--lock] [--no-custom-installers] [--no-autoload
+er] [--no-scripts] [--no-progress] [--no-suggest] [--with-dependencies] [-v|vv|vvv|--verbose] [-o|--optimize-autoloader]
+ [-a|--classmap-authoritative] [--ignore-platform-reqs] [--prefer-stable] [--prefer-lowest] [-i|--interactive] [--root-r
+eqs] [--] [<packages>]...
+
+PS C:\lkd\wmt\backend> composer update -o
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Removing doctrine/cache (v1.6.0)
+  - Installing doctrine/cache (v1.6.1)
+    Downloading: 100%
+
+  - Removing symfony/debug (v3.1.5)
+  - Installing symfony/debug (v3.1.6)
+    Loading from cache
+
+  - Removing symfony/polyfill-mbstring (v1.2.0)
+  - Installing symfony/polyfill-mbstring (v1.3.0)
+    Downloading: 100%
+
+  - Removing symfony/console (v3.1.5)
+  - Installing symfony/console (v3.1.6)
+    Downloading: 100%
+
+  - Removing doctrine/annotations (v1.2.7)
+  - Installing doctrine/annotations (v1.3.0)
+    Downloading: Failed
+    Downloading: Failed
+    Downloading: Failed
+    Update failed (The "https://api.github.com/repos/doctrine/annotations/zipball/30e07cf03edc3cd3ef579d0dd4dd8c58250799
+a5" file could not be downloaded (HTTP/1.1 302 Found))
+    Would you like to try reinstalling the package instead [yes]? yes
+  - Removing doctrine/annotations (v1.2.7)
+  - Installing doctrine/annotations (v1.3.0)
+    Downloading: Failed
+    Downloading: Failed
+    Downloading: Failed
+    Failed to download doctrine/annotations from dist: The "https://api.github.com/repos/doctrine/annotations/zipball/30
+e07cf03edc3cd3ef579d0dd4dd8c58250799a5" file could not be downloaded (HTTP/1.1 302 Found)
+    Now trying to download from source
+  - Installing doctrine/annotations (v1.3.0)
+^CTerminate batch job (Y/N)?
+^CThe system cannot open the device or file specified.
+PS C:\lkd\wmt\backend> ^C
+PS C:\lkd\wmt\backend> ^C
+PS C:\lkd\wmt\backend> ^C
+PS C:\lkd\wmt\backend> SET https_proxy=http://proxy-chain.intel.com:911
+PS C:\lkd\wmt\backend> SET http_proxy=http://proxy-chain.intel.com:911
+PS C:\lkd\wmt\backend> composer update -o
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Removing doctrine/annotations (v1.2.7)
+  - Installing doctrine/annotations (v1.3.0)
+    Downloading: 100%
+
+  - Removing symfony/polyfill-util (v1.2.0)
+  - Installing symfony/polyfill-util (v1.3.0)
+    Downloading: 100%
+
+  - Removing symfony/polyfill-php56 (v1.2.0)
+  - Installing symfony/polyfill-php56 (v1.3.0)
+    Downloading: 100%
+
+  - Removing symfony/security-core (v3.1.5)
+  - Installing symfony/security-core (v3.1.6)
+    Downloading: Failed
+    Downloading: Failed
+    Downloading: Failed
+    Update failed (The "https://api.github.com/repos/symfony/security-core/zipball/665259f6d2f826a21e75ee2e8e3ef24bd9a46
+e13" file could not be downloaded (HTTP/1.1 302 Found))
+    Would you like to try reinstalling the package instead [yes]? $this->queueService->sendChangeToQueue($output, $this-
+>input, $this->ctx, self::ACTION_SERVICE);^CTerminate batch job (Y/N)?
+^C
+PS C:\lkd\wmt\backend> ^C
+PS C:\lkd\wmt\backend> composer update --prefer-dist -o
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+  - Removing symfony/event-dispatcher (v3.1.5)
+  - Installing symfony/event-dispatcher (v3.1.6)
+    Downloading: Failed
+    Downloading: Failed
+    Downloading: Failed
+    Update failed (The "https://api.github.com/repos/symfony/event-dispatcher/zipball/28b0832b2553ffb80cabef6a7a812ff1e6
+70c0bc" file could not be downloaded (HTTP/1.1 302 Found))
+    Would you like to try reinstalling the package instead [yes]? yes
+  - Removing symfony/event-dispatcher (v3.1.5)
+  - Installing symfony/event-dispatcher (v3.1.6)
+    Downloading: Failed
+    Downloading: Failed
+    Downloading: Failed
+    Failed to download symfony/event-dispatcher from dist: The "https://api.github.com/repos/symfony/event-dispatcher/zi
+pball/28b0832b2553ffb80cabef6a7a812ff1e670c0bc" file could not be downloaded (HTTP/1.1 302 Found)
+    Now trying to download from source
+  - Installing symfony/event-dispatcher (v3.1.6)
+^CTerminate batch job (Y/N)?
+^C
+PS C:\lkd\wmt\backend> composer dump-autoload -o
+Generating optimized autoload files
+Warning: Ambiguous class resolution, "Responder\JsonSchema\RequestSchema" was found in both "C:/lkd/wmt/backend/src\Resp
+onder\JsonSchema\RequestForm.php" and "C:/lkd/wmt/backend/src\Responder\JsonSchema\RequestSchema.php", the first will be
+ used.
+PS C:\lkd\wmt\backend> php -S 127.0.0.1:8886 -t .\web\
+PHP 7.0.11 Development Server started at Tue Nov 15 00:05:00 2016
+Listening on http://127.0.0.1:8886
+Document root is C:\lkd\wmt\backend\web
+Press Ctrl-C to quit.
+[Tue Nov 15 00:05:01 2016] PHP Notice:  Undefined offset: 2 in C:\lkd\wmt\backend\src\Responder\ResponderJsonApi.php on
+line 142
+[Tue Nov 15 00:05:01 2016] PHP Fatal error:  Uncaught Error: Call to undefined method Domain\Models\Request::getBody() i
+n C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestForm.php:46
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\ResourceObject.php(161): Responder\JsonSchema\RequestSchema->ge
+tAttributes(Object(Domain\Models\Request))
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Document\Presenters\ElementPresenter.php(299): Neomerx\JsonApi\Schema\
+ResourceObject->getAttributes()
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Document\Presenters\ElementPresenter.php(155): Neomerx\JsonApi\Documen
+t\Presenters\ElementPresenter->convertResourceToArray(Object(Neomerx\JsonApi\Schema\ResourceObject), Array, NULL, true)
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Document\Document.php(165): Neomerx\JsonApi\Document\Presenters\Elemen
+tPresenter->convertDataResourceToArray(Object(Neomerx\JsonApi\Schema\ResourceObject), true)
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Handlers\ReplyInterpreter.php(148): Neomerx\Js in C:\lkd\wmt\b
+ackend\src\Responder\JsonSchema\RequestForm.php on line 46
+[Tue Nov 15 00:05:01 2016] 127.0.0.1:31903 [200]: /json/request - Uncaught Error: Call to undefined method Domain\Models
+\Request::getBody() in C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestForm.php:46
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\ResourceObject.php(161): Responder\JsonSchema\RequestSchema->ge
+tAttributes(Object(Domain\Models\Request))
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Document\Presenters\ElementPresenter.php(299): Neomerx\JsonApi\Schema\
+ResourceObject->getAttributes()
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Document\Presenters\ElementPresenter.php(155): Neomerx\JsonApi\Documen
+t\Presenters\ElementPresenter->convertResourceToArray(Object(Neomerx\JsonApi\Schema\ResourceObject), Array, NULL, true)
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Document\Document.php(165): Neomerx\JsonApi\Document\Presenters\Elemen
+tPresenter->convertDataResourceToArray(Object(Neomerx\JsonApi\Schema\ResourceObject), true)
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Handlers\ReplyInterpreter.php(148): Neomerx\Js in C:\lkd\wmt\b
+ackend\src\Responder\JsonSchema\RequestForm.php on line 46
+[Tue Nov 15 00:05:02 2016] 127.0.0.1:31904 [404]: /favicon.ico - No such file or directory
+PS C:\lkd\wmt\backend> composer dump-autoload -o
+Generating optimized autoload files
+PS C:\lkd\wmt\backend> php -S 127.0.0.1:8886 -t .\web\
+PHP 7.0.11 Development Server started at Tue Nov 15 00:06:58 2016
+Listening on http://127.0.0.1:8886
+Document root is C:\lkd\wmt\backend\web
+Press Ctrl-C to quit.
+[Tue Nov 15 00:07:02 2016] PHP Notice:  Undefined offset: 2 in C:\lkd\wmt\backend\src\Responder\ResponderJsonApi.php on
+line 142
+[Tue Nov 15 00:07:02 2016] 127.0.0.1:31915 [200]: /json/request
+[Tue Nov 15 00:07:14 2016] 127.0.0.1:31916 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:07:14 2016] 127.0.0.1:31917 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:07:14 2016] 127.0.0.1:31918 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:07:14 2016] 127.0.0.1:31920 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:07:14 2016] 127.0.0.1:31926 [200]: /json/request/
+[Tue Nov 15 00:07:21 2016] 127.0.0.1:31927 [200]: /json/requestform/
+[Tue Nov 15 00:07:26 2016] 127.0.0.1:31928 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:07:26 2016] 127.0.0.1:31930 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:07:37 2016] 127.0.0.1:31951 [200]: /json/requestforms/
+[Tue Nov 15 00:07:37 2016] PHP Fatal error:  Uncaught Error: Call to undefined method Domain\Models\Request::setBody() i
+n C:\lkd\wmt\backend\src\Domain\Service\Requestform\TraitRequestform.php:55
+Stack trace:
+#0 C:\lkd\wmt\backend\src\Domain\Service\Abstract\PostAbstractService.php(76): Domain\Service\Requestform\Post->mapInput
+DataToObject()
+#1 C:\lkd\wmt\backend\src\Domain\Service\Abstract\PostAbstractService.php(27): Domain\Service\PostAbstractService->creat
+eObject()
+#2 C:\lkd\wmt\backend\src\Domain\Service\Requestform\TraitRequestform.php(24): Domain\Service\PostAbstractService->__con
+struct(Object(Action\DomainInput))
+#3 [internal function]: Domain\Service\Requestform\Post->__construct(Object(Action\DomainInput))
+#4 [internal function]: ReflectionClass->newInstanceArgs(Array)
+#5 C:\lkd\wmt\backend\vendor\aura\di\src\Reflection.php(74): call_user_func_array(Array, Array)
+#6 C:\lkd\wmt\backend\vendor\aura\di\src\Factory.php(288): Aura\Di\Reflection->__call('newInstanceArgs', Array)
+#7 C:\lkd\wmt\backend\vendor\aura\di\src\InstanceFactory.php(100): Aura in C:\lkd\wmt\backend\src\Domain\Service\Request
+form\TraitRequestform.php on line 55
+[Tue Nov 15 00:07:37 2016] 127.0.0.1:31954 [200]: /json/requestforms/ - Uncaught Error: Call to undefined method Domain\
+Models\Request::setBody() in C:\lkd\wmt\backend\src\Domain\Service\Requestform\TraitRequestform.php:55
+Stack trace:
+#0 C:\lkd\wmt\backend\src\Domain\Service\Abstract\PostAbstractService.php(76): Domain\Service\Requestform\Post->mapInput
+DataToObject()
+#1 C:\lkd\wmt\backend\src\Domain\Service\Abstract\PostAbstractService.php(27): Domain\Service\PostAbstractService->creat
+eObject()
+#2 C:\lkd\wmt\backend\src\Domain\Service\Requestform\TraitRequestform.php(24): Domain\Service\PostAbstractService->__con
+struct(Object(Action\DomainInput))
+#3 [internal function]: Domain\Service\Requestform\Post->__construct(Object(Action\DomainInput))
+#4 [internal function]: ReflectionClass->newInstanceArgs(Array)
+#5 C:\lkd\wmt\backend\vendor\aura\di\src\Reflection.php(74): call_user_func_array(Array, Array)
+#6 C:\lkd\wmt\backend\vendor\aura\di\src\Factory.php(288): Aura\Di\Reflection->__call('newInstanceArgs', Array)
+#7 C:\lkd\wmt\backend\vendor\aura\di\src\InstanceFactory.php(100): Aura in C:\lkd\wmt\backend\src\Domain\Service\Request
+form\TraitRequestform.php on line 55
+PS C:\lkd\wmt\backend> php -S 127.0.0.1:8886 -t .\web\
+PHP 7.0.11 Development Server started at Tue Nov 15 00:08:08 2016
+Listening on http://127.0.0.1:8886
+Document root is C:\lkd\wmt\backend\web
+Press Ctrl-C to quit.
+[Tue Nov 15 00:08:11 2016] 127.0.0.1:31963 [200]: /json/requestforms/
+[Tue Nov 15 00:08:12 2016] PHP Fatal error:  Uncaught Error: Call to undefined method Domain\Models\Requestform::getAssi
+gnedto() in C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestForm.php:64
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\SchemaProvider.php(207): Responder\JsonSchema\RequestFormSchema
+->getRelationships(Object(Domain\Models\Requestform), Array)
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(165): Neomerx\JsonApi\Schema\SchemaProvider-
+>getRelationshipObjectIterator(Object(Domain\Models\Requestform), Array)
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Domain\Models\Requestform))
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->encodeDataI
+nternal(Object(Neomerx\JsonApi\Schema\Container), Object(Domain\Models\Request in C:\lkd\wmt\backend\src\Responder\JsonS
+chema\RequestForm.php on line 64
+[Tue Nov 15 00:08:12 2016] 127.0.0.1:31966 [200]: /json/requestforms/ - Uncaught Error: Call to undefined method Domain\
+Models\Requestform::getAssignedto() in C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestForm.php:64
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\SchemaProvider.php(207): Responder\JsonSchema\RequestFormSchema
+->getRelationships(Object(Domain\Models\Requestform), Array)
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(165): Neomerx\JsonApi\Schema\SchemaProvider-
+>getRelationshipObjectIterator(Object(Domain\Models\Requestform), Array)
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Domain\Models\Requestform))
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->encodeDataI
+nternal(Object(Neomerx\JsonApi\Schema\Container), Object(Domain\Models\Request in C:\lkd\wmt\backend\src\Responder\JsonS
+chema\RequestForm.php on line 64
+[Tue Nov 15 00:09:17 2016] 127.0.0.1:31969 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:09:27 2016] PHP Warning:  include(C:\lkd\wmt\backend\vendor\composer/../../src/Responder/JsonSchema/Reque
+stForm.php): failed to open stream: No such file or directory in C:\lkd\wmt\backend\vendor\composer\ClassLoader.php on l
+ine 414
+[Tue Nov 15 00:09:27 2016] PHP Warning:  include(): Failed opening 'C:\lkd\wmt\backend\vendor\composer/../../src/Respond
+er/JsonSchema/RequestForm.php' for inclusion (include_path='.;C:\php\pear') in C:\lkd\wmt\backend\vendor\composer\ClassL
+oader.php on line 414
+[Tue Nov 15 00:09:27 2016] PHP Fatal error:  Uncaught Error: Class 'Responder\JsonSchema\RequestFormSchema' not found in
+ C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php:139
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php(117): Neomerx\JsonApi\Schema\Container->getSchema
+ByType('Domain\\Models\\R...')
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(234): Neomerx\JsonApi\Schema\Container->getS
+chema(Object(Domain\Models\Requestform))
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(151): Neomerx\JsonApi\Encoder\Parser\Parser-
+>getSchema(Object(Domain\Models\Requestform))
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Generator))
+#5 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->enc in C:\l
+kd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php on line 139
+[Tue Nov 15 00:09:27 2016] 127.0.0.1:31975 [200]: /json/requestform/ - Uncaught Error: Class 'Responder\JsonSchema\Reque
+stFormSchema' not found in C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php:139
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php(117): Neomerx\JsonApi\Schema\Container->getSchema
+ByType('Domain\\Models\\R...')
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(234): Neomerx\JsonApi\Schema\Container->getS
+chema(Object(Domain\Models\Requestform))
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(151): Neomerx\JsonApi\Encoder\Parser\Parser-
+>getSchema(Object(Domain\Models\Requestform))
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Generator))
+#5 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->enc in C:\l
+kd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php on line 139
+[Tue Nov 15 00:09:29 2016] 127.0.0.1:31976 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:09:29 2016] PHP Warning:  include(C:\lkd\wmt\backend\vendor\composer/../../src/Responder/JsonSchema/Reque
+stForm.php): failed to open stream: No such file or directory in C:\lkd\wmt\backend\vendor\composer\ClassLoader.php on l
+ine 414
+[Tue Nov 15 00:09:29 2016] PHP Warning:  include(): Failed opening 'C:\lkd\wmt\backend\vendor\composer/../../src/Respond
+er/JsonSchema/RequestForm.php' for inclusion (include_path='.;C:\php\pear') in C:\lkd\wmt\backend\vendor\composer\ClassL
+oader.php on line 414
+[Tue Nov 15 00:09:29 2016] PHP Fatal error:  Uncaught Error: Class 'Responder\JsonSchema\RequestFormSchema' not found in
+ C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php:139
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php(117): Neomerx\JsonApi\Schema\Container->getSchema
+ByType('Domain\\Models\\R...')
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(234): Neomerx\JsonApi\Schema\Container->getS
+chema(Object(Domain\Models\Requestform))
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(151): Neomerx\JsonApi\Encoder\Parser\Parser-
+>getSchema(Object(Domain\Models\Requestform))
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Generator))
+#5 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->enc in C:\l
+kd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php on line 139
+[Tue Nov 15 00:09:29 2016] 127.0.0.1:31980 [200]: /json/requestform/ - Uncaught Error: Class 'Responder\JsonSchema\Reque
+stFormSchema' not found in C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php:139
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php(117): Neomerx\JsonApi\Schema\Container->getSchema
+ByType('Domain\\Models\\R...')
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(234): Neomerx\JsonApi\Schema\Container->getS
+chema(Object(Domain\Models\Requestform))
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(151): Neomerx\JsonApi\Encoder\Parser\Parser-
+>getSchema(Object(Domain\Models\Requestform))
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Generator))
+#5 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->enc in C:\l
+kd\wmt\backend\vendor\neomerx\json-api\src\Schema\Container.php on line 139
+PS C:\lkd\wmt\backend> composer dump-autoload -o
+Generating optimized autoload files
+PS C:\lkd\wmt\backend> php -S 127.0.0.1:8886 -t .\web\
+PHP 7.0.11 Development Server started at Tue Nov 15 00:09:40 2016
+Listening on http://127.0.0.1:8886
+Document root is C:\lkd\wmt\backend\web
+Press Ctrl-C to quit.
+[Tue Nov 15 00:09:42 2016] PHP Fatal error:  Uncaught Error: Call to undefined method Domain\Models\Requestform::getAssi
+gnedto() in C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestFormSchema.php:64
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\SchemaProvider.php(207): Responder\JsonSchema\RequestFormSchema
+->getRelationships(Object(Domain\Models\Requestform), Array)
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(165): Neomerx\JsonApi\Schema\SchemaProvider-
+>getRelationshipObjectIterator(Object(Domain\Models\Requestform), Array)
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Generator))
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->encodeDataI
+nternal(Object(Neomerx\JsonApi\Schema\Container), Object(Generator), NULL)
+#5 C:\lkd\wmt in C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestFormSchema.php on line 64
+[Tue Nov 15 00:09:42 2016] 127.0.0.1:31985 [200]: /json/requestform/ - Uncaught Error: Call to undefined method Domain\M
+odels\Requestform::getAssignedto() in C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestFormSchema.php:64
+Stack trace:
+#0 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Schema\SchemaProvider.php(207): Responder\JsonSchema\RequestFormSchema
+->getRelationships(Object(Domain\Models\Requestform), Array)
+#1 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(165): Neomerx\JsonApi\Schema\SchemaProvider-
+>getRelationshipObjectIterator(Object(Domain\Models\Requestform), Array)
+#2 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Parser\Parser.php(125): Neomerx\JsonApi\Encoder\Parser\Parser-
+>parseData()
+#3 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(233): Neomerx\JsonApi\Encoder\Parser\Parser->parse
+(Object(Generator))
+#4 C:\lkd\wmt\backend\vendor\neomerx\json-api\src\Encoder\Encoder.php(157): Neomerx\JsonApi\Encoder\Encoder->encodeDataI
+nternal(Object(Neomerx\JsonApi\Schema\Container), Object(Generator), NULL)
+#5 C:\lkd\wmt in C:\lkd\wmt\backend\src\Responder\JsonSchema\RequestFormSchema.php on line 64
+[Tue Nov 15 00:10:02 2016] 127.0.0.1:31987 Invalid request (Unexpected EOF)
+[Tue Nov 15 00:10:03 2016] 127.0.0.1:31994 [200]: /json/requestform/
+PS C:\lkd\wmt\backend> .\bin\doctrine
+
+
+
+steps:
+PS C:\lkd\wmt\backend> composer require symfony/yaml
+PS C:\lkd\wmt\backend> bin\doctrine migrations:diff
+PS C:\lkd\wmt\backend> bin\doctrine migrations:migrate --no-interaction
+

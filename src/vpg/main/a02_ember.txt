@@ -1,0 +1,27 @@
+self:text("npm install -g ember-cli@2.8");
+self:text("npm cache clean");
+self:text("npm install --save");
+self:text("npm install -g bower");
+self:text("── bower@1.8.0");
+
+self:text(":\Users\jtracz\AppData\Roaming\npm\bower -> C:\Users\jtracz\AppData\Roaming\npm\node_modules\bower\bin\bower");
+
+self:text("npm install -g ember-cli@1.13.13");
+self:text("ember install ember-modal-dialog");
+self:text("ember install ember-cli-sass");
+self:text("bower install");
+
+self:text("ember server");
+
+self:text("npm install --save");
+self:text("SET http_proxy=http://proxy-chain.intel.com:911");
+
+self:text("composer install -o --prefer-dist");
+self:text("composer update -o");
+
+self:text("cd C:\lkd\wmt\frontend");
+
+self:text("ember server --port 4400");
+
+
+self:text(@"C:\lkd\wmt\frontend> ember server --port 4400");

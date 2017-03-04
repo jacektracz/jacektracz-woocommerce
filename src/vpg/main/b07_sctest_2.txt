@@ -1,0 +1,26 @@
+    /**
+     * @var Berta
+     * @MaxDepth(1)
+     * @ORM\ManyToOne(targetEntity="Berta", cascade={"persist", "merge"}, fetch="EXTRA_LAZY")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="berta", referencedColumnName="id")
+     * })
+     */
+    private $berta;
+    
+    /**
+     * @return Berta
+     */
+    public function getBerta()
+    {
+        return $this->berta;
+    }
+
+    /**
+     * @param Berta $berta
+     */
+    public function setBerta($berta)
+    {
+        $this->berta = $berta;
+    }
+

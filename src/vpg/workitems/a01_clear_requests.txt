@@ -1,0 +1,29 @@
+PS C:\lkd\wmtgit\v06\requests-backend> git status
+On branch optimized-scate-removed
+nothing to commit, working directory clean
+PS C:\lkd\wmtgit\v06\requests-backend>s
+
+
+BACKEND:
+
+	Password for 'https://jtracz@github.intel.com':
+	Total 0 (delta 0), reused 0 (delta 0)
+	To https://github.intel.com/wmt/requests-backend
+	 * [new branch]      optimized-02 -> optimized-02
+	PS C:\lkd\wmtgit\v06\requests-backend>
+
+
+	git checkout master
+	git reset --hard optimized-02
+	git push --force origin master
+	
+DASHBOARD:
+	Password for 'https://jtracz@github.intel.com':
+	Total 0 (delta 0), reused 0 (delta 0)
+	To https://github.intel.com/wmt/requests-dashboard
+	 * [new branch]      optimized-02 -> optimized-02
+	PS C:\lkd\wmtgit\v06\requests-dashboard>
+
+	
+	git checkout master
+	git reset --hard optimized-02

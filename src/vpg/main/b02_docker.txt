@@ -106,3 +106,26 @@ BACKENDOWY:
 	
 docker exec -it requestsdashboard bash -l
 cd /var/www/ember/dist/
+
+
+=========================================================================
+
+PROD::SCATE
+	gklab-132-018.igk.intel.com
+	root: d03nltr[sU5o
+	
+=========================================================================
+
+PROD::SCATE::BACK
+
+	10.237.132.143
+	mlukasze
+	1024knives!
+		
+	
+	docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+	docker exec -it scatebackprod bash -l
+	docker kill scatebackprod
+	
+	docker exec -it wmtbackend bash -l
+	

@@ -1,0 +1,156 @@
+/===========================================================================/
+/*
+/*          DASHBOARD
+/*
+/===========================================================================/
+
+    PS C:\lkd\wmtgit\v06\requests-backend>
+    git checkout  -b wmt-rq-master-02
+    Switched to a new branch 'wmt-rq-master-02'
+
+/===========================================================================/
+/*
+/*          DASHBOARD
+/*
+/===========================================================================/
+
+
+    Switched to a new branch 'wmt-rq-master-02'
+    root@b0909aa8a5b7:/var/www/ember/requests-dashboard# git status
+    On branch wmt-rq-master-02
+    Your branch is up-to-date with 'remotes/origin/wmt-rq-master-02'.
+    nothing to commit, working directory clean
+    root@b0909aa8a5b7:/var/www/ember/requests-dashboard#
+
+
+/===========================================================================/
+/*
+/*          BACKEND
+/*
+/===========================================================================/
+
+
+    Unpacking objects: 100% (7/7), done.
+    From https://github.intel.com/WMT/requests-backend
+     * [new branch]      wmt-rq-master-01 -> origin/wmt-rq-master-01
+     * [new branch]      wmt-rq-master-02 -> origin/wmt-rq-master-02
+    Already up-to-date.
+    root@1e7ea1bcde0b:/var/www/requests-backend# git checkout wmt-rq-master-02
+    M       src/Core/logs/log-2.txt
+    M       src/Core/logs/logs-2.txt
+    Branch wmt-rq-master-02 set up to track remote branch wmt-rq-master-02 from origin.
+    Switched to a new branch 'wmt-rq-master-02'
+    root@1e7ea1bcde0b:/var/www/requests-backend#
+
+
+
+class LocalConfig extends GlobalConfig
+{
+    public function __construct()
+    {
+        $this->user = 'admin';
+        $this->password = '4ES0MO7nTyec';
+        $this->dbname = 'wmt_test';
+        $this->port = '3306';
+                $this->host = 'productionDb';
+        $this->isDevMode = true;
+
+                $this->memcachedHost = 'cacheengine';
+    }
+}
+
+
+cp ../environment.txt config/environment.js
+
+
+cd C:\lkd\wmtgit\v06\requests-dashboard
+
+
+ember build -o ../dist/requests-dashboards
+
+cd C:\lkd\wmtgit\v06\scate-admin-dashboard
+
+mkdir C:\lkd\wmtgit\v06\dist\scate-admin-dashboard
+
+ember build -o ../dist/scate-admin-dashboard
+
+ember build -o C:\lkd\wmtgit\v06\dist\scate-admin-dashboard
+
+cd C:\lkd\wmtgit\v06\wmt-dashboard
+
+mkdir C:\lkd\wmtgit\v06\dist\wmt-dashboard
+
+ember build -o C:\lkd\wmtgit\v06\dist\wmt-dashboard
+
+=========================================================================
+=
+=					SCATE-BACK
+=
+=========================================================================
+
+class LocalConfig extends GlobalConfig
+{
+    public function __construct()
+    {
+        $this->user = 'admin';
+        $this->password = '4ES0MO7nTyec';
+        $this->dbname = 'requests_test';
+        $this->port = '3306';
+		$this->host = 'productionDb';
+        $this->isDevMode = true;
+		$this->memcachedHost = 'cacheengine';
+    }
+}
+
+chmod 777 /var/www/scate-backend/cache/
+
+=========================================================================
+=
+=					SCATE-FRONT
+=
+=========================================================================
+
+	root@gklab-132-018:/var/www/dockerfiles/test/scate/front
+	
+	
+	cat config/environment.js
+	
+	git checkout -- config/environment.js
+	
+	
+=========================================================================
+=
+=					SCATE-ADMIN-FRONT
+=
+=========================================================================
+	
+	
+		test/scate-admin/front	
+			
+		Skrypty referencyjne dla trybu testowego, do dostosowania
+		https://github.intel.com/WMT/perf20docker/tree/master/test/scateadmin/front
+
+		•	wyedytuj co potrzebujesz, push z pozwrotem i 
+		•	na maszynie gklab-132-018.igk.intel.com
+		o	/var/www/dockerfiles ? pull
+		o	/var/www/dockerfiles/test/scateadmin
+		o	Poni¿sze komendy:
+
+		docker build -t scate-front-admin-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+		docker run -di --name scateadminfronttest -p 8180:80  -p 8280:443 scate-front-admin-test:latest
+
+		jesli siê powiedzie to bêdzie widoczny na 
+		http://admin.scate.vpgtools.intel.com	
+		
+		
+		
+		cd C:/lkd/wmtgit/v06/scate-front-dashboard/
+		
+		
+		
+		4700 - scate-front-dashboard
+		
+		
+		/var/www/ember/scate-dashboard/tmp# cd
+		cd/tmp
+			

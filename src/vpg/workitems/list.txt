@@ -1,0 +1,13 @@
+		/* User specific start */
+ 		self.m_cs.xpgen_setJxEditNewPath('editcreate');
+		self.m_cs.xpgen_setJxEditExistingPath('editcreate');
+		self.m_cs.xpgen_setJxSearchPagePath('jxsearch');
+		self.m_cs.xpgen_setJxlistRootPath('streamtests');
+		self.m_cs.xpgen_execute_transition(1);		
+		self.m_cs.xpgen_setIdForNewRecord('0');
+		
+		/* User specific end  */
+
+		
+		
+C:\lkd\wmtgit\w2_2\src\w2\A05_MGR_PYTHON\MGRV1\MGRPYTHON>python C:\lkd\wmtgit\w2_2\src\w2\A05_MGR_PYTHON\MGRV1\MGRPYTHON\intl_create_scate.py

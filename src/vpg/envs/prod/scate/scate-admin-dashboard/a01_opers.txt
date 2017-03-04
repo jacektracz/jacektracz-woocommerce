@@ -1,0 +1,37 @@
+Skrypty referencyjne dla trybu testowego, do dostosowania
+https://github.intel.com/WMT/perf20docker/tree/master/test/scateadmin/front
+
+•	wyedytuj co potrzebujesz, push z pozwrotem i 
+•	na maszynie gklab-132-018.igk.intel.com
+o	/var/www/dockerfiles ? pull
+o	/var/www/dockerfiles/test/scateadmin
+o	Poni¿sze komendy:
+
+docker build -t scate-front-admin-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name scateadminfronttest -p 8180:80  -p 8280:443 scate-front-admin-test:latest
+
+jesli siê powiedzie to bêdzie widoczny na 
+http://admin.scate.vpgtools.intel.com
+
+
+docker exec -it scateadminfronttest bash -l
+
+
+
+
+PROD::SCATE
+	gklab-132-018.igk.intel.com
+	root: d03nltr[sU5o
+	
+	docker exec -it scatefrontprod bash -l
+	
+	git -c http.sslVerify=false pull
+	cp ../environment.txt config/environment.js
+	
+	vi config/environment.js
+	
+	echo "BUILDING test version"	
+	ember build -o /var/www/ember/dist/scateadmin
+	
+	
+	docker exec -it scatefronttest bash -l
