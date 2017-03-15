@@ -20,6 +20,8 @@ class	intl_copy_dirs:
 		self.m_move_lib = "1"
 		self.m_move_gen = "0"
 		self.m_move_common = "1"
+		self.m_move_sctest = "1"
+		self.m_selector = "";
 
 	def copy_all_to_full_from_short_in_home(self):
 		self.set_short_as_source_in_home()
@@ -91,18 +93,19 @@ class	intl_copy_dirs:
 			self.copy_fileL1_3("application")
 			self.copy_fileL1_3("index")		
 			self.copy_dir_from_genericL1("templates", "custom")		
+			
 		
 		if self.m_move_gen == "1":
 			self.copy_dir_from_generic_3(self.jx("menu"))
 			self.copy_dir_from_generic_3(self.jx("user"))
-			self.copy_dir_from_generic_3(self.jx("rquserrole"))
-			self.copy_dir_from_generic_3(self.jx("rqsctest"))
+			self.copy_dir_from_generic_3(self.jx("rquserrole"))			
 			self.copy_dir_from_generic_3(self.jx("rqdefcolumn"))
 			self.copy_dir_from_generic_3(self.jx("rqdefview"))
 			self.copy_dir_from_generic_3(self.jx("rqsctest_completion"))
 			self.copy_dir_from_generic_3(self.jx("rqsctest_test"))
 		
-		
+		if self.m_move_sctest == "1":
+			self.copy_dir_from_generic_3(self.jx("rqsctest"))
 		
 	def jx(self,tt):
 		return "jxpgen" + tt + "xitem"
@@ -270,15 +273,54 @@ class	intl_copy_dirs:
 			print('file not copied. Error: %s' % e)
 
 			
-	def sync_full_libs( self ):
+	def sync_full_libs_work( self ):
 		self.m_move_gen = "0"
 		self.copy_all_to_full_from_short_in_work()
 
 		
-	def sync_short_gens( self ):
+	def sync_short_gens_work( self ):
 		self.m_move_gen = "1"
 		self.copy_all_to_short_from_full_in_work()
 
+	def sync_full_libs_home( self ):
+		self.m_move_gen = "0"
+		self.m_move_sctest = "1"
+		self.m_move_common = "1"
+		self.m_move_lib = "1"
+		self.copy_all_to_full_from_short_in_home()
+		
+	def sync_short_gens_home( self ):
+		self.m_move_gen = "1"
+		self.m_move_sctest = "1"
+		self.m_move_lib = "0"
+		self.m_move_common = "0"
+		self.copy_all_to_short_from_full_in_home()
+		
+	def copy_to_home(self):
+		self.m_selector = "2017_03_14__1800"		
+		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\full\\app"
+		dir_dest = "C:\\lkd\\wmt\\frontend\\app"
+		self.recursive_overwrite(dir_s,dir_dest,None);
+		
+		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\short\\app"
+		dir_dest = "C:\\lkd\\wmt\\frontendshort\\app"
+		self.recursive_overwrite(dir_s,dir_dest,None);
+
+		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\php\\src"
+		dir_dest = "C:\\lkd\\wmt\\backend\\src"
+		self.recursive_overwrite(dir_s,dir_dest,None);
+		
+		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"		
+		dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"
+		self.recursive_overwrite(dir_s,dir_dest,None);
+		
+		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"		
+		dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"
+		self.recursive_overwrite(dir_s,dir_dest,None);
+		
+		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS";
+		dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS"
+		self.recursive_overwrite(dir_s,dir_dest,None);
 		
 if __name__ == '__main__':
 
@@ -291,11 +333,15 @@ if __name__ == '__main__':
 	#ddh.copy_all_to_full_from_short_in_work()
 	
 	ddh = intl_copy_dirs()
-	ddh.m_test_mode = "0"		
-	ddh.sync_full_libs()
-	ddh.sync_short_gens()	
+	ddh.m_test_mode = "0"
 	
-	#python C:\lkd\wmt\vpg\pyscr\intl_copy_dirs.py
+	#ddh.sync_full_libs_work()
+	#ddh.sync_short_gens_work()	
+
+	#ddh.sync_full_libs_home()
+	#ddh.sync_short_gens_home()	
+	ddh.copy_to_home()
+		
 	
 	#
 	#
@@ -303,8 +349,14 @@ if __name__ == '__main__':
 	#
 	#python C:\lkd\wmtgit\w2_2\src\w2\vpg\pyscr\intl_copy_dirs.py
 	#
-	#
+	#home
+	#frontend 4900
+	#short 4600
+	#cd C:\lkd\wmt\frontend
+	#cd C:\lkd\wmtgit\v06\scate-dashboard
+	#ember server --port 4900
+	#python C:\lkd\w2\gitp\src\vpg\pyscr\intl_copy_dirs.py
 	
 	
-	#python C:\lkd\wmtgit\w2_2\src\w2\vpg\pyscr\intl_copy_dirs.py
+	
 	
