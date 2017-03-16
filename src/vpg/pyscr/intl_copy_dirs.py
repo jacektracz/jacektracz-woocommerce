@@ -313,7 +313,7 @@ class	intl_copy_dirs:
 		self.recursive_overwrite(dir_s,dir_dest,None);
 
 		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\php\\src"
-		dir_dest = "C:\\lkd\\wmtgit\\v06\\scate-backend\\app"
+		dir_dest = "C:\\lkd\\wmtgit\\v06\\scate-backend\\src"
 		self.recursive_overwrite(dir_s,dir_dest,None);
 		
 		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"		
@@ -327,6 +327,14 @@ class	intl_copy_dirs:
 		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS";
 		dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS"
 		self.recursive_overwrite(dir_s,dir_dest,None);
+		
+	def copy_to_home_src(self,p_sel):
+		self.m_selector = p_sel		
+
+		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\php\\src"
+		dir_dest = "C:\\lkd\\wmtgit\\v06\\scate-backend\\src"
+		self.recursive_overwrite(dir_s,dir_dest,None);
+		
 		
 if __name__ == '__main__':
 
@@ -342,7 +350,8 @@ if __name__ == '__main__':
 	ddh.m_test_mode = "0"
 	
 	#ddh.sync_full_libs_work()
-	ddh.copy_to_home("2017_03_16__1800");
+	#ddh.copy_to_home("2017_03_16__1800");
+	ddh.copy_to_home_src("2017_03_16__1800");
 	#ddh.sync_short_gens_work()	
 
 	#ddh.sync_full_libs_home()
