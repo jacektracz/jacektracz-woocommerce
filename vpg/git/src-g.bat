@@ -1,6 +1,6 @@
 set cm=completions
-set b0=xph-1.0.03.16.44
-set b1=xph-1.0.03.16.45
+set b0=xph-1.0.03.16.46
+set b1=xph-1.0.03.16.47
 
 cls
 
@@ -39,6 +39,6 @@ git checkout -b %b0%
 git checkout -b %b1%
 git status 
 
-rem C:\lkd\wmtgit\v06\w2\gitp\src\vpg\git\src-g.bat
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g.bat
 rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
