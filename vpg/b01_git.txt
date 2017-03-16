@@ -1,0 +1,101 @@
+https://github.intel.com/jtracz/requests-dashboard
+https://github.intel.com/jtracz/requests-backend
+http://goto/requests-test
+
+
+cd C:\lkd\wmtgit\src_v1\backend
+git clone https://github.intel.com/mlukasze/requests-backend
+
+cd C:\lkd\wmtgit\src_v1\frontend
+git clone https://github.intel.com/mlukasze/requests-
+cd C:\lkd\wmtgit\src_v1\frontend
+git clone https://github.intel.com/mlukasze/requests-dashboard
+
+git checkout master
+git merge WMT-41-REV-02
+
+cd C:\lkd\wmtgit\v02\requests-backend
+cd C:\lkd\wmtgit\v02\requests-dashboard
+git add -A
+git commit -m "WMT-41-REV-01"
+git checkout -b "WMT-41-REV-01"
+git checkout master
+git merge WMT-41-REV-02
+git push origin master
+
+git checkout master
+git merge WMT-41-REV-06
+git push origin master
+
+git checkout -b "WMT-41-REV-01"
+
+
+
+git -c http.sslVerify=false pull
+
+git -c http.sslVerify=false pull --all
+
+
+
+cd /var/www/ember/requests-dashboard
+
+echo "UPDATING sources"
+rm -Rf ./tmp/*
+git -c http.sslVerify=false pull
+
+echo "BUILDING test version"
+ember build -e test -o ../dist/requests
+
+
+
+java
+
+https://github.intel.com/jtracz/requests-java.git
+
+git remote add origin https://github.intel.com/jtracz/requests-java.git
+git push -u origin master
+
+
+echo # requests-java >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.intel.com/jtracz/requests-java.git
+git push -u origin master
+
+
+=====================================================================
+
+
+https://github.intel.com/jtracz/requests-jee.git
+
+echo # requests-jee >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.intel.com/jtracz/requests-jee.git
+git push -u origin master
+
+
+=====================================================================
+
+git remote add origin https://github.intel.com/jtracz/requests-jee.git
+git push -u origin master
+
+=====================================================================
+
+
+https://github.intel.com/jtracz/requests-enterprise.git
+
+echo # requests-enterprise >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.intel.com/jtracz/requests-enterprise.git
+git push -u origin master
+…or push an existing repository from the command line
+
+
+git remote add origin https://github.intel.com/jtracz/requests-enterprise.git
+git push -u origin master
+

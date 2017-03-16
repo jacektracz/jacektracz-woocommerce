@@ -1,0 +1,25 @@
+
+o changes added to commit (use "git add" and/or "git commit -a")
+S C:\lkd\wmtgit\v06\requests-backend> git commit -m repair-queue-removed
+n branch xp-2007
+hanges not staged for commit:
+       modified:   src/ActionFactory/Service/LibAbstract/ActionService.php
+       modified:   src/ActionHandlers/Csvimport/Service/Handlers/xpgenrqscimportxitem/Post.php
+       modified:   src/ActionHandlers/Csvimport/Service/Handlers/xpgenrqscimpxitem/CsvTraitxpgenrqscimpxitem.php
+       modified:   src/ActionHandlers/Csvimport/Service/Handlers/xpgenrqscimpxitem/Post.php
+       modified:   src/ActionHandlers/Csvimport/Service/LibAbstract/CsvAbstractService.php
+       modified:   src/Core/GenericLogger.php
+       modified:   src/Domain/Queue/QueueEmitter.php
+       modified:   src/Domain/Service/Abstract/PostAbstractService.php
+       modified:   src/Domain/Service/QueueService.php
+
+o changes added to commit
+S C:\lkd\wmtgit\v06\requests-backend> git add -A
+S C:\lkd\wmtgit\v06\requests-backend> git commit -m repair-queue-removed
+xp-2007 59575f1] repair-queue-removed
+9 files changed, 503 insertions(+), 174 deletions(-)
+S C:\lkd\wmtgit\v06\requests-backend> git checkout -b xp-2008
+witched to a new branch 'xp-2008'
+S C:\lkd\wmtgit\v06\requests-backend> git checkout -b xp-2009
+witched to a new branch 'xp-2009'
+S C:\lkd\wmtgit\v06\requests-backend>

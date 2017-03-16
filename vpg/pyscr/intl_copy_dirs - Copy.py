@@ -14,14 +14,10 @@ class	intl_copy_dirs:
 	#==================================================================
 	
 	def __init__ (self):
+		#self.m_dir_root_src = "C:/lkd/wmtgit/v06/scate-dashboard"
 		self.m_dir_root_src = "C:/lkd/wmt/frontend"
 		self.m_dir_root_dst = "C:/lkd/wmt/frontendshort"
 		self.m_test_mode= "0"
-		self.m_move_lib = "1"
-		self.m_move_gen = "0"
-		self.m_move_common = "1"
-		self.m_move_sctest = "1"
-		self.m_selector = "";
 
 	def copy_all_to_full_from_short_in_home(self):
 		self.set_short_as_source_in_home()
@@ -35,7 +31,7 @@ class	intl_copy_dirs:
 		self.set_root_work_src_is_full()
 		self.copy_dir_files_generic_full_libs()
 		
-	def copy_all_to_full_from_short_in_work(self):
+	def copy_all_to_full_work(self):
 		self.set_root_work_src_is_short()
 		self.copy_dir_files_generic_full_libs()
 
@@ -48,12 +44,12 @@ class	intl_copy_dirs:
 		self.m_dir_root_dst = "C:/lkd/wmt/frontendshort"
 		
 	def set_root_work_src_is_full(self):		
-		self.m_dir_root_src = "C:/lkd/wmtgit/v06/scate-admin-dashboard"
-		self.m_dir_root_dst = "C:/lkd/wmtgit/v06/scate-dashboard"
+		self.m_dir_root_src = "C:/lkd/wmtgit/v06/scate-dashboard"
+		self.m_dir_root_dst = "C:/lkd/wmtgit/v06/scate-front-dashboard"
 		
 	def set_root_work_src_is_short(self):		
-		self.m_dir_root_src = "C:/lkd/wmtgit/v06/scate-dashboard"
-		self.m_dir_root_dst = "C:/lkd/wmtgit/v06/scate-admin-dashboard"
+		self.m_dir_root_src = "C:/lkd/wmtgit/v06/scate-front-dashboard"
+		self.m_dir_root_dst = "C:/lkd/wmtgit/v06/scate-dashboard"
 		
 #python C:\lkd\w2\gitp\src\vpg\pyscr\intl_copy_dirs.py
 	# create full from short
@@ -79,33 +75,23 @@ class	intl_copy_dirs:
 		self.copy_fileL1_3("application")
 		
 	def copy_dir_files_generic_full_libs(self):
-	
-		if self.m_move_lib == "1":
-			self.copy_dir_from_genericL0('dao')
-			self.copy_dir_from_genericL0('helpers')
-			self.copy_dir_from_genericL0('xpgen')
-			self.copy_dir_from_genericL0('models')
-			self.copy_dir_from_genericL0('services')
-			self.copy_dir_from_genericL0('helpers')
-			
-		if self.m_move_common == "1":	
-			self.copy_fileL0("tools.js")
-			self.copy_fileL1_3("application")
-			self.copy_fileL1_3("index")		
-			self.copy_dir_from_genericL1("templates", "custom")		
-			
+		self.copy_dir_from_genericL0('dao')
+		self.copy_dir_from_genericL0('helpers')
+		self.copy_dir_from_genericL0('xpgen')
+		self.copy_dir_from_genericL0('models')
+		self.copy_dir_from_genericL0('services')
+		self.copy_dir_from_genericL0('helpers')
+		self.copy_fileL0("tools.js")
+		self.copy_dir_from_generic_3(self.jx("menu"))
+		self.copy_dir_from_generic_3(self.jx("user"))
+		self.copy_dir_from_generic_3(self.jx("rquserrole"))
+		self.copy_dir_from_generic_3(self.jx("rqsctest"))
+		self.copy_dir_from_generic_3(self.jx("rqdefcolumn"))
+		self.copy_dir_from_generic_3(self.jx("rqdefview"))
+		self.copy_fileL1_3("application")
+		self.copy_fileL1_3("index")
+		self.copy_dir_from_genericL1("templates", "custom")		
 		
-		if self.m_move_gen == "1":
-			self.copy_dir_from_generic_3(self.jx("menu"))
-			self.copy_dir_from_generic_3(self.jx("user"))
-			self.copy_dir_from_generic_3(self.jx("rquserrole"))			
-			self.copy_dir_from_generic_3(self.jx("rqdefcolumn"))
-			self.copy_dir_from_generic_3(self.jx("rqdefview"))
-			self.copy_dir_from_generic_3(self.jx("rqsctest_completion"))
-			self.copy_dir_from_generic_3(self.jx("rqsctest_test"))
-		
-		if self.m_move_sctest == "1":
-			self.copy_dir_from_generic_3(self.jx("rqsctest"))
 		
 	def jx(self,tt):
 		return "jxpgen" + tt + "xitem"
@@ -271,101 +257,22 @@ class	intl_copy_dirs:
 			
 		except OSError as e:
 			print('file not copied. Error: %s' % e)
-
 			
-	def sync_full_libs_work( self ):
-		self.m_move_gen = "0"
-		self.m_move_sctest = "1"
-		self.m_move_common = "1"
-		self.m_move_lib = "1"
-		self.copy_all_to_full_from_short_in_work()
-
-		
-	def sync_short_gens_work( self ):
-		self.m_move_gen = "1"
-		self.m_move_sctest = "1"
-		self.m_move_lib = "0"
-		self.m_move_common = "0"
-		self.copy_all_to_short_from_full_in_work()
-
-	def sync_full_libs_home( self ):
-		self.m_move_gen = "0"
-		self.m_move_sctest = "1"
-		self.m_move_common = "1"
-		self.m_move_lib = "1"
-		self.copy_all_to_full_from_short_in_home()
-		
-	def sync_short_gens_home( self ):
-		self.m_move_gen = "1"
-		self.m_move_sctest = "1"
-		self.m_move_lib = "0"
-		self.m_move_common = "0"
-		self.copy_all_to_short_from_full_in_home()
-		
-	def copy_to_home(self,p_sel):
-		self.m_selector = p_sel		
-		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\full\\app"
-		dir_dest = "C:\\lkd\\wmtgit\\v06\\scate-admin-dashboard\\app"
-		self.recursive_overwrite(dir_s,dir_dest,None);
-		
-		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\short\\app"
-		dir_dest = "C:\\lkd\\wmtgit\\v06\\scate-dashboard\\app"
-		self.recursive_overwrite(dir_s,dir_dest,None);
-
-		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\php\\src"
-		dir_dest = "C:\\lkd\\wmtgit\\v06\\scate-backend\\app"
-		self.recursive_overwrite(dir_s,dir_dest,None);
-		
-		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"		
-		dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"
-		self.recursive_overwrite(dir_s,dir_dest,None);
-		
-		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"		
-		dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"
-		self.recursive_overwrite(dir_s,dir_dest,None);
-		
-		dir_s = "C:\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS";
-		dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS"
-		self.recursive_overwrite(dir_s,dir_dest,None);
-		
 if __name__ == '__main__':
 
-	#data = intl_copy_dirs().cpy_create_full_from_short()	
-	#data = intl_copy_dirs().cpy_create_short_from_full()	
+	#data = intl_copy_dirs().cpy_create_full_from_short()
+	
+	#data = intl_copy_dirs().cpy_create_short_from_full()
+	
 	#intl_copy_dirs().cpy_create_short_from_full_test()
-	#ddh.copy_all_to_full_work();
-	#ddh.copy_all_to_short_from_full_in_work()
-	#ddh.copy_all_to_short_from_full_in_home()
-	#ddh.copy_all_to_full_from_short_in_work()
 	
 	ddh = intl_copy_dirs()
-	ddh.m_test_mode = "0"
+	#ddh.copy_all_to_full_work();
+	#ddh.copy_all_to_short_from_full_in_work()
+	ddh.copy_all_to_short_from_full_in_home()
 	
-	#ddh.sync_full_libs_work()
-	ddh.copy_to_home("2017_03_16__1800");
-	#ddh.sync_short_gens_work()	
-
-	#ddh.sync_full_libs_home()
-	#ddh.sync_short_gens_home()	
-	#ddh.copy_to_home()
-		
 	
-	#
-	#
-	#	work
-	#
+	#python C:\lkd\wmt\vpg\pyscr\intl_copy_dirs.py
+	
 	#python C:\lkd\wmtgit\w2_2\src\w2\vpg\pyscr\intl_copy_dirs.py
-	#
-	#home
-	#frontend 4900
-	#short 4600
-	#cd C:\lkd\wmt\frontend
-	#cd C:\lkd\wmtgit\v06\scate-dashboard
-	#ember server --port 5000
-	#python C:\lkd\wmtgit\v06\w2\gitp\src\vpg\pyscr\intl_copy_dirs.py
-	#cd C:\lkd\wmtgit\v06\scate-admin-dashboard
-	#ember server --port 7000
-	
-	
-	
 	

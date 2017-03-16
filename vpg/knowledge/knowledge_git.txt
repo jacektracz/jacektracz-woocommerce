@@ -1,0 +1,12 @@
+
+
+git remote add scateadmin https://github.intel.com/wmt/scate-admin-dashboard.git
+
+git -c http.sslVerify=false pull scateadmin prod-full-1.1.16
+
+git -c http.sslVerify=false fetch scateadmin
+
+
+git fetch origin
+git reset --hard origin/master
+

@@ -1,0 +1,1 @@
+http://localhost:8080/oraclejee-mvc-all-2/faces/Title/List.xhtml

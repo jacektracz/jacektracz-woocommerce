@@ -1,0 +1,35 @@
+FRONTEND__:
+
+	Terminate batch job (Y/N)? Y
+	PS C:\lkd\wmtgit\v06\requests-dashboard> git status
+	On branch xp-3074
+	nothing to commit, working directory clean
+	PS C:\lkd\wmtgit\v06\requests-dashboard> git checkout merge-with-wmt-rev-00
+	Switched to branch 'merge-with-wmt-rev-00'
+	PS C:\lkd\wmtgit\v06\requests-dashboard>
+
+
+BACKEND__:
+
+	PS C:\lkd\wmtgit\v06\requests-backend> git add -A
+	PS C:\lkd\wmtgit\v06\requests-backend> git commit before-rebasin
+	error: pathspec 'before-rebasin' did not match any file(s) known to git.
+	PS C:\lkd\wmtgit\v06\requests-backend> git commit -m before-rebasig
+	[xp-3026 31db167] before-rebasig
+	 2 files changed, 63 insertions(+), 332 deletions(-)
+	 rewrite src/tools/errors.tx (99%)
+	PS C:\lkd\wmtgit\v06\requests-backend> git commit -m before-rebasing
+	On branch xp-3026
+	nothing to commit, working directory clean
+	PS C:\lkd\wmtgit\v06\requests-backend> git checkout -b xp-3074
+	Switched to a new branch 'xp-3074'
+	PS C:\lkd\wmtgit\v06\requests-backend>
+	
+	git checkout merge-with-wmt-rev-00
+
+
+PS C:\lkd\wmtgit\v06\requests-backend> git checkout -b xp-3074
+Switched to a new branch 'xp-3074'
+PS C:\lkd\wmtgit\v06\requests-backend> git checkout merge-with-wmt-rev-00
+Switched to branch 'merge-with-wmt-rev-00'
+PS C:\lkd\wmtgit\v06\requests-backend>

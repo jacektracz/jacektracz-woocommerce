@@ -1,0 +1,4 @@
+#prepare scate- back end
+#test
+docker build -t scate-back-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name scatebacktest -p 8109:80 -p 8209:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest

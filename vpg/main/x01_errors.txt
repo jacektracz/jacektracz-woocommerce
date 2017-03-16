@@ -1,0 +1,709 @@
+Ember.RSVP.
+if(Ember.isEmpty(record))
+{
+	self.m_cs.mdLog("record::is_empty::");
+}
+if(Ember.isEmpty(p_params))
+{
+	self.m_cs.mdLog("p_params::is_empty::");
+}
+
+if(Ember.isEmpty(p_store))
+{
+	self.m_cs.mdLog("p_store::is_empt::");
+}
+
+if(Ember.isEmpty(controller))
+{
+	self.m_cs.mdLog("controller::is_empty::");
+}
+if(Ember.isEmpty(model))
+{
+	self.m_cs.mdLog("model::is_empty::");
+}
+
+dapters/title.js: line 2, col 8, 'rqAbstractAdapter' is defined but never used.
+
+ error
+
+pp.js: line 35, col 1, '$' is not defined.
+
+ error
+
+us/bus_request.js: line 1, col 8, 'Ember' is defined but never used.
+
+ error
+
+ontrollers/apitraces/new.js: line 11, col 55, 'requestData' is defined but never used.
+
+ error
+
+ontrollers/apitraces/view.js: line 28, col 11, 'self' is defined but never used.
+ontrollers/apitraces/view.js: line 17, col 7, 'Promise' is not defined.
+ontrollers/apitraces/view.js: line 18, col 9, 'Promise' is not defined.
+
+ errors
+
+ontrollers/application.js: line 51, col 15, 'jQuery' is not defined.
+
+ error
+
+ontrollers/dictionaries/rqstatus/index.js: line 3, col 8, 'CoreServices' is defined but never used.
+
+ error
+
+ontrollers/dictionaries/rqstatus/list.js: line 45, col 43, Missing semicolon.
+
+ error
+
+ontrollers/frames/index.js: line 162, col 37, 'record' is defined but never used.
+ontrollers/frames/index.js: line 160, col 7, 'Promise' is not defined.
+ontrollers/frames/index.js: line 9, col 9, 'ModDatafactory' is defined but never used.
+
+ errors
+
+ontrollers/frames/rq-for-frame.js: line 15, col 53, 'requestData' is defined but never used.
+ontrollers/frames/rq-for-frame.js: line 29, col 62, 'subjectData' is defined but never used.
+
+ errors
+
+ontrollers/frames/view.js: line 54, col 11, 'self' is defined but never used.
+ontrollers/frames/view.js: line 43, col 7, 'Promise' is not defined.
+ontrollers/frames/view.js: line 44, col 9, 'Promise' is not defined.
+ontrollers/frames/view.js: line 4, col 8, 'CoreServices' is defined but never used.
+ontrollers/frames/view.js: line 12, col 5, 'ModDatafactory' is defined but never used.
+
+ errors
+
+ontrollers/jxpgenbertasxitem/search.js: line 33, col 103, 'dd_queryParams' is not defined.
+ontrollers/jxpgenbertasxitem/search.js: line 43, col 103, 'dd_queryParams' is not defined.
+
+ errors
+
+ontrollers/ptltests/index.js: line 119, col 37, 'record' is defined but never used.
+ontrollers/ptltests/index.js: line 117, col 7, 'Promise' is not defined.
+
+ errors
+
+ontrollers/ptltests/new.js: line 11, col 55, 'requestData' is defined but never used.
+
+ error
+
+ontrollers/ptltests/view.js: line 28, col 11, 'self' is defined but never used.
+ontrollers/ptltests/view.js: line 17, col 7, 'Promise' is not defined.
+ontrollers/ptltests/view.js: line 18, col 9, 'Promise' is not defined.
+
+ errors
+
+ontrollers/requests/index.js: line 125, col 37, 'record' is defined but never used.
+
+ error
+
+ontrollers/requests/new.js: line 11, col 55, 'requestData' is defined but never used.
+
+ error
+
+ontrollers/requests/view.js: line 28, col 11, 'self' is defined but never used.
+ontrollers/requests/view.js: line 17, col 7, 'Promise' is not defined.
+ontrollers/requests/view.js: line 18, col 9, 'Promise' is not defined.
+
+ errors
+
+ontrollers/rqs/index.js: line 125, col 37, 'record' is defined but never used.
+
+ error
+
+ontrollers/rqs/new.js: line 11, col 55, 'requestData' is defined but never used.
+
+ error
+
+ontrollers/rqs/view.js: line 28, col 11, 'self' is defined but never used.
+ontrollers/rqs/view.js: line 17, col 7, 'Promise' is not defined.
+ontrollers/rqs/view.js: line 18, col 9, 'Promise' is not defined.
+
+ errors
+
+ontrollers/rqsctest/index.js: line 20, col 43, Missing semicolon.
+
+ error
+
+ontrollers/rqsctest/list.js: line 146, col 7, Comma warnings can be turned off with 'laxcomma'.
+ontrollers/rqsctest/list.js: line 145, col 13, Misleading line break before ','; readers may interpret this as an expr
+sion boundary.
+ontrollers/rqsctest/list.js: line 164, col 43, Missing semicolon.
+
+ errors
+
+ontrollers/rqsctest/rqsctest.js: line 21, col 32, Expected '===' and instead saw '=='.
+
+ error
+
+ontrollers/streambrowser/create.js: line 58, col 55, Missing semicolon.
+ontrollers/streambrowser/create.js: line 68, col 13, 'self' is already defined.
+ontrollers/streambrowser/create.js: line 148, col 52, 'requestData' is defined but never used.
+ontrollers/streambrowser/create.js: line 243, col 27, Duplicate key 'osapi_hash'.
+ontrollers/streambrowser/create.js: line 244, col 28, Duplicate key 'osapi_label'.
+ontrollers/streambrowser/create.js: line 217, col 13, 'toast' is defined but never used.
+ontrollers/streambrowser/create.js: line 219, col 13, 'route' is defined but never used.
+ontrollers/streambrowser/create.js: line 296, col 13, 'self' is already defined.
+
+ errors
+
+ontrollers/streambrowser/index.js: line 145, col 37, 'record' is defined but never used.
+
+ error
+
+ontrollers/streambrowser/view.js: line 67, col 5, 'self' used out of scope.
+ontrollers/streambrowser/view.js: line 69, col 5, 'self' used out of scope.
+ontrollers/streambrowser/view.js: line 70, col 5, 'self' used out of scope.
+ontrollers/streambrowser/view.js: line 84, col 5, 'self' used out of scope.
+ontrollers/streambrowser/view.js: line 94, col 11, 'self' is defined but never used.
+ontrollers/streambrowser/view.js: line 38, col 13, 'self' is not defined.
+ontrollers/streambrowser/view.js: line 40, col 13, 'self' is not defined.
+ontrollers/streambrowser/view.js: line 42, col 16, 'self' is not defined.
+ontrollers/streambrowser/view.js: line 46, col 16, 'self' is not defined.
+ontrollers/streambrowser/view.js: line 50, col 16, 'self' is not defined.
+ontrollers/streambrowser/view.js: line 55, col 13, 'self' is not defined.
+ontrollers/streambrowser/view.js: line 77, col 7, 'Promise' is not defined.
+ontrollers/streambrowser/view.js: line 78, col 9, 'Promise' is not defined.
+
+3 errors
+
+ontrollers/streams/create.js: line 58, col 55, Missing semicolon.
+ontrollers/streams/create.js: line 68, col 13, 'self' is already defined.
+ontrollers/streams/create.js: line 148, col 52, 'requestData' is defined but never used.
+ontrollers/streams/create.js: line 245, col 27, Duplicate key 'osapi_hash'.
+ontrollers/streams/create.js: line 246, col 28, Duplicate key 'osapi_label'.
+ontrollers/streams/create.js: line 219, col 13, 'toast' is defined but never used.
+ontrollers/streams/create.js: line 221, col 13, 'route' is defined but never used.
+ontrollers/streams/create.js: line 298, col 13, 'self' is already defined.
+
+ errors
+
+ontrollers/streams/view.js: line 67, col 5, 'self' used out of scope.
+ontrollers/streams/view.js: line 69, col 5, 'self' used out of scope.
+ontrollers/streams/view.js: line 70, col 5, 'self' used out of scope.
+ontrollers/streams/view.js: line 84, col 5, 'self' used out of scope.
+ontrollers/streams/view.js: line 94, col 11, 'self' is defined but never used.
+ontrollers/streams/view.js: line 38, col 13, 'self' is not defined.
+ontrollers/streams/view.js: line 40, col 13, 'self' is not defined.
+ontrollers/streams/view.js: line 42, col 16, 'self' is not defined.
+ontrollers/streams/view.js: line 46, col 16, 'self' is not defined.
+ontrollers/streams/view.js: line 50, col 16, 'self' is not defined.
+ontrollers/streams/view.js: line 55, col 13, 'self' is not defined.
+ontrollers/streams/view.js: line 77, col 7, 'Promise' is not defined.
+ontrollers/streams/view.js: line 78, col 9, 'Promise' is not defined.
+
+3 errors
+
+ontrollers/streamtests/copy.js: line 68, col 55, Missing semicolon.
+ontrollers/streamtests/copy.js: line 78, col 13, 'self' is already defined.
+ontrollers/streamtests/copy.js: line 158, col 52, 'requestData' is defined but never used.
+ontrollers/streamtests/copy.js: line 229, col 13, 'toast' is defined but never used.
+ontrollers/streamtests/copy.js: line 231, col 13, 'route' is defined but never used.
+ontrollers/streamtests/copy.js: line 308, col 11, 'dd_2' is defined but never used.
+ontrollers/streamtests/copy.js: line 387, col 25, Duplicate key 'osapi_id'.
+ontrollers/streamtests/copy.js: line 388, col 27, Duplicate key 'osapi_hash'.
+ontrollers/streamtests/copy.js: line 389, col 28, Duplicate key 'osapi_label'.
+ontrollers/streamtests/copy.js: line 350, col 13, 'toast' is defined but never used.
+ontrollers/streamtests/copy.js: line 352, col 13, 'route' is defined but never used.
+ontrollers/streamtests/copy.js: line 478, col 13, 'self' is already defined.
+ontrollers/streamtests/copy.js: line 5, col 8, 'DAO_title' is defined but never used.
+
+3 errors
+
+ontrollers/streamtests/create.js: line 68, col 55, Missing semicolon.
+ontrollers/streamtests/create.js: line 78, col 13, 'self' is already defined.
+ontrollers/streamtests/create.js: line 192, col 13, 'toast' is defined but never used.
+ontrollers/streamtests/create.js: line 193, col 13, 'route' is defined but never used.
+ontrollers/streamtests/create.js: line 276, col 11, 'dd_2' is defined but never used.
+ontrollers/streamtests/create.js: line 349, col 25, Duplicate key 'osapi_id'.
+ontrollers/streamtests/create.js: line 350, col 27, Duplicate key 'osapi_hash'.
+ontrollers/streamtests/create.js: line 351, col 28, Duplicate key 'osapi_label'.
+ontrollers/streamtests/create.js: line 316, col 13, 'route' is defined but never used.
+ontrollers/streamtests/create.js: line 5, col 8, 'DAO_title' is defined but never used.
+
+
+3 errors
+
+ontrollers/streamtests/index.js: line 184, col 37, 'record' is defined but never used.
+ontrollers/streamtests/index.js: line 67, col 17, 'moment' is not defined.
+ontrollers/streamtests/index.js: line 70, col 91, 'moment' is not defined.
+ontrollers/streamtests/index.js: line 71, col 84, 'moment' is not defined.
+ontrollers/streamtests/index.js: line 71, col 103, 'moment' is not defined.
+ontrollers/streamtests/index.js: line 193, col 61, 'moment' is not defined.
+ontrollers/streamtests/index.js: line 182, col 7, 'Promise' is not defined.
+
+ errors
+
+ontrollers/streamtests/rqsctest.js: line 59, col 13, 'self' is already defined.
+
+ error
+
+ontrollers/streamtests/view.js: line 67, col 5, 'self' used out of scope.
+ontrollers/streamtests/view.js: line 69, col 5, 'self' used out of scope.
+ontrollers/streamtests/view.js: line 70, col 5, 'self' used out of scope.
+ontrollers/streamtests/view.js: line 84, col 5, 'self' used out of scope.
+ontrollers/streamtests/view.js: line 94, col 11, 'self' is defined but never used.
+ontrollers/streamtests/view.js: line 38, col 13, 'self' is not defined.
+ontrollers/streamtests/view.js: line 40, col 13, 'self' is not defined.
+ontrollers/streamtests/view.js: line 42, col 16, 'self' is not defined.
+ontrollers/streamtests/view.js: line 46, col 16, 'self' is not defined.
+ontrollers/streamtests/view.js: line 50, col 16, 'self' is not defined.
+ontrollers/streamtests/view.js: line 55, col 13, 'self' is not defined.
+ontrollers/streamtests/view.js: line 77, col 7, 'Promise' is not defined.
+ontrollers/streamtests/view.js: line 78, col 9, 'Promise' is not defined.
+
+3 errors
+
+ontrollers/substreams/create.js: line 152, col 52, 'requestData' is defined but never used.
+ontrollers/substreams/create.js: line 141, col 9, 'self' is defined but never used.
+ontrollers/substreams/create.js: line 159, col 24, 'requestData' is defined but never used.
+ontrollers/substreams/create.js: line 242, col 13, 's_funct' is defined but never used.
+ontrollers/substreams/create.js: line 284, col 28, 'requestData' is defined but never used.
+ontrollers/substreams/create.js: line 130, col 5, 'self' is not defined.
+ontrollers/substreams/create.js: line 390, col 36, 'self' is not defined.
+ontrollers/substreams/create.js: line 276, col 16, 'subjectData' is not defined.
+
+ errors
+
+ontrollers/substreams/index.js: line 158, col 37, 'record' is defined but never used.
+ontrollers/substreams/index.js: line 156, col 7, 'Promise' is not defined.
+ontrollers/substreams/index.js: line 10, col 5, 'ModDatafactory' is defined but never used.
+
+ errors
+
+ontrollers/substreams/view.js: line 52, col 11, 'self' is defined but never used.
+ontrollers/substreams/view.js: line 41, col 7, 'Promise' is not defined.
+ontrollers/substreams/view.js: line 42, col 9, 'Promise' is not defined.
+ontrollers/substreams/view.js: line 3, col 8, 'CoreServices' is defined but never used.
+ontrollers/substreams/view.js: line 10, col 5, 'ModDatafactory' is defined but never used.
+
+ errors
+
+ontrollers/tests/create.js: line 130, col 26, Duplicate key 'stream_id'.
+ontrollers/tests/create.js: line 99, col 13, 'toast' is defined but never used.
+ontrollers/tests/create.js: line 101, col 13, 'route' is defined but never used.
+ontrollers/tests/create.js: line 210, col 17, 'self' is already defined.
+ontrollers/tests/create.js: line 263, col 13, 'self' is already defined.
+ontrollers/tests/create.js: line 52, col 11, 'self' is not defined.
+ontrollers/tests/create.js: line 56, col 11, 'self' is not defined.
+ontrollers/tests/create.js: line 67, col 9, 'self' is not defined.
+ontrollers/tests/create.js: line 5, col 8, 'DAO_type' is defined but never used.
+ontrollers/tests/create.js: line 7, col 8, 'DAO_title' is defined but never used.
+
+0 errors
+
+ontrollers/tests/new.js: line 11, col 55, 'requestData' is defined but never used.
+
+ error
+
+ontrollers/tests/view.js: line 67, col 5, 'self' used out of scope.
+ontrollers/tests/view.js: line 69, col 5, 'self' used out of scope.
+ontrollers/tests/view.js: line 70, col 5, 'self' used out of scope.
+ontrollers/tests/view.js: line 84, col 5, 'self' used out of scope.
+ontrollers/tests/view.js: line 94, col 11, 'self' is defined but never used.
+ontrollers/tests/view.js: line 38, col 13, 'self' is not defined.
+ontrollers/tests/view.js: line 40, col 13, 'self' is not defined.
+ontrollers/tests/view.js: line 42, col 16, 'self' is not defined.
+ontrollers/tests/view.js: line 46, col 16, 'self' is not defined.
+ontrollers/tests/view.js: line 50, col 16, 'self' is not defined.
+ontrollers/tests/view.js: line 55, col 13, 'self' is not defined.
+ontrollers/tests/view.js: line 77, col 7, 'Promise' is not defined.
+ontrollers/tests/view.js: line 78, col 9, 'Promise' is not defined.
+
+3 errors
+
+ontrollers/user/settings.js: line 57, col 49, 'savedNotification' is defined but never used.
+ontrollers/user/settings.js: line 65, col 13, 'self' is already defined.
+ontrollers/user/settings.js: line 53, col 9, 'Promise' is not defined.
+
+ errors
+
+ontrollers/widgets/create-frame-simple.js: line 11, col 57, 'requestData' is defined but never used.
+
+ error
+
+ontrollers/widgets/create-frame.js: line 67, col 46, Don't make functions within a loop.
+ontrollers/widgets/create-frame.js: line 90, col 11, 'jQuery' is not defined.
+
+ errors
+
+ontrollers/widgets/search-api-trace.js: line 67, col 46, Don't make functions within a loop.
+ontrollers/widgets/search-api-trace.js: line 90, col 11, 'jQuery' is not defined.
+
+ errors
+
+ao/dao_colparam.js: line 65, col 21, 'Ember' is not defined.
+
+ error
+
+ao/dao_defcolumn.js: line 3, col 8, 'DAO_core' is defined but never used.
+
+ error
+
+ao/dao_stream.js: line 117, col 46, Don't make functions within a loop.
+ao/dao_stream.js: line 153, col 11, 'jQuery' is not defined.
+
+ errors
+
+ao/dao_sysparam.js: line 65, col 21, 'Ember' is not defined.
+
+ error
+
+ao/dao_title.js: line 133, col 46, Don't make functions within a loop.
+ao/dao_title.js: line 160, col 3, Expected an assignment or function call and instead saw an expression.
+ao/dao_title.js: line 170, col 17, 'jQuery' is not defined.
+
+ errors
+
+elpers/is-column-disabled.js: line 7, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-disabled.js: line 11, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-disabled.js: line 15, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-disabled.js: line 20, col 16, Expected '===' and instead saw '=='.
+
+ errors
+
+elpers/is-column-readonly-edit.js: line 7, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-readonly-edit.js: line 11, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-readonly-edit.js: line 15, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-readonly-edit.js: line 20, col 16, Expected '===' and instead saw '=='.
+
+ errors
+
+elpers/is-column-visible.js: line 7, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-visible.js: line 11, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-visible.js: line 15, col 16, Expected '===' and instead saw '=='.
+elpers/is-column-visible.js: line 20, col 16, Expected '===' and instead saw '=='.
+
+ errors
+
+elpers/is-search-enabled-edit-new.js: line 3, col 8, 'CoreServices' is defined but never used.
+
+ error
+
+elpers/isColumnReadOnly.js: line 3, col 34, 'col_name' is defined but never used.
+
+ error
+
+elpers/range.js: line 2, col 8, 'CoreServices' is defined but never used.
+
+ error
+
+elpers/user-label.js: line 10, col 9, 'self' is defined but never used.
+elpers/user-label.js: line 5, col 19, 'hash' is defined but never used.
+
+ errors
+
+odels/apitarce.js: line 16, col 12, 'moment' is not defined.
+odels/apitarce.js: line 19, col 12, 'moment' is not defined.
+odels/apitarce.js: line 22, col 12, 'moment' is not defined.
+
+ errors
+
+odels/burnchart.js: line 4, col 9, 'DS' is not defined.
+odels/burnchart.js: line 5, col 10, 'DS' is not defined.
+
+ errors
+
+odels/countbystatus.js: line 4, col 10, 'DS' is not defined.
+
+ error
+
+odels/countbytype.js: line 4, col 13, 'DS' is not defined.
+
+ error
+
+odels/frame.js: line 16, col 12, 'moment' is not defined.
+odels/frame.js: line 19, col 12, 'moment' is not defined.
+odels/frame.js: line 22, col 12, 'moment' is not defined.
+
+ errors
+
+odels/jxpgendoctrine_migration_versionsxitem.js: line 1, col 8, 'Ember' is defined but never used.
+odels/jxpgendoctrine_migration_versionsxitem.js: line 3, col 8, 'DAO_model' is defined but never used.
+
+ errors
+
+odels/jxpgenno_classxitem.js: line 1, col 8, 'Ember' is defined but never used.
+odels/jxpgenno_classxitem.js: line 3, col 8, 'DAO_model' is defined but never used.
+
+ errors
+
+odels/jxpgenprojects_streamsxitem.js: line 1, col 8, 'Ember' is defined but never used.
+odels/jxpgenprojects_streamsxitem.js: line 3, col 8, 'DAO_model' is defined but never used.
+
+ errors
+
+odels/jxpgenprojects_workloadsxitem.js: line 1, col 8, 'Ember' is defined but never used.
+odels/jxpgenprojects_workloadsxitem.js: line 3, col 8, 'DAO_model' is defined but never used.
+
+ errors
+
+odels/jxpgenscurve_workloadsxitem.js: line 1, col 8, 'Ember' is defined but never used.
+odels/jxpgenscurve_workloadsxitem.js: line 3, col 8, 'DAO_model' is defined but never used.
+
+ errors
+
+odels/newrequest.js: line 2, col 8, 'Ember' is defined but never used.
+
+ error
+
+odels/ptltest.js: line 16, col 12, 'moment' is not defined.
+odels/ptltest.js: line 19, col 12, 'moment' is not defined.
+odels/ptltest.js: line 22, col 12, 'moment' is not defined.
+
+ errors
+
+odels/request.js: line 19, col 12, 'moment' is not defined.
+odels/request.js: line 22, col 12, 'moment' is not defined.
+odels/request.js: line 25, col 12, 'moment' is not defined.
+
+ errors
+
+odels/requestform.js: line 14, col 12, 'moment' is not defined.
+odels/requestform.js: line 17, col 12, 'moment' is not defined.
+
+ errors
+
+odels/rqs.js: line 16, col 12, 'moment' is not defined.
+odels/rqs.js: line 19, col 12, 'moment' is not defined.
+odels/rqs.js: line 22, col 12, 'moment' is not defined.
+
+ errors
+
+odels/rqsctest.js: line 39, col 3, Missing semicolon.
+
+ error
+
+odels/test.js: line 16, col 12, 'moment' is not defined.
+odels/test.js: line 19, col 12, 'moment' is not defined.
+odels/test.js: line 22, col 12, 'moment' is not defined.
+
+ errors
+
+agination.js: line 25, col 47, 'index' is defined but never used.
+
+ error
+
+outes/apitraces/index.js: line 46, col 10, 'Ember' is not defined.
+outes/apitraces/index.js: line 49, col 10, 'Ember' is not defined.
+outes/apitraces/index.js: line 52, col 10, 'Ember' is not defined.
+outes/apitraces/index.js: line 55, col 10, 'Ember' is not defined.
+outes/apitraces/index.js: line 58, col 10, 'Ember' is not defined.
+outes/apitraces/index.js: line 59, col 71, 'moment' is not defined.
+
+ errors
+
+outes/frames/create-frame.js: line 4, col 40, 'model' is defined but never used.
+
+ error
+
+outes/frames/index.js: line 66, col 17, Comma warnings can be turned off with 'laxcomma'.
+outes/frames/index.js: line 65, col 17, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 69, col 17, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 70, col 19, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 71, col 19, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 72, col 24, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 76, col 19, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 77, col 25, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 78, col 30, Misleading line break before ','; readers may interpret this as an expression
+undary.
+outes/frames/index.js: line 35, col 7, 'self' is not defined.
+outes/frames/index.js: line 4, col 8, 'CoreServices' is defined but never used.
+
+1 errors
+
+outes/index.js: line 7, col 9, 'params' is defined but never used.
+outes/index.js: line 21, col 21, 'moment' is not defined.
+outes/index.js: line 22, col 19, 'moment' is not defined.
+
+ errors
+
+outes/jxpgenbertaxitem/jxnew.js: line 5, col 8, 'paginatorRouteBase' is defined but never used.
+
+ error
+
+outes/new/frame.js: line 4, col 31, 'model' is defined but never used.
+
+ error
+
+outes/ptltests/index.js: line 60, col 71, 'moment' is not defined.
+
+ error
+
+outes/requests/index.js: line 60, col 71, 'moment' is not defined.
+
+ error
+
+outes/rqs/index.js: line 60, col 71, 'moment' is not defined.
+
+ error
+
+outes/rqsctest/index.js: line 1, col 8, 'Ember' is defined but never used.
+
+ error
+
+outes/streambrowser/create.js: line 24, col 38, 'model' is defined but never used.
+outes/streambrowser/create.js: line 5, col 16, 'Ember' is not defined.
+
+ errors
+
+outes/streambrowser/index.js: line 79, col 15, Comma warnings can be turned off with 'laxcomma'.
+outes/streambrowser/index.js: line 78, col 15, Misleading line break before ','; readers may interpret this as an expr
+sion boundary.
+outes/streambrowser/index.js: line 79, col 29, Misleading line break before ','; readers may interpret this as an expr
+sion boundary.
+outes/streambrowser/index.js: line 80, col 29, Misleading line break before ','; readers may interpret this as an expr
+sion boundary.
+outes/streambrowser/index.js: line 70, col 11, 's_func' is defined but never used.
+outes/streambrowser/index.js: line 76, col 11, 'dd_dao_table' is defined but never used.
+outes/streambrowser/index.js: line 97, col 19, Misleading line break before ','; readers may interpret this as an expr
+sion boundary.
+outes/streambrowser/index.js: line 101, col 13, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 116, col 17, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 117, col 19, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 118, col 19, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 119, col 24, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 123, col 19, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 124, col 23, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 125, col 28, Misleading line break before ','; readers may interpret this as an exp
+ssion boundary.
+outes/streambrowser/index.js: line 41, col 11, 'self' is not defined.
+outes/streambrowser/index.js: line 43, col 11, 'self' is not defined.
+outes/streambrowser/index.js: line 45, col 21, 'self' is not defined.
+
+8 errors
+
+outes/streams/create.js: line 24, col 38, 'model' is defined but never used.
+outes/streams/create.js: line 5, col 16, 'Ember' is not defined.
+
+ errors
+
+outes/streams/index.js: line 71, col 13, Comma warnings can be turned off with 'laxcomma'.
+outes/streams/index.js: line 70, col 15, Misleading line break before ','; readers may interpret this as an expression
+oundary.
+outes/streams/index.js: line 71, col 19, Misleading line break before ','; readers may interpret this as an expression
+oundary.
+outes/streams/index.js: line 72, col 19, Misleading line break before ','; readers may interpret this as an expression
+oundary.
+outes/streams/index.js: line 36, col 11, 'self' is not defined.
+outes/streams/index.js: line 4, col 8, 'CoreServices' is defined but never used.
+
+errors
+
+1 errors
+
+outes/streamtests/create.js: line 35, col 43, Missing semicolon.
+outes/streamtests/create.js: line 47, col 11, Comma warnings can be turned off with 'laxcomma'.
+outes/streamtests/create.js: line 46, col 48, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 47, col 47, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 48, col 53, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 49, col 70, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 50, col 49, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 51, col 55, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 52, col 57, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 53, col 53, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 54, col 55, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 55, col 49, Misleading line break before ','; readers may interpret this as an expre
+ion boundary.
+outes/streamtests/create.js: line 65, col 44, 'model' is defined but never used.
+outes/streamtests/create.js: line 65, col 32, 'controller' is defined but never used.
+outes/streamtests/create.js: line 81, col 38, 'model' is defined but never used.
+outes/streamtests/create.js: line 25, col 16, 'Ember' is not defined.
+outes/streamtests/create.js: line 1, col 8, 'AuthenticatedRouteMixin' is defined but never used.
+
+
+0 errors
+
+outes/streamtests/editcreate.js: line 62, col 40, Expected '!==' and instead saw '!='.
+outes/streamtests/editcreate.js: line 85, col 19, Expected '===' and instead saw '=='.
+outes/streamtests/editcreate.js: line 101, col 78, Missing semicolon.
+outes/streamtests/editcreate.js: line 189, col 52, 'p_rqsctest' is defined but never used.
+outes/streamtests/editcreate.js: line 189, col 45, 'model' is defined but never used.
+outes/streamtests/editcreate.js: line 189, col 33, 'controller' is defined but never used.
+outes/streamtests/editcreate.js: line 210, col 42, Missing semicolon.
+outes/streamtests/editcreate.js: line 229, col 21, 'isEd' is defined but never used.
+outes/streamtests/editcreate.js: line 261, col 35, Expected '===' and instead saw '=='.
+outes/streamtests/editcreate.js: line 244, col 28, 'logged_user' is defined but never used.
+outes/streamtests/editcreate.js: line 291, col 27, Missing semicolon.
+outes/streamtests/editcreate.js: line 284, col 28, 'logged_user' is defined but never used.
+outes/streamtests/editcreate.js: line 376, col 44, 'model' is defined but never used.
+outes/streamtests/editcreate.js: line 376, col 32, 'controller' is defined but never used.
+outes/streamtests/editcreate.js: line 390, col 38, 'model' is defined but never used.
+outes/streamtests/editcreate.js: line 2, col 8, 'AuthenticatedRouteMixin' is defined but never used.
+
+
+
+ error
+
+outes/substreams/create.js: line 7, col 42, 'model' is defined but never used.
+
+
+
+9 errors
+
+outes/tests/create.js: line 22, col 38, 'model' is defined but never used.
+
+
+8 errors
+
+outes/user/profile.js: line 6, col 9, 'params' is defined but never used.
+
+ error
+
+outes/user/settings.js: line 5, col 9, 'params' is defined but never used.
+outes/user/settings.js: line 10, col 9, 'self' is defined but never used.
+
+ errors
+
+ervices/colorchange.js: line 11, col 95, Expected an assignment or function call and instead saw an expression.
+ervices/colorchange.js: line 19, col 130, Expected an assignment or function call and instead saw an expression.
+ervices/colorchange.js: line 27, col 38, 'h' is already defined.
+ervices/colorchange.js: line 27, col 105, 'p' is already defined.
+ervices/colorchange.js: line 27, col 116, 'to' is already defined.
+ervices/colorchange.js: line 19, col 96, 'r' is not defined.
+
+ errors
+
+ervices/messenger.js: line 52, col 13, 'data' is defined but never used.
+ervices/messenger.js: line 4, col 9, 'get' is defined but never used.
+ervices/messenger.js: line 4, col 14, 'inject' is defined but never used.
+
+ errors
+
+ervices/sysparservice.js: line 43, col 11, 'self' is defined but never used.
+ervices/sysparservice.js: line 42, col 26, 'store' is defined but never used.
+ervices/sysparservice.js: line 48, col 11, 'self' is defined but never used.
+ervices/sysparservice.js: line 47, col 23, 'store' is defined but never used.
+ervices/sysparservice.js: line 44, col 23, 'm_obj_type' is not defined.
+
+ errors
+
+pgen/xpdao/dao_xpgenrqsctestxittem.js: line 25, col 13, 'dd_out' is already defined.
+pgen/xpdao/dao_xpgenrqsctestxittem.js: line 1, col 8, 'Ember' is defined but never used.
+
+ errors

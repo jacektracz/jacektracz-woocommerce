@@ -1,0 +1,2 @@
+self:text(@"mysql> \. C:\lkd\ht\phpMyAdmin\upload\wmt.sql");
+self:text(@"& 'C:\Program Files\MySQL\MySQL Server 5.6\bin\mysql.exe' -uroot -p");

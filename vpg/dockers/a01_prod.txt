@@ -1,0 +1,5 @@
+
+gklab-132-018.igk.intel.com
+docker run -di --name scatefrontprod -p 8170:80  -p 8270:443 scate-front-test:latest
+
+docker exec -it scatefrontprod bash -l

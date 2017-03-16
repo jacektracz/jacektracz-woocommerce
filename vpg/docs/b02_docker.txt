@@ -1,0 +1,108 @@
+
+
+http://requests.test.vpgtools.intel.com/
+http://gal.test.vpgtools.intel.com/streams
+
+=========================================================================
+
+    Host: gklab-132-018.igk.intel.com
+    User: jtracz
+    Pwd: intel1024
+    Prodykcyjne = wmt, gal, requests
+    Testowe = wmt_test, gal_test, requests_test
+    
+    https://github.intel.com/WMT/perf20docker
+    
+    
+    G³ówne repo z instrukcjami i konfiguracjami do kontenerów
+    https://github.intel.com/WMT/perf20docker
+    
+    gklab-132-018.igk.intel.com
+    root: d03nltr[sU5o
+    
+    esx1, esx2
+    mlukasze: 1024knives!
+    
+    
+    Mam nadziejê, ¿e teraz wszystko pójdzie jak z p³atka.
+
+=========================================================================
+
+
+
+https://github.intel.com/WMT/perf20docker
+http:/goto/requests-test
+
+FRONTENDOWY: 
+	gklab-132-018.igk.intel.com
+	root: d03nltr[sU5o
+	 
+	unknown.gif
+	root@gklab-132-018:~#
+
+	requestsbackend
+
+	docker exec -it requestsfrontest bash -l
+
+	
+
+	rm -Rf ./tmp/*
+	git -c http.sslVerify=false pull
+	cp ../environment.txt config/environment.js
+	
+	echo "BUILDING test version"
+	ember build -e test -o ../dist/requests
+	ember build -o ../dist/requests
+
+	nginx -s reload
+
+	gklab-132-018.igk.intel.com
+	jtracz
+	intel1024
+
+
+
+	gklab-132-018.igk.intel.com
+
+	request-dashboard
+
+	git checkout -b wmt-rq-01-rev-
+
+
+	ember serve --port 80 -e test
+
+
+	/var/log/apache2
+	ember serve --port 80 -e test
+
+=========================================================================
+
+BACKENDOWY:
+
+	10.237.132.143
+	mlukasze
+	1024knives!
+
+	docker exec -it reqbacktest bash -l
+	git pull --all
+	/var/log/apache2
+	chmod 777 src/Core/logs/*
+
+	requests.test.vpgtools.intel.com
+
+	vi src/Core/GenericLogger.php
+	 
+	tail -f src/Core/Logs/log-2.txt
+	docker logs -f requestsfrontest
+
+	docker  restart requestsfrontest
+
+	docker exec -it requestsfrontest bash -l
+	cd /var/www/requests-backend
+	chmod 777 /var/www/requests-backend/src/Core/logs/*
+	
+=========================================================================
+	
+	
+docker exec -it requestsdashboard bash -l
+cd /var/www/ember/dist/

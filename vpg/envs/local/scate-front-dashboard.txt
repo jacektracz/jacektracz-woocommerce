@@ -1,0 +1,6 @@
+4700
+
+cd C:\lkd\wmtgit\v06\scate-front-dashboard
+
+cd C:\lkd\wmtgit\v06\scate-dashboard
+ember build -o C:\lkd\wmtgit\v06\dist\scate-dashboard

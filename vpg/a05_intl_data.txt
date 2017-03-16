@@ -1,0 +1,10 @@
+http://workload.vpgtools.intel.com/login
+http://galapi.vpgtools.intel.com/json/frames
+http://localhost:4400/dictionaries/type
+http://localhost:4400/requests?assignedToMe=0
+http://exploringjs.com/es6/index.html#toc_ch_modules
+
+mlukasze@gklab-132-143:~/import$ docker exec -it reqbacktest bash -l
+
+
+https://github.intel.com/WMT/perf20docker
