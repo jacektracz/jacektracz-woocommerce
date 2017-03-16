@@ -275,11 +275,17 @@ class	intl_copy_dirs:
 			
 	def sync_full_libs_work( self ):
 		self.m_move_gen = "0"
+		self.m_move_sctest = "1"
+		self.m_move_common = "1"
+		self.m_move_lib = "1"
 		self.copy_all_to_full_from_short_in_work()
 
 		
 	def sync_short_gens_work( self ):
 		self.m_move_gen = "1"
+		self.m_move_sctest = "1"
+		self.m_move_lib = "0"
+		self.m_move_common = "0"
 		self.copy_all_to_short_from_full_in_work()
 
 	def sync_full_libs_home( self ):
@@ -335,12 +341,12 @@ if __name__ == '__main__':
 	ddh = intl_copy_dirs()
 	ddh.m_test_mode = "0"
 	
-	#ddh.sync_full_libs_work()
+	ddh.sync_full_libs_work()
 	#ddh.sync_short_gens_work()	
 
 	#ddh.sync_full_libs_home()
 	#ddh.sync_short_gens_home()	
-	ddh.copy_to_home()
+	#ddh.copy_to_home()
 		
 	
 	#
@@ -354,8 +360,10 @@ if __name__ == '__main__':
 	#short 4600
 	#cd C:\lkd\wmt\frontend
 	#cd C:\lkd\wmtgit\v06\scate-dashboard
-	#ember server --port 4900
-	#python C:\lkd\w2\gitp\src\vpg\pyscr\intl_copy_dirs.py
+	#ember server --port 5000
+	#python C:\lkd\wmtgit\v06\w2\gitp\src\vpg\pyscr\intl_copy_dirs.py
+	#cd C:\lkd\wmtgit\v06\scate-admin-dashboard
+	#ember server --port 7000
 	
 	
 	
