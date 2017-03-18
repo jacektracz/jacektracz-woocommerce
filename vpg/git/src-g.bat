@@ -1,6 +1,6 @@
-set cm=first-import-run
-set b0=xph-1.0.03.18.20
-set b1=xph-1.0.03.18.21
+set cm=params-import
+set b0=xph-1.0.03.18.22
+set b1=xph-1.0.03.18.23
 
 cls
 
@@ -32,14 +32,17 @@ git checkout -b %b0%
 git checkout -b %b1%
 git status 
 
-cd C:\lkd\wmtgit\v06\w2\gitp
+
+cd C:\lkd\wmtgit\v06-01\w2_2
 git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
 git status 
 
-cd C:\lkd\wmtgit\v06-01\w2_2
+
+
+cd C:\lkd\wmtgit\v06\w2\gitp
 git add -A
 git commit -m %cm%
 git checkout -b %b0%
