@@ -1,6 +1,6 @@
 set cm=first-import-run
-set b0=xph-1.0.03.18.2
-set b1=xph-1.0.03.18.3
+set b0=xph-1.0.03.18.4
+set b1=xph-1.0.03.18.5
 
 cls
 
@@ -46,6 +46,7 @@ git checkout -b %b0%
 git checkout -b %b1%
 git status 
 
+rem cd C:\lkd\wmtgit\v06\w2\gitp\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g.bat
 rem localhost:89/phpMyAdmin-v2/index.php
 rem C:\lkd\servers\httpd-2.bat
