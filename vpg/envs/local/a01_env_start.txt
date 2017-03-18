@@ -1,0 +1,45 @@
+
+cp ../environment.txt config/environment.js
+ember build -o ../dist/requests
+vi src/Core/GenericLogger.php
+
+PS C:\lkd\wmtgit\v06\requests-dashboard> Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+PS C:\lkd\wmtgit\v06\requests-dashboard> ember windows
+
+
+BACKENDS___:
+
+		cd C:\lkd\wmtgit\v06\requests-backend
+		php -S 127.0.0.1:8886 -t .\web\
+
+		cd C:\lkd\wmtgit\v06\scate-backend
+		php -S 127.0.0.1:8686 -t .\web\
+
+		cd C:\lkd\wmtgit\v06\admincrud-backend
+		php -S 127.0.0.1:8986 -t .\web\
+
+		cd C:\lkd\wmtgit\v06\scate-admin-backend
+		php -S 127.0.0.1:8986 -t .\web\
+
+DASHBOARDS___:
+
+		cd C:\lkd\wmtgit\v06\requests-dashboard
+		ember server --port 4400
+		( 8886 )
+
+		cd C:\lkd\wmtgit\v06\scate-dashboard
+		ember server --port 4500
+
+		cd C:\lkd\wmtgit\v06\admincrud-dashboard
+		ember server --port 4600
+
+		cd C:\lkd\wmtgit\v06\scate-admin-dashboard
+		ember server --port 4900
+		
+admincrud	:	8986
+scate		:	8686
+requests	:	8886 
+
+
+
+

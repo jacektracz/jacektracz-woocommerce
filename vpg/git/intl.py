@@ -26,6 +26,7 @@ class	intl_copy_dirs:
 		self.m_move_app_full = "0"
 		self.m_move_app_short = "0"
 		self.m_selector = "";
+		self.m_move_vpg = "1"
 
 	def copy_all_to_full_from_short_in_home(self):
 		self.set_short_as_source_in_home()
@@ -382,33 +383,39 @@ class	intl_copy_dirs:
 	def copy_to_flash(self, p_sel,p_disc):
 		
 		self.m_selector = p_sel
-		dir_s = "C:\\lkd\\wmtgit\\v06\\scate-dashboard\\app"
-		dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\short\\app"		
-		self.recursive_overwrite(dir_s,dir_dest,None);
+		if(self.m_move_app_short == "1"):
+			dir_s = "C:\\lkd\\wmtgit\\v06\\scate-dashboard\\app"
+			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\short\\app"		
+			self.recursive_overwrite(dir_s,dir_dest,None);
 		
-		dir_s = "C:\\lkd\\wmtgit\\v06\\scate-admin-dashboard\\app"
-		dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\full\\app"		
-		self.recursive_overwrite(dir_s,dir_dest,None);
+		if(self.m_move_app_full == "1"):
+			dir_s = "C:\\lkd\\wmtgit\\v06\\scate-admin-dashboard\\app"
+			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\full\\app"		
+			self.recursive_overwrite(dir_s,dir_dest,None);
+			
+		if(self.m_move_src == "1"):
+			dir_s = "C:\\lkd\\wmtgit\\v06\\scate-backend\\src"
+			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\php\\src"
+			self.recursive_overwrite(dir_s,dir_dest,None);
+			
+		if(self.m_move_vpg == "1"):
+			dir_s = "C:\\lkd\\wmtgit\\v06\\w2\\gitp\\vpg"
+			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\vpg"
+			self.recursive_overwrite(dir_s,dir_dest,None);
 		
-		dir_s = "C:\\lkd\\wmtgit\\v06\\scate-backend\\src"
-		dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\php\\src"
-		self.recursive_overwrite(dir_s,dir_dest,None);
-
-		dir_s = "C:\\lkd\\wmtgit\\v06\\w2\gitp\vpg"
-		dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\vpg"
-		self.recursive_overwrite(dir_s,dir_dest,None);
+		if(self.m_move_bs_2015 == "1"):
+			dir_s = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"
+			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"				
+			self.recursive_overwrite(dir_s,dir_dest,None);
 		
-		dir_s = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"
-		dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\EmberPhp"				
-		self.recursive_overwrite(dir_s,dir_dest,None);
-				
-		dir_s = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"
-		dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"		
-		self.recursive_overwrite(dir_s,dir_dest,None);
-				
-		dir_s = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS"
-		dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS";
-		self.recursive_overwrite(dir_s,dir_dest,None);
+		if(self.m_move_bs_2015 == "1"):								
+			dir_s = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"
+			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.EngineF35\\Generator\\gendata"		
+			self.recursive_overwrite(dir_s,dir_dest,None);
+		if(self.m_move_bs_2015 == "1"):						
+			dir_s = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS"
+			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS";
+			self.recursive_overwrite(dir_s,dir_dest,None);
 	
 		
 if __name__ == '__main__':
@@ -423,14 +430,15 @@ if __name__ == '__main__':
 	
 	ddh = intl_copy_dirs()
 	ddh.m_test_mode = "0"
-	ddh.m_move_app_short ="0"
+	ddh.m_move_app_short ="1"
 	ddh.m_move_app_full = "1"
 	ddh.m_move_src = "1"
 	ddh.m_move_bs_2015 = "0"
-	ddh.copy_to_work("2017_03_17__0800")
+	ddh.m_move_vpg = "0"
+	ddh.copy_to_work("2017_03_17__1700")
 	
 	#ddh.sync_full_libs_work()	
-	#ddh.copy_to_flash("2017_03_16__1800","E")
+	#ddh.copy_to_flash("2017_03_17__1700","E")
 	#ddh.sync_short_gens_work()	
 
 	#ddh.sync_full_libs_home()
@@ -448,7 +456,7 @@ if __name__ == '__main__':
 	#cd C:\lkd\wmt\frontend
 	#cd C:\lkd\wmtgit\v06\scate-dashboard
 	#ember server --port 5000
-	#python C:\lkd\wmtgit\v06\w2\gitp\vpg\pyscr\intl_copy_dirs.py
+	#python C:\lkd\wmtgit\v06\w2\gitp\vpg\git\intl.py
 	
 	#cd C:\lkd\wmtgit\v06\scate-admin-dashboard
 	#ember server --port 7000

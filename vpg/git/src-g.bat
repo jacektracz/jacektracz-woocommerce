@@ -1,6 +1,6 @@
-set cm=completions
-set b0=xph-1.0.03.16.46
-set b1=xph-1.0.03.16.47
+set cm=first-import-run
+set b0=xph-1.0.03.18.0
+set b1=xph-1.0.03.18.1
 
 cls
 
@@ -39,6 +39,16 @@ git checkout -b %b0%
 git checkout -b %b1%
 git status 
 
+cd C:\lkd\wmtgit\v06-01\w2_2
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
+
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g.bat
+rem localhost:89/phpMyAdmin-v2/index.php
+rem C:\lkd\servers\httpd-2.bat
+
 rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
