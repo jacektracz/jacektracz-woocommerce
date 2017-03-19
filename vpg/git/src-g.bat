@@ -1,8 +1,8 @@
 set cm=params-import
-set b0=xph-1.0.03.19.0
-set b1=xph-1.0.03.19.1
-set b2=xph-1.0.03.19.2
-set b3=xph-1.0.03.19.3
+set b0=xph-1.0.03.19.4
+set b1=xph-1.0.03.19.5
+set b2=xph-1.0.03.19.6
+set b3=xph-1.0.03.19.7
 
 cls
 
@@ -11,6 +11,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 git status 
 
 cd C:\lkd\wmtgit\v06\scate-admin-dashboard
