@@ -435,9 +435,10 @@ if __name__ == '__main__':
 	ddh.m_move_src = "1"
 	ddh.m_move_bs_2015 = "0"
 	ddh.m_move_vpg = "0"
-	ddh.copy_to_work("2017_03_17__1700")
+	#ddh.copy_to_work("2017_03_17__1700")
 	
-	#ddh.sync_full_libs_work()	
+	ddh.sync_full_libs_work()	
+	
 	#ddh.copy_to_flash("2017_03_17__1700","E")
 	#ddh.sync_short_gens_work()	
 
