@@ -1,8 +1,8 @@
 set cm=completion-start
-set b0=xph-1.0.03.19.28
-set b1=xph-1.0.03.19.29
-set b2=xph-1.0.03.19.30
-set b3=xph-1.0.03.19.31
+set b0=xph-1.0.03.19.32
+set b1=xph-1.0.03.19.33
+set b2=xph-1.0.03.19.34
+set b3=xph-1.0.03.19.35
 
 cls
 
@@ -70,4 +70,6 @@ rem localhost:89/phpMyAdmin-v2/index.php
 rem C:\lkd\servers\httpd-2.bat
 
 rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt
+rem cd C:\lkd\wmtgit\v06\scate-dashboard
+
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
