@@ -1,6 +1,8 @@
 set cm=params-import
-set b0=xph-1.0.03.18.28
-set b1=xph-1.0.03.18.29
+set b0=xph-1.0.03.19.0
+set b1=xph-1.0.03.19.1
+set b2=xph-1.0.03.19.2
+set b3=xph-1.0.03.19.3
 
 cls
 
@@ -16,6 +18,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 git status 
 
 cd C:\lkd\wmtgit\v06\scate-backend
@@ -23,6 +27,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 git status 
 
 cd C:\lkd\ht\apps_tools\BS_2015
@@ -30,6 +36,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 git status 
 
 
@@ -38,6 +46,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 git status 
 
 
@@ -47,6 +57,9 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
+
 git status 
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
