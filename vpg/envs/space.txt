@@ -2,6 +2,3 @@
 
 if-you-need-to-delete-this-open-an-issue-async-disk-cache
 root@d5e069a7b3db:/tmp# rm -r if-you-need-to-delete-this-open-an-issue-async-disk-cache
-tel ada
-
-	732 999 873

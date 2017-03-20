@@ -433,13 +433,15 @@ if __name__ == '__main__':
 	ddh.m_move_app_short ="1"
 	ddh.m_move_app_full = "1"
 	ddh.m_move_src = "1"
-	ddh.m_move_bs_2015 = "0"
-	ddh.m_move_vpg = "0"
-	#ddh.copy_to_work("2017_03_17__1700")
+	ddh.m_move_bs_2015 = "1"
+	ddh.m_move_vpg = "1"
 	
-	ddh.sync_full_libs_work()	
+	#ddh.copy_to_work("2017_03_20__0800")
 	
-	#ddh.copy_to_flash("2017_03_17__1700","E")
+	#ddh.sync_full_libs_work()	
+	
+	ddh.copy_to_flash("2017_03_20__1700","E")
+	
 	#ddh.sync_short_gens_work()	
 
 	#ddh.sync_full_libs_home()

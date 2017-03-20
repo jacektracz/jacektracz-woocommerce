@@ -1,8 +1,14 @@
-set cm=completion-start-3
-set b0=xph-1.0.03.19.70
-set b1=xph-1.0.03.19.71
-set b2=xph-1.0.03.19.72
-set b3=xph-1.0.03.19.73
+set cm=completion-finished
+
+set b0=xph-1.0.03.20.8
+set b1=xph-1.0.03.20.9
+set b2=xph-1.0.03.20.10
+set b3=xph-1.0.03.20.11
+
+rem set b0=prod-1.0.0.62
+rem set b1=prod-1.0.0.63
+rem set b2=prod-1.0.0.64
+rem set b3=prod-1.0.0.65
 
 cls
 
@@ -73,3 +79,4 @@ rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.tx
 rem cd C:\lkd\wmtgit\v06\scate-dashboard
 
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
+rem notepad "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt"

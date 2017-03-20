@@ -1,0 +1,14 @@
+last:
+
+	docker exec -it scateadminfronttest bash -l
+	
+	prod-full-1.1.20
+	
+	http://admin.scate.vpgtools.intel.com/
+
+	
+2017-03-06
+
+	root@bb5cadd8ae84:/var/www/ember/scateadmin# git status
+	On branch prod-full-1.1.20
+	Your branch is up-to-date with 'origin/prod-full-1.1.20'.

@@ -1,6 +1,9 @@
-set cm=first-import-run
-set b0=xpw-1.0.03.17.14
-set b1=xpw-1.0.03.17.15
+set cm=completion-finished
+
+set b0=xpw-1.0.03.20.8
+set b1=xpw-1.0.03.20.9
+set b2=xpw-1.0.03.20.10
+set b3=xpw-1.0.03.20.11
 
 
 cls
