@@ -23,7 +23,8 @@ cd C:\lkd\wmtgit\v06\w2_2
 git status 
 
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-gs.bat
-
+rem update rqscimp set rqdesc='toimport' where test_name != '' and rqdesc !='imported'
+rem select count(*) from  rqscimp  where test_name != '' and rqdesc !='imported'
 
 rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
