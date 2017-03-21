@@ -440,7 +440,7 @@ if __name__ == '__main__':
 	
 	#ddh.sync_full_libs_work()	
 	
-	ddh.copy_to_flash("2017_03_20__1700","E")
+	ddh.copy_to_flash("2017_03_21__0130","E")
 	
 	#ddh.sync_short_gens_work()	
 
