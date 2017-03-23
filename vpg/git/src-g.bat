@@ -5,11 +5,11 @@ rem	set b1=xpw-1.0.03.21.17
 rem	set b2=xpw-1.0.03.21.18
 rem	set b3=xpw-1.0.03.21.19
 
-set b0=prod-1.0.0.142
-set b1=prod-1.0.0.143
+set b0=prod-1.0.0.146
+set b1=prod-1.0.0.147
 
-set b2=prod-1.0.0.144
-set b3=prod-1.0.0.145
+set b2=prod-1.0.0.148
+set b3=prod-1.0.0.149
 
 cls
 
