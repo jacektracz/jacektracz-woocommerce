@@ -1,14 +1,15 @@
 set cm=completion-finished
 
-set b0=xph-1.0.03.21.8
-set b1=xph-1.0.03.21.9
-set b2=xph-1.0.03.21.10
-set b3=xph-1.0.03.21.11
+rem	set b0=xpw-1.0.03.21.16
+rem	set b1=xpw-1.0.03.21.17
+rem	set b2=xpw-1.0.03.21.18
+rem	set b3=xpw-1.0.03.21.19
 
-rem set b0=prod-1.0.0.62
-rem set b1=prod-1.0.0.63
-rem set b2=prod-1.0.0.64
-rem set b3=prod-1.0.0.65
+set b0=prod-1.0.0.142
+set b1=prod-1.0.0.143
+
+set b2=prod-1.0.0.144
+set b3=prod-1.0.0.145
 
 cls
 
@@ -17,8 +18,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
 git status 
 
 cd C:\lkd\wmtgit\v06\scate-admin-dashboard
@@ -26,8 +27,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
 git status 
 
 cd C:\lkd\wmtgit\v06\scate-backend
@@ -35,8 +36,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
 git status 
 
 cd C:\lkd\ht\apps_tools\BS_2015
@@ -44,8 +45,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
 git status 
 
 
@@ -54,8 +55,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
 git status 
 
 
@@ -65,8 +66,8 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
 
 git status 
 

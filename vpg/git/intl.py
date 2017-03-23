@@ -379,8 +379,13 @@ class	intl_copy_dirs:
 			dir_dest = "C:\\lkd\\ht\\apps_tools\\BS_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS"
 			self.recursive_overwrite_start(dir_s,dir_dest,None);
 			self.recursive_overwrite(dir_s,dir_dest,None);
+			
+		if(self.m_move_vpg == "1"):
+			dir_s =  "C:\\lkd_gen-1\\" + self.m_selector + "\\vpg"
+			dir_dest = "C:\\lkd\\wmtgit\\v06\\w2\\gitp\\vpg"			
+			self.recursive_overwrite(dir_s,dir_dest,None);
 		
-	def copy_to_flash(self, p_sel,p_disc):
+	def copy_to_flash(self, p_sel,p_disc):	
 		
 		self.m_selector = p_sel
 		if(self.m_move_app_short == "1"):
@@ -436,11 +441,11 @@ if __name__ == '__main__':
 	ddh.m_move_bs_2015 = "1"
 	ddh.m_move_vpg = "1"
 	
-	#ddh.copy_to_work("2017_03_20__0800")
+	#ddh.copy_to_work("2017_03_21__1700")
 	
 	#ddh.sync_full_libs_work()	
 	
-	ddh.copy_to_flash("2017_03_21__0130","E")
+	ddh.copy_to_flash("2017_03_23__1820","E")
 	
 	#ddh.sync_short_gens_work()	
 
@@ -460,7 +465,7 @@ if __name__ == '__main__':
 	#cd C:\lkd\wmtgit\v06\scate-dashboard
 	#ember server --port 5000
 	#python C:\lkd\wmtgit\v06\w2\gitp\vpg\git\intl.py
-	
+	#
 	#cd C:\lkd\wmtgit\v06\scate-admin-dashboard
 	#ember server --port 7000
 	

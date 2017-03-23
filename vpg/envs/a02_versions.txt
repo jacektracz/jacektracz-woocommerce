@@ -1,3 +1,4 @@
+
 /var/www/ember/scate-dashboard#	
 
 		addr:
@@ -47,6 +48,7 @@
 			origin 	prod-full-1.1.26			(	2017-03-08::1030	)
 			origin 	prod-full-1.0.0.58
 			origin 	prod-full-1.0.0.60 			(	2017-03-14:1125)
+			origin 	prod-1.0.0.66				(	2017-03-21:1000)
 
 		last:
 			gklab-132-018.igk.intel.com
@@ -54,7 +56,7 @@
 			
 			docker exec -it scateadminfronttest bash -l
 		comm:
-			git checkout prod-full-1.1.26
+			git checkout prod-1.0.0.66
 			ember build -o /var/www/ember/dist/scateadmin
 		site:
 			http://admin.scate.vpgtools.intel.com/
@@ -65,18 +67,21 @@
 			origin  https://github.intel.com/wmt/scate-admin-dashboard.git (push)
 		
 		git:
-			git -c http.sslVerify=false pull origin prod-full-1.0.0.60
+			git -c http.sslVerify=false pull origin prod-1.0.0.66
 			
 			git checkout -- config/environment.js
-			git checkout prod-full-1.0.0.60
+			git checkout prod-1.0.0.66
 			
 			vi app/tools.js
 			vi config/environment.js
 			ember build -o /var/www/ember/dist/scateadmin
+			
 		local:
 			4500
-		
 
+		restart:
+		
+			docker  restart scateadminfronttest
 		
 /var/www/ember/scate-dashboard
 
@@ -101,8 +106,12 @@
 			scateadmin      https://github.intel.com/wmt/scate-admin-dashboard.git (fetch)
 			scateadmin      https://github.intel.com/wmt/scate-admin-dashboard.git (push)
 			
-			git -c http.sslVerify=false pull scateadmin prod-full-1.0.0.60
-			git checkout prod-full-1.0.0.60
+			git -c http.sslVerify=false pull scateadmin prod-full-1.0.0.60			
+			git -c http.sslVerify=false pull fetch  scateadmin prod-1.0.0.66
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.66
+			git reset --hard scateadmin/prod-full-1.0.0.60
+			
+			git checkout  scateadmin prod-1.0.0.70
 			
 		ver:
 			scateadmin prod-full-1.1.16   	(2017-03-05)
@@ -116,6 +125,42 @@
 			ember build -o /var/www/ember/dist/scate
 
 			
+PROD::SCATE::BACK
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1000)
+	commands:
+		10.237.132.143
+		mlukasze
+		1024knives!			
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebackprod2 bash -l
+			
+	git:	
+	
+		git pull origin  prod-1.0.0.66
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
+
+		
+TEST::SCATE::BACK
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1100)
+	commands:
+		10.237.132.143
+		mlukasze
+		1024knives!			
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebacktest bash -l
+		
+		docker restart scatebacktest
+		
+	git:	
+	
+		git pull origin  prod-1.0.0.66
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
 			
 			
 			
@@ -138,23 +183,6 @@ C:\lkd\wmtgit\v06\scate-operation-dashboard
 		
 		
 scate-backend
-
-PROD::SCATE::BACK
-
-	10.237.132.143
-	mlukasze
-	1024knives!
-		
-	
-	docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
-	docker exec -it scatebackprod2 bash -l
-	
-	master
-	
-	git pull origin prod-1.0.0.64
-	
-	origin  https://github.intel.com/wmt/scate-backend.git (fetch)
-	origin  https://github.intel.com/wmt/scate-backend.git (push)
 
 	
 		

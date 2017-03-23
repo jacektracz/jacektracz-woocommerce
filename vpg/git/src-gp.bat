@@ -1,10 +1,10 @@
 set cm=completion-finished
 
-set b0=xpw-1.0.03.20.8
-set b1=xpw-1.0.03.20.9
-set b2=xpw-1.0.03.20.10
-set b3=xpw-1.0.03.20.11
+set b0=prod-1.0.0.142
+set b1=prod-1.0.0.143
 
+set b2=prod-1.0.0.144
+set b3=prod-1.0.0.145
 
 cls
 
@@ -19,8 +19,15 @@ git push origin  %b0%
 
 cd C:\lkd\wmtgit\v06\scate-admin-dashboard
 gitk
+
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-gp.bat
+
+rem skarzynskiego 3f/21
 
 
 rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
+rem php /bin/composer.phar dump-autoload -o
+
+//"/var/www/scate-backend/src/ActionHandlers/Csvimport/Service/Handlers/xpgenrqscimportxitem/CsvTraitxpgenrqscimportxitem.php"
+//"/var/www/scate-backend/src/ActionHandlers/Csvimport/Service/Handlers/xpgenrqscimportxitem/Traitxpgenrqscimportxitem.php"
