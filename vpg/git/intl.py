@@ -297,8 +297,8 @@ class	intl_copy_dirs:
 	def sync_short_gens_work( self ):
 		self.m_move_gen = "1"
 		self.m_move_sctest = "1"
-		self.m_move_lib = "0"
-		self.m_move_common = "0"
+		self.m_move_lib = "1"
+		self.m_move_common = "1"
 		self.copy_all_to_short_from_full_in_work()
 
 	def sync_full_libs_home( self ):
@@ -422,52 +422,36 @@ class	intl_copy_dirs:
 			dir_dest = p_disc + ":\\lkd_gen-1\\" + self.m_selector + "\\gen\\BS_40_PRJ_2015\\BS_40_PRJ_2015\\BSGen\\BearcatSoft.BSGen.GUIStarter\\bin\\UserProjects\\RQS";
 			self.recursive_overwrite(dir_s,dir_dest,None);
 	
+	def copy_to_work(self):	
+		self = intl_copy_dirs()
+		self.m_move_app_short ="1"
+		self.m_move_app_full = "1"
+		self.m_move_src = "1"
+		self.m_move_bs_2015 = "1"
+		self.m_move_vpg = "1"	
+		self.copy_to_work("2017_03_21__1700")
 		
+		
+	def copy_to_flash_main(self):			
+		self.m_move_app_short ="1"
+		self.m_move_app_full = "1"
+		self.m_move_src = "1"
+		self.m_move_bs_2015 = "1"
+		self.m_move_vpg = "1"	
+		self.copy_to_flash("2017_03_24__1600","E")
+		
+	def sync_shorts(self):			
+		self.sync_short_gens_work()	
+			
 if __name__ == '__main__':
-
-	#data = intl_copy_dirs().cpy_create_full_from_short()	
-	#data = intl_copy_dirs().cpy_create_short_from_full()	
-	#intl_copy_dirs().cpy_create_short_from_full_test()
-	#ddh.copy_all_to_full_work();
-	#ddh.copy_all_to_short_from_full_in_work()
-	#ddh.copy_all_to_short_from_full_in_home()
-	#ddh.copy_all_to_full_from_short_in_work()
 	
 	ddh = intl_copy_dirs()
-	ddh.m_test_mode = "0"
-	ddh.m_move_app_short ="1"
-	ddh.m_move_app_full = "1"
-	ddh.m_move_src = "1"
-	ddh.m_move_bs_2015 = "1"
-	ddh.m_move_vpg = "1"
+	ddh.m_test_mode = "0"	
+	#ddh.sync_shorts()
+	ddh.copy_to_flash_main()
 	
-	#ddh.copy_to_work("2017_03_21__1700")
-	
-	#ddh.sync_full_libs_work()	
-	
-	ddh.copy_to_flash("2017_03_23__1820","E")
-	
-	#ddh.sync_short_gens_work()	
 
-	#ddh.sync_full_libs_home()
-	#ddh.sync_short_gens_home()	
-	#ddh.copy_to_home()		
-	#
-	#
-	#	work
-	#
-	
-	#
-	#home
-	#frontend 4900
-	#short 4600
-	#cd C:\lkd\wmt\frontend
-	#cd C:\lkd\wmtgit\v06\scate-dashboard
-	#ember server --port 5000
 	#python C:\lkd\wmtgit\v06\w2\gitp\vpg\git\intl.py
-	#
-	#cd C:\lkd\wmtgit\v06\scate-admin-dashboard
-	#ember server --port 7000
 	
 	
 	

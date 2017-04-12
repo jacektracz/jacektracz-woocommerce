@@ -10,3 +10,9 @@ was found in both
 Warning: Ambiguous class resolution, "Domain\Service\xpgenrqsctestxitem\LibActions\CompleteRequestAction" was found in both 
 "/var/www/scate-backend/src/Domain/Service/xpgenrqactionexecxitem/LibActions/CompleteRequestAction.php" and 
 "/var/www/scate-backend/src/Domain/Service/xpgenrqsctestxitem/LibActions/CompleteRequestAction.php", the first will be used.
+
+
+// rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt
+// rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
+// rem php /bin/composer.phar dump-autoload -o
+

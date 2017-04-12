@@ -1,3 +1,12 @@
+/*===============================================================================================================================*/
+/*
+/*												PROD PROD PROD UI -	SCA
+/*
+/*===============================================================================================================================*/
+
+http://scate.vpgtools.intel.com/
+http://scate.test.vpgtools.intel.com/
+http://scate.admin.vpgtools.intel.com/
 
 /var/www/ember/scate-dashboard#	
 
@@ -13,9 +22,11 @@
 			root: d03nltr[sU5o		
 			docker exec -it scatefrontprod bash -l		
 			../env_is_prod.txt
-			git -c http.sslVerify=false pull origin prod-1.0.0.62
+			git -c http.sslVerify=false pull origin prod-1.0.0.202
 			git checkout prod-1.0.0.62
 			ember build -o /var/www/ember/dist/scate
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.194
 			
 		versions:
 			prod-short-1.0.0.26 (2017-03-06)
@@ -29,6 +40,11 @@
 			prod-short-1.0.0.52  (2017-03-08:1515)
 			prod-short-1.0.0.54  (2017-03-13)
 			prod-short-1.0.0.58  (2017-03-13)
+			
+			prod-1.0.0.194			( 2017-03-24 )
+			
+			prod-1.0.0.202
+			
 		remotes:
 			origin  https://github.intel.com/wmt/scate-dashboard.git (fetch)
 			origin  https://github.intel.com/wmt/scate-dashboard.git (push)
@@ -36,6 +52,11 @@
 		local:
 			4900
 
+/*===============================================================================================================================*/
+/*
+/*												TEST TEST TEST TEST UI -ADMIN
+/*
+/*===============================================================================================================================*/
 
 /var/www/ember/scateadmin
 
@@ -76,12 +97,22 @@
 			vi config/environment.js
 			ember build -o /var/www/ember/dist/scateadmin
 			
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.186
+			
 		local:
 			4500
 
 		restart:
 		
 			docker  restart scateadminfronttest
+		
+/*===============================================================================================================================*/
+/*
+/*												TEST TEST TEST TEST UI -NORM
+/*
+/*===============================================================================================================================*/
+
 		
 /var/www/ember/scate-dashboard
 
@@ -113,17 +144,31 @@
 			
 			git checkout  scateadmin prod-1.0.0.70
 			
+			2017-03-24
+			
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.182
+			
 		ver:
 			scateadmin prod-full-1.1.16   	(2017-03-05)
 			scateadmin prod-full-1.1.26 	(2017-03-08: 0950)
 			scateadmin prod-full-1.0.0.54
 			scateadmin prod-full-1.0.0.58
-			scateadmin prod-full-1.0.0.60 (2017-03-14:1125)
+			
+			scateadmin prod-full-1.0.0.60 	(			2017-03-14:1125	)
+			scateadmin prod-1.0.0.66 		( 	to 		2017-03-24:1215	)
+			scateadmin prod-1.0.0.182       (	from 	2017-03-24:1215 )
+
 		
 		commands
 			vi config/environment.js
 			ember build -o /var/www/ember/dist/scate
 
+
+/*===============================================================================================================================*/
+/*
+/*												PROD PROD PROD BACK
+/*
+/*===============================================================================================================================*/
 			
 PROD::SCATE::BACK
 	ver:
@@ -142,6 +187,12 @@ PROD::SCATE::BACK
 		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
 		origin  https://github.intel.com/wmt/scate-backend.git (push)
 
+
+/*===============================================================================================================================*/
+/*
+/*												TEST TEST TEST BACK
+/*
+/*===============================================================================================================================*/
 		
 TEST::SCATE::BACK
 	ver:
@@ -159,11 +210,26 @@ TEST::SCATE::BACK
 	git:	
 	
 		git pull origin  prod-1.0.0.66
+		On branch prod-1.0.0.142
+		
+		git pull origin  prod-1.0.0.178
+		
 		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
 		origin  https://github.intel.com/wmt/scate-backend.git (push)
-			
-			
-			
+		
+	versions pull:
+		git pull origin  prod-1.0.0.182
+		git pull origin  prod-1.0.0.186
+		
+	versions checkout:
+		git checkout  prod-1.0.0.182
+		git checkout  prod-1.0.0.186 	( 2017-03-24--1200)
+		
+	versions stable:
+		git pull origin  prod-1.0.0.142 (2017-03-23--1800)
+		
+		
+		
 C:\lkd\wmtgit\v06\scate-operation-dashboard
 		git remote add scatefront https://github.intel.com/wmt/scate-dashboard.git
 		
@@ -190,4 +256,5 @@ cd C:\lkd\wmtgit\v06\scate-backend
 		php -S 127.0.0.1:8686 -t .\web\
 		
 		php  C:\lkd\wmtgit\v06\scate-backend\web\artifactory.php
+		
 		

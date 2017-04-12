@@ -1,10 +1,10 @@
 set cm=completion-finished
 
-set b0=prod-1.0.0.142
-set b1=prod-1.0.0.143
+set b0=prod-1.0.0.202
+set b1=prod-1.0.0.203
 
-set b2=prod-1.0.0.144
-set b3=prod-1.0.0.145
+set b2=prod-1.0.0.196
+set b3=prod-1.0.0.197
 
 cls
 
@@ -29,5 +29,3 @@ rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.tx
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
 rem php /bin/composer.phar dump-autoload -o
 
-//"/var/www/scate-backend/src/ActionHandlers/Csvimport/Service/Handlers/xpgenrqscimportxitem/CsvTraitxpgenrqscimportxitem.php"
-//"/var/www/scate-backend/src/ActionHandlers/Csvimport/Service/Handlers/xpgenrqscimportxitem/Traitxpgenrqscimportxitem.php"
