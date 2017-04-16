@@ -1,11 +1,25 @@
-set cm=lkduni-03
+set cm=joo3654-1
 
-set b0=current-2017.04.12.14
-set b1=current-2017.04.12.15
-set b2=current-2017.04.12.16
-set b3=current-2017.04.12.17
+set b0=current-2017.04.16.0
+set b1=current-2017.04.16.1
+set b2=current-2017.04.16.2
+set b3=current-2017.04.16.3
 
 cls
+d:
+cd D:\lkd\ht\apps_joo\joo3654\src
+dir
+git init
+git status
+pause
+cd D:\lkd\ht\apps_joo\joo3654\src
+dir
+cd D:\lkd\ht\apps_portal\lkduni\src
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status
 
 d:
 cd D:\lkd\ht\apps_portal\lkduni\src
@@ -75,7 +89,7 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
-
+c:
 cd C:\lkd\wmtgit\v06\w2\gitp
 dir
 cd C:\lkd\wmtgit\v06\w2\gitp
