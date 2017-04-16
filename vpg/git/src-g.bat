@@ -1,20 +1,31 @@
-set cm=joo3654-1
+set cm=joo3654-2
 
-set b0=current-2017.04.16.0
-set b1=current-2017.04.16.1
-set b2=current-2017.04.16.2
-set b3=current-2017.04.16.3
+set b0=current-2017.04.16.4
+set b1=current-2017.04.16.5
+set b2=current-2017.04.16.6
+set b3=current-2017.04.16.7
 
 cls
 d:
-cd D:\lkd\ht\apps_joo\joo3654\src
+cd D:\lkd\ht\apps_estate\lkdest
 dir
 git init
 git status
-pause
-cd D:\lkd\ht\apps_joo\joo3654\src
+cd D:\lkd\ht\apps_estate\lkdest
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status
+
+d:
+cd D:\lkd\ht\apps_joo\joo3654
 dir
-cd D:\lkd\ht\apps_portal\lkduni\src
+git init
+git status
+cd D:\lkd\ht\apps_joo\joo3654
+dir
+cd D:\lkd\ht\apps_joo\joo3654
 git add -A
 git commit -m %cm%
 git checkout -b %b0%
