@@ -1,9 +1,9 @@
-set cm=my-cv-2
+set cm=my-cv-3
 
-set b0=current-2017.04.17.16
-set b1=current-2017.04.17.17
-set b2=current-2017.04.17.18
-set b3=current-2017.04.17.19
+set b0=current-2017.04.17.20
+set b1=current-2017.04.17.21
+set b2=current-2017.04.17.22
+set b3=current-2017.04.17.23
 
 cls
 d:
@@ -111,6 +111,15 @@ git checkout -b %b1%
 git status 
  
  
+cd C:\lkd\ht\apps_tools\lkdtools_2015
+dir
+cd C:\lkd\ht\apps_tools\lkdtools_2015
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
+  
 
 rem git checkout -b %b2%
 rem git checkout -b %b3%
