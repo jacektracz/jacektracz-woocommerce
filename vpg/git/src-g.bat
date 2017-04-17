@@ -1,9 +1,9 @@
-set cm=joo3654-2
+set cm=my-cv-0
 
-set b0=current-2017.04.17.0
-set b1=current-2017.04.17.1
-set b2=current-2017.04.17.2
-set b3=current-2017.04.17.3
+set b0=current-2017.04.17.4
+set b1=current-2017.04.17.5
+set b2=current-2017.04.17.6
+set b3=current-2017.04.17.7
 
 cls
 d:
