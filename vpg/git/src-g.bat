@@ -1,9 +1,9 @@
-set cm=my-cv-9
+set cm=my-cv-a1
 
-set b0=current-2017.04.20.21
-set b1=current-2017.04.20.22
-set b2=current-2017.04.20.23
-set b3=current-2017.04.20.24
+set b0=current-2017.04.21.0
+set b1=current-2017.04.21.1
+set b2=current-2017.04.21.2
+set b3=current-2017.04.21.3
 
 cls
 d:
