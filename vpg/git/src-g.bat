@@ -1,15 +1,15 @@
-set cm=my-cv-a1-13
+set cm=my-cv-a1-20
 
-set b0=current-2017.04.22.0
-set b1=current-2017.04.22.1
-set b2=current-2017.04.22.2
-set b3=current-2017.04.22.3
+set b0=current-2017.04.24.20
+set b1=current-2017.04.24.21
+set b2=current-2017.04.24.22
+set b3=current-2017.04.24.23
 
 cls
 d:
 cd D:\lkd\ht\apps_estate\lkdest
 dir
-git init
+rem git init
 git status
 cd D:\lkd\ht\apps_estate\lkdest
 git add -A
@@ -124,6 +124,13 @@ git status
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 
+cd C:\lkd\ht\apps_jhipster\eval-1
+git init
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
 
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
