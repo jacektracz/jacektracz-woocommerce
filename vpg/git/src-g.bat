@@ -1,9 +1,9 @@
-set cm=my-cv-a1-28
+set cm=jhipster
 
-set b0=current-2017.04.24.28
-set b1=current-2017.04.24.29
-set b2=current-2017.04.24.30
-set b3=current-2017.04.24.31
+set b0=current-2017.04.25.0
+set b1=current-2017.04.25.1
+set b2=current-2017.04.25.2
+set b3=current-2017.04.25.3
 
 cls
 d:
@@ -145,4 +145,7 @@ rem cd C:\lkd\wmtgit\v06\scate-dashboard
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
 rem notepad "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt"
 rem 733999070
+REM  00-1F-D0-27-CD-DF -2 
+
+REM 00-1F-D0-27-CD-CF  -1 TO 00-1F-D0-27-CD-DF  001FD027CDAF jem0zOyqet
 
