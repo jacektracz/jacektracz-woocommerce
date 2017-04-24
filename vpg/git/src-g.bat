@@ -1,9 +1,9 @@
 set cm=my-cv-a1-20
 
-set b0=current-2017.04.24.20
-set b1=current-2017.04.24.21
-set b2=current-2017.04.24.22
-set b3=current-2017.04.24.23
+set b0=current-2017.04.24.24
+set b1=current-2017.04.24.25
+set b2=current-2017.04.24.26
+set b3=current-2017.04.24.27
 
 cls
 d:
@@ -124,7 +124,7 @@ git status
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 
-cd C:\lkd\ht\apps_jhipster\eval-1
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-2
 git init
 git add -A
 git commit -m %cm%
