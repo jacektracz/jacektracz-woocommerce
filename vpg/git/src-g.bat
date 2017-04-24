@@ -1,9 +1,9 @@
-set cm=my-cv-a1-20
+set cm=my-cv-a1-28
 
-set b0=current-2017.04.24.24
-set b1=current-2017.04.24.25
-set b2=current-2017.04.24.26
-set b3=current-2017.04.24.27
+set b0=current-2017.04.24.28
+set b1=current-2017.04.24.29
+set b2=current-2017.04.24.30
+set b3=current-2017.04.24.31
 
 cls
 d:
@@ -125,13 +125,14 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 
 cd C:\lkd\ht\apps_jhipster\eval-1\eval-2
-git init
+rem git init
 git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
 git status 
-
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-2
+git status 
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g.bat
