@@ -1,9 +1,9 @@
-set cm=jhipster
+set cm=jhipster-eval-03
 
-set b0=current-2017.04.25.0
-set b1=current-2017.04.25.1
-set b2=current-2017.04.25.2
-set b3=current-2017.04.25.3
+set b0=current-2017.04.25.7
+set b1=current-2017.04.25.8
+set b2=current-2017.04.25.9
+set b3=current-2017.04.25.10
 
 cls
 d:
@@ -132,6 +132,16 @@ git checkout -b %b0%
 git checkout -b %b1%
 git status 
 cd C:\lkd\ht\apps_jhipster\eval-1\eval-2
+git status 
+
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-3
+git init
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-3
 git status 
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
