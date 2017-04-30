@@ -1,9 +1,9 @@
-set cm=jhipster-eval-03-02
+set cm=jhipster-eval-04-30
 
-set b0=current-2017.04.27.h.30
-set b1=current-2017.04.27.h.31
-set b2=current-2017.04.27.6.3
-set b3=current-2017.04.27.6.4
+set b0=current-2017.04.30.h.0
+set b1=current-2017.04.30.h.1
+set b2=current-2017.04.30.6.2
+set b3=current-2017.04.30.6.3
 
 cls
 d:
