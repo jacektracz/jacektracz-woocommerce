@@ -1,9 +1,10 @@
-set cm=jhipster-eval-03-02
+set cm=jhipster-eval-04-30.w.4
 
-set b0=current-2017.04.25.15
-set b1=current-2017.04.25.16
-set b2=current-2017.04.25.17
-set b3=current-2017.04.25.18
+set b0=current-2017.04.30.h.4
+set b1=current-2017.04.30.h.5
+set b2=current-2017.04.30.6.6
+set b3=current-2017.04.30.6.7
+
 
 cls
 cd C:\lkd\ht\apps_jhipster\eval-1\eval-3
@@ -16,5 +17,72 @@ git status
 cd C:\lkd\ht\apps_jhipster\eval-1\eval-3
 git status 
 
+cls
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-2
+
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-2
+git status 
+
+
+cd C:\lkd\ht\apps_tools\BS_2015
+dir
+cd C:\lkd\ht\apps_tools\BS_2015
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+git status 
+
+cd C:\lkd\wmtgit\v06-01\w2_2
+dir
+cd C:\lkd\wmtgit\v06-01\w2_2
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+git status 
+
+c:
+cd C:\lkd\wmtgit\v06\w2\gitp
+dir
+cd C:\lkd\wmtgit\v06\w2\gitp
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
+ 
+ 
+cd C:\lkd\ht\apps_tools\lkdtools_2015
+dir
+cd C:\lkd\ht\apps_tools\lkdtools_2015
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
+  
+d:
+cd D:\lkd\ht\apps_portal\lkduni\src
+dir
+cd D:\lkd\ht\apps_portal\lkduni\src
+dir
+cd D:\lkd\ht\apps_portal\lkduni\src
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status
+
+c:
 
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-gsh.bat
