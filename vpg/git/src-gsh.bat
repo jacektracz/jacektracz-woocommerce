@@ -85,5 +85,5 @@ git checkout -b %b1%
 git status
 
 c:
-
+rem 691 620 800
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-gsh.bat
