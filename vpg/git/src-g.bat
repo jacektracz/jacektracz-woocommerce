@@ -1,7 +1,7 @@
-set cm=current-2017.05.2.h.12
+set cm=current-2017.05.2.h.14
 
-set b0=current-2017.05.6.h.12
-set b1=current-2017.05.6.h.13
+set b0=current-2017.05.6.h.14
+set b1=current-2017.05.6.h.15
 set b2=current-2017.05.6.h.14
 set b3=current-2017.05.6.h.15
 
@@ -165,8 +165,8 @@ cd C:\lkd\ht\apps_jhipster\eval-1\eval-a3
 git status 
 
 c:
-cd C:\lkd\ht\apps_angular\eval-1\eval-a2
-git init
+cd C:\lkd\ht\apps_angular\eval-1\eval-a2\src\app\lkd-portal-ng2
+rem git init
 git add -A
 git commit -m %cm%
 git checkout -b %b0%
