@@ -1,9 +1,9 @@
-set cm=current-2017.05.2.h.0
+set cm=current-2017.05.2.h.12
 
-set b0=current-2017.05.6.h.0
-set b1=current-2017.05.6.h.0
-set b2=current-2017.05.6.h.6
-set b3=current-2017.05.6.h.7
+set b0=current-2017.05.6.h.12
+set b1=current-2017.05.6.h.13
+set b2=current-2017.05.6.h.14
+set b3=current-2017.05.6.h.15
 
 cls
 d:
@@ -163,6 +163,16 @@ git checkout -b %b1%
 git status 
 cd C:\lkd\ht\apps_jhipster\eval-1\eval-a3
 git status 
+
+c:
+cd C:\lkd\ht\apps_angular\eval-1\eval-a2
+git init
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+git status 
+
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g.bat
