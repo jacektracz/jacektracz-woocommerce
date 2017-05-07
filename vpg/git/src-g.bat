@@ -1,7 +1,7 @@
-set cm=current-2017.05.7.h.0
+set cm=current-2017.05.7.h.2
 
-set b0=current-2017.05.7.h.0
-set b1=current-2017.05.7.h.1
+set b0=current-2017.05.7.h.2
+set b1=current-2017.05.7.h.3
 set b2=current-2017.05.7.h.14
 set b3=current-2017.05.7.h.15
 
