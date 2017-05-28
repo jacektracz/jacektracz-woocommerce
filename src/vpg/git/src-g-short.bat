@@ -1,10 +1,10 @@
-set cm=current-2017.05.26.W.0--WMT-300--track-table-added
+set cm=current-2017.05.26.W.2--WMT-300--track-table-added
 
-set b0=current-2017.05.26.W.0
-set b1=current-2017.05.26.W.1
+set b0=current-2017.05.26.W.2
+set b1=current-2017.05.26.W.3
 
-rem set b0=prod-2.0.0.7
-rem set b1=prod-2.0.0.8
+rem set b0=prod-2.0.0.16
+rem set b1=prod-2.0.0.17
 
 
 cls
@@ -45,37 +45,7 @@ git checkout -b %b0%
 git checkout -b %b1%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
-git status 
-
-cd C:\lkd\ht\apps_tools\BS_2015
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
-
-
-cd C:\lkd\ht\apps_tools\lkdt_2015
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
-
-
-cd C:\lkd\wmtgit\v06-01\w2_2
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
-
+git status
 
 
 cd C:\lkd\wmtgit\v06\w2\gitp
@@ -97,36 +67,10 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
-rem cd C:\lkd\wmtgit\v06\scripts\perf20\perf20docker
-rem git add -A
-rem git commit -m %cm%
-rem git checkout -b %b0%
-rem git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-rem git status 
-
-cd C:\lkd\ht\apps_joo\joo365
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
-
-cd C:\lkd\ht\apps_portal\lkduni
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
-rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g.bat
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-short.bat
 rem localhost:89/phpMyAdmin-v2/index.php
 rem C:\lkd\servers\httpd-2.bat
 

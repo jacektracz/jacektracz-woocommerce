@@ -1,0 +1,75 @@
+app.js: line 35, col 1, '$' is not defined.
+
+1 error
+
+controllers/jxpgenno_classxitem/jxlist.js: line 5, col 8, 'DAO_transition' is defined but never used.
+
+1 error
+
+controllers/jxpgenuserxitem/jxlist.js: line 5, col 8, 'DAO_transition' is defined but never used.
+
+1 error
+
+controllers/widgets/create-frame.js: line 67, col 46, Don't make functions within a loop.
+
+1 error
+
+controllers/widgets/search-api-trace.js: line 68, col 46, Don't make functions within a loop.
+
+1 error
+
+dao/dao_stream.js: line 118, col 46, Don't make functions within a loop.
+
+1 error
+
+dao/dao_strings.js: line 1, col 8, 'Ember' is defined but never used.
+
+1 error
+
+dao/dao_title.js: line 133, col 46, Don't make functions within a loop.
+
+1 error
+
+dao/dao_transition.js: line 47, col 54, 'p_controller' is defined but never used.
+
+1 error
+
+helpers/format-table-name.js: line 7, col 15, 'col_name' is defined but never used.
+
+1 error
+
+helpers/is-column-disabled-edit.js: line 7, col 30, Expected an assignment or function call and instead saw an expression.
+
+1 error
+
+helpers/is-column-visible-filter-in-list.js: line 2, col 8, 'DAO_column' is defined but never used.
+
+1 error
+
+helpers/str-placeholder-info-txt.js: line 9, col 21, Missing semicolon.
+helpers/str-placeholder-info-txt.js: line 4, col 45, 'tt' is defined but never used.
+
+2 errors
+
+helpers/str-placeholder-info.js: line 9, col 40, Missing semicolon.
+helpers/str-placeholder-info.js: line 4, col 45, 'tt' is defined but never used.
+
+2 errors
+
+routes/index.js: line 3, col 8, 'moment' is defined but never used.
+
+1 error
+
+routes/jxpgenmenuxitem/jxopermainfilter.js: line 4, col 8, 'AuthenticatedRouteMixin' is defined but never used.
+
+1 error
+
+routes/jxpgenno_classxitem/xpgenlib/dao_filter.js: line 56, col 13, 'dao_handler_joins' is defined but never used.
+
+1 error
+
+routes/jxpgenuserxitem/xpgenlib/dao_filter.js: line 56, col 13, 'dao_handler_joins' is defined but never used.
+
+1 error
+
+===== 18 JSHint Errors

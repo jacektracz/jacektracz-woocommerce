@@ -1,1 +1,7 @@
+ last :
+	
+ http://admin.scate.vpgtools.intel.com/
+ 
  git checkout -b master-test-ok-2017-02-09--01
+ 
+ 

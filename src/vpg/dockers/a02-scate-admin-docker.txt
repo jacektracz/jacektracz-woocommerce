@@ -14,3 +14,10 @@ jesli siê powiedzie to bêdzie widoczny na
 http://admin.scate.vpgtools.intel.com
 
 
+
+
+
+cd /var/www/dockerfiles/artifactory-connector$
+
+docker build -t artifactory-connection-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name artifactoryconnectiontest -p 8180:80  -p 8280:443 artifactory-connection-test:latest

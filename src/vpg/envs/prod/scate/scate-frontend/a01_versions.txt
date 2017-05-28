@@ -1,1 +1,11 @@
- git checkout -b master-test-ok-2017-02-09--01
+
+
+root@d5e069a7b3db:/var/www/ember/scate-dashboard# git remote -v
+
+origin  https://github.intel.com/wmt/scate-dashboard.git (fetch)
+origin  https://github.intel.com/wmt/scate-dashboard.git (push)
+
+last:
+	prod-short-1.0.0.26
+	
+	http://scate.vpgtools.intel.com/

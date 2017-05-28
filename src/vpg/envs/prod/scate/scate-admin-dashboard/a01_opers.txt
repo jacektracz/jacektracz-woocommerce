@@ -1,3 +1,16 @@
+last:
+
+	prod-full-1.1.20
+	
+	http://admin.scate.vpgtools.intel.com/
+
+
+/* =========================================================================== */
+/*
+/*
+/* =========================================================================== */
+	
+
 Skrypty referencyjne dla trybu testowego, do dostosowania
 https://github.intel.com/WMT/perf20docker/tree/master/test/scateadmin/front
 

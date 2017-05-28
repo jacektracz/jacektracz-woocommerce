@@ -25,6 +25,8 @@ PROD::SCATE
 	gklab-132-018.igk.intel.com
 	root: d03nltr[sU5o
 	
+	docker exec -it scatefronttest bash -l
+	
 	docker exec -it scatefrontprod bash -l
 	
 	git -c http.sslVerify=false pull 

@@ -1,0 +1,584 @@
+/*===============================================================================================================================*/
+/*
+/*		main passwd Alinghi2008!
+/*
+/*===============================================================================================================================*/
+
+
+http://scate.vpgtools.intel.com/
+http://scate.test.vpgtools.intel.com/
+http://scate.admin.vpgtools.intel.com/
+
+
+/*===============================================================================================================================*/
+/*
+/*												PROD PROD PROD UI -	SCA
+/*
+/*===============================================================================================================================*/
+
+
+
+/var/www/ember/scate-dashboard#	
+
+		addr:
+			http://scate.vpgtools.intel.com/
+			
+		type:
+			main-front
+		goal:
+			used as main-front
+		comms:
+			gklab-132-018.igk.intel.com
+			root: d03nltr[sU5o		
+			docker exec -it scatefrontprod bash -l		
+			../env_is_prod.txt
+			git -c http.sslVerify=false pull origin prod-1.0.0.202
+			git checkout prod-1.0.0.62
+			vi config/environment.js
+			ember build -o /var/www/ember/dist/scate
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.194
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.206
+			git -c http.sslVerify=false pull origin prod-1.0.1
+			git -c http.sslVerify=false pull origin prod-1.0.2.1 	(	wmt-255	)
+			git -c http.sslVerify=false pull origin prod-1.0.2.2	(	wmt-254	)
+			
+			git checkout  prod-1.0.2.2
+			
+			2017-05-02
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.208
+			
+			git -c http.sslVerify=false pull origin prod-1.0.4.0
+			
+			git checkout  prod-1.0.4.0
+			
+			2017-05-04 ( medium )			
+			git -c http.sslVerify=false pull origin prod-1.0.10.2
+			
+			git checkout  prod-1.0.5.0
+			
+			
+
+		versions:
+			prod-short-1.0.0.26 	(2017-03-06)
+			prod-short-1.0.0.32 	(2017-03-06)
+			prod-short-1.0.0.34 	(2017-03-07)
+			prod-short-1.0.0.40  	(2017-03-08:0920)
+			prod-short-1.0.0.42  	(2017-03-08:0927)
+			prod-short-1.0.0.44  	(2017-03-08:1110)
+			prod-short-1.0.0.48  	(2017-03-08:1400)
+			prod-short-1.0.0.50  	(2017-03-08:1500)
+			prod-short-1.0.0.52  	(2017-03-08:1515)
+			prod-short-1.0.0.54  	(2017-03-13)
+			prod-short-1.0.0.58  	(2017-03-13)
+			
+			prod-1.0.0.194			( 2017-03-24 )
+			
+			prod-1.0.0.202
+			
+			prod-1.0.0.206 	( 	2017-03-28 )
+			prod-1.0.1		( 	b: 2017-03-30	wmt-256 Gfx API )
+			prod-1.0.2.2	(	wmt-254	)			
+			prod-1.0.4.0	(	2017-05-02	)
+
+			
+			2017-05-10:
+				prod-1.0.7.2	
+					git -c http.sslVerify=false pull origin prod-1.0.7.2
+					git checkout prod-1.0.7.2
+					
+				prod-1.0.8.2
+					git -c http.sslVerify=false pull origin prod-2.0.0.2
+					git checkout prod-1.0.8.2
+					
+				prod-1.0.9.0
+				
+				last before labels ( not released yet )
+			
+					prod-1.0.10.2
+						
+			2017-05-24:
+			
+				from:
+				
+					prod-1.0.9.0
+					
+				to:
+				
+					prod-2.0.0.2
+					git -c http.sslVerify=false pull origin prod-2.0.0.2 +
+					git checkout prod-2.0.0.2 +
+					
+			
+		remotes:
+			origin  https://github.intel.com/wmt/scate-dashboard.git (fetch)
+			origin  https://github.intel.com/wmt/scate-dashboard.git (push)
+		
+		local:
+			4900
+			cd c:/lkd/wmtgit/v06/scate-dashboard
+			
+			git push origin  prod-1.0.2.2
+
+			
+/*===============================================================================================================================*/
+/*
+/*												TEST TEST TEST TEST UI - NORM
+/*
+/*===============================================================================================================================*/
+
+		addr:		
+			http://scate.test.vpgtools.intel.com/
+		
+		type:
+			test
+			
+		goal:
+			used as backup for main
+			
+		docker:
+			gklab-132-018.igk.intel.com
+			root: d03nltr[sU5o	
+			docker exec -it scatefronttest bash -l
+			
+		dir:
+			/var/www/ember/scate-dashboard
+			
+		remotes:
+		
+			origin  https://github.intel.com/wmt/scate-dashboard.git (fetch)
+			origin  https://github.intel.com/wmt/scate-dashboard.git (push)
+			scateadmin      https://github.intel.com/wmt/scate-admin-dashboard.git (fetch)
+			scateadmin      https://github.intel.com/wmt/scate-admin-dashboard.git (push)
+			
+			git -c http.sslVerify=false pull scateadmin prod-full-1.0.0.60			
+			git -c http.sslVerify=false pull fetch  scateadmin prod-1.0.0.66
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.66
+			git reset --hard scateadmin/prod-full-1.0.0.60
+			
+			git checkout  scateadmin prod-1.0.0.70
+			
+			2017-03-24
+			
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.182
+			
+			2017-03-28
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.206
+			
+		ver:
+			scateadmin prod-full-1.1.16   	(2017-03-05)
+			scateadmin prod-full-1.1.26 	(2017-03-08: 0950)
+			scateadmin prod-full-1.0.0.54
+			scateadmin prod-full-1.0.0.58
+			
+			scateadmin prod-full-1.0.0.60 	(			2017-03-14:1125	)
+			scateadmin prod-1.0.0.66 		( 	to 		2017-03-24:1215	)
+			scateadmin prod-1.0.0.182       (	from 	2017-03-24:1215 )
+			scateadmin prod-1.0.0.206		(	from 	2017-03-28:1400	)
+			admin = 0
+
+		
+		commands
+			vi config/environment.js
+			ember build -o /var/www/ember/dist/scate			
+			
+			git -c http.sslVerify=false pull origin prod-1.0.7.2
+			git -c http.sslVerify=false reset -- hard origin/prod-1.0.7.2
+			git -c http.sslVerify=false pull origin prod-1.0.7.2
+			git -c http.sslVerify=false pull origin prod-1.0.10.0
+			
+			git -c http.sslVerify=false pull --all
+			git checkout origin prod-1.0.7.2
+			
+			git -c http.sslVerify=false fetch origin
+			
+			git reset --hard origin/prod-1.0.7.2
+			
+			git -c http.sslVerify=false fetch origin
+			git reset --hard origin/prod-1.0.7.2
+			
+			
+			git -c http.sslVerify=false pull origin prod-1.0.10.2
+			
+			/* prod-1.0.10.2 last compatible, without labels */
+			
+			10.2 -  window.location, last before compatibilty break
+			
+			10.4 -  window.location, first compatibilty break
+			
+			git -c http.sslVerify=false pull origin prod-2.0.0.2
+			git checkout prod-2.0.0.2
+			
+			
+			/* ----------------------------------------------- */
+			/*
+			/*
+			/* ----------------------------------------------- */
+			
+			released - compatibility break with labels
+			
+			2017-05-17
+			
+				prod-1.0.10.6
+				
+			2017-05-23
+				prod-2.0.0.2
+				
+			2017-05-24
+				
+				prod-2.0.0.6
+					start:
+					git -c http.sslVerify=false pull origin prod-2.0.0.6
+					git checkout prod-2.0.0.6
+					
+			2017-05-25 (test)
+					prod-2.0.0.14 ( WMT-325 )
+						git -c http.sslVerify=false pull origin prod-2.0.0.14
+						git checkout prod-2.0.0.14 +
+						
+			2017-05-26 (test)
+					prod-2.0.0.16 ( WMT-329 )
+						docker exec -it scatefronttest bash -l
+						git -c http.sslVerify=false pull origin prod-2.0.0.16 +
+						git checkout prod-2.0.0.16 +
+						ember build -o /var/www/ember/dist/scate
+					
+/*===============================================================================================================================*/
+/*
+/*		dev version
+/*			
+/*===============================================================================================================================*/
+
+===========================================================================================
+
+PROD
+prod-1.0.10.6	(	labels		WMT-182, WMT-279	)
+prod-2.0.0.2	(	controls 	WMT-295	)
+
+====================================================
+
+prod-2.0.0.6  	( 	WMT-324 	)
+prod-2.0.0.14 	( 	WMT-325 	)
+prod-2.0.0.16 	( 	WMT-329 	)
+			
+/*===============================================================================================================================*/
+/*
+/*												TEST TEST TEST TEST UI -ADMIN
+/*
+/*===============================================================================================================================*/
+
+/var/www/ember/scateadmin
+
+		addr:
+			http://admin.scate.vpgtools.intel.com/
+
+		ver:
+			origing	prod-full-1.1.18 			(	2017-03-05			)
+			origin	prod-full-1.1.20  			(	2017-03-06			)
+			origin 	prod-full-1.1.26			(	2017-03-08::1030	)
+			origin 	prod-full-1.0.0.58
+			origin 	prod-full-1.0.0.60 			(	2017-03-14:1125		)
+			origin 	prod-1.0.0.66				(	2017-03-21:1000		)
+			origin 	prod-1.0.0.206				(	2017-03-28:1350		)
+
+		last:
+			gklab-132-018.igk.intel.com
+			root: d03nltr[sU5o	
+			
+			docker exec -it scateadminfronttest bash -l
+		comm:
+			git checkout prod-1.0.0.206
+			ember build -o /var/www/ember/dist/scateadmin
+		site:
+			http://admin.scate.vpgtools.intel.com/
+			
+		remotes:
+		
+			origin  https://github.intel.com/wmt/scate-admin-dashboard.git (fetch)
+			origin  https://github.intel.com/wmt/scate-admin-dashboard.git (push)
+		
+		git:
+			git -c http.sslVerify=false pull origin prod-1.0.0.66
+			
+			git checkout -- config/environment.js
+			git checkout prod-1.0.0.66
+			
+			vi app/tools.js
+			vi config/environment.js
+			ember build -o /var/www/ember/dist/scateadmin
+			
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.186
+			2017-03-28 1415
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.206
+			
+			git -c http.sslVerify=false pull origin prod-1.0.10.6gi
+			
+		local:
+			4500
+
+		restart:
+		
+			docker  restart scateadminfronttest
+		
+			2017-05-17
+				
+					prod-1.0.10.6
+					
+						start
+						checkout start compilation 15:03
+						
+			2017-05-24
+				from 
+
+
+/*===============================================================================================================================*/
+/*
+/*												PROD PROD PROD BACK
+/*
+/*===============================================================================================================================*/
+			
+PROD::SCATE::BACK
+
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1000 )
+			
+	commands:
+			10.237.132.143
+			mlukasze
+			1024knives!
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebackprod2 bash -l
+			
+	git:	
+	
+		git pull origin  prod-2.0.0.2
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
+
+		git pull origin  prod-2.0.0.2
+		
+	check:2017-05-19
+		origin prod-1.0.9.0
+		
+	origin prod-2.0.0.2
+		start
+			from origin/prod-1.0.9.0
+			to origin prod-2.0.0.2
+		
+/*==================================================================================================================================*/
+/*																																	*/
+/*												TEST TEST TEST BACK																	*/
+/*																																	*/
+/*==================================================================================================================================*/
+
+		
+TEST::SCATE::BACK
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1100)
+	commands:
+		10.237.132.143
+		mlukasze
+		1024knives!			
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebacktest bash -l
+		
+		docker restart scatebacktest
+		
+	git:	
+	
+		git pull origin  prod-1.0.0.66
+		On branch prod-1.0.0.142
+		
+		git pull origin  prod-1.0.0.178
+		
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
+		
+		git pull origin  prod-1.0.0.208
+		git checkout prod-1.0.0.208
+		
+		
+		git pull origin  prod-1.0.6.0
+		git checkout prod-1.0.6.0
+		
+	versions pull:
+		git pull origin  prod-1.0.0.182
+		git pull origin  prod-1.0.0.186
+		git pull origin  prod-1.0.0.206			(	2017-03-28	--	1340	)
+		
+	versions checkout:
+		git checkout  prod-1.0.0.182
+		git checkout  prod-1.0.0.186 			( 	2017-03-24	--	1200	)
+		git checkout  prod-1.0.0.206 			(	2017-03-28	--	1340	)
+		
+	versions stable:
+		git pull origin  prod-1.0.0.142 	(	2017-03-23--1800	)
+		
+		
+	2017-03-28
+		start 13:30 	origin/prod-1.0.0.182
+		
+	2017-05-02
+		prod-1.0.4.0
+
+	2017-05-05
+		prod-1.0.6.0 
+
+	2017-05-10
+		git pull origin  prod-1.0.7.2
+		git checkout prod-1.0.7.2
+	
+	2017-05-18
+		git pull origin  prod-1.0.10.6
+		git pull origin  prod-1.0.10.8
+		
+		cat config/local/doctrine.local.php
+		
+	2017-05-24
+		prod-2.0.0.6
+					start:
+					git  pull origin prod-2.0.0.6 wmt-324
+					git checkout prod-2.0.0.6
+					
+		2017-05-26 (test)
+				prod-2.0.0.16 ( WMT-329 )
+					git pull origin prod-2.0.0.16 +
+					git checkout prod-2.0.0.16 +
+					
+
+/*===============================================================================================================================*/
+/*
+/*												TEST ARTIFACTORY
+/*
+/*===============================================================================================================================*/
+
+	commands:
+	
+		10.237.132.143
+		mlukasze
+		1024knives!			
+		
+		TEST:
+		
+			cd /var/www/perf20docker/
+			git pull
+			
+			vi /var/www/perf20docker/test/artifactory-connector/Dockerfile
+
+			cd /var/www/perf20docker/test/artifactory-connector
+				docker build -t artifactory-connection-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+				docker run -di --name artifactoryconnectiontest -p 8180:80  -p 8280:443 artifactory-connection-test:latest
+				
+				docker exec -it artifactoryconnectiontest bash -l
+
+				4ES0MO7nTyec
+				admin
+				
+				python3 streams_helper.py print
+				
+				productionDb
+				
+				10.237.132.18   productionDb
+				
+				db = create_engine('mysql+mysqlconnector://admin:4ES0MO7nTyec@productionDb:3306/wmt_test', echo=False)
+				
+				db = create_engine('mysql+mysqlconnector://admin:4ES0MO7nTyec@productionDb:3306/wmt', echo=False)
+				
+				self.m_conn_string = 'mysql+mysqlconnector://admin:4ES0MO7nTyec@productionDb:3306/wmt'
+				
+				auth = ('lab_perf20', 'jan15pec#')
+				
+				
+				30 12 * * * python3 /var/www/artifactory-connector/sources/streams_helper.py print
+
+				
+/*===============================================================================================================================*/
+/*
+/*												PROD ARTIFACTORY START
+/*
+/*===============================================================================================================================*/
+
+				
+		PROD:
+		
+		
+			cd /var/www/perf20docker/test/artifactory-connector
+			docker build -t artifactory-connection-prod:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 . fail
+			docker run -di --name artconnprod -p 8180:80  -p 8280:443 artifactory-connection-prod:latest
+			
+			docker commit 9ee6f0301acb artifactory-connection-prod:latest	
+			docker run -di --name artconnprod-5 -p 8213:80  -p 8214:443 artifactory-connection-prod:latest
+			
+			docker exec -it artconnprod-5 bash -l
+		
+
+The command '/bin/sh -c apt-get install -y --force-yes python3-pip' returned a non-zero code: 100
+
+mlukasze@gklab-132-143:/var/www/perf20docker/test/artifactory-connector$
+mlukasze@gklab-132-143:/var/www/perf20docker/test/artifactory-connector$ docker ps
+
+CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS                                                                                       NAMES
+9ee6f0301acb        artifactory-connection-test:latest   "/sbin/my_init"          46 hours ago        Up 46 hours         0.0.0.0:8180->80/tcp, 0.0.0.0:8280->443/tcp                                                 artifactoryconnectiontest
+12678abb1716        scate-back-test:latest               "/bin/sh -c 'bash -C "   9 weeks ago         Up 7 weeks          0.0.0.0:8111->80/tcp, 0.0.0.0:8211->443/tcp
+                                                 scatebackprod2
+		
+		
+		
+			cd  /var/www/artifactory-connector/sources/
+			
+			python3 /var/www/artifactory-connector/sources/streams_helper.py update_existing
+			
+/*===============================================================================================================================*/
+/*
+/*													LOCAL
+/*
+/*===============================================================================================================================*/
+		
+C:\lkd\wmtgit\v06\scate-operation-dashboard
+
+	
+		git remote add scatefront https://github.intel.com/wmt/scate-dashboard.git
+		
+		origin  https://github.intel.com/wmt/scate-operation-dashboard.git (fetch)
+		origin  https://github.intel.com/wmt/scate-operation-dashboard.git (push)
+		scatefront      https://github.intel.com/wmt/scate-dashboard.git (fetch)
+		scatefront      https://github.intel.com/wmt/scate-dashboard.git (push)
+		
+		git pull scatefront prod-short-1.0.0.40
+		git checkout prod-short-1.0.0.40
+		git fetch scatefront prod-short-1.0.0.40
+		git reset --hard scatefront/ prod-short-1.0.0.40
+		git checkout prod-short-1.0.0.34
+		
+
+		
+/*===============================================================================================================================*/
+/*
+/*													LOCAL
+/*
+/*===============================================================================================================================*/
+
+		
+scate-backend
+	
+		
+cd C:\lkd\wmtgit\v06\scate-backend
+		php -S 127.0.0.1:8686 -t .\web\
+		
+		php  C:\lkd\wmtgit\v06\scate-backend\web\artifactory.php
+		
+		723 256 781 mni
+		604 502 551
+
+		
+/*===============================================================================================================================*/
+/*
+/*
+/*
+/*===============================================================================================================================*/

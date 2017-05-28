@@ -12,6 +12,6 @@ git -c http.sslVerify=false pull scateadmin prod-full-1.1.16
 git -c http.sslVerify=false fetch scateadmin
 
 
-git fetch origin
+git -c http.sslVerify=false fetch origin
 git reset --hard origin/master
 

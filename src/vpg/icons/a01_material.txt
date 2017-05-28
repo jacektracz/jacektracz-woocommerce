@@ -1,0 +1,57 @@
+>add</i>
+>&#xE145;</i>
+
+<i class="material-icons">search</i>
+<i class="material-icons">&#xE8B6;</i>
+
+<i class="material-icons">clear</i>
+<i class="material-icons">&#xE14C;</i>
+
+<i class="material-icons">save</i>
+<i class="material-icons">&#xE161;</i>
+
+<i class="material-icons">delete_forever</i>
+<i class="material-icons">&#xE92B;</i>
+
+<i class="material-icons">mode_edit</i>
+<i class="material-icons">&#xE254;</i>
+
+<i class="material-icons">build</i>
+<i class="material-icons">&#xE869;</i>
+
+<i class="material-icons">menu</i>
+<i class="material-icons">&#xE5D2;</i>
+
+<i class="material-icons">inbox</i>
+<i class="material-icons">&#xE156;</i>
+
+<i class="material-icons">drag_handle</i>
+<i class="material-icons">&#xE25D;</i>
+
+<i class="material-icons">help</i>
+<i class="material-icons">&#xE887;</i>
+
+<i class="material-icons">pageview</i>
+<i class="material-icons">&#xE8A0;</i>
+
+<i class="material-icons">inbox</i>
+<i class="material-icons">&#xE156;</i>
+
+<i class="material-icons">assignment_ind</i>
+<i class="material-icons">&#xE85E;</i>
+
+<i class="material-icons">chevron_left</i>
+<i class="material-icons">&#xE5CB;</i>
+
+<i class="material-icons">chevron_right</i>
+<i class="material-icons">&#xE5CC;</i>
+
+
+<i class="material-icons">settings</i>
+<i class="material-icons">&#xE8B8;</i>
+
+<i class="material-icons">cancel</i>
+<i class="material-icons">&#xE5C9;</i>
+
+<i class="material-icons">send</i>
+<i class="material-icons">&#xE163;</i>

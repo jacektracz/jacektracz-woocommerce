@@ -1,0 +1,4 @@
+http://lakida.e-kei.pl/tgr/index.php?option=com_content&view=featured&Itemid=13626&ep_catid=2006&ep_id=4611&cu_cid=1989&cu_mid=&ep_o=0&ep_theme=genwhiteblue&ept=three-columns-one-page&ac_cat=1989&ep_regid=40014&regord=29&modd=ep_three_tab_v2&modid=20826&ep_position=mod_ep_three_tab_v2
+
+node.js
+https://www.packtpub.com/mapt/book/web-development/9781783287314/1/ch01lvl1sec09/the-reactor-pattern

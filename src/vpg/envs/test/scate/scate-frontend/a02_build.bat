@@ -1,3 +1,22 @@
+PROD::SCATE
+	gklab-132-018.igk.intel.com
+	root: d03nltr[sU5o
+	
+	docker exec -it scatefronttest bash -l
+	
+	docker exec -it scatefrontprod bash -l
+	
+	git -c http.sslVerify=false pull 
+	cp ../environment.txt config/environment.js
+	
+	vi config/environment.js
+	
+	echo "BUILDING test version"	
+	ember build -o /var/www/ember/dist/scate
+	
+	
+	docker exec -it scatefronttest bash -l
+
 cp config/local/doctrine.local.php config/local/doctrine.local.php.bat
 cp src/db/configs/test/config/local/doctrine.local.php config/local/doctrine.local.php
 chmod 777 /var/www/scate-backend/cache/
