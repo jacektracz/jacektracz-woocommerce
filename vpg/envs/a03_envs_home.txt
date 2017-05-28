@@ -4,4 +4,10 @@ set b0=current-2017.05.28.h.0
 set b0=current-2017.05.28.h.0
 set b1=current-2017.05.28.h.1
 
-last after responsive
+last before responsive
+cd D:\lkd\ht\apps_portal\lkduni\src
+git checkout current-2017.05.28.h.0
+
+first after responsive
+cd D:\lkd\ht\apps_portal\lkduni\src
+git checkout current-2017.05.28.h.3

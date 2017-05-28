@@ -1,10 +1,10 @@
 set cm=current-2017.05.28.h.0
 
-set b0=current-2017.05.28.h.2
-set b1=current-2017.05.28.h.3
+set b0=current-2017.05.28.h.4
+set b1=current-2017.05.28.h.5
 
-set b2=current-2017.05.28.h.2
-set b3=current-2017.05.28.h.3
+set b2=current-2017.05.28.h.6
+set b3=current-2017.05.28.h.7
 
 cls
 d:
@@ -17,6 +17,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
 git status
 
 d:
@@ -31,6 +32,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
 git status
 
 d:
@@ -43,6 +45,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
 git status
 
 c:
@@ -53,7 +56,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-rem git checkout -b %b2%
+git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
@@ -64,7 +67,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-rem git checkout -b %b2%
+git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
@@ -75,7 +78,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-rem git checkout -b %b2%
+git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
@@ -86,7 +89,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-rem git checkout -b %b2%
+git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
@@ -109,6 +112,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
 git status 
  
  
@@ -119,6 +123,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
 git status 
   
 
@@ -131,6 +136,7 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
 git status 
 cd C:\lkd\ht\apps_jhipster\eval-1\eval-2
 git status 
