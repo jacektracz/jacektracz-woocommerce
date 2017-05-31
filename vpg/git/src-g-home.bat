@@ -1,10 +1,10 @@
-set cm=current-2017.05.31.HM.16
+set cm=current-2017.05.31.HM.20
 
-set b0=current-2017.05.31.HM.16
-set b1=current-2017.05.31.HM.17
+set b0=current-2017.05.31.HM.20
+set b1=current-2017.05.31.HM.21
 
-set b2=current-2017.05.31.HM.18
-set b3=current-2017.05.31.HM.19
+set b2=current-2017.05.31.HM.22
+set b3=current-2017.05.31.HM.23
 
 cls
 d:
@@ -22,7 +22,7 @@ git status
 
 d:
 cd D:\lkd\ht\apps_joo\joo3654
-dir
+rem dir
 git init
 git status
 cd D:\lkd\ht\apps_joo\joo3654
@@ -37,7 +37,7 @@ git status
 
 d:
 cd D:\lkd\ht\apps_portal\lkduni\src
-dir
+rem dir
 cd D:\lkd\ht\apps_portal\lkduni\src
 rem dir
 cd D:\lkd\ht\apps_portal\lkduni\src
