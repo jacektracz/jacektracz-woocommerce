@@ -1,10 +1,10 @@
-set cm=current-2017.06.04.HM.20
+set cm=current-2017.06.04.HM.24
 
-set b0=current-2017.06.04.HM.20
-set b1=current-2017.06.04.HM.21
+set b0=current-2017.06.04.HM.24
+set b1=current-2017.06.04.HM.25
 
-set b2=current-2017.06.04.HM.22
-set b3=current-2017.06.04.HM.23
+set b2=current-2017.06.04.HM.26
+set b3=current-2017.06.04.HM.27
 
 cls
 d:
