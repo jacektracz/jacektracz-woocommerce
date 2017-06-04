@@ -24,6 +24,7 @@ rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-gp.bat
 
 rem skarzynskiego 3f/21
 
+rem C:\Program Files\MySQL\MySQL Server 5.7\bin\mysqld.exe
 
 rem tail -f C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt
 rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
