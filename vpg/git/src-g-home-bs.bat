@@ -1,10 +1,10 @@
-set cm=current-2017.05.31.HM.28
+set cm=current-2017.06.04.HN.04-JHIPSTER-INCLUDED
 
-set b0=current-2017.05.31.HM.28
-set b1=current-2017.05.31.HM.29
+set b0=current-2017.06.04.HN.04
+set b1=current-2017.05.04.HN.05
 
-set b2=current-2017.05.31.HM.30
-set b3=current-2017.05.31.HM.31
+set b2=current-2017.05.04.HN.06
+set b3=current-2017.05.04.HN.07
 
 cls
 
@@ -16,8 +16,9 @@ git add -A
 git commit -m %cm%
 git checkout -b %b0%
 git checkout -b %b1%
-git checkout -b %b2%
+rem git checkout -b %b2%
 rem git checkout -b %b3%
+dir
 git status 
 
 
