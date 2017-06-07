@@ -1,0 +1,228 @@
+/*==================================================================================================================================*/
+/*																																	*/
+/*												TEST TEST TEST BACK																	*/
+/*																																	*/
+/*==================================================================================================================================*/
+
+		
+TEST::SCATE::BACK
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1100)
+	commands:
+		10.237.132.143
+		mlukasze
+		1024knives!			
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebacktest bash -l
+		
+		
+		
+	git:	
+	
+		git pull origin  prod-1.0.0.66
+		On branch prod-1.0.0.142
+		
+		git pull origin  prod-1.0.0.178
+		
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
+		
+		git pull origin  prod-1.0.0.208
+		git checkout prod-1.0.0.208
+		
+		
+		git pull origin  prod-1.0.6.0
+		git checkout prod-1.0.6.0
+		
+	versions pull:
+		git pull origin  prod-1.0.0.182
+		git pull origin  prod-1.0.0.186
+		git pull origin  prod-1.0.0.206			(	2017-03-28	--	1340	)
+		
+	versions checkout:
+		git checkout  prod-1.0.0.182
+		git checkout  prod-1.0.0.186 			( 	2017-03-24	--	1200	)
+		git checkout  prod-1.0.0.206 			(	2017-03-28	--	1340	)
+		
+	versions stable:
+		git pull origin  prod-1.0.0.142 	(	2017-03-23--1800	)
+		
+		
+	2017-03-28
+		start 13:30 	origin/prod-1.0.0.182
+		
+	2017-05-02
+		prod-1.0.4.0
+
+	2017-05-05
+		prod-1.0.6.0 
+
+	2017-05-10
+		git pull origin  prod-1.0.7.2
+		git checkout prod-1.0.7.2
+	
+	2017-05-18
+		git pull origin  prod-1.0.10.6
+		git pull origin  prod-1.0.10.8
+		
+		cat config/local/doctrine.local.php
+		
+	2017-05-24
+		prod-2.0.0.6
+					start:
+					git  pull origin prod-2.0.0.6 wmt-324
+					git checkout prod-2.0.0.6
+					
+		2017-05-26 (test)
+				prod-2.0.0.16 ( WMT-329 )
+					git pull origin prod-2.0.0.16 +
+					git checkout prod-2.0.0.16 +
+					
+		2017-05-29	(	WMT-300	)
+		
+				2.0.0.18
+					git pull origin prod-2.0.0.18+
+					git checkout prod-2.0.0.18 +
+					
+				prod-2.0.0.24
+				
+					
+/*===============================================================================================================================*/
+/*
+/*												TEST TEST TEST TEST UI - NORM
+/*
+/*===============================================================================================================================*/
+
+		addr:		
+			http://scate.test.vpgtools.intel.com/
+		
+		type:
+			test
+			
+		goal:
+			used as backup for main
+			
+		docker:
+			gklab-132-018.igk.intel.com
+			root: d03nltr[sU5o	
+			docker exec -it scatefronttest bash -l
+			
+		dir:
+			/var/www/ember/scate-dashboard
+			
+		remotes:
+		
+			origin  https://github.intel.com/wmt/scate-dashboard.git (fetch)
+			origin  https://github.intel.com/wmt/scate-dashboard.git (push)
+			scateadmin      https://github.intel.com/wmt/scate-admin-dashboard.git (fetch)
+			scateadmin      https://github.intel.com/wmt/scate-admin-dashboard.git (push)
+			
+			git -c http.sslVerify=false pull scateadmin prod-full-1.0.0.60			
+			git -c http.sslVerify=false pull fetch  scateadmin prod-1.0.0.66
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.66
+			git reset --hard scateadmin/prod-full-1.0.0.60
+			
+			git checkout  scateadmin prod-1.0.0.70
+			
+			2017-03-24
+			
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.182
+			
+			2017-03-28
+			git -c http.sslVerify=false pull scateadmin prod-1.0.0.206
+			
+		ver:
+			scateadmin prod-full-1.1.16   	(2017-03-05)
+			scateadmin prod-full-1.1.26 	(2017-03-08: 0950)
+			scateadmin prod-full-1.0.0.54
+			scateadmin prod-full-1.0.0.58
+			
+			scateadmin prod-full-1.0.0.60 	(			2017-03-14:1125	)
+			scateadmin prod-1.0.0.66 		( 	to 		2017-03-24:1215	)
+			scateadmin prod-1.0.0.182       (	from 	2017-03-24:1215 )
+			scateadmin prod-1.0.0.206		(	from 	2017-03-28:1400	)
+			admin = 0
+
+		
+		commands
+			vi config/environment.js
+			ember build -o /var/www/ember/dist/scate			
+			
+			git -c http.sslVerify=false pull origin prod-1.0.7.2
+			git -c http.sslVerify=false reset -- hard origin/prod-1.0.7.2
+			git -c http.sslVerify=false pull origin prod-1.0.7.2
+			git -c http.sslVerify=false pull origin prod-1.0.10.0
+			
+			git -c http.sslVerify=false pull --all
+			git checkout origin prod-1.0.7.2
+			
+			git -c http.sslVerify=false fetch origin
+			
+			git reset --hard origin/prod-1.0.7.2
+			
+			git -c http.sslVerify=false fetch origin
+			git reset --hard origin/prod-1.0.7.2
+			
+			
+			git -c http.sslVerify=false pull origin prod-1.0.10.2
+			
+			/* prod-1.0.10.2 last compatible, without labels */
+			
+			10.2 -  window.location, last before compatibilty break
+			
+			10.4 -  window.location, first compatibilty break
+			
+			git -c http.sslVerify=false pull origin prod-2.0.0.2
+			git checkout prod-2.0.0.2
+			
+			
+			/* ----------------------------------------------- */
+			/*
+			/*
+			/* ----------------------------------------------- */
+			
+			released - compatibility break with labels
+			
+			2017-05-17
+			
+				prod-1.0.10.6
+				
+			2017-05-23
+				prod-2.0.0.2
+				
+			2017-05-24
+				
+				prod-2.0.0.6
+					start:
+					git -c http.sslVerify=false pull origin prod-2.0.0.6
+					git checkout prod-2.0.0.6
+					
+			2017-05-25 (test)
+					prod-2.0.0.14 ( WMT-325 )
+						git -c http.sslVerify=false pull origin prod-2.0.0.14
+						git checkout prod-2.0.0.14 +
+						
+			2017-05-26 (test)
+					prod-2.0.0.16 ( WMT-329 )
+						docker exec -it scatefronttest bash -l
+						git -c http.sslVerify=false pull origin prod-2.0.0.16 +
+						git checkout prod-2.0.0.16 +
+						ember build -o /var/www/ember/dist/scate
+						
+			2017-05-29 (test)
+					prod-2.0.0.18 ( WMT-330 )
+						git -c http.sslVerify=false pull origin prod-2.0.0.18 +
+						git checkout prod-2.0.0.18 +
+						
+			2017-05-29
+					prod-2.0.0.18
+					
+/*	========================================================== */
+/var/www/scate-backend/src/Core/logs# 
+
+
+tail -f /var/log/apache2/php_errors.log
+
+
+22-27-05 m zrobil 2 bledy

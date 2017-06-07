@@ -68,7 +68,7 @@ git checkout -b %b1%
 git checkout -b %b2%
 git status   
 rem on kei 05+ (0604) ,04*?
-
+rem Ivoonaaa@wp.pl
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-uni.bat
 rem localhost:89/phpMyAdmin-v2/index.php

@@ -1,16 +1,16 @@
-set cm=current-2017.05.29.W.14--WMT-300--mondef-monpoint-tables-added
+set cm=current-2017.05.31.W.24-WMT-348-SYNC_FULL
 
-set b0=current-2017.05.29.W.14
-set b1=current-2017.05.26.W.15
+set b0=current-2017.05.31.W.24-WMT-348-SYNC_FULL
+set b1=current-2017.05.31.W.25-WMT-348-SYNC_FULL
 
+rem set cm=prod-2.0.0.36-WMT-348
+rem set b0=prod-2.0.0.36
+rem set b1=prod-2.0.0.37
 
-
-rem set b0=prod-2.0.0.7
-rem set b1=prod-2.0.0.8
-
+rem =====================================================
 
 cls
-c:
+
 cd C:\lkd\wmtgit\v06\scate-dashboard
 git add -A
 git commit -m %cm%
@@ -20,7 +20,7 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 rem ember server --port 4500
 git status 
-c:
+
 cd C:\lkd\wmtgit\v06\scate-admin-dashboard
 git add -A
 git commit -m %cm%
@@ -30,7 +30,7 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
-c:
+
 cd C:\lkd\wmtgit\v06\scate-operation-dashboard
 git add -A
 git commit -m %cm%
@@ -40,7 +40,6 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
-c:
 cd C:\lkd\wmtgit\v06\scate-backend
 git add -A
 git commit -m %cm%
@@ -48,40 +47,9 @@ git checkout -b %b0%
 git checkout -b %b1%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
-git status 
-
-c:
-cd C:\lkd\ht\apps_tools\BS_2015
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
-
-c:
-cd C:\lkd\ht\apps_tools\lkdt_2015
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
-
-c:
-cd C:\lkd\wmtgit\v06-01\w2_2
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
+git status
 
 
-c:
 cd C:\lkd\wmtgit\v06\w2\gitp
 git add -A
 git commit -m %cm%
@@ -92,7 +60,6 @@ rem git checkout -b %b3%
 
 git status 
 
-c:
 cd C:\lkd\wmtgit\v06\artifactory-connector
 git add -A
 git commit -m %cm%
@@ -102,25 +69,6 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
-rem cd C:\lkd\wmtgit\v06\scripts\perf20\perf20docker
-rem git add -A
-rem git commit -m %cm%
-rem git checkout -b %b0%
-rem git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-rem git status 
-
-c:
-cd C:\lkd\ht\apps_joo\joo365
-git add -A
-git commit -m %cm%
-git checkout -b %b0%
-git checkout -b %b1%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-git status 
-c:
 cd C:\lkd\ht\apps_portal\lkduni
 git add -A
 git commit -m %cm%
@@ -130,10 +78,38 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 git status 
 
-c:
+cd C:\lkd\wmtgit\v06-01\w2_2
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+git status 
+
+
+cd C:\lkd\ht\apps_tools\BS_2015
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+git status 
+
+
+cd C:\lkd\ht\apps_tools\lkdt_2015
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+git status 
+
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
-rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g.bat
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-long.bat
 rem localhost:89/phpMyAdmin-v2/index.php
 rem C:\lkd\servers\httpd-2.bat
 

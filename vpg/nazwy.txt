@@ -3,3 +3,90 @@ Przy pisaniu tekstu korzystalem z przewodnika po Gdansku Andrzeja Januszajtisa,
 
 Czytaj wiecej na:
 http://www.trojmiasto.pl/wiadomosci/Wrzeszcz-nie-wrzeszczy-n36133.html#tri
+
+
+
+app.js: line 35, col 1, '$' is not defined.
+
+1 error
+
+controllers/jxpgenno_classxitem/jxlist.js: line 10, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/jxpgenno_classxitem/jxsearch.js: line 6, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/jxpgenuserxitem/jxlist.js: line 10, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/jxpgenuserxitem/jxsearch.js: line 6, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/widgets/create-frame.js: line 67, col 46, Don't make functions within a loop.
+
+1 error
+
+controllers/widgets/search-api-trace.js: line 68, col 46, Don't make functions within a loop.
+
+1 error
+
+controllers/xpgenno_classxitem/edit.js: line 6, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/xpgenno_classxitem/new.js: line 5, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/xpgenno_classxitem/search.js: line 7, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/xpgenuserxitem/edit.js: line 6, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/xpgenuserxitem/new.js: line 5, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+controllers/xpgenuserxitem/search.js: line 7, col 8, 'DAO_list_search_hook' is defined but never used.
+
+1 error
+
+dao/dao_query.js: line 512, col 81, 'p_query_params' is defined but never used.
+
+1 error
+
+dao/dao_stream.js: line 118, col 46, Don't make functions within a loop.
+
+1 error
+
+dao/dao_title.js: line 133, col 46, Don't make functions within a loop.
+
+1 error
+
+dao/daosearch/dao_list_search.js: line 3, col 8, 'DAO_query' is defined but never used.
+
+1 error
+
+helpers/scate-edit-matrix.js: line 18, col 9, 'sType' is defined but never used.
+helpers/scate-edit-matrix.js: line 19, col 9, 'sStatus' is defined but never used.
+
+2 errors
+
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 348, col 13, 'hr_mail_to' is defined but never used.
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 349, col 13, 'title_mail_to' is defined but never used.
+
+2 errors
+
+services/sysparservice.js: line 25, col 50, Missing semicolon.
+
+
+1 error
+
+===== 20 JSHint Errors

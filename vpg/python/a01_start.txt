@@ -1,0 +1,29 @@
+cd C:\lkd\servers\python\dist\SQLAlchemy-1.1.7
+python setup.py install
+
+cd C:\lkd\servers\python\dist\oursql-0.9.3.1
+python setup.py install
+
+cd C:\lkd\servers\python\dist\mysql-connector-python-2.1.5
+python setup.py install
+
+cd C:\lkd\wmtgit\v06\requests-master
+python setup.py install
+
+
+add-apt-repository ppa:jonathonf/python-3.6
+apt-get update
+apt-get install python3.6
+apt-get install python-sqlalchemypython
+apt-get install python-mysql.connector
+alias python=python3
+
+
+apt-get install python3-pip
+apt-get install python3-sqlalchemy
+apt-get install python3-mysql.connector
+
+export http_proxy=http://proxy-chain.intel.com:911
+export https_proxy=http://proxy-chain.intel.com:911
+
+CERTIFICATE_VERIFY_FAILED

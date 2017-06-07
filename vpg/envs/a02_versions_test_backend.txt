@@ -1,0 +1,90 @@
+/*==================================================================================================================================*/
+/*																																	*/
+/*												TEST TEST TEST BACK																	*/
+/*																																	*/
+/*==================================================================================================================================*/
+
+		
+TEST::SCATE::BACK
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1100)
+	commands:
+		10.237.132.143
+		mlukasze
+		1024knives!			
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebacktest bash -l
+		
+		
+		
+	git:	
+	
+		git pull origin  prod-1.0.0.66
+		On branch prod-1.0.0.142
+		
+		git pull origin  prod-1.0.0.178
+		
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
+		
+		git pull origin  prod-1.0.0.208
+		git checkout prod-1.0.0.208
+		
+		
+		git pull origin  prod-1.0.6.0
+		git checkout prod-1.0.6.0
+		
+	versions pull:
+		git pull origin  prod-1.0.0.182
+		git pull origin  prod-1.0.0.186
+		git pull origin  prod-1.0.0.206			(	2017-03-28	--	1340	)
+		
+	versions checkout:
+		git checkout  prod-1.0.0.182
+		git checkout  prod-1.0.0.186 			( 	2017-03-24	--	1200	)
+		git checkout  prod-1.0.0.206 			(	2017-03-28	--	1340	)
+		
+	versions stable:
+		git pull origin  prod-1.0.0.142 	(	2017-03-23--1800	)
+		
+		
+	2017-03-28
+		start 13:30 	origin/prod-1.0.0.182
+		
+	2017-05-02
+		prod-1.0.4.0
+
+	2017-05-05
+		prod-1.0.6.0 
+
+	2017-05-10
+		git pull origin  prod-1.0.7.2
+		git checkout prod-1.0.7.2
+	
+	2017-05-18
+		git pull origin  prod-1.0.10.6
+		git pull origin  prod-1.0.10.8
+		
+		cat config/local/doctrine.local.php
+		
+	2017-05-24
+		prod-2.0.0.6
+					start:
+					git  pull origin prod-2.0.0.6 wmt-324
+					git checkout prod-2.0.0.6
+					
+		2017-05-26 (test)
+				prod-2.0.0.16 ( WMT-329 )
+					git pull origin prod-2.0.0.16 +
+					git checkout prod-2.0.0.16 +
+					
+		2017-05-29	(	WMT-300	)
+		
+				2.0.0.18
+					git pull origin prod-2.0.0.18+
+					git checkout prod-2.0.0.18 +
+					
+				prod-2.0.0.24
+				
+					

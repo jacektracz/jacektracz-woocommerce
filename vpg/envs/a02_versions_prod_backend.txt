@@ -1,0 +1,80 @@
+ public function __construct()
+    {
+        GenericLogger::logToFile("LocalConfig::__construct::method::start::");
+        $this->user = 'admin';
+        $this->password = '4ES0MO7nTyec';
+        $this->dbname = 'wmt';
+        $this->port = '3306';
+                $this->host = 'productionDb';
+        $this->isDevMode = true;
+        $this->isOrmCache = false;
+        $this->isMemCache = false;
+        $this->logging = true;
+                $this->isOrmCache = false;
+                $this->isMemCache = false;
+                $this->isFileCache = true;
+                $this->isMetadataCache = false;
+                $this->isQueryCache = false;
+                $this->isResultsCache = false;
+                $this->isSecondLevelCache = false;
+        GenericLogger::logToFile("LocalConfig::__construct::method::end::");
+    }
+
+/*===============================================================================================================================*/
+/*
+/*												PROD PROD PROD BACK
+/*
+/*===============================================================================================================================*/
+			
+PROD::SCATE::BACK
+
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1000 )
+			
+	commands:
+			10.237.132.143
+			mlukasze
+			1024knives!
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebackprod2 bash -l
+		php /bin/composer.phar dump-autoload -o
+		tail -f /var/log/apache2/php_errors.log
+		tail -f src/Core/logs/log-2.txt.err.txt
+		
+	git:	
+	
+		git pull origin  prod-2.0.0.2
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
+
+		git pull origin  prod-2.0.0.2
+		
+	check:2017-05-19
+		origin prod-1.0.9.0
+		
+	origin prod-2.0.0.2
+		start
+			from origin/prod-1.0.9.0
+			to origin prod-2.0.0.2
+
+	2017-05-30:
+		1.
+					gofor prod-2.0.0.24
+						git pull origin  prod-2.0.0.24 +
+						git checkout prod-2.0.0.24 + 
+		2.	10:35
+					set cm=current-2017.05.30.W.0--WMT-345-BUG-TITLE-VER-SCENARIO
+					git pull origin  prod-2.0.0.30 +
+					git checkout prod-2.0.0.30 
+					
+		3.	Go to  prod-2.0.0.34
+
+					set cm=prod-2.0.0.34--WMT-349-BUG-TESTSUITEPATH_NOT_SAVED
+					
+	2017-05-31:
+		prod-2.0.0.36 (wmt-348, rqmondeltarq)
+		
+	2017-06-05:
+		prod-2.0.0.40 (wmt-346)
+		

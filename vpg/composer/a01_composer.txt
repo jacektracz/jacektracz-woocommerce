@@ -16,3 +16,11 @@ Warning: Ambiguous class resolution, "Domain\Service\xpgenrqsctestxitem\LibActio
 // rem Get-Content -Path "C:\lkd\wmtgit\v06\scate-backend\src\Core\logs\log-2.txt.important.txt" -Wait
 // rem php /bin/composer.phar dump-autoload -o
 
+
+root@12678abb1716:/var/www/scate-backend# php /bin/composer.phar dump-autoload -o
+Do not run Composer as root/super user! See https://getcomposer.org/root for details
+Generating optimized autoload files
+Warning: Ambiguous class resolution, "config\AmqpLocalConfig" was found in both "/var/www/scate-backend/config/local/amqp.local.php" and "/var/www/scate-backend/config/local/backup/amqp.local.php", the first will be used.
+Warning: Ambiguous class resolution, "config\LocalConfig" was found in both "/var/www/scate-backend/config/local/backup/doctrine.local.php" and "/var/www/scate-backend/config/local/doctrine.local.php", the first will be used.
+Warning: Ambiguous class resolution, "config\LdapLocalConfig" was found in both "/var/www/scate-backend/config/local/backup/ldap.local.php" and "/var/www/scate-backend/config/local/ldap.local.php", the first will be used.
+Warning: Ambiguous class resolution, "config\AppLocalConfig" was found in both "/var/www/scate-backend/config/local/backup/app.local.php" and "/var/www/scate-backend/config/local/app.local.php", the first will be used.

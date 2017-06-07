@@ -7,6 +7,11 @@ controllers/jxpgenrqexpressionxitem/jxoutersmenu.js: line 5, col 8, 'DAO_da' is 
 
 1 error
 
+controllers/jxpgenrqsctestxitem/jxedit-scate-team.js: line 102, col 63, Missing semicolon.
+controllers/jxpgenrqsctestxitem/jxedit-scate-team.js: line 285, col 47, Missing semicolon.
+
+2 errors
+
 controllers/jxpgenuserxitem/jxlist.js: line 10, col 8, 'DAO_list_search_hook' is defined but never used.
 
 1 error
@@ -49,6 +54,16 @@ dao/daosearch/dao_list_search.js: line 3, col 8, 'DAO_query' is defined but neve
 
 1 error
 
+helpers/scate-disabled-controls-matrix.js: line 29, col 26, Expected '===' and instead saw '=='.
+helpers/scate-disabled-controls-matrix.js: line 39, col 31, Expected '===' and instead saw '=='.
+helpers/scate-disabled-controls-matrix.js: line 46, col 17, 'handler' is already defined.
+helpers/scate-disabled-controls-matrix.js: line 53, col 21, Missing semicolon.
+helpers/scate-disabled-controls-matrix.js: line 21, col 9, 'sType' is defined but never used.
+helpers/scate-disabled-controls-matrix.js: line 22, col 9, 'sStatus' is defined but never used.
+helpers/scate-disabled-controls-matrix.js: line 2, col 8, 'DAO_scate_form_matrix' is defined but never used.
+
+7 errors
+
 helpers/scate-edit-matrix.js: line 18, col 9, 'sType' is defined but never used.
 helpers/scate-edit-matrix.js: line 19, col 9, 'sStatus' is defined but never used.
 
@@ -56,11 +71,13 @@ helpers/scate-edit-matrix.js: line 19, col 9, 'sStatus' is defined but never use
 
 routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 348, col 13, 'hr_mail_to' is defined but never used.
 routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 349, col 13, 'title_mail_to' is defined but never used.
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 697, col 31, Expected '===' and instead saw '=='.
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 721, col 68, 'dd_out' used out of scope.
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 722, col 20, 'dd_out' used out of scope.
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 736, col 30, Expected '===' and instead saw '=='.
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 760, col 68, 'dd_out' used out of scope.
+routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 761, col 20, 'dd_out' used out of scope.
 
-2 errors
+8 errors
 
 services/sysparservice.js: line 25, col 50, Missing semicolon.
-
-1 error
-
-===== 14 JSHint Errors

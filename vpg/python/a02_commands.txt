@@ -1,0 +1,33 @@
+	#
+	#
+	#c:\python34\python.exe C:\lkd\wmtgit\v06\scate-backend\src\python\Arf\streams_helper.py
+	#c:\python27\python.exe C:\lkd\wmtgit\v06\scate-backend\src\python\Arf\streams_helper.py
+	#python C:\lkd\wmtgit\v06\scate-backend\src\python\Arf\streams_helper.py
+	#pip install --allow-external mysql-connector-python mysql-connector-python	
+	#cd C:\lkd\wmtgit\v06\requests\v2\requests-master
+	#python setup.py install
+	#pip install c:\lkd\servers\python\mysqlclient-1.3.10-cp36-cp36m-win_amd64.whl
+	#.\pip install c:\lkd\servers\python\mysqlclient-1.3.10-cp35-cp35m-win_amd64.whl
+	#cd c:/python36/scripts
+	#python C:\lkd\wmtgit\v06\scate-backend\src\python\Arf\streams_helper.py
+	#
+	#
+		
+		
+		
+	python sync_artifactory.py
+
+ def __init__ (self):
+                self.m_conn_string = 'mysql+mysqlconnector://root:intel@localhost:3306/wmt_test'
+                self.m_max_streams = 10
+
+
+        def get_engine(self):
+                db = create_engine('mysql+mysqlconnector://admin:4ES0MO7nTyec@productionDb:3306/wmt_test', echo=False)
+                return db
+
+        def get_conn(self):
+                engine = self.get_engine()
+                conn = engine.connect()
+                return conn
+		

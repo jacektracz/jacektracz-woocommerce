@@ -1,0 +1,75 @@
+/*===============================================================================================================================*/
+/*
+/*												PROD PROD PROD UI -	SCA
+/*
+/*===============================================================================================================================*/
+
+/var/www/ember/scateadmin
+
+		addr:
+			http://admin.scate.vpgtools.intel.com/
+
+		ver:
+			origing	prod-full-1.1.18 			(	2017-03-05			)
+			origin	prod-full-1.1.20  			(	2017-03-06			)
+			origin 	prod-full-1.1.26			(	2017-03-08::1030	)
+			origin 	prod-full-1.0.0.58
+			origin 	prod-full-1.0.0.60 			(	2017-03-14:1125		)
+			origin 	prod-1.0.0.66				(	2017-03-21:1000		)
+			origin 	prod-1.0.0.206				(	2017-03-28:1350		)
+
+		last:
+			gklab-132-018.igk.intel.com
+			root: d03nltr[sU5o	
+			
+			docker exec -it scateadminfronttest bash -l
+			
+		comm:
+			git checkout prod-1.0.0.206
+			ember build -o /var/www/ember/dist/scateadmin
+		site:
+			http://admin.scate.vpgtools.intel.com/
+			
+		remotes:
+		
+			origin  https://github.intel.com/wmt/scate-admin-dashboard.git (fetch)
+			origin  https://github.intel.com/wmt/scate-admin-dashboard.git (push)
+		
+		git:
+			git -c http.sslVerify=false pull origin prod-1.0.0.66
+			
+			git checkout -- config/environment.js
+			git checkout prod-1.0.0.66
+			
+			vi app/tools.js
+			vi config/environment.js
+			ember build -o /var/www/ember/dist/scateadmin
+			
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.186
+			2017-03-28 1415
+			
+			git -c http.sslVerify=false pull origin prod-1.0.0.206
+			
+			git -c http.sslVerify=false pull origin prod-1.0.10.6gi
+			
+		local:
+			4500
+
+		restart:
+		
+			docker  restart scateadminfronttest
+		
+			2017-05-17
+				
+					prod-1.0.10.6					
+						start
+						checkout start compilation 15:03
+						
+			2017-06-02:
+			
+				git -c http.sslVerify=false pull origin prod-2.0.0.38+
+				git checkout prod-2.0.0.38+
+				ember build -o /var/www/ember/dist/scateadmin
+				
+
