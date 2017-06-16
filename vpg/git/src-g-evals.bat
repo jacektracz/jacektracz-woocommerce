@@ -1,4 +1,4 @@
-set ii0=54
+set ii0=0
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 set /a "ii3=%ii0%+3"
@@ -7,12 +7,12 @@ echo "ROOT_OF_CALC_START"
 echo %ii1%
 echo "ROOT_OF_CALC_END"
 
-set cm=current-2017.06.15.HM.%ii0%.after-gen-client-berta-working-app
+set cm=current-2017.06.16.HM.%ii0%.berta-start
 
-set b0=current-2017.06.15.HM.%ii0%
-set b1=current-2017.06.15.HM.%ii1%
-set b2=current-2017.06.15.HM.%ii2%
-set b3=current-2017.06.15.HMN.%ii3%
+set b0=current-2017.06.16.HM.%ii0%
+set b1=current-2017.06.16.HM.%ii1%
+set b2=current-2017.06.16.HM.%ii2%
+set b3=current-2017.06.16.HMN.%ii3%
 
 
 rem =====================================================

@@ -1,4 +1,4 @@
-set ii0=4
+set ii0=12
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 echo "ROOT_OF_CALC_START"
@@ -9,8 +9,10 @@ echo "ROOT_OF_CALC_END"
 set cm=current-2017.06.016.WH.%ii0%
 
 
-set b0=current-2017.06.16.WH.%ii0%
-set b1=current-2017.06.16.WH.%ii1%
+set b0=current-2017.06.16.WHL.%ii0%
+set b1=current-2017.06.16.WHL.%ii1%
+set b2=current-2017.06.16.WHL.%ii1%
+set b3=current-2017.06.16.WHL.%ii1%
 
 rem set b2=current-2017.04.25.26
 rem set b3=current-2017.04.25.27
@@ -23,10 +25,12 @@ rem cls
 
 c:
 cd C:\lkd\ht\apps_tools\BS_2015
+git checkout -b %b0%
 git add -A
 git commit -m %cm%
-git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 dir
@@ -34,10 +38,12 @@ git status
 
 c:
 cd C:\lkd\ht\apps_tools\lkdt_2015
+git checkout -b %b0%
 git add -A
 git commit -m %cm%
-git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 dir
@@ -46,14 +52,46 @@ git status
 c:
 
 cd C:\lkd\wmtgit\v06\w2\gitp
+git checkout -b %b0%
 git add -A
 git commit -m %cm%
-git checkout -b %b0%
 git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 dir
 git status 
+
+
+cls
+c:
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-a2
+git checkout -b %b0%
+git add -A
+git commit -m %cm%
+git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+dir
+git status 
+
+c:
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-b2
+git checkout -b %b0%
+git add -A
+git commit -m %cm%
+git checkout -b %b1%
+git checkout -b %b2%
+git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+dir
+git status 
+
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
 rem c:
 rem cd C:\lkd\ht\apps_jhipsterg\src\app
