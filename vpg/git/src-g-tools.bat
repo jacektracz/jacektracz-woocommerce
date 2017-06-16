@@ -1,4 +1,4 @@
-set ii0=2
+set ii0=0
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 echo "ROOT_OF_CALC_START"
@@ -6,11 +6,11 @@ echo "ROOT_OF_CALC_START"
 echo %ii1%
 echo "ROOT_OF_CALC_END"
 
-set cm=current-2017.06.013.WH.%ii0%
+set cm=current-2017.06.016.WH.%ii0%
 
 
-set b0=current-2017.06.13.WH.%ii0%
-set b1=current-2017.06.13.WH.%ii1%
+set b0=current-2017.06.16.WH.%ii0%
+set b1=current-2017.06.16.WH.%ii1%
 
 rem set b2=current-2017.04.25.26
 rem set b3=current-2017.04.25.27
