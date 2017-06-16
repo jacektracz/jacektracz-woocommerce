@@ -1,4 +1,4 @@
-set ii0=0
+set ii0=4
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 echo "ROOT_OF_CALC_START"
