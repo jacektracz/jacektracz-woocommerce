@@ -1,4 +1,13 @@
-set ii0=0
+
+rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-evals.bat
+
+set ii0=4
+
+set dt=17
+set comment=berta-gen-01
+set smode=HM
+
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 set /a "ii3=%ii0%+3"
@@ -7,12 +16,12 @@ echo "ROOT_OF_CALC_START"
 echo %ii1%
 echo "ROOT_OF_CALC_END"
 
-set cm=current-2017.06.16.HM.%ii0%.berta-start
+set cm=current-2017.06.%dt%.%smode%.%ii0%.%comment%
 
-set b0=current-2017.06.16.HM.%ii0%
-set b1=current-2017.06.16.HM.%ii1%
-set b2=current-2017.06.16.HM.%ii2%
-set b3=current-2017.06.16.HMN.%ii3%
+set b0=current-2017.06.%dt%.%smode%.%ii0%.%comment%
+set b1=current-2017.06.%dt%.%smode%.%ii1%.%comment%
+set b2=current-2017.06.%dt%.%smode%.%ii2%.%comment%
+set b3=current-2017.06.%dt%.%smode%.%ii3%.%comment%
 
 
 rem =====================================================
