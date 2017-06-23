@@ -4,7 +4,8 @@ rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
 set ii0=0
 
-set dt=19
+set dt=23
+
 set comment=berta-gen-01
 set smode=HM
 

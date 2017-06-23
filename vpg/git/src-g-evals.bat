@@ -2,9 +2,9 @@
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-evals.bat
 
-set ii0=4
+set ii0=0
 
-set dt=17
+set dt=19
 set comment=berta-gen-01
 set smode=HM
 
