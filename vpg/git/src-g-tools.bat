@@ -2,7 +2,7 @@
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
-set ii0=6
+set ii0=10
 
 set dt=23
 
