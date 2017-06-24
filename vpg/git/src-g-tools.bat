@@ -2,9 +2,9 @@
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
-set ii0=14
+set ii0=0
 
-set dt=23
+set dt=24
 
 set comment=berta-gen-01
 set smode=HM
