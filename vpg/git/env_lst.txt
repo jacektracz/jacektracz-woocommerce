@@ -1,0 +1,155 @@
+
+	wmt-dashboard
+	
+		PS C:\lkd\wmtgit\v06-01\wmt-dashboard> emb
+
+		Missing npm packages:
+		
+			Package: babel-plugin-tailcall-optimization
+			  * Specified: ^1.0.9
+			  * Installed: (not installed)
+
+			Package: babel-preset-latest
+			  * Specified: ^6.22.0
+			  * Installed: (not installed)
+
+			Package: ember-can
+			  * Specified: 0.8.1
+			  * Installed: (not installed)
+
+			Package: ember-cli-chart
+			  * Specified: 2.0.5
+			  * Installed: 2.0.6
+
+			Package: mock-socket
+			  * Specified: 4.0.1
+			  * Installed: 4.0.0
+
+			Package: ember-websockets
+			  * Specified: ^6.0.0
+			  * Installed: 4.0.1
+
+			Package: ember-models-table
+			  * Specified: 1.8.0
+			  * Installed: 1.4.1
+
+			Run `npm install` to install missing dependencies
+
+		PS C:\lkd\wmtgit\v06-01\wmt-dashboard
+
+		
+	co chce
+	0.0!)
+	
+		Dokument wazny, ale priorytet mam ja
+		Poproslem o proste wyjasnienie, mam czekac na dokument.		
+		Nie chce bo moze sie opozniac, a ja nie bede nic wiedzial.
+		Koniec z bajkami i bujaniem mnie.
+		Chce odpalic wszystko na windzie.
+		Potem na tescie.
+		Prod ma dzialas.
+		Pushe uzgadniane ze mna. 
+		Ostatni zabije system ?		
+	
+	0.0)
+	
+		Czy srodowisko ruszy na windows
+	
+			DAYS 			?
+			WHEN-DONE		?
+
+	0.0)
+	
+		lista git z branchami
+	
+			DAYS 			?
+			WHEN-DONE		?
+
+	0.0)
+	
+		kod z release wybranchowac sie wszedzie na release-1.0.0
+		
+		stabilny kod na 	integration-1.0.0
+	
+			DAYS 			?
+			WHEN-DONE		?
+		
+		reszta na 	head-1.0.0		
+		
+	0.0)
+	
+		czy wmt-dshboard mozna sciagnac i czy nie zerwie kompatybilnosci	
+	
+			DAYS 			?
+			WHEN-DONE		?
+	
+	0.1)
+	
+		Logowanie w wmt na podstawie scate
+	
+			DAYS 			?
+			WHEN-DONE		?
+	
+	
+	0.3)	
+	
+		Messenger 
+			, jak go teraz przetestowac, nigdy nie uzyty w scate, 
+			czy gal i requesty mozna do tego uzyc
+
+			DAYS 			?
+			WHEN-DONE		?
+			
+	0.4)
+	
+		Wylaczyc revision
+		
+			DAYS			?
+			WHEN-DONE		?
+			
+			zerwac triggery, nie zapisywac
+			
+	
+	0.5)	
+			Wylaczyc cache w wmt, wszystkie
+			DAYS			?
+			WHEN-DONE		?
+
+
+	0.5)	
+			Requesty, czy to ma sens
+			DAYS			?
+			WHEN-DONE		?
+			
+		
+	2) 	kiedy notyfikacje i czy w ogole, gdzie kod i baza, nie widze
+		czego brakuje, ile dni do uzycia
+		
+		
+		DAYS			?
+		WHEN-DONE		?
+
+		
+	3)	Caled API
+		DAYS			?
+		WHEN-DONE		?
+		
+	4)	Requests
+		LIST-OF-USERS	, WHEN , HOW MUCH OPERATIONS
+		DAYS			?
+		WHEN-DONE		?
+	
+	5)	GAL
+		LIST-OF-USERS	, WHEN , HOW MUCH OPERATIONS
+		DAYS			?
+		WHEN-DONE		?
+	
+	/* =============================================================== */
+	/*
+	/*
+	/* =============================================================== */
+	
+	Co odpalamy, co zawieszamy
+	
+	
+	

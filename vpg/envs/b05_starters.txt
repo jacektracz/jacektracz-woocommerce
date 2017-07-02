@@ -1,0 +1,26 @@
+cd C:\lkd\wmtgit\v06\requests-backend
+php -S 127.0.0.1:8886 -t .\web\
+
+cd C:\lkd\wmtgit\v06\requests-dashboard
+ember server --port 4400
+
+cd C:\lkd\wmtgit\v06\scate-backend
+php -S 127.0.0.1:8686 -t .\web\
+
+
+cd C:\lkd\wmtgit\v06\scate-admin-dashboard
+ember server --port 4500
+
+cd C:\lkd\wmtgit\v06\scate-dashboard
+ember server --port 4900
+
+14:17
+
+cd C:\lkd\wmtgit\v06-01\wmt-dashboard
+
+cd C:\lkd\wmtgit\v06-01\wmt-backend
+
+
+
+cd C:\lkd\wmtgit\v06\scate-backend
+php queue_consumer

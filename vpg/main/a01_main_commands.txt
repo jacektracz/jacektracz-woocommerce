@@ -1,0 +1,209 @@
+self:text("npm install -g ember-cli@2.8");
+self:text("npm cache clean");
+self:text("npm install --save");
+self:text("npm install -g bower");
+self:text("npm install -g ember-cli@1.13.13");
+self:text("bower install")
+;
+self:text("ember server");
+
+self:text("npm install --save");
+self:text("SET http_proxy=http://proxy-chain.intel.com:911");
+
+self:text("composer install -o --prefer-dist");
+self:text("composer update -o");
+
+self:text("cd C:\lkd\wmt\frontend");
+
+self:text("ember server --port 4400");
+
+self:text("");
+self:text("");
+self:text("phpmyadmi/config.inc.php');
+self:text("$cfg['UploadDir'] = 'C:\lkd\ht\phpMyAdmin\upload'");
+self:text("$cfg['SaveDir'] = 'C:\lkd\ht\phpMyAdmin\save'");
+self::text("MySql Server");
+self::text("C:\Program Files\MySQL\MySQL Server 5.6");
+self:text("max_allowed_packet=200M";
+self:text("max_allowed_packet=200M";
+self:text("& 'C:\Program Files\MySQL\MySQL Server 5.6\bin\mysql.exe' -uroot -p");
+self:text("C:\Program Files\MySQL\MySQL Server 5.6\bin\mysqld.exe" --defaults-file="C:\ProgramData\MySQL\MySQL Server 5.6\my.ini");
+
+self::text(@"
+Ini File:
+
+C:\ProgramData\MySQL\MySQL Server 5.6\my.ini
+
+");
+
+self:text(@"
+
+max_allowed_packet=110M
+innodb_buffer_pool_size=511M
+innodb_log_file_size=500M
+innodb_log_buffer_size=800M
+net_read_timeout=600
+net_write_timeout=600
+
+");
+
+self:text(@"
+
+mysql --max_allowed_packet=512M --database=mydb -u root < .\db\db.sql
+");
+
+self:text(@"
+
+& 'C:\Program Files\MySQL\MySQL Server 5.6\bin\mysql' --max_allowed_packet=512M -uroot -p 
+");
+
+self:text(@"
+< 'C:\lkd\ht\phpMyAdmin\upload\gal.sql'
+");
+
+self:text(@"
+cd C:\lkd\wmt\backend
+");
+ 
+self:text(@"
+ php bootstrap.php
+");
+
+
+
+
+self:text(@"
+
+cd C:\lkd\wmt\wmt_backend\
+
+C:\lkd\wmt\backend\
+
+php -S 127.0.0.1:8886 -t .\web\
+
+cd C:\lkd\wmt\wmt_backend\
+
+php -S 127.0.0.1:8888 -t .\web\
+ 
+cd C:\lkd\wmt\backend\
+
+php -S 127.0.0.1:8886 -t .\web\
+
+");
+
+self:text(@"mysql> \. C:\lkd\ht\phpMyAdmin\upload\wmt.sql");
+
+
+self:text(@"
+
+ENV.APP.WMT_HOST = 'http://localhost:8888';
+ENV.APP.WMT_GUI = 'http://localhost:4200';
+ENV.APP.GAL_HOST = 'http://localhost:8887';
+ENV.APP.GAL_GUI = 'http://localhost:4300';
+ENV.APP.API_HOST = 'http://localhost:8886';
+ENV.APP.MES_HOST = 'http://localhost:3000';
+
+");
+
+
+self:text("=======================================================");
+self:text("=");
+self:text("= Start frontend");
+self:text("=");
+self:text("=======================================================");
+
+self:text("cd C:\lkd\wmt\frontend");
+self:text("ember server --port 4400");
+
+
+self:text("=======================================================");
+self:text("=");
+self:text("= Start wmt_backend");
+self:text("=");
+self:text("=======================================================");
+
+self:text(@"
+
+cd C:\lkd\wmt\backend\
+
+php -S 127.0.0.1:8886 -t .\web\
+
+");
+
+self:text("=======================================================");
+self:text("=");
+self:text("= Start backend");
+self:text("=");
+self:text("=======================================================");
+
+self:text(@"
+cd C:\lkd\wmt\wmt_backend\
+php -S 127.0.0.1:8888 -t .\web\
+
+'http://localhost:4400';
+");
+
+self:text("=======================================================");
+self:text("=");
+self:text("= Start application");
+self:text("=");
+self:text("=======================================================");
+
+self:text(@"
+http://localhost:4400
+");
+
+self:text("=======================================================");
+self:text("=");
+self:text("= Eclipse php");
+self:text("=");
+self:text("=======================================================");
+
+self:text(@"
+
+C:\lkd_java\servers\eclipse-2\eclipse\eclipse.exe
+
+");
+
+self:text("=======================================================");
+self:text("=");
+self:text("= Eclipse js");
+self:text("=");
+self:text("=======================================================");
+
+self:text(@"
+
+C:\lkd_java\servers\eclipse-1\eclipse\eclipse.exe
+
+");
+
+self:text("=======================================================");
+self:text("=");
+self:text("= PhpMyAdmin");
+self:text("=");
+self:text("=======================================================");
+
+self:text(@"
+
+C:\lkd\servers\httpd-2
+
+http://localhost:89/phpmyadmin-v2/index.php
+
+");
+
+self:text("=======================================================");
+self:text("=");
+self:text("= doctrine ");
+self:text("=");
+self:text("=======================================================");
+
+self:text( @"
+
+C:\lkd\wmt\backend> .\bin\doctrine
+
+cd C:\lkd\wmtgit\v06\requests-backend
+php -S 127.0.0.1:8886 -t .\web\
+
+cd C:\lkd\wmtgit\v06\requests-dashboard
+ember server --port 4400
+
+");

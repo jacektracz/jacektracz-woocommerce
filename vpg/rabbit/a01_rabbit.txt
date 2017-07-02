@@ -1,0 +1,7 @@
+http://databus.vpgtools.intel.com/#/
+
+cd C:\lkd\servers\rabbit\bin\rabbit-3.6.10\rabbitmq_server-3.6.10\sbin
+./rabbitmq-plugins.bat enable rabbitmq_management
+./rabbitmq-service.bat stop  
+./rabbitmq-service.bat install  
+./rabbitmq-service.bat start  

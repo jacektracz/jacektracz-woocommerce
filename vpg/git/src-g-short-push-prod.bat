@@ -1,4 +1,7 @@
-set ii0=40
+rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-short-push.bat
+
+set ii0=70
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 echo "ROOT_OF_CALC_START"
@@ -98,7 +101,7 @@ git push origin  %b0%
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
-rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-short-push-prod.bat
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-short-push.bat
 rem localhost:89/phpMyAdmin-v2/index.php
 rem C:\lkd\servers\httpd-2.bat
 

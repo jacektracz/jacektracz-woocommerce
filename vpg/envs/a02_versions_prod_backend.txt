@@ -77,4 +77,20 @@ PROD::SCATE::BACK
 		
 	2017-06-05:
 		prod-2.0.0.40 (wmt-346)
+			git pull origin  prod-2.0.0.40
+			git checkout prod-2.0.0.40
+			
+		2017-06-09:
+				1.	9:10 prod-2.0.0.40	
+				2.	=> 50
+				
+				git pull origin prod-2.0.0.50
+				git checkout prod-2.0.0.50
+	
+		2017-06-12:
+				1.	9:10 prod-2.0.0.56
+				2.	=> 40
+				
+				
+				git checkout prod-2.0.0.40
 		

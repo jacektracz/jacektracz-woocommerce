@@ -1,0 +1,87 @@
+Skrypty referencyjne dla trybu testowego, do dostosowania
+https://github.intel.com/WMT/perf20docker/tree/master/test/scateadmin/front
+
+•	wyedytuj co potrzebujesz, push z pozwrotem i 
+•	na maszynie gklab-132-018.igk.intel.com
+o	/var/www/dockerfiles ? pull
+o	/var/www/dockerfiles/test/scateadmin
+o	Poni¿sze komendy:
+
+docker build -t scate-front-admin-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name scateadminfronttest -p 8180:80  -p 8280:443 scate-front-admin-test:latest
+
+jesli siê powiedzie to bêdzie widoczny na 
+http://admin.scate.vpgtools.intel.com
+
+/* ====================================================================================================== */
+/*
+/*
+/* ====================================================================================================== */
+
+
+
+cd /var/www/dockerfiles/artifactory-connector$
+
+docker build -t artifactory-connection-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name artifactoryconnectiontest -p 8180:80  -p 8280:443 artifactory-connection-test:latest
+
+
+
+cp ../environment.txt config/environment.js
+ember build -o ../dist/requests
+vi src/Core/GenericLogger.php
+
+Switched to a new branch 'xp-0904'
+PS C:\lkd\wmtgit\v06\requests-dashboard> ember windows
+version: 1.13.15
+ember-cli-windows v2.1.6
+
+Scripts cannot be executed on this system.
+
+To fix, please run the command below using PowerShell as Administrator and try again:
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+
+You upset Zousan. Please catch rejections:  undefined null
+
+PS C:\lkd\wmtgit\v06\requests-dashboard> Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+PS C:\lkd\wmtgit\v06\requests-dashboard> ember windows
+version: 1.13.15
+ember-cli-windows v2.1.6
+
+Configuring Defender
+
+Configuring Search
+
+Finished Search Configuration.
+
+Finished Search Configuration.
+
+Finished Defender Configuration.
+
+Finished Defender Configuration.
+
+PS C:\lkd\wmtgit\v06\requests-dashboard>
+
+
+
+cd C:\lkd\wmtgit\v06\requests-backend
+php -S 127.0.0.1:8886 -t .\web\
+
+cd C:\lkd\wmtgit\v06\requests-dashboard
+ember server --port 4400
+
+cd C:\lkd\wmtgit\v06\scate-backend
+php -S 127.0.0.1:8686 -t .\web\
+
+
+cd C:\lkd\wmtgit\v06\scate-admin-dashboard
+ember server --port 4500
+
+cd C:\lkd\wmtgit\v06\scate-dashboard
+ember server --port 4900
+
+14:17
+
+cd C:\lkd\wmtgit\v06-01\wmt-dashboard
+
+cd C:\lkd\wmtgit\v06-01\wmt-backend

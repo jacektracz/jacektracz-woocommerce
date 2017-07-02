@@ -129,3 +129,8 @@
 			2017-05-29
 					prod-2.0.0.18 ( equal to 24 )
 					
+			2017-06-20
+				git -c http.sslVerify=false pull origin prod-2.0.0.70
+				
+				git checkout prod-2.0.0.70
+			

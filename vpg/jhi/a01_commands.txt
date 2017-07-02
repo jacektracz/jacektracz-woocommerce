@@ -1,0 +1,3 @@
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-a2
+cd C:\lkd\ht\apps_jhipster\eval-1\eval-a2\src\app
+yarn start

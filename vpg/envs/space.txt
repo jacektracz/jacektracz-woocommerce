@@ -7,6 +7,10 @@ controllers/jxpgenrqexpressionxitem/jxoutersmenu.js: line 5, col 8, 'DAO_da' is 
 
 1 error
 
+controllers/jxpgenrqsctestxitem/jxedit-scate-team-speed.js: line 3, col 16, 'Ember' is not defined.
+
+1 error
+
 controllers/jxpgenuserxitem/jxlist.js: line 10, col 8, 'DAO_list_search_hook' is defined but never used.
 
 1 error
@@ -14,28 +18,6 @@ controllers/jxpgenuserxitem/jxlist.js: line 10, col 8, 'DAO_list_search_hook' is
 controllers/jxpgenuserxitem/jxsearch.js: line 6, col 8, 'DAO_list_search_hook' is defined but never used.
 
 1 error
-
-dao/dao_query.js: line 512, col 81, 'p_query_params' is defined but never used.
-
-1 error
-
-dao/dao_scate_form_matrix.js: line 110, col 22, A constructor name should start with an uppercase letter.
-dao/dao_scate_form_matrix.js: line 105, col 70, 'p_status' is defined but never used.
-dao/dao_scate_form_matrix.js: line 1, col 8, 'Ember' is defined but never used.
-
-3 errors
-
-dao/dao_scate_form_matrix_edit.js: line 110, col 22, A constructor name should start with an uppercase letter.
-dao/dao_scate_form_matrix_edit.js: line 105, col 75, 'p_status' is defined but never used.
-dao/dao_scate_form_matrix_edit.js: line 1, col 8, 'Ember' is defined but never used.
-
-3 errors
-
-dao/dao_scate_form_matrix_new.js: line 61, col 22, A constructor name should start with an uppercase letter.
-dao/dao_scate_form_matrix_new.js: line 56, col 74, 'p_status' is defined but never used.
-dao/dao_scate_form_matrix_new.js: line 1, col 8, 'Ember' is defined but never used.
-
-3 errors
 
 dao/dao_stream.js: line 118, col 46, Don't make functions within a loop.
 
@@ -54,13 +36,16 @@ helpers/scate-edit-matrix.js: line 19, col 9, 'sStatus' is defined but never use
 
 2 errors
 
-routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 348, col 13, 'hr_mail_to' is defined but never used.
-routes/jxpgenrqsctestxitem/jxedit-scate-team.js: line 349, col 13, 'title_mail_to' is defined but never used.
+routes/jxpgenrqsctestxitem/jxedit-scate-team-speed.js: line 3, col 16, 'Ember' is not defined.
 
-2 errors
+1 error
 
 services/sysparservice.js: line 25, col 50, Missing semicolon.
 
 1 error
 
-===== 14 JSHint Errors
+tools.js: line 1854, col 69, 'p_dbg' is defined but never used.
+
+1 error
+
+===== 12 JSHint Errors

@@ -1,28 +1,24 @@
-
-rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
+rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
 set ii0=0
-
-set dt=26
-
-set comment=berta-gen-01
-set smode=HM
-
+set dt=01
+set comment=http-protocol
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
-set /a "ii3=%ii0%+3"
+set /a "ii3=%ii0%+2"
 echo "ROOT_OF_CALC_START"
 
 echo %ii1%
 echo "ROOT_OF_CALC_END"
 
-set cm=current-2017.06.%dt%.%smode%.%ii0%.%comment%
+set cm=current-2017.06.%dt%.WW.%ii0%.%comment%
 
-set b0=current-2017.06.%dt%.%smode%.%ii0%.%comment%
-set b1=current-2017.06.%dt%.%smode%.%ii1%.%comment%
-set b2=current-2017.06.%dt%.%smode%.%ii2%.%comment%
-set b3=current-2017.06.%dt%.%smode%.%ii3%.%comment%
+
+set b0=current-2017.07.1%dt%.%ii0%.%comment%
+set b1=current-2017.07.1.%dt%.%ii1%.%comment%
+set b2=current-2017.07.1.%dt%.%ii2%.%comment%
+set b3=current-2017.07.1.%dt%.%ii3%.%comment%
 
 rem set b2=current-2017.04.25.26
 rem set b3=current-2017.04.25.27
@@ -40,7 +36,6 @@ git add -A
 git commit -m %cm%
 git checkout -b %b1%
 git checkout -b %b2%
-git checkout -b %b3%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 dir
@@ -53,7 +48,6 @@ git add -A
 git commit -m %cm%
 git checkout -b %b1%
 git checkout -b %b2%
-git checkout -b %b3%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 dir
@@ -67,39 +61,40 @@ git add -A
 git commit -m %cm%
 git checkout -b %b1%
 git checkout -b %b2%
-git checkout -b %b3%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 dir
 git status 
 
-
-cls
-c:
 cd C:\lkd\ht\apps_jhipster\eval-1\eval-a2
 git checkout -b %b0%
 git add -A
 git commit -m %cm%
 git checkout -b %b1%
 git checkout -b %b2%
-git checkout -b %b3%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+dir
+git status 
+
+cd C:\lkd\ht\apps_portal\lkduni
+git checkout -b %b0%
+git add -A
+git commit -m %cm%
+git checkout -b %b1%
+git checkout -b %b2%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 dir
 git status 
 
 c:
-cd C:\lkd\ht\apps_jhipster\eval-1\eval-b2
+cd C:\lkd\ht\apps_dockers\src\app
 git checkout -b %b0%
 git add -A
 git commit -m %cm%
 git checkout -b %b1%
 git checkout -b %b2%
-git checkout -b %b3%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-dir
-git status 
 
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
@@ -134,8 +129,8 @@ rem git checkout -b %b1%
 rem git checkout -b %b2%
 rem git checkout -b %b3%
 rem git status 
+rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 
-rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
 rem
 rem

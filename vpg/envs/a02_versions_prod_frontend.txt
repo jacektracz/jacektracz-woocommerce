@@ -126,3 +126,17 @@
 		2017-06-05:
 			git -c http.sslVerify=false pull origin prod-2.0.0.40
 			git checkout prod-2.0.0.40
+			
+		2017-06-09:
+				1.	9:10 prod-2.0.0.48	
+				2.	=> 50
+				
+				git -c http.sslVerify=false pull origin prod-2.0.0.50
+				git checkout prod-2.0.0.50
+				
+		2017-06-12:
+				1.	14:00 prod-2.0.0.58	
+				2.	=> 62
+				git -c http.sslVerify=false pull origin prod-2.0.0.62
+				git checkout prod-2.0.0.62
+			
