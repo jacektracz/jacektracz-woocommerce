@@ -1,0 +1,22 @@
+#prepare RabbitMQ w/management
+
+cd /var/www/wmt/dockers/src/perf20docker/rabbit
+
+docker build -t rabbitmq:3m .
+
+
+		Digest: sha256:8bf289683cf00a7f0f02a9b7af2f3f42369d00921802a0c4aacc9d4a9283b20c
+		Status: Downloaded newer image for rabbitmq:3-management
+		 ---> b213515f0048
+		Successfully built b213515f0048
+		root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/rabbit# 
+
+docker run -d --name rabbitmq -p 5672:5672 -p 8080:15672 -e RABBITMQ_DEFAULT_USER=wmt -e RABBITMQ_DEFAULT_PASS=vpgtools -e RABBITMQ_ERLANG_COOKIE='wmtqueue' rabbitmq:3m
+
+
+
+===========================================================================================================================================
+
+NAMES
+342bb8cb1e81        rabbitmq:3m         "docker-entrypoint.sh"   23 seconds ago      Up 21 seconds               4369/tcp, 5671/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:5672->5672/tcp, 0.0.0.0:8080->15672/tcp   rabbitmq
+10c6def35eaf        mysql:latest        "docker-entrypoint.sh"   51 minutes ago      Up 51 minutes               0.0.0.0:3306->3306/tcp                                                                      scate-mysql-latest-04

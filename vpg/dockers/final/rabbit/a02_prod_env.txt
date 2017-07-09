@@ -1,0 +1,19 @@
+<?php
+namespace config;
+
+class AmqpLocalConfig extends AmqpGlobalConfig
+{
+    public function __construct()
+    {
+        $this->host = 'queuemng';
+        $this->port = '5672';
+        $this->user = 'requests';
+        $this->password = 'vpgtools';
+        $this->queue = 'dictionaries';
+        $this->vhost = 'preview';
+
+        $this->debug = true;
+
+        $this->enabled = true;
+    }
+}

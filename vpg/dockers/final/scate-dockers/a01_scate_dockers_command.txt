@@ -1,0 +1,18 @@
+git -c http.sslVerify=false clone https://github.intel.com/jtracz/scate-dockers
+
+cd /var/www/wmt-all/dockers
+
+git -c http.sslVerify=false clone https://github.intel.com/jtracz/scate-dockers
+
+cp -r /var/www/wmt/dockers/src/perf20docker /var/www/wmt-all/dockers/scate-dockers
+git config --global user.email "jacek.tracz@intel.com"
+
+ git config --global user.name "Jacek Tracz"
+ 
+ 
+git checkout curr-2017.07.05.WI.57.scate-dashboard
+
+git -c http.sslVerify=false pull origin curr-2017.07.05.WI.61.scate-dashboard
+git checkout curr-2017.07.05.WI.61.scate-dashboard
+
+

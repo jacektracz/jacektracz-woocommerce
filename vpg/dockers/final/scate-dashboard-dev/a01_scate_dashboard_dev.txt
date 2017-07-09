@@ -1,0 +1,38 @@
+========================================================================================
+=
+=
+=					create-dashboard
+=
+=
+========================================================================================
+
+cd /var/www/wmt-all/dockers/scate-dockers
+
+cd /var/www/wmt-all/dockers/scate-dockers/local/scate-dashboard-dev
+
+git -c http.sslVerify=false pull origin curr-2017.07.05.WI.73.scate-dashboard
+git checkout curr-2017.07.05.WI.73.scate-dashboard
+
+cd /var/www/wmt-all/dockers/scate-dockers/local/scate-dashboard-dev
+
+docker build -t scate-prod-d:latest .
+
+========================================================================================
+
+docker run -d --name scate-prod-d-c -v /var/www/ember/scate/:/var/www/ember/scate -p 8081:8005 scate-prod-d:latest
+
+docker restart scate-prod-d-c
+
+docker exec -it scate-prod-d-c bash -l
+
+
+========================================================================================
+
+cd /var/www/wmt-all/
+git -c http.sslVerify=false clone https://github.intel.com/wmt/scate-dashboard
+
+root@13bf9265711c:/var/www/wmt-all/scate-dashboard# mkdir /var/www/ember/dist/     
+root@13bf9265711c:/var/www/wmt-all/scate-dashboard# mkdir /var/www/ember/dist/scate
+
+
+ember build -o /var/www/ember/dist/scate

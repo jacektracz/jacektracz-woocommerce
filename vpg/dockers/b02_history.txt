@@ -1,0 +1,100 @@
+ 1  http_proxy=http://proxy-chain.intel.com:911 curl -I wp.pl
+    2  http_proxy=http://proxy-chain.intel.com:911 wget wp.pl
+    3  sudo apt get update
+    4  sudo apt  update
+    5  sudo su - 
+    6  docker ps
+    7  dockerd
+    8  sudo systemctl enable docker
+    9  docker run hello-word
+   10  sudo docker run hello-word
+   11  sudo docker ps
+   12  cd /var/
+   13  ls
+   14  cd www
+   15  cd dockers/
+   16  ls
+   17  cd src
+   18  git clone https://github.intel.com/WMT/perf20docker
+   19  ls
+   20  cd perf20docker/
+   21  ls
+   22  cd ..
+   23  mkdir wmt
+   24  mv dockers wmt
+   25  cd wmt
+   26  ls
+   27  mkdir apps
+   28  cd apps
+   29  git clone https://github.intel.com/jtracz/scate-front-backend.git
+   30  ls
+   31  git clone https://github.intel.com/WMT/scate-backend
+   32  ls
+   33  git clone https://github.intel.com/WMT/scate-frontend
+   34  git clone https://github.intel.com/WMT/scate-dashboard
+   35  ls
+   36  git clone https://github.intel.com/WMT/artifactory-connector
+   37  ls
+   38  cd ..
+   39  ls
+   40  cd dockers
+   41  ls
+   42  cd src
+   43  ls
+   44  cd perf20docker/
+   45  ls
+   46  cd scate-backend
+   47  ls
+   48  cat build.sh
+   49  ls
+   50  cat Dockerfile
+   51  sudo docker build -t scate-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+   52  cd ..
+   53  ls
+   54  cd wmt-backend
+   55  docker build -t wmt-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+   56  sudo docker build -t wmt-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+   57  docker build -t wmt-backend:latest
+   58  sudo docker build -t wmt-backend:latest
+   59  sudo docker build -t wmt-backend:latest .
+   60  ls /etc/systemd/system/docker.service.d
+   61  vi /etc/systemd/system/docker.service.d/http-proxy.conf 
+   62  sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf 
+   63  sudo docker build -t wmt-backend:latest .
+   64  vi /etc/default/docker
+   65  sudo vi /etc/default/docker
+   66  sudo systemctl restart docker
+   67  sudo systemctl deamon-reload 
+   68  sudo docker ps
+   69  sudo docker build -t wmt-backend:latest .
+   70  sudo docker build -t wmt-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+   71  sudo vi /etc/default/docker
+   72  sudo systemctl daemon-reload
+   73  sudo docker build -t wmt-backend:latest .
+   74  ls
+   75  cat Dockerfile
+   76  cat /etc/resolv.conf
+   77  ping google.com
+   78  sudo ping google.com
+   79  cat /etc/docker/deamon.json
+   80  docker run busybox nslookup google.com
+   81  sudo docker run busybox nslookup google.com
+   82  cd etc/docker
+   83  cd /etc/docker
+   84  ls
+   85  sudo vi daemon.json
+   86  sudo service docker restart
+   87  sudo docker run busybox nslookup google.com
+   88  sudo vi /etc/docker/daemon.json
+   89  sudo service docker restart
+   90  sudo docker run busybox nslookup google.com
+   91  cd -
+   92  sudo docker build -t wmt-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+   93  cd ..
+   94  ls
+   95  cd  -
+   96  sudo docker build -t wmt-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+   97  vi Dockerfile
+   98  history
+jtracz@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/wmt-backend$ ^C
+jtracz@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/wmt-backend$ 

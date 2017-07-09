@@ -1,0 +1,224 @@
+<?php
+/**
+ * Copyright Intel Corp. 2016
+ */
+
+namespace config;
+
+
+class AppConfig
+{
+    public $apiDomain = 'lists.vpgtools.intel.com';
+    public $db;
+    public $amqp;
+    public $ldap;
+    public $devMode = false;
+
+    private static $appKey = 'KGl2k4nb2T24uitg.2357kjhWhdfbq4';
+
+    public function __construct()
+    {
+        $this->db = DbConfig::getConfig();
+        $this->ldap = new LdapConfig();
+        $this->amqp = new AmqpConfig();
+
+        $this->devMode = $this->db['devMode'];
+
+        if ($this->devMode) {
+            $appLocalConfig = new AppLocalConfig();
+            $this->apiDomain = $appLocalConfig->apiDomain;
+        }
+    }
+
+    public static function getAppKey()
+    {
+        return self::$appKey;
+    }
+
+    public static function getApiVersion()
+    {
+        $appLocalConfig = new AppLocalConfig();
+        return $appLocalConfig->apiVersion??'v1';
+    }
+}
+
+
+=========================================================
+
+<?php
+/**
+ * Copyright Intel Corp. 2016
+ */
+
+namespace config;
+
+class AmqpConfig
+{
+    /**
+     * @param string $field
+     * @return array|mixed
+     */
+    public static function getConfig(string $field = '')
+    {
+        $instance = new AmqpLocalConfig();
+        if ($field!=='') {
+            return $instance->$field;
+        } else {
+            return [
+                'host' => $instance->host,
+                'port' => $instance->port,
+                'user' => $instance->user,
+                'password' => $instance->password,
+                'vhost' => $instance->vhost,
+                'debug' => $instance->debug,
+                'queue' => $instance->queue,
+                'enabled' => $instance->enabled
+            ];
+        }
+    }
+}
+
+=================================================================================================
+
+
+
+<?php
+namespace config;
+
+class AmqpLocalConfig extends AmqpGlobalConfig
+{
+    public function __construct()
+    {
+        $this->host = '10.237.132.143';
+        $this->port = 8085;
+        $this->user = 'wmt';
+        $this->password = 'vpgtools';
+        $this->vhost = 'test';
+
+        $this->debug = true;
+    }
+}
+
+=================================================================================================
+
+<?php
+
+namespace config;
+
+class AppLocalConfig
+{
+    public $apiDomain = null;
+    public $apiVersion = 'v1';
+    public $aclEnabled = true;
+}
+
+=================================================================================================
+
+<?php
+
+namespace config;
+
+class LocalConfig extends GlobalConfig
+{
+    public function __construct()
+    {
+        $this->user = 'admin';
+        $this->password = '4ES0MO7nTyec';
+        $this->dbname = 'wmt';
+        $this->host = 'productionDb';
+
+        $this->memcachedHost = 'cacheengine';
+    }
+}
+
+=================================================================================================
+
+<?php
+/**
+ * Copyright Intel Corp. 2016
+ */
+
+namespace config;
+
+
+class LdapLocalConfig
+{
+    public $username = 'lab_perf20';
+    public $password = 'jan15pec#';
+}
+
+
+/*===============================================================================================================================*/
+/*
+/*												PROD PROD PROD BACK
+/*
+/*===============================================================================================================================*/
+			
+PROD::SCATE::BACK
+
+	ver:
+			origin 	prod-1.0.0.66				(	2017-03-21:1000 )
+			
+	commands:
+			10.237.132.143
+			mlukasze
+			1024knives!
+		
+		docker run -di --name scatebackprod2 -p 8111:80 -p 8211:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+		docker exec -it scatebackprod2 bash -l
+		php /bin/composer.phar dump-autoload -o
+		tail -f /var/log/apache2/php_errors.log
+		tail -f src/Core/logs/log-2.txt.err.txt
+		
+	git:	
+	
+		git pull origin  prod-2.0.0.2
+		origin  https://github.intel.com/wmt/scate-backend.git (fetch)
+		origin  https://github.intel.com/wmt/scate-backend.git (push)
+
+		git pull origin  prod-2.0.0.2
+		
+	check:2017-05-19
+		origin prod-1.0.9.0
+		
+	origin prod-2.0.0.2
+		start
+			from origin/prod-1.0.9.0
+			to origin prod-2.0.0.2
+
+	2017-05-30:
+		1.
+					gofor prod-2.0.0.24
+						git pull origin  prod-2.0.0.24 +
+						git checkout prod-2.0.0.24 + 
+		2.	10:35
+					set cm=current-2017.05.30.W.0--WMT-345-BUG-TITLE-VER-SCENARIO
+					git pull origin  prod-2.0.0.30 +
+					git checkout prod-2.0.0.30 
+					
+		3.	Go to  prod-2.0.0.34
+
+					set cm=prod-2.0.0.34--WMT-349-BUG-TESTSUITEPATH_NOT_SAVED
+					
+	2017-05-31:
+		prod-2.0.0.36 (wmt-348, rqmondeltarq)
+		
+	2017-06-05:
+		prod-2.0.0.40 (wmt-346)
+			git pull origin  prod-2.0.0.40
+			git checkout prod-2.0.0.40
+			
+		2017-06-09:
+				1.	9:10 prod-2.0.0.40	
+				2.	=> 50
+				
+				git pull origin prod-2.0.0.50
+				git checkout prod-2.0.0.50
+	
+		2017-06-12:
+				1.	9:10 prod-2.0.0.56
+				2.	=> 40
+				
+				
+				git checkout prod-2.0.0.40
+		

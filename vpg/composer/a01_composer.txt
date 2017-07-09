@@ -1,6 +1,9 @@
 
 php /bin/composer.phar --dump-autoload -o
+
 php /bin/composer.phar dump-autoload -o
+
+php /bin/composer.phar update -o
 
 Warning: Ambiguous class resolution, "ActionHandlers\Csvimport\Service\Handlers\xpgenrqscimportxitem\CsvTraitxpgenrqscimportxitem" 
 was found in both 

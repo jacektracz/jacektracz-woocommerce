@@ -1,0 +1,377 @@
+jtracz@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/db-mysql-latest$ sudo docker network inspect bridge
+[
+    {
+        "Name": "bridge",
+        "Id": "742442b8bfa93c3ff705cba20fe6700fdb94c5233241ea13c3ea31de3051b046",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Containers": {
+            "46dd9f45153a682b77f269a1694f8775d7bc94210deb3357495560d2e6566867": {
+                "Name": "scate-mysql-latest-02",
+                "EndpointID": "02302bd1cf3dd02b4bddd05c1b6f4ffb9bd76df862b7af64802b9cd7d7d3fed2",
+                "MacAddress": "02:42:ac:11:00:04",
+                "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": ""
+            },
+            "696a25454cd8af5fa24bbb392425cb0e871743dc92b6c11fd70bfd84fbec303f": {
+                "Name": "scate-mysql-latest",
+                "EndpointID": "1e2f391386c73092e22385bb447a2e9df25b3df90a2335be7cff11025b1d7e4c",
+                "MacAddress": "02:42:ac:11:00:03",
+                "IPv4Address": "172.17.0.3/16",
+                "IPv6Address": ""
+            },
+            "f15f2940b33de231a014904a3930dd78782a495b1a7aab0e1c81789a49551a62": {
+                "Name": "some-mysql",
+                "EndpointID": "8ae4aefa752f4d680601b8cfefbe1acc6c588bfee10279d66ae1553bf393ca9f",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+
+
+
+
+jtracz@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/db-mysql-latest$ sudo docker ps
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+46dd9f45153a        mysql:latest        "docker-entrypoint.sh"   7 minutes ago       Up 7 minutes        3306/tcp            scate-mysql-latest-02
+696a25454cd8        mysql:latest        "docker-entrypoint.sh"   54 minutes ago      Up 54 minutes       3306/tcp            scate-mysql-latest
+f15f2940b33d        mysql:latest        "docker-entrypoint.sh"   56 minutes ago      Up 56 minutes       3306/tcp            some-mysql
+
+scate-mysql-latest-02
+
+ "46dd9f45153a682b77f269a1694f8775d7bc94210deb3357495560d2e6566867": {
+                "Name": "scate-mysql-latest-02",
+                "EndpointID": "02302bd1cf3dd02b4bddd05c1b6f4ffb9bd76df862b7af64802b9cd7d7d3fed2",
+                "MacAddress": "02:42:ac:11:00:04",
+                "IPv4Address": "172.17.0.4/16",
+                "IPv6Address": ""
+            },
+			
+/* ============================================================================= */
+/*
+/*
+/*			
+/* ============================================================================= */
+
+installing mysql
+
+sudo apt-get update
+sudo apt-get install mysql-server
+sudo mysql_secure_installation		
+
+systemctl status mysql.service	
+
+
+/usr/bin/mysql-workbench
+
+cd C:\Program Files\Oracle\VirtualBox
+VBoxManage modifyhd “C:\lkd\servers\vbox\images\ubu-1604-64-02\disks\disk-01\ubu-1604-64-02.vdi” --resize 21920 
+
+20GB
+
+
+
+/* ============================================================================= */
+/*
+/*				installing gparted on linux
+/*			
+/* ============================================================================= */
+
+sudo apt-get install gparted
+
+
+
+/* ============================================================================= */
+/*
+/*				docker networking
+/*			
+/* ============================================================================= */
+
+jtracz@jtracz-VirtualBox:~$ sudo docker network ls
+[sudo] password for jtracz: 
+NETWORK ID          NAME                DRIVER              SCOPE
+c921c58da1e3        bridge              bridge              local               
+82430ed97e0a        host                host                local               
+7877343fd6a2        none                null                local               
+
+/* ============================================================================= */
+jtracz@jtracz-VirtualBox:~$ ifconfig
+
+docker0   Link encap:Ethernet  HWaddr 02:42:7f:c9:b4:09  
+          inet addr:172.17.0.1  Bcast:0.0.0.0  Mask:255.255.0.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+enp0s3    Link encap:Ethernet  HWaddr 08:00:27:83:83:73  
+          inet addr:192.168.56.102  Bcast:192.168.56.255  Mask:255.255.255.0
+          inet6 addr: fe80::66f0:e465:30a:24de/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:153 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:81 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:17657 (17.6 KB)  TX bytes:10457 (10.4 KB)
+
+enp0s8    Link encap:Ethernet  HWaddr 08:00:27:9b:0e:23  
+          inet addr:10.0.3.15  Bcast:10.0.3.255  Mask:255.255.255.0
+          inet6 addr: fe80::91e6:7901:f9f8:3a04/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:5385 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3054 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:4342649 (4.3 MB)  TX bytes:522951 (522.9 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:917 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:917 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:94038 (94.0 KB)  TX bytes:94038 (94.0 KB)
+
+jtracz@jtracz-VirtualBox:~$ 
+
+
+jtracz@jtracz-VirtualBox:~$ sudo docker network inspect bridge
+[
+    {
+        "Name": "bridge",
+        "Id": "c921c58da1e38f6a09296d46a1b22a37e72b1b3d3c3bdc19e789d8e1004d886f",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.17.0.0/16",
+                    "Gateway": "172.17.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Containers": {},
+        "Options": {
+            "com.docker.network.bridge.default_bridge": "true",
+            "com.docker.network.bridge.enable_icc": "true",
+            "com.docker.network.bridge.enable_ip_masquerade": "true",
+            "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0",
+            "com.docker.network.bridge.name": "docker0",
+            "com.docker.network.driver.mtu": "1500"
+        },
+        "Labels": {}
+    }
+]
+jtracz@jtracz-VirtualBox:~$ 
+
+===============================================================================================================
+
+root@jtracz-VirtualBox:~# history
+    1  vi /etc/apt/apt.conf
+    2  apt update
+    3  vim /etc/environment 
+    4  vi /etc/environment 
+    5  docker run --name scate-mysql-latest-02 -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+    6  docker rm scate-mysql-latest-02 
+    7  docker run --name scate-mysql-latest-02 -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+    8  docker ps -a
+    9  docker rm some-mysql 
+   10  docker rm scate-mysql-latest
+   11  docker rm scate-mysql-latest-02 
+   12  ss -tlnp
+   13  systemctl status mysqld
+   14  systemctl status mysql
+   15  systemctl stop mysql
+   16  systemctl disable mysql
+   17  docker run --name scate-mysql-latest-02 -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+   18  docker ps
+   19  ip a
+   20  docker ps
+   21  docker ps -a
+   22  docker start scate-mysql-latest-02 
+   23  docker ps
+   24  ip a
+   25  history
+root@jtracz-VirtualBox:~# 
+
+================================================================================================================
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+9bf375e668cb        mysql               "docker-entrypoint.sh"   12 minutes ago      Up 4 seconds        0.0.0.0:3306->3306/tcp   scate-mysql-latest-02
+root@jtracz-VirtualBox:~# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:83:83:73 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.102/24 brd 192.168.56.255 scope global dynamic enp0s3
+       valid_lft 1175sec preferred_lft 1175sec
+    inet6 fe80::e456:c91:eff2:aec8/64 scope link 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:9b:0e:23 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.3.15/24 brd 10.0.3.255 scope global dynamic enp0s8
+       valid_lft 86330sec preferred_lft 86330sec
+    inet6 fe80::91e6:7901:f9f8:3a04/64 scope link 
+       valid_lft forever preferred_lft forever
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:ed:a8:1c brd ff:ff:ff:ff:ff:ff
+    inet 10.102.70.74/23 brd 10.102.71.255 scope global dynamic enp0s9
+       valid_lft 302330sec preferred_lft 302330sec
+    inet6 fe80::49ee:d004:e421:8143/64 scope link 
+       valid_lft forever preferred_lft forever
+5: docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:1e:8e:3b:40 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:1eff:fe8e:3b40/64 scope link 
+       valid_lft forever preferred_lft forever
+7: veth1166d10@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+    link/ether e2:66:d6:71:3d:7d brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::e066:d6ff:fe71:3d7d/64 scope link 
+       valid_lft forever preferred_lft forever
+root@jtracz-VirtualBox:~# history
+    1  vi /etc/apt/apt.conf
+    2  apt update
+    3  vim /etc/environment 
+    4  vi /etc/environment 
+    5  docker run --name scate-mysql-latest-02 -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+    6  docker rm scate-mysql-latest-02 
+    7  docker run --name scate-mysql-latest-02 -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+    8  docker ps -a
+    9  docker rm some-mysql 
+   10  docker rm scate-mysql-latest
+   11  docker rm scate-mysql-latest-02 
+   12  ss -tlnp
+   13  systemctl status mysqld
+   14  systemctl status mysql
+   15  systemctl stop mysql
+   16  systemctl disable mysql
+   17  docker run --name scate-mysql-latest-02 -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+   18  docker ps
+   19  ip a
+   20  docker ps
+   21  docker ps -a
+   22  docker start scate-mysql-latest-02 
+   23  docker ps
+   24  ip a
+   25  history
+root@jtracz-VirtualBox:~# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+9bf375e668cb        mysql               "docker-entrypoint.sh"   38 minutes ago      Up 25 minutes       0.0.0.0:3306->3306/tcp   scate-mysql-latest-02
+root@jtracz-VirtualBox:~# 
+
+================================================================================================================
+
+root@jtracz-VirtualBox:~# ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+	   
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:83:83:73 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.102/24 brd 192.168.56.255 scope global dynamic enp0s3
+       valid_lft 695sec preferred_lft 695sec
+    inet6 fe80::e456:c91:eff2:aec8/64 scope link 
+       valid_lft forever preferred_lft forever
+	   
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:9b:0e:23 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.3.15/24 brd 10.0.3.255 scope global dynamic enp0s8
+       valid_lft 84761sec preferred_lft 84761sec
+    inet6 fe80::91e6:7901:f9f8:3a04/64 scope link 
+       valid_lft forever preferred_lft forever
+	   
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:ed:a8:1c brd ff:ff:ff:ff:ff:ff
+    inet 10.102.70.74/23 brd 10.102.71.255 scope global dynamic enp0s9
+       valid_lft 300761sec preferred_lft 300761sec
+    inet6 fe80::49ee:d004:e421:8143/64 scope link 
+       valid_lft forever preferred_lft forever
+	   
+5: docker0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:1e:8e:3b:40 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 scope global docker0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:1eff:fe8e:3b40/64 scope link 
+       valid_lft forever preferred_lft forever
+	   
+7: veth1166d10@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master docker0 state UP group default 
+    link/ether e2:66:d6:71:3d:7d brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::e066:d6ff:fe71:3d7d/64 scope link 
+       valid_lft forever preferred_lft forever
+root@jtracz-VirtualBox:~# 
+
+
+================================================================================================================
+
+
+
+/var/host-dockers/scate-mysql-db/mysql
+
+docker run --name scate-mysql-latest-02 -v /var/host-dockers/scate-mysql-db/mysql:/var/quest-dockers/scate-mysql-db/mysql -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+
+
+docker run --name scate-mysql-latest-02 -v /var/host-dockers/scate-mysql-latest-02/mysql:/var/quest-dockers/scate-mysql-latest-02/mysql -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql
+
+docker stop scate-mysql-latest-02
+
+
+docker run --name scate-mysql-latest-04 -v /var/host-dockers/scate-mysql-latest-04/mysqldata:/var/quest-dockers/scate-mysql-latest-04/mysqldata -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql:latest
+
+
+
+==========================================================================================================================
+=
+=				running db
+=
+==========================================================================================================================
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+root@jtracz-VirtualBox:~# docker run --name scate-mysql-latest-04 -v /var/host-dockers/scate-mysql-latest-04/mysqldata:/var/quest-dockers/scate-mysql-latest-04/mysqldata -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql:latest
+10c6def35eaf6c6b8911f37147b43c26e16874c0e78d8d1c959b0784f0571762
+
+root@jtracz-VirtualBox:~# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+10c6def35eaf        mysql:latest        "docker-entrypoint.sh"   5 seconds ago       Up 4 seconds        0.0.0.0:3306->3306/tcp   scate-mysql-latest-04
+root@jtracz-VirtualBox:~# 
+==========================================================================================================================
+=
+=				running db
+=
+==========================================================================================================================

@@ -1,0 +1,145 @@
+#prepare database container
+
+docker run -d --name perf20mysql -v /var/www/db:/var/lib/mysql -e MYSQL_PASS="4ES0MO7nTyec"  mysql:5.6
+
+#prepare memcached
+docker run --name perf20memcached -d memcached
+
+# prepare web app
+docker build --no-cache -t perf20:latest .
+docker run -d --name perf20web --link perf20mysql:dbprod --link perf20memcached:cacheengine -v /var/www/perf20prod:/src -p 8000:8001 -p 22 perf20:latest
+docker build --no-cache -t perf20:dev .
+docker run -d --name perf20test --link perf20mysql:dbprod -v /var/www/perf20test:/src -p 8001:8001 perf20:dev
+
+# prepare jenkins
+docker run -d --name perf20jenkins -p 8080:8080 -v /var/jenkins_home jenkins
+
+#prepare haproxy
+docker run -d --name perf20proxy -p 80:80 -v /var/www/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro haproxy:1.5
+
+#prepare hardware
+docker build --no-cache -t hardware:latest .
+docker run -d --name perf20hardware --link perf20mysql:dbprod -v /var/www/hardware:/src -p 8005:8001 -p 22 hardware:latest
+
+#prepare cAdvisor
+docker run -d --name perf20cadvisor -v /var/run:/var/run:rw -v /sys:/sys:ro -v /var/lib/docker/:/var/lib/docker:ro -p 8080:8080 google/cadvisor:latest
+
+#prepare SSO
+docker build -t simplesamlphp:latest .
+docker run -d --name perf20sso -v /var/www/sso/config:/app/config:rw -v /var/www/sso/metadata:/app/metadata:rw -p 8010:8001 simplesamlphp:latest
+mkdir - p /app/cert && cd /app/cert/ && openssl req -newkey rsa:2048 -new -x509 -days 3652 -nodes -out server.crt -keyout server.pem
+
+#base frontend image
+docker build -t wmtfrontbase:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+#base backend image
+docker build -t wmtbackbase:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+
+
+#prepare wmt-front end
+docker build -t wmt-dashboard:latest .
+docker run -d --name wmtdashboard -v /var/www/ember/wmt/:/var/www/ember/wmt -p 8081:8005 wmt-dashboard:latest
+#test
+docker build -t wmt-front-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name wmtfrontest -p 8120:80  -p 8220:443 wmt-front-test:latest
+
+#prepare WMT- back end
+docker build -t wmtbackend:latest .
+docker run -d --name wmtbackend -p 8088:80 -p 2200:22 --link perf20memcached:cacheengine --link rabbitmq:queuemng --add-host productionDb:10.237.132.18 wmtbackend:latest
+#test
+docker build -t wmt-back-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name wmtbacktest -p 8108:80 -p 8208:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng wmt-back-test:latest
+
+
+#prepare gal-front end
+docker build -t gal-dashboard:latest .
+docker run -d --name galdashboard -v /var/www/ember/gal/:/var/www/ember/gal -p 8082:8005 gal-dashboard:latest
+#test
+docker build -t gal-front-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name galfrontest -p 8130:80  -p 8230:443 gal-front-test:latest
+
+
+#prepare GAL- back end
+docker build -t galbackend:latest .
+docker run -d --name galbackend -p 8089:80 -p 2201:22 --link perf20memcached:cacheengine --link rabbitmq:queuemng --add-host productionDb:10.237.132.18 galbackend:latest
+#test
+docker build -t gal-back-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name galbacktest -p 8108:80 -p 8208:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng wmt-back-test:latest
+
+
+#prepare requests-front end
+docker build -t request-dashboard:latest .
+docker run -d --name requestsdashboard -p 8083:8005 request-dashboard:latest
+#test
+docker build -t requests-front-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name requestsfrontest -p 8140:80  -p 8240:443 requests-front-test:latest
+
+
+#prepare requests- back end
+docker build -t requestsbackend:latest .
+docker run -d --name requestsbackend -p 8081:80 -p 2202:22 --link perf20memcached:cacheengine --link rabbitmq:queuemng --add-host productionDb:10.237.132.18 requestsbackend:latest
+#test
+docker build -t req-back-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name galfrontest -p 8130:80  -p 8230:443 gal-front-test:latest
+
+#prepare scate - front ent
+#test
+docker build -t scate-front-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name scatefronttest -p 8150:80  -p 8250:443 scate-front-test:latest
+
+#prepare scate- back end
+#test
+docker build -t scate-back-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name scatebacktest -p 8109:80 -p 8209:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+
+#prepare scate - front ent
+#test
+docker build -t scate-admin-front-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name scateadminfronttest -p 8160:80  -p 8260:443 scate-admin-front-test:latest
+
+#prepare scate-admin back end
+#test
+docker build -t scate-admin-back-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+docker run -di --name scateadminbacktest -p 8110:80 -p 8210:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-admin-back-test:latest
+
+
+#prepare RabbitMQ w/management
+docker build -t rabbitmq:3m .
+docker run -d --name rabbitmq -p 5672:5672 -p 8080:15672 -e RABBITMQ_DEFAULT_USER=wmt -e RABBITMQ_DEFAULT_PASS=vpgtools -e RABBITMQ_ERLANG_COOKIE='wmtqueue' rabbitmq:3m
+
+#prepare Messenger
+docker build -t wmt/messenger .
+docker run -it -d --name messenger -p 81:3000 -p 82:80 --add-host queuemng:10.237.132.143 wmt/messenger
+
+#############################################################
+#  docker pull ansible/ubuntu14.04-ansible:stable
+#  netstat -tapen | grep ":80 "
+#  alias diclean='docker images -a | grep '\''<none>'\'' | grep -P '\''[1234567890abcdef]{12}'\'' -o | xargs -L1 docker rmi'
+#  alias dclean='docker ps -a | grep -v '\''CONTAINER\|_config\|_data\|_run'\'' | cut -c-12 | xargs docker rm'
+#
+# Proxy settings (as memo)
+#
+# config.proxy.http     = "http://proxy-chain.intel.com:911"
+# config.proxy.https    = "http://proxy-chain.intel.com:911"
+# config.proxy.no_proxy = "localhost,127.0.0.1"
+# export TERM=xterm && export http_proxy=http://proxy-chain.intel.com:911 && export https_proxy=http://proxy-chain.intel.com:911
+# 
+#############################################################
+
+
+docker start haproxy && \
+docker start perf20sso && \
+docker start perf20mysql && \
+docker start perf20memcached && \
+docker start perf20test && \
+docker start wmtdashboard && \
+docker start galdashboard && \
+docker start requestsdashboard && \
+docker start cadvisor
+
+
+docker start rabbitmq && \
+docker start perf20memcached && \
+docker start wmtbackend && \
+docker start galbackend
+
+docker start perf20web

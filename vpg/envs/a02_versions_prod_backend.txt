@@ -20,6 +20,82 @@
         GenericLogger::logToFile("LocalConfig::__construct::method::end::");
     }
 
+	
+	<?php
+/**
+ * Copyright Intel Corp. 2016
+ */
+
+namespace config;
+
+
+class LdapLocalConfig
+{
+    public $username = 'lab_perf20';
+    public $password = 'jan15pec#';
+}
+
+
+<?php
+namespace config;
+
+class AmqpLocalConfig extends AmqpGlobalConfig
+{
+    public function __construct()
+    {
+        $this->host = 'queuemng';
+        $this->port = '5672';
+        $this->user = 'requests';
+        $this->password = 'vpgtools';
+        $this->queue = 'dictionaries';
+        $this->vhost = 'preview';
+
+        $this->debug = true;
+
+        $this->enabled = true;
+    }
+}
+
+<?php
+
+namespace config;
+
+class AppLocalConfig
+{
+    public $apiDomain = 'requestsapi.test.vpgtools.intel.com';
+}
+
+<?php
+
+namespace config;
+
+use Core\GenericLogger;
+
+class LocalConfig extends GlobalConfig
+{
+    public function __construct()
+    {
+        GenericLogger::logToFile("LocalConfig::__construct::method::start::");
+        $this->user = 'admin';
+        $this->password = '4ES0MO7nTyec';
+        $this->dbname = 'wmt';
+        $this->port = '3306';
+                $this->host = 'productionDb';
+        $this->isDevMode = true;
+        $this->isOrmCache = false;
+        $this->isMemCache = false;
+        $this->logging = true;
+                $this->isOrmCache = false;
+                $this->isMemCache = false;
+                $this->isFileCache = true;
+                $this->isMetadataCache = false;
+                $this->isQueryCache = false;
+                $this->isResultsCache = false;
+                $this->isSecondLevelCache = false;
+        GenericLogger::logToFile("LocalConfig::__construct::method::end::");
+    }
+}
+
 /*===============================================================================================================================*/
 /*
 /*												PROD PROD PROD BACK

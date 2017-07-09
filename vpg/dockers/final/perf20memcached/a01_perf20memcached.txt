@@ -1,0 +1,6 @@
+docker run --name perf20memcached -d memcached
+
+Digest: sha256:d83af2b8bd40c12e0bc91c969bed27c7a1631939c7bb73f95f11dfe00395d224
+Status: Downloaded newer image for memcached:latest
+c268f7d8b46b9774ca1c7a21ff8c86694cd9dbabf42df723f958653f4e9a2822
+root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/rabbit# 

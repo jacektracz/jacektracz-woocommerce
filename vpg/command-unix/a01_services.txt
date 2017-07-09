@@ -1,0 +1,4 @@
+service apache2 restart
+service --status-all
+
+ls /var/log/apache2

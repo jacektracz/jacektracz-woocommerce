@@ -1,0 +1,59 @@
+/* =======================================================================================
+/*
+/*						main
+/*
+/* =======================================================================================
+docker restart scate-prod-f-c
+
+docker exec -it scate-prod-f-c bash -l
+
+
+
+cd /var/www/wmt/dockers/src/perf20docker/scate-frontend
+
+docker build -t scate-prod-f:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+
+
+		Successfully built 72e5c86a5dac
+		root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/scate-frontend# 
+
+		Removing intermediate container 0de1ab42b0bd
+		Successfully built 72e5c86a5dac
+
+		root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/scate-frontend# docker ps
+		CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                                                       NAMES
+		4baf8de69676        scate-prod-b:latest   "docker-php-entrypoin"   12 minutes ago      Up 12 minutes       0.0.0.0:8109->80/tcp, 0.0.0.0:8209->443/tcp                                                 scate-prod-b-c
+		c268f7d8b46b        memcached             "docker-entrypoint.sh"   14 minutes ago      Up 14 minutes       11211/tcp                                                                                   perf20memcached
+		342bb8cb1e81        rabbitmq:3m           "docker-entrypoint.sh"   24 minutes ago      Up 24 minutes       4369/tcp, 5671/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:5672->5672/tcp, 0.0.0.0:8080->15672/tcp   rabbitmq
+		10c6def35eaf        mysql:latest          "docker-entrypoint.sh"   About an hour ago   Up About an hour    0.0.0.0:3306->3306/tcp                                                                      scate-mysql-latest-04
+
+
+
+
+docker run -di --name scate-prod-f-c -p 8150:80  -p 8250:443 scate-prod-f:latest
+
+
+
+===================================================================================================
+
+	CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                                                       NAMES
+	4891ad72f79d        scate-prod-f:latest   "/usr/sbin/nginx"        4 seconds ago       Up 4 seconds        0.0.0.0:8150->80/tcp, 0.0.0.0:8250->443/tcp                                                 scate-prod-f-c
+	4baf8de69676        scate-prod-b:latest   "docker-php-entrypoin"   20 minutes ago      Up 19 minutes       0.0.0.0:8109->80/tcp, 0.0.0.0:8209->443/tcp                                                 scate-prod-b-c
+	c268f7d8b46b        memcached             "docker-entrypoint.sh"   22 minutes ago      Up 22 minutes       11211/tcp                                                                                   perf20memcached
+	342bb8cb1e81        rabbitmq:3m           "docker-entrypoint.sh"   31 minutes ago      Up 31 minutes       4369/tcp, 5671/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:5672->5672/tcp, 0.0.0.0:8080->15672/tcp   rabbitmq
+	10c6def35eaf        mysql:latest          "docker-entrypoint.sh"   About an hour ago   Up About an hour    0.0.0.0:3306->3306/tcp                                                                      scate-mysql-latest-04
+	root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/scate-frontend# 
+
+===================================================================================================
+	
+docker exec -it scate-prod-f-c bash -l
+
+git -c http.sslVerify=false clone https://github.intel.com/wmt/scate-dashboard
+
+
+
+root@4891ad72f79d:/etc/nginx# HTTP_PROXX=http://proxy-chain.intel.com:911
+root@4891ad72f79d:/etc/nginx# http_proxy=http://proxy-chain.intel.com:911
+root@4891ad72f79d:/etc/nginx# HTTP_PROXY=http://proxy-chain.intel.com:911
+
+

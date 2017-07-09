@@ -1,7 +1,38 @@
 http://databus.vpgtools.intel.com/#/
 
+jtracz,jtracz1024
+
+
 cd C:\lkd\servers\rabbit\bin\rabbit-3.6.10\rabbitmq_server-3.6.10\sbin
 ./rabbitmq-plugins.bat enable rabbitmq_management
 ./rabbitmq-service.bat stop  
 ./rabbitmq-service.bat install  
 ./rabbitmq-service.bat start  
+
+
+
+PS C:\lkd\wmtgit\v06\scate-dockers> nslookup databus.vpgtools.intel.com
+	Server:  corpdns.intel.com
+	Address:  10.248.2.1
+
+	Name:    gklab-132-018.igk.intel.com
+	Address:  10.237.132.18
+	Aliases:  databus.vpgtools.intel.com
+
+	
+Listening ports
+
+Protocol	Bound to	Port
+amqp	::	5672
+clustering	::	25672
+Web contexts
+
+Context	Bound to	Port	SSL	Path
+RabbitMQ Management	0.0.0.0	15672	●	/
+	
+PS C:\lkd\wmtgit\v06\scate-dockers>
+
+
+http://10.237.132.18:15672
+
+http://gklab-132-018.igk.intel.com:15672

@@ -1,24 +1,27 @@
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
+
 set ii0=0
-set dt=01
-set comment=http-protocol
+set dt=09
+set dtm=07
+set comment=tools-start
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
-set /a "ii3=%ii0%+2"
+set /a "ii3=%ii0%+3"
 echo "ROOT_OF_CALC_START"
 
 echo %ii1%
 echo "ROOT_OF_CALC_END"
 
-set cm=current-2017.06.%dt%.WW.%ii0%.%comment%
+set cm=curr-2017.%dtm%.%dt%.WI.%ii0%.%comment%
 
 
-set b0=current-2017.07.1%dt%.%ii0%.%comment%
-set b1=current-2017.07.1.%dt%.%ii1%.%comment%
-set b2=current-2017.07.1.%dt%.%ii2%.%comment%
-set b3=current-2017.07.1.%dt%.%ii3%.%comment%
+set b0=curr-2017.%dtm%.%dt%.WI.%ii0%.%comment%
+set b1=curr-2017.%dtm%.%dt%.WI.%ii1%.%comment%
+set b2=curr-2017.%dtm%.%dt%.WI.%ii2%.%comment%
+set b3=curr-2017.%dtm%.%dt%.WI.%ii3%.%comment%
+
 
 rem set b2=current-2017.04.25.26
 rem set b3=current-2017.04.25.27

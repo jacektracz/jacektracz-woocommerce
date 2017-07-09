@@ -1,0 +1,1 @@
+docker run -d --name perf20proxy -p 80:80 -v /var/www/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro haproxy:1.5

@@ -1,16 +1,24 @@
-set ii0=14
+
+set ii0=12
+set dt=06
+set dtm=07
+set comment=scate-dashboard-alpha
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
+set /a "ii3=%ii0%+3"
 echo "ROOT_OF_CALC_START"
 
 echo %ii1%
 echo "ROOT_OF_CALC_END"
 
-set cm=current-2017.06.05.WW.%ii0%
+set cm=curr-2017.%dtm%.%dt%.WI.%ii0%.%comment%
 
 
-set b0=current-2017.06.05.WW.%ii0%
-set b1=current-2017.06.05.WW.%ii1%
+set b0=curr-2017.%dtm%.%dt%.WI.%ii0%.%comment%
+set b1=curr-2017.%dtm%.%dt%.WI.%ii1%.%comment%
+set b2=curr-2017.%dtm%.%dt%.WI.%ii2%.%comment%
+set b3=curr-2017.%dtm%.%dt%.WI.%ii3%.%comment%
+
 
 
 rem =====================================================

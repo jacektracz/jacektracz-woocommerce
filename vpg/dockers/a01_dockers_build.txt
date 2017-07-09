@@ -1,0 +1,127 @@
+/* install java */
+
+sudo add-apt-repository ppa:webupd8team/java
+
+sudo apt-get install oracle-java8-installer
+
+sudo apt-get install oracle-java8-set-default
+
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install docker.io
+
+ls /etc/systemd/system/docker.service.d
+
+[Service]
+Environment="HTTP_PROXY=http://proxy-chain.intel.com:911"
+Environment="HTTPS_PROXY=http://proxy-chain.intel.com:911"
+
+sudo systemctl daemon-reload
+
+Create a systemd drop-in directory for the docker service:
+
+
+sudo vi /etc/default/docker
+export http_proxy="http://proxy-chain.intel.com:911"
+export https_proxy="http://proxy-chain.intel.com:911"
+
+
+$ mkdir -p /etc/systemd/system/docker.service.d
+Create a file called /etc/systemd/system/docker.service.d/http-proxy.conf that adds the HTTP_PROXY environment variable:
+
+[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:80/"
+Or, if you are behind an HTTPS proxy server, create a file called /etc/systemd/system/docker.service.d/https-proxy.conf that adds the HTTPS_PROXY environm
+
+
+docker build -t artifactory-connection-test:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+
+/* ============================================================================ */
+/*
+/*						scate-db
+/*
+/* ============================================================================ */
+
+
+docker run -d --name scate-db -v /var/www/db:/var/lib/mysql -e MYSQL_PASS="4ES0MO7nTyec"  mysql:5.6
+
+docker exec -it scate-db bash
+
+/* ============================================================================ */
+/*
+/*						scate-backend
+/*
+/* ============================================================================ */
+
+cd /var/www/wmt/dockers/src/perf20docker/scate-backend
+docker build -t scate-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+
+#
+/* ============================================================================ */
+/*
+/*						wmt-backend
+/*
+/* ============================================================================ */
+
+cd /var/www/wmt/dockers/src/perf20docker/wmt-backend
+sudo docker build -t wmt-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+
+
+/* ============================================================================ */
+/*
+/*						db-1
+/*
+/* ============================================================================ */
+
+sudo docker run -d --name perf20mysql -v /var/www/db:/var/lib/mysql -e MYSQL_PASS="4ES0MO7nTyec"  mysql:5.6
+
+exited(1)
+
+
+/* ============================================================================ */
+/*
+/*						db-2
+/*
+/* ============================================================================ */
+
+sudo docker run --name scate-mysql-latest -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+
+running
+
+sudo docker exec -it scate-mysql-latest bash
+
+sudo docker logs scate-mysql-latest
+
+
+checking:
+
+/* ================================================================= */
+
+sudo docker run --name scate-mysql-latest-02 -v /scate/mysqldb:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=jtracz1024 -d mysql:latest
+
+
+
+/*====================================================================================*/
+/*
+/*
+/*	setting dns for dockers */
+/*
+/*
+/*====================================================================================*/
+
+
+jtracz@jtracz-VirtualBox:/etc/docker$ sudo vi daemon.json
+jtracz@jtracz-VirtualBox:/etc/docker$ 
+
+
+sudo vi /etc/docker/daemon.json
+
+{
+	"dns":["172.28.168.170"]
+}
+
+sudo service docker restart
+
+
+docker run busybox nslookup google.com

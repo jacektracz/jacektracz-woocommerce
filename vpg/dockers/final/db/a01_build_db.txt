@@ -1,0 +1,9 @@
+==========================================================================================================================
+=
+=				running db
+=
+==========================================================================================================================
+
+
+docker run --name scate-mysql-latest-04 -v /var/host-dockers/scate-mysql-latest-04/mysqldata:/var/quest-dockers/scate-mysql-latest-04/mysqldata -e MYSQL_ROOT_PASSWORD=passwd -d -p 3306:3306 mysql:latest
+

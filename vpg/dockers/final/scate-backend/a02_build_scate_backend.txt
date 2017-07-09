@@ -1,0 +1,182 @@
+
+mkdir /var/www/wmt-all/scate-backend/cache
+mkdir /var/www/wmt-all/scate-backend/src/Core/logs
+
+============================================================================================================================
+=
+=			running app
+=
+====================================================================================================\
+
+php /bin/composer.phar install --no-dev -o
+ln -s /var/www/wmt-all/scate-backend /var/www/html
+
+a2enmod rewrite
+
+service apache2 restart
+service --status-all
+
+
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp6       0      0 :::80                   :::*                    LISTEN      1/apache2  
+
+http://10.102.50.74:80
+
+
+ln -s /var/www/wmt-all/scate-backend /var/www/html
+jacek.tracz@intel.com
+
+============================================================================================================================
+=
+=			pull
+=
+====================================================================================================\
+
+git -c http.sslVerify=false pull origin curr-2017.07.05.WI.49.backend
+git checkout curr-2017.07.05.WI.49.backend
+
+/* ============================================================================ */
+/*
+/*						restart
+/*
+/* ============================================================================ */
+
+
+docker restart perf20memcached 
+docker restart rabbitmq 
+docker restart scate-mysql-latest-04
+docker restart scate-prod-b-c
+docker exec -it scate-prod-b-c bash -l
+
+/* ============================================================================ */
+/*
+/*						scate-backend-main
+/*
+/* ============================================================================ */
+
+docker exec -it scate-prod-b-c bash -l
+docker run -di --name scate-prod-b-c -p 8109:80 -p 8209:443 --add-host productionDb:10.102.70.74 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-prod-b:latest
+
+/* ============================================================================ */
+/*
+/*						scate-backend
+/*
+/* ============================================================================ */
+
+db ip 10.102.70.74
+
+cd /var/www/wmt/dockers/src/perf20docker/scate-backend
+docker build -t scate-backend:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+
+
+docker build -t scate-prod-b:latest --no-cache --build-arg HTTP_PROXY=http://proxy-chain.intel.com:911 .
+#
+
+docker run -di --name scatebacktest -p 8109:80 -p 8209:443 --add-host productionDb:10.237.132.18 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-back-test:latest
+
+
+docker run -di --name scate-prod-b-c -p 8109:80 -p 8209:443 --add-host productionDb:10.102.70.74 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-prod-b:latest
+
+
+root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/rabbit# docker run -di --name scate-prod-b-c -p 8109:80 -p 8209:443 --add-host productionDb:10.102.70.74 --link perf20memcached:cacheengine --link rabbitmq:queuemng scate-prod-b:latest
+4baf8de6967673166e4bf855d502242a1837b0efdf5d0d5ee315172ff4680a17
+
+============================================================================================================================
+
+root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/rabbit# docker ps
+
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                                                                       NAMES
+4baf8de69676        scate-prod-b:latest   "docker-php-entrypoin"   57 seconds ago      Up 56 seconds       0.0.0.0:8109->80/tcp, 0.0.0.0:8209->443/tcp                                                 scate-prod-b-c
+c268f7d8b46b        memcached             "docker-entrypoint.sh"   3 minutes ago       Up 3 minutes        11211/tcp                                                                                   perf20memcached
+342bb8cb1e81        rabbitmq:3m           "docker-entrypoint.sh"   12 minutes ago      Up 12 minutes       4369/tcp, 5671/tcp, 15671/tcp, 25672/tcp, 0.0.0.0:5672->5672/tcp, 0.0.0.0:8080->15672/tcp   rabbitmq
+10c6def35eaf        mysql:latest          "docker-entrypoint.sh"   About an hour ago   Up About an hour    0.0.0.0:3306->3306/tcp                                                                      scate-mysql-latest-04
+
+root@jtracz-VirtualBox:/var/www/wmt/dockers/src/perf20docker/rabbit# 
+
+============================================================================================================================
+
+
+====================================================================================================
+=
+
+docker exec -it scate-prod-b-c bash -l
+
+git -c http.sslVerify=false clone https://github.intel.com/wmt/scate-backend
+
+
+
+
+git -c http.sslVerify=false pull --all
+
+git -c http.sslVerify=false pull origin curr-2017.07.05.WI.41.backend
+git checkout curr-2017.07.05.WI.41.backend
+
+
+cp /var/www/wmt-all/scate-backend/src/db/config/vbox-02/* /var/www/wmt-all/scate-backend/config/local
+
+
+mkdir /var/www/wmt-all/scate-backend/config/local
+php /bin/composer.phar install -o --prefer-dist
+
+
+cd /var/www/wmt-all/scate-backend
+
+php /var/www/wmt-all/scate-backend/src/db/composer/composer.phar install -o --prefer-dist
+
+php /bin/composer.phar install --no-dev -o
+ln -s /var/www/scate-backend /var/www/html
+
+
+
+
+
+==========================================================================================
+
+
+apache config/local
+
+
+
+
+<VirtualHost *:80>
+        # The ServerName directive sets the request scheme, hostname and port that
+        # the server uses to identify itself. This is used when creating
+        # redirection URLs. In the context of virtual hosts, the ServerName
+        # specifies what hostname must appear in the request's Host: header to
+        # match this virtual host. For the default virtual host (this file) this
+        # value is not decisive as it is used as a last resort host regardless.
+        # However, you must set it for any further virtual host explicitly.
+        #ServerName www.example.com
+
+        ServerAdmin jacek.tracz@intel.com
+        DocumentRoot /var/www/wmt-all/scate-backend/web
+
+        # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+        # error, crit, alert, emerg.
+        # It is also possible to configure the loglevel for particular
+        # modules, e.g.
+        #LogLevel info ssl:warn
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        # For most configuration files from conf-available/, which are
+        # enabled or disabled at a global level, it is possible to
+        # include a line for only one particular virtual host. For example the
+        # following line enables the CGI configuration for this host only
+        # after it has been globally disabled with "a2disconf".
+        #Include conf-available/serve-cgi-bin.conf
+</VirtualHost>
+~                                                                                                                                                                                                     
+~                                                                                                                                                                                                     
+~                                                                                                                                                                                                     
+~                                                                                                                                                                                                     
+~                                                                                                                                                                                                     
+~                                                                                                                                                                                                     
+~                                                                                                                                                                                                     
+~                                                                                                                                                                                                     
+root@4baf8de69676:/etc/apache2/sites-available#  /var/www/wmt-all/scate-backend/web
+bash: /var/www/wmt-all/scate-backend/web: Is a directory
+root@4baf8de69676:/etc/apache2/sites-available# ls /var/www/wmt-all/scate-backend/web
+artifactory.php  index.html  index.php
+root@4baf8de69676:/etc/apache2/sites-available# 

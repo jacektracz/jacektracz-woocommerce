@@ -1,0 +1,20 @@
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package mysql-client-core-5.6 is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  mysql-community-client libmysqlclient-dev mariadb-client-core-10.0
+
+E: Package 'mysql-client-core-5.6' has no installation candidate
+
+
+
+apt-get install libmysqlclient-dev mysql-client-core-5.6 -y --force-yes \
+
+apt-get install mysql-community-client -y --force-yes \
+apt-get install libmysqlclient-dev -y --force-yes \
+apt-get install mariadb-client-core-10.0 -y --force-yes \
+
+#
