@@ -99,6 +99,45 @@ git commit -m %cm%
 git checkout -b %b1%
 git checkout -b %b2%
 
+
+
+c:
+cd C:\lkd\wmtgit\v06\scate-dashboard
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+rem ember server --port 4500
+dir
+git status 
+
+
+c:
+cd C:\lkd\wmtgit\v06\scate-admin-dashboard
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+dir
+git status 
+
+c:
+cd C:\lkd\wmtgit\v06\scate-backend
+git add -A
+git commit -m %cm%
+git checkout -b %b0%
+git checkout -b %b1%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+rem ember server --port 4500
+dir
+git status 
+
+
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
 rem c:
