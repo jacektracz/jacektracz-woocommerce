@@ -2,8 +2,8 @@
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-short-push.bat
 
-set ii0=12
-set dt=06
+set ii0=0
+set dt=16
 set dtm=07
 set comment=scate-dashboard-alpha
 set /a "ii1=%ii0%+1"
