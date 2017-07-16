@@ -2,8 +2,8 @@ rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-tools.bat
 
 
-set ii0=0
-set dt=09
+set ii0=20
+set dt=17
 set dtm=07
 set comment=tools-start
 set /a "ii1=%ii0%+1"

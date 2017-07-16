@@ -1,8 +1,9 @@
+rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-short.bat
 
-set ii0=12
-set dt=06
+set ii0=20
+set dt=16
 set dtm=07
-set comment=scate-dashboard-alpha
+set comment=jh-gen-01
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 set /a "ii3=%ii0%+3"
