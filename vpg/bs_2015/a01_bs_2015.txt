@@ -1,0 +1,3 @@
+ " + this.m_class.BSG_JavaClassName_CaseToUpper + @"DTO
+ " + this.m_o_class.BSG_goth_crud_name_class_dto() + @"
+ 

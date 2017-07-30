@@ -3,7 +3,7 @@ rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-bs.bat
 
 
 set ii0=4
-set dt=29
+set dt=30
 set dtm=07
 set comment=tools-start
 set /a "ii1=%ii0%+1"
