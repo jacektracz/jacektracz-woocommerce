@@ -1,10 +1,10 @@
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
-remC:\lkd\wmtgit\v06\w2\gitp\lkd\git
+rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\a-git.bat
 rem cd c:/lkd/ht/apps_jee/lkd-jee
 
-set ii0=0
+set ii0=4
 set dt=19
 set dtm=09
 set comment=assets-route-regenerated
