@@ -1,0 +1,25 @@
+cd c:/lkd/ht/apps_jee/lkd-jee
+localhost:8093
+
+C:\lkd\ht\apps_ng\bsubedi\src
+
+
+cd C:\lkd\ht\apps_ng\bsubedi\installed\src
+
+npm install
+npm run start
+
+http://localhost:4200
+
+
+
+http://localhost:89/apps_vm/installed/src
+
+
+cd C:/lkd/ht/apps_vm/installed
+
+
+cd C:\lkd\ht\apps_ang2\id\src
+
+
+
