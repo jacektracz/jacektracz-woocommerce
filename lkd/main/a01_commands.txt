@@ -23,3 +23,5 @@ cd C:\lkd\ht\apps_ang2\id\src
 
 
 
+npm install -g increase-memory-limit
+increase-memory-limit
