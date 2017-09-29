@@ -5,7 +5,7 @@ rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\a-git.bat
 rem cd c:/lkd/ht/apps_jee/lkd-jee
 
 set ii0=4
-set dt=22
+set dt=30
 set dtm=09
 set comment=assets-route-regenerated
 set /a "ii1=%ii0%+1"
