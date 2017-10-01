@@ -6,7 +6,7 @@ rem cd c:/lkd/ht/apps_jee/lkd-jee
 rem  curr-2017.09.30.WI.5.generic
 rem git checkout curr-2017.09.30.WI.5.generic
 
-set ii0=8
+set ii0=12
 set dt=01
 set dtm=10
 set comment=working-app-02
