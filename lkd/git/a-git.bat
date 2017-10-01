@@ -4,11 +4,12 @@ rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\a-git.bat
 rem cd c:/lkd/ht/apps_jee/lkd-jee
 rem  curr-2017.09.30.WI.5.generic
+rem git checkout curr-2017.09.30.WI.5.generic
 
-set ii0=0
+set ii0=4
 set dt=01
 set dtm=10
-set comment=error-01
+set comment=repaired-01
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 set /a "ii3=%ii0%+3"
