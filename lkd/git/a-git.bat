@@ -6,10 +6,10 @@ rem cd c:/lkd/ht/apps_jee/lkd-jee
 rem  curr-2017.09.30.WI.5.generic
 rem git checkout curr-2017.09.30.WI.5.generic
 
-set ii0=12
-set dt=01
+set ii0=0
+set dt=19
 set dtm=10
-set comment=working-app-02
+set comment=start-to-rework
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 set /a "ii3=%ii0%+3"
