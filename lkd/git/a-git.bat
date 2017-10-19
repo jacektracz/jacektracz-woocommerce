@@ -3,10 +3,12 @@ rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
 rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\a-git.bat
 rem cd c:/lkd/ht/apps_jee/lkd-jee
+rem localhost:8093
+rem kamateon@gmail.com
 rem  curr-2017.09.30.WI.5.generic
 rem git checkout curr-2017.09.30.WI.5.generic
 
-set ii0=0
+set ii0=4
 set dt=19
 set dtm=10
 set comment=start-to-rework
