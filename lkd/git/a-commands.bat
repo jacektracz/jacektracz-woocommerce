@@ -44,19 +44,6 @@ rem git checkout -b %b2%
 rem git checkout -b %b3%
 rem ember server --port 4500
 
-cd C:\lkd\ht\apps_jee\lkd-vm
-rem git config --global credential.helper wincred
-git checkout -b %b0%
-git add -A
-git commit -m %cm%
-git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b1g%
-git status
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-rem ember server --port 4500
-
 
 c:
 cd C:\lkd\wmtgit\v06\w2\gitp

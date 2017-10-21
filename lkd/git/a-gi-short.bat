@@ -1,7 +1,7 @@
 
 rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git
 rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\
-rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\a-git.bat
+rem C:\lkd\wmtgit\v06\w2\gitp\lkd\git\a-gi-short.bat
 rem cd c:/lkd/ht/apps_jee/lkd-jee
 rem localhost:8093
 rem kamateon@gmail.com
@@ -9,7 +9,7 @@ rem  curr-2017.09.30.WI.5.generic
 rem git checkout curr-2017.09.30.WI.5.generic
 
 set ii0=4
-set dt=19
+set dt=21
 set dtm=10
 set comment=start-to-rework
 set /a "ii1=%ii0%+1"
@@ -72,21 +72,6 @@ dir
 git status 
 
 
-c:
-cd C:\lkd\wmtgit\v06\scate-dockers
-rem git config --global credential.helper wincred
-rem git branch --set-upstream-to=origin/v06.DEV8
-git checkout -b %b0%
-git add -A
-git commit -m %cm%
-git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b1g%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-dir
-git status
-
 
 
 c:
@@ -114,20 +99,6 @@ rem git checkout -b %b3%
 dir
 git status 
 
-c:
-
-cd C:\lkd\wmtgit\v06\w2\gitp
-git checkout -b %b0%
-git add -A
-git commit -m %cm%
-git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b1g%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-dir
-git status 
-
 cd C:\lkd\ht\apps_portal\lkduni
 git checkout -b %b0%
 git add -A
@@ -140,17 +111,6 @@ rem git checkout -b %b3%
 dir
 git status 
 
-cd C:/lkd/ht/apps_vm/installed
-git checkout -b %b0%
-git add -A
-git commit -m %cm%
-git checkout -b %b1%
-git checkout -b %b2%
-git checkout -b %b1g%
-rem git checkout -b %b2%
-rem git checkout -b %b3%
-dir
-git status 
 
 rem =====================================================
 echo "cd C:\lkd\ht\apps_jee\lkd-jee"
