@@ -8,10 +8,10 @@ rem kamateon@gmail.com
 rem  curr-2017.09.30.WI.5.generic
 rem git checkout curr-2017.09.30.WI.5.generic
 
-set ii0=0
+set ii0=4
 set dt=22
 set dtm=10
-set comment=start-to-rework
+set comment=vm-compiled
 set /a "ii1=%ii0%+1"
 set /a "ii2=%ii0%+2"
 set /a "ii3=%ii0%+3"
