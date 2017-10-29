@@ -8,7 +8,7 @@ rem kamateon@gmail.com
 rem  curr-2017.09.30.WI.5.generic
 rem git checkout curr-2017.09.30.WI.5.generic
 
-set ii0=20
+set ii0=24
 set dt=29
 set dtm=10
 set comment=vm-menu-start
