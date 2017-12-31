@@ -2,7 +2,7 @@ rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-bs.bat
 
 
-set ii0=16
+set ii0=18
 set dt=31
 set dtm=12
 set comment=tools-start
