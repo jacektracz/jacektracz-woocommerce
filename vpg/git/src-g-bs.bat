@@ -2,7 +2,7 @@ rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-bs.bat
 
 
-set ii0=0
+set ii0=2
 set dt=31
 set dtm=12
 set comment=tools-start
@@ -81,6 +81,18 @@ dir
 git status 
 
 cd C:\lkd\ht\apps_portal\lkduni
+git checkout -b %b0%
+git add -A
+git commit -m %cm%
+git checkout -b %b1%
+git checkout -b %b2%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+dir
+git status 
+
+d:
+cd d:\lkd\ht\apps_portal\lkduni
 git checkout -b %b0%
 git add -A
 git commit -m %cm%
