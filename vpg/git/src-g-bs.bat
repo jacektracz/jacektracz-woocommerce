@@ -2,7 +2,7 @@ rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-bs.bat
 rem mysql <DB_NAME> -h <DB_HOST> -u <DB_USER> -p<DB_PASSWORD> < <PLIK>
 
-set ii0=6
+set ii0=8
 set dt=13
 set dtm=01
 set comment=tools-start
@@ -72,6 +72,18 @@ git status
 
 d:
 cd d:\lkd\ht\apps_portal\lkduni
+git checkout -b %b0%
+git add -A
+git commit -m %cm%
+git checkout -b %b1%
+git checkout -b %b2%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+dir
+git status 
+
+d:
+cd d:\lkd\ht\apps_portal\lkdlin
 git checkout -b %b0%
 git add -A
 git commit -m %cm%
