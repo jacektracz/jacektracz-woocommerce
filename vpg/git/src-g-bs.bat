@@ -2,7 +2,7 @@ rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-bs.bat
 rem mysql <DB_NAME> -h <DB_HOST> -u <DB_USER> -p<DB_PASSWORD> < <PLIK>
 
-set ii0=0
+set ii0=2
 set dt=14
 set dtm=01
 set comment=tools-start
@@ -94,7 +94,7 @@ rem git checkout -b %b3%
 dir
 git status 
 
-cd d:\lkd\ht\apps_virtuemart\lakida\src/
+cd d:\lkd\ht\apps_virtuemart\lakida\src
 git checkout -b %b0%
 git add -A
 git commit -m %cm%
@@ -117,6 +117,17 @@ dir
 git status 
 
 cd D:\lkd\ht\apps_tools\lkddata
+git checkout -b %b0%
+git add -A
+git commit -m %cm%
+git checkout -b %b1%
+git checkout -b %b2%
+rem git checkout -b %b2%
+rem git checkout -b %b3%
+dir
+git status 
+
+cd D:\lkd\ht\apps_virtuemart\lakida
 git checkout -b %b0%
 git add -A
 git commit -m %cm%
