@@ -2,7 +2,7 @@ rem cd C:\lkd\wmtgit\v06\w2\gitp\vpg\git\
 rem C:\lkd\wmtgit\v06\w2\gitp\vpg\git\src-g-bs.bat
 rem mysql <DB_NAME> -h <DB_HOST> -u <DB_USER> -p<DB_PASSWORD> < <PLIK>
 
-set ii0=2
+set ii0=4
 set dt=14
 set dtm=01
 set comment=tools-start
