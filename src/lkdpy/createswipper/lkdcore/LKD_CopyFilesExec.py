@@ -53,5 +53,6 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("tree_v8","treecnt_tc8")
                 #dd.cpy_all("treeart_ta8","treeon_to8")
                 #dd.cpy_all("services_u7","catsall_ca9")
-                dd.cpy_all("treeon_to8","treegrid_tg8")
+                #dd.cpy_all("treeon_to8","treegrid_tg8")
+                dd.cpy_all("treeon_to8","treetopic_tt8")
                 
