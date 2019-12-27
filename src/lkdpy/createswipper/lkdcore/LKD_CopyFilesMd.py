@@ -243,6 +243,6 @@ class LKD_CopyFilesMd:
         def exec_cpy_mds(self):
                 # 4298 4409
                 src_file = ""
-                for x in range(8):
+                for x in range(70):
                         xx = 4406 + x
                         self.cpy_all("4299",str(xx))
