@@ -6,7 +6,7 @@ import shutil
 class LKD_CopyFilesMd:
 
         def __init__(self,spar):                                
-                xx_dbg("LKD_CopyFiles::__init__::in::")
+                self.xx_dbg("LKD_CopyFiles::__init__::in::")
                 self.m_src = "blogtech_x2"
                 self.m_dst = "services_s3"
                 self.m_root_src = ""
@@ -164,12 +164,27 @@ class LKD_CopyFilesMd:
         def copy_lines_from_file(self, filename_src, filename_dest, lines_from, lines_to):
                 self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
 
+                self.xx_dbg("src_file_to_copy:" + filename_src)
+                self.xx_dbg("filename_dest:" + filename_dest)
+
+                self.xx_dbg("lines_from:" + str(lines_from))
+                self.xx_dbg("lines_to:" + str(lines_to))
 
                 # Safely write the changed content, if found in the file
                 lout = []
-                with open(filename_src, 'w') as f:
+                with open(filename_src, 'r') as f:
                         s = f.readlines()             
+                        if(lines_from >= len(s)):
+                                return
+
+                        if(lines_to >= len(s)):
+                                return
+
                         lout=s[lines_from:lines_to]
+                        lout.append("")
+                        lout.append("")
+                        lout.append("")
+                        lout.append( "lines :" + str(lines_from) + " " + str(lines_to))
 
                 with open(filename_dest, 'w') as f:
                         f.writelines(lout)
@@ -177,7 +192,7 @@ class LKD_CopyFilesMd:
                 self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
 
         def exec_cpy_contents_mds(self):
-                self.exec_cpy_content_mds(4299,4300,2,1000)
+                self.exec_cpy_content_mds(4299,4300,100,1000)
 
         def exec_cpy_content_mds(self, cat_id_copied, cat_idx_start, cats_copied, linescopied):
 
@@ -189,8 +204,8 @@ class LKD_CopyFilesMd:
                                 idx_start=1
 
                         idx_end = (x+1)*linescopied + 100
-
-                        file_src = self.get_file_name(str(cat_id_copied))
+                        
+                        file_src = self.get_file_name_src(str(cat_id_copied))
                         
                         xx = cat_idx_start + x
                         file_dst = self.get_file_name(str(xx))
@@ -208,6 +223,20 @@ class LKD_CopyFilesMd:
                 file_dest = file_dest + DS + "content_by_catid" + DS + "cat__" + stridx
                 file_dest = file_dest + DS + "content_idx_0" 
                 file_dest = file_dest + DS + "content__0.txt"
+
+                return file_dest
+
+        def get_file_name_src(self,stridx):
+
+                DS = "/"
+
+                file_dest = ""
+                file_dest = file_dest + "C:" + DS + "lkd" + DS + "ht" + DS + "apps_portal" + DS + "lkduni" + DS + "app-4" 
+                file_dest = file_dest + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
+                file_dest = file_dest + DS + "content_cats" + DS + "content_markdown" 
+                file_dest = file_dest + DS + "content_by_catid" + DS + "cat__" + stridx
+                file_dest = file_dest + DS + "content_idx_0" 
+                file_dest = file_dest + DS + "content__0__full.txt"
 
                 return file_dest
 
