@@ -82,6 +82,9 @@ class LKD_CopyFilesMd:
                 self.copy_file("content_idx_0" + DS + "content__0.md"
                         , "content_idx_0" + DS + "content__0.md")
 
+                self.copy_file("content_idx_0" + DS + "content__0.txt"
+                        , "content_idx_0" + DS + "content__0.txt")
+
                 self.copy_file("title-content__0.md"
                         , "title-content__0.md")
 
@@ -157,3 +160,18 @@ class LKD_CopyFilesMd:
                 with open(filename, "w") as f:
                         f.write(newText)
 
+
+        def copy_lines_from_file(self, filename_src, filename_dest, lines_from, lines_to):
+                self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
+
+
+                # Safely write the changed content, if found in the file
+                lout = []
+                with open(filename_src, 'w') as f:
+                        s = f.readlines()             
+                        lout=s[lines_from:lines_to]
+
+                with open(filename_dest, 'w') as f:
+                        f.writelines(lout)
+
+                self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")

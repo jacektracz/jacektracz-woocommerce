@@ -40,12 +40,8 @@ class LKD_CopyFilesExec:
         def exec_cpy_mds(self):
 
 	        dd_md = LKD_CopyFilesMd("")                
-                dd_md.cpy_all("3937", "3966")
-                dd_md.cpy_all("3937", "3967")
-                dd_md.cpy_all("3937", "3968")
-                dd_md.cpy_all("3937", "3969")
-                dd_md.cpy_all("3937", "3970")
-                dd_md.cpy_all("3937", "3971")
+
+                dd_md.cpy_all("4299", "4300")
 
         def exec_cpy_swipper(self):
 
