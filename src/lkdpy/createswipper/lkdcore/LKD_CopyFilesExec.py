@@ -40,12 +40,7 @@ class LKD_CopyFilesExec:
         def exec_cpy_mds(self):
 
 	        dd_md = LKD_CopyFilesMd("")                
-
-                # 4298 4409
-                src_file = ""
-                for x in range(100):
-                        xx = 4300 + x
-                        dd_md.cpy_all("4299",str(xx))
+                dd_md.exec_cpy_mds()
 
         def exec_cpy_contents_mds(self):
                 dd_md = LKD_CopyFilesMd("")                

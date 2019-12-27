@@ -192,7 +192,7 @@ class LKD_CopyFilesMd:
                 self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
 
         def exec_cpy_contents_mds(self):
-                self.exec_cpy_content_mds(4299,4300,100,1000)
+                self.exec_cpy_content_mds(4299,4300,110,1000)
 
         def exec_cpy_content_mds(self, cat_id_copied, cat_idx_start, cats_copied, linescopied):
 
@@ -240,3 +240,9 @@ class LKD_CopyFilesMd:
 
                 return file_dest
 
+        def exec_cpy_mds(self):
+                # 4298 4409
+                src_file = ""
+                for x in range(8):
+                        xx = 4406 + x
+                        self.cpy_all("4299",str(xx))
