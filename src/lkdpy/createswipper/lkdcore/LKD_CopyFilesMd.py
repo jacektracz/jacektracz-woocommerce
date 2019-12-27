@@ -6,7 +6,7 @@ import shutil
 class LKD_CopyFilesMd:
 
         def __init__(self,spar):                                
-                self.xx_dbg("LKD_CopyFiles::__init__::in::")
+                xx_dbg("LKD_CopyFiles::__init__::in::")
                 self.m_src = "blogtech_x2"
                 self.m_dst = "services_s3"
                 self.m_root_src = ""
@@ -175,3 +175,39 @@ class LKD_CopyFilesMd:
                         f.writelines(lout)
 
                 self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
+
+        def exec_cpy_contents_mds(self):
+                self.exec_cpy_content_mds(4299,4300,2,1000)
+
+        def exec_cpy_content_mds(self, cat_id_copied, cat_idx_start, cats_copied, linescopied):
+
+                # 4298 4409
+                src_file = ""
+                for x in range(cats_copied):
+                        idx_start = x*linescopied -100
+                        if(idx_start < 0):
+                                idx_start=1
+
+                        idx_end = (x+1)*linescopied + 100
+
+                        file_src = self.get_file_name(str(cat_id_copied))
+                        
+                        xx = cat_idx_start + x
+                        file_dst = self.get_file_name(str(xx))
+
+                        self.copy_lines_from_file(file_src,file_dst,idx_start,idx_end)
+
+        def get_file_name(self,stridx):
+
+                DS = "/"
+
+                file_dest = ""
+                file_dest = file_dest + "C:" + DS + "lkd" + DS + "ht" + DS + "apps_portal" + DS + "lkduni" + DS + "app-4" 
+                file_dest = file_dest + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
+                file_dest = file_dest + DS + "content_cats" + DS + "content_markdown" 
+                file_dest = file_dest + DS + "content_by_catid" + DS + "cat__" + stridx
+                file_dest = file_dest + DS + "content_idx_0" 
+                file_dest = file_dest + DS + "content__0.txt"
+
+                return file_dest
+
