@@ -41,7 +41,11 @@ class LKD_CopyFilesExec:
 
 	        dd_md = LKD_CopyFilesMd("")                
 
-                dd_md.cpy_all("4299", "4300")
+                # 4298 4409
+                src_file = ""
+                for x in range(100):
+                        xx = 4300 + x
+                        dd_md.cpy_all("4299",str(xx))
 
         def exec_cpy_swipper(self):
 
@@ -58,5 +62,5 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("treegreatg_tt9","treegreatg1_tg2")
                 #dd.cpy_all("treegreatg_tt9","treegreatg2_tg3")
 
-                dd.cpy_all("treegreatg_tt9","treegreatg3_tg4")
+                # dd.cpy_all("treegreatg_tt9","treegreatg3_tg4")
                 
