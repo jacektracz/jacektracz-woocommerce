@@ -12,5 +12,7 @@ if __name__ == "__main__":
         #dd.exec_cpy_mds()        
         #dd.exec_cpy_swipper()
 
-        dd.exec_cpy_mds()
-        dd.exec_cpy_contents_mds()
+        #dd.exec_cpy_mds()
+        #dd.exec_cpy_contents_mds()
+        #dd.exec_cpy_one(4480)
+        dd.exec_cpy_one(4482)

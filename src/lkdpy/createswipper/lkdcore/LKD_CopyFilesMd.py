@@ -246,3 +246,7 @@ class LKD_CopyFilesMd:
                 for x in range(70):
                         xx = 4406 + x
                         self.cpy_all("4299",str(xx))
+
+
+        def exec_cpy_one(self,idnew):
+                self.cpy_all("4299",str(idnew))

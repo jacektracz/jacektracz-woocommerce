@@ -62,4 +62,7 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("treegreatg_tt9","treegreatg2_tg3")
 
                 # dd.cpy_all("treegreatg_tt9","treegreatg3_tg4")
-                
+        def exec_cpy_one(self,idnew):                
+                dd_md = LKD_CopyFilesMd("")                
+                dd_md.exec_cpy_one(idnew)
+        
