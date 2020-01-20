@@ -150,6 +150,9 @@ class LKD_CopyFiles:
                 self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_md_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_md_" + pdst + ".php")
 
+                self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
+
                 self.copy_file("lib" + DS + psrc + DS +  "controller" + DS + "EPT_swipper_controller_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "controller" + DS + "EPT_swipper_controller_" + pdst + ".php")
 
