@@ -68,7 +68,7 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("services_u7","headexpertise_he2")
 
                 #dd.cpy_all("headexpertise_he2","headeroffer_ho2")
-                dd.cpy_all("headeroffer_ho2","headerarticles_ha3")
+                dd.cpy_all("headeroffer_ho2","execaction_ea2")
 
         def exec_cpy_one(self,idnew):                
                 dd_md = LKD_CopyFilesMd("")                
