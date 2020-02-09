@@ -50,7 +50,7 @@ class LKD_CopyFilesMd:
                 self.m_root_dst = self.m_root_dst  + "C:" + DS + "lkd" + DS + "ht" + DS + "apps_portal" + DS + "lkduni" + DS + "app-4" 
                 self.m_root_dst = self.m_root_dst  + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
                 self.m_root_dst = self.m_root_dst  + DS + "content_cats" + DS + "content_markdown" 
-                self.m_root_dst = self.m_root_dst  + DS + "content_by_catid" + DS + "cat__" + pdst + DS + "components"
+                self.m_root_dst = self.m_root_dst  + DS + "content_tmp" + DS + "cat__" + pdst + DS + "components"
                 
                 if p_key != "prod_splash_ps2":
                         self.copy_file("content__prod_splash_ps2.md"
@@ -76,7 +76,7 @@ class LKD_CopyFilesMd:
                 self.m_root_dst = self.m_root_dst  + "C:" + DS + "lkd" + DS + "ht" + DS + "apps_portal" + DS + "lkduni" + DS + "app-4" 
                 self.m_root_dst = self.m_root_dst  + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
                 self.m_root_dst = self.m_root_dst  + DS + "content_cats" + DS + "content_markdown" 
-                self.m_root_dst = self.m_root_dst  + DS + "content_by_catid" + DS + "cat__" + pdst
+                self.m_root_dst = self.m_root_dst  + DS + "content_tmp" + DS + "cat__" + pdst
 
 
                 self.copy_file("content_idx_0" + DS + "content__0.md"
