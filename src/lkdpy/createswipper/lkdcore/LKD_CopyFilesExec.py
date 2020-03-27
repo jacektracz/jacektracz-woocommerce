@@ -78,6 +78,7 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("smallcats_sc2","catsoffer_co2")
                 #dd.cpy_all("smallcats_sc2","catscpub_cp6")
                 #dd.cpy_all("smallcats_sc2","catstech_ct7")
+                dd.cpy_all("smallcats_sc2","catsframework_cf5")
 
 
         def exec_cpy_one(self,idnew):                
