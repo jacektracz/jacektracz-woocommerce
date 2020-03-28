@@ -80,10 +80,12 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("smallcats_sc2","catstech_ct7")
                 #dd.cpy_all("smallcats_sc2","catsframework_cf5")
                 #dd.cpy_all("titlemain_tm2","titletop_tt9")
-                dd.cpy_all("catstech_ct7","catsexpertise_ce7")
-                dd.cpy_all("catstech_ct7","catswwd_cw7")
-                dd.cpy_all("catstech_ct7","catsgen_cg7")
-                
+                #dd.cpy_all("catstech_ct7","catsexpertise_ce7")
+                #dd.cpy_all("catstech_ct7","catswwd_cw7")
+                #dd.cpy_all("catstech_ct7","catsgen_cg7")
+
+                dd.cpy_all("catsframework_cf5","catstechblog_ctb8")
+                dd.cpy_all("catsframework_cf5","catstechtopics_ctt5")                
 
 
         def exec_cpy_one(self,idnew):                
