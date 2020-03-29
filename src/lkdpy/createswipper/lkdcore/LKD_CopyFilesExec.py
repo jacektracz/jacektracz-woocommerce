@@ -84,8 +84,8 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("catstech_ct7","catswwd_cw7")
                 #dd.cpy_all("catstech_ct7","catsgen_cg7")
 
-                dd.cpy_all("catsframework_cf5","catstechblog_ctb8")
-                dd.cpy_all("catsframework_cf5","catstechtopics_ctt5")                
+                #dd.cpy_all("catsframework_cf5","catstechblog_ctb8")
+                #dd.cpy_all("catsframework_cf5","mdimages_mi6")                
 
 
         def exec_cpy_one(self,idnew):                
