@@ -114,6 +114,18 @@ class LKD_CopyFiles:
                 self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_entity_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_entity_" + pdst + ".php")
 
+                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat2_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat2_" + pdst + ".php")
+
+                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat_" + pdst + ".php")
+
+                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgenroot_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgenroot_" + pdst + ".php")
+
+                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen2_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen2_" + pdst + ".php")
+
                 self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
 

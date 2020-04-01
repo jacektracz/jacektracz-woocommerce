@@ -12,7 +12,7 @@ if __name__ == "__main__":
         #dd.exec_cpy_one()
         #dd.exec_populate_mds()
         #dd.exec_cpy_mds()        
-        dd.exec_cpy_swipper()
+        #dd.exec_cpy_swipper()
 
         #dd.exec_cpy_mds()
         #dd.exec_cpy_contents_mds()
@@ -21,3 +21,6 @@ if __name__ == "__main__":
         #dd.exec_cpy_one(4524)
         #dd.exec_cpy_one(4526)
         #dd.exec_cpy_one(4531)
+        hh_md = LKD_CopyFilesMd("")
+        hh_md.get_root_for_groups(4243,0)
+        hh_md.copy_file(4299,1278)

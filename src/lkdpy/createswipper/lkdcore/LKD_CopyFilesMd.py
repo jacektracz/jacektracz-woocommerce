@@ -56,7 +56,100 @@ class LKD_CopyFilesMd:
                         self.copy_file("content__prod_splash_ps2.md"
                                 , "content__" + p_key + ".md")
 
-        def cpy_all(self, par_src, par_dst):
+        def dechodbg( self, tt):
+                """ """
+                self.xx_dbg(tt)
+
+        def get_root_for_groups( self, dd_active_cat_id ,dd_file_idx)	:
+
+		sfun = self.get_sclass() + "::get_file_content_by_cat_id_groups::"
+		self.xx_dbg( sfun + "start")
+		self.xx_dbg( sfun + "active_cat_id" + str(dd_active_cat_id ))
+
+		dd_rest = dd_active_cat_id
+
+		dd_mod_1000 = self.get_int(dd_active_cat_id , 1000)
+
+		dd_rest = dd_rest - ( dd_mod_1000 * 1000)
+		self.xx_dbg( sfun + "__resolve_groups__mod_1000__[" + str(dd_mod_1000 )+ "]")
+		self.xx_dbg( sfun + "__resolve_groups__mod_1000_rest__[" + str(dd_rest) + "]")
+
+		dd_mod_100 = self.get_int(dd_rest , 100)
+		dd_rest = dd_rest - ( dd_mod_100 * 100)
+
+		self.xx_dbg( sfun + "__resolve_groups__mod_100__[" + str(dd_mod_100) + "]")
+		self.xx_dbg( sfun + "__resolve_groups__mod_100_rest__[" + str(dd_rest) + "]")
+
+		dd_mod_10 = self.get_int(dd_rest , 10)
+		dd_rest = dd_rest - ( dd_mod_10 * 10)
+
+		self.xx_dbg( sfun + "__resolve_groups__mod_10__[" + str(dd_mod_10 )+ "]")
+		self.xx_dbg( sfun + "__resolve_groups__mod_10_rest__[" + str(dd_rest) + "]")
+
+		dd_mod_1 = dd_rest
+
+		self.xx_dbg( sfun + "__resolve_groups__mod_1__[" + str(dd_mod_1) + "]")
+		self.xx_dbg( sfun + "__resolve_groups__mod_1_rest__[" + str(dd_rest) + "]")		
+
+		dd_DS1 =  "/"
+		dd_file = ""
+		dd_file =  dd_file + "C:"
+                dd_file =  dd_file +  dd_DS1 + "lkd"
+                dd_file =  dd_file +  dd_DS1 + "ht"
+                dd_file =  dd_file +  dd_DS1 + "apps_portal"
+                dd_file =  dd_file +  dd_DS1 + "lkduni"
+                dd_file =  dd_file +  dd_DS1 +  "app-4" 
+                dd_file =  dd_file +  dd_DS1 + "src"
+		dd_file =  dd_file  + dd_DS1 + "modules"
+		dd_file =  dd_file  + dd_DS1 + "mod_ep_articles"
+		dd_file =  dd_file  + dd_DS1 + "content_cats"
+		dd_file =  dd_file  + dd_DS1 + "content_markdown"
+		dd_file =  dd_file  + dd_DS1 + "content_by_groups_2cpy"
+		dd_file =  dd_file  + dd_DS1 + "cat__" + str(dd_mod_1000) + "000"
+		dd_file =  dd_file  + dd_DS1 + "cat__" + str(dd_mod_100) + "00"
+		dd_file =  dd_file  + dd_DS1 + "cat__" + str(dd_mod_10) + "0"
+		dd_file =  dd_file  + dd_DS1 + "cat__" + str(dd_active_cat_id) + ""
+		#dd_file =  dd_file  + dd_DS1 + "content_idx_" + str(dd_file_idx) + "" 
+		#dd_file =  dd_file  + dd_DS1 + "content__" + str(dd_file_idx) + ".md"
+
+		self.xx_dbg( sfun + "check_file_parsedown_md_x8::" + dd_file)
+		self.xx_dbg( sfun + "end")
+		return dd_file
+
+        def get_sclass(self):
+                return "MD_PArser"
+
+	def get_int( self, dd_start_idx, dd_step ):
+
+		sfun = self.get_sclass() + "::get_step::"
+		self.xx_dbg( sfun + "start")		
+
+                dd_iout = int(round(dd_start_idx / dd_step))
+
+		self.xx_dbg( sfun + "end")
+		return dd_iout
+
+	def get_step( dd_start_idx, dd_step ):
+
+		sfun = self.get_sclass() + "::get_step::"
+		self.xx_dbg( sfun + "start")		
+		dd_iout = 0
+                dd_i = 1 
+		while (true):
+
+                        if (dd_i > 10 ):
+                                break
+
+                        dd_i = dd_i + 1
+			dd_i100 = dd_i * dd_step
+			if(dd_i100 > dd_start_idx):
+				dd_iout = dd_i -1
+				break
+		
+		self.xx_dbg( sfun + "end")
+		return dd_iout
+	
+        def cpy_all_calculate_root(self, par_src, par_dst):
 
                 self.m_src = par_src
                 self.m_dst = par_dst
@@ -78,6 +171,10 @@ class LKD_CopyFilesMd:
                 self.m_root_dst = self.m_root_dst  + DS + "content_cats" + DS + "content_markdown" 
                 self.m_root_dst = self.m_root_dst  + DS + "content_tmp" + DS + "cat__" + pdst
 
+        def cpy_all(self, par_src, par_dst):
+
+                self.cpy_all_calculate_root(par_src, par_dst)
+                self.m_root_dst = self.get_root_for_groups(par_src, par_dst)
 
                 self.copy_file("content_idx_0" + DS + "content__0.md"
                         , "content_idx_0" + DS + "content__0.md")
@@ -93,8 +190,6 @@ class LKD_CopyFilesMd:
 
                 self.copy_file("content_idx_0" + DS + "imgs" + DS + "img__placeh.md"
                         , "content_idx_0" + DS + "imgs" + DS + "img__placeh.md")
-
-
 
         def copy_file(self, psrc, pdest):
             
@@ -115,9 +210,13 @@ class LKD_CopyFilesMd:
                 self.xx_dbg("[COPY_START]" + "[to_file][" + dest_fpath +"]")
 
                 try:
-                        shutil.copy(src_fpath, dest_fpath)
-                        self.xx_dbg("[COPY_SUCCESS_0]" + "[from][" + src_fpath +"]")
-                        self.xx_dbg("[COPY_SUCCESS_0]" + "[to_file][" + dest_fpath +"]")
+                        if not path.exists(dest_fpath):
+                                shutil.copy(src_fpath, dest_fpath)
+                                self.xx_dbg("[COPY_SUCCESS_0]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[COPY_SUCCESS_0]" + "[to_file][" + dest_fpath +"]")
+                        else:
+                                self.xx_dbg("[NOT_COPY_FILE_EXISTS_]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[NOT_COPY_FILE_EXISTS_]" + "[to_file][" + dest_fpath +"]")
 
                 except IOError as io_err:
                         
@@ -133,32 +232,14 @@ class LKD_CopyFilesMd:
                         except:
                                 self.xx_dbg("[dir_exists]" + dir_path)
 
-                        shutil.copy(src_fpath, dest_fpath)
-                        self.xx_dbg("[COPY_SUCCESS_1]" + "[from][" + src_fpath +"]")
-                        self.xx_dbg("[COPY_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")
+                        if not path.exists(dest_fpath):
+                                shutil.copy(src_fpath, dest_fpath)
+                                self.xx_dbg("[COPY_SUCCESS_1]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[COPY_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")
+                        else:
+                                self.xx_dbg("[NOT_COPY_FILE_EXISTS_]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[NOT_COPY_FILE_EXISTS_]" + "[to_file][" + dest_fpath +"]")
 
-
-        def inplace_change_(self, filename, old_string, new_string):
-                self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
-
-
-                # Safely write the changed content, if found in the file
-                with open(filename, 'w') as f:
-                        s = f.read()
-                        print('Changing "{old_string}" to "{new_string}" in {filename}'.format(**locals()))
-                        s = s.replace(old_string, new_string)
-                        f.write(s)
-
-                self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
-
-        def inplace_change(self, filename, old_string, new_string):
-                self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
-
-                with open(filename) as f:
-                        newText=f.read().replace(old_string, new_string)
-
-                with open(filename, "w") as f:
-                        f.write(newText)
 
 
         def copy_lines_from_file(self, filename_src, filename_dest, lines_from, lines_to):
@@ -172,7 +253,7 @@ class LKD_CopyFilesMd:
 
                 # Safely write the changed content, if found in the file
                 lout = []
-                with open(filename_src, 'r') as f:
+                with open(filename_src, "r") as f:
                         s = f.readlines()             
                         if(lines_from >= len(s)):
                                 return
@@ -186,7 +267,7 @@ class LKD_CopyFilesMd:
                         lout.append("")
                         lout.append( "lines :" + str(lines_from) + " " + str(lines_to))
 
-                with open(filename_dest, 'w') as f:
+                with open(filename_dest, "w") as f:
                         f.writelines(lout)
 
                 self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
