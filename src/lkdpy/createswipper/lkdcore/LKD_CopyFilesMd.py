@@ -163,18 +163,21 @@ class LKD_CopyFilesMd:
                 self.m_root_src = self.m_root_src + "C:" + DS + "lkd" + DS + "ht" + DS + "apps_portal" + DS + "lkduni" + DS + "app-4" 
                 self.m_root_src = self.m_root_src + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
                 self.m_root_src = self.m_root_src + DS + "content_cats" + DS + "content_markdown" 
-                self.m_root_src = self.m_root_src + DS + "content_by_catid" + DS + "cat__" + psrc
+                self.m_root_src = self.m_root_src + DS + "content_by_catid" + DS + "cat__" + str(psrc)
 
                 self.m_root_dst = ""
                 self.m_root_dst = self.m_root_dst  + "C:" + DS + "lkd" + DS + "ht" + DS + "apps_portal" + DS + "lkduni" + DS + "app-4" 
                 self.m_root_dst = self.m_root_dst  + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
                 self.m_root_dst = self.m_root_dst  + DS + "content_cats" + DS + "content_markdown" 
-                self.m_root_dst = self.m_root_dst  + DS + "content_tmp" + DS + "cat__" + pdst
+                self.m_root_dst = self.m_root_dst  + DS + "content_tmp" + DS + "cat__" + str(pdst)
 
         def cpy_all(self, par_src, par_dst):
 
+                DS = self.m_ds
+
                 self.cpy_all_calculate_root(par_src, par_dst)
-                self.m_root_dst = self.get_root_for_groups(par_src, par_dst)
+
+                self.m_root_dst = self.get_root_for_groups(par_dst, 0)
 
                 self.copy_file("content_idx_0" + DS + "content__0.md"
                         , "content_idx_0" + DS + "content__0.md")
@@ -197,8 +200,8 @@ class LKD_CopyFilesMd:
                 
                 DS = self.m_ds
 
-                src_fpath = self.m_root_src + DS + psrc
-                dest_fpath = self.m_root_dst + DS + pdest
+                src_fpath = self.m_root_src + DS + str(psrc)
+                dest_fpath = self.m_root_dst + DS + str(pdest)
 
                 self.xx_dbg("[src_fpath]" + src_fpath)
                 self.xx_dbg("[dest_fpath]" + dest_fpath)
@@ -210,7 +213,7 @@ class LKD_CopyFilesMd:
                 self.xx_dbg("[COPY_START]" + "[to_file][" + dest_fpath +"]")
 
                 try:
-                        if not path.exists(dest_fpath):
+                        if not os.path.exists(dest_fpath):
                                 shutil.copy(src_fpath, dest_fpath)
                                 self.xx_dbg("[COPY_SUCCESS_0]" + "[from][" + src_fpath +"]")
                                 self.xx_dbg("[COPY_SUCCESS_0]" + "[to_file][" + dest_fpath +"]")
@@ -232,7 +235,7 @@ class LKD_CopyFilesMd:
                         except:
                                 self.xx_dbg("[dir_exists]" + dir_path)
 
-                        if not path.exists(dest_fpath):
+                        if not os.path.exists(dest_fpath):
                                 shutil.copy(src_fpath, dest_fpath)
                                 self.xx_dbg("[COPY_SUCCESS_1]" + "[from][" + src_fpath +"]")
                                 self.xx_dbg("[COPY_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")

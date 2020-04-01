@@ -23,4 +23,11 @@ if __name__ == "__main__":
         #dd.exec_cpy_one(4531)
         hh_md = LKD_CopyFilesMd("")
         hh_md.get_root_for_groups(4243,0)
-        hh_md.copy_file(4299,1278)
+
+        iimax = 6000
+        ii=1
+        while( True ):
+                if(ii>iimax):
+                        break
+                hh_md.cpy_all(4299,ii)
+                ii = ii + 1
