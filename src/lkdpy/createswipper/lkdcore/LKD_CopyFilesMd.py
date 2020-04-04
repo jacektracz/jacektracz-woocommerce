@@ -28,7 +28,7 @@ class LKD_CopyFilesMd:
 
         def xx_dbg(self, tt):
                 "" ""
-                print tt
+                print( tt )
 
         def populate_one_md(self, par_src, par_dst, p_key):
 
@@ -334,3 +334,13 @@ class LKD_CopyFilesMd:
 
         def exec_cpy_one(self,idnew):
                 self.cpy_all("4299",str(idnew))
+
+
+        def exec_cpy_many(self, max):
+                iimax = max
+                ii=1
+                while( True ):
+                        if(ii>iimax):
+                                break
+                        self.cpy_all(4299,ii)
+                        ii = ii + 1

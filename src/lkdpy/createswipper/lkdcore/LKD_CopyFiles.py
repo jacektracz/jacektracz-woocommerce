@@ -28,7 +28,7 @@ class LKD_CopyFiles:
 
         def xx_dbg(self, tt):
                 "" ""
-                print tt
+                print (tt)
 
         def set_roots(self,par_src, par_dst):
                 self.m_src = par_src

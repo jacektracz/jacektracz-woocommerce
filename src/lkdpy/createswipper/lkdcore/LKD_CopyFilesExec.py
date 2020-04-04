@@ -13,7 +13,7 @@ class LKD_CopyFilesExec:
                
         def xx_dbg(self, tt):
                 "" ""
-                print tt
+                print (tt)
                       
                 
 
@@ -89,7 +89,7 @@ class LKD_CopyFilesExec:
 
                 #dd.cpy_all("mdimages_mi6","catsfeatured_cf5") 
                 #dd.cpy_all("mdimages_mi6","catslatest_cl8") 
-                dd.cpy_all("catslatest_cl8","catsevalscms_ce8") 
+                dd.cpy_all("catslatest_cl8","catsenvs_cev6") 
 
 
         def exec_cpy_one(self,idnew):                

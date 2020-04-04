@@ -3,16 +3,19 @@ import os
 from createswipper.lkdcore.LKD_CopyFiles import *
 from createswipper.lkdcore.LKD_CopyFilesMd import *
 from createswipper.lkdcore.LKD_CopyFilesExec import *
-#python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
+#C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 
 
 if __name__ == "__main__":
 
-	dd = LKD_CopyFilesExec("")
+        dd = LKD_CopyFilesExec("")
+        dd.exec_cpy_swipper()
+
         #dd.exec_cpy_one()
         #dd.exec_populate_mds()
         #dd.exec_cpy_mds()        
-        #dd.exec_cpy_swipper()
+
+        
 
         #dd.exec_cpy_mds()
         #dd.exec_cpy_contents_mds()
@@ -21,13 +24,5 @@ if __name__ == "__main__":
         #dd.exec_cpy_one(4524)
         #dd.exec_cpy_one(4526)
         #dd.exec_cpy_one(4531)
-        hh_md = LKD_CopyFilesMd("")
-        hh_md.get_root_for_groups(4243,0)
-
-        iimax = 6000
-        ii=1
-        while( True ):
-                if(ii>iimax):
-                        break
-                hh_md.cpy_all(4299,ii)
-                ii = ii + 1
+        #hh_md = LKD_CopyFilesMd("")     
+        #hh_md.exec_cpy_many
