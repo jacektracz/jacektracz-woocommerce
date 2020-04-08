@@ -91,7 +91,16 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("mdimages_mi6","catslatest_cl8") 
                 #dd.cpy_all("catslatest_cl8","exciting_wwwd_w8") 
 
-                dd.cpy_all("catslatest_cl8","splash_cmp_sc9") 
+                #dd.cpy_all("catslatest_cl8","splash_cmp_sc9") 
+                # mod_ep_swipper_splash_cmp_sl4
+                #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl2") 
+                #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl3") 
+                #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl4") 
+                #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl5") 
+                #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl6") 
+                dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl7") 
+                dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl8") 
+                dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl9") 
 
 
         def exec_cpy_one(self,idnew):                
