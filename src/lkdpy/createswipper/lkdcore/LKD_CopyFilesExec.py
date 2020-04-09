@@ -98,9 +98,11 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl4") 
                 #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl5") 
                 #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl6") 
-                dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl7") 
-                dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl8") 
-                dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl9") 
+                #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl7") 
+                #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl8") 
+                dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm4") 
+                dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm5") 
+                dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm6") 
 
 
         def exec_cpy_one(self,idnew):                
