@@ -100,10 +100,12 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl6") 
                 #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl7") 
                 #dd.cpy_all("splash_cmp_sc9", "splash_cmp_sl8") 
-                dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm4") 
-                dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm5") 
-                dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm6") 
+                #dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm4") 
+                #dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm5") 
+                #dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm6") 
 
+                dd.cpy_all("mdimages_mi6", "catschilds_cc9") 
+                
 
         def exec_cpy_one(self,idnew):                
                 dd_md = LKD_CopyFilesMd("")                
@@ -141,6 +143,6 @@ class LKD_CopyFilesExec:
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::executet::__" + item_name + "__")
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
                         self.xx_dbg("LKD_CopyFilesExec::CPY_ITEM::__[" + str(ii) + "]__")
-                        dd_handler.cpy_one_entity_child(dd_source, item_name)
+                        #dd_handler.cpy_one_entity_child(dd_source, item_name)
                         ii = ii + 1
 
