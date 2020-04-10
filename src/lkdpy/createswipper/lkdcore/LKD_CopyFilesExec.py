@@ -109,3 +109,38 @@ class LKD_CopyFilesExec:
                 dd_md = LKD_CopyFilesMd("")                
                 dd_md.exec_cpy_one(idnew)
         
+        def exec_cpy_to_all_swippers(self):
+                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                dd_handler = LKD_CopyFiles("")
+                dd_list = LKD_CopyFilesList("")
+                ll = dd_list.get_list_of_swippers()
+                for item_name in ll:
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
+
+        def exec_cpy_to_all_swippers_short(self,max_files):
+                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                dd_handler = LKD_CopyFiles("")
+
+                dd_list = LKD_CopyFilesList("")
+                ll = dd_list.get_list_of_swippers()
+                ii = 0
+                for item_name in ll:
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        if ( ii == max_files ):
+                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::break_after_3t::__" + item_name + "__")
+                                break
+
+                        dd_source = "pathmain_pm2"
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        if ( item_name == dd_source ):
+                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::skipe::__" + item_name + "__")
+                                continue
+
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::executet::__" + item_name + "__")
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        self.xx_dbg("LKD_CopyFilesExec::CPY_ITEM::__[" + str(ii) + "]__")
+                        dd_handler.cpy_one_entity_child(dd_source, item_name)
+                        ii = ii + 1
+

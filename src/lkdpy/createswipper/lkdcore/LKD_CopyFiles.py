@@ -60,20 +60,21 @@ class LKD_CopyFiles:
         def cpy_one_entity_child(self,par_src, par_dst):
 
 
-                self.set_roots(par_src,par_dst)
+                self.m_src = par_src
+                self.m_dst = par_dst
 
                 psrc = self.m_src
                 pdst = self.m_dst
 
                 DS = self.m_ds
 
+                
+                self.set_roots(par_src,par_dst)
+
                 self.xx_dbg("LKD_CopyFiles::copy_one::__src__" + psrc)
 
-                self.copy_file("lib" + DS + psrc + DS + "entity" + DS  + "EPT_swipper_data_item_child_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "entity" +  DS + "EPT_swipper_data_item_child_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "entity" + DS  + "EPT_swipper_entity_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "entity" +  DS + "EPT_swipper_entity_" + pdst + ".php")
+                self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
 
 
         def cpy_all(self, par_src, par_dst):
