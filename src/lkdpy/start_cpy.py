@@ -10,6 +10,7 @@ if __name__ == "__main__":
 
         dd = LKD_CopyFilesExec("")
         dd.exec_cpy_swipper()
+        #dd.exec_cpy_to_all_swippers_splashes()
         #dd.exec_cpy_to_all_swippers_short(300)
         #dd.exec_cpy_one()
         #dd.exec_populate_mds()

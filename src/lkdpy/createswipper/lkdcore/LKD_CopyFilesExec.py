@@ -104,7 +104,7 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm5") 
                 #dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm6") 
 
-                dd.cpy_all("mdimages_mi6", "catschilds_cc9") 
+                dd.cpy_all("splash_cmp_sm6", "splash_cmp_sm7","all") 
                 
 
         def exec_cpy_one(self,idnew):                
@@ -147,14 +147,16 @@ class LKD_CopyFilesExec:
                         ii = ii + 1
 
         def exec_cpy_to_all_swippers_splashes(self):
+
+                dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_splahes()
-                self.exec_cpy_to_all_swippers_one(3, ll, "splash_cmp_sl5", "EPT_swipper_categories_matrix_")
+                self.exec_cpy_to_all_swippers_one(30, ll, "splash_cmp_sl5", "EPT_swipper_categories_matrix_")
 
         def exec_cpy_to_all_swippers_one(self, max_files, plist, dd_source, pfilter):
                 self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                
                 dd_handler = LKD_CopyFiles("")
 
-                dd_list = LKD_CopyFilesList("")
                 ll = plist
                 ii = 0
                 for item_name in ll:
@@ -172,5 +174,5 @@ class LKD_CopyFilesExec:
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::executet::__" + item_name + "__")
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
                         self.xx_dbg("LKD_CopyFilesExec::CPY_ITEM::__[" + str(ii) + "]__")
-                        #dd_handler.cpy_one_entity_child(dd_source, item_name,pfilter)
+                        dd_handler.cpy_all(dd_source, item_name, pfilter)
                         ii = ii + 1

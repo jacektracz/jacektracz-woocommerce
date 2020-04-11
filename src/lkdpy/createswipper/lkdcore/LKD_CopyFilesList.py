@@ -509,7 +509,7 @@ class LKD_CopyFilesList:
                 dd.append('whatwedo_u9')
                 return dd                
 
-        def get_list_of_splashes(self):
+        def get_list_of_splahes(self):
                 self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
                 dd = []
                 dd.append('splash_cmp_sc9')
