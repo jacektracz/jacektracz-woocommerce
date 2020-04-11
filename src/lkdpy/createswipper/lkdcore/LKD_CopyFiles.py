@@ -77,7 +77,7 @@ class LKD_CopyFiles:
                         "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
 
 
-        def cpy_all(self, par_src, par_dst):
+        def cpy_all(self, par_src, par_dst, pfilter):
 
                 self.m_src = par_src
                 self.m_dst = par_dst
@@ -89,94 +89,107 @@ class LKD_CopyFiles:
 
                 
                 self.set_roots(par_src,par_dst)
+                
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("mod_ep_swipper_" + psrc + ".php"
+                                ,"mod_ep_swipper_" + pdst + ".php")
 
-                self.copy_file("mod_ep_swipper_" + psrc + ".php"
-                        ,"mod_ep_swipper_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("assets" + DS + "css" + DS + "mod_ep_swipper_" + psrc + ".css"
+                                ,"assets" + DS + "css" + DS + "mod_ep_swipper_" + pdst + ".css")
 
-                self.copy_file("assets" + DS + "css" + DS + "mod_ep_swipper_" + psrc + ".css"
-                        ,"assets" + DS + "css" + DS + "mod_ep_swipper_" + pdst + ".css")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "configuration" + DS + "EPT_swipper_configuration_" + psrc + ".php"
+                                ,"lib" + DS + pdst + DS + "configuration" + DS + "EPT_swipper_configuration_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "configuration" + DS + "EPT_swipper_configuration_" + psrc + ".php"
-                        ,"lib" + DS + pdst + DS + "configuration" + DS + "EPT_swipper_configuration_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "configuration" + DS + "EPT_swipper_data_config_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "configuration" + DS + "EPT_swipper_data_config_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "configuration" + DS + "EPT_swipper_data_config_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "configuration" + DS + "EPT_swipper_data_config_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_data_arr_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_data_arr_" + pdst + ".php")
 
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_data_item_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_data_item_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_data_arr_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_data_arr_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_data_item_child_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_data_item_child_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_data_item_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_data_item_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_entity_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_entity_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_data_item_child_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_data_item_child_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat2_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat2_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "entity" + DS + "EPT_swipper_entity_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "entity" + DS + "EPT_swipper_entity_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat2_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat2_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgenroot_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgenroot_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_mdflat_" + pdst + ".php")
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen2_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen2_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgenroot_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgenroot_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen2_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen2_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bygroups_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bygroups_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bygroups_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bygroups_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_installer_rows_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_installer_rows_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_frame_rows_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_frame_rows_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_rows_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_rows_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_aws_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_aws_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_title_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_title_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_executor_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_executor_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_matrix_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_matrix_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_content_filler_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_content_filler_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_md_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_md_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS +  "controller" + DS + "EPT_swipper_controller_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "controller" + DS + "EPT_swipper_controller_" + pdst + ".php")
-
-                self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_installer_rows_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_installer_rows_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_frame_rows_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_frame_rows_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_rows_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_rows_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_aws_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_aws_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_item_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_title_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_title_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_executor_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_executor_" + pdst + ".php")                                
+                if(pfilter == "all" or pfilter == "EPT_swipper_categories_matrix_"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_matrix_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_matrix_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_content_filler_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_content_filler_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_md_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_md_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "controller" + DS + "EPT_swipper_controller_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "controller" + DS + "EPT_swipper_controller_" + pdst + ".php")
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_" + pdst + ".php")
 
         def copy_file(self, psrc, pdest):
             

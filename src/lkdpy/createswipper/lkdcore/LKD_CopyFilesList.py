@@ -508,3 +508,23 @@ class LKD_CopyFilesList:
                 dd.append('v6')
                 dd.append('whatwedo_u9')
                 return dd                
+
+        def get_list_of_splashes(self):
+                self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
+                dd = []
+                dd.append('splash_cmp_sc9')
+                dd.append('splash_cmp_sl2')
+                dd.append('splash_cmp_sl3')
+                dd.append('splash_cmp_sl4')
+                dd.append('splash_cmp_sl5')
+                dd.append('splash_cmp_sl6')
+                dd.append('splash_cmp_sl7')
+                dd.append('splash_cmp_sl8')
+                dd.append('splash_cmp_sl9')
+                dd.append('splash_cmp_sm1')
+                dd.append('splash_cmp_sm2')
+                dd.append('splash_cmp_sm3')
+                dd.append('splash_cmp_sm4')
+                dd.append('splash_cmp_sm5')
+                dd.append('splash_cmp_sm6')
+                return dd

@@ -146,3 +146,31 @@ class LKD_CopyFilesExec:
                         #dd_handler.cpy_one_entity_child(dd_source, item_name)
                         ii = ii + 1
 
+        def exec_cpy_to_all_swippers_splashes(self):
+                ll = dd_list.get_list_of_splahes()
+                self.exec_cpy_to_all_swippers_one(3, ll, "splash_cmp_sl5", "EPT_swipper_categories_matrix_")
+
+        def exec_cpy_to_all_swippers_one(self, max_files, plist, dd_source, pfilter):
+                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                dd_handler = LKD_CopyFiles("")
+
+                dd_list = LKD_CopyFilesList("")
+                ll = plist
+                ii = 0
+                for item_name in ll:
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        if ( ii == max_files ):
+                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::break_after_3t::__" + item_name + "__")
+                                break
+                        
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        if ( item_name == dd_source ):
+                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::skipe::__" + item_name + "__")
+                                continue
+
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::executet::__" + item_name + "__")
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        self.xx_dbg("LKD_CopyFilesExec::CPY_ITEM::__[" + str(ii) + "]__")
+                        #dd_handler.cpy_one_entity_child(dd_source, item_name,pfilter)
+                        ii = ii + 1
