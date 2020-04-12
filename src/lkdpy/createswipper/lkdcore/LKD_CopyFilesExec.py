@@ -110,7 +110,7 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("catschilds_cc5","catsmenu_cm9", "all")
                 #dd.cpy_all("catschilds_cc5","search_y9", "all")
                 #dd.cpy_all("search_y9","search_top_st9", "all")
-                dd.cpy_all("splash_cmp_sl4", "splash_cmptop_st2","all")
+                #dd.cpy_all("splash_cmp_sl4", "splash_cmptop_st2","all")
 
         def exec_cpy_one(self,idnew):                
                 dd_md = LKD_CopyFilesMd("")                
@@ -155,7 +155,13 @@ class LKD_CopyFilesExec:
 
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_splahes()
-                self.exec_cpy_to_all_swippers_one(30, ll, "splash_cmp_sl5", "EPT_swipper_categories_matrix_")
+                self.exec_cpy_to_all_swippers_one(1, ll, "splash_cmp_sl5", "EPT_swipper_categories_matrix_")
+
+        def exec_cpy_to_all_swippers_splashes_css(self):
+
+                dd_list = LKD_CopyFilesList("")
+                ll = dd_list.get_list_of_splahes()
+                self.exec_cpy_to_all_swippers_one(30, ll, "splash_cmptop_st2", "css")
 
         def exec_cpy_to_all_swippers_one(self, max_files, plist, dd_source, pfilter):
                 self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")

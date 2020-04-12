@@ -12,7 +12,8 @@ class LKD_CopyFiles:
                 self.m_root_src = ""
                 self.m_root_dst = ""
                 self.m_test_mode = 0
-                self.m_override_mode = False
+                #self.m_override_mode = False
+                self.m_override_mode = True
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
                
@@ -95,7 +96,7 @@ class LKD_CopyFiles:
                         self.copy_file("mod_ep_swipper_" + psrc + ".php"
                                 ,"mod_ep_swipper_" + pdst + ".php")
 
-                if(pfilter == "all" or pfilter == "main"):
+                if(pfilter == "all" or pfilter == "css"):
                         self.copy_file("assets" + DS + "css" + DS + "mod_ep_swipper_" + psrc + ".css"
                                 ,"assets" + DS + "css" + DS + "mod_ep_swipper_" + pdst + ".css")
 

@@ -512,6 +512,7 @@ class LKD_CopyFilesList:
         def get_list_of_splahes(self):
                 self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
                 dd = []
+
                 dd.append('splash_cmp_sc9')
                 dd.append('splash_cmp_sl2')
                 dd.append('splash_cmp_sl3')
@@ -527,4 +528,6 @@ class LKD_CopyFilesList:
                 dd.append('splash_cmp_sm4')
                 dd.append('splash_cmp_sm5')
                 dd.append('splash_cmp_sm6')
+                dd.append('splash_cmp_sm7')
+                dd.append('splash_cmptop_st2')
                 return dd
