@@ -12,6 +12,7 @@ class LKD_CopyFiles:
                 self.m_root_src = ""
                 self.m_root_dst = ""
                 self.m_test_mode = 0
+                self.m_override_mode = False
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
                
@@ -181,7 +182,7 @@ class LKD_CopyFiles:
                 if(pfilter == "all" or pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_executor_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_executor_" + pdst + ".php")                                
-                                
+
                 if(pfilter == "all" or pfilter == "EPT_swipper_categories_matrix_"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_matrix_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_matrix_" + pdst + ".php")
@@ -219,37 +220,82 @@ class LKD_CopyFiles:
                 self.xx_dbg("[dest_fpath]" + dest_fpath)
 
                 if self.m_test_mode == 1:
+                        self.xx_dbg("[return_on_test_mode]" + src_fpath)
                         return
                 
                 self.xx_dbg("[COPY_START]" + "[copy_file][" + src_fpath +"]")
                 self.xx_dbg("[COPY_START]" + "[to_file][" + dest_fpath +"]")
 
+                self.create_dir_path(
+                        dest_fpath)
+
+                self.copy_check_override(
+                        self.m_override_mode
+                        , src_fpath
+                        , dest_fpath
+                        , self.m_src
+                        , self.m_dst)
+
+
+        def create_dir_path(self, dest_path):
+                self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
+                self.xx_dbg("" + "[dest_path][" + dest_path +"]")        
+                dir_path = os.path.dirname(dest_fpath)
+
                 try:
-                        shutil.copy(src_fpath, dest_fpath)
-                        self.xx_dbg("[COPY_SUCCESS_0]" + "[from][" + src_fpath +"]")
-                        self.xx_dbg("[COPY_SUCCESS_0]" + "[to_file][" + dest_fpath +"]")
-
-                except IOError as io_err:
-                        dir_path = os.path.dirname(dest_fpath)
-
-                        try:
-                                if os.path.isdir(dir_path):
-                                        self.xx_dbg("[dir_exists_no_err]" + dir_path)
-                                else:
-                                
-                                        os.makedirs(dir_path)
-
-                        except:
+                        if os.path.isdir(dir_path):
                                 self.xx_dbg("[dir_exists]" + dir_path)
+                        else:                                                             
+                                os.makedirs(dir_path)
+                                self.xx_dbg("[dir_created]" + dir_path)
+                except:
+                        self.xx_dbg("[dir_exists]" + dir_path)                
+                        
+                
+        def copy_check_override(self
+                , override_mode
+                , src_path
+                , dest_path
+                , inplace_chamge_src
+                , inplace_change_dest):
+
+                self.xx_dbg("[METHOD_IN]" + "[copy_check_override]")
+                self.xx_dbg("[COPY_START]" + "[from][" + src_fpath +"]")
+                self.xx_dbg("[COPY_START]" + "[to_file][" + dest_fpath +"]")
+
+                if not override_mode:
+                        if not os.path.isfile(dest_fpath):
+                                self.xx_dbg("[COPY_AS_NEW_FILE]" + dest_fpath)
+
+                                shutil.copy(src_fpath, dest_fpath)
+
+                                self.inplace_change(
+                                        dest_fpath
+                                        , inplace_chamge_src
+                                        , inplace_change_dest)
+
+                        self.xx_dbg("[COPY_INPLACE_SUCCESS_1]" + "[from][" + src_fpath +"]")
+                        self.xx_dbg("[COPY_INPLACE_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")
+
+                else:
+                        self.xx_dbg("[OVERRIDE_FILE]" + dest_fpath)
 
                         shutil.copy(src_fpath, dest_fpath)
-                        self.xx_dbg("[COPY_SUCCESS_1]" + "[from][" + src_fpath +"]")
-                        self.xx_dbg("[COPY_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")
 
-                self.inplace_change(dest_fpath, self.m_src, self.m_dst)
+                        self.inplace_change(
+                                dest_fpath
+                                , inplace_chamge_src
+                                , inplace_change_dest)
 
-        def inplace_change_(self, filename, old_string, new_string):
+                        self.xx_dbg("[COPY_INPLACE_SUCCESS]" + "[from][" + src_fpath +"]")
+                        self.xx_dbg("[COPY_INPLACE_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")
+
+
+
+        def inplace_change_(self, filename, old_string, old_string):
                 self.xx_dbg("[METHOD_CPY_REPLACE]" + "[inplace_change]")
+                self.xx_dbg("[inplace_change_]" + "[from][" + old_string +"]")
+                self.xx_dbg("[inplace_change_]" + "[to_file][" + old_string +"]")
 
 
                 # Safely write the changed content, if found in the file
@@ -263,6 +309,8 @@ class LKD_CopyFiles:
 
         def inplace_change(self, filename, old_string, new_string):
                 self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
+                self.xx_dbg("" + "[inplace_change][FROM_STR:]" + old_string + "]")
+                self.xx_dbg("" + "[inplace_change][TO_STR:]" + new_string + "]")
 
                 with open(filename) as f:
                         newText=f.read().replace(old_string, new_string)

@@ -105,9 +105,9 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("splash_cmp_sl4", "splash_cmp_sm6") 
 
                 #dd.cpy_all("splash_cmp_sm6", "splash_cmp_sm7","all") 
-                dd.cpy_all("titlemain_tm2", "titlecat_tc2","all") 
+                #dd.cpy_all("titlemain_tm2", "titlecat_tc2","all") 
                 #dd.cpy_all("splash_cmp_sl4","titlemain_tm2", "images") 
-                
+                dd.cpy_all("catschilds_cc5","catsmenu_cm9", "all")
 
         def exec_cpy_one(self,idnew):                
                 dd_md = LKD_CopyFilesMd("")                
