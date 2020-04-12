@@ -174,6 +174,10 @@ class LKD_CopyFiles:
                 if(pfilter == "all" or pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + pdst + ".php")
+                if(pfilter == "search-only"):
+                        if(pfilter == "all" or pfilter == "main"):
+                                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_button_" + psrc + ".php",
+                                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_button_" + pdst + ".php")
 
                 if(pfilter == "all" or pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_" + psrc + ".php",
@@ -207,6 +211,11 @@ class LKD_CopyFiles:
                         self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_" + pdst + ".php")
 
+                if(pfilter == "search-only"):
+                        if(pfilter == "all" or pfilter == "main"):
+                                self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_test_" + psrc + ".php",
+                                        "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_test_" + pdst + ".php")
+
         def copy_file(self, psrc, pdest):
             
                 self.xx_dbg("[METHOD_IN]" + "[copy_file]")
@@ -237,9 +246,9 @@ class LKD_CopyFiles:
                         , self.m_dst)
 
 
-        def create_dir_path(self, dest_path):
+        def create_dir_path(self, dest_fpath):
                 self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
-                self.xx_dbg("" + "[dest_path][" + dest_path +"]")        
+                self.xx_dbg("" + "[dest_fpath][" + dest_fpath +"]")        
                 dir_path = os.path.dirname(dest_fpath)
 
                 try:
@@ -254,10 +263,10 @@ class LKD_CopyFiles:
                 
         def copy_check_override(self
                 , override_mode
-                , src_path
-                , dest_path
-                , inplace_chamge_src
-                , inplace_change_dest):
+                , src_fpath
+                , dest_fpath
+                , inplace_chamge_src_postfix
+                , inplace_change_dest_postfix):
 
                 self.xx_dbg("[METHOD_IN]" + "[copy_check_override]")
                 self.xx_dbg("[COPY_START]" + "[from][" + src_fpath +"]")
@@ -271,28 +280,44 @@ class LKD_CopyFiles:
 
                                 self.inplace_change(
                                         dest_fpath
-                                        , inplace_chamge_src
-                                        , inplace_change_dest)
+                                        , inplace_chamge_src_postfix
+                                        , inplace_change_dest_postfix)
 
-                        self.xx_dbg("[COPY_INPLACE_SUCCESS_1]" + "[from][" + src_fpath +"]")
-                        self.xx_dbg("[COPY_INPLACE_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")
+                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[to_file][" + dest_fpath +"]")
+                        else:
+                                self.xx_dbg("[NOT_COPY_INPLACE_EXISTS_1]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[NOT_COPY_INPLACE_EXISTS_1]" + "[to_file][" + dest_fpath +"]")
 
                 else:
-                        self.xx_dbg("[OVERRIDE_FILE]" + dest_fpath)
+                        if not os.path.isfile(dest_fpath) :
+                                self.xx_dbg("[NOT_OVERRIDE_FILE]" + dest_fpath)
 
-                        shutil.copy(src_fpath, dest_fpath)
+                                shutil.copy(src_fpath, dest_fpath)
 
-                        self.inplace_change(
-                                dest_fpath
-                                , inplace_chamge_src
-                                , inplace_change_dest)
+                                self.inplace_change(
+                                        dest_fpath
+                                        , inplace_chamge_src_postfix
+                                        , inplace_change_dest_postfix)
 
-                        self.xx_dbg("[COPY_INPLACE_SUCCESS]" + "[from][" + src_fpath +"]")
-                        self.xx_dbg("[COPY_INPLACE_SUCCESS_1]" + "[to_file][" + dest_fpath +"]")
+                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[to_file][" + dest_fpath +"]")
+
+                        if os.path.isfile(dest_fpath) :
+                                self.xx_dbg("[OVERRIDE_FILE]" + dest_fpath)
+
+                                shutil.copy(src_fpath, dest_fpath)
+
+                                self.inplace_change(
+                                        dest_fpath
+                                        , inplace_chamge_src_postfix
+                                        , inplace_change_dest_postfix)
+
+                                self.xx_dbg("[COPY_INPLACE_OVERRIDE]" + "[from][" + src_fpath +"]")
+                                self.xx_dbg("[COPY_INPLACE_OVERRIDE]" + "[to_file][" + dest_fpath +"]")
 
 
-
-        def inplace_change_(self, filename, old_string, old_string):
+        def inplace_change_(self, filename, old_string, new_string):
                 self.xx_dbg("[METHOD_CPY_REPLACE]" + "[inplace_change]")
                 self.xx_dbg("[inplace_change_]" + "[from][" + old_string +"]")
                 self.xx_dbg("[inplace_change_]" + "[to_file][" + old_string +"]")
@@ -313,7 +338,7 @@ class LKD_CopyFiles:
                 self.xx_dbg("" + "[inplace_change][TO_STR:]" + new_string + "]")
 
                 with open(filename) as f:
-                        newText=f.read().replace(old_string, new_string)
+                        newText = f.read().replace(old_string, new_string)
 
                 with open(filename, "w") as f:
                         f.write(newText)
