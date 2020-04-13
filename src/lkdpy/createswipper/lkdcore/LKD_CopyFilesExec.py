@@ -115,8 +115,13 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("catschilds_cc5","catsuptwo_cu2", "all")
 
                 #dd.cpy_all("catsuptwo_cu2","catsup4_cu4", "all")
+                #dd.cpy_all("catsup4_cu4","catsup0_cu0", "all")
+                #dd.cpy_all("catsup4_cu4","catsup5_cu5", "all")
+                #dd.cpy_all("catsup4_cu4","catsup6_cu6", "all")
 
-                dd.cpy_all("splash_cmp_sl4", "splash_catspath_sc9","all")
+                dd.cpy_all("catsup6_cu6","catsup1_cu1", "all")
+                dd.cpy_all("catsup6_cu6","catsup2_cu2", "all")
+                #dd.cpy_all("splash_cmp_sl4", "splash_catspath_sc9","all")
 
         def exec_cpy_one(self,idnew):                
                 dd_md = LKD_CopyFilesMd("")                
