@@ -75,8 +75,11 @@ class LKD_CopyFiles:
 
                 self.xx_dbg("LKD_CopyFiles::copy_one::__src__" + psrc)
 
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
+                #self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
+                #        "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
+
+                self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_" + pdst + ".php")
 
 
         def cpy_all(self, par_src, par_dst, pfilter):
@@ -180,7 +183,7 @@ class LKD_CopyFiles:
                                 self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_button_" + psrc + ".php",
                                         "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_button_" + pdst + ".php")
 
-                if(pfilter == "all" or pfilter == "main"):
+                if(pfilter == "all" or pfilter == "cat_copy"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_" + pdst + ".php")
 

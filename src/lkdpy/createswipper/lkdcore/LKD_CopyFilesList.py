@@ -509,8 +509,9 @@ class LKD_CopyFilesList:
                 dd.append('whatwedo_u9')
                 return dd                
 
+
         def get_list_of_splahes(self):
-                self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
+                self.xx_dbg("[METHOD_IN]" + "[get_list_of_splahes]")
                 dd = []
 
                 dd.append('splash_cmp_sc9')
@@ -531,3 +532,21 @@ class LKD_CopyFilesList:
                 dd.append('splash_cmp_sm7')
                 dd.append('splash_cmptop_st2')
                 return dd
+
+
+        def get_list_of_catsup(self):
+                self.xx_dbg("[METHOD_IN]" + "[get_list_of_catsup]")
+                ss = []
+                ss.append('splash_catspath_sc9')
+                ss.append('catsup7_cu7')
+                ss.append('catsup8_cu8')
+                ss.append('catsup5_cu5')
+                ss.append('catsup6_cu6')
+                ss.append('catsup0_cu0')
+                ss.append('catsup1_cu1')
+                ss.append('catsup2_cu2')
+                ss.append('catsup4_cu4')
+                ss.append('catsup3_cu3')
+                ss.append('catsupone_cu1')
+                ss.append('catsuptwo_cu2')
+                return ss

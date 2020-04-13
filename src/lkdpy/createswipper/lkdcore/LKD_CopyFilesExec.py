@@ -136,6 +136,8 @@ class LKD_CopyFilesExec:
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
 
+
+
         def exec_cpy_to_all_swippers_short(self,max_files):
                 self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
                 dd_handler = LKD_CopyFiles("")
@@ -173,6 +175,12 @@ class LKD_CopyFilesExec:
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_splahes()
                 self.exec_cpy_to_all_swippers_one(30, ll, "splash_cmptop_st2", "css")
+
+        def exec_cpy_list_of_catsup(self):
+                dd_list = LKD_CopyFilesList("")
+                ll = dd_list.get_list_of_catsup()
+                self.exec_cpy_to_all_swippers_one(20, ll, "catsup0_cu0", "cat_copy")
+
 
         def exec_cpy_to_all_swippers_one(self, max_files, plist, dd_source, pfilter):
                 self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
