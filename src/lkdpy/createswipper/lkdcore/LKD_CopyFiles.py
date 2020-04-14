@@ -95,11 +95,6 @@ class LKD_CopyFiles:
                 
                 self.set_roots(par_src,par_dst)
 
-                if(pfilter == "all" or pfilter == "c-api"):
-                        self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_" + psrc + ".php",
-                                "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_" + pdst + ".php")
-
-                return 
 
                 if(pfilter == "all" or pfilter == "selector_main"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
@@ -110,6 +105,12 @@ class LKD_CopyFiles:
                                 ,"mod_ep_swipper_" + pdst + ".php")
 
                 return
+
+                if(pfilter == "all" or pfilter == "c-api"):
+                        self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_" + pdst + ".php")
+
+                return 
 
                 if(pfilter == "all" or pfilter == "selector_main"):
                         self.copy_file("mod_ep_swipper_" + psrc + ".php"

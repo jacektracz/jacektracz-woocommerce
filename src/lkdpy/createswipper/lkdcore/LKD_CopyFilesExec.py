@@ -190,7 +190,7 @@ class LKD_CopyFilesExec:
         def exec_cpy_to_all_swippers_api(self):
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_swippers()
-                self.exec_cpy_to_all_swippers_one(100, ll, "prod_splash_ps3", "c-api")
+                self.exec_cpy_to_all_swippers_one(200, ll, "prod_splash_ps3", "c-api")
 
 
 
