@@ -13,7 +13,7 @@ class LKD_CopyFiles:
                 self.m_root_dst = ""
                 self.m_test_mode = 0
                 #self.m_override_mode = False
-                self.m_override_mode = True
+                self.m_override_mode = False
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
                
@@ -95,7 +95,17 @@ class LKD_CopyFiles:
                 
                 self.set_roots(par_src,par_dst)
 
-                if(pfilter == "all" or pfilter == "main"):
+                if(pfilter == "all" or pfilter == "selector_main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "selector_main"):
+                        self.copy_file("mod_ep_swipper_" + psrc + ".php"
+                                ,"mod_ep_swipper_" + pdst + ".php")
+
+                return
+
+                if(pfilter == "all" or pfilter == "selector_main"):
                         self.copy_file("mod_ep_swipper_" + psrc + ".php"
                                 ,"mod_ep_swipper_" + pdst + ".php")
 

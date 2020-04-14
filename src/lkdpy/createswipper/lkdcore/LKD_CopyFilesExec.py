@@ -174,12 +174,17 @@ class LKD_CopyFilesExec:
 
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_splahes()
-                self.exec_cpy_to_all_swippers_one(30, ll, "splash_cmptop_st2", "css")
+                self.exec_cpy_to_all_swippers_one(1, ll, "splash_cmptop_st2", "css")
 
         def exec_cpy_list_of_catsup(self):
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_catsup()
-                self.exec_cpy_to_all_swippers_one(20, ll, "catsup0_cu0", "cat_copy")
+                self.exec_cpy_to_all_swippers_one(1, ll, "catsup0_cu0", "cat_copy")
+
+        def exec_cpy_to_all_swippers_main(self):
+                dd_list = LKD_CopyFilesList("")
+                ll = dd_list.get_list_of_swippers()
+                self.exec_cpy_to_all_swippers_one(1, ll, "catsup0_cu0", "selector_main")
 
 
         def exec_cpy_to_all_swippers_one(self, max_files, plist, dd_source, pfilter):

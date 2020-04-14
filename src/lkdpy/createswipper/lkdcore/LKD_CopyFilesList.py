@@ -393,6 +393,18 @@ class LKD_CopyFilesList:
                 self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
 
                 dd = []
+                dd.append('splash_catspath_sc9')
+                dd.append('catsup7_cu7')
+                dd.append('catsup8_cu8')
+                dd.append('catsup5_cu5')
+                dd.append('catsup6_cu6')
+                dd.append('catsup0_cu0')
+                dd.append('catsup1_cu1')
+                dd.append('catsup2_cu2')
+                dd.append('catsup4_cu4')
+                dd.append('catsup3_cu3')
+                dd.append('catsupone_cu1')
+                dd.append('catsuptwo_cu2')
                 dd.append('authorsfoot_h7')
                 dd.append('authorsp_u2')
                 dd.append('authors_x3')
@@ -536,17 +548,17 @@ class LKD_CopyFilesList:
 
         def get_list_of_catsup(self):
                 self.xx_dbg("[METHOD_IN]" + "[get_list_of_catsup]")
-                ss = []
-                ss.append('splash_catspath_sc9')
-                ss.append('catsup7_cu7')
-                ss.append('catsup8_cu8')
-                ss.append('catsup5_cu5')
-                ss.append('catsup6_cu6')
-                ss.append('catsup0_cu0')
-                ss.append('catsup1_cu1')
-                ss.append('catsup2_cu2')
-                ss.append('catsup4_cu4')
-                ss.append('catsup3_cu3')
-                ss.append('catsupone_cu1')
-                ss.append('catsuptwo_cu2')
-                return ss
+                dd = []
+                dd.append('splash_catspath_sc9')
+                dd.append('catsup7_cu7')
+                dd.append('catsup8_cu8')
+                dd.append('catsup5_cu5')
+                dd.append('catsup6_cu6')
+                dd.append('catsup0_cu0')
+                dd.append('catsup1_cu1')
+                dd.append('catsup2_cu2')
+                dd.append('catsup4_cu4')
+                dd.append('catsup3_cu3')
+                dd.append('catsupone_cu1')
+                dd.append('catsuptwo_cu2')
+                return dd
