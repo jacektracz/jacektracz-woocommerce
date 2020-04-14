@@ -181,16 +181,16 @@ class LKD_CopyFilesExec:
                 ll = dd_list.get_list_of_catsup()
                 self.exec_cpy_to_all_swippers_one(1, ll, "catsup0_cu0", "cat_copy")
 
-        def exec_cpy_to_all_swippers_main(self):
+        def exec_cpy_to_all_swippers_includes_and_main(self):
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_swippers()
-                self.exec_cpy_to_all_swippers_one(1, ll, "catsup0_cu0", "selector_main")
+                self.exec_cpy_to_all_swippers_one(200, ll, "catsup0_cu0", "selector_main")
 
 
         def exec_cpy_to_all_swippers_api(self):
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_swippers()
-                self.exec_cpy_to_all_swippers_one(200, ll, "prod_splash_ps3", "c-api")
+                self.exec_cpy_to_all_swippers_one(1, ll, "prod_splash_ps3", "c-api")
 
 
 

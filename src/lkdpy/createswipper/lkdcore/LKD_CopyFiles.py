@@ -13,7 +13,7 @@ class LKD_CopyFiles:
                 self.m_root_dst = ""
                 self.m_test_mode = 0
                 #self.m_override_mode = False
-                self.m_override_mode = False
+                self.m_override_mode = True
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
                

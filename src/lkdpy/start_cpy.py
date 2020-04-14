@@ -11,8 +11,8 @@ if __name__ == "__main__":
 
         dd = LKD_CopyFilesExec("")
         #dd.exec_cpy_list_of_catsup()
-        dd.exec_cpy_to_all_swippers_api()
-        
+        #dd.exec_cpy_to_all_swippers_api()
+        dd.exec_cpy_to_all_swippers_includes_and_main()
         #dd.exec_cpy_to_all_swippers_main()
         #dd.exec_cpy_swipper()
 
