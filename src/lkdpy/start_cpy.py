@@ -34,3 +34,7 @@ if __name__ == "__main__":
         #dd.exec_cpy_one(4531)
         #hh_md = LKD_CopyFilesMd("")     
         #hh_md.exec_cpy_many
+
+        #dd.generate_refcat(4668, 4676, "phd-thesis=article")
+        # modules/mod_ep_swipper_tree_artmenu_tm7
+

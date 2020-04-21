@@ -125,7 +125,8 @@ class LKD_CopyFilesExec:
 
                 #dd.cpy_all("splash_cmp_sl4", "tree_artcontents_tc9","all")
                 #dd.cpy_all("search_top_st9", "treetopic_tt8","all")
-                dd.cpy_all("treetopic_tt8","tree_artcontents_tc9", "all")
+                #dd.cpy_all("treetopic_tt8","tree_artcontents_tc9", "all")
+                dd.cpy_all("tree_artcontents_tc9","tree_artmenu_tm7", "all")
 
 
         def exec_cpy_one(self,idnew):                
@@ -223,3 +224,13 @@ class LKD_CopyFilesExec:
                         self.xx_dbg("LKD_CopyFilesExec::CPY_ITEM::__[" + str(ii) + "]__")
                         dd_handler.cpy_all(dd_source, item_name, pfilter)
                         ii = ii + 1
+
+        def generate_refcat(self, ii_from, ii_to, s_type):
+                self.xx_dbg("[METHOD_IN]" + "[generate_refcat]")
+
+                while ii_from <= ii_to:
+                        ss = "insert into joo2_catg_refcat(m_rg_refcatid, m_rg_value1) values (" + str(ii_from) + ", '" + s_type + "'); "
+                        print(ss)
+                        ii_from += 1
+                
+                self.xx_dbg("[METHOD_OUT]" + "[generate_refcat]")

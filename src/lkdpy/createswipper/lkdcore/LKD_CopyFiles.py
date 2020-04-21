@@ -366,3 +366,11 @@ class LKD_CopyFiles:
 
                 self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
 
+        def generate_refcat(self, ii_from,ii_to):
+                self.xx_dbg("[METHOD_IN]" + "[generate_refcat]")
+                self.xx_dbg("" + "[inplace_change][FROM_STR:]" + old_string + "]")
+                self.xx_dbg("" + "[inplace_change][TO_STR:]" + new_string + "]")
+
+
+                self.xx_dbg("[METHOD_OUT]" + "[generate_refcat]")
+
