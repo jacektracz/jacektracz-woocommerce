@@ -5,7 +5,7 @@ from createswipper.lkdcore.LKD_CopyFilesMd import *
 from createswipper.lkdcore.LKD_CopyFilesExec import *
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
-
+# 600 446 066 Rafal tel
 
 if __name__ == "__main__":
 
@@ -14,7 +14,7 @@ if __name__ == "__main__":
         #dd.exec_cpy_to_all_swippers_api()
         #dd.exec_cpy_to_all_swippers_includes_and_main()
         #dd.exec_cpy_to_all_swippers_main()
-        dd.exec_cpy_swipper()
+        #dd.exec_cpy_swipper()
 
 
         #dd.exec_cpy_to_all_swippers_splashes()
@@ -35,6 +35,6 @@ if __name__ == "__main__":
         #hh_md = LKD_CopyFilesMd("")     
         #hh_md.exec_cpy_many
 
-        #dd.generate_refcat(4668, 4676, "phd-thesis=article")
+        dd.generate_refcat(4677, 4700, "phd-thesis=article")
         # modules/mod_ep_swipper_tree_artmenu_tm7
 
