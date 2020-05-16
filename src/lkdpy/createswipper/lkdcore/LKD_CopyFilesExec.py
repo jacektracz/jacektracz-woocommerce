@@ -126,7 +126,8 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("splash_cmp_sl4", "tree_artcontents_tc9","all")
                 #dd.cpy_all("search_top_st9", "treetopic_tt8","all")
                 #dd.cpy_all("treetopic_tt8","tree_artcontents_tc9", "all")
-                dd.cpy_all("tree_artcontents_tc9","tree_artmenu_tm7", "all")
+                #dd.cpy_all("tree_artcontents_tc9","tree_artmenu_tm7", "all")
+                #dd.cpy_all("tree_artmenu_tm7","md_artcnt_ma7", "all")
 
 
         def exec_cpy_one(self,idnew):                
