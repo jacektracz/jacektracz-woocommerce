@@ -237,6 +237,35 @@ class LKD_CopyFiles:
                                 self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_test_" + psrc + ".php",
                                         "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_test_" + pdst + ".php")
 
+
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_cnt_title_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_cnt_title_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_cnt_title_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_cnt_title_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_mdcontent_create_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_mdcontent_create_" + pdst + ".php")
+
+
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_mdcontent_read_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_mdcontent_read_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "treerender" + DS + "EPT_swipper_rend_tree_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "treerender" + DS + "EPT_swipper_rend_tree_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "treestatic" + DS + "EPT_swipper_render_treestatic_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "treestatic" + DS + "EPT_swipper_render_treestatic_" + pdst + ".php")
+                                
+
+# EPT_swipper_render_mdcontent_create_md_artcnt_ma7
+# treestatic EPT_swipper_render_treestatic_md_artcnt_ma7
         def copy_file(self, psrc, pdest):
             
                 self.xx_dbg("[METHOD_IN]" + "[copy_file]")
