@@ -233,6 +233,8 @@ class LKD_CopyFiles:
                                 "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_" + pdst + ".php")
 
                 if(pfilter == "search-only"):
+
+                        
                         if(pfilter == "all" or pfilter == "main"):
                                 self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_test_" + psrc + ".php",
                                         "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_test_" + pdst + ".php")
