@@ -4,6 +4,9 @@
 package java_8_jacektracz_tutorial;
 
 import org.junit.Test;
+
+import com.jacektracz.java8.starter.Library;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
