@@ -9,13 +9,23 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+	//apply plugin: 'java'
 }
+
+//apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+jacoco {
+    toolVersion = "0.8.2"
+}
+
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
@@ -26,4 +36,17 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    
+     
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.1")
+    
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+    
+    testCompile("org.junit.jupiter:junit-jupiter-params:5.3.1")
+        
 }
+
+test {
+    useJUnitPlatform()
+}
+

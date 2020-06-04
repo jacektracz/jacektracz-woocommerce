@@ -1,12 +1,12 @@
 package com.jacektracz.java8.lambdasinaction.appc;
 
-import static com.jacektracz.java8.lambdasinaction.chap6.Dish.menu;
+import static com.jacektracz.java8.lambdasinaction.streams.grouping.Car.carList;
 import static java.util.stream.Collectors.*;
 
 import java.util.*;
 import java.util.stream.*;
 
-import com.jacektracz.java8.lambdasinaction.chap6.*;
+import com.jacektracz.java8.lambdasinaction.streams.grouping.*;
 
 public class StreamForkerExample {
 
@@ -15,21 +15,21 @@ public class StreamForkerExample {
     }
 
     private static void processMenu() {
-        Stream<Dish> menuStream = menu.stream();
+        Stream<Car> menuStream = carList.stream();
 
-        StreamForker.Results results = new StreamForker<Dish>(menuStream)
-                .fork("shortMenu", s -> s.map(Dish::getName).collect(joining(", ")))
-                .fork("totalCalories", s -> s.mapToInt(Dish::getCalories).sum())
+        StreamForker.Results results = new StreamForker<Car>(menuStream)
+                .fork("shortMenu", s -> s.map(Car::getName).collect(joining(", ")))
+                .fork("totalCalories", s -> s.mapToInt(Car::getHorsePower).sum())
                 .fork("mostCaloricDish", s -> s.collect(
-                        reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2))
+                        reducing((d1, d2) -> d1.getHorsePower() > d2.getHorsePower() ? d1 : d2))
                         .get())
-                .fork("dishesByType", s -> s.collect(groupingBy(Dish::getType)))
+                .fork("dishesByType", s -> s.collect(groupingBy(Car::getType)))
                 .getResults();
 
         String shortMeny = results.get("shortMenu");
         int totalCalories = results.get("totalCalories");
-        Dish mostCaloricDish = results.get("mostCaloricDish");
-        Map<Dish.Type, List<Dish>> dishesByType = results.get("dishesByType");
+        Car mostCaloricDish = results.get("mostCaloricDish");
+        Map<Car.Type, List<Car>> dishesByType = results.get("dishesByType");
 
         System.out.println("Short menu: " + shortMeny);
         System.out.println("Total calories: " + totalCalories);

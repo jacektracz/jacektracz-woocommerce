@@ -21,10 +21,10 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collector;
 
-import com.jacektracz.java8.lambdasinaction.chap6.Dish;
+import com.jacektracz.java8.lambdasinaction.streams.grouping.Car;
 
-import static com.jacektracz.java8.lambdasinaction.chap6.Dish.menu;
 import static com.jacektracz.java8.lambdasinaction.dsl.Grouping.GroupingBuilder.groupOn;
+import static com.jacektracz.java8.lambdasinaction.streams.grouping.Car.carList;
 import static java.util.stream.Collectors.groupingBy;
 
 public class Grouping {
@@ -36,15 +36,15 @@ public class Grouping {
         System.out.println("Dishes grouped by type and caloric level: " + groupDishedByTypeAndCaloricLevel3());
     }
 
-    private static CaloricLevel getCaloricLevel( Dish dish ) {
-        if (dish.getCalories() <= 400) return CaloricLevel.DIET;
-        else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+    private static CaloricLevel getCaloricLevel( Car dish ) {
+        if (dish.getHorsePower() <= 400) return CaloricLevel.DIET;
+        else if (dish.getHorsePower() <= 700) return CaloricLevel.NORMAL;
         else return CaloricLevel.FAT;
     }
 
-    private static Map<Dish.Type, Map<CaloricLevel, List<Dish>>> groupDishedByTypeAndCaloricLevel2() {
-        return menu.stream().collect(
-                twoLevelGroupingBy(Dish::getType, dish -> getCaloricLevel( dish ) )
+    private static Map<Car.Type, Map<CaloricLevel, List<Car>>> groupDishedByTypeAndCaloricLevel2() {
+        return carList.stream().collect(
+                twoLevelGroupingBy(Car::getType, dish -> getCaloricLevel( dish ) )
                                     );
     }
 
@@ -52,9 +52,9 @@ public class Grouping {
         return groupingBy(f1, groupingBy(f2));
     }
 
-    private static Map<Dish.Type, Map<CaloricLevel, List<Dish>>> groupDishedByTypeAndCaloricLevel3() {
-        Collector<? super Dish, ?, Map<Dish.Type, Map<CaloricLevel, List<Dish>>>> c = groupOn( ( Dish dish ) -> getCaloricLevel( dish ) ).after( Dish::getType ).get();
-        return menu.stream().collect( c );
+    private static Map<Car.Type, Map<CaloricLevel, List<Car>>> groupDishedByTypeAndCaloricLevel3() {
+        Collector<? super Car, ?, Map<Car.Type, Map<CaloricLevel, List<Car>>>> c = groupOn( ( Car dish ) -> getCaloricLevel( dish ) ).after( Car::getType ).get();
+        return carList.stream().collect( c );
     }
 
     public static class GroupingBuilder<T, D, K> {
