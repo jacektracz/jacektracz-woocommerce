@@ -14,8 +14,8 @@ import java.util.concurrent.ThreadFactory;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.jacektracz.java8.lambdasinaction.chap11.ExchangeService;
-import com.jacektracz.java8.lambdasinaction.chap11.ExchangeService.Money;
+import com.jacektracz.java8.lambdasinaction.completableFuture.ExchangeService;
+import com.jacektracz.java8.lambdasinaction.completableFuture.ExchangeService.Money;
 
 public class BestPriceFinder {
 
