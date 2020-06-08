@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Lambda1 {
 

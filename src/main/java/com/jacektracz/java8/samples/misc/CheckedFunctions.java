@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 /**
  * Utilities for hassle-free usage of lambda expressions who throw checked exceptions.
  *
- * @author Benjamin Winterberg
+ * 
  */
 public final class CheckedFunctions {
 

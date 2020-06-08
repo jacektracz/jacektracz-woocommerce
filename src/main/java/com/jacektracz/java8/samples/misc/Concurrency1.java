@@ -4,7 +4,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Concurrency1 {
 

@@ -3,7 +3,7 @@ package com.jacektracz.java8.samples.stream;
 import java.util.Arrays;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Streams9 {
 

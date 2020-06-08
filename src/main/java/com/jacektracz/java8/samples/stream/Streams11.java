@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Streams11 {
 

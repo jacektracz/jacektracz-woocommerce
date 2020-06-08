@@ -1,7 +1,7 @@
 package com.jacektracz.java8.samples.misc;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Math1 {
 

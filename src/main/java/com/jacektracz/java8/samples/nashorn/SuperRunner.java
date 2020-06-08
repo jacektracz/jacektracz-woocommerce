@@ -1,7 +1,7 @@
 package com.jacektracz.java8.samples.nashorn;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class SuperRunner implements Runnable {
 

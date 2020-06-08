@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 /**
  * Testing the order of execution.
  *
- * @author Benjamin Winterberg
+ * 
  */
 public class Streams5 {
 

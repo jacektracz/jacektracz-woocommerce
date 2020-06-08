@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class LocalTime1 {
 

@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class CompletableFuture1 {
 

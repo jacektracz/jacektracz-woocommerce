@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class String1 {
 

@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * Calling javascript functions from java with nashorn.
  *
- * @author Benjamin Winterberg
+ * 
  */
 public class Nashorn1 {
 

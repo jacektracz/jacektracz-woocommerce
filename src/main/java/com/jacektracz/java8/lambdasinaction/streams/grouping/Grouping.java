@@ -101,8 +101,9 @@ public class Grouping {
                         toSet() )));
     }
     
-    /*
-    public static void flatMappingExample {
+
+    public static void flatMappingExample() {
+    	
         List<Integer> list = Stream.of(List.of(1, 2, 3, 4), List.of(5, 6, 7, 8))
                                    .collect(
                                            Collectors.flatMapping(
@@ -113,5 +114,5 @@ public class Grouping {
                                    );
         System.out.println(list);
     } 
-    */   
+   
 }

@@ -3,7 +3,7 @@ package com.jacektracz.java8.samples.stream;
 import java.util.Optional;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Optional1 {
 

@@ -9,7 +9,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Streams10 {
 

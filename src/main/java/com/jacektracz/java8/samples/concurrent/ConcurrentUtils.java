@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class ConcurrentUtils {
 

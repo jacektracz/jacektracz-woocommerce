@@ -9,7 +9,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class LocalDate1 {
 

@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Atomic1 {
 

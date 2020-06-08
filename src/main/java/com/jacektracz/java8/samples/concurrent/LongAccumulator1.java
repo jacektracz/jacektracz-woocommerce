@@ -7,7 +7,7 @@ import java.util.function.LongBinaryOperator;
 import java.util.stream.IntStream;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class LongAccumulator1 {
 

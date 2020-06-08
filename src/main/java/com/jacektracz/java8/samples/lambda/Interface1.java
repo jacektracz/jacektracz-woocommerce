@@ -1,7 +1,7 @@
 package com.jacektracz.java8.samples.lambda;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Interface1 {
 

@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class ConcurrentHashMap1 {
 

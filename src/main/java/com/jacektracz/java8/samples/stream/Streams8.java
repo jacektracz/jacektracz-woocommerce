@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * @author Benjamin Winterberg
+ * 
  */
 public class Streams8 {
 
