@@ -6,9 +6,9 @@ import java.util.concurrent.ExecutionException;
 /**
  * 
  */
-public class CompletableFuture1 {
+public class JavaCompletableFutureDesignPattern {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void executeCompletableFuture() throws ExecutionException, InterruptedException {
         CompletableFuture<String> future = new CompletableFuture<>();
 
         future.complete("42");

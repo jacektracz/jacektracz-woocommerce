@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 /**
  * 
  */
-public class Semaphore1 {
+public class JavaSemaphoreDesignPattern {
 
     private static final int NUM_INCREMENTS = 10000;
 
@@ -25,7 +25,7 @@ public class Semaphore1 {
         ExecutorService executor = Executors.newFixedThreadPool(2);
 
         IntStream.range(0, NUM_INCREMENTS)
-                .forEach(i -> executor.submit(Semaphore1::increment));
+                .forEach(i -> executor.submit(JavaSemaphoreDesignPattern::increment));
 
         ConcurrentUtils.stop(executor);
 
