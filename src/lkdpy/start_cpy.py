@@ -3,18 +3,22 @@ import os
 from createswipper.lkdcore.LKD_CopyFiles import *
 from createswipper.lkdcore.LKD_CopyFilesMd import *
 from createswipper.lkdcore.LKD_CopyFilesExec import *
+from createswipper.lkdcore.LKD_CreateFiles import *
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 # 600 446 066 Rafal tel
 
 if __name__ == "__main__":
 
-        dd = LKD_CopyFilesExec("")
+        ddcr = LKD_CreateFiles("")
+        ddcr.execute_main()
+
+        #dd = LKD_CopyFilesExec("")
         #dd.exec_cpy_list_of_catsup()
         #dd.exec_cpy_to_all_swippers_api()
         #dd.exec_cpy_to_all_swippers_includes_and_main()
         #dd.exec_cpy_to_all_swippers_main()
-        dd.exec_cpy_swipper()
+        #dd.exec_cpy_swipper()
 
 
         #dd.exec_cpy_to_all_swippers_splashes()
