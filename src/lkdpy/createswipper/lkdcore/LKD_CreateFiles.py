@@ -87,6 +87,8 @@ class LKD_CreateFiles:
 
                 dest_java_flat_dir_path = rootpath + "/content_idx_0/javafiles/flat" 
 
+                dest_java_root_idx_0_dir_path = rootpath + "/content_idx_0"
+
                 self.xx_print(dest_java_flat_dir_path)
 
                 self.create_dir(dest_java_flat_dir_path)
@@ -98,7 +100,7 @@ class LKD_CreateFiles:
 
                 #self.copy_javafiles(java_files)
 
-                self.create_javafiles_md(java_files)
+                self.create_javafiles_md(java_files ,dest_java_root_idx_0_dir_path)
 
                 self.xx_dbg("LKD_CopyFiles::read_directory_subdirs_flat::out::")
 
@@ -118,19 +120,26 @@ class LKD_CreateFiles:
 
                         shutil.copy(src_fpath, dest_fpath)
 
-        def create_javafiles_md(self, file_items):
+        def create_javafiles_md(self, file_items , dest_java_root_idx_0_dir_path):
                 ii = 0
                 for file_item in file_items:
                         src_fpath = file_item.src_javafile_full_path
                         dest_fpath = file_item.dest_java_flat_dir_path + "/" + "content__java_files.md"
+
+                        dest_root_fpath = dest_java_root_idx_0_dir_path + "/" + "content__java_files.md"
+
                         self.xx_dbg("copy-from:" + src_fpath)
                         self.xx_dbg("copy-to:" + dest_fpath)    
                         file_header = "### Source File: " + file_item.src_javafile_name                        
 
                         if (ii == 1):                                
                                 self.create_empty_file(src_fpath, dest_fpath , file_header)
+                                self.create_empty_file(src_fpath, dest_root_fpath , file_header)
 
                         self.copy_lines_from_file(src_fpath, dest_fpath , file_header)
+
+                        self.copy_lines_from_file(src_fpath, dest_root_fpath , file_header)
+
                         ii = ii + 1
 
 
