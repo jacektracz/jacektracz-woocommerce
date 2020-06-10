@@ -104,7 +104,7 @@ class LKD_CopyFilesMd:
 		dd_file =  dd_file  + dd_DS1 + "mod_ep_articles"
 		dd_file =  dd_file  + dd_DS1 + "content_cats"
 		dd_file =  dd_file  + dd_DS1 + "content_markdown"
-		dd_file =  dd_file  + dd_DS1 + "content_by_groups_2cpy"
+		dd_file =  dd_file  + dd_DS1 + "content_by_groups"
 		dd_file =  dd_file  + dd_DS1 + "cat__" + str(dd_mod_1000) + "000"
 		dd_file =  dd_file  + dd_DS1 + "cat__" + str(dd_mod_100) + "00"
 		dd_file =  dd_file  + dd_DS1 + "cat__" + str(dd_mod_10) + "0"

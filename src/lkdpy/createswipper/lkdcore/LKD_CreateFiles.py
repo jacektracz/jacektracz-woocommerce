@@ -98,7 +98,7 @@ class LKD_CreateFiles:
                                 , pcatid
                                 ,       dest_java_flat_dir_path)
 
-                #self.copy_javafiles(java_files)
+                self.copy_javafiles(java_files)
 
                 self.create_javafiles_md(java_files ,dest_java_root_idx_0_dir_path)
 
