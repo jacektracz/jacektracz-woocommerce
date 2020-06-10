@@ -96,8 +96,9 @@ class LKD_CreateFiles:
                                 , pcatid
                                 ,       dest_java_flat_dir_path)
 
-                self.copy_javafiles(java_files)
+                #self.copy_javafiles(java_files)
 
+                self.create_javafiles_md(java_files)
 
                 self.xx_dbg("LKD_CopyFiles::read_directory_subdirs_flat::out::")
 
@@ -118,13 +119,20 @@ class LKD_CreateFiles:
                         shutil.copy(src_fpath, dest_fpath)
 
         def create_javafiles_md(self, file_items):
+                ii = 0
                 for file_item in file_items:
                         src_fpath = file_item.src_javafile_full_path
-                        dest_fpath = file_item.dest_java_flat_dir_path + "/" + file_item.src_javafile_name
+                        dest_fpath = file_item.dest_java_flat_dir_path + "/" + "content__java_files.md"
                         self.xx_dbg("copy-from:" + src_fpath)
-                        self.xx_dbg("copy-to:" + dest_fpath)
+                        self.xx_dbg("copy-to:" + dest_fpath)    
+                        file_header = "### Source File: " + file_item.src_javafile_name                        
 
-                        shutil.copy(src_fpath, dest_fpath)
+                        if (ii == 1):                                
+                                self.create_empty_file(src_fpath, dest_fpath , file_header)
+
+                        self.copy_lines_from_file(src_fpath, dest_fpath , file_header)
+                        ii = ii + 1
+
 
         def get_files_recur(self, psrc_path_project, pcatid, pdest_java_flat_dir_path):
                 fjavafiles = []
@@ -140,6 +148,38 @@ class LKD_CreateFiles:
 
                 return fjavafiles
 
+        def create_empty_file(self, filename_src, filename_dest, pfileheader):
+                lout = []
+                with open(filename_dest, "w") as f:
+                        f.writelines(lout)
+
+        def copy_lines_from_file(self, filename_src, filename_dest, pfileheader):
+                self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
+
+                self.xx_dbg("src_file_to_copy:" + filename_src)
+                self.xx_dbg("filename_dest:" + filename_dest)
+
+
+                # Safely write the changed content, if found in the file
+                lout = []
+                with open(filename_src, "r") as f:
+                        lines = f.readlines()                         
+                        lout.append("\r\n")
+                        lout.append("\r\n")
+                        lout.append(pfileheader)
+                        lout.append("\r\n")
+                        lout.append("\r\n")
+                        lout.append("```Java")
+                        lout.append("\r\n")
+                        for line in lines:
+                                lout.append(line)
+                        lout.append("\r\n")
+                        lout.append("```")
+
+                with open(filename_dest, "a") as f:
+                        f.writelines(lout)
+
+                self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
 
         def read_directory_subdirs_only(self, psrc_path_project):
                 #self.xx_dbg("LKD_CopyFiles::read_directory_subdirs_flat::in::")
