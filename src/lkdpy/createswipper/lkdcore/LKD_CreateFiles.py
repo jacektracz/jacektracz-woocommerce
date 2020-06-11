@@ -4,6 +4,8 @@ import logging
 import shutil
 from LKD_CopyFilesMd import *
 
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
+
 class LKD_CatItem:
         def __init__(self, pcatid, psrc_project_relative_path):
 
@@ -33,27 +35,21 @@ class LKD_CreateFiles:
                         
                 self.xx_dbg("LKD_CopyFiles::prepare_object::out::")
 
-        def read_directory_subdirs(self):
+        #def get_generic_cats_items(self,dd)
+        #        return self.get_cats_espn("")
 
-                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs::in::")
-                folders = []
-                for r, d, f in os.walk(path):
-                        for folder in d:
-                                folders.append(os.path.join(r, folder))
-
-                for f in folders:
-                        print(f)
-
-                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs::out::")
-
+        #def get_generic_root(self,dd)
+        #        return self.get_root_espn()
 
         def execute_main(self):
 
                 self.xx_dbg("LKD_CopyFiles::execute_main::in::")
 
-                paths = self.create_cats_path("")
+                paths = self.get_generic_cats_items("")
+
                 for path in paths:
-                        src_path = self.m_src + "/" + path.src_project_relative_path + "/src"
+                        root_scr_path = self.get_generic_root("")
+                        src_path = root_scr_path + "/" + path.src_project_relative_path + "/src"
                         self.read_directory_subdirs_flat(
                                 src_path
                                 , path.catid)
@@ -422,6 +418,29 @@ class LKD_CreateFiles:
                 cats.append(self.get_item(5446,"visitor"))
                 return cats
 
+        def get_root_espn(self):
+                root_src = "C:/lkd/ht/apps_micro_resillent_sap/app/src/cloud-espm-cloud-native"
+                return root_src
+
+        def get_cats_espn(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(5449,"benchmark"))
+                cats.append(self.get_item(5450,"commons"))
+                cats.append(self.get_item(5451,"customer-service"))
+                cats.append(self.get_item(5452,"documentation"))
+                cats.append(self.get_item(5453,"gateway"))
+                cats.append(self.get_item(5454,"product-service"))
+                cats.append(self.get_item(5455,"sale-service"))
+                cats.append(self.get_item(5456,"tax-service"))
+                cats.append(self.get_item(5457,"worker"))
+                return cats
+
+        def get_generic_cats_items(self,dd):
+                return self.get_cats_espn("")
+
+        def get_generic_root(self,dd):
+                return self.get_root_espn()
+
         def get_item(self, id,title):
                 dd = LKD_CatItem(id,title)
                 return dd
@@ -436,3 +455,15 @@ class LKD_CreateFiles:
 
        
 
+        def read_directory_subdirs(self):
+
+                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs::in::")
+                folders = []
+                for r, d, f in os.walk(path):
+                        for folder in d:
+                                folders.append(os.path.join(r, folder))
+
+                for f in folders:
+                        print(f)
+
+                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs::out::")
