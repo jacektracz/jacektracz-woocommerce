@@ -128,7 +128,9 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("treetopic_tt8","tree_artcontents_tc9", "all")
                 #dd.cpy_all("tree_artcontents_tc9","tree_artmenu_tm7", "all")
                 #dd.cpy_all("tree_artmenu_tm7","md_artcnt_ma7", "all")
-                dd.cpy_all("md_artcnt_ma7","md_treebottom_tb9", "all")
+                #dd.cpy_all("md_artcnt_ma7","md_treebottom_tb9", "all")
+
+                dd.cpy_all("catsup0_cu0","catslatest_cl2", "all-short")
 
 
         def exec_cpy_one(self,idnew):                
