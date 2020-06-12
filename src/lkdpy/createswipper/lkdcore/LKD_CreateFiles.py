@@ -439,11 +439,13 @@ class LKD_CreateFiles:
 
         def get_root_j8p(self):
                 root_src = "C:/lkd/ht/apps_java8_in_action/app/src"
+                root_src = "C:/lkd/ht/apps_jhipster_cassandra/app"
                 return root_src
 
         def get_cats_j8p(self, psrc_path_project):
                 cats = []
-                cats.append(self.get_item(5459,"java-8-jacektracz-tutorial"))
+                # cats.append(self.get_item(5459,"java-8-jacektracz-tutorial"))
+                cats.append(self.get_item(5461,"jhipster-sample-app-cassandra"))
                 return cats
 
         def get_generic_cats_items(self,dd):
