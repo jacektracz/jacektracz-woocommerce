@@ -432,14 +432,27 @@ class LKD_CreateFiles:
                 cats.append(self.get_item(5454,"product-service"))
                 cats.append(self.get_item(5455,"sale-service"))
                 cats.append(self.get_item(5456,"tax-service"))
-                cats.append(self.get_item(5457,"worker"))
+                cats.append(self.get_item(5457,"worker"))                
+                return cats
+
+        # C:\lkd\ht\apps_java8_in_action\app\src
+
+        def get_root_j8p(self):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src"
+                return root_src
+
+        def get_cats_j8p(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(5459,"java-8-jacektracz-tutorial"))
                 return cats
 
         def get_generic_cats_items(self,dd):
-                return self.get_cats_espn("")
+                # return self.get_cats_espn("")
+                return self.get_cats_j8p("")
 
         def get_generic_root(self,dd):
-                return self.get_root_espn()
+                # return self.get_root_espn()
+                return self.get_root_j8p()
 
         def get_item(self, id,title):
                 dd = LKD_CatItem(id,title)

@@ -10,11 +10,11 @@ from createswipper.lkdcore.LKD_CreateFiles import *
 
 if __name__ == "__main__":
 
-        # ddcr = LKD_CreateFiles("")
-        # ddcr.execute_main()
+        ddcr = LKD_CreateFiles("")
+        ddcr.execute_main()
 
-        dd = LKD_CopyFilesExec("")
-        dd.exec_cpy_swipper()
+        # dd = LKD_CopyFilesExec("")
+        # dd.exec_cpy_swipper()
 
         #dd.exec_cpy_list_of_catsup()
         #dd.exec_cpy_to_all_swippers_api()
