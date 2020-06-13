@@ -508,7 +508,8 @@ class LKD_CreateFiles:
                 cats.append(self.get_item(5520,"fineract-cn-teller"))
                 cats.append(self.get_item(5521,"fineract-cn-template"))
                 cats.append(self.get_item(5522,"fineract-cn-test"))
-
+                return cats
+                
         def get_root_j8p(self):
                 root_src = "C:/lkd/ht/apps_java8_in_action/app/src"
                 root_src = "C:/lkd/ht/apps_jhipster_cassandra/app"                
