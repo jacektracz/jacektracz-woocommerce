@@ -437,9 +437,81 @@ class LKD_CreateFiles:
 
         # C:\lkd\ht\apps_java8_in_action\app\src
 
+        def get_cats_sbms(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(5464,"catalog-service"))
+                cats.append(self.get_item(5465,"config"))
+                cats.append(self.get_item(5466,"config-server"))
+                cats.append(self.get_item(5467,"hystrix-dashboard"))
+                cats.append(self.get_item(5468,"inventory-service"))
+                cats.append(self.get_item(5469,"master-project-files"))
+                cats.append(self.get_item(5470,"oauth2-server"))
+                cats.append(self.get_item(5471,"order-service"))
+                cats.append(self.get_item(5472,"service-registry"))
+                cats.append(self.get_item(5473,"shoppingcart-ui"))
+                cats.append(self.get_item(5474,"zipkin-server"))
+                return cats
+
+        def get_cats_spring_pets(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(5477,"cat-service"))
+                cats.append(self.get_item(5478,"dog-service"))
+                cats.append(self.get_item(5479,"pet-api"))
+                cats.append(self.get_item(5480,"pet-config"))
+                cats.append(self.get_item(5481,"pet-dashboard"))
+                cats.append(self.get_item(5482,"pet-eureka"))
+                cats.append(self.get_item(5483,"pet-food"))
+                cats.append(self.get_item(5484,"pet_profiles config"))
+                return cats
+
+
+        def get_root_fineract(self,dd):
+                root_src = "C:/lkd/ht/apps_fineract_apache/apa"
+                return root_src
+
+        def get_cats_fineract(self, psrc_path_project):
+                cats = []
+
+                cats.append(self.get_item(5487,"fineract-cn-accounting"))
+                cats.append(self.get_item(5488,"fineract-cn-anubis"))
+                cats.append(self.get_item(5489,"fineract-cn-api"))
+                cats.append(self.get_item(5490,"fineract-cn-async"))
+                cats.append(self.get_item(5491,"fineract-cn-cassandra"))
+                cats.append(self.get_item(5492,"fineract-cn-cheques"))
+                cats.append(self.get_item(5493,"fineract-cn-command"))
+                cats.append(self.get_item(5494,"fineract-cn-crypto"))
+                cats.append(self.get_item(5495,"fineract-cn-customer"))
+                cats.append(self.get_item(5496,"fineract-cn-data-jpa"))
+                cats.append(self.get_item(5497,"fineract-cn-default-setup"))
+                cats.append(self.get_item(5498,"fineract-cn-demo-server"))
+                cats.append(self.get_item(5499,"fineract-cn-deposit-account-management"))
+                cats.append(self.get_item(5500,"fineract-cn-docker-compose"))
+                cats.append(self.get_item(5501,"fineract-cn-fims-e2e"))
+                cats.append(self.get_item(5502,"fineract-cn-fims-web-app"))
+                cats.append(self.get_item(5503,"fineract-cn-group"))
+                cats.append(self.get_item(5504,"fineract-cn-group-finance"))
+                cats.append(self.get_item(5505,"fineract-cn-identity"))
+                cats.append(self.get_item(5506,"fineract-cn-lang"))
+                cats.append(self.get_item(5507,"fineract-cn-mariadb"))
+                cats.append(self.get_item(5508,"fineract-cn-mobile"))
+                cats.append(self.get_item(5509,"fineract-cn-notifications"))
+                cats.append(self.get_item(5510,"fineract-cn-office"))
+                cats.append(self.get_item(5511,"fineract-cn-payroll"))
+                cats.append(self.get_item(5512,"fineract-cn-permitted-feign-client"))
+                cats.append(self.get_item(5513,"fineract-cn-portfolio"))
+                cats.append(self.get_item(5514,"fineract-cn-postgresql"))
+                cats.append(self.get_item(5515,"fineract-cn-provisioner"))
+                cats.append(self.get_item(5516,"fineract-cn-reporting"))
+                cats.append(self.get_item(5517,"fineract-cn-rhythm"))
+                cats.append(self.get_item(5518,"fineract-cn-service-starter"))
+                cats.append(self.get_item(5519,"fineract-cn-stellar-bridge"))
+                cats.append(self.get_item(5520,"fineract-cn-teller"))
+                cats.append(self.get_item(5521,"fineract-cn-template"))
+                cats.append(self.get_item(5522,"fineract-cn-test"))
+
         def get_root_j8p(self):
                 root_src = "C:/lkd/ht/apps_java8_in_action/app/src"
-                root_src = "C:/lkd/ht/apps_jhipster_cassandra/app"
+                root_src = "C:/lkd/ht/apps_jhipster_cassandra/app"                
                 return root_src
 
         def get_cats_j8p(self, psrc_path_project):
@@ -448,13 +520,29 @@ class LKD_CreateFiles:
                 cats.append(self.get_item(5461,"jhipster-sample-app-cassandra"))
                 return cats
 
+
+        def get_root_sbms(self,dd):
+                root_src = "C:/lkd/ht/apps_springmicroseries/app/src/spring-boot-microservices-series"
+                return root_src
+
+        def get_root_pets(self,dd):
+                root_src = "C:/lkd/ht/apps_springcloudpet/app/src/jacektracz-cloud-spring-pet"
+                return root_src
+
+
         def get_generic_cats_items(self,dd):
                 # return self.get_cats_espn("")
-                return self.get_cats_j8p("")
+                # return self.get_cats_j8p("")
+                # return self.get_cats_sbms("")
+                # return self.get_cats_spring_pets("")
+                return self.get_cats_fineract("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
-                return self.get_root_j8p()
+                # return self.get_root_j8p()
+                # return self.get_root_sbms("")
+                # return self.get_root_pets("")
+                return self.get_root_fineract("")
 
         def get_item(self, id,title):
                 dd = LKD_CatItem(id,title)
