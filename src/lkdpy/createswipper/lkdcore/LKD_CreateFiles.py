@@ -46,11 +46,21 @@ class LKD_CreateFiles:
                 self.xx_dbg("LKD_CopyFiles::execute_main::in::")
 
                 paths = self.get_generic_cats_items("")
-                postfixes = []
-                postfixes.append("src")
-                postfixes.append("service")
-                postfixes.append("api")
-                postfixes.append("component-test")
+                postfixes = []    
+                direct_subdirs = 0
+
+                if( direct_subdirs == 0):
+                        postfixes.append("")
+
+                if( direct_subdirs == 1):
+                        postfixes.append("src")
+                        postfixes.append("service")
+                        postfixes.append("api")
+                        postfixes.append("component-test")
+                        postfixes.append("client")
+                        postfixes.append("server")
+                        postfixes.append("project-files")
+
                 for lkd_cat_item in paths:
                         for postfix in postfixes:
                                 self.create_execute_source_path_root(lkd_cat_item, postfix)
@@ -59,8 +69,16 @@ class LKD_CreateFiles:
 
         def create_execute_source_path_root(self, lkd_cat_item, src_postfix):
 
+                self.xx_dbg("LKD_CopyFiles::create_execute_source_path_root::in::")
                 root_scr_path = self.get_generic_root("")
-                src_path = root_scr_path + "/" + lkd_cat_item.src_project_relative_path + "/" + src_postfix
+                postfix_2_add = "";
+                if( src_postfix != ""):
+                        postfix_2_add = "/" + src_postfix
+
+                src_path = root_scr_path + "/" + lkd_cat_item.src_project_relative_path + postfix_2_add
+
+                self.xx_print("read-dir:" + src_path)
+
                 java_files = self.read_directory_subdirs_flat(
                         src_path
                         , lkd_cat_item.catid)
@@ -70,10 +88,15 @@ class LKD_CreateFiles:
                 self.xx_print(rootpath)
                 dest_java_flat_dir_path = rootpath + "/content_idx_0/javafiles/flat" 
                 dest_java_root_idx_0_dir_path = rootpath + "/content_idx_0"
-                self.copy_javafiles(java_files)
+
+                self.copy_javafiles(
+                        java_files)
+
                 self.create_javafiles_md(
                         java_files  
                         , dest_java_root_idx_0_dir_path)
+
+                self.xx_dbg("LKD_CopyFiles::create_execute_source_path_root::out::")
 
 
         def create_dir(self, dir_path):
@@ -84,14 +107,18 @@ class LKD_CreateFiles:
                         os.makedirs(dir_path)
                         self.xx_print("dir-created" + dir_path )
 
+        def get_class_name(self):
+                return "LKD_CopyFiles"
 
         def read_directory_subdirs_flat(self, psrc_path_project, pcatid):
-                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs_flat::in::")
+                s_fun = self.get_class_name() + "::read_directory_subdirs_flat::"
+                self.xx_dbg(s_fun + "in::")
                 
                 print psrc_path_project
-
+                java_files = []
                 if(os.path.isdir(psrc_path_project) == False):
-                        return
+                        self.xx_dbg(s_fun + "no-files")
+                        return java_files
 
                 print "execute lkd_cat_item"
 
@@ -127,17 +154,58 @@ class LKD_CreateFiles:
                         else: print '---', x
 
         def copy_javafiles(self, file_items):
+                s_fun = self.get_class_name() + "::copy_javafiles::"
+                self.xx_dbg(s_fun + "start")
+                
                 for file_item in file_items:
                         src_fpath = file_item.src_javafile_full_path
+
+                        if(self.check_file_is_valid(src_fpath) == 0):
+                                self.xx_dbg(s_fun + "missed_file:" + src_fpath)
+                                continue
+
                         dest_fpath = file_item.dest_java_flat_dir_path + "/" + file_item.src_javafile_name
                         self.xx_dbg("copy-from:" + src_fpath)
                         self.xx_dbg("copy-to:" + dest_fpath)
 
                         shutil.copy(src_fpath, dest_fpath)
 
+                self.xx_dbg("LKD_CopyFiles::copy_javafiles::out::")
+
+        def check_file_is_valid(self, psrc_fpath):
+                s_fun = self.get_class_name() + "::check_file_is_valid::"
+                self.xx_dbg(s_fun + "start")
+
+                needles = []
+                needles.append("target")
+                needles.append(".git")
+                needles.append("node_modules")
+                is_valid = 1
+                for needle in needles:
+                        if(self.is_match(psrc_fpath, needle)):
+                                is_valid = 0
+                
+                self.xx_dbg(s_fun + "end")
+                return is_valid
+
+        def is_match(self, psrc, needle):
+                s_fun = self.get_class_name() + "::is_match::"
+                self.xx_dbg(s_fun + "start")
+
+                is_match= 0
+                if(psrc.find( needle )):
+                        is_match = 1
+
+                self.xx_dbg(s_fun + "end")
+                return is_match
+
         def create_javafiles_md(self, file_items , dest_java_root_idx_0_dir_path):
+                self.xx_dbg("LKD_CopyFiles::create_javafiles_md::in::")
                 ii = 0
                 for file_item in file_items:
+
+                        self.xx_dbg("LKD_CopyFiles::create_javafiles_md::execute_one_item::")
+
                         src_fpath = file_item.src_javafile_full_path
                         dest_fpath = file_item.dest_java_flat_dir_path + "/" + "content__java_files.md"
 
@@ -156,6 +224,8 @@ class LKD_CreateFiles:
                         self.copy_lines_from_file(src_fpath, dest_root_fpath , file_header)
 
                         ii = ii + 1
+
+                self.xx_dbg("LKD_CopyFiles::create_javafiles_md::out::")
 
 
         def get_files_recur(self, psrc_path_project, pcatid, pdest_java_flat_dir_path):
@@ -483,6 +553,15 @@ class LKD_CreateFiles:
                 cats.append(self.get_item(5484,"pet_profiles config"))
                 return cats
 
+        def get_root_eureka_feign(self):
+                root_src = "C:/lkd/ht/apps_eurekafeign/app/src"
+                return root_src
+
+        def get_cats_eureka_feign(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(5524,"jacektracz-feign-eureka"))
+                return cats
+
 
         def get_root_fineract(self,dd):
                 root_src = "C:/lkd/ht/apps_fineract_apache/apa"
@@ -555,14 +634,17 @@ class LKD_CreateFiles:
                 # return self.get_cats_j8p("")
                 # return self.get_cats_sbms("")
                 # return self.get_cats_spring_pets("")
-                return self.get_cats_fineract("")
+                # return self.get_cats_fineract("")
+                return self.get_cats_eureka_feign("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
                 # return self.get_root_j8p()
                 # return self.get_root_sbms("")
                 # return self.get_root_pets("")
-                return self.get_root_fineract("")
+                # return self.get_root_fineract("")
+                return self.get_root_eureka_feign("")
+                
 
         def get_item(self, id,title):
                 dd = LKD_CatItem(id,title)
