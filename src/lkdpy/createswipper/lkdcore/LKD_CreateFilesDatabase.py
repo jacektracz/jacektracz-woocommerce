@@ -30,7 +30,8 @@ class LKD_CreateFilesDatabase:
                 # return self.get_cats_spring_pets("")
                 # return self.get_cats_fineract("")
                 # return self.get_cats_eureka_feign("")
-                return self.get_cats_jhreact("")
+                # return self.get_cats_jhreact("")
+                return self.get_cats_activemq("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -39,7 +40,8 @@ class LKD_CreateFilesDatabase:
                 # return self.get_root_pets("")
                 # return self.get_root_fineract("")
                 # return self.get_root_eureka_feign("")
-                return self.get_root_jhreact("")
+                # return self.get_root_jhreact("")
+                return self.get_root_activemq("")
 
         def get_root_jhreact(self, dd):
                 root_src = "C:/lkd/ht/apps_sb/app/src/"
@@ -325,6 +327,59 @@ class LKD_CreateFilesDatabase:
                 cats.append(self.get_item(5524,"jacektracz-feign-eureka"))
                 return cats
 
+
+
+        def get_root_activemq(self,dd):
+                root_src = "C:/lkd/ht/apps_spring_activemq_examples/app/src/activemq-examples-2"
+                return root_src
+
+        def get_cats_activemq_test(self, psrc_path_project):
+                cats = []
+
+                cats.append(self.get_item(5545, "activemq-karaf"))
+                return cats
+
+        def get_cats_activemq(self, psrc_path_project):
+                cats = []
+
+                cats.append(self.get_item(5545, "activemq-all"))
+                cats.append(self.get_item(5546, "activemq-amqp"))
+                cats.append(self.get_item(5547, "activemq-blueprint"))
+                cats.append(self.get_item(5548, "activemq-broker"))
+                cats.append(self.get_item(5549, "activemq-camel"))
+                cats.append(self.get_item(5550, "activemq-client"))
+                cats.append(self.get_item(5551, "activemq-console"))
+                cats.append(self.get_item(5552, "activemq-fileserver"))
+                cats.append(self.get_item(5553, "activemq-http"))
+                cats.append(self.get_item(5554, "activemq-itests-spring31"))
+                cats.append(self.get_item(5555, "activemq-jaas"))
+                cats.append(self.get_item(5556, "activemq-jdbc-store"))
+                cats.append(self.get_item(5557, "activemq-jms-pool"))
+                cats.append(self.get_item(5558, "activemq-kahadb-store"))
+                cats.append(self.get_item(5559, "activemq-karaf"))
+                cats.append(self.get_item(5560, "activemq-karaf-itest"))
+                cats.append(self.get_item(5561, "activemq-leveldb-store"))
+                cats.append(self.get_item(5562, "activemq-log4j-appender"))
+                cats.append(self.get_item(5563, "activemq-mqtt"))
+                cats.append(self.get_item(5564, "activemq-openwire-generator"))
+                cats.append(self.get_item(5565, "activemq-openwire-legacy"))
+                cats.append(self.get_item(5566, "activemq-osgi"))
+                cats.append(self.get_item(5567, "activemq-partition"))
+                cats.append(self.get_item(5568, "activemq-pool"))
+                cats.append(self.get_item(5569, "activemq-ra"))
+                cats.append(self.get_item(5570, "activemq-rar"))
+                cats.append(self.get_item(5571, "activemq-run"))
+                cats.append(self.get_item(5572, "activemq-runtime-config"))
+                cats.append(self.get_item(5573, "activemq-shiro"))
+                cats.append(self.get_item(5574, "activemq-spring"))
+                cats.append(self.get_item(5575, "activemq-stomp"))
+                cats.append(self.get_item(5576, "activemq-tooling"))
+                cats.append(self.get_item(5577, "activemq-unit-tests"))
+                cats.append(self.get_item(5578, "activemq-web"))
+                cats.append(self.get_item(5579, "activemq-web-console"))
+                cats.append(self.get_item(5580, "activemq-web-demo"))
+                
+                return cats
 
         def get_root_fineract(self,dd):
                 root_src = "C:/lkd/ht/apps_fineract_apache/apa"

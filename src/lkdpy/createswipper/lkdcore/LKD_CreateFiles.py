@@ -129,7 +129,8 @@ class LKD_CreateFiles:
                 print psrc_path_project
                 java_files = []
                 if(os.path.isdir(psrc_path_project) == False):
-                        self.xx_dbg(s_fun + "no-files")
+                        self.xx_dbg(s_fun + "no-directory-found-" + psrc_path_project)
+                        self.xx_dbg(s_fun + "EXIT_ON_START-" + psrc_path_project)
                         return java_files
 
                 print "execute lkd_cat_item"
