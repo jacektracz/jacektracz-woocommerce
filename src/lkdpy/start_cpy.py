@@ -5,7 +5,7 @@ from createswipper.lkdcore.LKD_CopyFilesMd import *
 from createswipper.lkdcore.LKD_CopyFilesExec import *
 from createswipper.lkdcore.LKD_CreateFiles import *
 from createswipper.lkdcore.LKD_FinAnalysis import *
-
+from createswipper.lkdcore.LKD_CreateImages import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 # 600 446 066 Rafal tel
 
@@ -45,7 +45,8 @@ if __name__ == "__main__":
         #dd.generate_refcat(4677, 4700, "phd-thesis=article")
         # modules/mod_ep_swipper_tree_artmenu_tm7
 
-        dd_fin = LKD_FinAnalysis("")
-        dd_fin.print_data()
+        # dd_fin = LKD_FinAnalysis("")
+        # dd_fin.print_data()
 
-
+        dd_img = LKD_CreateImages("")
+        dd_img.exec_images()

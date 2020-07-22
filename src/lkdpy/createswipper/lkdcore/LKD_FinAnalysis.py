@@ -3,6 +3,8 @@ import os
 import logging
 import shutil
 
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
+
 class LKD_FinItem:
         def __init__(self):
                 self.m_title = ""
@@ -13,6 +15,65 @@ class LKD_FinItem:
         def xx_dbg(self, tt):
                 "" ""
                 print tt
+
+class LKD_FinAmounts:
+        def __init__(self):
+                self.m_title = ""
+                self.m_data = ""
+                self.m_amount_out_jt = 0
+                self.m_amount_out_njt = 0
+                self.m_amount_in = 0
+                self.m_amount_out = 0
+                self.m_amount_out_jt_alim_g = 0
+                self.m_amount_out_jt_alim_j = 0
+                self.m_amount_out_jt_czynsz = 0
+                self.m_amount_out_jt_hipo = 0
+                self.m_amount_out_jt_multi = 0
+                self.m_amount_out_jt_sum = 0
+                self.m_amount_out_jt_mandate = 0
+                self.m_amount_out_jt_sport = 0
+
+
+        def xx_dbg(self, tt):
+                "" ""
+                print tt
+
+        def create_sum(self, tt):
+                "" ""
+
+                self.m_amount_out_jt_sum = 0
+                self.m_amount_out_jt_sum = self.m_amount_out_jt_sum + self.m_amount_out_jt_alim_g
+                self.m_amount_out_jt_sum = self.m_amount_out_jt_sum + self.m_amount_out_jt_alim_j
+                self.m_amount_out_jt_sum = self.m_amount_out_jt_sum + self.m_amount_out_jt_czynsz 
+                self.m_amount_out_jt_sum = self.m_amount_out_jt_sum + self.m_amount_out_jt_hipo 
+                self.m_amount_out_jt_sum = self.m_amount_out_jt_sum + self.m_amount_out_jt_multi
+                self.m_amount_out_jt_sum = self.m_amount_out_jt_sum + self.m_amount_out_jt_mandate
+                self.m_amount_out_jt_sum = self.m_amount_out_jt_sum + self.m_amount_out_jt_sport
+
+                
+
+class LKD_FinAmountsService:
+        def __init__(self):
+                self.m_title = ""
+
+        def get_copy(self, p_fin_amounts_src):
+                dd_out = LKD_FinAmounts()
+                dd_out.m_title = p_fin_amounts_src.m_title
+                dd_out.m_data = p_fin_amounts_src.m_data
+                dd_out.m_amount_out_jt = p_fin_amounts_src.m_amount_out_jt
+                dd_out.m_amount_out_njt = p_fin_amounts_src.m_amount_out_njt
+                dd_out.m_amount_in = p_fin_amounts_src.m_amount_in
+                dd_out.m_amount_out = p_fin_amounts_src.m_amount_out
+                dd_out.m_amount_out_jt_alim_g = p_fin_amounts_src.m_amount_out_jt_alim_g
+                dd_out.m_amount_out_jt_alim_j = p_fin_amounts_src.m_amount_out_jt_alim_j
+                dd_out.m_amount_out_jt_czynsz = p_fin_amounts_src.m_amount_out_jt_czynsz
+                dd_out.m_amount_out_jt_hipo = p_fin_amounts_src.m_amount_out_jt_hipo
+                dd_out.m_amount_out_jt_sum = p_fin_amounts_src.m_amount_out_jt_sum
+                dd_out.m_amount_out_jt_multi = p_fin_amounts_src.m_amount_out_jt_multi                
+                dd_out.m_amount_out_jt_mandate = p_fin_amounts_src.m_amount_out_jt_mandate
+                dd_out.m_amount_out_jt_sport = p_fin_amounts_src.m_amount_out_jt_sport
+                
+                return dd_out
 
 class LKD_FinAnalysis:
 
@@ -35,14 +96,178 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::copy_files::out::")
 
         def print_data(self):
+
+                self.print_data_1()
+                self.print_data_2()
+
+        def print_data_1(self):
+
                 dd = self.get_data_1()
-                for iData in dd:
 
-                        s_amnt = self.get_number(iData.m_amount)              
-                        s_tt = self.get_is_dop(iData.m_title)
-                        self.xx_dbg(";" + self.get_stmt(iData.m_data) + ";" + self.get_stmt(s_tt) + ";" + self.get_stmt(s_amnt))
+                for p_fin_item in dd:
+                        s_line = self.get_line(p_fin_item)
+                        self.xx_dbg(s_line)
+                        
+                for p_fin_item in dd:
 
-                        # self.xx_dbg("" + iData.m_amount)
+                        s_line = self.get_line_def(p_fin_item)
+                        self.xx_dbg(s_line)
+
+        def print_data_2(self):
+
+                dd = self.get_data_2()
+
+                for p_fin_item in dd:
+                        s_line = self.get_line(p_fin_item)
+                        self.xx_dbg(s_line)
+                        
+                for p_fin_item in dd:
+
+                        s_line = self.get_line_def(p_fin_item)
+                        self.xx_dbg(s_line)
+
+                h_srv = LKD_FinAmountsService()                              
+                dd_amounts_out = LKD_FinAmounts()
+                for p_fin_item in dd:
+
+                        out_loc_amounts = self.process_amounts(
+                                         h_srv.get_copy(dd_amounts_out)
+                                        , p_fin_item)
+                                        
+                        dd_amounts_out = h_srv.get_copy(
+                                        out_loc_amounts)
+
+                        dd_amounts_out.create_sum("")
+                        
+                        self.print_amounts(dd_amounts_out)        
+
+                self.print_amounts(dd_amounts_out)
+
+        def process_amounts(self, p_fin_amounts, p_fin_item):
+
+                self.xx_dbg("LKD_FinAnalysis::get_line::in::")
+                self.xx_dbg("m_amount:[" + p_fin_item.m_amount+ "]")
+                self.xx_dbg("m_title:[" + p_fin_item.m_title+ "]")
+                self.xx_dbg("m_type:[" + p_fin_item.m_type + "]")
+
+                
+                ff = self.get_float( p_fin_item.m_amount )
+
+                l_fin_amounts = LKD_FinAmounts()
+                h_srv = LKD_FinAmountsService()
+                l_fin_amounts = h_srv.get_copy(p_fin_amounts)
+
+                self.xx_dbg("amount:[" + str(ff) + "]")
+
+                if(ff < 0 ):
+                        self.xx_dbg("processed[m_amount_out]")
+                        l_fin_amounts.m_amount_out = p_fin_amounts.m_amount_out + ff
+
+                if(ff > 0 ):
+                        self.xx_dbg("processed[m_amount_in]")
+                        l_fin_amounts.m_amount_in = p_fin_amounts.m_amount_in + ff
+
+                if(p_fin_item.m_type == "JT"):
+                        self.xx_dbg("processed[m_amount_out_jt]")
+                        l_fin_amounts.m_amount_out_jt = p_fin_amounts.m_amount_out_jt + ff
+
+                if(p_fin_item.m_type == ""):
+                        self.xx_dbg("processed[m_amount_out_njt]")
+                        l_fin_amounts.m_amount_out_njt = p_fin_amounts.m_amount_out_njt + ff
+
+                if(p_fin_item.m_title == "HIPO"):
+                        self.xx_dbg("processed[m_amount_out_jt_hipo]")
+                        l_fin_amounts.m_amount_out_jt_hipo = p_fin_amounts.m_amount_out_jt_hipo + ff
+
+                if(p_fin_item.m_title == "CZYNSZ"):
+                        self.xx_dbg("processed[m_amount_out_jt_czynsz]")
+                        l_fin_amounts.m_amount_out_jt_czynsz = p_fin_amounts.m_amount_out_jt_czynsz + ff
+
+                if(p_fin_item.m_title == "MULTI"):
+                        self.xx_dbg("processed[m_amount_out_jt_multi]")
+                        l_fin_amounts.m_amount_out_jt_multi = p_fin_amounts.m_amount_out_jt_multi + ff
+
+                if(p_fin_item.m_title == "MANDATY"):
+                        self.xx_dbg("processed[m_amount_out_jt_multi]")
+                        l_fin_amounts.m_amount_out_jt_mandate = p_fin_amounts.m_amount_out_jt_mandate + ff
+
+                if(p_fin_item.m_title == "ALIM_G"):
+                        self.xx_dbg("processed[m_amount_out_jt_alim_g]")
+                        l_fin_amounts.m_amount_out_jt_alim_g = p_fin_amounts.m_amount_out_jt_alim_g + ff
+
+                if(p_fin_item.m_title == "SPORT"):
+                        self.xx_dbg("processed[m_amount_out_jt_sport]")
+                        l_fin_amounts.m_amount_out_jt_sport = p_fin_amounts.m_amount_out_jt_sport + ff
+
+                if(p_fin_item.m_title == "ALIM_J"):
+                        self.xx_dbg("processed[m_amount_out_jt_alim_j]")
+                        l_fin_amounts.m_amount_out_jt_alim_j = p_fin_amounts.m_amount_out_jt_alim_j + ff
+
+                # self.xx_dbg("LKD_FinAnalysis::get_line::out::")
+
+                return l_fin_amounts
+
+        def print_amounts(self, p_fin_amounts):
+                self.xx_dbg("")
+                self.xx_dbg("")
+                self.xx_dbg(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+                self.xx_dbg("m_amount_out::" + str(p_fin_amounts.m_amount_out))
+                self.xx_dbg("m_amount_in::" + str(p_fin_amounts.m_amount_in))
+                self.xx_dbg("")
+                self.xx_dbg("m_amount_out_jt::" + str(p_fin_amounts.m_amount_out_jt))
+                self.xx_dbg("")
+                self.xx_dbg("m_amount_out_jt_hipo::" + str(p_fin_amounts.m_amount_out_jt_hipo))
+                self.xx_dbg("m_amount_out_jt_czynsz::" + str(p_fin_amounts.m_amount_out_jt_czynsz))
+                self.xx_dbg("m_amount_out_jt_alim_g::" + str(p_fin_amounts.m_amount_out_jt_alim_g))
+                self.xx_dbg("m_amount_out_jt_alim_j::" + str(p_fin_amounts.m_amount_out_jt_alim_j))
+                self.xx_dbg("m_amount_out_jt_multi::" + str(p_fin_amounts.m_amount_out_jt_multi))                                
+                self.xx_dbg("m_amount_out_jt_mandate::" + str(p_fin_amounts.m_amount_out_jt_mandate))                
+                self.xx_dbg("m_amount_out_jt_sport::" + str(p_fin_amounts.m_amount_out_jt_sport))
+                self.xx_dbg("")
+                self.xx_dbg("m_amount_out_jt::" + str(p_fin_amounts.m_amount_out_jt)) 
+                self.xx_dbg("m_amount_out_jt_sum::" + str(p_fin_amounts.m_amount_out_jt_sum))
+                self.xx_dbg("m_amount_out_njt::" + str(p_fin_amounts.m_amount_out_njt))
+                self.xx_dbg("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+                self.xx_dbg("")
+                self.xx_dbg("")
+
+                
+        def get_line(self, p_fin_item):
+
+                # self.xx_dbg("LKD_FinAnalysis::get_line::in::")
+                s_amnt = self.get_number(p_fin_item.m_amount)              
+                s_tt = self.get_is_dop(p_fin_item.m_title)
+
+                dd_out = ""
+                dd_out = dd_out + ";" + self.get_stmt(p_fin_item.m_data) 
+                dd_out = dd_out + ";" + self.get_stmt(s_tt) 
+                dd_out = dd_out + ";" + self.get_stmt(s_amnt)
+                # self.xx_dbg("LKD_FinAnalysis::get_line::out::")
+
+                return dd_out
+
+        def get_line_def(self, p_fin_item):
+
+                # self.xx_dbg("LKD_FinAnalysis::get_line::in::")
+                s_amnt = self.get_number(p_fin_item.m_amount)              
+                s_tt = self.get_is_dop(p_fin_item.m_title)
+
+                dd_out = ""
+                dd_out = dd_out + "dd.append(self.get_item("
+                dd_out = dd_out + "" + self.get_stmt(p_fin_item.m_data) 
+                dd_out = dd_out + "," + self.get_stmt(p_fin_item.m_data) 
+                dd_out = dd_out + "," + self.get_stmt(s_tt) 
+                dd_out = dd_out + "," + self.get_stmt("") 
+                dd_out = dd_out + "," + self.get_stmt("") 
+                dd_out = dd_out + "," + self.get_stmt(s_amnt)
+                dd_out = dd_out + "," + self.get_stmt("") 
+                dd_out = dd_out + "," + self.get_stmt("") 
+                dd_out = dd_out + "," + self.get_stmt("") 
+                # dd_out = dd_out + "," + self.get_stmt("") 
+                dd_out = dd_out + "))"
+                # self.xx_dbg("LKD_FinAnalysis::get_line::out::")
+
+                return dd_out
 
         def get_stmt(self,dd):
                 dd_out = '"' + dd + '"'
@@ -60,6 +285,111 @@ class LKD_FinAnalysis:
                 s_amnt = s_amount.replace(" ",",")
                 return s_amnt
 
+        def get_float(self,s_amount):
+                s_amount = s_amount.replace(",",".")
+                f_amnt = float(s_amount)
+                return f_amnt
+
+        def get_data_2(self):
+                self.xx_dbg("LKD_FinAnalysis::get_data_2::in::")
+
+                dd = []
+                
+                dd.append(self.get_item("21-07-2020","21-07-2020","HIPO","","","-1000,00","","","JT"))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-2,00","","",""))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-5,88","","",""))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-11,35","","",""))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-115,14","","",""))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-30,00","","",""))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-5,00","","",""))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-2,99","","",""))
+                dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-3,30","","",""))
+
+                dd.append(self.get_item("18-07-2020","18-07-2020","VISA","","","-2,00","","",""))
+                dd.append(self.get_item("18-07-2020","18-07-2020","VISA","","","-19,48","","",""))
+                dd.append(self.get_item("17-07-2020","17-07-2020","VISA","","","-5,49","","",""))
+                dd.append(self.get_item("17-07-2020","17-07-2020","VISA","","","-109,28","","",""))
+                dd.append(self.get_item("16-07-2020","16-07-2020","VISA","","","-21,79","","",""))
+                dd.append(self.get_item("16-07-2020","16-07-2020","VISA","","","-0,60","","",""))
+                dd.append(self.get_item("15-07-2020","15-07-2020","VISA","","","-0,46","","",""))
+                dd.append(self.get_item("15-07-2020","15-07-2020","VISA","","","-16,30","","",""))
+                dd.append(self.get_item("15-07-2020","15-07-2020","VISA","","","-45,34","","",""))
+                dd.append(self.get_item("15-07-2020","15-07-2020","VISA","","","-13,99","","",""))
+                dd.append(self.get_item("15-07-2020","15-07-2020","VISA","","","-19,90","","",""))
+                dd.append(self.get_item("14-07-2020","14-07-2020","SPORT","","","-300,00","","","JT"))
+                dd.append(self.get_item("14-07-2020","14-07-2020","VISA","","","-18,00","","",""))
+                dd.append(self.get_item("14-07-2020","14-07-2020","VISA","","","-15,19","","",""))
+                dd.append(self.get_item("14-07-2020","14-07-2020","VISA","","","-26,00","","",""))
+                dd.append(self.get_item("14-07-2020","14-07-2020","VISA","","","-12,00","","",""))
+                dd.append(self.get_item("13-07-2020","13-07-2020","MANDATY","","","-430,20","","","JT"))
+                dd.append(self.get_item("13-07-2020","13-07-2020","VISA","","","-18,95","","",""))
+                dd.append(self.get_item("13-07-2020","13-07-2020","VISA","","","-22,00","","",""))
+                dd.append(self.get_item("13-07-2020","13-07-2020","VISA","","","-34,99","","",""))
+                dd.append(self.get_item("13-07-2020","13-07-2020","VISA","","","-49,80","","",""))
+                dd.append(self.get_item("13-07-2020","13-07-2020","MULTI","","","-150,00","","","JT"))
+                dd.append(self.get_item("13-07-2020","13-07-2020","CZYNSZ","","","-950,00","","","JT"))
+                dd.append(self.get_item("13-07-2020","13-07-2020","ALIM_J","","","-1100,00","","","JT"))
+                dd.append(self.get_item("13-07-2020","13-07-2020","VISA","","","-64,89","","",""))
+                dd.append(self.get_item("13-07-2020","13-07-2020","VISA","","","-29,91","","",""))
+                dd.append(self.get_item("10-07-2020","10-07-2020","VISA","","","-6,50","","",""))
+                dd.append(self.get_item("10-07-2020","10-07-2020","VISA","","","-3,00","","",""))
+                dd.append(self.get_item("09-07-2020","09-07-2020","VISA","","","-32,00","","",""))
+                dd.append(self.get_item("09-07-2020","09-07-2020","VISA","","","-29,50","","",""))
+                dd.append(self.get_item("09-07-2020","09-07-2020","VISA","","","-6,50","","",""))
+                dd.append(self.get_item("09-07-2020","09-07-2020","VISA","","","-25,75","","",""))
+                dd.append(self.get_item("08-07-2020","08-07-2020","VISA","","","-3,50","","",""))
+                dd.append(self.get_item("08-07-2020","08-07-2020","VISA","","","-5,00","","",""))
+                dd.append(self.get_item("08-07-2020","08-07-2020","VISA","","","-7,60","","",""))
+                dd.append(self.get_item("07-07-2020","07-07-2020","VISA","","","-21,49","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISA","","","-28,00","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISA","","","-6,00","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISAA","","","-5,00","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISA","","","-150,00","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISA","","","-37,00","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISA","","","-10,00","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISA","","","-40,00","","",""))
+                dd.append(self.get_item("06-07-2020","06-07-2020","VISA","","","-28,89","","",""))
+                dd.append(self.get_item("04-07-2020","04-07-2020","VISA","","","-22,46","","",""))
+                dd.append(self.get_item("03-07-2020","03-07-2020","VISA","","","-91,20","","",""))
+                dd.append(self.get_item("02-07-2020","02-07-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("02-07-2020","02-07-2020","VISA","","","-37,70","","",""))
+                dd.append(self.get_item("01-07-2020","01-07-2020","VISA","","","-31,42","","",""))
+                dd.append(self.get_item("01-07-2020","01-07-2020","VISA","","","-16,00","","",""))
+                dd.append(self.get_item("01-07-2020","01-07-2020","VISA","","","-2,43","","",""))
+                dd.append(self.get_item("30-06-2020","30-06-2020","VISA","","","-5,49","","",""))
+                dd.append(self.get_item("29-06-2020","29-06-2020","VISA","","","-12,80","","",""))
+                dd.append(self.get_item("29-06-2020","29-06-2020","VISA","","","-2,98","","",""))
+                dd.append(self.get_item("29-06-2020","29-06-2020","VISA","","","-22,34","","",""))
+                dd.append(self.get_item("29-06-2020","29-06-2020","VISA","","","-33,78","","",""))
+                dd.append(self.get_item("29-06-2020","29-06-2020","VISA","","","-18,28","","",""))
+                dd.append(self.get_item("27-06-2020","27-06-2020","VISA","","","-25,07","","",""))
+                dd.append(self.get_item("25-06-2020","25-06-2020","ALIM_G","","","-1000,00","","","JT"))
+                dd.append(self.get_item("25-06-2020","25-06-2020","VISA","","","-1,98","","",""))
+                dd.append(self.get_item("25-06-2020","25-06-2020","VISA","","","-20,00","","",""))
+                dd.append(self.get_item("25-06-2020","25-06-2020","VISA_PROV","","","-5,00","","",""))
+                dd.append(self.get_item("25-06-2020","25-06-2020","VISA","","","-50,00","","",""))
+                dd.append(self.get_item("24-06-2020","24-06-2020","PENSJA","","","10623,58","","","JTIN"))
+                dd.append(self.get_item("23-06-2020","23-06-2020","VISA","","","-36,00","","",""))
+                dd.append(self.get_item("23-06-2020","23-06-2020","VISA_PROV","","","-5,00","","",""))
+                dd.append(self.get_item("23-06-2020","23-06-2020","VISA","","","-150,00","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","HIPO","","","-1000,00","","","JT"))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-10,00","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","MULTI","","","-150,00","","","JT"))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-28,38","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","CZYNSZ","","","-850,00","","","JT"))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-73,55","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-2,39","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-9,98","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-19,47","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-4,50","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-33,72","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-7,70","","",""))
+                dd.append(self.get_item("22-06-2020","22-06-2020","VISA","","","-45,31","","",""))
+                dd.append(self.get_item("18-06-2020","18-06-2020","VISA","","","-38,80","","",""))
+                dd.append(self.get_item("18-06-2020","18-06-2020","VISA","","","-20,00","","",""))
+                self.xx_dbg("LKD_FinAnalysis::get_data_2::out::")
+                return dd
+
         def get_data_1(self):
                 self.xx_dbg("LKD_FinAnalysis::copy_files::in::")
 
@@ -67,6 +397,16 @@ class LKD_FinAnalysis:
 
                 # dd.append(self.get_item("2020-07-18","16-06-2020","'73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","6950 27","9762 63","82",""))
 
+                dd.append(self.get_item("2020-07-21","01-07-2020","'73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","","","55",""))
+                dd.append(self.get_item("21-07-2020","21-07-2020","Przelew na spłate kredytu hipotecznego za Pionierow 1/14 częśc p. Jacka Tracza","JOANNA TRACZ","68 1500 1881 1018 8035 6958 0000","-1000 00","","1",""))
+                dd.append(self.get_item("20-07-2020","18-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.00 PLN ENERGY PROFIT GDYNIA","","","-2 00","","2",""))
+                dd.append(self.get_item("20-07-2020","18-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.88 PLN ROSSMANN 19 GDYNIA","","","-5 88","","3",""))
+                dd.append(self.get_item("20-07-2020","18-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 11.35 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-11 35","","4",""))
+                dd.append(self.get_item("20-07-2020","18-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 115.14 PLN SUPERMARKET SAM 34 Gdynia","","","-115 14","","5",""))
+                dd.append(self.get_item("20-07-2020","17-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 30.00 PLN ZABKA Z6542 K.1 GDYNIA","","","-30 00","","6",""))
+                dd.append(self.get_item("20-07-2020","17-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.00 PLN ZABKA Z6542 K.1 GDYNIA","","","-5 00","","7",""))
+                dd.append(self.get_item("20-07-2020","17-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.99 PLN SUPER-PHARM GDYNIA WZGO GDYNIA","","","-2 99","","8",""))
+                dd.append(self.get_item("20-07-2020","17-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 3.30 PLN SPP GDYNIA GDYNIA","","","-3 30","","9",""))
                 dd.append(self.get_item("18-07-2020","16-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.00 PLN ENERGY PROFIT GDYNIA","","","-2 00","9762 63","1",""))
                 dd.append(self.get_item("18-07-2020","16-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 19.48 PLN ZABKA Z6542 K.1 GDYNIA","","","-19 48","9764 63","2",""))
                 dd.append(self.get_item("17-07-2020","15-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.49 PLN ZABKA Z6465 K.1 GDYNIA","","","-5 49","9784 11","3",""))
@@ -160,14 +500,15 @@ class LKD_FinAnalysis:
                 ,p_amount
                 ,p_account
                 ,p_3
-                ,p_4
+                ,p_type
                 ):
 
-                        self.xx_dbg("LKD_FinAnalysis::get_item::in::")
+                        # self.xx_dbg("LKD_FinAnalysis::get_item::in::")
                         dd = LKD_FinItem()
                         dd.m_data = p_data_1
                         dd.m_title = p_title
                         dd.m_amount = p_amount
-                        self.xx_dbg("LKD_FinAnalysis::get_item::out::")
+                        dd.m_type = p_type
+                        # self.xx_dbg("LKD_FinAnalysis::get_item::out::")
                         return dd
 
