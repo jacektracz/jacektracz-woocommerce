@@ -108,7 +108,7 @@ class LKD_CreateImages:
                 self.xx_dbg( sfun + "ep_300x200_all_digital_seq:" + ep_300x200_all_digital_seq)
 
                 
-                for ii in range (cat_id_start, 6000,1):
+                for ii in range (cat_id_start, 6000, 1):
                         self.move_digital_image_to_md(
                                 ii
                                 , max_img_id

@@ -130,7 +130,8 @@ class LKD_CopyFilesExec:
                 #dd.cpy_all("tree_artmenu_tm7","md_artcnt_ma7", "all")
                 #dd.cpy_all("md_artcnt_ma7","md_treebottom_tb9", "all")
 
-                dd.cpy_all("catsup0_cu0","catslatest_cl2", "all-short")
+                # dd.cpy_all("catsup0_cu0","catslatest_cl2", "all-short")
+                # dd.cpy_all("catsup0_cu0","catslatest_cl2", "image-title")
 
 
         def exec_cpy_one(self,idnew):                
@@ -142,9 +143,11 @@ class LKD_CopyFilesExec:
                 dd_handler = LKD_CopyFiles("")
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_swippers()
+
                 for item_name in ll:
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
+                        dd.cpy_all("catsmenu_cm9", item_name, "image-title")
 
 
 

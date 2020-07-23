@@ -14,7 +14,11 @@ if __name__ == "__main__":
         # ddcr = LKD_CreateFiles("")
         # ddcr.execute_main()
 
-        # dd = LKD_CopyFilesExec("")
+        # nn
+
+        dd = LKD_CopyFilesExec("")
+        dd.exec_cpy_to_all_swippers()
+
         # dd.exec_cpy_swipper()
 
         #dd.exec_cpy_list_of_catsup()
@@ -48,6 +52,6 @@ if __name__ == "__main__":
         # dd_fin = LKD_FinAnalysis("")
         # dd_fin.print_data()
 
-        dd_img = LKD_CreateImages("")
+        # dd_img = LKD_CreateImages("")
         # dd_img.exec_images()
-        dd_img.move_digital_images_to_md()
+        # dd_img.move_digital_images_to_md()

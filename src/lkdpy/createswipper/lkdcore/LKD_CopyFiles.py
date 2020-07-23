@@ -264,6 +264,9 @@ class LKD_CopyFiles:
                         self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "treestatic" + DS + "EPT_swipper_render_treestatic_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "treestatic" + DS + "EPT_swipper_render_treestatic_" + pdst + ".php")
                                 
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
 
 # EPT_swipper_render_mdcontent_create_md_artcnt_ma7
 # treestatic EPT_swipper_render_treestatic_md_artcnt_ma7
