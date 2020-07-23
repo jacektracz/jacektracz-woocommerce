@@ -49,4 +49,5 @@ if __name__ == "__main__":
         # dd_fin.print_data()
 
         dd_img = LKD_CreateImages("")
-        dd_img.exec_images()
+        # dd_img.exec_images()
+        dd_img.move_digital_images_to_md()
