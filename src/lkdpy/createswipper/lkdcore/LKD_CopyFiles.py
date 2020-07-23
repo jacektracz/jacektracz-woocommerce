@@ -59,7 +59,10 @@ class LKD_CopyFiles:
                 self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_md_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_md_" + pdst + ".php")
 
-        def cpy_one_entity_child(self,par_src, par_dst):
+                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
+                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
+
+        def cpy_one_entity_child(self,par_src, par_dst,pfilter):
 
 
                 self.m_src = par_src
@@ -75,11 +78,13 @@ class LKD_CopyFiles:
 
                 self.xx_dbg("LKD_CopyFiles::copy_one::__src__" + psrc)
 
-                #self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
-                #        "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
+                if(pfilter == "no-exec" ):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_includes_" + pdst + ".php")
 
-                self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_" + psrc + ".php",
-                        "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_" + pdst + ".php")
+                if(pfilter == "image-title" ):                                
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + pdst + ".php")
 
 
         def cpy_all(self, par_src, par_dst, pfilter):
@@ -265,8 +270,8 @@ class LKD_CopyFiles:
                                 "lib" + DS + pdst + DS + "renders" + DS + "treestatic" + DS + "EPT_swipper_render_treestatic_" + pdst + ".php")
                                 
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
-                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
-                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + pdst + ".php")
 
 # EPT_swipper_render_mdcontent_create_md_artcnt_ma7
 # treestatic EPT_swipper_render_treestatic_md_artcnt_ma7

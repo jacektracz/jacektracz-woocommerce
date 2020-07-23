@@ -92,7 +92,7 @@ class LKD_CreateImages:
                 self.move_digital_images_to_md_impl(
                         max_img_id
                         ,ep_300x200_all_digital_seq
-                        ,cat_id_start):
+                        ,cat_id_start)
 
                 self.xx_dbg( sfun + "end")
 

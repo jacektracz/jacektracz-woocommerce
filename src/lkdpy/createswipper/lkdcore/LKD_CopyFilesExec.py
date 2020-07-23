@@ -147,7 +147,7 @@ class LKD_CopyFilesExec:
                 for item_name in ll:
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
-                        dd.cpy_all("catsmenu_cm9", item_name, "image-title")
+                        #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
 
 
 
