@@ -140,15 +140,17 @@ class LKD_CopyFilesExec:
         
         def exec_cpy_to_all_swippers(self):
                 self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
-                dd_handler = LKD_CopyFiles("")
+                
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_swippers()
 
+                dd_handler = LKD_CopyFiles("")
                 for item_name in ll:
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
                         #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
-
+                        if(item_name != "catsup0_cu0"):                                
+                                dd_handler.cpy_one_entity_child("catsup0_cu0", item_name, "image-title")
 
 
         def exec_cpy_to_all_swippers_short(self,max_files):
