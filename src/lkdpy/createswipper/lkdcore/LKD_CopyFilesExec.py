@@ -167,6 +167,7 @@ class LKD_CopyFilesExec:
                         #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
                         if(item_name != mod_source ):                                
                                 dd_handler.cpy_one_entity_child(mod_source, item_name, "window-row")
+                                dd_handler.cpy_one_entity_child(mod_source, item_name, "css-file")
 
         def exec_cpy_to_all_swippers_short(self,max_files):
                 self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
