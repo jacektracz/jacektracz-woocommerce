@@ -145,13 +145,28 @@ class LKD_CopyFilesExec:
                 ll = dd_list.get_list_of_swippers()
 
                 dd_handler = LKD_CopyFiles("")
+                mod_source = "catsup0_cu0"
+
                 for item_name in ll:
                         self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
                         #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
-                        if(item_name != "catsup0_cu0"):                                
-                                dd_handler.cpy_one_entity_child("catsup0_cu0", item_name, "image-title")
+                        if(item_name != mod_source):                                
+                                dd_handler.cpy_one_entity_child(mod_source, item_name, "image-title")
 
+        def exec_cpy_to_all_swippers_catsup_without0(self):
+                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                
+                dd_list = LKD_CopyFilesList("")
+                ll = dd_list.get_list_of_catsup_wihout0()
+                mod_source = "catsup1_cu1"
+                dd_handler = LKD_CopyFiles("")
+                for item_name in ll:
+                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
+                        #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
+                        if(item_name != mod_source ):                                
+                                dd_handler.cpy_one_entity_child(mod_source, item_name, "window-row")
 
         def exec_cpy_to_all_swippers_short(self,max_files):
                 self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")

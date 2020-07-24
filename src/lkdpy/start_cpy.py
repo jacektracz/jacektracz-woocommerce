@@ -17,7 +17,7 @@ if __name__ == "__main__":
         # nn
 
         dd = LKD_CopyFilesExec("")
-        dd.exec_cpy_to_all_swippers()
+        dd.exec_cpy_to_all_swippers_catsup_without0()
 
         # dd.exec_cpy_swipper()
 

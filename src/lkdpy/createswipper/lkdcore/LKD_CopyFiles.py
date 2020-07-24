@@ -86,6 +86,14 @@ class LKD_CopyFiles:
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + pdst + ".php")
 
+                if(pfilter == "window-row" ):                                
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "css-file"):
+                        self.copy_file("assets" + DS + "css" + DS + "mod_ep_swipper_" + psrc + ".css"
+                                ,"assets" + DS + "css" + DS + "mod_ep_swipper_" + pdst + ".css")
+
 
         def cpy_all(self, par_src, par_dst, pfilter):
 

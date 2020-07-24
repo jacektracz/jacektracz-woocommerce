@@ -45,6 +45,9 @@ class LKD_CopyFilesList:
                 self.xx_dbg("LKD_CopyFiles::prepare_object::in::")
                 outlist = []    
 
+
+                outlist.append("catslatest_cl2")
+
                 outlist.append("authorsfoot_h7")
                 outlist.append("authorsp_u2")
                 outlist.append("authors_x3")
@@ -389,11 +392,29 @@ class LKD_CopyFilesList:
                 dd.append('mod_wrapper')
                 return dd
 
+        def get_list_of_catsup_wihout0(self):
+                self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
+
+                dd = []
+                dd.append('catslatest_cl2')
+                dd.append('catsup7_cu7')
+                dd.append('catsup8_cu8')
+                dd.append('catsup5_cu5')
+                dd.append('catsup6_cu6')
+                # other style included
+                # dd.append('catsup0_cu0')
+                dd.append('catsup1_cu1')
+                dd.append('catsup2_cu2')
+                dd.append('catsup4_cu4')
+                dd.append('catsup3_cu3')
+                return dd
+
         def get_list_of_swippers(self):
                 self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
 
                 dd = []
-                dd.append('splash_catspath_sc9')
+                dd.append('splash_catspath_sc9')                
+                dd.append('catslatest_cl2')
                 dd.append('catsup7_cu7')
                 dd.append('catsup8_cu8')
                 dd.append('catsup5_cu5')
