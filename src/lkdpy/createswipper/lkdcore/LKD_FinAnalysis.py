@@ -4,22 +4,15 @@ import logging
 import shutil
 
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\createswipper\lkdcore\LKD_FinAnalysis.py
 
-class LKD_FinItem:
+class LKD_FinAmounts:
+        
         def __init__(self):
                 self.m_title = ""
                 self.m_data = ""
                 self.m_amount = ""
-
-
-        def xx_dbg(self, tt):
-                "" ""
-                print tt
-
-class LKD_FinAmounts:
-        def __init__(self):
-                self.m_title = ""
-                self.m_data = ""
+                self.m_amount_out = 0
                 self.m_amount_out_jt = 0
                 self.m_amount_out_njt = 0
                 self.m_amount_in = 0
@@ -76,9 +69,9 @@ class LKD_FinAmountsService:
                 dd_out.m_amount_out_jt_multi = p_fin_amounts_src.m_amount_out_jt_multi                
                 dd_out.m_amount_out_jt_mandate = p_fin_amounts_src.m_amount_out_jt_mandate
                 dd_out.m_amount_out_jt_sport = p_fin_amounts_src.m_amount_out_jt_sport
-                dd.m_amount_sum_0 = p_fin_amounts_src.m_amount_sum_0
-                dd.m_amount_sum_1 = p_fin_amounts_src.m_amount_sum_1
-                dd.m_amount_sum_2 = p_fin_amounts_src.m_amount_sum_2
+                dd_out.m_amount_sum_0 = p_fin_amounts_src.m_amount_sum_0
+                dd_out.m_amount_sum_1 = p_fin_amounts_src.m_amount_sum_1
+                dd_out.m_amount_sum_2 = p_fin_amounts_src.m_amount_sum_2
                 
                 return dd_out
 
@@ -106,6 +99,7 @@ class LKD_FinAnalysis:
 
                 self.print_data_1()
                 self.print_data_2()
+                self.print_data_sum()
 
         def print_data_1(self):
 
@@ -128,10 +122,11 @@ class LKD_FinAnalysis:
                         s_line = self.get_line(p_fin_item)
                         self.xx_dbg(s_line)
                         
-                for p_fin_item in dd:
 
+                for p_fin_item in dd:
                         s_line = self.get_line_def(p_fin_item)
                         self.xx_dbg(s_line)
+
 
                 h_srv = LKD_FinAmountsService()                              
                 dd_amounts_out = LKD_FinAmounts()
@@ -150,6 +145,13 @@ class LKD_FinAnalysis:
 
                 self.print_amounts(dd_amounts_out)
 
+
+        def print_data_sum( self ):
+                dd = self.get_items_sum()
+                for p_fin_item in dd:
+                        self.print_amounts( p_fin_item ) 
+
+                
         def process_amounts(self, p_fin_amounts, p_fin_item):
 
                 self.xx_dbg("LKD_FinAnalysis::get_line::in::")
@@ -506,43 +508,46 @@ class LKD_FinAnalysis:
                 return dd
 
 # 58 858,85 PLN	286 451,59 PLN	-227 592,74 PLN	
+
         def get_items_sum(self):
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
-                dd.append(self.get_item_sum("24-07-2020","5885 ,85","286451 59","-227592 74"	))
+                dd.append(self.get_item_sum("24-07-2020", "5885 85", "286451 59", "0 0", "-227592 74"	))
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::out::")
                 return dd
 
+
         def get_item_sum(self
-                ,p_data_1
-                ,p_amount_0
-                ,p_amount_1
-                ,p_amount_2
-                ,p_amount_3
+                        ,       p_data_1
+                        ,       p_amount_0
+                        ,       p_amount_1
+                        ,       p_amount_2
+                        ,       p_amount_3
                 ):
-                dd = LKD_FinItem()
+
+                dd = LKD_FinAmounts()
                 dd.m_data = p_data_1
-                dd.m_amount_sum_0 = self.get_float(p_amount_0)
-                dd.m_amount_sum_1 = self.get_float(p_amount_1)
-                dd.m_amount_sum_2 = self.get_float(p_amount_2)
-                dd.m_amount_sum_3 = self.get_float(p_amount_3)
+                dd.m_amount_sum_0 = self.get_float( p_amount_0 )
+                dd.m_amount_sum_1 = self.get_float( p_amount_1 )
+                dd.m_amount_sum_2 = self.get_float( p_amount_2 )
+                dd.m_amount_sum_3 = self.get_float( p_amount_3 )
                 # self.xx_dbg("LKD_FinAnalysis::get_item::out::")
                 return dd
 
         def get_item(self
-                ,p_data_1
-                ,p_data_2
-                ,p_title
-                ,p_1
-                ,p_2
-                ,p_amount
-                ,p_account
-                ,p_3
-                ,p_type
+                        ,       p_data_1
+                        ,       p_data_2
+                        ,       p_title
+                        ,       p_1
+                        ,       p_2
+                        ,       p_amount
+                        ,       p_account
+                        ,       p_3
+                        ,       p_type
                 ):
 
                 # self.xx_dbg("LKD_FinAnalysis::get_item::in::")
-                dd = LKD_FinItem()
+                dd = LKD_FinAmounts()
                 dd.m_data = p_data_1
                 dd.m_title = p_title
                 dd.m_amount = p_amount
@@ -551,5 +556,9 @@ class LKD_FinAnalysis:
                 return dd
 
 
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
+# 600 446 066 Rafal tel
 
-
+if __name__ == "__main__":
+        dd_fin = LKD_FinAnalysis("")
+        dd_fin.print_data()

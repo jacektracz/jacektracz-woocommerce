@@ -62,7 +62,7 @@ class LKD_CopyFiles:
                 self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
 
-        def cpy_one_entity_child(self,par_src, par_dst,pfilter):
+        def cpy_one_entity_child(self,par_src, par_dst, pfilter):
 
 
                 self.m_src = par_src
@@ -85,6 +85,10 @@ class LKD_CopyFiles:
                 if(pfilter == "image-title" ):                                
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + pdst + ".php")
+
+                if(pfilter == "image-title-desc" ):                                
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_desc_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_desc_" + pdst + ".php")
 
                 if(pfilter == "window-row" ):                                
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + psrc + ".php",
