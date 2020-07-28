@@ -7,7 +7,7 @@ import shutil
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\createswipper\lkdcore\LKD_FinAnalysis.py
 
 class LKD_FinAmounts:
-        
+
         def __init__(self):
                 self.m_title = ""
                 self.m_data = ""
@@ -122,7 +122,6 @@ class LKD_FinAnalysis:
                         s_line = self.get_line(p_fin_item)
                         self.xx_dbg(s_line)
                         
-
                 for p_fin_item in dd:
                         s_line = self.get_line_def(p_fin_item)
                         self.xx_dbg(s_line)
@@ -311,6 +310,28 @@ class LKD_FinAnalysis:
 
                 dd = []
                 
+                #dd.append(self.get_item("2020-07-28","2020-07-28","73 1090 2590 0000 0001 3616 3985","","","","","",""))
+
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA_PROWIZJA","","","-5,00","","",""))
+                dd.append(self.get_item("28-07-2020","28-07-2020","VISA","","","-23,60","","",""))
+                dd.append(self.get_item("28-07-2020","28-07-2020","VISA","","","-6,50","","",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA","","","-50,00","","",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA","","","-6,00","","",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA","","","-20,00","","",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA","","","-12,58","","",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA","","","-48,59","","",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA","","","-299,99","","",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("24-07-2020","24-07-2020","PENSJA","","","7269,88","","","JTIN"))
+                dd.append(self.get_item("25-07-2020","25-07-2020","VISA","","","-20,10","","",""))
+                dd.append(self.get_item("24-07-2020","24-07-2020","VISA","","","-2,00","","",""))
+                dd.append(self.get_item("24-07-2020","24-07-2020","VISA","","","-18,99","","",""))
+                dd.append(self.get_item("23-07-2020","23-07-2020","VISA","","","-7,40","","",""))
+                dd.append(self.get_item("23-07-2020","23-07-2020","VISA","","","-98,80","","",""))
+
+                # dd.append(self.get_item("21-07-2020","21-07-2020","'73 1090 2590 0000 0001 3616 3985","","","","","",""))
+
+
                 dd.append(self.get_item("21-07-2020","21-07-2020","HIPO","","","-1000,00","","","JT"))
                 dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-2,00","","",""))
                 dd.append(self.get_item("20-07-2020","20-07-2020","VISA","","","-5,88","","",""))
@@ -407,13 +428,32 @@ class LKD_FinAnalysis:
                 return dd
 
         def get_data_1(self):
-                self.xx_dbg("LKD_FinAnalysis::copy_files::in::")
+
+                self.xx_dbg("LKD_FinAnalysis::get_data_1::in::")
 
                 dd = []
 
                 # dd.append(self.get_item("2020-07-18","16-06-2020","'73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","6950 27","9762 63","82",""))
 
-                dd.append(self.get_item("2020-07-21","01-07-2020","'73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","","","55",""))
+                dd.append(self.get_item("2020-07-28","01-07-2020","73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","","","71",""))
+                dd.append(self.get_item("27-07-2020","27-07-2020","za wypłatę gotówki z bankomatu dot.karty 421352******9656 PLANET CASH GRUNWALDZKA 1 RUMIA","","","-5 00","","1",""))
+                dd.append(self.get_item("28-07-2020","26-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 23.60 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-23 60","","2",""))
+                dd.append(self.get_item("28-07-2020","26-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 6.50 PLN 1301 GDANSK","","","-6 50","","3",""))
+                dd.append(self.get_item("27-07-2020","25-07-2020","DOP. VISA 421352******9656 WYPŁATA Z BANKOMATU KARTĄ 50.00 PLN PLANET CASH GRUNWALDZKA 1 RUMIA","","","-50 00","","4",""))
+                dd.append(self.get_item("27-07-2020","25-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 6.00 PLN PKP SZYBKA KOLEJ MIEJS GDYNIA","","","-6 00","","5",""))
+                dd.append(self.get_item("27-07-2020","25-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 20.00 PLN Sklep rowerowy Ar42641 Gdynia","","","-20 00","","6",""))
+                dd.append(self.get_item("27-07-2020","25-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 12.58 PLN SUPERMARKET SAM 34 Gdynia","","","-12 58","","7",""))
+                dd.append(self.get_item("27-07-2020","25-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 48.59 PLN PEPCO 956 GDYNIA","","","-48 59","","8",""))
+                dd.append(self.get_item("27-07-2020","25-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 299.99 PLN DECATHLON SP. Z O.O. RUMIA","","","-299 99","","9",""))
+                dd.append(self.get_item("27-07-2020","24-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.20 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-5 20","","10",""))
+                dd.append(self.get_item("24-07-2020","24-07-2020","Wynagrodzenie 07/2020","FINEOS POLSKA ","","7269 88","","11","JTIN"))
+                dd.append(self.get_item("25-07-2020","23-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 20.10 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-20 10","","12",""))
+                dd.append(self.get_item("24-07-2020","22-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.00 PLN ENERGY PROFIT GDYNIA","","","-2 00","","13",""))
+                dd.append(self.get_item("24-07-2020","22-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 18.99 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-18 99","","14",""))
+                dd.append(self.get_item("23-07-2020","21-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 7.40 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-7 40","","15",""))
+                dd.append(self.get_item("23-07-2020","21-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 98.80 PLN CASTORAMA GDANSK OSOWA Gdansk","","","-98 80","","16",""))
+
+                dd.append(self.get_item("21-07-2020","01-07-2020","'73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","","","55",""))
                 dd.append(self.get_item("21-07-2020","21-07-2020","Przelew na spłate kredytu hipotecznego za Pionierow 1/14 częśc p. Jacka Tracza","JOANNA TRACZ","68 1500 1881 1018 8035 6958 0000","-1000 00","","1",""))
                 dd.append(self.get_item("20-07-2020","18-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.00 PLN ENERGY PROFIT GDYNIA","","","-2 00","","2",""))
                 dd.append(self.get_item("20-07-2020","18-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.88 PLN ROSSMANN 19 GDYNIA","","","-5 88","","3",""))
@@ -512,7 +552,9 @@ class LKD_FinAnalysis:
         def get_items_sum(self):
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
-                dd.append(self.get_item_sum("24-07-2020", "5885 85", "286451 59", "0 0", "-227592 74"	))
+
+                dd.append(self.get_item_sum("28-07-2020", "58361 29", "286451 59", "0 0", "-228090 30"	))
+                dd.append(self.get_item_sum("24-07-2020", "5885 85",  "286451 59", "0 0", "-227592 74"	))
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::out::")
                 return dd
 
@@ -557,8 +599,43 @@ class LKD_FinAnalysis:
 
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
-# 600 446 066 Rafal tel
+#  600 446 066 Rafal tel
 
 if __name__ == "__main__":
         dd_fin = LKD_FinAnalysis("")
         dd_fin.print_data()
+
+
+##########################################
+#
+# 18-06-2020
+# 28-07-2020
+# 2700/40 = 70/d
+# 500/7 = 7
+#
+##########################################
+
+
+##########################################
+#
+# m_amount_out::-9611.63
+# m_amount_in::17893.46
+# m_amount_out_jt::-6930.2
+# m_amount_out_jt_hipo::-2000.0
+# m_amount_out_jt_czynsz::-1800.0
+# m_amount_out_jt_alim_g::-1000.0
+# m_amount_out_jt_alim_j::-1100.0
+# m_amount_out_jt_multi::-300.0
+# m_amount_out_jt_mandate::-430.2
+# m_amount_out_jt_sport::-300.0
+# m_amount_out_jt::-6930.2
+#
+##########################################
+
+##########################################
+#
+# m_amount_out_jt_sum::-6930.2
+#
+# m_amount_out_njt::-2681.43
+#
+##########################################

@@ -16,9 +16,9 @@ if __name__ == "__main__":
 
         # nn
 
-        dd = LKD_CopyFilesExec("")
+        # dd = LKD_CopyFilesExec("")
         # dd.exec_cpy_to_all_swippers_catsup_without0()
-        dd.exec_cpy_to_all_swippers()
+        # dd.exec_cpy_to_all_swippers()
         # dd.exec_cpy_swipper()
 
         #dd.exec_cpy_list_of_catsup()
@@ -49,8 +49,8 @@ if __name__ == "__main__":
         #dd.generate_refcat(4677, 4700, "phd-thesis=article")
         # modules/mod_ep_swipper_tree_artmenu_tm7
 
-        # dd_fin = LKD_FinAnalysis("")
-        # dd_fin.print_data()
+        dd_fin = LKD_FinAnalysis("")
+        dd_fin.print_data()
 
         # dd_img = LKD_CreateImages("")
         # dd_img.exec_images()
