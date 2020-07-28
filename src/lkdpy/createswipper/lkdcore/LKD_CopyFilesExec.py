@@ -153,7 +153,7 @@ class LKD_CopyFilesExec:
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
                         #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
                         if(item_name != mod_source):                                
-                                dd_handler.cpy_one_entity_child(mod_source, item_name, "image-title")
+                                # dd_handler.cpy_one_entity_child(mod_source, item_name, "image-title")
                                 dd_handler.cpy_one_entity_child(mod_source, item_name, "image-title-desc")
 
         def exec_cpy_to_all_swippers_catsup_without0(self):
