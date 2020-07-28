@@ -32,6 +32,10 @@ class LKD_FinAmounts:
                 self.m_amount_out_jt_sum = 0
                 self.m_amount_out_jt_mandate = 0
                 self.m_amount_out_jt_sport = 0
+                self.m_amount_sum_0 = 0
+                self.m_amount_sum_1 = 0
+                self.m_amount_sum_2 = 0
+                self.m_amount_sum_3 = 0
 
 
         def xx_dbg(self, tt):
@@ -72,6 +76,9 @@ class LKD_FinAmountsService:
                 dd_out.m_amount_out_jt_multi = p_fin_amounts_src.m_amount_out_jt_multi                
                 dd_out.m_amount_out_jt_mandate = p_fin_amounts_src.m_amount_out_jt_mandate
                 dd_out.m_amount_out_jt_sport = p_fin_amounts_src.m_amount_out_jt_sport
+                dd.m_amount_sum_0 = p_fin_amounts_src.m_amount_sum_0
+                dd.m_amount_sum_1 = p_fin_amounts_src.m_amount_sum_1
+                dd.m_amount_sum_2 = p_fin_amounts_src.m_amount_sum_2
                 
                 return dd_out
 
@@ -227,6 +234,12 @@ class LKD_FinAnalysis:
                 self.xx_dbg("m_amount_out_jt::" + str(p_fin_amounts.m_amount_out_jt)) 
                 self.xx_dbg("m_amount_out_jt_sum::" + str(p_fin_amounts.m_amount_out_jt_sum))
                 self.xx_dbg("m_amount_out_njt::" + str(p_fin_amounts.m_amount_out_njt))
+
+                
+                self.xx_dbg("m_amount_sum_0::" + str(p_fin_amounts.m_amount_sum_0))
+                self.xx_dbg("m_amount_sum_1::" + str(p_fin_amounts.m_amount_sum_1))
+                self.xx_dbg("m_amount_sum_2::" + str(p_fin_amounts.m_amount_sum_2))
+                self.xx_dbg("m_amount_sum_3::" + str(p_fin_amounts.m_amount_sum_3))
                 self.xx_dbg("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
                 self.xx_dbg("")
                 self.xx_dbg("")
@@ -286,6 +299,7 @@ class LKD_FinAnalysis:
                 return s_amnt
 
         def get_float(self,s_amount):
+                s_amount = s_amount.replace(" ",".")
                 s_amount = s_amount.replace(",",".")
                 f_amnt = float(s_amount)
                 return f_amnt
@@ -491,6 +505,30 @@ class LKD_FinAnalysis:
                 dd.append(self.get_item("18-06-2020","16-06-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 20.00 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-20 00","6930 27","82",""))
                 return dd
 
+# 58 858,85 PLN	286 451,59 PLN	-227 592,74 PLN	
+        def get_items_sum(self):
+                self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
+                dd = []
+                dd.append(self.get_item_sum("24-07-2020","5885 ,85","286451 59","-227592 74"	))
+                self.xx_dbg("LKD_FinAnalysis::get_items_sum::out::")
+                return dd
+
+        def get_item_sum(self
+                ,p_data_1
+                ,p_amount_0
+                ,p_amount_1
+                ,p_amount_2
+                ,p_amount_3
+                ):
+                dd = LKD_FinItem()
+                dd.m_data = p_data_1
+                dd.m_amount_sum_0 = self.get_float(p_amount_0)
+                dd.m_amount_sum_1 = self.get_float(p_amount_1)
+                dd.m_amount_sum_2 = self.get_float(p_amount_2)
+                dd.m_amount_sum_3 = self.get_float(p_amount_3)
+                # self.xx_dbg("LKD_FinAnalysis::get_item::out::")
+                return dd
+
         def get_item(self
                 ,p_data_1
                 ,p_data_2
@@ -503,12 +541,15 @@ class LKD_FinAnalysis:
                 ,p_type
                 ):
 
-                        # self.xx_dbg("LKD_FinAnalysis::get_item::in::")
-                        dd = LKD_FinItem()
-                        dd.m_data = p_data_1
-                        dd.m_title = p_title
-                        dd.m_amount = p_amount
-                        dd.m_type = p_type
-                        # self.xx_dbg("LKD_FinAnalysis::get_item::out::")
-                        return dd
+                # self.xx_dbg("LKD_FinAnalysis::get_item::in::")
+                dd = LKD_FinItem()
+                dd.m_data = p_data_1
+                dd.m_title = p_title
+                dd.m_amount = p_amount
+                dd.m_type = p_type
+                # self.xx_dbg("LKD_FinAnalysis::get_item::out::")
+                return dd
+
+
+
 
