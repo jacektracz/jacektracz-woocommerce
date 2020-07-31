@@ -552,7 +552,7 @@ class LKD_FinAnalysis:
         def get_items_sum(self):
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
-
+                # 58 260,34 PLN	286 451,59 PLN	-228 191,25 PLN	
                 dd.append(self.get_item_sum("28-07-2020", "58361 29", "286451 59", "0 0", "-228090 30"	))
                 dd.append(self.get_item_sum("24-07-2020", "5885 85",  "286451 59", "0 0", "-227592 74"	))
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::out::")
