@@ -278,6 +278,15 @@ class LKD_CopyFiles:
                         self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_mdcontent_create_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_mdcontent_create_" + pdst + ".php")
 
+                if(pfilter == "all" or pfilter == "all-short-disable" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_mdglobal_read_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + "EPT_mdglobal_read_" + pdst + ".php")
+
+
+
+                if(pfilter == "all" or pfilter == "all-short-disable" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_mdglobal_cat_matrix_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + "EPT_mdglobal_cat_matrix_" + pdst + ".php")
 
                 if(pfilter == "all" or pfilter == "all-short-disable" or  pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + "EPT_swipper_render_mdcontent_read_" + psrc + ".php",
@@ -294,6 +303,12 @@ class LKD_CopyFiles:
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + pdst + ".php")
+
+
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_desc_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_desc_" + pdst + ".php")
 
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_data_img_item_" + psrc + ".php",
