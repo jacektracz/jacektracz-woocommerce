@@ -547,15 +547,17 @@ class LKD_FinAnalysis:
                 dd.append(self.get_item("18-06-2020","16-06-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 20.00 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-20 00","6930 27","82",""))
                 return dd
 
-# 58 858,85 PLN	286 451,59 PLN	-227 592,74 PLN	
+        # 58 858,85 PLN	286 451,59 PLN	-227 592,74 PLN	
 
         def get_items_sum( self ):
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
 
+                # 57 578,17 PLN	286 451,59 PLN	-228 873,42 PLN	
                 # 57 683,38 PLN	286 451,59 PLN	-228 768 21 PLN	
                 # 58 260,34 PLN	286 451,59 PLN	-228 191,25 PLN	
 
+                dd.append(self.get_item_sum("03-08-2020", "57578 17", "286451 59", "0 0", "-228873 42"	))
                 dd.append(self.get_item_sum("01-08-2020", "57683 38", "286451 59", "0 0", "-228768 21"	))
                 dd.append(self.get_item_sum("28-07-2020", "58361 29", "286451 59", "0 0", "-228090 30"	))
                 dd.append(self.get_item_sum("24-07-2020", "5885 85",  "286451 59", "0 0", "-227592 74"	))

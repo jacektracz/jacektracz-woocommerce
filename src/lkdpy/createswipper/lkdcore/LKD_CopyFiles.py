@@ -33,7 +33,11 @@ class LKD_CopyFiles:
                 "" ""
                 print (tt)
 
-        def set_roots(self,par_src, par_dst):
+        def set_roots(
+                self
+                , par_src
+                , par_dst):
+
                 self.m_src = par_src
                 self.m_dst = par_dst
 
@@ -63,7 +67,11 @@ class LKD_CopyFiles:
                 self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_mdimgs_main_bsgen_" + pdst + ".php")
 
-        def cpy_one_entity_child(self,par_src, par_dst, pfilter):
+        def cpy_one_entity_child(
+                self
+                , par_src
+                , par_dst
+                , pfilter):
 
 
                 self.m_src = par_src
@@ -100,7 +108,11 @@ class LKD_CopyFiles:
                                 ,"assets" + DS + "css" + DS + "mod_ep_swipper_" + pdst + ".css")
 
 
-        def cpy_one_swipper_all_files(self, par_src, par_dst, pfilter):
+        def cpy_one_swipper_all_files(
+                self
+                , par_src
+                , par_dst
+                , pfilter):
 
                 self.m_src = par_src
                 self.m_dst = par_dst
@@ -322,7 +334,10 @@ class LKD_CopyFiles:
 
 # EPT_swipper_render_mdcontent_create_md_artcnt_ma7
 # treestatic EPT_swipper_render_treestatic_md_artcnt_ma7
-        def copy_file(self, psrc, pdest):
+        def copy_file(
+                self
+                , psrc
+                , pdest):
             
                 self.xx_dbg("[METHOD_IN]" + "[copy_file]")
                 
@@ -352,7 +367,10 @@ class LKD_CopyFiles:
                         , self.m_dst)
 
 
-        def create_dir_path(self, dest_fpath):
+        def create_dir_path(
+                self
+                , dest_fpath):
+
                 self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
                 self.xx_dbg("" + "[dest_fpath][" + dest_fpath +"]")        
                 dir_path = os.path.dirname(dest_fpath)
@@ -379,62 +397,119 @@ class LKD_CopyFiles:
                 self.xx_dbg("[COPY_START]" + "[to_file][" + dest_fpath +"]")
 
                 if not override_mode:
-                        if not os.path.isfile(dest_fpath):
-                                self.xx_dbg("[COPY_AS_NEW_FILE]" + dest_fpath)
+                        self.copy_no_override_execute(                
+                                override_mode
+                                , src_fpath
+                                , dest_fpath
+                                , inplace_chamge_src_postfix
+                                , inplace_change_dest_postfix)
 
-                                if self.m_error_on_source_not_exist == False:
-                                        if not os.path.isfile(src_fpath):
-                                                self.xx_dbg("[FROM-NOT-EXISTS]" + "[from][" + src_fpath +"]")
-                                                return
-
-                                shutil.copy(src_fpath, dest_fpath)
-
-                                self.inplace_change(
-                                        dest_fpath
-                                        , inplace_chamge_src_postfix
-                                        , inplace_change_dest_postfix)
-
-                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[from][" + src_fpath +"]")
-                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[to_file][" + dest_fpath +"]")
-                        else:
-                                self.xx_dbg("[NOT_COPY_INPLACE_EXISTS_1]" + "[from][" + src_fpath +"]")
-                                self.xx_dbg("[NOT_COPY_INPLACE_EXISTS_1]" + "[to_file][" + dest_fpath +"]")
 
                 else:
-                        if not os.path.isfile(dest_fpath) :
-                                self.xx_dbg("[NOT_OVERRIDE_FILE]" + dest_fpath)
+                        self.copy_override_execute(                
+                                override_mode
+                                , src_fpath
+                                , dest_fpath
+                                , inplace_chamge_src_postfix
+                                , inplace_change_dest_postfix)
 
-                                if self.m_error_on_source_not_exist == False:
-                                        if not os.path.isfile(src_fpath):
-                                                self.xx_dbg("[FROM-NOT-EXISTS]" + "[from][" + src_fpath +"]")
-                                                return
-                                        
+                self.xx_dbg("[METHOD_OUT]" + "[copy_check_override]")
 
-                                shutil.copy(src_fpath, dest_fpath)
+        def copy_no_override_execute(
+                self
+                , override_mode
+                , src_fpath
+                , dest_fpath
+                , inplace_chamge_src_postfix
+                , inplace_change_dest_postfix):
 
-                                self.inplace_change(
-                                        dest_fpath
-                                        , inplace_chamge_src_postfix
-                                        , inplace_change_dest_postfix)
+                self.xx_dbg("[METHOD_IN]" + "[copy_checopy_no_override_execute]")
 
-                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[from][" + src_fpath +"]")
-                                self.xx_dbg("[COPY_INPLACE_NEW]" + "[to_file][" + dest_fpath +"]")
+                if not os.path.isfile(dest_fpath):
+                        self.xx_dbg("[COPY_AS_NEW_FILE]" + dest_fpath)
 
-                        if os.path.isfile(dest_fpath) :
-                                self.xx_dbg("[OVERRIDE_FILE]" + dest_fpath)
+                        if self.check_source_exists(src_fpath) == 0:
+                                return
 
-                                shutil.copy(src_fpath, dest_fpath)
+                        shutil.copy(src_fpath, dest_fpath)
 
-                                self.inplace_change(
-                                        dest_fpath
-                                        , inplace_chamge_src_postfix
-                                        , inplace_change_dest_postfix)
+                        self.inplace_change(
+                                dest_fpath
+                                , inplace_chamge_src_postfix
+                                , inplace_change_dest_postfix)
 
-                                self.xx_dbg("[COPY_INPLACE_OVERRIDE]" + "[from][" + src_fpath +"]")
-                                self.xx_dbg("[COPY_INPLACE_OVERRIDE]" + "[to_file][" + dest_fpath +"]")
+                        self.xx_dbg("[COPY_INPLACE_NEW]" + "[from][" + src_fpath +"]")
+                        self.xx_dbg("[COPY_INPLACE_NEW]" + "[to_file][" + dest_fpath +"]")
+                else:
+                        self.xx_dbg("[NOT_COPY_INPLACE_EXISTS_1]" + "[from][" + src_fpath +"]")
+                        self.xx_dbg("[NOT_COPY_INPLACE_EXISTS_1]" + "[to_file][" + dest_fpath +"]")
+
+                self.xx_dbg("[METHOD_OUT]" + "[copy_checopy_no_override_execute]")
+
+        def copy_override_execute(
+                self
+                , override_mode
+                , src_fpath
+                , dest_fpath
+                , inplace_chamge_src_postfix
+                , inplace_change_dest_postfix):
+
+                self.xx_dbg("[METHOD_IN]" + "[copy_override_execute]")
+
+                if not os.path.isfile(dest_fpath) :
+                        self.xx_dbg("[COPY_TO_NEW_FILE]" + dest_fpath)
+
+                if os.path.isfile(dest_fpath) :
+                        self.xx_dbg("[OVERRIDE_FILE]" + dest_fpath)
+
+                if self.check_source_exists(src_fpath) == 0:
+                        self.xx_dbg("[RETURN_ON_SOURCE_NOT_EXISTS]" + "[]")
+                        return
+
+                shutil.copy(src_fpath, dest_fpath)
+
+                self.inplace_change(
+                        dest_fpath
+                        , inplace_chamge_src_postfix
+                        , inplace_change_dest_postfix)
+
+                self.xx_dbg("[COPY_INPLACE_NEW]" + "[from][" + src_fpath +"]")
+                self.xx_dbg("[COPY_INPLACE_NEW]" + "[to_file][" + dest_fpath +"]")
+
+                self.xx_dbg("[METHOD_OUT]" + "[copy_override_execute]")
 
 
-        def inplace_change_(self, filename, old_string, new_string):
+        def check_source_exists( 
+                self
+                , src_fpath):
+
+                self.xx_dbg("[METHOD_IN]" + "[check_source_exists]")
+                exec_next = 1
+                if self.m_error_on_source_not_exist == False:
+                        self.xx_dbg("[SAFETY_CHECK_SOURCE]" + "[from][" + src_fpath +"]")
+                        if not os.path.isfile(src_fpath):
+                                self.xx_dbg("[FROM-NOT-EXISTS]" + "[from][" + src_fpath +"]")
+                                exec_next = 0
+                        else:
+                                self.xx_dbg("[CHECKED-AND-EXISTS]" + "[from][" + src_fpath +"]")
+                else:
+                        self.xx_dbg("[ON_ERROR_CHECK_SOURCE]" + "[from][" + src_fpath +"]")
+                        if not os.path.isfile(src_fpath):
+                                self.xx_dbg("[ON_ERROR_CHECK_SOURCE_WILL_THROWN]" + "[from][" + src_fpath +"]")
+                        else:
+                                self.xx_dbg("[ON_ERROR_CHECK_SOURCE_WILL_COPY]" + "[from][" + src_fpath +"]")
+
+                self.xx_dbg("[METHOD_OUT]" + "[check_source_exists]")
+
+                return exec_next
+
+
+        def inplace_change_(
+                self
+                , filename
+                , old_string
+                , new_string):
+
                 self.xx_dbg("[METHOD_CPY_REPLACE]" + "[inplace_change]")
                 self.xx_dbg("[inplace_change_]" + "[from][" + old_string +"]")
                 self.xx_dbg("[inplace_change_]" + "[to_file][" + old_string +"]")
@@ -449,7 +524,12 @@ class LKD_CopyFiles:
 
                 self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
 
-        def inplace_change(self, filename, old_string, new_string):
+        def inplace_change(
+                self
+                , filename
+                , old_string
+                , new_string):
+
                 self.xx_dbg("[METHOD_IN]" + "[inplace_change]")
                 self.xx_dbg("" + "[inplace_change][FROM_STR:]" + old_string + "]")
                 self.xx_dbg("" + "[inplace_change][TO_STR:]" + new_string + "]")

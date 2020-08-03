@@ -133,6 +133,16 @@ class LKD_CopyFilesExec:
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","catslatest_cl2", "all-short")
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","catslatest_cl2", "image-title")
 
+                
+                
+                dd.m_error_on_source_not_exist = False
+                dd.m_override_mode = True
+                dd.cpy_one_swipper_all_files("md_artcnt_ma7","catslatest_full_xf7", "all")
+
+                dd.m_error_on_source_not_exist = False
+                dd.m_override_mode = True
+                dd.cpy_one_swipper_all_files("md_treebottom_tb9","catslatest_full_xf7", "all")
+
                 dd.m_error_on_source_not_exist = False
                 dd.m_override_mode = True
                 dd.cpy_one_swipper_all_files("mdimages_mi6","catslatest_full_xf7", "all")
@@ -145,6 +155,9 @@ class LKD_CopyFilesExec:
                 dd.m_error_on_source_not_exist = False
                 dd.cpy_one_swipper_all_files("catslatest_full_xf7","catslatest_splash_cs7", "all")
                 
+                dd.m_override_mode = True
+                dd.m_error_on_source_not_exist = True
+                dd.cpy_one_swipper_all_files("catslatest_full_xf7","catslatest_splash_cs7", "all")
 
 
         def exec_cpy_one(self,idnew):                
