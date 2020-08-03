@@ -16,10 +16,14 @@ if __name__ == "__main__":
 
         # nn
 
-        # dd = LKD_CopyFilesExec("")
+        #######################################
+        # COPY SWIPPER START >>>>>
+        #######################################
+
+        dd = LKD_CopyFilesExec("")
         # dd.exec_cpy_to_all_swippers_catsup_without0()
         # dd.exec_cpy_to_all_swippers()
-        # dd.exec_cpy_swipper()
+        dd.cpy_one_swipper_all_files()
 
         #dd.exec_cpy_list_of_catsup()
         #dd.exec_cpy_to_all_swippers_api()
@@ -32,6 +36,16 @@ if __name__ == "__main__":
         #dd.exec_cpy_to_all_swippers_short(300)
         #dd.exec_cpy_to_all_swippers_splashes_css()
         #dd.exec_cpy_one()
+        #######################################
+        # <<<<<COPY SWIPPER END
+        #######################################
+
+
+
+        #######################################
+        # COPY SWIPPER MD START >>>>>
+        #######################################
+
         #dd.exec_populate_mds()
         #dd.exec_cpy_mds()        
 
@@ -43,15 +57,45 @@ if __name__ == "__main__":
         #dd.exec_cpy_one(4524)
         #dd.exec_cpy_one(4526)
         #dd.exec_cpy_one(4531)
+
+        #######################################
+        # <<<<<COPY SWIPPER MD END
+        #######################################
+
+
+        #######################################
+        # COPY FILES MD START >>>> 
+        #######################################
+
         #hh_md = LKD_CopyFilesMd("")     
         #hh_md.exec_cpy_many
 
         #dd.generate_refcat(4677, 4700, "phd-thesis=article")
         # modules/mod_ep_swipper_tree_artmenu_tm7
+        #######################################
+        # <<<<< COPY FILES MD END
+        #######################################
 
-        dd_fin = LKD_FinAnalysis("")
-        dd_fin.print_data()
+
+        #######################################
+        # FIN START >>>>>
+        #######################################
+        # dd_fin = LKD_FinAnalysis("")
+        # dd_fin.print_data()
+        #######################################
+        # <<<< FIN END
+        #######################################
+
+
+
+        #######################################
+        # CREATE IMAGES START >>>>>
+        #######################################
 
         # dd_img = LKD_CreateImages("")
         # dd_img.exec_images()
         # dd_img.move_digital_images_to_md()
+
+        #######################################
+        # <<<< CREATE IMAGES END
+        #######################################

@@ -13,7 +13,8 @@ class LKD_CopyFiles:
                 self.m_root_dst = ""
                 self.m_test_mode = 0
                 #self.m_override_mode = False
-                self.m_override_mode = True
+                self.m_override_mode = False
+                self.m_error_on_source_not_exist = False
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
                
@@ -99,7 +100,7 @@ class LKD_CopyFiles:
                                 ,"assets" + DS + "css" + DS + "mod_ep_swipper_" + pdst + ".css")
 
 
-        def cpy_all(self, par_src, par_dst, pfilter):
+        def cpy_one_swipper_all_files(self, par_src, par_dst, pfilter):
 
                 self.m_src = par_src
                 self.m_dst = par_dst
@@ -108,10 +109,8 @@ class LKD_CopyFiles:
                 pdst = self.m_dst
 
                 DS = self.m_ds
-
                 
                 self.set_roots(par_src,par_dst)
-
 
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "selector_main"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",
@@ -249,8 +248,7 @@ class LKD_CopyFiles:
                         self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_" + pdst + ".php")
 
-                if(pfilter == "search-only"):
-                        
+                if(pfilter == "search-only"):                        
                         if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
                                 self.copy_file("lib" + DS + psrc + DS +  "controller-api" + DS + "EPT_swipper_selector_test_" + psrc + ".php",
                                         "lib" + DS + pdst + DS + "controller-api" + DS + "EPT_swipper_selector_test_" + pdst + ".php")
@@ -284,6 +282,43 @@ class LKD_CopyFiles:
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_image_title_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_data_img_item_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_data_img_item_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_data_img_items_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_data_img_items_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_rend_imgs_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_rend_imgs_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bsgen_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bsgen_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bsgen2_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bsgen2_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bsgroot_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bsgroot_" + pdst + ".php")
+
+                #
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bygroups_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_bygroups_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_mdflat_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_mdflat_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_mdflat2_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_mdflat2_" + pdst + ".php")
 
 # EPT_swipper_render_mdcontent_create_md_artcnt_ma7
 # treestatic EPT_swipper_render_treestatic_md_artcnt_ma7
@@ -347,6 +382,11 @@ class LKD_CopyFiles:
                         if not os.path.isfile(dest_fpath):
                                 self.xx_dbg("[COPY_AS_NEW_FILE]" + dest_fpath)
 
+                                if self.m_error_on_source_not_exist == False:
+                                        if not os.path.isfile(src_fpath):
+                                                self.xx_dbg("[FROM-NOT-EXISTS]" + "[from][" + src_fpath +"]")
+                                                return
+
                                 shutil.copy(src_fpath, dest_fpath)
 
                                 self.inplace_change(
@@ -363,6 +403,12 @@ class LKD_CopyFiles:
                 else:
                         if not os.path.isfile(dest_fpath) :
                                 self.xx_dbg("[NOT_OVERRIDE_FILE]" + dest_fpath)
+
+                                if self.m_error_on_source_not_exist == False:
+                                        if not os.path.isfile(src_fpath):
+                                                self.xx_dbg("[FROM-NOT-EXISTS]" + "[from][" + src_fpath +"]")
+                                                return
+                                        
 
                                 shutil.copy(src_fpath, dest_fpath)
 
