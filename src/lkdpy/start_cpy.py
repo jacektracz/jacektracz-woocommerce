@@ -9,7 +9,29 @@ from createswipper.lkdcore.LKD_CreateImages import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 # 600 446 066 Rafal tel
 
+class LKD_MainExec:
+
+        def __init__(self,spar):                                
+                self.xx_dbg("LKD_MainExec::__init__::in::")
+                self.xx_dbg("LKD_MainExec::__init__::out:")
+
+        def xx_dbg(self, tt):
+                "" ""
+                print ( tt )
+
+        def refill_swipper(self, tt):
+                dd = LKD_CopyFilesExec("")
+                dd.refill_full_swipper()
+
+        def create_one_swipper(self, tt):
+                dd = LKD_CopyFilesExec("")
+                dd.cpy_one_swipper_all_files()
+
 if __name__ == "__main__":
+
+
+        ddh = LKD_MainExec("")
+        ddh.create_one_swipper("")
 
         # ddcr = LKD_CreateFiles("")
         # ddcr.execute_main()
@@ -20,10 +42,12 @@ if __name__ == "__main__":
         # COPY SWIPPER START >>>>>
         #######################################
 
-        dd = LKD_CopyFilesExec("")
+        # dd = LKD_CopyFilesExec("")
+        #dd.refill_full_swipper()
+
         # dd.exec_cpy_to_all_swippers_catsup_without0()
         # dd.exec_cpy_to_all_swippers()
-        dd.cpy_one_swipper_all_files()
+        # dd.cpy_one_swipper_all_files()
 
         #dd.exec_cpy_list_of_catsup()
         #dd.exec_cpy_to_all_swippers_api()

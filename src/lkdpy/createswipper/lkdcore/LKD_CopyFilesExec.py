@@ -48,7 +48,8 @@ class LKD_CopyFilesExec:
 
         def cpy_one_swipper_all_files(self):
 
-                dd = LKD_CopyFiles("")                
+                dd = LKD_CopyFiles("")      
+
                 #dd.cpy_one_swipper_all_files("tree_v8","treecnt_tc8")
                 #dd.cpy_one_swipper_all_files("treeart_ta8","treeon_to8")
                 #dd.cpy_one_swipper_all_files("services_u7","catsall_ca9")
@@ -133,8 +134,25 @@ class LKD_CopyFilesExec:
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","catslatest_cl2", "all-short")
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","catslatest_cl2", "image-title")
 
+                # dd_md = LKD_CopyFilesMd("")                
+                # dd_md.exec_cpy_one(idnew)
+
+                dd.m_override_mode = True
+                dd.m_error_on_source_not_exist = True
+                dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_tags_ct7", "all")
+
                 
                 
+                
+        def refill_full_swipper( self ):
+                dd = LKD_CopyFiles("")                 
+                dd.m_override_mode = True
+                dd.m_error_on_source_not_exist = True
+                dd.cpy_one_swipper_all_files("catslatest_splash_cs7", "catslatest_full_xf7", "all")
+
+
+        def create_full_swipper(self,idnew):                
+                dd = LKD_CopyFiles("") 
                 dd.m_error_on_source_not_exist = False
                 dd.m_override_mode = True
                 dd.cpy_one_swipper_all_files("md_artcnt_ma7","catslatest_full_xf7", "all")
