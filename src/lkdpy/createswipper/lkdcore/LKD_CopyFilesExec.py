@@ -139,7 +139,7 @@ class LKD_CopyFilesExec:
 
                 dd.m_override_mode = True
                 dd.m_error_on_source_not_exist = True
-                dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_tags_ct7", "all")
+                dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_tagsrel_ctr9", "all")
 
                 
                 
@@ -148,7 +148,10 @@ class LKD_CopyFilesExec:
                 dd = LKD_CopyFiles("")                 
                 dd.m_override_mode = True
                 dd.m_error_on_source_not_exist = True
-                dd.cpy_one_swipper_all_files("catslatest_splash_cs7", "catslatest_full_xf7", "all")
+                dd.cpy_one_swipper_all_files("cat_tags_ct7", "catslatest_full_xf7", "all")
+
+# EPT_swipper_render_mdcontent_create_md_artcnt_ma7
+# treestatic EPT_swipper_render_treestatic_md_artcnt_ma7
 
 
         def create_full_swipper(self,idnew):                

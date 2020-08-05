@@ -347,8 +347,15 @@ class LKD_CopyFiles:
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_mdflat2_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "images" + DS + "EPT_swipper_mdimgs_srv_imgarr_mdflat2_" + pdst + ".php")
 
-# EPT_swipper_render_mdcontent_create_md_artcnt_ma7
-# treestatic EPT_swipper_render_treestatic_md_artcnt_ma7
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS + "mdtags" + DS + "EPT_mdtags_cat_matrix_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" + DS + "mdtags" + DS+ "EPT_mdtags_cat_matrix_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS + "mdtags" + DS + "EPT_mdtags_read_tags_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" + DS + "mdtags" + DS + "EPT_mdtags_read_tags_" + pdst + ".php")
+
         def copy_file(
                 self
                 , psrc

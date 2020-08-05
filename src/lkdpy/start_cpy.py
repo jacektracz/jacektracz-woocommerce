@@ -33,6 +33,8 @@ if __name__ == "__main__":
         ddh = LKD_MainExec("")
         ddh.create_one_swipper("")
 
+        #ddh.refill_swipper("")
+
         # ddcr = LKD_CreateFiles("")
         # ddcr.execute_main()
 
