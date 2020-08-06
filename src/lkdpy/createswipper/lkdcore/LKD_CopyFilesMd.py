@@ -52,8 +52,12 @@ class LKD_CopyFilesMd:
                 self.m_root_dst = self.m_root_dst  + DS + "content_cats" + DS + "content_markdown" 
                 self.m_root_dst = self.m_root_dst  + DS + "content_tmp" + DS + "cat__" + pdst + DS + "components"
                 
+
                 if p_key != "prod_splash_ps2":
-                        self.copy_file("content__prod_splash_ps2.md"
+                        self.static_copy_file(
+                                self.m_root_src
+                                , self.m_root_dst
+                                , "content__prod_splash_ps2.md"
                                 , "content__" + p_key + ".md")
 
         def dechodbg( self, tt):
@@ -149,13 +153,9 @@ class LKD_CopyFilesMd:
 		self.xx_dbg( sfun + "end")
 		return dd_iout
 	
-        def cpy_all_calculate_root(self, par_src, par_dst):
+        def cpy_all_calculate_root_scr_no_groups(self, par_src):
 
-                self.m_src = par_src
-                self.m_dst = par_dst
-
-                psrc = self.m_src
-                pdst = self.m_dst
+                psrc = par_src
 
                 DS = self.m_ds
 
@@ -164,34 +164,49 @@ class LKD_CopyFilesMd:
                 self.m_root_src = self.m_root_src + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
                 self.m_root_src = self.m_root_src + DS + "content_cats" + DS + "content_markdown" 
                 self.m_root_src = self.m_root_src + DS + "content_by_catid" + DS + "cat__" + str(psrc)
-
-                self.m_root_dst = ""
-                self.m_root_dst = self.m_root_dst  + "C:" + DS + "lkd" + DS + "ht" + DS + "apps_portal" + DS + "lkduni" + DS + "app-4" 
-                self.m_root_dst = self.m_root_dst  + DS + "src" + DS + "modules" + DS + "mod_ep_articles"
-                self.m_root_dst = self.m_root_dst  + DS + "content_cats" + DS + "content_markdown" 
-                self.m_root_dst = self.m_root_dst  + DS + "content_tmp" + DS + "cat__" + str(pdst)
+                
+                return self.m_root_src
 
         def cpy_all(self, par_src, par_dst):
 
                 DS = self.m_ds
 
-                self.cpy_all_calculate_root(par_src, par_dst)
+                self.m_src = par_src
+                self.m_dst = par_dst
 
-                self.m_root_dst = self.get_root_for_groups(par_dst, 0)
+                root_src = self.cpy_all_calculate_root_scr_no_groups(
+                        par_src)
 
-                self.copy_file("content_idx_0" + DS + "content__0.md"
+                root_dst = self.get_root_for_groups(par_dst, 0)
+
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "content_idx_0" + DS + "content__0.md"
                         , "content_idx_0" + DS + "content__0.md")
 
-                self.copy_file("content_idx_0" + DS + "content__0.txt"
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "content_idx_0" + DS + "content__0.txt"
                         , "content_idx_0" + DS + "content__0.txt")
 
-                self.copy_file("title-content__0.md"
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "title-content__0.md"
                         , "title-content__0.md")
 
-                self.copy_file("content_pl_0" + DS + "content__0.md"
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "content_pl_0" + DS + "content__0.md"
                         , "content_pl_0" + DS + "content__0.md")
 
-                self.copy_file("content_idx_0" + DS + "imgs" + DS + "img__placeh.md"
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "content_idx_0" + DS + "imgs" + DS + "img__placeh.md"
                         , "content_idx_0" + DS + "imgs" + DS + "img__placeh.md")
 
         def copy_file(self, psrc, pdest):
@@ -199,9 +214,21 @@ class LKD_CopyFilesMd:
                 self.xx_dbg("[METHOD_IN]" + "[copy_file]")
                 
                 DS = self.m_ds
+                self.static_copy_file(
+                        self.m_root_src
+                        , self.m_root_dst
+                        , psrc
+                        , pdest)
 
-                src_fpath = self.m_root_src + DS + str(psrc)
-                dest_fpath = self.m_root_dst + DS + str(pdest)
+
+        def static_copy_file(self, p_root_src, p_root_dst, psrc, pdest):
+            
+                self.xx_dbg("[METHOD_IN]" + "[static_copy_file]")
+                
+                DS = self.m_ds
+
+                src_fpath = p_root_src + DS + str(psrc)
+                dest_fpath = p_root_dst + DS + str(pdest)
 
                 self.xx_dbg("[src_fpath]" + src_fpath)
                 self.xx_dbg("[dest_fpath]" + dest_fpath)
@@ -209,7 +236,7 @@ class LKD_CopyFilesMd:
                 if self.m_test_mode == 1:
                         return
                 
-                self.xx_dbg("[COPY_START]" + "[copy_file][" + src_fpath +"]")
+                self.xx_dbg("[COPY_START]" + "[src_fpath][" + src_fpath +"]")
                 self.xx_dbg("[COPY_START]" + "[to_file][" + dest_fpath +"]")
 
                 try:
@@ -242,7 +269,6 @@ class LKD_CopyFilesMd:
                         else:
                                 self.xx_dbg("[NOT_COPY_FILE_EXISTS_]" + "[from][" + src_fpath +"]")
                                 self.xx_dbg("[NOT_COPY_FILE_EXISTS_]" + "[to_file][" + dest_fpath +"]")
-
 
 
         def copy_lines_from_file(self, filename_src, filename_dest, lines_from, lines_to):
@@ -344,3 +370,37 @@ class LKD_CopyFilesMd:
                                 break
                         self.cpy_all(4299,ii)
                         ii = ii + 1
+
+        def copy_one_file(self, par_src, par_dst, file_key):
+
+                DS = self.m_ds
+
+                root_src = self.get_root_for_groups(par_src, 0)
+                root_dst = self.get_root_for_groups(par_dst, 0)                
+
+                self.static_copy_file(
+                        root_src
+                        , root_dst
+                        , "content_idx_0" + DS + file_key + ".md"
+                        , "content_idx_0" + DS + file_key + ".md"
+                        )
+
+
+        def create_md(self, tt):
+                
+                self.copy_one_file(2222,4818,"content__rel_items_0")
+                self.copy_one_file(2222,4818,"content__rel_tags_0")
+
+        def create_md_all(self, tt,range_start,range_end):
+                ddh = LKD_CopyFilesMd("")
+                for x in range( range_end ):
+                        if(x != 2222):
+                                self.copy_one_file(2222,x,"content__rel_items_0")
+                                self.copy_one_file(2222,x,"content__rel_tags_0")
+
+if __name__ == "__main__":
+
+
+        ddh = LKD_CopyFilesMd("")
+        ddh.copy_one_file("2222","2223","content__rel_items_0")
+        ddh.copy_one_file("2222","2223","content__rel_tags_0")

@@ -27,11 +27,21 @@ class LKD_MainExec:
                 dd = LKD_CopyFilesExec("")
                 dd.cpy_one_swipper_all_files()
 
+        def create_md(self, tt):
+                ddh = LKD_CopyFilesMd("")
+                ddh.create_md()
+
+        def create_md_all(self, tt):
+                ddh = LKD_CopyFilesMd("")
+                ddh.create_md_all(tt,1, 6000)
+
 if __name__ == "__main__":
 
 
         ddh = LKD_MainExec("")
-        ddh.create_one_swipper("")
+        #ddh.create_one_swipper("")
+        #ddh.create_md("")
+        ddh.create_md_all("")
 
         #ddh.refill_swipper("")
 
