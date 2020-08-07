@@ -35,13 +35,18 @@ class LKD_MainExec:
                 ddh = LKD_CopyFilesMd("")
                 ddh.create_md_all(tt,1, 6000)
 
+        def refill_full_copy_one(self, tt):
+                ddh = LKD_CopyFilesExec("")
+                ddh.refill_full_copy_one()
+
 if __name__ == "__main__":
 
-
         ddh = LKD_MainExec("")
-        #ddh.create_one_swipper("")
-        #ddh.create_md("")
-        ddh.create_md_all("")
+        ddh.refill_full_copy_one("")
+
+        # ddh.create_one_swipper("")
+        # ddh.create_md("")
+        # ddh.create_md_all("")
 
         #ddh.refill_swipper("")
 

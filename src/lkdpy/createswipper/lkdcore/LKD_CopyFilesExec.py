@@ -133,15 +133,14 @@ class LKD_CopyFilesExec:
 
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","catslatest_cl2", "all-short")
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","catslatest_cl2", "image-title")
+                # cat_tagsrel_ctr9
 
                 # dd_md = LKD_CopyFilesMd("")                
                 # dd_md.exec_cpy_one(idnew)
 
                 dd.m_override_mode = True
                 dd.m_error_on_source_not_exist = True
-                dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_tagsrel_ctr9", "all")
-
-                
+                dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_tagschilds_ctc7", "all")
                 
                 
         def refill_full_swipper( self ):
@@ -149,6 +148,16 @@ class LKD_CopyFilesExec:
                 dd.m_override_mode = True
                 dd.m_error_on_source_not_exist = True
                 dd.cpy_one_swipper_all_files("cat_tags_ct7", "catslatest_full_xf7", "all")
+
+        def copy_from_full( self,new_module ):
+                dd = LKD_CopyFiles("")   
+                dd.m_override_mode = True
+                dd.m_error_on_source_not_exist = True
+                dd.cpy_one_swipper_all_files("catslatest_full_xf7", new_module, "all")
+
+        def refill_full_copy_one( self ):
+                self.refill_full_swipper()
+                self.copy_from_full("cat_tagschilds_ctc7")
 
 # EPT_swipper_render_mdcontent_create_md_artcnt_ma7
 # treestatic EPT_swipper_render_treestatic_md_artcnt_ma7
