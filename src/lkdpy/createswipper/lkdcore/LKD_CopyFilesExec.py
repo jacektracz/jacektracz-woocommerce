@@ -155,9 +155,10 @@ class LKD_CopyFilesExec:
                 dd.m_error_on_source_not_exist = True
                 dd.cpy_one_swipper_all_files("catslatest_full_xf7", new_module, "all")
 
-        def refill_full_copy_one( self ):
+        def refill_full_copy_one( self, tt ):
                 self.refill_full_swipper()
-                self.copy_from_full("cat_tagschilds_ctc7")
+                #self.copy_from_full("cat_tagschilds_ctc7")
+                self.copy_from_full("cat_mdparent_ctp7")
 
 # EPT_swipper_render_mdcontent_create_md_artcnt_ma7
 # treestatic EPT_swipper_render_treestatic_md_artcnt_ma7

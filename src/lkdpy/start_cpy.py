@@ -37,7 +37,7 @@ class LKD_MainExec:
 
         def refill_full_copy_one(self, tt):
                 ddh = LKD_CopyFilesExec("")
-                ddh.refill_full_copy_one()
+                ddh.refill_full_copy_one("cat_mdparent_ctp7")
 
 if __name__ == "__main__":
 
