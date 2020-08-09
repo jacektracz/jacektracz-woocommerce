@@ -29,9 +29,15 @@ class LKD_FinAmounts:
                 self.m_amount_sum_1 = 0
                 self.m_amount_sum_2 = 0
                 self.m_amount_sum_3 = 0
+                self.m_print_dbg = 0
 
 
-        def xx_dbg(self, tt):
+        def xx_dbg(self, tt):                
+                "" ""
+                if(self.m_print_dbg == 1):
+                        print tt
+
+        def xx_dbg_sum(self, tt):
                 "" ""
                 print tt
 
@@ -77,11 +83,16 @@ class LKD_FinAmountsService:
 
 class LKD_FinAnalysis:
 
-        def __init__(self,spar):                                
-                self.xx_dbg("LKD_FinAnalysis::__init__::in::")
+        def __init__(self,spar):                
+                self.m_print_dbg = 0
                 self.m_src = "blogtech_x2"             
                
-        def xx_dbg(self, tt):
+        def xx_dbg(self, tt):                
+                "" ""
+                if(self.m_print_dbg == 1):
+                        print tt
+
+        def xx_dbg_sum(self, tt):
                 "" ""
                 print tt
         
@@ -94,6 +105,10 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::copy_files::in::")
                         
                 self.xx_dbg("LKD_FinAnalysis::copy_files::out::")
+
+        def print_data_processed(self):                
+                self.print_data_2_processed()
+                self.print_data_sum()
 
         def print_data(self):
 
@@ -113,6 +128,23 @@ class LKD_FinAnalysis:
 
                         s_line = self.get_line_def(p_fin_item)
                         self.xx_dbg(s_line)
+
+        def print_data_2_processed(self):
+
+                dd = self.get_data_2()
+
+                h_srv = LKD_FinAmountsService()                              
+                dd_amounts_out = LKD_FinAmounts()
+                for p_fin_item in dd:
+
+                        out_loc_amounts = self.process_amounts(
+                                         h_srv.get_copy(dd_amounts_out)
+                                        , p_fin_item)                                        
+                        dd_amounts_out = h_srv.get_copy(
+                                        out_loc_amounts)
+                        dd_amounts_out.create_sum("")
+
+                self.print_amounts(dd_amounts_out)
 
         def print_data_2(self):
 
@@ -140,7 +172,7 @@ class LKD_FinAnalysis:
 
                         dd_amounts_out.create_sum("")
                         
-                        self.print_amounts(dd_amounts_out)        
+                        self.print_amounts(dd_amounts_out)
 
                 self.print_amounts(dd_amounts_out)
 
@@ -216,34 +248,34 @@ class LKD_FinAnalysis:
                 return l_fin_amounts
 
         def print_amounts(self, p_fin_amounts):
-                self.xx_dbg("")
-                self.xx_dbg("")
-                self.xx_dbg(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-                self.xx_dbg("m_amount_out::" + str(p_fin_amounts.m_amount_out))
-                self.xx_dbg("m_amount_in::" + str(p_fin_amounts.m_amount_in))
-                self.xx_dbg("")
-                self.xx_dbg("m_amount_out_jt::" + str(p_fin_amounts.m_amount_out_jt))
-                self.xx_dbg("")
-                self.xx_dbg("m_amount_out_jt_hipo::" + str(p_fin_amounts.m_amount_out_jt_hipo))
-                self.xx_dbg("m_amount_out_jt_czynsz::" + str(p_fin_amounts.m_amount_out_jt_czynsz))
-                self.xx_dbg("m_amount_out_jt_alim_g::" + str(p_fin_amounts.m_amount_out_jt_alim_g))
-                self.xx_dbg("m_amount_out_jt_alim_j::" + str(p_fin_amounts.m_amount_out_jt_alim_j))
-                self.xx_dbg("m_amount_out_jt_multi::" + str(p_fin_amounts.m_amount_out_jt_multi))                                
-                self.xx_dbg("m_amount_out_jt_mandate::" + str(p_fin_amounts.m_amount_out_jt_mandate))                
-                self.xx_dbg("m_amount_out_jt_sport::" + str(p_fin_amounts.m_amount_out_jt_sport))
-                self.xx_dbg("")
-                self.xx_dbg("m_amount_out_jt::" + str(p_fin_amounts.m_amount_out_jt)) 
-                self.xx_dbg("m_amount_out_jt_sum::" + str(p_fin_amounts.m_amount_out_jt_sum))
-                self.xx_dbg("m_amount_out_njt::" + str(p_fin_amounts.m_amount_out_njt))
+                self.xx_dbg_sum("")
+                self.xx_dbg_sum("")
+                self.xx_dbg_sum(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+                self.xx_dbg_sum("m_amount_out::" + str(p_fin_amounts.m_amount_out))
+                self.xx_dbg_sum("m_amount_in::" + str(p_fin_amounts.m_amount_in))
+                self.xx_dbg_sum("")
+                self.xx_dbg_sum("m_amount_out_jt::" + str(p_fin_amounts.m_amount_out_jt))
+                self.xx_dbg_sum("")
+                self.xx_dbg_sum("m_amount_out_jt_hipo::" + str(p_fin_amounts.m_amount_out_jt_hipo))
+                self.xx_dbg_sum("m_amount_out_jt_czynsz::" + str(p_fin_amounts.m_amount_out_jt_czynsz))
+                self.xx_dbg_sum("m_amount_out_jt_alim_g::" + str(p_fin_amounts.m_amount_out_jt_alim_g))
+                self.xx_dbg_sum("m_amount_out_jt_alim_j::" + str(p_fin_amounts.m_amount_out_jt_alim_j))
+                self.xx_dbg_sum("m_amount_out_jt_multi::" + str(p_fin_amounts.m_amount_out_jt_multi))                                
+                self.xx_dbg_sum("m_amount_out_jt_mandate::" + str(p_fin_amounts.m_amount_out_jt_mandate))                
+                self.xx_dbg_sum("m_amount_out_jt_sport::" + str(p_fin_amounts.m_amount_out_jt_sport))
+                self.xx_dbg_sum("")
+                self.xx_dbg_sum("m_amount_out_jt::" + str(p_fin_amounts.m_amount_out_jt)) 
+                self.xx_dbg_sum("m_amount_out_jt_sum::" + str(p_fin_amounts.m_amount_out_jt_sum))
+                self.xx_dbg_sum("m_amount_out_njt::" + str(p_fin_amounts.m_amount_out_njt))
 
                 
-                self.xx_dbg("m_amount_sum_0::" + str(p_fin_amounts.m_amount_sum_0))
-                self.xx_dbg("m_amount_sum_1::" + str(p_fin_amounts.m_amount_sum_1))
-                self.xx_dbg("m_amount_sum_2::" + str(p_fin_amounts.m_amount_sum_2))
-                self.xx_dbg("m_amount_sum_3::" + str(p_fin_amounts.m_amount_sum_3))
-                self.xx_dbg("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-                self.xx_dbg("")
-                self.xx_dbg("")
+                self.xx_dbg_sum("m_amount_sum_0::" + str(p_fin_amounts.m_amount_sum_0))
+                self.xx_dbg_sum("m_amount_sum_1::" + str(p_fin_amounts.m_amount_sum_1))
+                self.xx_dbg_sum("m_amount_sum_2::" + str(p_fin_amounts.m_amount_sum_2))
+                self.xx_dbg_sum("m_amount_sum_3::" + str(p_fin_amounts.m_amount_sum_3))
+                self.xx_dbg_sum("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+                self.xx_dbg_sum("")
+                self.xx_dbg_sum("")
 
                 
         def get_line(self, p_fin_item):
@@ -309,7 +341,28 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::get_data_2::in::")
 
                 dd = []
-                
+
+                dd.append(self.get_item("10-08-2020","10-08-2020","VISA_PROWIZJA","","","-3,00","","",""))
+                dd.append(self.get_item("06-08-2020","06-08-2020","VISA","","","-14,44","","",""))
+                dd.append(self.get_item("06-08-2020","06-08-2020","VISA","","","-27,49","","",""))
+                dd.append(self.get_item("06-08-2020","06-08-2020","VISA","","","-87,90","","",""))
+                dd.append(self.get_item("05-08-2020","05-08-2020","VISA","","","-10,00","","",""))
+                dd.append(self.get_item("04-08-2020","04-08-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-40,01","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-60,00","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-20,00","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-2,50","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-32,60","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("30-07-2020","30-07-2020","VISA","","","-500,00","","",""))
+                dd.append(self.get_item("31-07-2020","31-07-2020","VISA","","","-4,00","","",""))
+                dd.append(self.get_item("31-07-2020","31-07-2020","VISA","","","-12,95","","",""))
+                dd.append(self.get_item("30-07-2020","30-07-2020","VISA","","","-2,00","","",""))
+                dd.append(self.get_item("30-07-2020","30-07-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("29-07-2020","29-07-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("29-07-2020","29-07-2020","VISA","","","-88,55","","",""))
+
                 #dd.append(self.get_item("2020-07-28","2020-07-28","73 1090 2590 0000 0001 3616 3985","","","","","",""))
 
                 dd.append(self.get_item("27-07-2020","27-07-2020","VISA_PROWIZJA","","","-5,00","","",""))
@@ -435,7 +488,27 @@ class LKD_FinAnalysis:
 
                 # dd.append(self.get_item("2020-07-18","16-06-2020","'73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","6950 27","9762 63","82",""))
 
-                dd.append(self.get_item("2020-07-28","01-07-2020","73 1090 2590 0000 0001 3616 3985","JACEK J TRACZ UL. NISKA 1F/41 81-646 GDYNIA","PLN","","","71",""))
+                dd.append(self.get_item("10-08-2020","09-08-2020","Opłata miesięczna za kartę od 01.07.2020 do 31.07.2020 dot.karty 421352******9656","","","-3 00","","1",""))
+                dd.append(self.get_item("06-08-2020","04-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 14.44 PLN ZABKA Z4998 K.1 GDYNIA","","","-14 44","","2",""))
+                dd.append(self.get_item("06-08-2020","04-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 27.49 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-27 49","","3",""))
+                dd.append(self.get_item("06-08-2020","04-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 87.90 PLN PEPCO 956 GDYNIA","","","-87 90","","4",""))
+                dd.append(self.get_item("05-08-2020","03-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 10.00 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-10 00","","5",""))
+                dd.append(self.get_item("04-08-2020","02-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.20 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-5 20","","6",""))
+                dd.append(self.get_item("03-08-2020","01-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.20 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-5 20","","7",""))
+                dd.append(self.get_item("03-08-2020","01-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 40.01 PLN STACJA PALIW POD ZAG 05 GDYNIA","","","-40 01","","8",""))
+                dd.append(self.get_item("03-08-2020","01-08-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 60.00 PLN PARK WODNY SOPOT Sp. z Sopot","","","-60 00","","9",""))
+                dd.append(self.get_item("03-08-2020","30-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 20.00 PLN STACJA PALIW POD ZAG 03 GDYNIA","","","-20 00","","10",""))
+                dd.append(self.get_item("03-08-2020","30-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.50 PLN STACJA PALIW POD ZAG 03 GDYNIA","","","-2 50","","11",""))
+                dd.append(self.get_item("03-08-2020","30-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 32.60 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-32 60","","12",""))
+                dd.append(self.get_item("03-08-2020","30-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.20 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-5 20","","13",""))
+                dd.append(self.get_item("30-07-2020","30-07-2020","DOP. VISA 421352******9656 WYPŁATA Z BANKOMATU KARTĄ 500.00 PLN ATM SANTANDER BP D3600814","","","-500 00","","14",""))
+                dd.append(self.get_item("31-07-2020","29-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 4.00 PLN ZABKA Z3613 K.2 GDYNIA","","","-4 00","","15",""))
+                dd.append(self.get_item("31-07-2020","29-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 12.95 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-12 95","","16",""))
+                dd.append(self.get_item("30-07-2020","28-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.00 PLN ENERGY PROFIT GDYNIA","","","-2 00","","17",""))
+                dd.append(self.get_item("30-07-2020","28-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.20 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-5 20","","18",""))
+                dd.append(self.get_item("29-07-2020","27-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.20 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-5 20","","19",""))
+                dd.append(self.get_item("29-07-2020","27-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 88.55 PLN PEPCO 956 GDYNIA","","","-88 55","","20",""))
+
                 dd.append(self.get_item("27-07-2020","27-07-2020","za wypłatę gotówki z bankomatu dot.karty 421352******9656 PLANET CASH GRUNWALDZKA 1 RUMIA","","","-5 00","","1",""))
                 dd.append(self.get_item("28-07-2020","26-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 23.60 PLN GZIK IWONA GAWLIKOWSKA GDYNIA","","","-23 60","","2",""))
                 dd.append(self.get_item("28-07-2020","26-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 6.50 PLN 1301 GDANSK","","","-6 50","","3",""))
@@ -553,14 +626,17 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
 
+                # 57 425,14 PLN	286 451,59 PLN	-229 026,45 PLN	
                 # 57 578,17 PLN	286 451,59 PLN	-228 873,42 PLN	
                 # 57 683,38 PLN	286 451,59 PLN	-228 768 21 PLN	
                 # 58 260,34 PLN	286 451,59 PLN	-228 191,25 PLN	
 
+                dd.append(self.get_item_sum("08-08-2020", "57425 14", "286451 59", "0 0", "-229026 45"	))
                 dd.append(self.get_item_sum("03-08-2020", "57578 17", "286451 59", "0 0", "-228873 42"	))
                 dd.append(self.get_item_sum("01-08-2020", "57683 38", "286451 59", "0 0", "-228768 21"	))
                 dd.append(self.get_item_sum("28-07-2020", "58361 29", "286451 59", "0 0", "-228090 30"	))
-                dd.append(self.get_item_sum("24-07-2020", "5885 85",  "286451 59", "0 0", "-227592 74"	))
+                dd.append(self.get_item_sum("24-07-2020", "58850 85",  "286451 59", "0 0", "-227592 74"	))
+
 
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::out::")
                 return dd

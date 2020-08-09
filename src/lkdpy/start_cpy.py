@@ -39,10 +39,16 @@ class LKD_MainExec:
                 ddh = LKD_CopyFilesExec("")
                 ddh.refill_full_copy_one("cat_mdparent_ctp7")
 
+        def exec_fin(self, tt):
+                dd_fin = LKD_FinAnalysis("")
+                #dd_fin.print_data()
+                dd_fin.print_data_processed()
+
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
-        ddh.refill_full_copy_one("")
+        #ddh.refill_full_copy_one("")
+        ddh.exec_fin("")
 
         # ddh.create_one_swipper("")
         # ddh.create_md("")
