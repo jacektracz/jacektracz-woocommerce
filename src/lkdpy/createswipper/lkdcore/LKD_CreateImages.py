@@ -31,7 +31,7 @@ class LKD_CreateImages:
                 dir_path = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\" + ep_300x200_all_digital_seq
                 return dir_path
 
-        def exec_images(self):
+        def create_sequential_ids(self):
                 self.xx_dbg("LKD_CreateImages::exec_images::in::")
                 dd_ll = self.get_files_recur(self.m_root_src,0,self.m_root_dst)
                 p_dest = self.m_root_dst
@@ -81,13 +81,16 @@ class LKD_CreateImages:
 		self.xx_dbg( sfun + "end")
 		return dd_file
 
-        def move_digital_images_to_md(self):
+        def move_digital_images_to_md(
+                self
+                , max_img_id
+                , cat_id_start):
 		sfun = self.get_sclass() + "::move_digital_images_to_md::"
 		self.xx_dbg( sfun + "start")
 
-                max_img_id = 2951
+                
                 ep_300x200_all_digital_seq = "ep_300x200_all_digital_seq"
-                cat_id_start = 5903
+                
 
                 self.move_digital_images_to_md_impl(
                         max_img_id
@@ -96,15 +99,16 @@ class LKD_CreateImages:
 
                 self.xx_dbg( sfun + "end")
 
-        def move_digital_images_to_md_impl(self
+        def move_digital_images_to_md_impl(
+                self
                 , max_img_id
                 , ep_300x200_all_digital_seq
                 , cat_id_start):
 
 		sfun = self.get_sclass() + "::move_digital_images_to_md_impl::"
 		self.xx_dbg( sfun + "start")
-                self.xx_dbg( sfun + "max_img_id:" + max_img_id)
-                self.xx_dbg( sfun + "cat_id_start:" + cat_id_start)
+                self.xx_dbg( sfun + "max_img_id:" + str(max_img_id))
+                self.xx_dbg( sfun + "cat_id_start:" + str(cat_id_start))
                 self.xx_dbg( sfun + "ep_300x200_all_digital_seq:" + ep_300x200_all_digital_seq)
 
                 

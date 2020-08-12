@@ -3,8 +3,10 @@ import os
 import logging
 import shutil
 
+
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\createswipper\lkdcore\LKD_FinAnalysis.py
+
 
 class LKD_FinAmounts:
 
@@ -80,6 +82,7 @@ class LKD_FinAmountsService:
                 dd_out.m_amount_sum_2 = p_fin_amounts_src.m_amount_sum_2
                 
                 return dd_out
+
 
 class LKD_FinAnalysis:
 
@@ -354,7 +357,8 @@ class LKD_FinAnalysis:
                 dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-20,00","","",""))
                 dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-2,50","","",""))
                 dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-32,60","","",""))
-                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-5,20","","",""))
+                dd.append(self.get_item("03-08-2020","03-08-2020","VISA","","","-5,20","","","")) 
+
                 dd.append(self.get_item("30-07-2020","30-07-2020","VISA","","","-500,00","","",""))
                 dd.append(self.get_item("31-07-2020","31-07-2020","VISA","","","-4,00","","",""))
                 dd.append(self.get_item("31-07-2020","31-07-2020","VISA","","","-12,95","","",""))
@@ -536,6 +540,8 @@ class LKD_FinAnalysis:
                 dd.append(self.get_item("20-07-2020","17-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.00 PLN ZABKA Z6542 K.1 GDYNIA","","","-5 00","","7",""))
                 dd.append(self.get_item("20-07-2020","17-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.99 PLN SUPER-PHARM GDYNIA WZGO GDYNIA","","","-2 99","","8",""))
                 dd.append(self.get_item("20-07-2020","17-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 3.30 PLN SPP GDYNIA GDYNIA","","","-3 30","","9",""))
+                
+
                 dd.append(self.get_item("18-07-2020","16-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 2.00 PLN ENERGY PROFIT GDYNIA","","","-2 00","9762 63","1",""))
                 dd.append(self.get_item("18-07-2020","16-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 19.48 PLN ZABKA Z6542 K.1 GDYNIA","","","-19 48","9764 63","2",""))
                 dd.append(self.get_item("17-07-2020","15-07-2020","DOP. VISA 421352******9656 PŁATNOŚĆ KARTĄ 5.49 PLN ZABKA Z6465 K.1 GDYNIA","","","-5 49","9784 11","3",""))
@@ -626,6 +632,7 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
 
+                # 57 412,56 PLN	286 451,59 PLN	-229 039,03 PLN	 10
                 # 57 425,14 PLN	286 451,59 PLN	-229 026,45 PLN	
                 # 57 578,17 PLN	286 451,59 PLN	-228 873,42 PLN	
                 # 57 683,38 PLN	286 451,59 PLN	-228 768 21 PLN	
@@ -681,12 +688,15 @@ class LKD_FinAnalysis:
                 return dd
 
 
+
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 #  600 446 066 Rafal tel
+
 
 if __name__ == "__main__":
         dd_fin = LKD_FinAnalysis("")
         dd_fin.print_data()
+
 
 
 ##########################################
@@ -697,6 +707,7 @@ if __name__ == "__main__":
 # 500/7 = 7
 #
 ##########################################
+
 
 
 ##########################################
@@ -715,6 +726,8 @@ if __name__ == "__main__":
 #
 ##########################################
 
+
+
 ##########################################
 #
 # m_amount_out_jt_sum::-6930.2
@@ -722,3 +735,5 @@ if __name__ == "__main__":
 # m_amount_out_njt::-2681.43
 #
 ##########################################
+
+

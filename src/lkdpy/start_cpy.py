@@ -43,12 +43,23 @@ class LKD_MainExec:
                 dd_fin = LKD_FinAnalysis("")
                 #dd_fin.print_data()
                 dd_fin.print_data_processed()
+        
+        def images_create_sequential_ids(self, tt):
+                dd_img = LKD_CreateImages("")
+                #dd_img.create_sequential_ids()
+                max_img_id = 2834
+                cat_id_start = 1
+                dd_img.move_digital_images_to_md(max_img_id,cat_id_start)
+
 
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
-        #ddh.refill_full_copy_one("")
-        ddh.exec_fin("")
+
+        # ddh.refill_full_copy_one("")
+        # ddh.exec_fin("")
+
+        ddh.images_create_sequential_ids("")
 
         # ddh.create_one_swipper("")
         # ddh.create_md("")
