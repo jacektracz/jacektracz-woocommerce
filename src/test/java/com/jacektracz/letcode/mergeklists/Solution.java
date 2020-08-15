@@ -6,9 +6,131 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class Solution {
+
+	final static int HANDLER_TYPE =1;
+	public ListNode execHandler(int ptype, boolean deb_mode, ListNode [] ll_arr) {
+				
+		int type = ptype;
+		
+		if(HANDLER_TYPE > 0) {
+			type = HANDLER_TYPE;
+		}
+		
+		if(type == 0) {
+			JacekTraczMergeKListSolution handler = new JacekTraczMergeKListSolution();
+			handler.DBG_MODE = false;
+			ListNode lout = handler.mergeKLists( ll_arr );
+			return lout;
+		}
+		
+		if(type == 1) {
+			JacekTraczMergeKListNoCopySolution handler = new JacekTraczMergeKListNoCopySolution();
+			handler.DBG_MODE = false;
+			ListNode lout = handler.mergeKLists( ll_arr );
+			return lout;
+		}
+		
+		if(type == 2) {
+			JacekTraczMergeKListNoDebugSolution handler = new JacekTraczMergeKListNoDebugSolution();			
+			ListNode lout = handler.mergeKLists( ll_arr );
+			return lout;
+		}
+		
+		return new ListNode(0);
+	}
+	
+	
+	public void execTestmanyListsOneNode(int items,int val_step,int start_value,String tt,boolean p_debug,boolean p_handler_debug) throws Exception {
+		String sFun = "execTestmanyListsOneNode";
+		if(p_debug) dbgInfo(sFun + "-start");
+		if(p_debug) dbgInfo(sFun + tt + "-start");
+		
+		SolutionData handler_data = new SolutionData();
+		ListNode[] ll_arr = handler_data.getLists_WithOneNodes(items,val_step,start_value);		
+		assertEquals(items,ll_arr.length);
+		
+		ListNode lout = execHandler(0,p_handler_debug,ll_arr);
+		
+		if(p_debug) {
+			int listLength = dbgList(lout, sFun);
+			assertEquals(items,listLength);
+		}
+		if(p_debug) {
+			String sErr = checkList(lout, sFun + "-OUT-LIST");
+			assertEquals(true,sErr.isEmpty());
+		}
+		if(p_debug) dbgInfo(sFun + "-end");		
+	}
+	
+	@Test	
+	//@Ignore
+	public void testListsWithOneNode_4() throws Exception {		
+		execTestmanyListsOneNode(4,100,0,"testListsWithOneNode_4",false,false);		
+	}	
+	
+	@Test	
+	//@Ignore
+	public void testListsWithOneNode_1000() throws Exception {		
+		execTestmanyListsOneNode(1000,100,0,"testListsWithOneNode_1000",false,false);		
+	}	
+	
+	@Test
+	//@Ignore
+	public void testListsWithOneNode_500() throws Exception {		
+		execTestmanyListsOneNode(500,100,0,"testListsWithOneNode_500",false,false);				
+	}	
+
+	@Test
+	//@Ignore
+	public void testListsWithOneNode_2000() throws Exception {		
+		execTestmanyListsOneNode(2000,100,2,"testListsWithOneNode_2000",false,false);		
+	}	
+	
+	@Test
+	//@Ignore
+	public void testListsWithOneNode_5000() throws Exception {		
+		execTestmanyListsOneNode(5000,100,2,"testListsWithOneNode_5000",false,false);				
+	}	
+	
+	@Test
+	//@Ignore
+	public void testListsWithOneNode_10000() throws Exception {		
+		execTestmanyListsOneNode(10000,100,2,"testListsWithOneNode_10000",false,false);				
+	}	
+	
+	@Test
+	//@Ignore
+	public void testWitManyListsWithOneNode() throws Exception {
+		
+		execTestmanyListsOneNode(2,2,2,"testListsWithOneNode_500",false,false);				
+	}	
+	
+	@Test
+	//@Ignore
+	public void testWithNotSortedLists() throws Exception {
+		String sFun = "testWithOndNode";
+		dbgInfo(sFun + "-start");
+		int items =2;
+		SolutionData handler_data = new SolutionData();
+		ListNode ll = handler_data.getList_Nodes(items,2,2);
+		dbgList(ll, sFun+ "-IN-LIST");
+		ListNode[] ll_arr =  new  ListNode[1];
+		ll_arr[0] = ll;
+		
+		
+		ListNode lout = execHandler(0,true,ll_arr);
+		
+		int listLength = dbgList(lout, sFun);
+		assertEquals(items,listLength);				
+		String sErr = checkList(lout, sFun + "-OUT-LIST");
+		assertEquals(false,sErr.isEmpty());		
+		dbgInfo(sFun + "-end");
+		
+	}	
 	
 	
 	@Test	
+	//@Ignore
 	public void testWithOneNode() throws Exception {
 		String sFun = "testWithOndNode";
 		dbgInfo(sFun + "-start");
@@ -16,8 +138,9 @@ public class Solution {
 		ListNode ll = getList_OneNodes();
 		ListNode[] ll_arr =  new  ListNode[1];
 		ll_arr[0] = ll;
-		JacekTraczMergeKListSolution handler = new JacekTraczMergeKListSolution();
-		ListNode lout = handler.mergeKLists( ll_arr );
+		
+		ListNode lout = execHandler(0,true,ll_arr);
+		
 		int listLength = dbgList(lout, sFun);
 		assertEquals(1,listLength);				
 		String sErr = checkList(lout, sFun);
@@ -26,15 +149,15 @@ public class Solution {
 		
 	}	
 	
-	@Test	
+	@Test
+	//@Ignore
 	public void testOneListWithTwoNode() throws Exception {
 		String sFun = "testOneListWithTwoNode";
 		dbgInfo(sFun + "-start");
 		ListNode ll = getList_TwoNodes();
 		ListNode[] ll_arr =  new  ListNode[1];
 		ll_arr[0] = ll;
-		JacekTraczMergeKListSolution handler = new JacekTraczMergeKListSolution();
-		ListNode lout = handler.mergeKLists( ll_arr );
+		ListNode lout = execHandler(0,true,ll_arr);
 		int listLength = dbgList(lout, sFun);
 		assertEquals(2,listLength);		
 		String sErr = checkList(lout, sFun);
@@ -43,6 +166,7 @@ public class Solution {
 	}
 	
 	@Test
+	//@Ignore
 	public void testTwoListWithTwoNode() throws Exception {
 		String sFun = "testTwoListWithTwoNode";
 		dbgInfo(sFun + "-start");
@@ -51,8 +175,9 @@ public class Solution {
 		ListNode[] ll_arr =  new  ListNode[2];
 		ll_arr[0] = ll;
 		ll_arr[1] = l2;
-		JacekTraczMergeKListSolution handler = new JacekTraczMergeKListSolution();
-		ListNode lout = handler.mergeKLists( ll_arr );
+		
+		ListNode lout = execHandler(0,true,ll_arr);
+		
 		int listLength = dbgList(lout, sFun);
 		assertEquals(4,listLength);
 		String sErr = checkList(lout, sFun);
@@ -61,6 +186,7 @@ public class Solution {
 	}
 	
 	@Test
+	//@Ignore
 	public void testTwoListWithThreeNodes() throws Exception {
 		String sFun = "testTwoListWithThreeNodes";
 		dbgInfo(sFun + "-start");
@@ -69,8 +195,9 @@ public class Solution {
 		ListNode[] ll_arr =  new  ListNode[2];
 		ll_arr[0] = ll;
 		ll_arr[1] = l2;
-		JacekTraczMergeKListSolution handler = new JacekTraczMergeKListSolution();
-		ListNode lout = handler.mergeKLists( ll_arr );
+		
+		ListNode lout = execHandler(0,true,ll_arr);
+		
 		dbgNode(lout,sFun);
 		int listLength = dbgList(lout, sFun);
 		assertEquals(6,listLength);
@@ -85,6 +212,7 @@ public class Solution {
 	
 	
 	@Test	
+	//@Ignore
 	public void testWithOneNode_solution() throws Exception {
 		String sFun = "testWithOndNode";
 		dbgInfo(sFun + "-start");
@@ -103,6 +231,7 @@ public class Solution {
 	}	
 	
 	@Test	
+	//@Ignore
 	public void testOneListWithTwoNode_solution() throws Exception {
 		String sFun = "testOneListWithTwoNode";
 		dbgInfo(sFun + "-start");
@@ -119,6 +248,7 @@ public class Solution {
 	}
 	
 	@Test
+	//@Ignore
 	public void testTwoListWithTwoNode_solution() throws Exception {
 		String sFun = "testTwoListWithTwoNode";
 		dbgInfo(sFun + "-start");
@@ -137,6 +267,7 @@ public class Solution {
 	}
 	
 	@Test
+	//@Ignore
 	public void testTwoListWithThreeNodes_solution() throws Exception {
 		String sFun = "testTwoListWithThreeNodes";
 		dbgInfo(sFun + "-start");
@@ -154,12 +285,6 @@ public class Solution {
 		assertEquals(true,sErr.isEmpty());
 		dbgInfo(sFun + "-end");
 	}
-	
-	
-	
-	
-	
-	
 	
     private void dbgInfo ( String tt){
         dbgInfoSubmitted(tt);
@@ -279,9 +404,11 @@ public class Solution {
             int ii = 0;
             while(true){            	
                 if(nl != null){                	
-                   if( nl.val <= maxVal) {
+                   if( nl.val < maxVal) {
                 	   sOut =  sOut + "[FAILED_VAL:" + nl.val + "][" + ii +"]";  
-                   }                                                
+                   }else {
+                	   maxVal = nl.val;
+                   }
                 }                
                 if(nl == null){
                 	break;
@@ -289,8 +416,11 @@ public class Solution {
                 nl = nl.next;
                 ii++;
             }
-
-            dbgInfo(sFun + "ERROR_IN_LIST:" + sOut);
+            
+            if(!sOut.isEmpty()) {
+            	dbgInfo(sFun + "ERROR_IN_LIST:" + sOut);
+            }
+            
             dbgInfo(sFun + "end :");
             dbgInfo(">>>>");
             dbgInfo(" ");
