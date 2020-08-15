@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.commons.io.IOUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
+//import org.apache.commons.io.IOUtils;
+//import org.json.JSONArray;
+//import org.json.JSONObject;
 
 public class GitHubJobsRepository {
 
@@ -21,6 +21,7 @@ public class GitHubJobsRepository {
 
         URL url = new URL(GITHUB_JOB_API+page);
         HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
+        /*
         String response = IOUtils.toString(httpConnection.getInputStream(), Charset.defaultCharset());
         JSONArray jsonArray = new JSONArray(response);
 
@@ -32,7 +33,7 @@ public class GitHubJobsRepository {
                     jsonObject.getString("title"));
             gitHubJobs.add(gitHubJob);
         }
-
+*/
         return gitHubJobs;
     }
 
