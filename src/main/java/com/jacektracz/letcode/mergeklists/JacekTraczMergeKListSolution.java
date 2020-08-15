@@ -34,18 +34,19 @@ class JacekTraczMergeKListSolution {
         String sFunR = tt + " -> mergeKListsInternal::";
         String lv = "[LVL-0]";
         dbgInfo(sFunR  + "start :");
+        dbgHeaderLV0(sFunR  + "start :");
         int ii = 0;        
         ListNode [] l_created_root_current = new ListNode[2];
         ListNode handled_0_root = null;
         
         for (ListNode handled_1_root : lists){
         	
-        	dbgInfo(sFunR   + "-" + ii + "merge-list-start-LV-0");	
+        	dbgInfo(sFunR   + "-" + ii + "merge-list-start");	
         	
-        	dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root-before-merge-roots-LV-0");
-            dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root-before-merge-roots-LV-0");
-        	dbgList(l_created_root_current[0], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[0]-before-merge-roots-LV-0");
-            dbgList(l_created_root_current[1], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[1]-before-merge-roots-LV-0");
+        	dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root-before-merge-roots");
+            dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root-before-merge-roots");
+        	dbgList(l_created_root_current[0], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[0]-before-merge-roots");
+            dbgList(l_created_root_current[1], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[1]-before-merge-roots");
             
             mergeTwoRoots(
             		l_created_root_current
@@ -53,25 +54,27 @@ class JacekTraczMergeKListSolution {
             		, handled_1_root
             		, sFunR + "[roots:" + ii + "]");
 
-        	dbgList(l_created_root_current[0], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[0]-after-merge-roots-LV-0");
-        	dbgList(l_created_root_current[1], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[1]-after-merge-roots-LV-0");
+        	dbgList(l_created_root_current[0], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[0]-after-merge-roots");
+        	dbgList(l_created_root_current[1], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[1]-after-merge-roots");
             
             handled_0_root = l_created_root_current[0];
             
             l_created_root_current[0] = null;
             l_created_root_current[1] = null;
             
-            dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::after-merge-after-merge-roots-LV-0");
-            dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::after-merge-after-merge-roots-LV-0");
+            dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::after-merge-after-merge-roots");
+            dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::after-merge-after-merge-roots");
             
-            dbgInfo(sFunR   + "[" + ii + "]" +  "merge-list-end-LV-0 :");
+            dbgInfo(sFunR   + "[" + ii + "]" +  "merge-list-end :");
             
             ii++;
             
         }
         
-        dbgList(handled_0_root, sFunR+ "handled_out_root::end-LV-0");
+        dbgList(handled_0_root, sFunR+ "handled_out_root::end");
+        dbgHeaderLV0(sFunR  + "end");
         dbgInfo(sFunR  + "end :");
+        
         return handled_0_root;
     }
 
@@ -84,7 +87,8 @@ class JacekTraczMergeKListSolution {
         
         String sFunMN =  tt + "-> mergeTwoRoots::";
         String lv = "[LVL-2]";
-        dbgInfo(sFunMN + lv +  "[nodes:" + "start" + "]" + "s-start :");
+        
+        dbgHeaderLV1(sFunMN + lv +  "[nodes:" + "start" + "]" + "s-start :");
         
         ListNode l_handled_0_current = l_handled_0_root;
         ListNode l_handled_1_current =   l_handled_1_root;      
@@ -144,7 +148,7 @@ class JacekTraczMergeKListSolution {
             
             if( l_handled_0_current == null  && l_handled_1_current == null )
             {
-            	dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "-break-on-empty-");
+            	dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "-ater=merge-break-on-empty-");
             	dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "<==|");
                 break;
             }
@@ -159,7 +163,7 @@ class JacekTraczMergeKListSolution {
         
         dbgList(l_out_created_root_current[0], sFunMN + lv +  "[nodes:" + ii + "]" + "l_out_created_root_current-list-after-merge-list");
                 
-        dbgInfo(sFunMN + lv +  "end :");
+        dbgHeaderLV1(sFunMN + lv +  "end :");
     }    
 
     private void mergeTwoNodes(
@@ -172,19 +176,28 @@ class JacekTraczMergeKListSolution {
         
         String sFun2N =  tt + " -> * mergeTwoNode-LV-4s::";
         String lv = "[LVL-4]";
-        dbgInfo(sFun2N  + lv + "-2N-start :");
+        dbgHeaderLV2(sFun2N  + lv + "-2N-start :");
+        
+        dbgNode(l_out_handled_0_root_current[1], sFun2N  + lv + "l_out_handled_0_root_current[1]-before-init");
+        dbgNode(l_out_handled_1_root_current[1], sFun2N  + lv + "l_out_handled_1_root_current[1]-before-init");
+        
+        dbgInfo(sFun2N  + lv + "-initialize-out-current-pointers-start");        
+        l_out_handled_0_root_current[1] = l_in_handled_0_current;
+        l_out_handled_1_root_current[1] = l_in_handled_1_current;
+        dbgInfo(sFun2N  + lv + "-initialize-out-current-pointers-end");
+        
         
         dbgNode(l_in_handled_0_current, sFun2N  + lv + "l_in_handled_0_current-before-resolve");
         dbgNode(l_in_handled_1_current, sFun2N  + lv + "l_in_handled_1_current-before-resolve");        
         
         dbgList(l_out_created_root_current[0], sFun2N  + lv + "l_out_created_root_current[0]-before-resolve");
-        dbgNode(l_out_created_root_current[1], sFun2N  + lv + "l_out_created_root_current[1]-vefore-resolve");
+        dbgNode(l_out_created_root_current[1], sFun2N  + lv + "l_out_created_root_current[1]-before-resolve");
 
         dbgList(l_out_handled_0_root_current[0], sFun2N  + lv + "l_out_handled_0_root_current[0]-before-resolve");
-        dbgNode(l_out_handled_0_root_current[1], sFun2N  + lv + "l_out_handled_0_root_current[1]-vefore-resolve");
+        dbgNode(l_out_handled_0_root_current[1], sFun2N  + lv + "l_out_handled_0_root_current[1]-before-resolve");
 
         dbgList(l_out_handled_1_root_current[0], sFun2N  + lv + "l_out_handled_1_root_current[0]-before-resolve");
-        dbgNode(l_out_handled_1_root_current[1], sFun2N  + lv + "l_out_handled_1_root_current[1]-vefore-resolve");
+        dbgNode(l_out_handled_1_root_current[1], sFun2N  + lv + "l_out_handled_1_root_current[1]-before-resolve");
         
         ListNode l_created_left = null;                        
         
@@ -194,10 +207,11 @@ class JacekTraczMergeKListSolution {
         	dbgInfo(sFun2N + lv + " case-1-check-start") ;
         	
 	        if(l_in_handled_0_current == null && l_in_handled_1_current == null){
-	            dbgInfo(sFun2N + lv + "case-1-start") ;        
+	            dbgInfo(sFun2N + lv + "case-1-exec-start") ;
+	            dbgInfo(sFun2N + lv + "no-nodes-to-handle") ;
 	            l_created_left = null;
 	            cases_check = 1;
-	            dbgInfo(sFun2N + lv + "case 1-end") ;
+	            dbgInfo(sFun2N + lv + "case 1-exec-end") ;
 	        }
 	        
 	        dbgInfo(sFun2N + lv + " case-1-check-end") ;
@@ -209,11 +223,12 @@ class JacekTraczMergeKListSolution {
         	dbgInfo(sFun2N + lv + " case-2-check-start") ;
         	
 	        if(l_in_handled_0_current == null && l_in_handled_1_current != null){
-	            dbgInfo(sFun2N + lv + " case-2-start") ;
+	            dbgInfo(sFun2N + lv + " case-2-exec-start") ;
+	            dbgInfo(sFun2N + lv + " item-from-list-1-was-taken") ;
 	            l_out_handled_1_root_current[1] = l_in_handled_1_current.next;
 	            l_created_left = new ListNode(l_in_handled_1_current.val);
 	            l_created_left.next = null;
-	            dbgInfo(sFun2N + lv + " case-2-end") ;
+	            dbgInfo(sFun2N + lv + " case-2-exec-end") ;
 	            cases_check = 2;
 	        }
 	        
@@ -226,12 +241,13 @@ class JacekTraczMergeKListSolution {
         	dbgInfo(sFun2N + lv + " case-3-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current == null){
-	            dbgInfo(sFun2N + lv + " case-3-start") ;
+	            dbgInfo(sFun2N + lv + " case-3-exec-start") ;
+	            dbgInfo(sFun2N + lv + " item-from-list-0-was-taken") ;
 	            l_out_handled_0_root_current[1] = l_in_handled_0_current.next;
 	            l_created_left = new ListNode(l_in_handled_0_current.val);   
 	            l_created_left.next = null;
 	            cases_check = 3;
-	            dbgInfo(sFun2N + lv + " case-3-end") ;
+	            dbgInfo(sFun2N + lv + " case-3-exec-end") ;
 	        }
 	        
 	        dbgInfo(sFun2N + lv + " case-3-check-end") ;
@@ -245,11 +261,12 @@ class JacekTraczMergeKListSolution {
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
 	        	dbgInfo(sFun2N + lv + " case-4-check-vals") ;
 	            if( l_in_handled_0_current.val < l_in_handled_1_current.val ){
-	            	dbgInfo(sFun2N + lv + " case-4-start") ;
+	            	dbgInfo(sFun2N + lv + " case-4-exec-start") ;
+	            	dbgInfo(sFun2N + lv + " item-from-list-0-was-taken") ;
 	            	l_out_handled_0_root_current[1] = l_in_handled_0_current.next;            	                
 	                l_created_left = new ListNode(l_in_handled_0_current.val);
 	                cases_check = 4;
-	                dbgInfo(sFun2N + lv + " case-4-end") ;	                
+	                dbgInfo(sFun2N + lv + " case-4-exec-end") ;	                
 	            }
 	        }
 	        
@@ -264,11 +281,12 @@ class JacekTraczMergeKListSolution {
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
 	        	dbgInfo(sFun2N + lv + " case-5-check-vals") ;
 	            if(l_in_handled_0_current.val == l_in_handled_1_current.val){
-	            	l_out_handled_0_root_current[1] = l_in_handled_0_current.next;
-	                dbgInfo(sFun2N + lv + " case-5-start") ;
+	            	dbgInfo(sFun2N + lv + " case-5-exec-start") ;
+	            	dbgInfo(sFun2N + lv + " item-from-list-0-was-taken") ;	            	
+	            	l_out_handled_0_root_current[1] = l_in_handled_0_current.next;	                
 	                l_created_left = new ListNode(l_in_handled_0_current.val);
 	                cases_check = 5;
-	                dbgInfo(sFun2N + lv + " case-5-end") ;
+	                dbgInfo(sFun2N + lv + " case-5-exec-end") ;
 	                
 	            }
 	        }
@@ -393,12 +411,11 @@ class JacekTraczMergeKListSolution {
         
         dbgInfo(sFun2N + lv + " nodes-cases-resolves-end:" + "[cases_check:" + cases_check + "]" + "[resolved_items:" + resolved_items + "]");
         
-        dbgInfo(sFun2N + lv + "-2N-end :");
+        dbgHeaderLV2(sFun2N + lv + "-2N-end :");
         
         return ;
         
     }
-    
     
     private void dbgNode ( 
             ListNode p_nl
@@ -450,6 +467,56 @@ class JacekTraczMergeKListSolution {
         dbgInfo(">>>>");
         dbgInfo(" ");
         dbgInfo(" ");        
+    }
+
+    
+    private void dbgHeaderLV0(String tt) {
+    	dbgN5();
+    	dbgInfo("");
+    	dbgInfo("");
+        dbgInfo("==================================================");
+        dbgInfo("=");
+        dbgInfo("=");
+        dbgInfo("=" + tt);
+        dbgInfo("=");
+        dbgInfo("=");
+        dbgInfo("==================================================");
+        dbgInfo("");
+        dbgInfo("");
+        dbgN5();
+    	
+    }
+    
+    private void dbgHeaderLV1(String tt) {
+    	dbgN5();
+    	dbgInfo("");
+        dbgInfo("****************************************************");        
+        dbgInfo("*");
+        dbgInfo("**" + tt);
+        dbgInfo("*");        
+        dbgInfo("****************************************************");
+        dbgInfo("");
+        dbgN5();
+    	
+    }
+    
+    private void dbgHeaderLV2(String tt) {
+    	dbgN5();
+    	dbgInfo("");
+        dbgInfo("---------------------------------------------------");                
+        dbgInfo("-" + tt);               
+        dbgInfo("---------------------------------------------------");
+        dbgInfo("");
+        dbgN5();
+    	
+    }
+    
+    private void dbgN5() {
+    	dbgInfo("");
+    	dbgInfo("");
+    	dbgInfo("");
+    	dbgInfo("");
+    	dbgInfo("");
     }
     
     private void dbgInfo ( String tt){
