@@ -598,6 +598,10 @@ class JacekTraczMergeKListSolution {
     }
     
     private void dbgInfo ( String tt){
+        dbgInfoSubmitted(tt);
+    }
+    
+    private void dbgInfoSubmitted ( String tt){
     	String needle = "";
     	//needle ="LV-0";
     	
