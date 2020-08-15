@@ -23,6 +23,8 @@ public class Solution {
 		ListNode lout = handler.mergeKLists( ll_arr );
 		int listLength = dbgList(lout, sFun);
 		assertEquals(1,listLength);				
+		String sErr = checkList(lout, sFun);
+		assertEquals(true,sErr.isEmpty());		
 		dbgInfo(sFun + "-end");
 		
 	}	
@@ -37,7 +39,9 @@ public class Solution {
 		JacekTraczMergeKListSolution handler = new JacekTraczMergeKListSolution();
 		ListNode lout = handler.mergeKLists( ll_arr );
 		int listLength = dbgList(lout, sFun);
-		assertEquals(4,listLength);		
+		assertEquals(2,listLength);		
+		String sErr = checkList(lout, sFun);
+		assertEquals(true,sErr.isEmpty());		
 		dbgInfo(sFun + "-end");
 	}
 	
@@ -54,7 +58,8 @@ public class Solution {
 		ListNode lout = handler.mergeKLists( ll_arr );
 		int listLength = dbgList(lout, sFun);
 		assertEquals(4,listLength);
-		
+		String sErr = checkList(lout, sFun);
+		assertEquals(true,sErr.isEmpty());		
 		dbgInfo(sFun + "-end");
 	}
 	
@@ -69,8 +74,11 @@ public class Solution {
 		ll_arr[1] = l2;
 		JacekTraczMergeKListSolution handler = new JacekTraczMergeKListSolution();
 		ListNode lout = handler.mergeKLists( ll_arr );
+		dbgNode(lout,sFun);
 		int listLength = dbgList(lout, sFun);
 		assertEquals(6,listLength);
+		String sErr = checkList(lout, sFun);
+		assertEquals(true,sErr.isEmpty());
 		dbgInfo(sFun + "-end");
 	}
 	
@@ -98,8 +106,16 @@ public class Solution {
         dbgInfo(" ");
     }
 
-    
     private int dbgList ( 
+            ListNode p_nl
+            , String tt){
+    	
+    	int ii = dbgListTxt(p_nl,tt);
+    	dbgListShort(p_nl,tt);
+    	return ii;
+    }    
+    
+    private int dbgListTxt ( 
         ListNode p_nl
         , String tt){
         
@@ -129,7 +145,72 @@ public class Solution {
         return ii;
     }
 	
+    private int dbgListShort ( 
+            ListNode p_nl
+            , String tt){
+            
+        	String sFun =  tt + " -> dbgListShort::";
+            dbgInfo(" ");
+            dbgInfo(" ");
+            dbgInfo("<<<<<");
+            dbgInfo(sFun + "-start :");
+            String sList = "";
+            ListNode nl = p_nl;
+            int ii =0;
+            while(true){
+            	
+                if(nl != null){
+                    sList = sList +"[";
+                    sList = sList + nl.val;
+                    sList = sList +"]";                             
+                }
+                
+                if(nl == null){
+                	break;
+                }                
+                nl = nl.next;
+                ii++;
+            }
+            dbgInfo(sFun + " " + sList);
+            dbgInfo(sFun + "end :");
+            dbgInfo(">>>>");
+            dbgInfo(" ");
+            dbgInfo(" ");
+            return ii;
+    }
+    
+    private  String checkList ( 
+            ListNode p_nl
+            , String tt
+            ){
+            
+        	String sFun =  tt + " -> checkList::";
+            dbgInfo("<<<");        	
+            String sOut = "";
+            ListNode nl = p_nl;            
+            int maxVal = 0;
+            int ii = 0;
+            while(true){            	
+                if(nl != null){                	
+                   if( nl.val <= maxVal) {
+                	   sOut =  sOut + "[FAILED_VAL:" + nl.val + "][" + ii +"]";  
+                   }                                                
+                }                
+                if(nl == null){
+                	break;
+                }                
+                nl = nl.next;
+                ii++;
+            }
 
+            dbgInfo(sFun + "ERROR_IN_LIST:" + sOut);
+            dbgInfo(sFun + "end :");
+            dbgInfo(">>>>");
+            dbgInfo(" ");
+            dbgInfo(" ");
+            return  sOut;
+    }
+    
 	private ListNode getList_OneNodes() {
 		ListNode ll = new ListNode(1);
 		return ll;

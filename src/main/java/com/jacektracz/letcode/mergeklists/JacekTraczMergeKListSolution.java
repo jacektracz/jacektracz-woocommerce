@@ -441,7 +441,17 @@ class JacekTraczMergeKListSolution {
     }
 
     
-    private void dbgList ( 
+    private int dbgList ( 
+            ListNode p_nl
+            , String tt){
+    	
+    	int ii = dbgListTxt(p_nl,tt);
+    	dbgListShort(p_nl,tt);
+    	checkList(p_nl,tt);
+    	return ii;
+    }    
+    
+    private int dbgListTxt ( 
         ListNode p_nl
         , String tt){
         
@@ -452,7 +462,7 @@ class JacekTraczMergeKListSolution {
         dbgInfo(sFun + "-start :");
         
         ListNode nl = p_nl;
-        
+        int ii =0;
         while(true){
         	
             if(nl == null){
@@ -461,12 +471,48 @@ class JacekTraczMergeKListSolution {
             }
             dbgInfo(sFun + " value: " + nl.val) ;
             nl = nl.next;
+            ii++;
         }
         
         dbgInfo(sFun + "end :");
         dbgInfo(">>>>");
         dbgInfo(" ");
-        dbgInfo(" ");        
+        dbgInfo(" ");
+        return ii;
+    }
+	
+    private int dbgListShort ( 
+            ListNode p_nl
+            , String tt){
+            
+        	String sFun =  tt + " -> dbgListShort::";
+            dbgInfo(" ");
+            dbgInfo(" ");
+            dbgInfo("<<<<<");
+            dbgInfo(sFun + "-start :");
+            String sList = "";
+            ListNode nl = p_nl;
+            int ii =0;
+            while(true){
+            	
+                if(nl != null){
+                    sList = sList +"[";
+                    sList = sList + nl.val;
+                    sList = sList +"]";                             
+                }
+                
+                if(nl == null){
+                	break;
+                }                
+                nl = nl.next;
+                ii++;
+            }
+            dbgInfo(sFun + " " + sList);
+            dbgInfo(sFun + "end :");
+            dbgInfo(">>>>");
+            dbgInfo(" ");
+            dbgInfo(" ");
+            return ii;
     }
 
     
@@ -517,6 +563,38 @@ class JacekTraczMergeKListSolution {
     	dbgInfo("");
     	dbgInfo("");
     	dbgInfo("");
+    }
+    
+    private  String checkList ( 
+            ListNode p_nl
+            , String tt
+            ){
+            
+        	String sFun =  tt + " -> checkList::";
+            dbgInfo("<<<");        	
+            String sOut = "";
+            ListNode nl = p_nl;            
+            int maxVal = 0;
+            int ii = 0;
+            while(true){            	
+                if(nl != null){                	
+                   if( nl.val <= maxVal) {
+                	   sOut =  sOut + "[FAILED_VAL:" + nl.val + "][" + ii +"]";  
+                   }                                                
+                }                
+                if(nl == null){
+                	break;
+                }                
+                nl = nl.next;
+                ii++;
+            }
+
+            dbgInfo(sFun + "ERROR_IN_LIST:" + sOut);
+            dbgInfo(sFun + "end :");
+            dbgInfo(">>>>");
+            dbgInfo(" ");
+            dbgInfo(" ");
+            return  sOut;
     }
     
     private void dbgInfo ( String tt){
