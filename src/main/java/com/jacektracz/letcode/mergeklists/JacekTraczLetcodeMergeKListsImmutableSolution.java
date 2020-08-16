@@ -15,21 +15,15 @@ package com.jacektracz.letcode.mergeklists;
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class JacekTraczMergeKListNoCopySolution {
-    
-    public boolean DBG_MODE = true;
+class JacekTraczLetcodeMergeKListsImmutableSolution {
+	
+    public final static boolean DBG_MODE = true;
     
     public ListNode mergeKLists( ListNode[] lists ) {
     	
     	String tt = "";
     	String sFun = "> mergeKLists::"; 
     	if(DBG_MODE) dbgInfo(sFun  + "start :");
-    	
-    	if(DBG_MODE) {
-	    	for(int ii =0;ii< lists.length; ii ++) {
-	    		if(DBG_MODE) dbgList(lists[ii], sFun + "in_lis_on_idx:" + ii);		
-	    	}
-    	}
     	ListNode out_list = mergeKListsInternal(tt,lists);
         if(DBG_MODE) dbgList(out_list, sFun + "out_list::end");
         if(DBG_MODE) dbgInfo(sFun  + "end :");
@@ -150,30 +144,16 @@ class JacekTraczMergeKListNoCopySolution {
         	if(DBG_MODE) dbgNode(l_handled_1_current, sFunMN + lv +  "[nodes:" + ii + "]" + "l_handled_1_current-after-merge-nodes" );
         	
         	if(DBG_MODE) dbgList(l_out_created_root_current[0], sFunMN + lv +  "[nodes:" + ii + "]" + "l_out_created_root_current[0]-after-merge-nodes" );        	
-        	if(DBG_MODE) dbgNode(l_out_created_root_current[1], sFunMN + lv +  "[nodes:" + ii + "]" + "l_out_created_root_current[1]-after-merge-nodes" );        	        	
-
-            if( l_handled_0_current == null   )
-            {
-            	if(DBG_MODE) dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "l_handled_0_current-is-empty");
-            	l_out_created_root_current[1].next = l_handled_0_current;            	
-                break;
-            }
-            
-            if( l_handled_1_current == null   )
-            {
-            	if(DBG_MODE) dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "l_handled_1_current-is-empty");
-            	l_out_created_root_current[1].next = l_handled_1_current;            	
-                break;
-            	
-                //break;
-            }
+        	if(DBG_MODE) dbgNode(l_out_created_root_current[1], sFunMN + lv +  "[nodes:" + ii + "]" + "l_out_created_root_current[1]-after-merge-nodes" );
         	
-            //if( l_handled_0_current == null  && l_handled_1_current == null )
-            //{
-            //	if(DBG_MODE) dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "-ater=merge-break-on-empty-");
-            //	if(DBG_MODE) dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "<==|");
-            //    break;
-            //}
+        	
+            
+            if( l_handled_0_current == null  && l_handled_1_current == null )
+            {
+            	if(DBG_MODE) dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "-ater=merge-break-on-empty-");
+            	if(DBG_MODE) dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "<==|");
+                break;
+            }
             
             if(DBG_MODE) dbgInfo(sFunMN + lv +  "[nodes:" + ii + "]" + "-move-to-merge-next-node-");
             
@@ -263,18 +243,13 @@ class JacekTraczMergeKListNoCopySolution {
         	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-3-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current == null){
-	        	
 	            if(DBG_MODE) dbgInfo(sFun2N + lv + " case-3-exec-start") ;
 	            if(DBG_MODE) dbgInfo(sFun2N + lv + " item-from-list-0-was-taken") ;
 	            l_out_handled_0_root_current[1] = l_in_handled_0_current.next;
-	            //l_created_left = new ListNode(l_in_handled_0_current.val);   
-	            //l_created_left.next = null;
-	            
-	            l_created_left = l_in_handled_0_current;
-	            		
+	            l_created_left = new ListNode(l_in_handled_0_current.val);   
+	            l_created_left.next = null;
 	            cases_check = 3;
 	            if(DBG_MODE) dbgInfo(sFun2N + lv + " case-3-exec-end") ;
-	            
 	        }
 	        
 	        if(DBG_MODE) dbgInfo(sFun2N + lv + " case-3-check-end") ;
@@ -286,26 +261,15 @@ class JacekTraczMergeKListNoCopySolution {
         	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-check-vals-start");
-	        	
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-check-vals") ;
 	            if( l_in_handled_0_current.val < l_in_handled_1_current.val ){
-	            	
 	            	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-exec-start") ;
-	            	if(DBG_MODE) dbgInfo(sFun2N + lv + " item-from-list-0-was-taken");
-	            	
-	            	l_out_handled_0_root_current[1] = l_in_handled_0_current.next;
-	            	
-	                //l_created_left = new ListNode(l_in_handled_0_current.val);
-	                
-	            	l_created_left = l_in_handled_0_current;
-	            	
+	            	if(DBG_MODE) dbgInfo(sFun2N + lv + " item-from-list-0-was-taken") ;
+	            	l_out_handled_0_root_current[1] = l_in_handled_0_current.next;            	                
+	                l_created_left = new ListNode(l_in_handled_0_current.val);
 	                cases_check = 4;
-	                if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-exec-end") ;
-	                
+	                if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-exec-end") ;	                
 	            }
-	            
-	            if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-check-vals-end") ;
 	        }
 	        
 	        if(DBG_MODE) dbgInfo(sFun2N + lv + " case-4-check-end") ;
@@ -317,25 +281,16 @@ class JacekTraczMergeKListNoCopySolution {
         	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-5-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-5-check-vals-start") ;
-	        	
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-5-check-vals") ;
 	            if(l_in_handled_0_current.val == l_in_handled_1_current.val){
-	            	
 	            	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-5-exec-start") ;
 	            	if(DBG_MODE) dbgInfo(sFun2N + lv + " item-from-list-0-was-taken") ;	            	
 	            	l_out_handled_0_root_current[1] = l_in_handled_0_current.next;	                
-	                //l_created_left = new ListNode(l_in_handled_0_current.val);
-	            	
-	            	l_created_left = l_in_handled_0_current;
-	            	
+	                l_created_left = new ListNode(l_in_handled_0_current.val);
 	                cases_check = 5;
 	                if(DBG_MODE) dbgInfo(sFun2N + lv + " case-5-exec-end") ;
 	                
 	            }
-	            
-	            if(DBG_MODE) dbgInfo(sFun2N + lv + " case-5-check-vals-end") ;
-	            
 	        }
 	        
 	        if(DBG_MODE) dbgInfo(sFun2N + lv + " case-5-check-end") ;
@@ -347,24 +302,14 @@ class JacekTraczMergeKListNoCopySolution {
         	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-6-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-6-check-vals-start") ;
-	        	
-	            if(l_in_handled_0_current.val > l_in_handled_1_current.val){     
-	            	
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " case-6-check-vals") ;
+	            if(l_in_handled_0_current.val > l_in_handled_1_current.val){            	
 	                if(DBG_MODE) dbgInfo(tt + " case-6-start") ;
 	                l_out_handled_1_root_current[1] = l_in_handled_1_current.next;
-	                //l_created_left = new ListNode(l_in_handled_1_current.val);
-	                
-	                l_created_left = l_in_handled_1_current;
-	                
+	                l_created_left = new ListNode(l_in_handled_1_current.val);
 	                cases_check = 6;
 	                if(DBG_MODE) dbgInfo(tt + " case-6-end") ;
-	                
 	            }
-	            
-	            if(DBG_MODE) dbgInfo(sFun2N + lv + " case-6-check-vals-end") ;
-	            
 	        }
 	        
 	        if(DBG_MODE) dbgInfo(sFun2N + lv + " case-6-check-end") ;
@@ -380,94 +325,76 @@ class JacekTraczMergeKListNoCopySolution {
         int resolved_items = 0;
         if( resolved_items == 0 ) {        	
         	
-        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-start");
+        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-start :");
         	
 	        if( l_created_left == null ){
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-exec-start");
-	        	
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-exec-start :");
 	        	if(DBG_MODE) dbgInfo(sFun2N + lv + "no-items-to-handle-work-finished-current-out-pinter-to-null:");	        		            
 	            l_out_created_root_current[1] = null;
 	            resolved_items = 4;
-	            if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-exec-end");
-	            
+	            if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-exec-end :");
 	        }else {
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-no-check");
-	        	
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-no-check :");
 	        }
 	        
-	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-end");
+	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-4-end :");
 	        
         }
         
         if( resolved_items == 0 ) {
         	
-        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-start");
+        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-start :");
         	
 	        if( l_out_created_root_current[0] == null ){
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-exec-start");
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + "fill-root-first-time-set-current-as-root");
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-exec-start :");
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + "fill-root-first-time-set-current-as-root :");
 	        	l_created_left.next = null;
 	            l_out_created_root_current[0] = l_created_left;
 	            l_out_created_root_current[1] = l_created_left;
 	            resolved_items = 1;
-	            if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-exec-end");
-	            
+	            if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-exec-end :");
 	        }else {
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-no-check");
-	        	
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-no-check :");
 	        }
 	        
-	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-end");
+	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-1-end :");
 	        
         }
         
         if( resolved_items == 0 ) {
         	
-        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-start");
+        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-start :");
         	
 	        if( l_out_created_root_current[0] != null && l_out_created_root_current[1] == null){
-	        	
 	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-exec-start :");
 	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " should-not-exists:ERROR-OCCURED");
 	            l_out_created_root_current[1].next = l_created_left;
 	            l_out_created_root_current[1] = l_created_left;
 	            resolved_items = 2;
 	            if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-exec-end :");
-	            
 	        }else {
-	        	
 	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-no-check :");
-	        	
 	        }
 	        
-	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-end");
+	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-end :");
         }
         
         if( resolved_items == 0 ) {
         	
-        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-start");
+        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-start :");
         	
 	        if( l_out_created_root_current[0] != null && l_out_created_root_current[1] != null){
-	        	
 	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-exec-start :");
 	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-2-move-current-to-right :");
 	            l_out_created_root_current[1].next = l_created_left;
 	            l_out_created_root_current[1] = l_created_left;
 	            resolved_items = 3;
-	            if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-exec-end");
-	            
+	            if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-exec-end :");
 	        }else {
-	        	
-	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-no-check");
-	        	
+	        	if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-no-check :");
 	        }
 	        
-	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-end");
-	        
+	        if(DBG_MODE) dbgInfo(sFun2N + lv + " nodes-resolve-3-end :");	        
         }
                 
         if(DBG_MODE) dbgNode(l_in_handled_0_current, sFun2N  + lv + "l_in_handled_0_current-after-resolve");
@@ -510,31 +437,24 @@ class JacekTraczMergeKListNoCopySolution {
         }
         
         if(DBG_MODE) dbgInfo(sFun + " dbgNode-end :");
-        if(DBG_MODE) dbgInfo("");
-        if(DBG_MODE) dbgInfo("");
-        
+        if(DBG_MODE) dbgInfo("<<");
+        if(DBG_MODE) dbgInfo(" ");
     }
 
     
     private int dbgList ( 
             ListNode p_nl
             , String tt){
-    	if(!DBG_MODE) {
-    		return 0;
-    	}
+    	
     	int ii = dbgListTxt(p_nl,tt);
     	dbgListShort(p_nl,tt);
     	checkList(p_nl,tt);
     	return ii;
-    }
-    
+    }    
     
     private int dbgListTxt ( 
         ListNode p_nl
         , String tt){
-    	if(!DBG_MODE) {
-    		return 0;
-    	}
         
     	String sFun =  tt + " -> dbgList::";
         if(DBG_MODE) dbgInfo(" ");
@@ -565,9 +485,6 @@ class JacekTraczMergeKListNoCopySolution {
     private int dbgListShort ( 
             ListNode p_nl
             , String tt){
-	    	if(!DBG_MODE) {
-	    		return 0;
-	    	}
             
         	String sFun =  tt + " -> dbgListShort::";
             if(DBG_MODE) dbgInfo(" ");
@@ -601,20 +518,16 @@ class JacekTraczMergeKListNoCopySolution {
 
     
     private void dbgHeaderLV0 (String tt) {
-    	if(!DBG_MODE) {
-    		return ;
-    	}
-    	
     	dbgN5();
     	if(DBG_MODE) dbgInfo("");
     	if(DBG_MODE) dbgInfo("");
-        if(DBG_MODE) dbgInfo("================================================================");
+        if(DBG_MODE) dbgInfo("==================================================");
         if(DBG_MODE) dbgInfo("=");
         if(DBG_MODE) dbgInfo("=");
         if(DBG_MODE) dbgInfo("=" + tt);
         if(DBG_MODE) dbgInfo("=");
         if(DBG_MODE) dbgInfo("=");
-        if(DBG_MODE) dbgInfo("================================================================");
+        if(DBG_MODE) dbgInfo("==================================================");
         if(DBG_MODE) dbgInfo("");
         if(DBG_MODE) dbgInfo("");
         dbgN5();
@@ -622,42 +535,30 @@ class JacekTraczMergeKListNoCopySolution {
     }
     
     private void dbgHeaderLV1 (String tt) {
-    	if(!DBG_MODE) {
-    		return ;
-    	}
-    	
     	dbgN5();
     	if(DBG_MODE) dbgInfo("");
-        if(DBG_MODE) dbgInfo("****************************************************************");
+        if(DBG_MODE) dbgInfo("****************************************************");        
         if(DBG_MODE) dbgInfo("*");
         if(DBG_MODE) dbgInfo("**" + tt);
         if(DBG_MODE) dbgInfo("*");        
-        if(DBG_MODE) dbgInfo("****************************************************************");
+        if(DBG_MODE) dbgInfo("****************************************************");
         if(DBG_MODE) dbgInfo("");
         dbgN5();
     	
     }
     
     private void dbgHeaderLV2 (String tt) {
-    	if(!DBG_MODE) {
-    		return ;
-    	}
-    	
     	dbgN5();
     	if(DBG_MODE) dbgInfo("");
-        if(DBG_MODE) dbgInfo("--------------------------------------------------------------");                
+        if(DBG_MODE) dbgInfo("---------------------------------------------------");                
         if(DBG_MODE) dbgInfo("-" + tt);               
-        if(DBG_MODE) dbgInfo("---------------------------------------------------------------");
+        if(DBG_MODE) dbgInfo("---------------------------------------------------");
         if(DBG_MODE) dbgInfo("");
         dbgN5();
     	
     }
     
     private void dbgN5 () {
-    	if(!DBG_MODE) {
-    		return ;
-    	}
-    	
     	if(DBG_MODE) dbgInfo("");
     	if(DBG_MODE) dbgInfo("");
     	if(DBG_MODE) dbgInfo("");
@@ -669,9 +570,6 @@ class JacekTraczMergeKListNoCopySolution {
             ListNode p_nl
             , String tt
             ){
-    	if(!DBG_MODE) {
-    		return "";
-    	}
             
         	String sFun =  tt + " -> checkList::";
             if(DBG_MODE) dbgInfo("<<<");        	
@@ -681,11 +579,9 @@ class JacekTraczMergeKListNoCopySolution {
             int ii = 0;
             while(true){            	
                 if(nl != null){                	
-                   if( nl.val < maxVal) {
+                   if( nl.val <= maxVal) {
                 	   sOut =  sOut + "[FAILED_VAL:" + nl.val + "][" + ii +"]";  
-                   }else {
-                	   maxVal = nl.val; 
-                   }
+                   }                                                
                 }                
                 if(nl == null){
                 	break;
@@ -693,10 +589,8 @@ class JacekTraczMergeKListNoCopySolution {
                 nl = nl.next;
                 ii++;
             }
-            if(!sOut.isEmpty()) {
-            	dbgInfo(sFun + "ERROR_IN_LIST:" + sOut);
-            }
 
+            if(DBG_MODE) dbgInfo(sFun + "ERROR_IN_LIST:" + sOut);
             if(DBG_MODE) dbgInfo(sFun + "end :");
             if(DBG_MODE) dbgInfo(">>>>");
             if(DBG_MODE) dbgInfo(" ");
@@ -704,22 +598,11 @@ class JacekTraczMergeKListNoCopySolution {
             return  sOut;
     }
     
-    
-    private void dbgInfo ( String tt ){
-    	if(!DBG_MODE) {
-    		return ;
-    	}
-    	
+    private void dbgInfo ( String tt){
         dbgInfoSubmitted(tt);
-        
     }
     
-    
-    private void dbgInfoSubmitted ( String tt ){
-    	if(!DBG_MODE) {
-    		return ;
-    	}
-    	
+    private void dbgInfoSubmitted ( String tt){
     	String needle = "";
     	//needle ="LV-0";
     	
