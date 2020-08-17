@@ -3,7 +3,6 @@ package com.jacektracz.letcode.mergeklists;
 /**
  * 
  * 
- * Darek 792 636 939
  * 
  * 
  * Definition for singly-linked list.
@@ -18,7 +17,7 @@ package com.jacektracz.letcode.mergeklists;
 
 //class Solution {
 
-class JacekTraczLetcodeMergeKListsSolution {
+class JacekTraczLetCodeMergeSortedKListsVersion2Solution {
     
     private boolean debug_mode_lvl3 = false;
     private boolean debug_mode_lvl0 = true;
@@ -73,25 +72,15 @@ class JacekTraczLetcodeMergeKListsSolution {
         
         for (ListNode handled_1_root : lists){
         	
-        	if(debug_mode_lvl3) dbgInfoLvl3(sFunR   + "-" + ii + "merge-list-start");
-        	
-        	if(debug_mode_lvl1) dbgInfoLvl1("");
-        	if(debug_mode_lvl1) dbgInfoLvl1("");
-
-            if(debug_mode_lvl0) dbgListShortLvl0(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::before-merge-roots[ADDED-LIST]");
-            if(debug_mode_lvl0) dbgListShortLvl0(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::beforer-merge-roots[FILLED-LIST]");
-        	
-            if(debug_mode_lvl1) dbgListShortLvl1(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::before-merge-roots[ADDED-LIST]");
-            if(debug_mode_lvl1) dbgListShortLvl1(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::beforer-merge-roots[FILLED-LIST]");
-        	
-        	if(debug_mode_lvl3) dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root-before-merge-roots");
-            if(debug_mode_lvl3) dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root-before-merge-roots");
-        	if(debug_mode_lvl3) dbgList(l_created_root_current[0], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[0]-before-merge-roots");
-            if(debug_mode_lvl3) dbgList(l_created_root_current[1], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[1]-before-merge-roots");
+        	logListBefore( 
+        			l_created_root_current
+                    ,  handled_0_root
+                    ,  handled_1_root
+                    ,  sFunR
+                    ,  lv
+                    ,  ii);
             
-            if(debug_mode_lvl0) dbgInfoLvl0(sFunR + lv + "[roots_iteration:" + ii + "]");
-            
-            mergeTwoRoots(
+            mergeTwoSortedKLists(
             		l_created_root_current
             		, handled_0_root
             		, handled_1_root
@@ -105,16 +94,13 @@ class JacekTraczLetcodeMergeKListsSolution {
             l_created_root_current[0] = null;
             l_created_root_current[1] = null;
             
-            if(debug_mode_lvl3) dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::after-merge-roots");
-            if(debug_mode_lvl3) dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::after-merge-roots");
-
-            if(debug_mode_lvl1) dbgListShortLvl1(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::after-merge-roots");
-            if(debug_mode_lvl1) dbgListShortLvl1(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::after-merge-roots");
-            
-            if(debug_mode_lvl3) dbgInfoLvl3(sFunR   + "[" + ii + "]" +  "merge-list-end :");
-        	if(debug_mode_lvl1) dbgInfoLvl1("ONE-LIST-MERGED");
-        	if(debug_mode_lvl1) dbgInfoLvl1("");
-            
+            logListAfterMerge( 
+        			l_created_root_current
+                    ,  handled_0_root
+                    ,  handled_1_root
+                    ,  sFunR
+                    ,  lv
+                    ,  ii);                        
             ii++;
             
         }
@@ -126,14 +112,14 @@ class JacekTraczLetcodeMergeKListsSolution {
         return handled_0_root;
     }
 
-    private void mergeTwoRoots(
+    private void mergeTwoSortedKLists(
         ListNode[] l_out_created_root_current
         , ListNode l_handled_0_root
         , ListNode l_handled_1_root
         , String tt){
         
         
-        String sFunMN =  tt + "-> mergeTwoRoots::";
+        String sFunMN =  tt + "-> mergeTwoSortedKLists::";
         String lv = "[LVL-2]";
         
         if(debug_mode_lvl3) dbgHeaderLV1(sFunMN + lv +  "[nodes:" + "start" + "]" + "s-start :");
@@ -908,5 +894,61 @@ class JacekTraczLetcodeMergeKListsSolution {
     	}
     	
     }
+    
+    public void logListBefore(
+    		
+    		ListNode[] l_created_root_current
+            , ListNode handled_0_root
+            , ListNode handled_1_root
+            , String sFunR
+            , String lv
+            , int ii
+            ) {
+    	
+    	if(debug_mode_lvl1) dbgInfoLvl1("");
+    	if(debug_mode_lvl1) dbgInfoLvl1("");
+
+        if(debug_mode_lvl0) dbgListShortLvl0(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::before-merge-roots[ADDED-LIST]");
+        if(debug_mode_lvl0) dbgListShortLvl0(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::beforer-merge-roots[FILLED-LIST]");
+    	
+        if(debug_mode_lvl1) dbgListShortLvl1(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::before-merge-roots[ADDED-LIST]");
+        if(debug_mode_lvl1) dbgListShortLvl1(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::beforer-merge-roots[FILLED-LIST]");
+    	
+    	if(debug_mode_lvl3) dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root-before-merge-roots");
+        if(debug_mode_lvl3) dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root-before-merge-roots");
+    	if(debug_mode_lvl3) dbgList(l_created_root_current[0], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[0]-before-merge-roots");
+        if(debug_mode_lvl3) dbgList(l_created_root_current[1], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[1]-before-merge-roots");
         
+        if(debug_mode_lvl0) dbgInfoLvl0(sFunR + lv + "[roots_iteration:" + ii + "]");
+    	
+    }
+    
+    public void logListAfterMerge(
+    		
+    		ListNode[] l_created_root_current
+            , ListNode handled_0_root
+            , ListNode handled_1_root
+            , String sFunR
+            , String lv
+            , int ii
+            ) {
+    	
+    	if(debug_mode_lvl1) dbgInfoLvl1("");
+    	if(debug_mode_lvl1) dbgInfoLvl1("");
+
+        if(debug_mode_lvl0) dbgListShortLvl0(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::after-merge-roots[ADDED-LIST]");
+        if(debug_mode_lvl0) dbgListShortLvl0(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::after-merge-roots[FILLED-LIST]");
+    	
+        if(debug_mode_lvl1) dbgListShortLvl1(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root::after-merge-roots[ADDED-LIST]");
+        if(debug_mode_lvl1) dbgListShortLvl1(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root::after-merge-roots[FILLED-LIST]");
+    	
+    	if(debug_mode_lvl3) dbgList(handled_0_root, sFunR + lv + "[roots:" + ii + "]" + "handled_0_root-after-merge-roots");
+        if(debug_mode_lvl3) dbgList(handled_1_root, sFunR + lv + "[roots:" + ii + "]" + "handled_1_root-after-merge-roots");
+    	if(debug_mode_lvl3) dbgList(l_created_root_current[0], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[0]-after-merge-roots");
+        if(debug_mode_lvl3) dbgList(l_created_root_current[1], sFunR + lv + "[roots:" + ii + "]" + "l_created_root_current[1]-after-merge-roots");
+        
+        if(debug_mode_lvl0) dbgInfoLvl0(sFunR + lv + "[roots_iteration:" + ii + "]");
+    	
+    }
+    
 }

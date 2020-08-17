@@ -6,14 +6,16 @@ import org.junit.Test;
 public class JacekTraczLetcodeMergeKListsSolutionTest {
 
 	final static int HANDLER_TYPE =1;
-	private boolean TEST_CHOOSEN_TEST_CASE_ONLY = false;
+	private int EXEC_HANDLER_VERSION = 2;
+	private boolean TEST_CHOOSEN_TEST_CASE_ONLY = true;
+	
 	private boolean TEST_CHOOSEN_TEST_FOR_ONE_EXEC = true;
 	
-	private boolean TEST_DEBUG_MODE = false;
+	private boolean TEST_DEBUG_MODE = true;
 	private boolean EXEC_DEBUG_MODE_LVL3 = false;
 	
-	private boolean  EXEC_DEBUG_MODE_LVL0 = false;
-	private boolean  EXEC_DEBUG_MODE_LVL1 = false;
+	private boolean  EXEC_DEBUG_MODE_LVL0 = true;
+	private boolean  EXEC_DEBUG_MODE_LVL1 = true;
 	
 	@Test	
 	//@Ignore
@@ -102,8 +104,8 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	//@Ignore
 	public void testListsWithOneNode_10() throws Exception {
 		
-		if(TEST_CHOOSEN_TEST_CASE_ONLY ) {
-			return;
+		if(TEST_CHOOSEN_TEST_CASE_ONLY && !TEST_CHOOSEN_TEST_FOR_ONE_EXEC) {			
+			return;			
 		}
 		
 		boolean test_debug = TEST_DEBUG_MODE;
@@ -319,19 +321,24 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 		ListNode[] ll_arr =  new  ListNode[1];
 		ll_arr[0] = ll;		
 		boolean handler_debug = EXEC_DEBUG_MODE_LVL3;
-		ListNode lout = execHandler(0,handler_debug,ll_arr);
+		ListNode lout = execHandler(EXEC_HANDLER_VERSION,handler_debug,ll_arr);
 		validateList(lout,sFun,1);
 	}
 	
     private void validateList (ListNode lout,String sFun,int expected_length){
     	
     	if(TEST_DEBUG_MODE) {
+    		
+    		String sFunV =  "::validateList::";
+    		
 			dbgNode(lout,sFun);
-			int listLength = dbgList(lout, sFun);
+			
+			dbgList(lout,  sFun + sFunV );
+			int listLength = dbgList(lout, sFun + sFunV);
 			if(expected_length >= 0) {
 				assertEquals(expected_length,listLength);
 			}
-			String sErr = checkList(lout, sFun);
+			checkList(lout, sFun);
 			//assertEquals(true,sErr.isEmpty());
 			dbgInfo(sFun + "-end");
 		}
@@ -339,13 +346,22 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
     
 	public ListNode execHandler(int ptype, boolean deb_mode, ListNode [] ll_arr) {
 		
-		JacekTraczLetcodeMergeKListsSolution handler = new JacekTraczLetcodeMergeKListsSolution();
-		handler.setDebugModeLvl3(  EXEC_DEBUG_MODE_LVL3 );
-		handler.setDebugModeLvl0( EXEC_DEBUG_MODE_LVL0  );
-		handler.setDebugModeLvl1( EXEC_DEBUG_MODE_LVL1  );
-		ListNode lout = handler.mergeKLists( ll_arr );
-		return lout;
-	
+		int type = EXEC_HANDLER_VERSION;
+		if(type == 1){
+			JacekTraczLetcCodeMergeSortedKlistsVersion1Solution handler = new JacekTraczLetcCodeMergeSortedKlistsVersion1Solution();
+			ListNode lout = handler.mergeKLists( ll_arr );
+			return lout;
+		}
+		
+		if(type == 2) {
+			JacekTraczLetCodeMergeSortedKListsVersion2Solution handler = new JacekTraczLetCodeMergeSortedKListsVersion2Solution();
+			handler.setDebugModeLvl3(  EXEC_DEBUG_MODE_LVL3 );
+			handler.setDebugModeLvl0( EXEC_DEBUG_MODE_LVL0  );
+			handler.setDebugModeLvl1( EXEC_DEBUG_MODE_LVL1  );
+			ListNode lout = handler.mergeKLists( ll_arr );
+			return lout;
+		}
+		return null;	
 	}	
 		
 	public void execTestmanyListsOneNode(int items,int val_step,int start_value,String tt,boolean p_test_debug,boolean p_handler_debug) throws Exception {
@@ -357,7 +373,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 		ListNode[] ll_arr = handler_data.getLists_WithOneNodes(items,val_step,start_value);		
 		assertEquals(items,ll_arr.length);
 		
-		ListNode lout = execHandler(0,p_handler_debug,ll_arr);
+		ListNode lout = execHandler(EXEC_HANDLER_VERSION,p_handler_debug,ll_arr);
 		
 		validateList(lout,sFun,items);
 	
