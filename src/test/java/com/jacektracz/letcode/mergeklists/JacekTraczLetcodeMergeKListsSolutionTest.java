@@ -6,16 +6,17 @@ import org.junit.Test;
 public class JacekTraczLetcodeMergeKListsSolutionTest {
 
 	final static int HANDLER_TYPE =1;
-	private int EXEC_HANDLER_VERSION = 2;
-	private boolean TEST_CHOOSEN_TEST_CASE_ONLY = true;
+	private int EXEC_HANDLER_VERSION = 3;
+	private boolean TEST_CHOOSEN_TEST_CASE_ONLY =false;
 	
-	private boolean TEST_CHOOSEN_TEST_FOR_ONE_EXEC = true;
+	private int TEST_CHOOSEN_TEST_FOR_ONE_EXEC = 10000;
 	
-	private boolean TEST_DEBUG_MODE = true;
+	private boolean TEST_DEBUG_MODE = false;
 	private boolean EXEC_DEBUG_MODE_LVL3 = false;
 	
-	private boolean  EXEC_DEBUG_MODE_LVL0 = true;
-	private boolean  EXEC_DEBUG_MODE_LVL1 = true;
+	private boolean  EXEC_DEBUG_MODE_LVL0 = false;
+	private boolean  EXEC_DEBUG_MODE_LVL1 = false;
+	private boolean  EXEC_DEBUG_MODE_LVC0 = false;
 	
 	@Test	
 	//@Ignore
@@ -26,12 +27,25 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 		boolean test_debug = TEST_DEBUG_MODE;
 		boolean handler_debug = EXEC_DEBUG_MODE_LVL3;
 		execTestmanyListsOneNode(4,100,0,"testListsWithOneNode_4",test_debug,handler_debug);		
+	}
+	
+	@Test
+	//@Ignore
+	public void testListsWithOneNode_10() throws Exception {
+		
+		if(TEST_CHOOSEN_TEST_CASE_ONLY && (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 10)) {			
+			return;			
+		}
+		
+		boolean test_debug = TEST_DEBUG_MODE;
+		boolean handler_debug = EXEC_DEBUG_MODE_LVL3;
+		execTestmanyListsOneNode(10,3,2,"testListsWithOneNode_10",test_debug,handler_debug);				
 	}	
 	
 	@Test	
 	//@Ignore
 	public void testListsWithOneNode_1000() throws Exception {
-		if(TEST_CHOOSEN_TEST_CASE_ONLY) {
+		if(TEST_CHOOSEN_TEST_CASE_ONLY && (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 1000)) {
 			return;
 		}
 		
@@ -43,14 +57,39 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	@Test
 	//@Ignore
 	public void testListsWithOneNode_500() throws Exception {
-		if(TEST_CHOOSEN_TEST_CASE_ONLY ) {
+		if(TEST_CHOOSEN_TEST_CASE_ONLY && (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 500)) {
 			return;
 		}
 		
 		boolean test_debug = TEST_DEBUG_MODE;
 		boolean handler_debug = EXEC_DEBUG_MODE_LVL3;
-		execTestmanyListsOneNode(500,100,0,"testListsWithOneNode_500",test_debug,handler_debug);				
+		execTestmanyListsOneNode(500,100,2,"testListsWithOneNode_500",test_debug,handler_debug);				
+	}
+	
+	@Test
+	//@Ignore
+	public void testListsWithOneNode_20() throws Exception {
+		if(TEST_CHOOSEN_TEST_CASE_ONLY && (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 20)) {
+			return;
+		}
+		
+		boolean test_debug = TEST_DEBUG_MODE;
+		boolean handler_debug = EXEC_DEBUG_MODE_LVL3;
+		execTestmanyListsOneNode(20,100,2,"testListsWithOneNode_2000",test_debug,handler_debug);		
 	}	
+	
+	@Test
+	//@Ignore
+	public void testListsWithOneNode_100() throws Exception {
+		if(TEST_CHOOSEN_TEST_CASE_ONLY && (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 100)) {
+			return;
+		}
+		
+		boolean test_debug = TEST_DEBUG_MODE;
+		boolean handler_debug = EXEC_DEBUG_MODE_LVL3;
+		execTestmanyListsOneNode(100,100,2,"testListsWithOneNode_500",test_debug,handler_debug);				
+	}	
+	
 
 	@Test
 	//@Ignore
@@ -67,7 +106,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	@Test
 	//@Ignore
 	public void testListsWithOneNode_5000() throws Exception {
-		if(TEST_CHOOSEN_TEST_CASE_ONLY) {
+		if(TEST_CHOOSEN_TEST_CASE_ONLY&& (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 5000)) {
 			return;
 		}
 		
@@ -79,7 +118,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	@Test
 	//@Ignore
 	public void testListsWithOneNode_8000() throws Exception {
-		if(TEST_CHOOSEN_TEST_CASE_ONLY) {
+		if(TEST_CHOOSEN_TEST_CASE_ONLY&& (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 8000)) {
 			return;
 		}
 		
@@ -91,7 +130,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	@Test
 	//@Ignore
 	public void testListsWithOneNode_10000() throws Exception {
-		if(TEST_CHOOSEN_TEST_CASE_ONLY) {
+		if(TEST_CHOOSEN_TEST_CASE_ONLY && (TEST_CHOOSEN_TEST_FOR_ONE_EXEC != 10000)) {
 			return;
 		}
 		
@@ -100,18 +139,6 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 		execTestmanyListsOneNode(10000,100,2,"testListsWithOneNode_10000",test_debug,handler_debug);				
 	}
 	
-	@Test
-	//@Ignore
-	public void testListsWithOneNode_10() throws Exception {
-		
-		if(TEST_CHOOSEN_TEST_CASE_ONLY && !TEST_CHOOSEN_TEST_FOR_ONE_EXEC) {			
-			return;			
-		}
-		
-		boolean test_debug = TEST_DEBUG_MODE;
-		boolean handler_debug = EXEC_DEBUG_MODE_LVL3;
-		execTestmanyListsOneNode(10,3,2,"testListsWithOneNode_10",test_debug,handler_debug);				
-	}	
 	
 	@Test
 	//@Ignore
@@ -312,7 +339,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	public void testEmptyList() throws Exception {
 		
 		if(TEST_CHOOSEN_TEST_CASE_ONLY) {
-			//return;
+			return;
 		}
 		
 		String sFun = "testTwoListWithThreeNodes";
@@ -361,6 +388,16 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 			ListNode lout = handler.mergeKLists( ll_arr );
 			return lout;
 		}
+		if(type == 3) {
+			JacekTraczLetCodeMergeSortedKListsVersion3Solution handler = new JacekTraczLetCodeMergeSortedKListsVersion3Solution();
+			handler.setDebugModeLvl3(  EXEC_DEBUG_MODE_LVL3 );
+			handler.setDebugModeLvl0( EXEC_DEBUG_MODE_LVL0  );
+			handler.setDebugModeLvl1( EXEC_DEBUG_MODE_LVL1  );			
+			handler.setDebugModeLvc0( EXEC_DEBUG_MODE_LVC0  );
+			ListNode lout = handler.mergeKLists( ll_arr );
+			return lout;
+		}
+		
 		return null;	
 	}	
 		
