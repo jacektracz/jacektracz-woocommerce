@@ -1,6 +1,6 @@
 package com.jacektracz.letcode.mergeklists;
 
-public class JacekTraczLetcCodeMergeSortedKlistsVersion1Solution {
+public class JacekTraczLetcCodeMergeSortedKlistsOptimizedSolution {
 	
 	 public ListNode mergeKLists(ListNode[] lists) {
 	        if(lists == null || lists.length == 0){

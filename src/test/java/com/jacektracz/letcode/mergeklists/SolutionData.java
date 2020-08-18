@@ -74,5 +74,36 @@ public class SolutionData {
 		
 	}
 	
+	public static  ListNode getList_OneNodesS() {
+		ListNode ll = new ListNode(1);
+		return ll;
+	}
+	
+	public static ListNode getList_TwoNodesS() {
+		ListNode l1 = new ListNode(1);
+		ListNode l2 = new ListNode(2);
+		l1.next = l2;
+		return l1;
+	}
+	
+	public static ListNode getList_ThreeNodesS() {
+		ListNode l1 = new ListNode(1);
+		ListNode l2 = new ListNode(1);
+		l1.next = l2;
+		ListNode l3 = new ListNode(2);
+		l2.next = l3;		
+		return l1;
+	}
+	
+	public static ListNode getList_ZeroValueNode() {
+		ListNode l1 = new ListNode();
+		return l1;
+	}
+	
+	public static ListNode getList_NullModeS() {
+		ListNode l1 = null;
+		return l1;
+	}	
+	
 	//[[1,1,3,3,3],[2,2,2]]
 }
