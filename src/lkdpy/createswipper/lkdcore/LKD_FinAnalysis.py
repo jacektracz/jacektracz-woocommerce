@@ -631,6 +631,7 @@ class LKD_FinAnalysis:
         def get_items_sum( self ):
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
+                # 54 773,74 PLN	286 451,59 PLN	-231 677,85 PLN	 18 08 2020
                 # 55 128,18 PLN	286 451,59 PLN	-231 323,41 PLN	
                 # 57 412,56 PLN	286 451,59 PLN	-229 039,03 PLN	 10
                 # 57 425,14 PLN	286 451,59 PLN	-229 026,45 PLN	
@@ -638,13 +639,13 @@ class LKD_FinAnalysis:
                 # 57 683,38 PLN	286 451,59 PLN	-228 768 21 PLN	
                 # 58 260,34 PLN	286 451,59 PLN	-228 191,25 PLN	
 
+                dd.append(self.get_item_sum("18-08-2020", "54773 00", "286451 59", "0 0", "-231677 00"	))
                 dd.append(self.get_item_sum("08-08-2020", "55128 18", "286451 59", "0 0", "-231323 00"	))
                 dd.append(self.get_item_sum("08-08-2020", "57425 14", "286451 59", "0 0", "-229026 45"	))
                 dd.append(self.get_item_sum("03-08-2020", "57578 17", "286451 59", "0 0", "-228873 42"	))
                 dd.append(self.get_item_sum("01-08-2020", "57683 38", "286451 59", "0 0", "-228768 21"	))
                 dd.append(self.get_item_sum("28-07-2020", "58361 29", "286451 59", "0 0", "-228090 30"	))
                 dd.append(self.get_item_sum("24-07-2020", "58850 85",  "286451 59", "0 0", "-227592 74"	))
-
 
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::out::")
                 return dd
