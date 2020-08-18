@@ -464,7 +464,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 			return lout;
 		}
 		if(type == 3) {
-			JacekTraczLetCodeMergeSortedKListsVersion3Solution handler = new JacekTraczLetCodeMergeSortedKListsVersion3Solution();
+			JacekTraczLetCodeMergeSortedKListsDebugSolution handler = new JacekTraczLetCodeMergeSortedKListsDebugSolution();
 			handler.setMergeInPlace( MERGE_IN_PLACE);
 			handler.setMergeImmutable( MERGE_IMMUTABLE);
 			handler.setDebugLevel5( EXEC_DEBUG_LEVEL);

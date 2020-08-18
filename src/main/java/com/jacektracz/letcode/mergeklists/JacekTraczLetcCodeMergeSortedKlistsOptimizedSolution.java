@@ -1,8 +1,16 @@
 package com.jacektracz.letcode.mergeklists;
 
 public class JacekTraczLetcCodeMergeSortedKlistsOptimizedSolution {
+	static class SolutionStatistics{
+		public int dividions_count = 0;
+		public int merge_list_count = 0;
+		public int merge_nodes_count = 0;
+	}
+	
+	SolutionStatistics statistics = new SolutionStatistics();
 	
 	 public ListNode mergeKLists(ListNode[] lists) {
+		 	statistics = new SolutionStatistics();
 	        if(lists == null || lists.length == 0){
 	            return null;
 	        }
@@ -11,7 +19,10 @@ public class JacekTraczLetcCodeMergeSortedKlistsOptimizedSolution {
 	            return lists[0];
 	        }
 	        
-	        return mergeKSortedLists(lists,lists.length - 1);
+	        ListNode ll =  mergeKSortedLists(lists,lists.length - 1);
+	        dbgInfoSubmitted("merge_nodes_count:" + statistics.merge_nodes_count);
+	        
+	        return ll;
 	    }
 	    
 	    public ListNode mergeKSortedLists(ListNode[] lists,int last){
@@ -55,6 +66,7 @@ public class JacekTraczLetcCodeMergeSortedKlistsOptimizedSolution {
 	        ListNode resultList = temp;
 	        
 	        while(l1 != null && l2 != null){
+	        	statistics.merge_nodes_count++;
 	            if(l1.val < l2.val){
 	               temp.next = l1;
 	                l1 = l1.next;
@@ -70,4 +82,11 @@ public class JacekTraczLetcCodeMergeSortedKlistsOptimizedSolution {
 	        
 	        return resultList.next;
 	    }
+	    
+	    private void dbgInfoSubmitted ( String debugInfo ){    	
+	    	
+	    	System.out.println( debugInfo );
+	    	
+	    }
+	    
 }
