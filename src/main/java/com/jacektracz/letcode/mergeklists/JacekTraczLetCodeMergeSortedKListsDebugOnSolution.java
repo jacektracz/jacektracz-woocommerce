@@ -17,7 +17,7 @@ package com.jacektracz.letcode.mergeklists;
 
 //class Solution {
 
-class JacekTraczLetCodeMergeSortedKListsDebugSolution {
+class JacekTraczLetCodeMergeSortedKListsDebugOnSolution {
 
     public final static String debugInfoFun =  "";
     public final static String debugInfoLv = "";
@@ -78,38 +78,38 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
     
     public ListNode mergeKLists( ListNode[] lists ) {
     	    	
-    	// String debugInfoFun = "> mergeKLists::"; 
-    	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "start :");
+    	String debugInfoFun = "> mergeKLists::"; 
+    	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "start :");
     	
     	ListNode out_merged_list = mergeKListsInternal(debugInfoFun,lists);
-        // if(isDebugLevel0()) dbgList(out_merged_list, debugInfoFun + "out_merged_list::end");
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "end :");
+        if(isDebugLevel0()) dbgList(out_merged_list, debugInfoFun + "out_merged_list::end");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "end :");
         
         return out_merged_list;
     }
     
     public ListNode mergeKListsInternal(String debugInfo, ListNode[] lists) {
     	
-        // String debugInfoFun = debugInfo + " -> mergeKListsInternal::";
-        // String debugInfoLv = "[LVL-0]";
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "start :");
+        String debugInfoFun = debugInfo + " -> mergeKListsInternal::";
+        String debugInfoLv = "[LVL-0]";
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "start :");
         
         ListNode lout = mergeArrayOfKlistsl(debugInfo, lists);
         
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "end :");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "end :");
         
         return lout;
     }
     
     public ListNode mergeArrayOfKlistsl(String debugInfo, ListNode[] plists) {
-        // String debugInfoFun = debugInfo + " -> mergeArrayOfKlistsl::";
-        // String debugInfoLv = "[LVL-A]";
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "start :");
+        String debugInfoFun = debugInfo + " -> mergeArrayOfKlistsl::";
+        String debugInfoLv = "[LVL-A]";
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "start :");
         
-        // if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "lists_count :" + plists.length);
+        if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "lists_count :" + plists.length);
         
         ListNode[] lists = new ListNode[plists.length];
-		// if(isDebugLevel5()) {	dbgInfoSubmitted(debugInfoFun  + "initial_list_length :" + plists.length);}
+		if(isDebugLevel5()) {	dbgInfoSubmitted(debugInfoFun  + "initial_list_length :" + plists.length);}
         
         getNotNullArr(debugInfoFun + debugInfoLv, plists, lists);
         
@@ -129,7 +129,7 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
     				, lists
     				, tmpstats);
     		
-    		// if(isDebugLevel5()) {dbgDividedLists(debugInfoFun,debugInfoLv,lists,divided_merged_list);}	
+    		if(isDebugLevel5()) {dbgDividedLists(debugInfoFun,debugInfoLv,lists,divided_merged_list);}	
     		
     		stats.merge_list_count += tmpstats.merge_list_count;
     		stats.merge_nodes_count += tmpstats.merge_nodes_count;
@@ -138,11 +138,11 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
     		}    		
     	}
     	
-    	// if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "[ii_dividions_count :" + stats.dividions_count + "]");
-    	// if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "[m_merge_list_count :" + stats.merge_list_count + "]");
-    	// if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "[m_merge_nodes_count :" + stats.merge_nodes_count + "]");
+    	if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "[ii_dividions_count :" + stats.dividions_count + "]");
+    	if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "[m_merge_list_count :" + stats.merge_list_count + "]");
+    	if(isDebugLevel5()) dbgInfoSubmitted(debugInfoFun  + "[m_merge_nodes_count :" + stats.merge_nodes_count + "]");
     	
-    	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "end :");
+    	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "end :");
     	
     	return divided_merged_list[0];
     }
@@ -178,24 +178,24 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
     		, ListNode[] source_lists
     		, SolutionStatistics stats) {
     	
-        // String debugInfoFun = debugInfo + " -> getDividedMergedArray::";
-        // String debugInfoLv = "[LVL-0]";
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "start :");
-        // if(isDebugLevel0()) dbgHeaderLV0(debugInfoFun  + "start :");
+        String debugInfoFun = debugInfo + " -> getDividedMergedArray::";
+        String debugInfoLv = "[LVL-0]";
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "start :");
+        if(isDebugLevel0()) dbgHeaderLV0(debugInfoFun  + "start :");
         
-        // if(isDebugLevel1()) dbgListsShortLvl1(source_divided_list, debugInfoFun);
+        if(isDebugLevel1()) dbgListsShortLvl1(source_divided_list, debugInfoFun);
         
-        // if(isDebugLevel4()) dbgListsShortLvl0(source_divided_list, debugInfoFun);
+        if(isDebugLevel4()) dbgListsShortLvl0(source_divided_list, debugInfoFun);
                 
-    	// if(isDebugLevel4()) dbgListsShortLvl1(source_lists,  debugInfoFun + debugInfoLv + "source_lists" );
-    	// if(isDebugLevel4()) dbgListsShortLvl1(source_divided_list,  debugInfoFun + debugInfoLv + "source_divided_list" );
+    	if(isDebugLevel4()) dbgListsShortLvl1(source_lists,  debugInfoFun + debugInfoLv + "source_lists" );
+    	if(isDebugLevel4()) dbgListsShortLvl1(source_divided_list,  debugInfoFun + debugInfoLv + "source_divided_list" );
         
         
         int ii_merged_list_current = 0;
         
         int lists_length = source_divided_list.length;
         int divided_length = (lists_length/2)+2; 
-        // if(isDebugLevel4()) {dbgInfoSubmitted(  debugInfoFun + debugInfoLv + "[divided_length:" + divided_length +"]");}        
+        if(isDebugLevel4()) {dbgInfoSubmitted(  debugInfoFun + debugInfoLv + "[divided_length:" + divided_length +"]");}        
         
         ListNode[] out_list = new ListNode[divided_length];
         int ii_out = 0;
@@ -232,20 +232,18 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
         		break;
         	}
         	        	
-        	// if(isDebugLevel4() ) {logData( l_created_root_current,  handled_0_root,  handled_1_root, debugInfoFun + debugInfoLv + "before-merge-two-lists" + "[roots:" + ii_merged_list_current + "]");}
+        	if(isDebugLevel4() ) {logData( l_created_root_current,  handled_0_root,  handled_1_root, debugInfoFun + debugInfoLv + "before-merge-two-lists" + "[roots:" + ii_merged_list_current + "]");}
             
             
-        	//
-        	//String debugInfoMergeLists = "";
-        	// if(isDebugLevel4() )dbgListsShortLvl1(source_lists,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore + ":source_lists" );
-        	// if(isDebugLevel4() )dbgListShortLvl1(handled_0_root,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "handled_0_root["  + ii_merged_list_0 + "]");
-        	// if(isDebugLevel4() )dbgListShortLvl1(handled_1_root,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "handled_1_root["  + ii_merged_list_1 + "]" );
-        	// if(isDebugLevel4() )dbgListsShortLvl1(source_divided_list,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "source_divided_list" );
-        	// if(isDebugLevel4() )dbgListsShortLvl1(out_list,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "out_list" );            
+        	if(isDebugLevel4() )dbgListsShortLvl1(source_lists,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore + ":source_lists" );
+        	if(isDebugLevel4() )dbgListShortLvl1(handled_0_root,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "handled_0_root["  + ii_merged_list_0 + "]");
+        	if(isDebugLevel4() )dbgListShortLvl1(handled_1_root,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "handled_1_root["  + ii_merged_list_1 + "]" );
+        	if(isDebugLevel4() )dbgListsShortLvl1(source_divided_list,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "source_divided_list" );
+        	if(isDebugLevel4() )dbgListsShortLvl1(out_list,  debugInfoFun + debugInfoLv + debugInfoPhaseBefore +  "out_list" );            
             
     		SolutionStatistics tmpstats = new SolutionStatistics();
     		
-            //String debugMergeListInfo = debugInfoFun + "[roots:" + ii_merged_list_current + "]"; 
+            String debugMergeListInfo = debugInfoFun + "[roots:" + ii_merged_list_current + "]"; 
             mergeTwoSortedKLists(
             		l_created_root_current
             		, handled_0_root
@@ -255,19 +253,19 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             
             stats.merge_nodes_count += tmpstats.merge_nodes_count;
             
-            // if(isDebugLevel4() ) {logData( l_created_root_current,  handled_0_root,  handled_1_root, debugInfoFun + debugInfoLv + "after-merge-two-lists" + "[roots:" + ii_merged_list_current + "]");}
+            if(isDebugLevel4() ) {logData( l_created_root_current,  handled_0_root,  handled_1_root, debugInfoFun + debugInfoLv + "after-merge-two-lists" + "[roots:" + ii_merged_list_current + "]");}
             
         	out_list_lenght[0]++;
             out_list[ ii_out ] = l_created_root_current[0];
             
-            // if(isDebugLevel4() ) debugInfoMergeLists = debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "l_created_root_current[0]["  + ii_merged_list_0 + "]";
-        	// if(isDebugLevel4() ) dbgListShortLvl1(l_created_root_current[0],  debugInfoMergeLists);
+            if(isDebugLevel4() ) debugInfoMergeLists = debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "l_created_root_current[0]["  + ii_merged_list_0 + "]";
+        	if(isDebugLevel4() ) dbgListShortLvl1(l_created_root_current[0],  debugInfoMergeLists);
             	        	
-        	// if(isDebugLevel4() )dbgListShortLvl1(handled_0_root,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "handled_0_root["  + ii_merged_list_0 + "]");
-        	// if(isDebugLevel4() )dbgListShortLvl1(handled_1_root,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "handled_1_root["  + ii_merged_list_1 + "]" );            	
-        	// if(isDebugLevel4() )dbgListsShortLvl1(out_list,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "out_list" );        	
-        	// if(isDebugLevel4() )dbgListsShortLvl1(source_divided_list,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "source_divided_list" );
-        	// if(isDebugLevel4() )dbgListsShortLvl1(source_lists,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter + ":source_lists" );            	
+        	if(isDebugLevel4() )dbgListShortLvl1(handled_0_root,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "handled_0_root["  + ii_merged_list_0 + "]");
+        	if(isDebugLevel4() )dbgListShortLvl1(handled_1_root,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "handled_1_root["  + ii_merged_list_1 + "]" );            	
+        	if(isDebugLevel4() )dbgListsShortLvl1(out_list,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "out_list" );        	
+        	if(isDebugLevel4() )dbgListsShortLvl1(source_divided_list,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter +  "source_divided_list" );
+        	if(isDebugLevel4() )dbgListsShortLvl1(source_lists,  debugInfoFun + debugInfoLv + debugInfoPhaseAfter + ":source_lists" );            	
             
             
             ii_out ++;            
@@ -275,13 +273,13 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
         }
         
         if( out_list_lenght[0] != ii_out + 1 ) {
-        	// if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun  + "ALGH-ERR-A1");	
+        	if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun  + "ALGH-ERR-A1");	
         }
         		
         out_list_lenght[0] = ii_out + 1;        
         
-        // if(isDebugLevel0()) dbgHeaderLV0(debugInfoFun  + "end");
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "end :");
+        if(isDebugLevel0()) dbgHeaderLV0(debugInfoFun  + "end");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + "end :");
         
         return out_list;
     }
@@ -294,10 +292,10 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
         , SolutionStatistics stats){
         
         
-        // String debugInfoFun =  debugInfo + "-> mergeTwoSortedKLists::";
-        // String debugInfoLv = "[LVL-2]";
+        String debugInfoFun =  debugInfo + "-> mergeTwoSortedKLists::";
+        String debugInfoLv = "[LVL-2]";
         
-        // if(isDebugLevel0()) dbgHeaderLV1(debugInfoFun + debugInfoLv +  "[nodes:" + "start" + "]" + "s-start :");
+        if(isDebugLevel0()) dbgHeaderLV1(debugInfoFun + debugInfoLv +  "[nodes:" + "start" + "]" + "s-start :");
         
         ListNode l_handled_0_current = l_handled_0_root;
         ListNode l_handled_1_current =   l_handled_1_root;      
@@ -314,13 +312,13 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
         while( true )                
         {
         	stats.merge_nodes_count++;
-        	// if(isDebugLevel1()) dbgInfoLvl1("");        	
+        	if(isDebugLevel1()) dbgInfoLvl1("");        	
         	
-        	// if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv +  "[nodes_iteration:" + ii_merged_nodes + "]");
+        	if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv +  "[nodes_iteration:" + ii_merged_nodes + "]");
         	
-        	// if(isDebugLevel2()) {logData( l_out_created_root_current,  l_handled_0_current,  l_handled_1_current,  debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]-before-merge-nodes");}
+        	if(isDebugLevel2()) {logData( l_out_created_root_current,  l_handled_0_current,  l_handled_1_current,  debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]-before-merge-nodes");}
         	SolutionStatistics tmpstats = new SolutionStatistics();
-        	// String debugNodeInfo = debugInfoFun +  "[ii_merged_nodes:" + ii_merged_nodes + "]";
+        	String debugNodeInfo = debugInfoFun +  "[ii_merged_nodes:" + ii_merged_nodes + "]";
         	mergeTwoNodes( 
         		l_handled_0_current
                 , l_handled_1_current
@@ -331,16 +329,15 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
                 , tmpstats);
         
         		
-        	//String debugInfoPhase = ":after-merge-two-nodes:";
-        	//// if(isDebugLevel4() ) dbgListShortLvl1(l_out_created_root_current[0], debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + ph );
+        	if(isDebugLevel4() ) dbgListShortLvl1(l_out_created_root_current[0], debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + debugInfoPhaseAfter );
             	
         	
-        	// if(isDebugLevel2()) {logData( l_out_created_root_current,  l_handled_0_current,  l_handled_1_current,  debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]-after-merge-nodes");}
+        	if(isDebugLevel2()) {logData( l_out_created_root_current,  l_handled_0_current,  l_handled_1_current,  debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]-after-merge-nodes");}
         	l_handled_0_current = l_out_handled_0_root_current[1];
         	l_handled_1_current = l_out_handled_1_root_current[1];            
             
             if( l_handled_0_current == null   && HANDLE_TAILS ){
-            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + "l_handled_0_current-is-empty");            	
+            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + "l_handled_0_current-is-empty");            	
             	if(l_out_created_root_current[1] != null ) {
             		l_out_created_root_current[1].next = l_handled_1_current;
             	}            	
@@ -348,7 +345,7 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             }
             
             if( l_handled_1_current == null   && HANDLE_TAILS){
-            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + "l_handled_1_current-is-empty");            	
+            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + "l_handled_1_current-is-empty");            	
             	if( l_out_created_root_current[1]!= null ) {
             		l_out_created_root_current[1].next = l_handled_0_current;
             	}            	
@@ -356,13 +353,13 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             }
         	
             if( l_handled_0_current == null  && l_handled_1_current == null ){
-            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + "-ater=merge-break-on-empty-");            	
+            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv +  "[nodes:" + ii_merged_nodes + "]" + "-ater=merge-break-on-empty-");            	
                 break;
             }                                   
             ii_merged_nodes ++;                        
         }
         
-        // if(isDebugLevel0()) dbgHeaderLV1(debugInfoFun + debugInfoLv +  "end :");
+        if(isDebugLevel0()) dbgHeaderLV1(debugInfoFun + debugInfoLv +  "end :");
     }    
 
     private void mergeTwoNodes(
@@ -374,25 +371,25 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
         , String debugInfo
         , SolutionStatistics stats){
         
-        // String debugInfoFun =  debugInfo + " -> * mergeTwoNode-LV-4s::";
-        // String debugInfoLv = "[LVL-4]";
-        // if(isDebugLevel0()) dbgHeaderLV2(debugInfoFun  + debugInfoLv + "-2N-start :");
+        String debugInfoFun =  debugInfo + " -> * mergeTwoNode-LV-4s::";
+        String debugInfoLv = "[LVL-4]";
+        if(isDebugLevel0()) dbgHeaderLV2(debugInfoFun  + debugInfoLv + "-2N-start :");
                 
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "-initialize-out-current-pointers-start");        
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "-initialize-out-current-pointers-start");        
         l_out_handled_0_root_current[1] = l_in_handled_0_current;
         l_out_handled_1_root_current[1] = l_in_handled_1_current;
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "-initialize-out-current-pointers-end");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun  + debugInfoLv + "-initialize-out-current-pointers-end");
         
         ListNode l_created_left = null;                        
         
         int cases_check = 0;
         if(cases_check == 0) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-1-check-start") ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-1-check-start") ;
         	
 	        if(l_in_handled_0_current == null && l_in_handled_1_current == null){
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "case-1-exec-start") ;
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "no-nodes-to-handle") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "case-1-exec-start") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "no-nodes-to-handle") ;
 	            
 	            if(MERGE_IN_PLACE) {
 	            	l_created_left = null;
@@ -406,20 +403,20 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
 	            l_out_handled_1_root_current[1] = null;
 	            
 	            cases_check = 1;
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "case 1-exec-end") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "case 1-exec-end") ;
 	        }
 	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-1-check-end") ;
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-1-check-end") ;
 	        
         }
         
         if(cases_check == 0) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-check-start") ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-check-start") ;
         	
 	        if(l_in_handled_0_current == null && l_in_handled_1_current != null){
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-exec-start") ;
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-exec-start") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
 	            
 	            if(MERGE_IN_PLACE) {
 	            	l_created_left = l_in_handled_1_current;	
@@ -432,23 +429,23 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
 	            
 	            l_out_handled_1_root_current[1] = l_in_handled_1_current.next;
 	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-exec-end") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-exec-end") ;
 	            cases_check = 2;
 	        }
 	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-check-end") ;
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-2-check-end") ;
 	        
         }
         
         if(cases_check == 0) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-check-start") ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current == null){
 	        	
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-exec-start") ;
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;
-	            // if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-exec-start") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;
+	            if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;
 	            
 	            if(MERGE_IN_PLACE) {
 	            	l_created_left = l_in_handled_0_current;	
@@ -463,28 +460,28 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
 	            l_out_handled_1_root_current[1] = l_in_handled_1_current;
 	            		
 	            cases_check = 3;
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-exec-end") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-exec-end") ;
 	            
 	        }
 	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-check-end") ;
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-3-check-end") ;
 	        
         }
         
         if(cases_check == 0) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-start") ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-vals-start");	        
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-vals-start");	        
 	        	
 	            if( l_in_handled_0_current.val < l_in_handled_1_current.val ){
 	            	
 	            	
-	            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-exec-start") ;
-	            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken");	            	
-	            	// if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken");
+	            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-exec-start") ;
+	            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken");	            	
+	            	if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken");
 	            	
 	            	if(MERGE_IN_PLACE) {
 	            		l_created_left = l_in_handled_0_current;	            		
@@ -498,22 +495,22 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
 	            	l_out_handled_1_root_current[1] = l_in_handled_1_current;
 	            	
 	                cases_check = 4;
-	                // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-exec-end") ;	                
+	                if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-exec-end") ;	                
 	            }	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-vals-end") ;
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-vals-end") ;
 	        }	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-end") ;	        
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-4-check-end") ;	        
         }
         
         if(cases_check == 0) {        	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-start") ;        	
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-start") ;        	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-vals-start") ;
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-vals-start") ;
 	        	
 	            if(l_in_handled_0_current.val == l_in_handled_1_current.val){
-	            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-exec-start") ;
-	            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
-	            	// if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
+	            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-exec-start") ;
+	            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
+	            	if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
 	            	
 	            	if(MERGE_IN_PLACE) {
 	            		l_created_left = l_in_handled_1_current;
@@ -528,27 +525,27 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
 	            	l_out_handled_1_root_current[1] = l_in_handled_1_current.next;
 	            	
 	                cases_check = 7;
-	                // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-exec-end") ;
+	                if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-exec-end") ;
 	                
 	            }	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-vals-end") ;	            
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-vals-end") ;	            
 	        }	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-end") ;
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-7-check-end") ;
 	        
         }
         
         if(cases_check == 0) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-start") ;        	
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-start") ;        	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-vals-start") ;
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-vals-start") ;
 	        	
 	            if(l_in_handled_0_current.val == l_in_handled_1_current.val){
 	            	
-	            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-exec-start") ;
-	            	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;	    
-	            	// if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;
+	            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-exec-start") ;
+	            	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;	    
+	            	if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-0-was-taken") ;
 	            	
 	            	if(MERGE_IN_PLACE) {
 	            		l_created_left = l_in_handled_0_current;
@@ -564,25 +561,25 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
 	            	
 	                cases_check = 5;
 	                
-	                // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-exec-end") ;	                
+	                if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-exec-end") ;	                
 	            }	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-vals-end") ;	            
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-vals-end") ;	            
 	        }	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-end") ;	        
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-5-check-end") ;	        
         }
         
         if(cases_check == 0) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-start") ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-start") ;
         	
 	        if(l_in_handled_0_current != null && l_in_handled_1_current != null){
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-vals-start") ;
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-vals-start") ;
 	        	
 	            if(l_in_handled_0_current.val > l_in_handled_1_current.val){     
 	            	
-	                // if(isDebugLevel0()) dbgInfoLvl3(debugInfo + " case-6-start") ;
-	                // if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
+	                if(isDebugLevel0()) dbgInfoLvl3(debugInfo + " case-6-start") ;
+	                if(isDebugLevel4()) dbgInfoLvl0(debugInfoFun + debugInfoLv + " item-from-list-1-was-taken") ;
 	                
 	                if(MERGE_IN_PLACE) {
 	                	l_created_left = l_in_handled_1_current;
@@ -598,122 +595,122 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
 	                
 	                
 	                cases_check = 6;
-	                // if(isDebugLevel0()) dbgInfoLvl3(debugInfo + " case-6-end") ;	                
+	                if(isDebugLevel0()) dbgInfoLvl3(debugInfo + " case-6-end") ;	                
 	            }	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-vals-end") ;	            
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-vals-end") ;	            
 	        }	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-end") ;
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " case-6-check-end") ;
 	        
         }
         
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-cases-end-" + cases_check);
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-cases-end-" + cases_check);
         
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-cases-end-" + cases_check);
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-cases-end-" + cases_check);
         
-        // if(isDebugLevel0()) dbgInfoLvl3("") ;
+        if(isDebugLevel0()) dbgInfoLvl3("") ;
         
         int resolved_items = 0;
         if( resolved_items == 0 ) {        	
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-start");
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-start");
         	
 	        if( l_created_left == null ){
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-exec-start");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-exec-start");
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "no-items-to-handle-work-finished-current-out-pinter-to-null:");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "no-items-to-handle-work-finished-current-out-pinter-to-null:");
 	        	
 	            l_out_created_root_current[1] = null;
 	            resolved_items = 4;
 	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-exec-end");
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-exec-end");
 	            
 	        }else {
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-no-check");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-no-check");
 	        	
 	        }
 	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-end");
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-4-end");
 	        
         }
         
         if( resolved_items == 0 ) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-start");
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-start");
         	
 	        if( l_out_created_root_current[0] == null ){
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-exec-start");
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "fill-root-first-time-set-current-as-root");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-exec-start");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + "fill-root-first-time-set-current-as-root");
 	        	
 	        	l_created_left.next = null;
 	            l_out_created_root_current[0] = l_created_left;
 	            l_out_created_root_current[1] = l_created_left;
 	            resolved_items = 1;
 	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-exec-end");
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-exec-end");
 	            
 	        }else {
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-no-check");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-no-check");
 	        	
 	        }
 	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-end");
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-1-end");
 	        
         }
         
         if( resolved_items == 0 ) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-start");
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-start");
         	
 	        if( l_out_created_root_current[0] != null && l_out_created_root_current[1] == null){
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-exec-start :");
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " should-not-exists:ERROR-OCCURED");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-exec-start :");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " should-not-exists:ERROR-OCCURED");
 	        	
 	        	ListNode last_created_node = l_out_created_root_current[1];	        	
 	        	last_created_node.next = l_created_left;	        	
 	            l_out_created_root_current[1] = l_created_left;	            
 	            resolved_items = 2;
 	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-exec-end :");
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-exec-end :");
 	            
 	        }else {
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-no-check :");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-no-check :");
 	        	
 	        }
 	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-end");
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-end");
         }
         
         if( resolved_items == 0 ) {
         	
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-start");
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-start");
         	
 	        if( l_out_created_root_current[0] != null && l_out_created_root_current[1] != null){
 	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-exec-start :");
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-move-current-to-right :");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-exec-start :");
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-2-move-current-to-right :");
 	        	
 	        	ListNode last_created_node = l_out_created_root_current[1];	        	
 	        	last_created_node.next = l_created_left;	        	
 	            l_out_created_root_current[1] = l_created_left;	            
 	            resolved_items = 3;
 	            
-	            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-exec-end");
+	            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-exec-end");
 	            
 	        }else {	        	
-	        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-no-check");	        	
+	        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-no-check");	        	
 	        }
 	        
-	        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-end");
+	        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + debugInfoLv + " nodes-resolve-3-end");
 	        
         }
                         
-        // if(isDebugLevel0()) dbgHeaderLV2(debugInfoFun + debugInfoLv + "-2N-end :");
+        if(isDebugLevel0()) dbgHeaderLV2(debugInfoFun + debugInfoLv + "-2N-end :");
         
         return ;
         
@@ -723,23 +720,23 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             ListNode par_list
             , String debugInfo){
     	
-    	// String debugInfoFun =  debugInfo + " -> dbgNode::";
+    	String debugInfoFun =  debugInfo + " -> dbgNode::";
     	
-		// if(isDebugLevel0()) dbgInfoLvl3(" ");
-		// if(isDebugLevel0()) dbgInfoLvl3(">>");
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " -> dbgNode-start :");
+		if(isDebugLevel0()) dbgInfoLvl3(" ");
+		if(isDebugLevel0()) dbgInfoLvl3(">>");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " -> dbgNode-start :");
         if(par_list != null) {
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " value :" + par_list.val) ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " value :" + par_list.val) ;
         }else {
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " value :" + "NULL") ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " value :" + "NULL") ;
         }
         if(par_list != null && par_list.next != null) {
-        	// if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " -> :" + par_list.next.val) ;
+        	if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " -> :" + par_list.next.val) ;
         }
         
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " dbgNode-end :");
-        // if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " dbgNode-end :");
+        if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgInfoLvl3("");
         
     }
 
@@ -760,29 +757,29 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
         , String debugInfo){
     	
         
-    	// String debugInfoFun =  debugInfo + " -> dbgList::";
-        // if(isDebugLevel0()) dbgInfoLvl3(" ");
-        // if(isDebugLevel0()) dbgInfoLvl3(" ");
-        // if(isDebugLevel0()) dbgInfoLvl3("<<<<<");
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "-start :");
+    	String debugInfoFun =  debugInfo + " -> dbgList::";
+        if(isDebugLevel0()) dbgInfoLvl3(" ");
+        if(isDebugLevel0()) dbgInfoLvl3(" ");
+        if(isDebugLevel0()) dbgInfoLvl3("<<<<<");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "-start :");
         
         ListNode nl = par_list;
         int ii =0;
         while(true){
         	
             if(nl == null){
-                // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " node is null:") ;
+                if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " node is null:") ;
                 break;                   
             }
-            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " value: " + nl.val) ;
+            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " value: " + nl.val) ;
             nl = nl.next;
             ii++;
         }
         
-        // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "end :");
-        // if(isDebugLevel0()) dbgInfoLvl3(">>>>");
-        // if(isDebugLevel0()) dbgInfoLvl3(" ");
-        // if(isDebugLevel0()) dbgInfoLvl3(" ");
+        if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "end :");
+        if(isDebugLevel0()) dbgInfoLvl3(">>>>");
+        if(isDebugLevel0()) dbgInfoLvl3(" ");
+        if(isDebugLevel0()) dbgInfoLvl3(" ");
         return ii;
     }
     
@@ -842,11 +839,11 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             ListNode par_list
             , String debugInfo){
     	            
-        	// String debugInfoFun =  debugInfo + " -> dbgListShort::";
-            // if(isDebugLevel0()) dbgInfoLvl3(" ");
-            // if(isDebugLevel0()) dbgInfoLvl3(" ");
-            // if(isDebugLevel0()) dbgInfoLvl3("<<<<<");
-            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "-start :");
+        	String debugInfoFun =  debugInfo + " -> dbgListShort::";
+            if(isDebugLevel0()) dbgInfoLvl3(" ");
+            if(isDebugLevel0()) dbgInfoLvl3(" ");
+            if(isDebugLevel0()) dbgInfoLvl3("<<<<<");
+            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "-start :");
             
             String sList = "";
             int ii = 0;
@@ -875,23 +872,23 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             
             int printed = 0;
             if(printed == 0) {
-            	// if(isDebugLevel4()) dbgInfoSubmitted(debugInfoFun + " " + sList);
+            	if(isDebugLevel4()) dbgInfoSubmitted(debugInfoFun + " " + sList);
             	printed = 1;
             }
             if(printed == 0) {
-            	// if(isDebugLevel1()) dbgInfoSubmitted(debugInfoFun + " " + sList);
+            	if(isDebugLevel1()) dbgInfoSubmitted(debugInfoFun + " " + sList);
             	printed = 1;
             }            
             if(printed == 0) {
-            	// if(isDebugLevel4()) dbgInfoSubmitted(debugInfoFun + " " + sList);
+            	if(isDebugLevel4()) dbgInfoSubmitted(debugInfoFun + " " + sList);
             	printed = 1;
             }
             
-            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " " + sList);
-            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "end :");
-            // if(isDebugLevel0()) dbgInfoLvl3(">>>>");
-            // if(isDebugLevel0()) dbgInfoLvl3(" ");
-            // if(isDebugLevel0()) dbgInfoLvl3(" ");
+            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + " " + sList);
+            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "end :");
+            if(isDebugLevel0()) dbgInfoLvl3(">>>>");
+            if(isDebugLevel0()) dbgInfoLvl3(" ");
+            if(isDebugLevel0()) dbgInfoLvl3(" ");
             return ii;
     }
 
@@ -899,55 +896,55 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
     private void dbgHeaderLV0 (String debugInfo) {
 
     	
-    	// if(isDebugLevel0())dbgN5();
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0()) dbgInfoLvl3("================================================================");
-        // if(isDebugLevel0()) dbgInfoLvl3("=");
-        // if(isDebugLevel0()) dbgInfoLvl3("=");
-        // if(isDebugLevel0()) dbgInfoLvl3("=" + debugInfo);
-        // if(isDebugLevel0()) dbgInfoLvl3("=");
-        // if(isDebugLevel0()) dbgInfoLvl3("=");
-        // if(isDebugLevel0()) dbgInfoLvl3("================================================================");
-        // if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0())dbgN5();
+    	if(isDebugLevel0())dbgN5();
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgInfoLvl3("================================================================");
+        if(isDebugLevel0()) dbgInfoLvl3("=");
+        if(isDebugLevel0()) dbgInfoLvl3("=");
+        if(isDebugLevel0()) dbgInfoLvl3("=" + debugInfo);
+        if(isDebugLevel0()) dbgInfoLvl3("=");
+        if(isDebugLevel0()) dbgInfoLvl3("=");
+        if(isDebugLevel0()) dbgInfoLvl3("================================================================");
+        if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0())dbgN5();
     	
     }
     
     private void dbgHeaderLV1 (String debugInfo) {
     	
-    	// if(isDebugLevel0()) dbgN5();
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0()) dbgInfoLvl3("****************************************************************");
-        // if(isDebugLevel0()) dbgInfoLvl3("*");
-        // if(isDebugLevel0()) dbgInfoLvl3("**" + debugInfo);
-        // if(isDebugLevel0()) dbgInfoLvl3("*");        
-        // if(isDebugLevel0()) dbgInfoLvl3("****************************************************************");
-        // if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0()) dbgN5();
+    	if(isDebugLevel0()) dbgN5();
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgInfoLvl3("****************************************************************");
+        if(isDebugLevel0()) dbgInfoLvl3("*");
+        if(isDebugLevel0()) dbgInfoLvl3("**" + debugInfo);
+        if(isDebugLevel0()) dbgInfoLvl3("*");        
+        if(isDebugLevel0()) dbgInfoLvl3("****************************************************************");
+        if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgN5();
     	
     }
     
     private void dbgHeaderLV2 (String debugInfo) {
     	
-    	// if(isDebugLevel0()) dbgN5();
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0()) dbgInfoLvl3("--------------------------------------------------------------");                
-        // if(isDebugLevel0()) dbgInfoLvl3("-" + debugInfo);               
-        // if(isDebugLevel0()) dbgInfoLvl3("---------------------------------------------------------------");
-        // if(isDebugLevel0()) dbgInfoLvl3("");
-        // if(isDebugLevel0()) dbgN5();
+    	if(isDebugLevel0()) dbgN5();
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgInfoLvl3("--------------------------------------------------------------");                
+        if(isDebugLevel0()) dbgInfoLvl3("-" + debugInfo);               
+        if(isDebugLevel0()) dbgInfoLvl3("---------------------------------------------------------------");
+        if(isDebugLevel0()) dbgInfoLvl3("");
+        if(isDebugLevel0()) dbgN5();
     	
     }
     
     private void dbgN5 () {
     	
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
-    	// if(isDebugLevel0()) dbgInfoLvl3("");
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+    	if(isDebugLevel0()) dbgInfoLvl3("");
+    	if(isDebugLevel0()) dbgInfoLvl3("");
     }
     
     private  String checkList ( 
@@ -956,8 +953,8 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             ){
     
             
-        	// String debugInfoFun =  debugInfo + " -> checkList::";
-            // if(isDebugLevel0()) dbgInfoLvl3("<<<");        	
+        	String debugInfoFun =  debugInfo + " -> checkList::";
+            if(isDebugLevel0()) dbgInfoLvl3("<<<");        	
             String sOut = "";
             ListNode nl = par_list;            
             int maxVal = 0;
@@ -980,10 +977,10 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             	dbgInfoLvl3(debugInfoFun + "ERROR_IN_LIST:" + sOut);
             }
 
-            // if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "end :");
-            // if(isDebugLevel0()) dbgInfoLvl3(">>>>");
-            // if(isDebugLevel0()) dbgInfoLvl3(" ");
-            // if(isDebugLevel0()) dbgInfoLvl3(" ");
+            if(isDebugLevel0()) dbgInfoLvl3(debugInfoFun + "end :");
+            if(isDebugLevel0()) dbgInfoLvl3(">>>>");
+            if(isDebugLevel0()) dbgInfoLvl3(" ");
+            if(isDebugLevel0()) dbgInfoLvl3(" ");
             return  sOut;
     }
     
@@ -1038,19 +1035,19 @@ class JacekTraczLetCodeMergeSortedKListsDebugSolution {
             , String postfix
             ) {
     	
-    	// if(isDebugLevel1()) dbgInfoLvl1("");
-    	// if(isDebugLevel1()) dbgInfoLvl1("");
+    	if(isDebugLevel1()) dbgInfoLvl1("");
+    	if(isDebugLevel1()) dbgInfoLvl1("");
 
-        // if(isDebugLevel4()) dbgListShortLvl0(handled_1_root,  "handled_1_root::" + postfix);
-        // if(isDebugLevel4()) dbgListShortLvl0(handled_0_root,  "handled_0_root::" + postfix);
+        if(isDebugLevel4()) dbgListShortLvl0(handled_1_root,  "handled_1_root::" + postfix);
+        if(isDebugLevel4()) dbgListShortLvl0(handled_0_root,  "handled_0_root::" + postfix);
     	
-        // if(isDebugLevel1()) dbgListShortLvl1(handled_1_root,  "handled_1_root::" + postfix);
-        // if(isDebugLevel1()) dbgListShortLvl1(handled_0_root,  "handled_0_root::" + postfix);
+        if(isDebugLevel1()) dbgListShortLvl1(handled_1_root,  "handled_1_root::" + postfix);
+        if(isDebugLevel1()) dbgListShortLvl1(handled_0_root,  "handled_0_root::" + postfix);
     	
-    	// if(isDebugLevel0()) dbgList(handled_0_root, "handled_0_root-" + postfix);
-        // if(isDebugLevel0()) dbgList(handled_1_root, "handled_1_root-" + postfix);
-    	// if(isDebugLevel0()) dbgList(l_created_root_current[0],  "l_created_root_current[0]-" + postfix);
-        // if(isDebugLevel0()) dbgList(l_created_root_current[1],  "l_created_root_current[1]-" + postfix);                
+    	if(isDebugLevel0()) dbgList(handled_0_root, "handled_0_root-" + postfix);
+        if(isDebugLevel0()) dbgList(handled_1_root, "handled_1_root-" + postfix);
+    	if(isDebugLevel0()) dbgList(l_created_root_current[0],  "l_created_root_current[0]-" + postfix);
+        if(isDebugLevel0()) dbgList(l_created_root_current[1],  "l_created_root_current[1]-" + postfix);                
     	
     }
     

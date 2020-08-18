@@ -9,6 +9,9 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	private int EXEC_HANDLER_VERSION = 3;
 	private boolean TEST_CHOOSEN_TEST_CASE_ONLY = true;
 	
+	public final static int HNDL_JacekTraczLetCodeMergeSortedKListsDebugOnSolution = 5;
+	public final static int HNDL_JacekTraczLetCodeMergeSortedKListsDebugOffSolution = 3;
+	
 	private int TEST_CHOOSEN_TEST_FOR_ONE_EXEC = 1000000;
 	private String TEST_EXEC_NAME = "EXEC_NULL_ONE_NODE_REMOVED"; 
 	//EXEC_ONE_NODE";
@@ -17,10 +20,10 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	private boolean EXEC_DEBUG_MODE_LVL3 = false;	
 	private boolean  EXEC_DEBUG_MODE_LVL0 = false;
 	private boolean  EXEC_DEBUG_MODE_LVL1 = false;	
-	private int  EXEC_DEBUG_LEVEL = 5;
+	private int  EXEC_DEBUG_LEVEL = 4;
 	
-	private boolean MERGE_IN_PLACE = false;
-    private boolean MERGE_IMMUTABLE = true;	
+	private boolean MERGE_IN_PLACE = true;
+    private boolean MERGE_IMMUTABLE = false;	
     
 	@Test	
 	//@Ignore
@@ -374,7 +377,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 		ListNode[] inputArray =  new  ListNode[1];
 		inputArray[0] = ll;		
 		boolean handlerDebug = EXEC_DEBUG_MODE_LVL3;
-		ListNode lout = execHandler(EXEC_HANDLER_VERSION,handlerDebug,inputArray);
+		ListNode lout = execHandler(0,handlerDebug,inputArray);
 		validateList( inputArray, lout,sFun,1);
 	}
 	
@@ -397,7 +400,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 		dbgLists(inputArray,sFun);
 		
 		boolean handlerDebug = EXEC_DEBUG_MODE_LVL3;
-		ListNode lout = execHandler(EXEC_HANDLER_VERSION,handlerDebug,inputArray);
+		ListNode lout = execHandler(0,handlerDebug,inputArray);
 		validateList( inputArray, lout,sFun,2);
 	}
 	
@@ -420,7 +423,7 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 		dbgLists(inputArray,sFun);
 		
 		boolean handlerDebug = EXEC_DEBUG_MODE_LVL3;
-		ListNode lout = execHandler(EXEC_HANDLER_VERSION,handlerDebug,inputArray);
+		ListNode lout = execHandler(0,handlerDebug,inputArray);
 		validateList( inputArray, lout, sFun,1);
 		
 	}	
@@ -463,8 +466,16 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 			ListNode lout = handler.mergeKLists( inputArray );
 			return lout;
 		}
-		if(type == 3) {
-			JacekTraczLetCodeMergeSortedKListsDebugSolution handler = new JacekTraczLetCodeMergeSortedKListsDebugSolution();
+		if(type == HNDL_JacekTraczLetCodeMergeSortedKListsDebugOffSolution) {
+			JacekTraczLetCodeMergeSortedKListsDebugOffSolution handler = new JacekTraczLetCodeMergeSortedKListsDebugOffSolution();
+			handler.setMergeInPlace( MERGE_IN_PLACE);
+			handler.setMergeImmutable( MERGE_IMMUTABLE);
+			handler.setDebugLevel5( EXEC_DEBUG_LEVEL);
+			ListNode lout = handler.mergeKLists( inputArray );
+			return lout;
+		}
+		if(type == HNDL_JacekTraczLetCodeMergeSortedKListsDebugOnSolution) {
+			JacekTraczLetCodeMergeSortedKListsDebugOnSolution handler = new JacekTraczLetCodeMergeSortedKListsDebugOnSolution();
 			handler.setMergeInPlace( MERGE_IN_PLACE);
 			handler.setMergeImmutable( MERGE_IMMUTABLE);
 			handler.setDebugLevel5( EXEC_DEBUG_LEVEL);
