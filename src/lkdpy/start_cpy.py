@@ -59,9 +59,9 @@ if __name__ == "__main__":
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")
 
-        ddh.images_create_sequential_ids("")
+        # ddh.images_create_sequential_ids("")
 
-        # ddh.create_one_swipper("")
+        ddh.create_one_swipper("")
         # ddh.create_md("")
         # ddh.create_md_all("")
 
