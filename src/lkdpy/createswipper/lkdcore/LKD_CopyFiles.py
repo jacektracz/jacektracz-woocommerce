@@ -370,8 +370,8 @@ class LKD_CopyFiles:
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_img_provider_" + pdst + ".php")
 
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
-                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_main_frame_" + psrc + ".php",
-                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_main_frame_" + pdst + ".php")
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_render_main_frame_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_render_main_frame_" + pdst + ".php")
 
         def copy_file(
                 self

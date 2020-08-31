@@ -7,7 +7,7 @@ from createswipper.lkdcore.LKD_CreateFiles import *
 from createswipper.lkdcore.LKD_FinAnalysis import *
 from createswipper.lkdcore.LKD_CreateImages import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
-# 600 446 066 Rafal tel
+#  600 446 066 Rafal tel
 
 class LKD_MainExec:
 
