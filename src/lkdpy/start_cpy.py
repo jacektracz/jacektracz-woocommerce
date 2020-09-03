@@ -6,6 +6,8 @@ from createswipper.lkdcore.LKD_CopyFilesExec import *
 from createswipper.lkdcore.LKD_CreateFiles import *
 from createswipper.lkdcore.LKD_FinAnalysis import *
 from createswipper.lkdcore.LKD_CreateImages import *
+from createswipper.lkdcore.LKD_CopyFilesPortal import *
+
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 #  600 446 066 Rafal tel
 
@@ -18,6 +20,10 @@ class LKD_MainExec:
         def xx_dbg(self, tt):
                 "" ""
                 print ( tt )
+
+        def prepare_copy_swippers(self, tt):
+                dd = LKD_CopyFilesPortal("")
+                dd.create_cpy_portal("")
 
         def refill_swipper(self, tt):
                 dd = LKD_CopyFilesExec("")
@@ -61,7 +67,10 @@ if __name__ == "__main__":
 
         # ddh.images_create_sequential_ids("")
 
-        ddh.create_one_swipper("")
+        # ddh.create_one_swipper("")
+
+        ddh.prepare_copy_swippers("")
+
         # ddh.create_md("")
         # ddh.create_md_all("")
 

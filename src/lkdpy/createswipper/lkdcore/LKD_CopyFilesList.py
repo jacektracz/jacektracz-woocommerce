@@ -409,6 +409,17 @@ class LKD_CopyFilesList:
                 dd.append('catsup3_cu3')
                 return dd
 
+        def get_list_of_no_swippers(self):
+                self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
+
+                dd = []
+                dd.append('mod_ep_lib')                
+                dd.append('mod_ep_region')
+                dd.append('mod_ep_menu_big_v2')
+                dd.append('mod_ep_superfish_category_grid')
+                
+                return dd
+
         def get_list_of_swippers(self):
                 self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
 
