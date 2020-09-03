@@ -417,13 +417,18 @@ class LKD_CopyFilesList:
                 dd.append('mod_ep_region')
                 dd.append('mod_ep_menu_big_v2')
                 dd.append('mod_ep_superfish_category_grid')
-                
+
                 return dd
 
         def get_list_of_swippers(self):
                 self.xx_dbg("[METHOD_IN]" + "[get_list_of_modules]")
 
                 dd = []
+                dd.append('cat_menu_main_cmm9')
+                dd.append('cat_menu_path_cmp9')
+                dd.append('cat_tagschilds_ctc7')
+                dd.append('cat_tagsparent_ctp5')
+                dd.append('jquery_loader_jq7')
                 dd.append('splash_catspath_sc9')                
                 dd.append('catslatest_cl2')
                 dd.append('catsup7_cu7')

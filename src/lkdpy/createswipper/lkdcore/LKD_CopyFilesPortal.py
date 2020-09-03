@@ -52,48 +52,65 @@ class LKD_CopyFilesPortal:
 
         def create_cpy_lib(self,  tt):
 
-                s_root = "/C/lkd/ht/apps_portal/lkduni/app-4/src/modules/"
+                s_root = "/C/lkd/ht/apps_portal/lkduni/app-4/src/"
                 s_dest = " /C/lkd/ht/apps_portal_joo_39/apps/src/joo//"
-                s_swp = "libraries/joomla/mod_ep/"
-                s_cpy = "cp -r " + s_root  + s_swp + "* " + s_dest + s_swp
+                s_swp = "libraries/joomla/mod_ep"
+                s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp
+                self.xx_dbg(s_cpy)
+
+                s_cpy = "cp -r " + s_root  + s_swp + "/* " + s_dest + s_swp
                 self.xx_dbg(s_cpy)
 
         def create_cpy_articles_content(self,  tt):
 
                 s_root = "/C/lkd/ht/apps_portal/lkduni/app-4/src/modules/"
-                s_dest = " /C/lkd/ht/apps_portal_joo_39/apps/src/joo//"
-                s_swp = "modules/mod_ep_articles/assets"
-                s_cpy = "cp -r " + s_root  + s_swp + "* " + s_dest + s_swp                
-                self.xx_dbg(s_cpy)
-
-                s_swp = "modules/mod_ep_articles/content_cats"
-                s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp
-                self.xx_dbg(s_cpy)
-
-                s_swp = "modules/mod_ep_articles/lib"
-                s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp
-                self.xx_dbg(s_cpy)
-
-                s_swp = "modules/mod_ep_articles"
+                s_dest = " /C/lkd/ht/apps_portal_joo_39/apps/src/joo//modules/"
+                
+                s_swp = "mod_ep_articles"
                 s_cpy = "cp  " + s_root  + s_swp + " " + s_dest + s_swp
                 self.xx_dbg(s_cpy)
+
+                s_swp = "mod_ep_articles/assets"
+                s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp                
+                self.xx_dbg(s_cpy)
+
+                s_cpy = "cp -r " + s_root  + s_swp + "/* " + s_dest + s_swp                
+                self.xx_dbg(s_cpy)
+
+                s_swp = "mod_ep_articles/content_cats"
+                s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp
+                self.xx_dbg(s_cpy)
+
+                s_swp = "mod_ep_articles/lib"
+                s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp
+                self.xx_dbg(s_cpy)
+
+                s_cpy = "cp -r " + s_root  + s_swp + "/* " + s_dest + s_swp
+                self.xx_dbg(s_cpy)
+
 
         def create_cpy_swipper(self, dd_swipper, tt):
 
                 s_root = "/C/lkd/ht/apps_portal/lkduni/app-4/src/modules/"
-                s_dest = " /C/lkd/ht/apps_portal_joo_39/apps/src/joo//"
+                s_dest = " /C/lkd/ht/apps_portal_joo_39/apps/src/joo//modules/"
                 s_swp = "mod_ep_swipper_" + dd_swipper
-                s_sep = "/"
+                s_sep = "/"                
                 s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp
+                self.xx_dbg(s_cpy)
 
+                s_cpy = "cp -r " + s_root  + s_swp + "/* " + s_dest + s_swp
                 self.xx_dbg(s_cpy)
 
         def create_cpy_no_swipper(self, dd_swipper, tt):
 
                 s_root = "/C/lkd/ht/apps_portal/lkduni/app-4/src/modules/"
-                s_dest = " /C/lkd/ht/apps_portal_joo_39/apps/src/joo//"
+                s_dest = " /C/lkd/ht/apps_portal_joo_39/apps/src/joo//modules/"
                 s_swp = "" + dd_swipper
                 s_sep = "/"
                 s_cpy = "cp -r " + s_root  + s_swp + " " + s_dest + s_swp
+
+                self.xx_dbg(s_cpy)
+
+                s_cpy = "cp -r " + s_root  + s_swp + "/* " + s_dest + s_swp
 
                 self.xx_dbg(s_cpy)
