@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Ch5_5_Test {
+	/*
     private PrintStream originalErr;
     private ByteArrayOutputStream err;
 
@@ -62,4 +63,5 @@ public class Ch5_5_Test {
         Ch5_5.copyLowerCase(new File("not here"), new File("not there"));
         assertTrue(err.toString().contains("File could not be found"));
     }
+    */
 }

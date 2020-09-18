@@ -32,7 +32,7 @@ public class PartitionPrimeNumbers {
 
     public static boolean isPrime(List<Integer> primes, Integer candidate) {
         double candidateRoot = Math.sqrt((double) candidate);
-       return primes.stream().takeWhile(i -> i <= candidateRoot).noneMatch(i -> candidate % i == 0);       
+       return false;//primes.stream().takeWhile(i -> i <= candidateRoot).noneMatch(i -> candidate % i == 0);       
     }
     
     public static boolean isPrimeCustom(List<Integer> primes, Integer candidate) {

@@ -1,5 +1,8 @@
 package com.jacektracz.java8.samples.nashorn;
-
+public class Nashorn1 {
+}
+/*
+}
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -10,11 +13,6 @@ import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-/**
- * Calling javascript functions from java with nashorn.
- *
- * 
- */
 public class Nashorn1 {
 
     public static void main(String[] args) throws Exception {
@@ -32,3 +30,4 @@ public class Nashorn1 {
     }
 
 }
+*/

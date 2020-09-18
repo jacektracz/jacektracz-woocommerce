@@ -7,6 +7,7 @@ import java.util.function.Function;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Ch6_15_Test {
+	/*
     @Test
     public void testMap() {
         Function<Integer, String> alphaPosition = t -> String.valueOf((char) ('a' + (t % 26)));
@@ -17,4 +18,5 @@ public class Ch6_15_Test {
         assertEquals(List.of(true, true, true, true, false), Ch6_15.map(List.of(100, 200, 8, 4, 101), isEven));
         assertEquals(List.of(false, false, false), Ch6_15.map(List.of(1, 3, 5), isEven));
     }
+    */
 }

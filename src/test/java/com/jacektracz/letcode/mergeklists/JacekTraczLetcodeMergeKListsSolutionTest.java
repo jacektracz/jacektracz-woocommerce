@@ -24,7 +24,19 @@ public class JacekTraczLetcodeMergeKListsSolutionTest {
 	
 	private boolean MERGE_IN_PLACE = true;
     private boolean MERGE_IMMUTABLE = false;	
+    @Test	
+	public void test2() throws Exception {
+		assertEquals(5,5);
+	}	
     
+	@Test		
+	public void test1() throws Exception {
+		int[] params = {1,3,6,4,1,2};
+		com.jacektracz.letcode.smallestinteger.JacekTraczLetcodeSmallestIntSolution handler = new com.jacektracz.letcode.smallestinteger.JacekTraczLetcodeSmallestIntSolution();
+		int outcome = handler.solution(params);
+		assertEquals(outcome,5);
+	}	
+	
 	@Test	
 	//@Ignore
 	public void testListsWithOneNode_4() throws Exception {		

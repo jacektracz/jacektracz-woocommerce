@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Ch9_1_Test {
+	/*
     @Test
     public void copyStream() {
         var data = "hello world string chapter 9 question 1";
@@ -65,4 +66,5 @@ public class Ch9_1_Test {
         assertTrue(stderrString.toString().contains("Output won't close"));
         System.setErr(originalErr);
     }
+    */
 }

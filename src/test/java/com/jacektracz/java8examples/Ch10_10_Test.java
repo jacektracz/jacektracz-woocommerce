@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.LongAccumulator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Ch10_10_Test {
+	/*
     @Test
     public void longAccumulatorMinimum() {
         var minimum = new LongAccumulator((left, right) ->
@@ -26,4 +27,5 @@ public class Ch10_10_Test {
         }
         assertEquals(100, maximum.get());
     }
+    */
 }

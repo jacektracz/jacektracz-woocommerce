@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Misc {
-
+/*
     @Deprecated(forRemoval = true)
     String foo;
 
@@ -65,5 +65,5 @@ public class Misc {
         var map = Map.of("A", 1, "B", 2);
         System.out.println(map);
     }
-
+*/
 }

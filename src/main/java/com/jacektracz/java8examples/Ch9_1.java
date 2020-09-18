@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.util.Objects;
 
 public class Ch9_1 {
+	/*
     public static void copyStream(OutputStream dest, InputStream src) {
         Objects.requireNonNull(src, "InputStream cannot be null");
         Objects.requireNonNull(dest, "OutputStream cannot be null");
@@ -23,4 +24,5 @@ public class Ch9_1 {
             }
         }
     }
+    */
 }

@@ -39,7 +39,7 @@ public class Grouping {
     }
 
     private static Map<Car.Type, Set<Object>> groupCarTagsByType() {    	
-        return carList.stream().collect(groupingBy(Car::getType, Collectors.flatMapping(Car -> carTags.get( Car.getName() ).stream(), toSet())));        
+        return null;//carList.stream().collect(groupingBy(Car::getType, Collectors.flatMapping(Car -> carTags.get( Car.getName() ).stream(), toSet())));        
     }
 
     private static Map<Car.Type, List<Car>> groupHorsePowerCarsByType() {
@@ -103,7 +103,7 @@ public class Grouping {
     
 
     public static void flatMappingExample() {
-    	
+    	/*
         List<Integer> list = Stream.of(List.of(1, 2, 3, 4), List.of(5, 6, 7, 8))
                                    .collect(
                                            Collectors.flatMapping(
@@ -113,6 +113,8 @@ public class Grouping {
                                            )
                                    );
         System.out.println(list);
+        */
+        
     } 
    
 }
