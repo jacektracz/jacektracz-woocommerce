@@ -57,6 +57,10 @@ class LKD_MainExec:
                 cat_id_start = 1
                 dd_img.move_digital_images_to_md(max_img_id,cat_id_start)
 
+        def exec_cpy_many_mds(self, tt):
+                dd_mdh = LKD_CopyFilesMd("")
+                dd_mdh.exec_cpy_many(6002,8003) 
+
 
 if __name__ == "__main__":
 
@@ -69,7 +73,8 @@ if __name__ == "__main__":
 
         # ddh.create_one_swipper("")
 
-        ddh.prepare_copy_swippers("")
+        #ddh.prepare_copy_swippers("")
+        ddh.exec_cpy_many_mds("")
 
         # ddh.create_md("")
         # ddh.create_md_all("")

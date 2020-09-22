@@ -353,8 +353,8 @@ class LKD_CopyFilesMd:
         def exec_cpy_mds(self):
                 # 4298 4409
                 src_file = ""
-                for x in range(70):
-                        xx = 4406 + x
+                for x in range(2):
+                        xx = 6002 + x
                         self.cpy_all("4299",str(xx))
 
 
@@ -362,11 +362,11 @@ class LKD_CopyFilesMd:
                 self.cpy_all("4299",str(idnew))
 
 
-        def exec_cpy_many(self, max):
-                iimax = max
-                ii=1
+        def exec_cpy_many(self, ii_start, ii_max):
+                iimax = ii_max
+                ii = ii_start
                 while( True ):
-                        if(ii>iimax):
+                        if( ii > iimax):
                                 break
                         self.cpy_all(4299,ii)
                         ii = ii + 1
@@ -392,6 +392,7 @@ class LKD_CopyFilesMd:
                 self.copy_one_file(2222,4818,"content__rel_tags_0")
 
         def create_md_all(self, tt,range_start,range_end):
+                return
                 ddh = LKD_CopyFilesMd("")
                 for x in range( range_end ):
                         if(x != 2222):
