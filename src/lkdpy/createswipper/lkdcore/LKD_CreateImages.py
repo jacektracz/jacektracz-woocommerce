@@ -83,8 +83,9 @@ class LKD_CreateImages:
 
         def move_digital_images_to_md(
                 self
-                , max_img_id
-                , cat_id_start):
+                , max_img_id_source_bucket
+                , cat_id_start
+                , cat_id_end):
 		sfun = self.get_sclass() + "::move_digital_images_to_md::"
 		self.xx_dbg( sfun + "start")
 
@@ -93,47 +94,56 @@ class LKD_CreateImages:
                 
 
                 self.move_digital_images_to_md_impl(
-                        max_img_id
+                        max_img_id_source_bucket
                         ,ep_300x200_all_digital_seq
-                        ,cat_id_start)
+                        ,cat_id_start
+                        , cat_id_end)
 
                 self.xx_dbg( sfun + "end")
 
         def move_digital_images_to_md_impl(
                 self
-                , max_img_id
+                , max_img_id_source_bucket
                 , ep_300x200_all_digital_seq
-                , cat_id_start):
+                , cat_id_start
+                , cat_id_end
+                ):
 
 		sfun = self.get_sclass() + "::move_digital_images_to_md_impl::"
 		self.xx_dbg( sfun + "start")
-                self.xx_dbg( sfun + "max_img_id:" + str(max_img_id))
+                self.xx_dbg( sfun + "max_img_id_source_bucket:" + str(max_img_id_source_bucket))
                 self.xx_dbg( sfun + "cat_id_start:" + str(cat_id_start))
                 self.xx_dbg( sfun + "ep_300x200_all_digital_seq:" + ep_300x200_all_digital_seq)
 
                 
-                for ii in range (cat_id_start, 6000, 1):
+                for ii in range (cat_id_start, cat_id_end, 1):
                         self.move_digital_image_to_md(
-                                ii
-                                , max_img_id
+                                cat_id_start
+                                , ii
+                                , max_img_id_source_bucket
                                 , ep_300x200_all_digital_seq)
 
                 self.xx_dbg( sfun + "end")
 
-        def move_digital_image_to_md(self,cat_id,max_img_id,ep_300x200_all_digital_seq):
+        def move_digital_image_to_md(
+                self
+                , cat_id_start
+                , cat_id
+                , max_img_id_source_bucket
+                , ep_300x200_all_digital_seq):
+
 		sfun = self.get_sclass() + "::move_digital_image_to_md::"
 		self.xx_dbg( sfun + "start")
 
-                cat_id_img   = cat_id
-                if(cat_id_img > max_img_id):
-                        cat_id_img = cat_id - ( max_img_id )
+                cat_id_img   = int((cat_id - cat_id_start )) % int(max_img_id_source_bucket)
 
-                if(cat_id_img > max_img_id):
-                        cat_id_img = cat_id_img - ( max_img_id )
+                self.xx_dbg( sfun + "cat_id_img:" + str(cat_id_img))
 
                 img_file = "img_" + str(cat_id_img) + ".jpg"
                 img_file_dest = "img_300_x_200.png"
-                src_path = self.get_dir_root_img_src_digital(ep_300x200_all_digital_seq) + "\\" + img_file
+                src_path = self.get_dir_root_img_src_digital(
+                        ep_300x200_all_digital_seq) + "\\" + img_file
+                        
                 dest_path = self.get_root_for_groups(cat_id,"0") + "\\content_idx_0\\imgs\\" + img_file_dest
                 self.copy_file(src_path,dest_path)
                 self.xx_dbg( sfun + "end")

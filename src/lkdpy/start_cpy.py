@@ -53,14 +53,23 @@ class LKD_MainExec:
         def images_create_sequential_ids(self, tt):
                 dd_img = LKD_CreateImages("")
                 #dd_img.create_sequential_ids()
-                max_img_id = 2834
-                cat_id_start = 1
-                dd_img.move_digital_images_to_md(max_img_id,cat_id_start)
+                max_img_id_source_bucket = 2000
+                cat_id_start = 6700
+                cat_id_end = 8700
+
+                dd_img.move_digital_images_to_md(
+                        max_img_id_source_bucket
+                        ,cat_id_start
+                        ,cat_id_end)
 
         def exec_cpy_many_mds(self, tt):
                 dd_mdh = LKD_CopyFilesMd("")
                 dd_mdh.exec_cpy_many(6002,8003) 
 
+        def exec_create_images(self,tt):
+                dd_img = LKD_CreateImages("")
+                dd_img.exec_images()
+                dd_img.move_digital_images_to_md()
 
 if __name__ == "__main__":
 
@@ -69,12 +78,12 @@ if __name__ == "__main__":
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")
 
-        # ddh.images_create_sequential_ids("")
+        ddh.images_create_sequential_ids("")
 
         # ddh.create_one_swipper("")
 
         #ddh.prepare_copy_swippers("")
-        ddh.exec_cpy_many_mds("")
+        #ddh.exec_cpy_many_mds("")
 
         # ddh.create_md("")
         # ddh.create_md_all("")
