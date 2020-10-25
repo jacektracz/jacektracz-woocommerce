@@ -658,8 +658,12 @@ class LKD_FinAnalysis:
         # 58 858,85 PLN	286 451,59 PLN	-227 592,74 PLN	
 
         def get_items_sum( self ):
+                
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
+
+                # 64 504,42 PLN	283 822,38 PLN	-219 317,96 PLN	 23-10-2020
+                # 57 236,83 PLN	284 728,63 PLN	-227 491,80 PLN	 20 10 2020 (- kredyt, baltyk)
                 # 52 904,39 PLN	285 590,80 PLN	-232 686,41 PLN	 01 09 2020
                 # 60 172,92 PLN	285 590,80 PLN	-225 417,88 PLN	 25 08 2020
                 # 54 773,74 PLN	286 451,59 PLN	-231 677,85 PLN	 18 08 2020
