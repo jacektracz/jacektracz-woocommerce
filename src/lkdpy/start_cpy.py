@@ -71,6 +71,11 @@ class LKD_MainExec:
                 dd_img.exec_images()
                 dd_img.move_digital_images_to_md()
 
+        def create_source_files(self,tt):
+                ddcr = LKD_CreateFiles("")
+                ddcr.execute_main()
+
+
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
@@ -78,8 +83,9 @@ if __name__ == "__main__":
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")
 
-        ddh.images_create_sequential_ids("")
-
+        # ddh.images_create_sequential_ids("")
+        ddh.create_source_files("")
+        
         # ddh.create_one_swipper("")
 
         #ddh.prepare_copy_swippers("")

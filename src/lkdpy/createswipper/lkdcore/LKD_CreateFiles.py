@@ -178,6 +178,10 @@ class LKD_CreateFiles:
                                 continue
 
                         dest_fpath = file_item.dest_java_flat_dir_path + "/" + file_item.src_javafile_name
+                        
+                        if (len(dest_fpath) > 256):
+                                return 0
+
                         self.xx_dbg("copy-from:" + src_fpath)
                         self.xx_dbg("copy-to:" + dest_fpath)
 
@@ -191,6 +195,10 @@ class LKD_CreateFiles:
 
                 self.xx_dbg(s_fun + "psrc_fpath:" + psrc_fpath)
 
+                if (len(psrc_fpath) > 256):
+                        return 0
+
+                
                 needles = []
                 needles.append("target")
                 needles.append(".git")
