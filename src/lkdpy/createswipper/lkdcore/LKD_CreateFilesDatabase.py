@@ -34,7 +34,8 @@ class LKD_CreateFilesDatabase:
                 # return self.get_cats_activemq("")
                 # return self.get_cats_hibspring("")
                 # return self.get_cats_blockchain_web("")
-                return self.get_cats_blockchain_corda("")
+                # return self.get_cats_blockchain_corda("")
+                return self.get_cats_blockchain_python_pow("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -47,7 +48,8 @@ class LKD_CreateFilesDatabase:
                 # return self.get_root_activemq("")
                 # return self.get_root_hibspring("")
                 # return self.get_root_blockchain_web("")
-                return self.get_root_blockchain_corda("")
+                # return self.get_root_blockchain_corda("")
+                return self.get_root_blockchain_python_pow("")
 
 
         def get_root_jhreact(self, dd):
@@ -776,5 +778,14 @@ class LKD_CreateFilesDatabase:
                 root_src = "C:/lkd/ht/apps_corda/app/src"
                 return root_src
 
+
+        def get_cats_blockchain_python_pow(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(6085,"blockchain"))
+                return cats
+
+        def get_root_blockchain_python_pow(self, dd):
+                root_src = "C:/lkd/ht/apps_blockchain_pythonpow/app/src"
+                return root_src
 
 
