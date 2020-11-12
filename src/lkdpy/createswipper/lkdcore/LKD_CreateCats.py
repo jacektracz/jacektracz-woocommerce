@@ -37,8 +37,18 @@ class LKD_CreateCats:
                 src_file = self.m_src_short
                 src_file = self.m_src
 
-                linest = self.inplace_change(
+                lines = []
+                lines = self.get_lines(
                         src_file)
+
+                lines = self.get_lines_stripped(
+                        lines)
+
+                lines = self.get_lines_proper(
+                        lines)
+
+                linest = self.inplace_change(
+                        lines)
 
                 lines = self.get_lines_stripped(
                         linest)
@@ -55,15 +65,59 @@ class LKD_CreateCats:
 
                 self.xx_dbg(s_fun + "end")
 
+        def get_proper_line(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::inplace_change::"                
+                line = pline
+                line = line.replace(";","")
+                line = line.replace(",","")
+                line = line.replace(":","")
+                line = line.replace("[","")
+                line = line.replace("]","")
+                line = line.replace("(","")
+                line = line.replace(")","")
+                line = line.replace("~","")
+                line = line.replace("`","")                
+                line = line.replace("!","")                
+                line = line.replace("@","")                
+                line = line.replace("#","")
+                line = line.replace("$","")                
+                line = line.replace("%","")                
+                line = line.replace("^","")                
+                line = line.replace("&","")
+                line = line.replace("*","")                
+                line = line.replace("(","")                
+                line = line.replace(")","")                
+                #line = line.replace("_","")                
+                
+                line = line.replace("+","")                
+                line = line.replace("=","")                
+                line = line.replace("{","")                
+                line = line.replace("[","")                
+                line = line.replace("]","")                
+                line = line.replace("}","")                
+
+                line = line.replace(":","")                
+                line = line.replace(";","")                
+                line = line.replace('"',"")                
+                line = line.replace("<","")                
+                line = line.replace(",","")                
+                line = line.replace(">","")                                
+                line = line.replace("?","")
+                line = line.replace("/","")
+
+                return line
+
         def inplace_change(
                 self
-                , filename):
+                , lines):
 
                 s_fun = self.class_name() + "::inplace_change::"
                 self.xx_dbg(s_fun + "start")
-                self.xx_dbg(s_fun + "read_file " + filename)
 
-                lines = self.get_lines(filename)
+                        
                 lines_out = self.inplace_change_lines(
                         lines)
 
@@ -124,6 +178,22 @@ class LKD_CreateCats:
                 lines_out = []
                 for line in lines:
                         line_strip = line.rstrip()
+                        lines_out.append(line_strip)      
+
+                self.xx_dbg(s_fun + "end")
+                return lines_out
+
+        def get_lines_proper(
+                self                
+                , lines):
+
+                s_fun = self.class_name() + "::print_lines_stripped::"
+                self.xx_dbg(s_fun + "start")
+                lines_out = []
+                for line in lines:
+                        line_strip = line.rstrip()
+                        line_strip = self.get_proper_line(
+                                line_strip)
                         lines_out.append(line_strip)      
 
                 self.xx_dbg(s_fun + "end")
