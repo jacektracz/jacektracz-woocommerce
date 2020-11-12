@@ -14,10 +14,12 @@ class LKD_CreateCats:
         def __init__(self,spar):                                
                 self.xx_dbg("LKD_CopyFiles::__init__::in::")
                 self.m_src = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add.md"
-                self.m_dst = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add_res.md"
+                self.m_src_short = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add_short.md"
+                self.m_dst = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add_dst.md"
                 self.m_root_src = ""
                 self.m_root_dst = ""
                 self.m_test_mode = 0
+                self.m_add_spaces_count = 0
                 self.m_override_mode = True
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
@@ -32,6 +34,7 @@ class LKD_CreateCats:
                 s_fun = self.class_name() + "::execute_cdirs::"
                 self.xx_dbg(s_fun + "start")
                 dst_file = self.m_dst
+                src_file = self.m_src_short
                 src_file = self.m_src
 
                 linest = self.inplace_change(
@@ -40,7 +43,7 @@ class LKD_CreateCats:
                 lines = self.get_lines_stripped(
                         linest)
 
-                write_exec = 0
+                write_exec = 1
                 if(write_exec == 1):
                         self.write_lines(
                                 dst_file
@@ -61,7 +64,9 @@ class LKD_CreateCats:
                 self.xx_dbg(s_fun + "read_file " + filename)
 
                 lines = self.get_lines(filename)
-                lines_out = self.inplace_change_lines(lines)
+                lines_out = self.inplace_change_lines(
+                        lines)
+
                 self.xx_dbg(s_fun + "end")
                 return lines_out
 
@@ -76,8 +81,11 @@ class LKD_CreateCats:
                 with open(filename) as f:
                         flie_lines = f.readlines()
 
+                lines_out = self.get_lines_stripped(
+                        flie_lines)
+
                 self.xx_dbg(s_fun + "end")
-                return flie_lines
+                return lines_out
 
         def write_lines(
                 self
@@ -88,8 +96,8 @@ class LKD_CreateCats:
                 self.xx_dbg(s_fun + "start")
 
                 with open(filename, "w") as f:
-                        f.writeLines( lines )
-
+                        for line in lines:
+                                f.write( line + "\n")
 
                 self.xx_dbg(s_fun + "end")
 
@@ -164,6 +172,9 @@ class LKD_CreateCats:
                         self.xx_dbg(
                                 s_fun + " sp_xx " + str(sp_0) + " " + str(sp_1))
 
+                        if (self.m_add_spaces_count == 1 ):
+                                curr_line_0 = curr_line_0 + " " + str(sp_0)
+
                         if(sp_0 == sp_1):
                                 self.xx_dbg("cond-0-Y")
                                 lines_out.append("mkdir " + curr_line_0)
@@ -220,13 +231,15 @@ class LKD_CreateCats:
 
         def tabs_prefix_cnt(
                 self
-                , line):
+                , pline):
 
                 s_fun = self.class_name() + "::tabs_prefix_cnt::"
                 self.xx_dbg(s_fun + "start")
-                cnt = len(line)
+                
                 ii = 0
                 spaces = 0
+                line = pline.replace("    ","\t")
+                cnt = len(line)
                 while ii < cnt - 1:
                         spc = line[ii:ii+1]
                         if(spc == ' '):
