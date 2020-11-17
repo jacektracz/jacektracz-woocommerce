@@ -19,7 +19,10 @@ class LKD_CreateCats:
                 self.m_root_src = ""
                 self.m_root_dst = ""
                 self.m_test_mode = 0
-                self.m_add_spaces_count = 0
+                self.m_add_spaces_count = 1
+                self.m_exec_remove_toc = 0
+                self.m_exec_inplace_change = 1
+                self.m_exec_write = 1
                 self.m_override_mode = True
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
@@ -30,9 +33,27 @@ class LKD_CreateCats:
         def xx_dbg(self, tt ):
                 print tt
 
+        def set_execute_main_toc(self, tt):
+                s_fun = self.class_name() + "::set_execute_main_toc::"
+                self.xx_dbg(s_fun + "start")
+                self.m_exec_remove_toc = 1
+                self.m_exec_inplace_change = 0
+                self.m_add_spaces_count = 0
+
+        def set_execute_main_write_mkdirs(self, tt):
+                s_fun = self.class_name() + "::set_execute_main_write_mkdirs::"
+                self.xx_dbg(s_fun + "start")
+                self.m_exec_remove_toc = 0
+                self.m_exec_inplace_change = 1
+                self.m_add_spaces_count = 0
+
         def execute_main(self,tt):
                 s_fun = self.class_name() + "::execute_cdirs::"
                 self.xx_dbg(s_fun + "start")
+
+                # self.set_execute_main_toc("")
+                self.set_execute_main_write_mkdirs("")
+
                 dst_file = self.m_dst
                 src_file = self.m_src_short
                 src_file = self.m_src
@@ -47,14 +68,19 @@ class LKD_CreateCats:
                 lines = self.get_lines_proper(
                         lines)
 
-                linest = self.inplace_change(
-                        lines)
+                if( self.m_exec_remove_toc == 1 ):
+                        lines = self.get_removed_toc_lines(
+                                lines)
+
+
+                if( self.m_exec_inplace_change == 1 ):
+                        lines = self.inplace_change(
+                                lines)
 
                 lines = self.get_lines_stripped(
-                        linest)
-
-                write_exec = 1
-                if(write_exec == 1):
+                        lines)
+                
+                if( self.m_exec_write == 1 ):
                         self.write_lines(
                                 dst_file
                                 , lines)
@@ -65,11 +91,46 @@ class LKD_CreateCats:
 
                 self.xx_dbg(s_fun + "end")
 
+        def get_removed_toc_lines(
+                self
+                , lines):
+
+                s_fun = self.class_name() + "::get_removed_toc_lines::"
+                self.xx_dbg(s_fun + "start")
+                lines_out = []
+                for line in lines:                        
+                        line_strip = self.get_removed_toc_line(
+                                line)
+                        lines_out.append(line_strip)      
+
+                self.xx_dbg(s_fun + "end")
+                return lines_out
+
+        def get_removed_toc_line(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::get_removed_toc_line::"                
+                line = pline
+                for kk in range(4):
+                        for ii in range(10):
+                                s_toc = ".." + str(ii)
+                                line = line.replace(s_toc, " ")
+                                s_toc = ". ." + str(ii)
+                                line = line.replace(s_toc, " ")
+                                s_toc = " " + str(ii)
+                                line = line.replace(s_toc, "xx")
+                                s_toc = "xx" + str(ii)
+                                line = line.replace(s_toc, "xx")
+
+                line = line.replace( "xx","")
+                return line
+
         def get_proper_line(
                 self
                 , pline):
 
-                s_fun = self.class_name() + "::inplace_change::"                
+                s_fun = self.class_name() + "::get_proper_line::"                
                 line = pline
                 line = line.replace(";","")
                 line = line.replace(",","")
@@ -107,7 +168,24 @@ class LKD_CreateCats:
                 line = line.replace(">","")                                
                 line = line.replace("?","")
                 line = line.replace("/","")
+                line = line.replace("|","")
+                line = line.replace( "xx","")
+                
+                return line
 
+        def get_proper_dir_line_remove_spaces(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::get_proper_dir_line_remove_spaces::"
+                self.xx_dbg(s_fun + "start")
+
+                line = pline
+                line = line.strip()
+                line = line.replace( " ","-")
+                
+
+                self.xx_dbg(s_fun + "end")
                 return line
 
         def inplace_change(
@@ -240,34 +318,44 @@ class LKD_CreateCats:
                                 + "[" + str(sp_1) + "]")
 
                         self.xx_dbg(
-                                s_fun + " sp_xx " + str(sp_0) + " " + str(sp_1))
+                                s_fun + " sp_xx " + str(sp_0) + "-" + str(sp_1))
 
                         if (self.m_add_spaces_count == 1 ):
-                                curr_line_0 = curr_line_0 + " " + str(sp_0)
+                                curr_line_0 = curr_line_0 + "-" + str(sp_0)
+
+                        s_prefix = self.get_tabs_prefix(sp_0)
+
+                        curr_line_0 = self.get_proper_line(
+                                curr_line_0)
+
+                        curr_line_0 = self.get_proper_dir_line_remove_spaces(
+                                curr_line_0)
+
+                        curr_line_0_a = s_prefix + str(ii+1) + "" + "-" + curr_line_0
 
                         if(sp_0 == sp_1):
                                 self.xx_dbg("cond-0-Y")
-                                lines_out.append("mkdir " + curr_line_0)
+                                lines_out.append("mkdir " + curr_line_0_a)
                         else:
                                 self.xx_dbg("cond-0-N")
 
                         if(sp_0 < sp_1 ):
                                 self.xx_dbg("cond-1-Y")
-                                lines_out.append("mkdir " + curr_line_0)       
-                                lines_out.append("cd    " + curr_line_0)       
+                                lines_out.append("mkdir " + curr_line_0_a)       
+                                lines_out.append("cd    " + curr_line_0_a)       
                         else:
                                 self.xx_dbg("cond-1-N")
 
                         if(sp_0 == sp_1 + 1):
                                 self.xx_dbg("cond-2-Y")
-                                lines_out.append("mkdir " + curr_line_0)       
+                                lines_out.append("mkdir " + curr_line_0_a)       
                                 lines_out.append("cd   .. ")       
                         else:
                                 self.xx_dbg("cond-2-N")
 
                         if(sp_0 == sp_1 + 2):
                                 self.xx_dbg("cond-3-Y")
-                                lines_out.append("mkdir " + curr_line_0)       
+                                lines_out.append("mkdir " + curr_line_0_a)       
                                 lines_out.append("cd   .. ")       
                                 lines_out.append("cd   .. ")       
                         else:
@@ -275,7 +363,7 @@ class LKD_CreateCats:
 
                         if(sp_0 == sp_1 + 3):
                                 self.xx_dbg("cond-4-Y")
-                                lines_out.append("mkdir " + curr_line_0)       
+                                lines_out.append("mkdir " + curr_line_0_a)       
                                 lines_out.append("cd   .. ")       
                                 lines_out.append("cd   .. ")       
                                 lines_out.append("cd   .. ")       
@@ -284,7 +372,7 @@ class LKD_CreateCats:
 
                         if(sp_0 == sp_1 + 4):
                                 self.xx_dbg("cond-5-Y")
-                                lines_out.append("mkdir " + curr_line_0)       
+                                lines_out.append("mkdir " + curr_line_0_a)       
                                 lines_out.append("cd   .. ")       
                                 lines_out.append("cd   .. ")       
                                 lines_out.append("cd   .. ")       
@@ -298,6 +386,20 @@ class LKD_CreateCats:
                 self.xx_dbg(s_fun + "end")
                 return lines_out
 
+        def get_tabs_prefix(
+                self                
+                ,cnt):
+
+                s_fun = self.class_name() + "::get_tabs_prefix::"
+                #self.xx_dbg(s_fun + "start")
+                out_line = ""
+                ii=0
+                while ii < cnt :
+                        out_line = out_line  + "\t"
+                        ii = ii + 1
+                #self.xx_dbg(s_fun + "end")
+
+                return out_line
 
         def tabs_prefix_cnt(
                 self
