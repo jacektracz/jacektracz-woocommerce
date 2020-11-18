@@ -65,7 +65,7 @@ class LKD_CreateCats:
                 lines = self.get_lines_stripped(
                         lines)
 
-                lines = self.get_lines_proper(
+                lines = self.get_lines_proper_dir_with_spaces(
                         lines)
 
                 if( self.m_exec_remove_toc == 1 ):
@@ -90,6 +90,30 @@ class LKD_CreateCats:
                         , lines)
 
                 self.xx_dbg(s_fun + "end")
+
+        def get_idx_prefix(
+                self
+                , p_ii):
+
+                s_fun = self.class_name() + "::get_idx_prefix::"
+                self.xx_dbg(s_fun + "start")                             
+                s_ii = "ABCDEFGHIJKLMNOPQRSTUWXYZ"
+                s_out = ""
+                if(p_ii < 100 ):
+                        for kk in range(10):
+                                kk_bound  = kk * 10
+                                if(kk_bound > p_ii):
+                                        s_out = s_ii[kk:kk+1]
+                                        break
+
+                if s_out == "":
+                        for kk in range(10):
+                                kk_bound  = kk * 100
+                                if(kk_bound > p_ii):
+                                        s_out = s_ii[10 + kk:10 + kk + 1]
+                                        break
+
+                return s_out
 
         def get_removed_toc_lines(
                 self
@@ -126,12 +150,14 @@ class LKD_CreateCats:
                 line = line.replace( "xx","")
                 return line
 
-        def get_proper_line(
+        def get_proper_line_dir_with_spaces(
                 self
                 , pline):
 
-                s_fun = self.class_name() + "::get_proper_line::"                
+                s_fun = self.class_name() + "::get_proper_line_dir_with_spaces::"                
                 line = pline
+                line = line.replace("?","")
+                line = line.replace("-","")
                 line = line.replace(";","")
                 line = line.replace(",","")
                 line = line.replace(":","")
@@ -261,7 +287,7 @@ class LKD_CreateCats:
                 self.xx_dbg(s_fun + "end")
                 return lines_out
 
-        def get_lines_proper(
+        def get_lines_proper_dir_with_spaces(
                 self                
                 , lines):
 
@@ -270,7 +296,7 @@ class LKD_CreateCats:
                 lines_out = []
                 for line in lines:
                         line_strip = line.rstrip()
-                        line_strip = self.get_proper_line(
+                        line_strip = self.get_proper_line_dir_with_spaces(
                                 line_strip)
                         lines_out.append(line_strip)      
 
@@ -325,13 +351,14 @@ class LKD_CreateCats:
 
                         s_prefix = self.get_tabs_prefix(sp_0)
 
-                        curr_line_0 = self.get_proper_line(
+                        curr_line_0 = self.get_proper_line_dir_with_spaces(
                                 curr_line_0)
 
                         curr_line_0 = self.get_proper_dir_line_remove_spaces(
                                 curr_line_0)
 
-                        curr_line_0_a = s_prefix + str(ii+1) + "" + "-" + curr_line_0
+                        s_idx_prefix = self.get_idx_prefix(ii + 1)
+                        curr_line_0_a = s_prefix + s_idx_prefix + str(ii+1) + "" + "-" + curr_line_0
 
                         if(sp_0 == sp_1):
                                 self.xx_dbg("cond-0-Y")
