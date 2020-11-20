@@ -26,7 +26,7 @@ class LKD_CreateCats:
                 self.m_add_idx_prefixes = 1
                 self.m_exec_write = 1
                 self.m_exec_main_prepare_in_one_bucket = 0
-                self.m_exec_main_prepare_in_buckets = 0
+                self.m_exec_main_prepare_in_buckets = 1
                 self.m_exec_main_create_dirs = 1
                 self.m_override_mode = True
                 self.m_ds = "/"
@@ -65,14 +65,18 @@ class LKD_CreateCats:
                 s_fun = self.class_name() + "::execute_cdirs::"
                 self.xx_dbg(s_fun + "start")
 
+                src_file = self.m_src
                 if self.m_exec_main_prepare_in_one_bucket == 1:
                         self.execute_main_prepare_in_one_bucket("")
+                
+                
+                self.execute_main_prepare_in_buckets(
+                        ""
+                        , src_file, src_file + ".tmp.md")
 
-                if self.m_exec_main_prepare_in_buckets == 1:
-                        self.execute_main_prepare_in_buckets("")
-
-                if self.m_exec_main_create_dirs == 1:
-                        self.execute_main_create_dirs("")
+                self.execute_main_create_dirs(
+                        ""
+                        ,  src_file + ".tmp.md")
 
                 self.xx_dbg(s_fun + "end")
 
@@ -103,14 +107,18 @@ class LKD_CreateCats:
                         dst_file
                         , lines)
 
-        def execute_main_prepare_in_buckets(self,tt):
+        def execute_main_prepare_in_buckets(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
                 s_fun = self.class_name() + "::execute_main_prepare_in_buckets::"
                 self.xx_dbg(s_fun + "start")
 
-
-                dst_file = self.m_dst
-                src_file = self.m_src_short
-                src_file = self.m_src
+                src_file = psrc_file
+                dst_file = pdst_file
+                dst_bat = pdst_file + ".bat"
 
                 lines = []
                 lines = self.read_lines_from_file(
@@ -124,7 +132,7 @@ class LKD_CreateCats:
                         , lines)
 
                 self.create_bat_file(
-                        self.m_dst_bat
+                        dst_bat
                         , lines)
 
                 self.print_lines(
@@ -134,16 +142,16 @@ class LKD_CreateCats:
                 self.xx_dbg(s_fun + "end")
 
 
-        def execute_main_create_dirs(self,tt):
+        def execute_main_create_dirs(self,tt, psrc_file):
                 s_fun = self.class_name() + "::execute_main_create_dirs::"
                 self.xx_dbg(s_fun + "start")
 
                 # self.set_execute_main_toc("")
                 # self.set_execute_main_write_mkdirs("")
 
-                dst_file = self.m_dst
-                src_file = self.m_src_short
-                src_file = self.m_src
+                src_file = psrc_file
+                dst_file = psrc_file + ".dst.md"
+                dst_bat = psrc_file + ".dst.bat"
 
                 lines = []
                 lines = self.read_lines_from_file(
@@ -159,18 +167,13 @@ class LKD_CreateCats:
                 self.print_lines(
                         "inplace_change"
                         , lines)
-
                 
-                self.print_lines(
-                        "get_lines_to_write"
-                        , lines)
-
                 self.write_lines(
                         dst_file
                         , lines)
 
                 self.create_bat_file(
-                        self.m_dst_bat
+                        dst_bat
                         , lines)
 
                 self.print_lines(
@@ -615,7 +618,7 @@ class LKD_CreateCats:
                 , filename
                 , lines):
 
-                s_fun = self.class_name() + "::write_lines::"
+                s_fun = self.class_name() + "::create_bat_file::"
                 self.xx_dbg(s_fun + "start")
 
                 with open(filename, "w") as f:
@@ -774,7 +777,7 @@ class LKD_CreateCats:
                 s_full_idx_prefix = ""
                 if self.m_add_idx_prefixes == 1:
                         s_full_idx_prefix = s_idx_prefix + str(ii+1) + "" + "-"
-                        
+
                 curr_line_0_stripped = curr_line_0.strip()
 
                 curr_line_0_a =  s_tab_prefix + s_full_idx_prefix + curr_line_0_stripped
