@@ -1,9 +1,8 @@
 ﻿import sys
 import os
-from createswipper.lkdcore.LKD_CopyFiles import *
 from createswipper.lkdcore.LKD_CopyFilesMd import *
-from createswipper.lkdcore.LKD_CopyFilesExec import *
-from createswipper.lkdcore.LKD_CreateFiles import *
+from createswipper.lkdcore.LKD_CreateSwippersMain import *
+from createswipper.lkdcore.LKD_CreateMdFilesFromProjectsSrc import *
 from createswipper.lkdcore.LKD_FinAnalysis import *
 from createswipper.lkdcore.LKD_CreateImages import *
 from createswipper.lkdcore.LKD_CopyFilesPortal import *
@@ -27,11 +26,11 @@ class LKD_MainExec:
                 dd.create_cpy_portal("")
 
         def refill_swipper(self, tt):
-                dd = LKD_CopyFilesExec("")
+                dd = LKD_CreateSwippersMain("")
                 dd.refill_full_swipper()
 
         def create_one_swipper(self, tt):
-                dd = LKD_CopyFilesExec("")
+                dd = LKD_CreateSwippersMain("")
                 dd.cpy_one_swipper_all_files()
 
         def create_md(self, tt):
@@ -40,10 +39,10 @@ class LKD_MainExec:
 
         def create_md_all(self, tt):
                 ddh = LKD_CopyFilesMd("")
-                ddh.create_md_all(tt,1, 6000)
+                #ddh.create_md_all(tt,1, 6000)
 
         def refill_full_copy_one(self, tt):
-                ddh = LKD_CopyFilesExec("")
+                ddh = LKD_CreateSwippersMain("")
                 ddh.refill_full_copy_one("cat_mdparent_ctp7")
 
         def exec_fin(self, tt):
@@ -65,7 +64,7 @@ class LKD_MainExec:
 
         def exec_cpy_many_mds(self, tt):
                 dd_mdh = LKD_CopyFilesMd("")
-                dd_mdh.exec_cpy_many(6002,8003) 
+                # dd_mdh.exec_cpy_many(8001,8200,10000) 
 
         def exec_create_images(self,tt):
                 dd_img = LKD_CreateImages("")
@@ -73,7 +72,7 @@ class LKD_MainExec:
                 dd_img.move_digital_images_to_md()
 
         def create_source_files(self,tt):
-                ddcr = LKD_CreateFiles("")
+                ddcr = LKD_CreateMdFilesFromProjectsSrc("")
                 ddcr.execute_main()
 
         def create_cats(self,tt):
@@ -92,19 +91,19 @@ if __name__ == "__main__":
         # ddh.images_create_sequential_ids("")
         # ddh.create_source_files("")
 
-        ddh.create_cats("")
+        # ddh.create_cats("") -
 
         # ddh.create_one_swipper("")
 
         #ddh.prepare_copy_swippers("")
-        #ddh.exec_cpy_many_mds("")
+        # ddh.exec_cpy_many_mds("")
 
         # ddh.create_md("")
         # ddh.create_md_all("")
 
         #ddh.refill_swipper("")
 
-        # ddcr = LKD_CreateFiles("")
+        # ddcr = LKD_CreateMdFilesFromProjectsSrc("")
         # ddcr.execute_main()
 
         # nn
@@ -113,7 +112,7 @@ if __name__ == "__main__":
         # COPY SWIPPER START >>>>>
         #######################################
 
-        # dd = LKD_CopyFilesExec("")
+        # dd = LKD_CreateSwippersMain("")
         #dd.refill_full_swipper()
 
         # dd.exec_cpy_to_all_swippers_catsup_without0()

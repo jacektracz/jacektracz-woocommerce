@@ -14,6 +14,15 @@ class LKD_CopyFilesMd:
                 self.m_test_mode = 0
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
+
+        def exec_cpy_many(self, src_idx, ii_start, ii_max):
+                iimax = ii_max
+                ii = ii_start
+                while( True ):
+                        if( ii > iimax):
+                                break
+                        self.cpy_all(src_idx,ii)
+                        ii = ii + 1
                
         
         def prepare_object(self):
@@ -174,10 +183,13 @@ class LKD_CopyFilesMd:
                 self.m_src = par_src
                 self.m_dst = par_dst
 
-                root_src = self.cpy_all_calculate_root_scr_no_groups(
-                        par_src)
+                root_src = self.get_root_for_groups(
+                        par_src
+                        , 0)
 
-                root_dst = self.get_root_for_groups(par_dst, 0)
+                root_dst = self.get_root_for_groups(
+                        par_dst
+                        , 0)
 
                 self.static_copy_file( 
                         root_src
@@ -208,6 +220,50 @@ class LKD_CopyFilesMd:
                         , root_dst
                         , "content_idx_0" + DS + "imgs" + DS + "img__placeh.md"
                         , "content_idx_0" + DS + "imgs" + DS + "img__placeh.md")
+
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "content_idx_0" + DS + "imgs" + DS + "img_300_x_200.png"
+                        , "content_idx_0" + DS + "imgs" + DS + "img_300_x_200.png")
+
+                a_files = []
+                a_files.append("content__rel_items_0.md")
+                a_files.append("content__rel_tags_0.md")
+                a_files.append("content__0.md")
+                a_files.append("content__0.txt")
+                a_files.append("content__rel_childs_0.md")
+                a_files.append("content__rel_desc_0.md")
+                a_files.append("content__rel_desc_short_0.md")
+                a_files.append("content__rel_desc_short_1.md")
+                a_files.append("content__rel_desc_short_2.md")
+                a_files.append("content__rel_desc_short_3.md")
+                a_files.append("content__rel_items_0.md")
+                a_files.append("content__rel_lkd_ctx_root_0.md")
+                a_files.append("content__rel_lkd_ctx_root_1.md")
+                a_files.append("content__rel_parent_0.md")
+                a_files.append("content__rel_tags_0.md")
+                a_files.append("content__rel_title_0.md")
+                a_files.append("content___mdcontent_cnt.md")
+                a_files.append("content___mdcontent_toc.md")
+
+                for a_file in a_files:
+
+                        self.copy_one_root_file(
+                                root_src
+                                , root_dst
+                                , a_file )
+
+        def copy_one_root_file(self,root_src,root_dst,pfile):
+
+                self.xx_dbg("[METHOD_IN]" + "[copy_one_root_file]")
+                DS = self.m_ds
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "content_idx_0" + DS + pfile
+                        , "content_idx_0" + DS + pfile)
+
 
         def copy_file(self, psrc, pdest):
             
@@ -362,14 +418,6 @@ class LKD_CopyFilesMd:
                 self.cpy_all("4299",str(idnew))
 
 
-        def exec_cpy_many(self, ii_start, ii_max):
-                iimax = ii_max
-                ii = ii_start
-                while( True ):
-                        if( ii > iimax):
-                                break
-                        self.cpy_all(4299,ii)
-                        ii = ii + 1
 
         def copy_one_file(self, par_src, par_dst, file_key):
 

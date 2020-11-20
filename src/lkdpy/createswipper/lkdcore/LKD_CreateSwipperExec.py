@@ -3,10 +3,10 @@ import os
 import logging
 import shutil
 
-class LKD_CopyFiles:
+class LKD_CreateSwipperExec:
 
         def __init__(self,spar):                                
-                self.xx_dbg("LKD_CopyFiles::__init__::in::")
+                self.xx_dbg("LKD_CreateSwipperExec::__init__::in::")
                 self.m_src = "blogtech_x2"
                 self.m_dst = "services_s3"
                 self.m_root_src = ""
@@ -16,18 +16,18 @@ class LKD_CopyFiles:
                 self.m_override_mode = False
                 self.m_error_on_source_not_exist = False
                 self.m_ds = "/"
-                self.xx_dbg("LKD_CopyFiles::__init__::out::")
+                self.xx_dbg("LKD_CreateSwipperExec::__init__::out::")
                
         
         def prepare_object(self):
-                self.xx_dbg("LKD_CopyFiles::prepare_object::in::")
+                self.xx_dbg("LKD_CreateSwipperExec::prepare_object::in::")
                         
-                self.xx_dbg("LKD_CopyFiles::prepare_object::out::")
+                self.xx_dbg("LKD_CreateSwipperExec::prepare_object::out::")
 
         def copy_files(self):
-                self.xx_dbg("LKD_CopyFiles::copy_files::in::")
+                self.xx_dbg("LKD_CreateSwipperExec::copy_files::in::")
                         
-                self.xx_dbg("LKD_CopyFiles::copy_files::out::")
+                self.xx_dbg("LKD_CreateSwipperExec::copy_files::out::")
 
         def xx_dbg(self, tt):
                 "" ""
@@ -59,7 +59,7 @@ class LKD_CopyFiles:
 
                 DS = self.m_ds
 
-                self.xx_dbg("LKD_CopyFiles::copy_one::__src__" + psrc)
+                self.xx_dbg("LKD_CreateSwipperExec::copy_one::__src__" + psrc)
 
                 self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_md_" + psrc + ".php",
                         "lib" + DS + pdst + DS + "services" +  DS + "EPT_swipper_categories_md_" + pdst + ".php")
@@ -85,7 +85,7 @@ class LKD_CopyFiles:
                 
                 self.set_roots(par_src,par_dst)
 
-                self.xx_dbg("LKD_CopyFiles::copy_one::__src__" + psrc)
+                self.xx_dbg("LKD_CreateSwipperExec::copy_one::__src__" + psrc)
 
                 if(pfilter == "no-exec" ):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS  + "EPT_swipper_categories_includes_" + psrc + ".php",

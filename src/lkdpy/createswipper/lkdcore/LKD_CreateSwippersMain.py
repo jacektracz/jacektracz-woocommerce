@@ -3,13 +3,13 @@ import os
 import logging
 import shutil
 from LKD_CopyFilesList import *
-from LKD_CopyFiles import *
+from LKD_CreateSwipperExec import *
 from LKD_CopyFilesMd import *
-class LKD_CopyFilesExec:
+class LKD_CreateSwippersMain:
 
         def __init__(self,spar):                                
-                self.xx_dbg("LKD_CopyFilesExec::__init__::in::")
-                self.xx_dbg("LKD_CopyFilesExec::__init__::out::")
+                self.xx_dbg("LKD_CreateSwippersMain::__init__::in::")
+                self.xx_dbg("LKD_CreateSwippersMain::__init__::out::")
                
         def xx_dbg(self, tt):
                 "" ""
@@ -18,23 +18,23 @@ class LKD_CopyFilesExec:
                 
 
         def exec_cpy_one(self):
-                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
-                dd_handler = LKD_CopyFiles("")
+                self.xx_dbg("LKD_CreateSwippersMain::exec_cpy_one::start::")
+                dd_handler = LKD_CreateSwipperExec("")
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list()
                 for item_name in ll:
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("prod_delivery_pd2",item_name)
 
 
                 
         def exec_populate_mds(self):
-                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                self.xx_dbg("LKD_CreateSwippersMain::exec_cpy_one::start::")
                 dd_handler = LKD_CopyFilesMd("")
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list()
                 for item_name in ll:
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
                         dd_handler.populate_one_md("3958","3958",item_name)
 
         def exec_cpy_mds(self):
@@ -48,7 +48,7 @@ class LKD_CopyFilesExec:
 
         def cpy_one_swipper_all_files(self):
 
-                dd = LKD_CopyFiles("")      
+                dd = LKD_CreateSwipperExec("")      
 
                 #dd.cpy_one_swipper_all_files("tree_v8","treecnt_tc8")
                 #dd.cpy_one_swipper_all_files("treeart_ta8","treeon_to8")
@@ -148,13 +148,13 @@ class LKD_CopyFilesExec:
                 dd.cpy_one_swipper_all_files("catslatest_full_xf7","jquery_loader_jq7", "all")
 
         def refill_full_swipper( self ):
-                dd = LKD_CopyFiles("")                 
+                dd = LKD_CreateSwipperExec("")                 
                 dd.m_override_mode = True
                 dd.m_error_on_source_not_exist = True
                 dd.cpy_one_swipper_all_files("cat_tags_ct7", "catslatest_full_xf7", "all")
 
         def copy_from_full( self,new_module ):
-                dd = LKD_CopyFiles("")   
+                dd = LKD_CreateSwipperExec("")   
                 dd.m_override_mode = True
                 dd.m_error_on_source_not_exist = True
                 dd.cpy_one_swipper_all_files("catslatest_full_xf7", new_module, "all")
@@ -169,7 +169,7 @@ class LKD_CopyFilesExec:
 
 
         def create_full_swipper(self,idnew):                
-                dd = LKD_CopyFiles("") 
+                dd = LKD_CreateSwipperExec("") 
                 dd.m_error_on_source_not_exist = False
                 dd.m_override_mode = True
                 dd.cpy_one_swipper_all_files("md_artcnt_ma7","catslatest_full_xf7", "all")
@@ -200,17 +200,17 @@ class LKD_CopyFilesExec:
                 dd_md.exec_cpy_one(idnew)
         
         def exec_cpy_to_all_swippers(self):
-                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                self.xx_dbg("LKD_CreateSwippersMain::exec_cpy_one::start::")
                 
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_swippers()
 
-                dd_handler = LKD_CopyFiles("")
+                dd_handler = LKD_CreateSwipperExec("")
                 mod_source = "catsup0_cu0"
                 mod_source = "md_x8"
 
                 for item_name in ll:
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
                         #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
                         if(item_name != mod_source):                                
@@ -218,16 +218,16 @@ class LKD_CopyFilesExec:
                                 dd_handler.cpy_one_entity_child(mod_source, item_name, "image-title-desc")
 
         def exec_cpy_to_all_swippers_catsup_without0(self):
-                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                self.xx_dbg("LKD_CreateSwippersMain::exec_cpy_one::start::")
                 
                 dd_list = LKD_CopyFilesList("")
                 # ll = dd_list.get_list_of_catsup_wihout0()
                 ll = dd_list.get_list_of_swippers()
                 mod_source = "catsup1_cu1"
                 mod_source = "md_x8"
-                dd_handler = LKD_CopyFiles("")
+                dd_handler = LKD_CreateSwipperExec("")
                 for item_name in ll:
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
                         #dd_handler.cpy_one_entity_child("pathmain_pm2",item_name)
                         #dd_handler.cpy_one_entity_child("catsmenu_cm9", item_name, "image-title")
                         if(item_name != mod_source ):                                
@@ -238,28 +238,28 @@ class LKD_CopyFilesExec:
                                 
 
         def exec_cpy_to_all_swippers_short(self,max_files):
-                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
-                dd_handler = LKD_CopyFiles("")
+                self.xx_dbg("LKD_CreateSwippersMain::exec_cpy_one::start::")
+                dd_handler = LKD_CreateSwipperExec("")
 
                 dd_list = LKD_CopyFilesList("")
                 ll = dd_list.get_list_of_swippers()
                 ii = 0
                 for item_name in ll:
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
                         if ( ii == max_files ):
-                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::break_after_3t::__" + item_name + "__")
+                                self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::break_after_3t::__" + item_name + "__")
                                 break
 
                         dd_source = "pathmain_pm2"
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::copy_item::__" + dd_source + "__")
                         if ( item_name == dd_source ):
-                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::skipe::__" + item_name + "__")
+                                self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::skipe::__" + item_name + "__")
                                 continue
 
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::executet::__" + item_name + "__")
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
-                        self.xx_dbg("LKD_CopyFilesExec::CPY_ITEM::__[" + str(ii) + "]__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::executet::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::CPY_ITEM::__[" + str(ii) + "]__")
                         #dd_handler.cpy_one_entity_child(dd_source, item_name)
                         ii = ii + 1
 
@@ -294,27 +294,27 @@ class LKD_CopyFilesExec:
 
 
         def exec_cpy_to_all_swippers_one(self, max_files, plist, dd_source, pfilter):
-                self.xx_dbg("LKD_CopyFilesExec::exec_cpy_one::start::")
+                self.xx_dbg("LKD_CreateSwippersMain::exec_cpy_one::start::")
                 
-                dd_handler = LKD_CopyFiles("")
+                dd_handler = LKD_CreateSwipperExec("")
 
                 ll = plist
                 ii = 0
                 for item_name in ll:
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
                         if ( ii == max_files ):
-                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::break_after_3t::__" + item_name + "__")
+                                self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::break_after_3t::__" + item_name + "__")
                                 break
                         
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::start::__" + item_name + "__")
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::start::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::copy_item::__" + dd_source + "__")
                         if ( item_name == dd_source ):
-                                self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::skipe::__" + item_name + "__")
+                                self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::skipe::__" + item_name + "__")
                                 continue
 
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::executet::__" + item_name + "__")
-                        self.xx_dbg("LKD_CopyFilesExec::cpy_one_entity_child::copy_item::__" + dd_source + "__")
-                        self.xx_dbg("LKD_CopyFilesExec::CPY_ITEM::__[" + str(ii) + "]__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::executet::__" + item_name + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::cpy_one_entity_child::copy_item::__" + dd_source + "__")
+                        self.xx_dbg("LKD_CreateSwippersMain::CPY_ITEM::__[" + str(ii) + "]__")
                         dd_handler.cpy_one_swipper_all_files(dd_source, item_name, pfilter)
                         ii = ii + 1
 

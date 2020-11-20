@@ -9,7 +9,7 @@ from LKD_CatItem import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 
 
-class LKD_CreateFiles:
+class LKD_CreateMdFilesFromProjectsSrc:
 
         def __init__(self,spar):                                
                 self.xx_dbg("LKD_CopyFiles::__init__::in::")
