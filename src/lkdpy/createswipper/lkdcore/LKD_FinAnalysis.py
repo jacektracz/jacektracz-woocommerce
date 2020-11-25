@@ -661,6 +661,8 @@ class LKD_FinAnalysis:
                 
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
                 dd = []
+
+                # 65 595,55 PLN	282 943,19 PLN	-217 347,64 PLN	 25 11 2020 ( 1000 karta )
                 # 57 342,37 PLN	283 822,38 PLN	-226 480,01 PLN	 18 11 2020
                 # 59 873,42 PLN	283 822,38 PLN	-223 948,96 PLN	 16 11 2020 5 ( 420 )
                 # 60 198,45 PLN	283 822,38 PLN	-223 623,93 PLN	 12 11 2020
