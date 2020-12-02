@@ -89,7 +89,7 @@ if __name__ == "__main__":
         # ddh.exec_fin("")
 
         # ddh.images_create_sequential_ids("")
-        # ddh.create_source_files("")
+        ddh.create_source_files("")
 
         # ddh.create_cats("") -
 

@@ -7,7 +7,7 @@ from LKD_CatItem import *
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 
-class LKD_CreateFilesDatabase:
+class LKD_CreateMdFilesFromSrcDatabase:
         def __init__(self):                                
                 self.m_initialized = 1
 
@@ -35,7 +35,8 @@ class LKD_CreateFilesDatabase:
                 # return self.get_cats_hibspring("")
                 # return self.get_cats_blockchain_web("")
                 # return self.get_cats_blockchain_corda("")
-                return self.get_cats_blockchain_python_pow("")
+                # return self.get_cats_blockchain_python_pow("")
+                return self.get_cats_dl_keras("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -49,7 +50,8 @@ class LKD_CreateFilesDatabase:
                 # return self.get_root_hibspring("")
                 # return self.get_root_blockchain_web("")
                 # return self.get_root_blockchain_corda("")
-                return self.get_root_blockchain_python_pow("")
+                # return self.get_root_blockchain_python_pow("")
+                return self.get_root_dl_keras("")
 
 
         def get_root_jhreact(self, dd):
@@ -788,4 +790,18 @@ class LKD_CreateFilesDatabase:
                 root_src = "C:/lkd/ht/apps_blockchain_pythonpow/app/src"
                 return root_src
 
+
+        def get_cats_dl_keras(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(8177,	"Deep-Learning-Course"))
+                cats.append(self.get_item(8178,	"Deep-Learning-in-Python"))
+                cats.append(self.get_item(8179,	"Easy-Deep-Learning-With-Keras"))
+                cats.append(self.get_item(8180,	"Image-Recognition"))
+                cats.append(self.get_item(8181,	"Image-Recognition-2"))
+                cats.append(self.get_item(8182,	"Keras-Examples"))
+                return cats
+
+        def get_root_dl_keras(self, dd):
+                root_src = "C:/lkd/ht/apps_dl_keras_course/app/src"
+                return root_src
 

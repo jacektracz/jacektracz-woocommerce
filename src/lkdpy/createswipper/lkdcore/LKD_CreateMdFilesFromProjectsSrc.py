@@ -4,7 +4,7 @@ import logging
 import shutil
 from LKD_CopyFilesMd import *
 
-from LKD_CreateFilesDatabase import *
+from LKD_CreateMdFilesFromSrcDatabase import *
 from LKD_CatItem import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 
@@ -29,7 +29,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 # return self.get_cats_sbms("")
                 # return self.get_cats_spring_pets("")
                 # return self.get_cats_fineract("")
-                ddh = LKD_CreateFilesDatabase()
+                ddh = LKD_CreateMdFilesFromSrcDatabase()
                 return ddh.get_generic_cats_items("")
 
         def get_generic_root(self, dd):
@@ -38,7 +38,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 # return self.get_root_sbms("")
                 # return self.get_root_pets("")
                 # return self.get_root_fineract("")
-                ddh = LKD_CreateFilesDatabase()
+                ddh = LKD_CreateMdFilesFromSrcDatabase()
                 return ddh.get_generic_root("")
 
         
