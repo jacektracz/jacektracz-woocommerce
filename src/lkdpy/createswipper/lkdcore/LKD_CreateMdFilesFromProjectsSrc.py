@@ -189,6 +189,10 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
                 self.xx_dbg("LKD_CopyFiles::copy_javafiles::out::")
 
+        def check_file_type_is_valid(self, psrc_fpath):
+                s_fun = self.get_class_name() + "::check_file_is_valid::"
+                self.xx_dbg(s_fun + "start")
+
         def check_file_is_valid(self, psrc_fpath):
                 s_fun = self.get_class_name() + "::check_file_is_valid::"
                 self.xx_dbg(s_fun + "start")
