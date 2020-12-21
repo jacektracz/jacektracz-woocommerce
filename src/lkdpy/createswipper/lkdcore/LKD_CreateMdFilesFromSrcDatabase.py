@@ -36,7 +36,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_blockchain_web("")
                 # return self.get_cats_blockchain_corda("")
                 # return self.get_cats_blockchain_python_pow("")
-                return self.get_cats_dl_keras("")
+                # return self.get_cats_dl_keras("")
+                return self.get_cats_dl_neural("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -51,7 +52,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_blockchain_web("")
                 # return self.get_root_blockchain_corda("")
                 # return self.get_root_blockchain_python_pow("")
-                return self.get_root_dl_keras("")
+                # return self.get_root_dl_keras("")
+                return self.get_root_dl_neural("")
 
 
         def get_root_jhreact(self, dd):
@@ -805,3 +807,12 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 root_src = "C:/lkd/ht/apps_dl_keras_course/app/src"
                 return root_src
 
+
+        def get_root_dl_neural(self, dd):
+                root_src = "C:/lkd/ht/apps_dl_keras_course/app/src"
+                return root_src
+
+        def get_cats_dl_neural(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(8267,	"neural-networks-and-deep-learning"))
+                return cats
