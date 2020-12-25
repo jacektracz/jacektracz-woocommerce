@@ -9,7 +9,7 @@ from LKD_CatItem import *
 #  C:/lkd/servers/installed/python27/python C:/lkd/ht/apps_w2_risk/app/src/apps_w2_w2/src/lkdpy/start_cpy.py
 # C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add.md
 # C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\createswipper\lkdcore\LKD_CreateCats.py
-class LKD_CreateCats:
+class LKD_CreateCatsFromDirectories:
 
         def __init__(self,spar):                                
                 self.xx_dbg("LKD_CopyFiles::__init__::in::")

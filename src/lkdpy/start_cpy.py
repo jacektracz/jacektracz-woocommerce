@@ -6,7 +6,7 @@ from createswipper.lkdcore.LKD_CreateMdFilesFromProjectsSrc import *
 from createswipper.lkdcore.LKD_FinAnalysis import *
 from createswipper.lkdcore.LKD_CreateImages import *
 from createswipper.lkdcore.LKD_CopyFilesPortal import *
-from createswipper.lkdcore.LKD_CreateCats import *
+from createswipper.lkdcore.LKD_CreateCatsFromDirectories import *
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 #  600 446 066 Rafal tel
@@ -75,8 +75,8 @@ class LKD_MainExec:
                 ddcr = LKD_CreateMdFilesFromProjectsSrc("")
                 ddcr.execute_main()
 
-        def create_cats(self,tt):
-                ddcr = LKD_CreateCats("")
+        def create_cats_from_directories(self,tt):
+                ddcr = LKD_CreateCatsFromDirectories("")
                 ddcr.execute_main("")
 
         
@@ -91,7 +91,7 @@ if __name__ == "__main__":
         # ddh.images_create_sequential_ids("")
         # ddh.create_source_files("")
 
-        ddh.create_cats("") 
+        ddh.create_cats_from_directories("") 
 
         # ddh.create_one_swipper("")
 
