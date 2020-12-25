@@ -147,6 +147,7 @@ class LKD_CreateSwippersMain:
                 # dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_menu_path_cmp9", "all")
                 # dd.cpy_one_swipper_all_files("catslatest_full_xf7","jquery_loader_jq7", "all")
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","tree_left_tl2", "all")
+                # dd.cpy_one_swipper_all_files("treechilds_tc9","mdxtree_mt2", "all")
                 dd.cpy_one_swipper_all_files("treechilds_tc9","mdxtree_mt2", "all")
                 
 
