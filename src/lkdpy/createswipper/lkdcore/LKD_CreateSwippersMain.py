@@ -139,13 +139,16 @@ class LKD_CreateSwippersMain:
                 # dd_md.exec_cpy_one(idnew)
 
                 dd.m_override_mode = True
-                dd.m_error_on_source_not_exist = True
+                dd.m_error_on_source_not_exist = False
                 # dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_tagschilds_ctc7", "all")
                 # dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_menu_main_cmm9", "all")
                 
-                dd.cpy_one_swipper_all_files("cat_menu_main_cmm9","catslatest_full_xf7", "all")
-                dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_menu_path_cmp9", "all")
-                dd.cpy_one_swipper_all_files("catslatest_full_xf7","jquery_loader_jq7", "all")
+                # dd.cpy_one_swipper_all_files("cat_menu_main_cmm9","catslatest_full_xf7", "all")
+                # dd.cpy_one_swipper_all_files("catslatest_full_xf7","cat_menu_path_cmp9", "all")
+                # dd.cpy_one_swipper_all_files("catslatest_full_xf7","jquery_loader_jq7", "all")
+                # dd.cpy_one_swipper_all_files("catsup0_cu0","tree_left_tl2", "all")
+                dd.cpy_one_swipper_all_files("treechilds_tc9","mdxtree_mt2", "all")
+                
 
         def refill_full_swipper( self ):
                 dd = LKD_CreateSwipperExec("")                 

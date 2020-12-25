@@ -467,7 +467,17 @@ class LKD_CreateSwipperExec:
                 if not os.path.isfile(dest_fpath):
                         self.xx_dbg("[COPY_AS_NEW_FILE]" + dest_fpath)
 
-                        if self.check_source_exists(src_fpath) == 0:
+                                
+                        exec_next_step = self.exec_next_step_on_source_exists(src_fpath)
+
+                        self.xx_dbg("exec_next_step_src" + "[" + src_fpath + "]")
+                        self.xx_dbg("exec_next_step" + "[" + str(exec_next_step) + "]")                        
+                        
+                        self.xx_dbg("[m_error_on_source_not_exist]" 
+                                + "[" + str(self.m_error_on_source_not_exist) + "]")
+
+                        if exec_next_step == 0:
+                                self.xx_dbg("[RETURN_ON_SOURCE_NOT_EXISTS]" + "[]")
                                 return
 
                         shutil.copy(src_fpath, dest_fpath)
@@ -493,7 +503,7 @@ class LKD_CreateSwipperExec:
                 , inplace_chamge_src_postfix
                 , inplace_change_dest_postfix):
 
-                self.xx_dbg("[METHOD_IN]" + "[copy_override_execute]")
+                self.xx_dbg("[METHOD_IN]" + "[copy_override_execute]")                
 
                 if not os.path.isfile(dest_fpath) :
                         self.xx_dbg("[COPY_TO_NEW_FILE]" + dest_fpath)
@@ -501,9 +511,21 @@ class LKD_CreateSwipperExec:
                 if os.path.isfile(dest_fpath) :
                         self.xx_dbg("[OVERRIDE_FILE]" + dest_fpath)
 
-                if self.check_source_exists(src_fpath) == 0:
+                
+                exec_next_step = self.exec_next_step_on_source_exists(src_fpath)
+
+                self.xx_dbg("exec_next_step_src" + "[" + src_fpath + "]")
+                self.xx_dbg("exec_next_step" + "[" + str(exec_next_step) + "]")
+
+                self.xx_dbg("[m_error_on_source_not_exist]" 
+                        + "[" + str(self.m_error_on_source_not_exist) + "]")
+
+                if  exec_next_step == 0:
                         self.xx_dbg("[RETURN_ON_SOURCE_NOT_EXISTS]" + "[]")
                         return
+
+                self.xx_dbg("SHUTIL_COPY_FROM" + "[" + src_fpath + "]")
+                self.xx_dbg("SHUTIL_COPY_TO" + "[" + dest_fpath + "]")
 
                 shutil.copy(src_fpath, dest_fpath)
 
@@ -518,11 +540,14 @@ class LKD_CreateSwipperExec:
                 self.xx_dbg("[METHOD_OUT]" + "[copy_override_execute]")
 
 
-        def check_source_exists( 
+        def exec_next_step_on_source_exists( 
                 self
                 , src_fpath):
 
-                self.xx_dbg("[METHOD_IN]" + "[check_source_exists]")
+                self.xx_dbg("[METHOD_IN]" + "[exec_next_step_on_source_exists]")
+                self.xx_dbg("[m_error_on_source_not_exist]" 
+                        + "[" + str(self.m_error_on_source_not_exist) + "]")
+
                 exec_next = 1
                 if self.m_error_on_source_not_exist == False:
                         self.xx_dbg("[SAFETY_CHECK_SOURCE]" + "[from][" + src_fpath +"]")
@@ -538,7 +563,7 @@ class LKD_CreateSwipperExec:
                         else:
                                 self.xx_dbg("[ON_ERROR_CHECK_SOURCE_WILL_COPY]" + "[from][" + src_fpath +"]")
 
-                self.xx_dbg("[METHOD_OUT]" + "[check_source_exists]")
+                self.xx_dbg("[METHOD_OUT]" + "[exec_next_step_on_source_exists]")
 
                 return exec_next
 
