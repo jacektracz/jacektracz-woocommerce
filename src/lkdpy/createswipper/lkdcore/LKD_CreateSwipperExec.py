@@ -223,14 +223,46 @@ class LKD_CreateSwipperExec:
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_window_rows_" + pdst + ".php")
-                if(pfilter == "search-only"):
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_comment_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_comment_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_comments_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_comments_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_markdown_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_markdown_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_Swipper_rend_parsedown_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_Swipper_rend_parsedown_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_markdown_simple_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_markdown_simple_" + pdst + ".php")
+                                
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
+                        self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_pretxt_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_pretxt_" + pdst + ".php")
+
+
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "search-only"):
                         if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
                                 self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_button_" + psrc + ".php",
                                         "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_button_" + pdst + ".php")
+                # EPT_swipper_array_handler
 
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "cat_copy"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_categories_" + pdst + ".php")
+
+                if(pfilter == "all" or pfilter == "all-short" or  pfilter == "cat_copy"):
+                        self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_array_handler_" + psrc + ".php",
+                                "lib" + DS + pdst + DS + "services" + DS + "EPT_swipper_array_handler_" + pdst + ".php")
 
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS + "services" + DS + "EPT_swipper_categories_executor_" + psrc + ".php",
@@ -472,7 +504,7 @@ class LKD_CreateSwipperExec:
 
                         self.xx_dbg("exec_next_step_src" + "[" + src_fpath + "]")
                         self.xx_dbg("exec_next_step" + "[" + str(exec_next_step) + "]")                        
-                        
+
                         self.xx_dbg("[m_error_on_source_not_exist]" 
                                 + "[" + str(self.m_error_on_source_not_exist) + "]")
 

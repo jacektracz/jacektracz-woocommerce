@@ -148,7 +148,8 @@ class LKD_CreateSwippersMain:
                 # dd.cpy_one_swipper_all_files("catslatest_full_xf7","jquery_loader_jq7", "all")
                 # dd.cpy_one_swipper_all_files("catsup0_cu0","tree_left_tl2", "all")
                 # dd.cpy_one_swipper_all_files("treechilds_tc9","mdxtree_mt2", "all")
-                dd.cpy_one_swipper_all_files("treechilds_tc9","mdxtree_mt2", "all")
+                # dd.cpy_one_swipper_all_files("treechilds_tc9","mdxtree_mt2", "all")
+                dd.cpy_one_swipper_all_files("md_x8","mdx_content_mx2", "all")
                 
 
         def refill_full_swipper( self ):
