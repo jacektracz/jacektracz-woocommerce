@@ -243,7 +243,7 @@ class LKD_CreateSwipperExec:
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_markdown_simple_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_markdown_simple_" + pdst + ".php")
-                                
+
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_pretxt_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_rend_pretxt_" + pdst + ".php")
@@ -404,6 +404,94 @@ class LKD_CreateSwipperExec:
                 if(pfilter == "all" or pfilter == "all-short" or  pfilter == "main" or pfilter == "image-title"):
                         self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + "EPT_swipper_render_main_frame_" + psrc + ".php",
                                 "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + "EPT_swipper_render_main_frame_" + pdst + ".php")
+
+                self.copy_mdcontent(DS, pfilter,psrc,pdst)
+                self.copy_renders_catscreator(DS, pfilter,psrc,pdst)
+                self.copy_renders_rows(DS, pfilter,psrc,pdst)
+                self.copy_services(DS, pfilter,psrc,pdst)
+
+        def copy_mdcontent(
+                self
+                , DS
+                , pfilter
+                , psrc
+                , pdst):
+                
+                dd = []
+                dd.append("EPT_swipper_render_cnt_title_")
+                dd.append("EPT_swipper_render_mdcontent_create_clean_")
+                dd.append("EPT_swipper_render_mdcontent_create_")
+                dd.append("EPT_swipper_render_mdcontent_read_")
+                dd.append("EPT_swipper_render_mdform_")
+                dd.append("EPT_swipper_render_md_hierarchy_creator_")
+                dd.append("EPT_swipper_services_parentid_")
+
+                for xx in dd:
+                        if(pfilter == "all" or pfilter == "all-short-disable" or  pfilter == "main"):
+                                self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "mdcontent" + DS + xx + psrc + ".php",
+                                        "lib" + DS + pdst + DS + "renders" + DS + "mdcontent" + DS + xx + pdst + ".php")
+        def copy_renders_catscreator(
+                self
+                , DS
+                , pfilter
+                , psrc
+                , pdst):
+
+                dd = []
+                dd.append("EPT_swipper_catscreator_")
+                for xx in dd:
+                        if(pfilter == "all" or pfilter == "all-short-disable" or  pfilter == "main"):
+                                self.copy_file("lib" + DS + psrc + DS +  "renders" + DS + "catscreator" + DS + xx + psrc + ".php",
+                                        "lib" + DS + pdst + DS + "renders" + DS + "catscreator" + DS + xx + pdst + ".php")
+
+        def copy_renders_rows(
+                self
+                , DS
+                , pfilter
+                , psrc
+                , pdst):
+
+                dd = []                
+                dd.append("EPT_swipper_installer_rows_")
+                dd.append("EPT_swipper_mdimgs_main_bsgen2_")
+                dd.append("EPT_swipper_mdimgs_main_bsgenroot_")
+                dd.append("EPT_swipper_mdimgs_main_bsgen_")
+                dd.append("EPT_swipper_mdimgs_main_bygroups_")
+                dd.append("EPT_swipper_mdimgs_main_mdflat2_")
+                dd.append("EPT_swipper_mdimgs_main_mdflat_")
+                dd.append("EPT_swipper_rend_frame_rows_")
+                dd.append("EPT_swipper_rend_item_aws_")
+                dd.append("EPT_swipper_rend_item_")
+                dd.append("EPT_swipper_rend_item_rows_")
+                dd.append("EPT_swipper_rend_title_")
+                dd.append("EPT_swipper_rend_window_rows_")
+
+                for xx in dd:
+                        if(pfilter == "all" or pfilter == "all-short-disable" or  pfilter == "main"):
+                                self.copy_file("lib" + DS + psrc + DS + "renders" + DS + "rows" + DS + xx + psrc + ".php",
+                                        "lib" + DS + pdst + DS + "renders" + DS + "rows" + DS + xx + pdst + ".php")
+
+        def copy_services(
+                self
+                , DS
+                , pfilter
+                , psrc
+                , pdst):
+
+                dd = []                
+
+                dd.append("EPT_swipper_categories_executor_")
+                dd.append("EPT_swipper_categories_includes_")
+                dd.append("EPT_swipper_categories_matrix_")
+                dd.append("EPT_swipper_services_md_hierarchy_creator_")
+                dd.append("EPT_swipper_categories_md_")
+                dd.append("EPT_swipper_categories_")
+                dd.append("EPT_swipper_content_filler_")
+
+                for xx in dd:
+                        if(pfilter == "all" or pfilter == "all-short-disable" or  pfilter == "main"):
+                                self.copy_file("lib" + DS + psrc + DS + "services" + DS  + xx + psrc + ".php",
+                                        "lib" + DS + pdst + DS + "services" +  DS + xx + pdst + ".php")
 
         def copy_file(
                 self
