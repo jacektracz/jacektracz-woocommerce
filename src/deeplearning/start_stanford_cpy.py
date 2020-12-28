@@ -1,10 +1,8 @@
 ﻿import sys
 import os
-from dltensor.lib.LKD_TensorCore import *
-from dltensor.lib.LKD_GradientDesc import *
 from gradient_descent import *
 
-# rem C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\deeplearning\start_cpy.py
+# rem C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\deeplearning\start_stanford_cpy.py
 #  C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\deeplearning\start_cpy.py
 # C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\deeplearning\dltensor\dlip\Mean_Squared_Error.py
 # C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\deeplearning\dltensor\kerasexamples\image_ocr.py
