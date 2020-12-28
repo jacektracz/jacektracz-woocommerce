@@ -1,6 +1,6 @@
 ﻿import sys
 import os
-from gradient_descent import *
+from gradient_descent import gradient_descent
 
 # rem C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\deeplearning\start_stanford_cpy.py
 #  C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\deeplearning\start_cpy.py
@@ -28,7 +28,7 @@ class LKD_MainExec:
                 dd.exec_main("")
 
         def gradient_stanford(self, tt):
-                gradientDescent(F, dF, d)
+                gradient_descent.gradientDescent(gradient_descent.F, gradient_descent.dF, gradient_descent.d)
 
 if __name__ == "__main__":
 

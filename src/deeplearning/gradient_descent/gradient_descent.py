@@ -40,11 +40,24 @@ def sdF(w, i):
 def gradientDescent(F, dF, d):
     w = np.zeros(d)
     eta = 0.01
-    for t in range(1000):
+    for t in range(20):
         value = F(w)
-        gradient = dF(w)
+        xprint( value, "value")
+        gradient = dF(w)        
+        xprint( w, "w")
+        xprint( gradient,"gradient")
+
         w = w - eta * gradient
+
+        xprint( w,"walue-after")
+
         print('iteration {}: w = {}, F(w) = {}'.format(t, w, value))
+
+def xprint(pp, tt):
+    print (tt + ":start")
+    print (pp)
+    print (tt + ":end")
+
 
 def stochasticGradientDescent(sF, sdF, d, n):
     # Gradient descent
