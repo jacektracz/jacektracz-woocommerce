@@ -28,11 +28,26 @@ class LKD_MainExec:
                 dd.exec_main("")
 
         def gradient_stanford(self, tt):
-                gradient_descent.gradientDescent(gradient_descent.F, gradient_descent.dF, gradient_descent.d)
+                gradient_descent.gradientDescent(
+                        gradient_descent.F
+                        , gradient_descent.dF
+                        , gradient_descent.d
+                        ,40)
+
+        def stochastic_gradient_stanford(self, tt):
+                gradient_descent.stochasticGradientDescent(
+                        gradient_descent.sF
+                        , gradient_descent.sdF
+                        , gradient_descent.d
+                        , len(gradient_descent.points)
+                        , 40)
+                ##stochasticGradientDescent(sF, sdF, d, len(points))
 
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
         #ddh.exec_main("")
         # ddh.gradient("")
+        ddh.stochastic_gradient_stanford("")
         ddh.gradient_stanford("")
+        

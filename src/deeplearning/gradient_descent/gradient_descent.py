@@ -37,41 +37,89 @@ def sdF(w, i):
 ############################################################
 # Algorithms: how we compute it
 
-def gradientDescent(F, dF, d):
+def gradientDescent(F, dF, d,prange):
     w = np.zeros(d)
     eta = 0.01
-    for t in range(20):
+    for t in range(prange):
+        xprint_head_start("","")
         value = F(w)
+        
+        gradient = dF(w)       
+
         xprint( value, "value")
-        gradient = dF(w)        
         xprint( w, "w")
         xprint( gradient,"gradient")
-
         w = w - eta * gradient
-
-        xprint( w,"walue-after")
-
         print('iteration {}: w = {}, F(w) = {}'.format(t, w, value))
 
+        xprint_head_end("","")
+
+def xprint_inner_exec(pp):
+    """ aa"""
+    # print ( str(pp) )
+
+def xprint_exec(pp):
+    """ aa"""
+    print (str (pp)) 
+
+   
+def xprint_inner(pp, tt):
+    """ def xprint_inner(pp, tt): """
+    xprint_inner_exec (tt + ":" + str (pp))    
+
+def xprint_head_start_inner(pp, tt):
+    xprint_inner_exec ("==================================================")
+    xprint_inner_exec ("=")
+    xprint_inner_exec ("=")
+
+def xprint_head_end_inner(pp, tt):
+    xprint_inner_exec ("=")
+    xprint_inner_exec ("=")
+    xprint_inner_exec ("==================================================")
+
+
 def xprint(pp, tt):
-    print (tt + ":start")
-    print (pp)
-    print (tt + ":end")
+    xprint_exec (tt + ":" + str (pp))    
 
+def xprint_head_start(pp, tt):
+    xprint_exec ("==================================================")
+    xprint_exec ("=")
+    xprint_exec ("=")
 
-def stochasticGradientDescent(sF, sdF, d, n):
+def xprint_head_end(pp, tt):
+    xprint_exec ("=")
+    xprint_exec ("=")
+    xprint_exec ("==================================================")
+
+def stochasticGradientDescent(sF, sdF, d, n, prange):
     # Gradient descent
     w = np.zeros(d)
     eta = 1
     numUpdates = 0
-    for t in range(1000):
+    for t in range(prange):
+        xprint_head_start("","")
         for i in range(n):  # For each data point...
+            xprint_head_start_inner("","")
             value = sF(w, i)
             gradient = sdF(w, i)
             numUpdates += 1
             eta = 1.0 / numUpdates  # Remember to do 1.0 instead of 1!
-            w = w - eta * gradient
+
+            xprint_inner( value, "value")
+            xprint_inner( eta, "eta")
+            xprint_inner( w, "w")
+            xprint_inner( gradient,"gradient")
+            xprint_inner( i, "range")
+            w = w - eta * gradient            
+            xprint_head_end_inner("","")
+        xprint( value, "value")
+        xprint( eta, "eta")
+        xprint( w, "w")
+        xprint( gradient,"gradient")
+        xprint( t, "range")
         print('iteration {}: w = {}, F(w) = {}'.format(t, w, value))
+        xprint_head_end("","")
+        
 
 #gradientDescent(F, dF, d)
 #stochasticGradientDescent(sF, sdF, d, len(points))
