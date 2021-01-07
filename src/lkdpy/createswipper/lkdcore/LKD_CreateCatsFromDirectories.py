@@ -6,6 +6,7 @@ from LKD_CopyFilesMd import *
 
 from LKD_CreateFilesDatabase import *
 from LKD_CatItem import *
+
 #  C:/lkd/servers/installed/python27/python C:/lkd/ht/apps_w2_risk/app/src/apps_w2_w2/src/lkdpy/start_cpy.py
 # C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add.md
 # C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\createswipper\lkdcore\LKD_CreateCats.py
@@ -13,10 +14,7 @@ class LKD_CreateCatsFromDirectories:
 
         def __init__(self,spar):                                
                 self.xx_dbg("LKD_CopyFiles::__init__::in::")
-                self.m_src = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add.md"
-                self.m_src_short = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add_short.md"
-                self.m_dst = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add_dst.md"
-                self.m_dst_bat = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add_dst.bat"
+                self.m_src = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/cats/content__cats_2_add.md"
                 self.m_root_src = ""
                 self.m_root_dst = ""
                 self.m_test_mode = 0
@@ -61,39 +59,96 @@ class LKD_CreateCatsFromDirectories:
                 self.m_exec_inplace_change = 1
                 self.m_add_spaces_count = 0
 
+        def execute_main_test(self,tt):
+                s_fun = self.class_name() + "::execute_cdirs::"
+                self.xx_dbg(s_fun + "start")
+
+                src_file = self.m_src
+                src_file_0 = src_file
+                
+                src_file_1 = src_file
+                #src_file_1 = dst_file_standalone_0
+                dst_file_standalone_1 = src_file + ".tmp.2.toc.md"
+                self.execute_main_lines_with_removed_toc_from_start(
+                        ""
+                        , src_file_1
+                        , dst_file_standalone_1)
+
         def execute_main(self,tt):
                 s_fun = self.class_name() + "::execute_cdirs::"
                 self.xx_dbg(s_fun + "start")
 
                 src_file = self.m_src
-                if self.m_exec_main_prepare_in_one_bucket == 1:
-                        self.execute_main_prepare_in_one_bucket("")
-                
-                
-                self.execute_main_prepare_in_buckets(
+                src_file_0 = src_file
+                dst_file_standalone_0 = src_file + ".tmp.0.noe.md"
+                self.execute_main_lines_without_empty(
                         ""
-                        , src_file, src_file + ".tmp.md")
+                        , src_file_0
+                        , dst_file_standalone_0)
+                
+                src_file_1_0 = src_file
+                src_file_1_0 = dst_file_standalone_0
+                dst_file_standalone_1_0 = src_file + ".tmp.1.0.chars.md"
+                self.execute_main_lines_without_special_chars(
+                        ""
+                        , src_file_1_0
+                        , dst_file_standalone_1_0)
 
-                self.execute_main_create_dirs(
+                src_file_1 = src_file
+                src_file_1 = dst_file_standalone_1_0
+                dst_file_standalone_1 = src_file + ".tmp.2.toc.md"
+                self.execute_main_lines_with_removed_toc_from_start(
                         ""
-                        ,  src_file + ".tmp.md")
+                        , src_file_1
+                        , dst_file_standalone_1)
+
+                src_file_2 = src_file
+                src_file_2 = dst_file_standalone_1
+                dst_file_standalone_2 = src_file + ".tmp.3.normalized.md"
+                self.execute_main_lines_spaces_to_break(
+                        ""
+                        , src_file_2
+                        , dst_file_standalone_2)
+
+                src_file_3 = src_file
+                src_file_3 = dst_file_standalone_2                
+                dst_file_standalone_3 = src_file + ".tmp.4.clear.normalized.md"
+                self.execute_main_clear_spaces_to_break(
+                        ""
+                        , src_file_3
+                        , dst_file_standalone_3)
+
+                src_file_4 = src_file
+                src_file_4 = dst_file_standalone_3
+                dst_file_standalone_4 = src_file + ".tmp.5.directories.md"
+                self.execute_main_lines_create_directories(
+                        ""
+                        , src_file
+                        ,  dst_file_standalone_4)
 
                 self.xx_dbg(s_fun + "end")
 
-
-        def execute_main_prepare_in_one_bucket(self,tt):
-                s_fun = self.class_name() + "::execute_main_prepare_in_one_bucket::"
+        def execute_main_clear_spaces_to_break(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+                s_fun = self.class_name() + "::execute_main_clear_spaces_to_break::"
                 self.xx_dbg(s_fun + "start")
 
-                dst_file = self.m_dst                
-                dst_file_bat = self.m_dst_bat
-                src_file = self.m_src
+                src_file = psrc_file
+                dst_file = pdst_file
+                dst_file_bat = pdst_file + ".bat"
 
                 lines = self.read_lines_from_file(
                         src_file)
 
-                lines = self.get_lines_clear_normalized(
+                lines = self.get_lines_clear_spaces_to_break(
                         lines)
+
+                self.print_lines(
+                        "execute_main_clear_spaces_to_break"
+                        , lines)
 
                 self.write_lines(
                         dst_file
@@ -103,65 +158,95 @@ class LKD_CreateCatsFromDirectories:
                         dst_file_bat
                         , lines)
 
-                self.print_lines(
-                        dst_file
-                        , lines)
-
-        def execute_main_prepare_in_buckets(
+        def execute_main_lines_without_empty(
                 self
                 , tt
                 , psrc_file
                 , pdst_file):
 
-                s_fun = self.class_name() + "::execute_main_prepare_in_buckets::"
+                s_fun = self.class_name() + "::execute_main_lines_without_empty::"
                 self.xx_dbg(s_fun + "start")
 
                 src_file = psrc_file
                 dst_file = pdst_file
-                dst_bat = pdst_file + ".bat"
+                dst_file_bat = pdst_file + ".bat"
 
                 lines = []
+
                 lines = self.read_lines_from_file(
                         src_file)
-               
-                lines = self.get_lines_clear_normalized_in_buckets(
+
+                lines = self.get_lines_without_empty(
                         lines)
+
+                self.print_lines(
+                        "execute_main_clear_spaces_to_break"
+                        , lines)
 
                 self.write_lines(
                         dst_file
                         , lines)
 
                 self.create_bat_file(
-                        dst_bat
-                        , lines)
+                        dst_file_bat
+                        , lines)                        
+
+        def execute_main_lines_spaces_to_break(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
+                s_fun = self.class_name() + "::execute_main_lines_spaces_to_break::"
+                self.xx_dbg(s_fun + "start")
+
+                src_file = psrc_file
+                dst_file = pdst_file
+                dst_file_bat = pdst_file + ".bat"
+
+                lines = []
+                lines = self.read_lines_from_file(
+                        src_file)
+               
+                lines = self.get_lines_spaces_to_break(
+                        lines)
 
                 self.print_lines(
+                        "execute_main_lines_spaces_to_break"
+                        , lines)
+
+                self.write_lines(
                         dst_file
+                        , lines)
+
+                self.create_bat_file(
+                        dst_file_bat
                         , lines)
 
                 self.xx_dbg(s_fun + "end")
 
 
-        def execute_main_create_dirs(self,tt, psrc_file):
-                s_fun = self.class_name() + "::execute_main_create_dirs::"
+        def execute_main_lines_create_directories(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
+                s_fun = self.class_name() + "::execute_main_lines_create_directories::"
                 self.xx_dbg(s_fun + "start")
 
                 # self.set_execute_main_toc("")
                 # self.set_execute_main_write_mkdirs("")
 
                 src_file = psrc_file
-                dst_file = psrc_file + ".dst.md"
-                dst_bat = psrc_file + ".dst.bat"
+                dst_file = pdst_file
+                dst_file_bat = pdst_file + ".bat"
 
                 lines = []
                 lines = self.read_lines_from_file(
                         src_file)
-
-                self.print_lines(
-                        "read_lines_from_file"
-                        , lines)
                 
-                lines = self.inplace_change_lines(
+                lines = self.get_lines_create_directories(
                         lines)
 
                 self.print_lines(
@@ -173,24 +258,128 @@ class LKD_CreateCatsFromDirectories:
                         , lines)
 
                 self.create_bat_file(
-                        dst_bat
-                        , lines)
-
-                self.print_lines(
-                        dst_file
+                        dst_file_bat
                         , lines)
 
                 self.xx_dbg(s_fun + "end")
-        
-        def get_lines_clear_normalized_in_buckets(
+
+        # get_lines_with_removed_toc_from_start
+
+        def execute_main_lines_with_removed_toc_from_start(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
+                s_fun = self.class_name() + "::execute_main_lines_with_removed_toc_from_start::"
+                self.xx_dbg(s_fun + "start")
+
+                src_file = psrc_file
+                dst_file = pdst_file                
+                dst_file_bat = pdst_file + ".bat"
+
+                lines = []
+                lines = self.read_lines_from_file(
+                        src_file)
+
+                lines = self.get_lines_with_removed_toc_from_start(
+                        lines)
+
+                self.print_lines(
+                        "execute_main_lines_with_removed_toc_from_start"
+                        , lines)
+
+                self.write_lines(
+                        dst_file
+                        , lines)
+
+                self.create_bat_file(
+                        dst_file_bat
+                        , lines)
+
+                self.xx_dbg(s_fun + "end")
+
+                return lines
+
+        def execute_main_lines_without_toc(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
+                s_fun = self.class_name() + "::execute_main_lines_without_toc::"
+                self.xx_dbg(s_fun + "start")
+
+                src_file = psrc_file
+                dst_file = pdst_file                
+                dst_file_bat = pdst_file + ".bat"
+
+                lines = []
+                
+                lines = self.read_lines_from_file(
+                        src_file)
+
+                lines = self.get_lines_without_toc(
+                        lines)
+
+                self.print_lines(
+                        "execute_main_lines_without_toc"
+                        , lines)
+
+                self.write_lines(
+                        dst_file
+                        , lines)
+
+                self.create_bat_file(
+                        dst_file_bat
+                        , lines)
+
+                self.xx_dbg(s_fun + "end")
+
+                return lines
+
+        def execute_main_lines_without_special_chars(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
+                s_fun = self.class_name() + "::execute_main_lines_without_special_chars::"
+                self.xx_dbg(s_fun + "start")
+
+                src_file = psrc_file
+                dst_file = pdst_file                
+                dst_file_bat = pdst_file + ".bat"
+
+                lines = []
+                
+                lines = self.read_lines_from_file(
+                        src_file)
+
+                lines = self.get_lines_without_special_chars(
+                        lines)
+
+                self.print_lines(
+                        "execute_main_lines_without_special_chars"
+                        , lines)
+
+                self.write_lines(
+                        dst_file
+                        , lines)
+
+                self.create_bat_file(
+                        dst_file_bat
+                        , lines)
+
+                self.xx_dbg(s_fun + "end")
+
+        def get_lines_without_toc(
                 self
                 , plines):
 
-                s_fun = self.class_name() + "::get_lines_clear_normalized_in_buckets::"
+                s_fun = self.class_name() + "::get_lines_without_toc::"
                 self.xx_dbg(s_fun + "start")
                 lines = plines
-                lines = self.get_lines_without_empty(
-                        lines)
 
                 self.print_lines(
                         "get_lines_without_empty"
@@ -199,8 +388,18 @@ class LKD_CreateCatsFromDirectories:
                 lines = self.get_lines_with_removed_toc(
                         lines)
 
+                return lines
+        
+        def get_lines_spaces_to_break(
+                self
+                , plines):
+
+                s_fun = self.class_name() + "::get_lines_spaces_to_break::"
+                self.xx_dbg(s_fun + "start")
+                lines = plines
+
                 self.print_lines(
-                        "get_lines_with_removed_toc"
+                        "get_lines_spaces_to_break"
                         , lines)
 
                 lines = self.get_lines_normalize_multiple_item_direct(
@@ -230,61 +429,48 @@ class LKD_CreateCatsFromDirectories:
                         "get_lines_normalize_multiple_item_direct"
                         , lines)
 
-                lines = self.get_lines_without_special_chars(
-                        lines)
-
-                self.print_lines(
-                        "get_lines_without_special_chars"
-                        , lines)                
                 return lines
 
-
-        def get_lines_clear_normalized(
+        def get_lines_without_special_chars(
                 self
                 , lines):
 
-                s_fun = self.class_name() + "::get_lines_clear_normalized::"
+                s_fun = self.class_name() + "::get_lines_without_special_chars::"
                 self.xx_dbg(s_fun + "start")
                 lines_out = []
                 for line in lines:                        
-                        line_strip = self.get_line_clear_normalized(
+                        line_strip = self.get_line_without_special_chars(
                                 line)
                         lines_out.append(line_strip)      
 
                 self.xx_dbg(s_fun + "end")
                 return lines_out
 
-
-        def get_lines_without_special_chars(
-                self                
+        def get_lines_clear_spaces_to_break(
+                self
                 , lines):
 
-                s_fun = self.class_name() + "::print_lines_stripped::"
+                s_fun = self.class_name() + "::get_lines_clear_spaces_to_break::"
                 self.xx_dbg(s_fun + "start")
                 lines_out = []
-                for line in lines:
-                        line_strip = line.rstrip()
-                        line_strip = self.get_line_without_special_chars(
-                                line_strip)
+                for line in lines:                        
+                        line_strip = self.get_line_clear_spaces_to_break(
+                                line)
                         lines_out.append(line_strip)      
 
                 self.xx_dbg(s_fun + "end")
                 return lines_out
 
-
-        def get_line_clear_normalized(    
+        def get_line_clear_spaces_to_break(    
                 self
                 , line):
-                s_fun = self.class_name() + "::get_line_clear_normalized::"
+                s_fun = self.class_name() + "::get_line_clear_spaces_to_break::"
                 self.xx_dbg(s_fun + "start")
 
                 sp_0 = self.tabs_prefix_cnt( line )
                 s_tab_prefix = self.get_tabs_prefix(sp_0)
 
                 line = line.strip()                
-
-                line = self.get_line_with_removed_toc(
-                        line)
 
                 line = self.get_line_normalize_multiple_item(
                         " "
@@ -297,10 +483,6 @@ class LKD_CreateCatsFromDirectories:
                         "-"
                         , line)
 
-                line = self.get_line_without_special_chars(
-                        line)
-
-
                 line = s_tab_prefix + line
 
                 self.xx_dbg(s_fun + "end")
@@ -311,7 +493,7 @@ class LKD_CreateCatsFromDirectories:
                 self
                 , lines):
 
-                s_fun = self.class_name() + "::get_lines_with_removed_toc::"
+                s_fun = self.class_name() + "::get_lines_without_empty::"
                 self.xx_dbg(s_fun + "start")
                 lines_out = []
                 for line in lines:                        
@@ -321,6 +503,35 @@ class LKD_CreateCatsFromDirectories:
 
                 self.xx_dbg(s_fun + "end")
                 return lines_out
+
+        def get_lines_with_removed_toc_from_start(
+                self
+                , lines):
+
+                s_fun = self.class_name() + "::get_lines_with_removed_toc_from_start::"
+                self.xx_dbg(s_fun + "start")
+                lines_out = []
+                for line in lines:                        
+                        line_strip = self.get_line_with_removed_toc_from_start(
+                                line)
+                        lines_out.append(line_strip)      
+
+                self.xx_dbg(s_fun + "end")
+                return lines_out
+                
+        def get_line_with_removed_toc_from_start(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::get_line_with_removed_toc_from_start::"                
+                line = pline
+                lineout = pline
+                i_idx = line.find("xx")
+                if(i_idx >0):
+                        lineout = line[0:i_idx]
+
+                self.xx_dbg_1(s_fun + "line:" + line)
+                return lineout
 
         def get_lines_with_removed_toc(
                 self
@@ -336,6 +547,36 @@ class LKD_CreateCatsFromDirectories:
 
                 self.xx_dbg(s_fun + "end")
                 return lines_out
+
+        def get_line_with_removed_toc(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::get_line_with_removed_toc::"                
+                line = pline
+
+                sp_0 = self.tabs_prefix_cnt( line )
+                s_tab_prefix = self.get_tabs_prefix(sp_0)
+                line = line.strip()
+
+                for kk in range(4):
+                        for ii in range(10):
+                                s_toc = ".." + str(ii)
+                                line = line.replace(s_toc, " ")
+                                s_toc = ". ." + str(ii)
+                                line = line.replace(s_toc, " ")
+                                s_toc = " " + str(ii)
+                                line = line.replace(s_toc, "xx")
+                                s_toc = "xx" + str(ii)
+                                line = line.replace(s_toc, "xx")
+
+                line = line.replace( "xx","")
+
+                line = s_tab_prefix + line
+
+                self.xx_dbg_1(s_fun + "line:" + line)
+                return line
+
 
         def get_lines_space_to_break(
                 self
@@ -387,35 +628,6 @@ class LKD_CreateCatsFromDirectories:
 
                 self.xx_dbg(s_fun + "end")
                 return lines_out
-
-        def get_line_with_removed_toc(
-                self
-                , pline):
-
-                s_fun = self.class_name() + "::get_line_with_removed_toc::"                
-                line = pline
-
-                sp_0 = self.tabs_prefix_cnt( line )
-                s_tab_prefix = self.get_tabs_prefix(sp_0)
-                line = line.strip()
-
-                for kk in range(4):
-                        for ii in range(10):
-                                s_toc = ".." + str(ii)
-                                line = line.replace(s_toc, " ")
-                                s_toc = ". ." + str(ii)
-                                line = line.replace(s_toc, " ")
-                                s_toc = " " + str(ii)
-                                line = line.replace(s_toc, "xx")
-                                s_toc = "xx" + str(ii)
-                                line = line.replace(s_toc, "xx")
-
-                line = line.replace( "xx","")
-
-                line = s_tab_prefix + line
-
-                self.xx_dbg_1(s_fun + "line:" + line)
-                return line
 
         
         def get_line_normalize_multiple_item(    
@@ -694,11 +906,11 @@ class LKD_CreateCatsFromDirectories:
                 return lines_out
 
                
-        def inplace_change_lines(
+        def get_lines_create_directories(
                 self
                 , file_lines):
 
-                s_fun = self.class_name() + "::inplace_change_lines::"
+                s_fun = self.class_name() + "::get_lines_create_directories::"
                 self.xx_dbg(s_fun + "start")
 
                 lines_out = []
