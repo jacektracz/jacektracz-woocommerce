@@ -123,7 +123,7 @@ class LKD_CreateCatsFromDirectories:
                 dst_file_standalone_4 = src_file + ".tmp.5.directories.md"
                 self.execute_main_lines_create_directories(
                         ""
-                        , src_file
+                        , src_file_4
                         ,  dst_file_standalone_4)
 
                 self.xx_dbg(s_fun + "end")
