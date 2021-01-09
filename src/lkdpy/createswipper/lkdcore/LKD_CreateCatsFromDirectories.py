@@ -67,7 +67,6 @@ class LKD_CreateCatsFromDirectories:
                 src_file_0 = src_file
                 
                 src_file_1 = src_file
-                #src_file_1 = dst_file_standalone_0
                 dst_file_standalone_1 = src_file + ".tmp.2.toc.md"
                 self.execute_main_lines_with_removed_toc_from_start(
                         ""
