@@ -73,7 +73,7 @@ class LKD_MainExec:
 
         def create_source_files(self,tt):
                 ddcr = LKD_CreateMdFilesFromProjectsSrc("")
-                ddcr.execute_main()
+                ddcr.execute_main_create_from_source()
 
         def create_cats_from_directories(self,tt):
                 ddcr = LKD_CreateCatsFromDirectories("")
@@ -90,9 +90,9 @@ if __name__ == "__main__":
         # ddh.exec_fin("")
 
         # ddh.images_create_sequential_ids("")
-        # ddh.create_source_files("")
+        ddh.create_source_files("")
 
-        ddh.create_cats_from_directories("") 
+        # ddh.create_cats_from_directories("") 
 
         # ddh.create_one_swipper("")
 

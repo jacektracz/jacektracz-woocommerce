@@ -53,9 +53,9 @@ class LKD_CreateMdFilesFromProjectsSrc:
         #def get_generic_root(self,dd)
         #        return self.get_root_espn()
 
-        def execute_main(self):
+        def execute_main_create_from_source(self):
 
-                self.xx_dbg("LKD_CopyFiles::execute_main::in::")
+                self.xx_dbg("LKD_CopyFiles::execute_main_create_from_source::in::")
 
                 paths = self.get_generic_cats_items("")
                 postfixes = []    

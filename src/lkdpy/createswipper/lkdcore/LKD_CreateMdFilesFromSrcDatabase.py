@@ -37,7 +37,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_blockchain_corda("")
                 # return self.get_cats_blockchain_python_pow("")
                 # return self.get_cats_dl_keras("")
-                return self.get_cats_dl_neural("")
+                # return self.get_cats_dl_neural("")
+                return self.get_cats_rl_37("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -53,7 +54,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_blockchain_corda("")
                 # return self.get_root_blockchain_python_pow("")
                 # return self.get_root_dl_keras("")
-                return self.get_root_dl_neural("")
+                # return self.get_root_dl_neural("")
+                return self.get_root_rl_37("")
 
 
         def get_root_jhreact(self, dd):
@@ -815,4 +817,21 @@ class LKD_CreateMdFilesFromSrcDatabase:
         def get_cats_dl_neural(self, psrc_path_project):
                 cats = []                
                 cats.append(self.get_item(8267,	"neural-networks-and-deep-learning"))
+                return cats
+
+
+        def get_root_rl_37(self, dd):
+                root_src = "C:/lkd/ht/apps_rl_move37/app/src/Reinforcement-Learning-Code-Examples"
+                return root_src
+
+       def get_cats_rl_37(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(9470,"Actor-Critic-Example")
+                cats.append(self.get_item(9471,"ARS-Examplears")
+                cats.append(self.get_item(9472,"DQN-Example")
+                cats.append(self.get_item(9473,"Dynamic-Programming-Example")
+                cats.append(self.get_item(9474,"PPO-Example")
+                cats.append(self.get_item(9475,"PQ-Example")
+                cats.append(self.get_item(9476,"Q-Learning-Example")
+                cats.append(self.get_item(9477,"Rainbow-DQN-Example")
                 return cats
