@@ -64,7 +64,7 @@ class LKD_CreateCatsFromDirectories:
                 self.xx_dbg(s_fun + "start")
 
                 src_file = self.m_src
-                src_file_0 = src_file
+                src_file_without_empty = src_file
                 
                 src_file_1 = src_file
                 dst_file_standalone_1 = src_file + ".tmp.2.toc.md"
@@ -78,47 +78,55 @@ class LKD_CreateCatsFromDirectories:
                 self.xx_dbg(s_fun + "start")
 
                 src_file = self.m_src
-                src_file_0 = src_file
-                dst_file_standalone_0 = src_file + ".tmp.0.noe.md"
+                src_file_without_empty = src_file
+                dst_file_without_empty = src_file + ".tmp.0.noempty.md"
                 self.execute_main_lines_without_empty(
                         ""
-                        , src_file_0
-                        , dst_file_standalone_0)
-                
-                src_file_1_0 = src_file
-                src_file_1_0 = dst_file_standalone_0
-                dst_file_standalone_1_0 = src_file + ".tmp.1.0.chars.md"
-                self.execute_main_lines_without_special_chars(
-                        ""
-                        , src_file_1_0
-                        , dst_file_standalone_1_0)
+                        , src_file_without_empty
+                        , dst_file_without_empty)
 
-                src_file_1 = src_file
-                src_file_1 = dst_file_standalone_1_0
-                dst_file_standalone_1 = src_file + ".tmp.2.toc.md"
+                src_file_toc = src_file
+                src_file_toc = dst_file_without_empty
+                dst_file_standalone_toc = src_file + ".tmp.1.0.toc.md"
                 self.execute_main_lines_with_removed_toc_from_start(
                         ""
-                        , src_file_1
-                        , dst_file_standalone_1)
+                        , src_file_toc
+                        , dst_file_standalone_toc)
 
-                src_file_2 = src_file
-                src_file_2 = dst_file_standalone_1
-                dst_file_standalone_2 = src_file + ".tmp.3.normalized.md"
+                src_file_chars = src_file
+                src_file_chars = dst_file_standalone_toc
+                dst_file_standalone_chars = src_file + ".tmp.1.1.chars.md"
+                self.execute_main_lines_without_special_chars(
+                        ""
+                        , src_file_chars
+                        , dst_file_standalone_chars)
+
+                src_file_1 = src_file
+                src_file_toc_2 = dst_file_standalone_chars
+                dst_file_toc_2 = src_file + ".tmp.2.toc.md"
+                self.execute_main_lines_with_removed_toc_from_start(
+                        ""
+                        , src_file_toc_2
+                        , dst_file_toc_2)
+
+                src_file_spaces_to_break = src_file
+                src_file_spaces_to_break = dst_file_toc_2
+                dst_file_spaces_to_break = src_file + ".tmp.3.spacestobreak.md"
                 self.execute_main_lines_spaces_to_break(
                         ""
-                        , src_file_2
-                        , dst_file_standalone_2)
+                        , src_file_spaces_to_break
+                        , dst_file_spaces_to_break)
 
-                src_file_3 = src_file
-                src_file_3 = dst_file_standalone_2                
-                dst_file_standalone_3 = src_file + ".tmp.4.clear.normalized.md"
+                src_file_clear_spaces_to_break = src_file
+                src_file_clear_spaces_to_break = dst_file_spaces_to_break                
+                dst_file_clear_spaces_to_break = src_file + ".tmp.4.clear.clear-spaces.md"
                 self.execute_main_clear_spaces_to_break(
                         ""
-                        , src_file_3
-                        , dst_file_standalone_3)
+                        , src_file_clear_spaces_to_break
+                        , dst_file_clear_spaces_to_break)
 
                 src_file_4 = src_file
-                src_file_4 = dst_file_standalone_3
+                src_file_4 = dst_file_clear_spaces_to_break
                 dst_file_standalone_4 = src_file + ".tmp.5.directories.md"
                 self.execute_main_lines_create_directories(
                         ""
@@ -526,7 +534,7 @@ class LKD_CreateCatsFromDirectories:
                 line = pline
                 lineout = pline
                 i_idx = line.find("xx")
-                if(i_idx >0):
+                if(i_idx > 0):
                         lineout = line[0:i_idx]
 
                 self.xx_dbg_1(s_fun + "line:" + line)
@@ -776,7 +784,8 @@ class LKD_CreateCatsFromDirectories:
                 line = line.replace("?","")
                 line = line.replace("/","")
                 line = line.replace("|","")
-                line = line.replace( "xx","")
+                line = line.replace( "xx","")                
+                line = line.replace( "’","")
 
                 line = s_tab_prefix + line
                 self.xx_dbg_1(s_fun + "line:" + line)                
