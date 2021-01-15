@@ -79,14 +79,22 @@ class LKD_CreateCatsFromDirectories:
 
                 src_file = self.m_src
                 src_file_without_empty = src_file
-                dst_file_without_empty = src_file + ".tmp.0.noempty.md"
+                dst_file_without_empty = src_file + ".tmp.0.1.noempty.md"
                 self.execute_main_lines_without_empty(
                         ""
                         , src_file_without_empty
                         , dst_file_without_empty)
 
+                src_file_prepare_xx_to_toc = src_file
+                src_file_prepare_xx_to_toc = dst_file_without_empty
+                dst_file_prepare_xx_to_toc = src_file + ".tmp.0.2.prepxx.md"
+                self.execute_main_lines_prepare_xx_to_toc(
+                        ""
+                        , src_file_prepare_xx_to_toc
+                        , dst_file_prepare_xx_to_toc)
+
                 src_file_toc = src_file
-                src_file_toc = dst_file_without_empty
+                src_file_toc = dst_file_prepare_xx_to_toc
                 dst_file_standalone_toc = src_file + ".tmp.1.0.toc.md"
                 self.execute_main_lines_with_removed_toc_from_start(
                         ""
@@ -345,6 +353,41 @@ class LKD_CreateCatsFromDirectories:
 
                 return lines
 
+        def execute_main_lines_prepare_xx_to_toc(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
+                s_fun = self.class_name() + "::execute_main_lines_prepare_xx_to_toc::"
+                self.xx_dbg(s_fun + "start")
+
+                src_file = psrc_file
+                dst_file = pdst_file                
+                dst_file_bat = pdst_file + ".bat"
+
+                lines = []
+                
+                lines = self.read_lines_from_file(
+                        src_file)
+
+                lines = self.get_lines_prepare_xx_to_toc(
+                        lines)
+
+                self.print_lines(
+                        "get_lines_prepare_xx_to_toc"
+                        , lines)
+
+                self.write_lines(
+                        dst_file
+                        , lines)
+
+                self.create_bat_file(
+                        dst_file_bat
+                        , lines)
+
+                self.xx_dbg(s_fun + "end")
+
         def execute_main_lines_without_special_chars(
                 self
                 , tt
@@ -437,6 +480,21 @@ class LKD_CreateCatsFromDirectories:
                         , lines)
 
                 return lines
+
+        def get_lines_prepare_xx_to_toc(
+                self
+                , lines):
+
+                s_fun = self.class_name() + "::get_lines_prepare_xx_to_toc::"
+                self.xx_dbg(s_fun + "start")
+                lines_out = []
+                for line in lines:                        
+                        line_strip = self.get_line_prepare_xx_to_toc(
+                                line)
+                        lines_out.append(line_strip)      
+
+                self.xx_dbg(s_fun + "end")
+                return lines_out
 
         def get_lines_without_special_chars(
                 self
@@ -731,6 +789,34 @@ class LKD_CreateCatsFromDirectories:
 
                 line = s_tab_prefix + line
                 self.xx_dbg_1(s_fun + "start")
+                return line
+
+        def get_line_prepare_xx_to_toc(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::get_line_prepare_xx_to_toc::"                
+                self.xx_dbg_1(s_fun + "atart")
+
+                line = pline                
+
+                sp_0 = self.tabs_prefix_cnt( line )
+                s_tab_prefix = self.get_tabs_prefix(sp_0)
+                line = line.strip()
+
+                line = line.replace(" 1","xx")
+                line = line.replace(" 2","xx")                
+                line = line.replace(" 3","xx")                
+                line = line.replace(" 4","xx")                
+                line = line.replace(" 5","xx")                
+                line = line.replace(" 6","xx")                
+                line = line.replace(" 7","xx")                
+                line = line.replace(" 8","xx")                
+                line = line.replace(" 9","xx")                
+
+                line = s_tab_prefix + line
+                self.xx_dbg_1(s_fun + "line:" + line)                
+
                 return line
 
         def get_line_without_special_chars(
