@@ -15,7 +15,7 @@ class LKD_CopyFilesMd:
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
 
-        def exec_cpy_many(self, src_idx, ii_start, ii_max):
+        def exec_cpy_many_md_files(self, src_idx, ii_start, ii_max):
                 iimax = ii_max
                 ii = ii_start
                 while( True ):

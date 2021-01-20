@@ -35,7 +35,7 @@ class LKD_MainExec:
 
         def create_md(self, tt):
                 ddh = LKD_CopyFilesMd("")
-                ddh.create_md()
+                #ddh.create_md()
 
         def create_md_all(self, tt):
                 ddh = LKD_CopyFilesMd("")
@@ -62,9 +62,9 @@ class LKD_MainExec:
                         ,cat_id_start
                         ,cat_id_end)
 
-        def exec_cpy_many_mds(self, tt):
+        def exec_cpy_many_md_files(self, tt):
                 dd_mdh = LKD_CopyFilesMd("")
-                # dd_mdh.exec_cpy_many(8001,8200,10000) 
+                dd_mdh.exec_cpy_many_md_files(8001,10000,12000) 
 
         def exec_create_images(self,tt):
                 dd_img = LKD_CreateImages("")
@@ -80,10 +80,13 @@ class LKD_MainExec:
                 ddcr.execute_main("")
 
         
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
+        #ddh.exec_cpy_many_md_files("")
+
         # ddh.create_one_swipper("")
 
         # ddh.refill_full_copy_one("")

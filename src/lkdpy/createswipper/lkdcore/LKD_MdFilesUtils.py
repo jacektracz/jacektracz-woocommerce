@@ -11,15 +11,15 @@ from LKD_CatItem import *
 
 class LKD_MdFilesUtils:
 
-        def __init__(self,spar):                                
-                self.xx_dbg("LKD_CreateImages::__init__::in::")
-                self.m_ds = "/"
-                self.xx_dbg("LKD_CreateImages::__init__::out::")
+	def __init__(self,spar):                                
+			self.xx_dbg("LKD_CreateImages::__init__::in::")
+			self.m_ds = "/"
+			self.xx_dbg("LKD_CreateImages::__init__::out::")
 
-        def get_sclass(self):
-                return "LKD_MdFilesUtils"
-              
-        def get_root_for_groups( self, dd_active_cat_id ,dd_file_idx)	:
+	def get_sclass(self):
+			return "LKD_MdFilesUtils"
+			
+	def get_root_for_groups( self, dd_active_cat_id ,dd_file_idx)	:
 
 		sfun = self.get_sclass() + "::get_file_content_by_cat_id_groups::"
 		self.xx_dbg( sfun + "start")
@@ -48,17 +48,16 @@ class LKD_MdFilesUtils:
 		dd_mod_1 = dd_rest
 
 		self.xx_dbg( sfun + "__resolve_groups__mod_1__[" + str(dd_mod_1) + "]")
-		self.xx_dbg( sfun + "__resolve_groups__mod_1_rest__[" + str(dd_rest) + "]")		
-
+		
 		dd_DS1 =  "/"
 		dd_file = ""
 		dd_file =  dd_file + "C:"
-                dd_file =  dd_file +  dd_DS1 + "lkd"
-                dd_file =  dd_file +  dd_DS1 + "ht"
-                dd_file =  dd_file +  dd_DS1 + "apps_portal"
-                dd_file =  dd_file +  dd_DS1 + "lkduni"
-                dd_file =  dd_file +  dd_DS1 +  "app-4" 
-                dd_file =  dd_file +  dd_DS1 + "src"
+		dd_file =  dd_file +  dd_DS1 + "lkd"
+		dd_file =  dd_file +  dd_DS1 + "ht"
+		dd_file =  dd_file +  dd_DS1 + "apps_portal"
+		dd_file =  dd_file +  dd_DS1 + "lkduni"
+		dd_file =  dd_file +  dd_DS1 +  "app-4" 
+		dd_file =  dd_file +  dd_DS1 + "src"
 		dd_file =  dd_file  + dd_DS1 + "modules"
 		dd_file =  dd_file  + dd_DS1 + "mod_ep_articles"
 		dd_file =  dd_file  + dd_DS1 + "content_cats"
@@ -74,22 +73,22 @@ class LKD_MdFilesUtils:
 		self.xx_dbg( sfun + "check_file_parsedown_md_x8::" + dd_file)
 		self.xx_dbg( sfun + "end")
 		return dd_file
-                
-        def get_int( self, dd_start_idx, dd_step ):
+				
+	def get_int( self, dd_start_idx, dd_step ):
 
 		sfun = self.get_sclass() + "::get_step::"
 		self.xx_dbg( sfun + "start")		
 
-                dd_iout = int(round(dd_start_idx / dd_step))
+		dd_iout = int(round(dd_start_idx / dd_step))
 
 		self.xx_dbg( sfun + "end")
 		return dd_iout
 
 
-        def xx_dbg(self, tt):
-                "" ""
-                print ( tt )
+	def xx_dbg(self, tt):
+			"" ""
+			print ( tt )
 
-        def xx_print( self, tt ):
-                "" ""
-                print ( tt )       
+	def xx_print( self, tt ):
+			"" ""
+			print ( tt )       
