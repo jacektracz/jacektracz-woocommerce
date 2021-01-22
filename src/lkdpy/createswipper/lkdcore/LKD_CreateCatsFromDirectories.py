@@ -353,6 +353,42 @@ class LKD_CreateCatsFromDirectories:
 
                 return lines
 
+        def execute_main_lines_prepare_xx_to_toc_spaces(
+                self
+                , tt
+                , psrc_file
+                , pdst_file):
+
+                s_fun = self.class_name() + "::execute_main_lines_prepare_xx_to_toc_spaces::"
+                self.xx_dbg(s_fun + "start")
+
+                src_file = psrc_file
+                dst_file = pdst_file                
+                dst_file_bat = pdst_file + ".bat"
+
+                lines = []
+                
+                lines = self.read_lines_from_file(
+                        src_file)
+
+                lines = self.get_lines_prepare_xx_to_toc_spaces(
+                        lines)
+
+                self.print_lines(
+                        "get_lines_prepare_xx_to_toc_spaces"
+                        , lines)
+
+                self.write_lines(
+                        dst_file
+                        , lines)
+
+                self.create_bat_file(
+                        dst_file_bat
+                        , lines)
+
+                self.xx_dbg(s_fun + "end")
+
+
         def execute_main_lines_prepare_xx_to_toc(
                 self
                 , tt
@@ -480,6 +516,21 @@ class LKD_CreateCatsFromDirectories:
                         , lines)
 
                 return lines
+
+        def get_lines_prepare_xx_to_toc_spaces(
+                self
+                , lines):
+
+                s_fun = self.class_name() + "::get_lines_prepare_xx_to_toc_spaces::"
+                self.xx_dbg(s_fun + "start")
+                lines_out = []
+                for line in lines:                        
+                        line_strip = self.get_line_prepare_xx_to_toc_spaces(
+                                line)
+                        lines_out.append(line_strip)      
+
+                self.xx_dbg(s_fun + "end")
+                return lines_out
 
         def get_lines_prepare_xx_to_toc(
                 self
@@ -789,6 +840,34 @@ class LKD_CreateCatsFromDirectories:
 
                 line = s_tab_prefix + line
                 self.xx_dbg_1(s_fun + "start")
+                return line
+
+        def get_line_prepare_xx_to_toc_spaces(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::get_line_prepare_xx_to_toc_spaces::"                
+                self.xx_dbg_1(s_fun + "atart")
+
+                line = pline                
+
+                sp_0 = self.tabs_prefix_cnt( line )
+                s_tab_prefix = self.get_tabs_prefix(sp_0)
+                line = line.strip()
+
+                line = line.replace(" 1","xx")
+                line = line.replace(" 2","xx")                
+                line = line.replace(" 3","xx")                
+                line = line.replace(" 4","xx")                
+                line = line.replace(" 5","xx")                
+                line = line.replace(" 6","xx")                
+                line = line.replace(" 7","xx")                
+                line = line.replace(" 8","xx")                
+                line = line.replace(" 9","xx")                
+
+                line = s_tab_prefix + line
+                self.xx_dbg_1(s_fun + "line:" + line)                
+
                 return line
 
         def get_line_prepare_xx_to_toc(
