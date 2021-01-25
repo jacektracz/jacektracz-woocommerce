@@ -14,7 +14,9 @@ class LKD_CreateCatsFromDirectories:
 
         def __init__(self,spar):                                
                 self.xx_dbg("LKD_CopyFiles::__init__::in::")
-                self.m_src = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/cats/content__cats_2_add.md"
+                #self.m_src = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/cats/content__cats_2_add.md"
+                self.m_src = "C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles_data/cats/content__cats_2_add.md"
+                self.m_dst_scripts = "C:/lkd/ht/apps_ctx/1"
                 self.m_root_src = ""
                 self.m_root_dst = ""
                 self.m_test_mode = 0
@@ -1008,12 +1010,12 @@ class LKD_CreateCatsFromDirectories:
 
                 with open(filename, "w") as f:
                         f.write( "rem " + filename + "\n")
-                        f.write( "cd C:/lkd/ht/apps_ctx/1" + "\n")
+                        f.write( "cd " + self.m_dst_scripts + "" + "\n")
 
                         for line in lines:
                                 f.write( line + "\n")
 
-                        f.write( "cd C:/lkd/ht/apps_ctx/1" + "\n")
+                        f.write( "cd " + self.m_dst_scripts + "" + "\n")
 
                 self.xx_dbg(s_fun + "end")
 
