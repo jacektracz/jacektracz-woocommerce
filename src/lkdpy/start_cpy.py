@@ -78,13 +78,17 @@ class LKD_MainExec:
         def create_cats_from_directories(self,tt):
                 ddcr = LKD_CreateCatsFromDirectories("")
                 ddcr.execute_main("")
+                
+        def add_two(self,a,b):
+                return a+b
 
-        
+
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
+
         #ddh.exec_cpy_many_md_files("")
 
         # ddh.create_one_swipper("")

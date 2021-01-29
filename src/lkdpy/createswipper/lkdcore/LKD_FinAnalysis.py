@@ -662,6 +662,8 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
 
                 dd = []
+                
+                # 69 161,00 PLN	281 165,39 PLN	-212 004,39 PLN  24-01-2020
                 # 60 000,14 PLN	282 061,62 PLN	-222 061,48 PLN  19-01-2020
                 # 60 255,41 PLN	282 061,62 PLN	-221 806,21 PLN  110-0-2020 (+300)
                 # 62 360,41 PLN	282 061,62 PLN	-219 701,21 PLN	 08-01-2021
