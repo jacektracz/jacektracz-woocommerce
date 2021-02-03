@@ -54,8 +54,8 @@ class LKD_MainExec:
                 dd_img = LKD_CreateImages("")
                 #dd_img.create_sequential_ids()
                 max_img_id_source_bucket = 2000
-                cat_id_start = 6700
-                cat_id_end = 8700
+                cat_id_start = 10100
+                cat_id_end = 11000
 
                 dd_img.move_digital_images_to_md(
                         max_img_id_source_bucket
@@ -96,10 +96,10 @@ if __name__ == "__main__":
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")
 
-        # ddh.images_create_sequential_ids("")
+        ddh.images_create_sequential_ids("")
         # ddh.create_source_files("")
 
-        ddh.create_cats_from_directories("") 
+        # ddh.create_cats_from_directories("") 
 
         # ddh.create_one_swipper("")
 

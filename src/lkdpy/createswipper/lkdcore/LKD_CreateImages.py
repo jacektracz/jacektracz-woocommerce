@@ -32,7 +32,7 @@ class LKD_CreateImages:
                 return dir_path
 
         def create_sequential_ids(self):
-                self.xx_dbg("LKD_CreateImages::exec_images::in::")
+                self.xx_dbg("LKD_CreateImages::create_sequential_ids::in::")
                 dd_ll = self.get_files_recur(self.m_root_src,0,self.m_root_dst)
                 p_dest = self.m_root_dst
 
@@ -45,7 +45,7 @@ class LKD_CreateImages:
                         shutil.copy(src_fpath, dest_fpath)
                         ii = ii + 1
 
-                self.xx_dbg("LKD_CreateImages::exec_images::out::")
+                self.xx_dbg("LKD_CreateImages::create_sequential_ids::out::")
 
         def get_generic_cats_items(self, dd):
                 ddh = LKD_CreateFilesDatabase()
