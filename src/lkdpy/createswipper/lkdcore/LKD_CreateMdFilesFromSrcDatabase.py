@@ -38,7 +38,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_blockchain_python_pow("")
                 # return self.get_cats_dl_keras("")
                 # return self.get_cats_dl_neural("")
-                return self.get_cats_rl_37("")
+                # return self.get_cats_rl_37("")
+                return self.get_cats_pro_5("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -55,7 +56,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_blockchain_python_pow("")
                 # return self.get_root_dl_keras("")
                 # return self.get_root_dl_neural("")
-                return self.get_root_rl_37("")
+                # return self.get_root_rl_37("")
+                return self.get_root_pro_5("")
 
 
         def get_root_jhreact(self, dd):
@@ -835,4 +837,30 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(9475,"PQ-Example"))
                 cats.append(self.get_item(9476,"Q-Learning-Example"))
                 cats.append(self.get_item(9477,"Rainbow-DQN-Example"))
+                return cats
+
+        def get_root_pro_5(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_pro/app/src/pro-spring-5"
+                return root_src
+
+        def get_cats_pro_5(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(11121, "chapter02"))
+                cats.append(self.get_item(11122, "chapter03"))
+                cats.append(self.get_item(11123, "chapter04"))
+                cats.append(self.get_item(11124, "chapter05"))
+                cats.append(self.get_item(11125, "chapter05-aspectj-aspects"))
+                cats.append(self.get_item(11126, "chapter06"))
+                cats.append(self.get_item(11127, "chapter07"))
+                cats.append(self.get_item(11128, "chapter08"))
+                cats.append(self.get_item(11129, "chapter09"))
+                cats.append(self.get_item(11130, "chapter10"))
+                cats.append(self.get_item(11131, "chapter11"))
+                cats.append(self.get_item(11132, "chapter12"))
+                cats.append(self.get_item(11133, "chapter13"))
+                cats.append(self.get_item(11134, "chapter14"))
+                cats.append(self.get_item(11135, "chapter15"))
+                cats.append(self.get_item(11136, "chapter16"))
+                cats.append(self.get_item(11137, "chapter17"))                
+
                 return cats
