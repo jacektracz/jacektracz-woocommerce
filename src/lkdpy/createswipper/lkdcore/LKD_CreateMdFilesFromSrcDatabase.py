@@ -843,9 +843,15 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 root_src = "C:/lkd/ht/apps_spring_pro/app/src/pro-spring-5"
                 return root_src
 
+        def get_cats_pro_5__(self, psrc_path_project):
+                cats = []
+                #cats.append(self.get_item(11121, "chapter02"))
+
+                return cats
+
         def get_cats_pro_5(self, psrc_path_project):
                 cats = []
-                cats.append(self.get_item(11121, "chapter02"))
+                #cats.append(self.get_item(11121, "chapter02"))
                 cats.append(self.get_item(11122, "chapter03"))
                 cats.append(self.get_item(11123, "chapter04"))
                 cats.append(self.get_item(11124, "chapter05"))
