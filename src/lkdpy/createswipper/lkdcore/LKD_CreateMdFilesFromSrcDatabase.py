@@ -42,13 +42,14 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_dl_neural("")
                 # return self.get_cats_rl_37("")
                 # return self.get_cats_pro_5("")
-                return self.get_cats_jpa2_ch3("")
+                # return self.get_cats_jpa2_ch3("")
                 # return self.get_cats_jpa2_ch4("")
                 # return self.get_cats_jpa2_ch5("")
                 # return self.get_cats_jpa2_ch6("")
-                #return self.get_cats_jpa2_ch7("")
+                # return self.get_cats_jpa2_ch7("")
                 # return self.get_cats_jpa2_ch8("")
-                #return self.get_cats_jpa2_ch9("")
+                # return self.get_cats_jpa2_ch9("")
+                return ""
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -67,13 +68,14 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_dl_neural("")
                 # return self.get_root_rl_37("")
                 # return self.get_root_pro_5("")
-                return self.get_root_jpa2_ch3("")
-                #return self.get_root_jpa2_ch4("")
+                # return self.get_root_jpa2_ch3("")
+                # return self.get_root_jpa2_ch4("")
                 # return self.get_root_jpa2_ch5("")
                 # return self.get_root_jpa2_ch6("")
-                #return self.get_root_jpa2_ch7("")
+                # return self.get_root_jpa2_ch7("")
                 # return self.get_root_jpa2_ch8("")
-                #return self.get_root_jpa2_ch9("")
+                # return self.get_root_jpa2_ch9("")
+                return ""
 
 
         def get_root_jhreact(self, dd):
