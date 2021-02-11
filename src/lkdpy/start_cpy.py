@@ -78,16 +78,27 @@ class LKD_MainExec:
         def create_cats_from_directories(self,tt):
                 ddcr = LKD_CreateCatsFromDirectories("")
                 ddcr.execute_main("")
+
                 
+        def print_cats_for_dirs_db(self,tt):
+                ddcr = LKD_CreateMdFilesFromProjectsSrc("")
+                ddcr.print_cats_for_dirs_db("")
+
         def add_two(self,a,b):
                 return a+b
 
 
-#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-cat-file
 
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
+        # ddh.print_cats_for_dirs_db("")
+        if len(sys.argv) > 1:
+                s_arg_0 = sys.argv[1]
+
+        if (s_arg_0 == "perform-cat-file"):
+                ddh.create_cats_from_directories("")
 
         #ddh.exec_cpy_many_md_files("")
 
@@ -100,7 +111,7 @@ if __name__ == "__main__":
 
         # #####################################
 
-        ddh.create_source_files("")
+        # ddh.create_source_files("")
 
         # ddh.create_cats_from_directories("") 
 

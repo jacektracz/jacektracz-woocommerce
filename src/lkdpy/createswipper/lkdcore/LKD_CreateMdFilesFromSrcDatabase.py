@@ -870,3 +870,5 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(11137, "chapter17"))                
 
                 return cats
+
+

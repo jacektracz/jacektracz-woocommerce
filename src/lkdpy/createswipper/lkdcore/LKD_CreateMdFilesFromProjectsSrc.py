@@ -12,7 +12,7 @@ from LKD_CatItem import *
 class LKD_CreateMdFilesFromProjectsSrc:
 
         def __init__(self,spar):                                
-                self.xx_dbg("LKD_CopyFiles::__init__::in::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::__init__::in::")
                 self.m_src = "C:/lkd/ht/apps_java8_in_action/app/src/jacek-tracz-java-design-patterns"
                 self.m_dst = "services_s3"
                 self.m_root_src = ""
@@ -21,7 +21,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 #self.m_override_mode = False
                 self.m_override_mode = True
                 self.m_ds = "/"
-                self.xx_dbg("LKD_CopyFiles::__init__::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::__init__::out::")
                
         def get_generic_cats_items(self, dd):
                 # return self.get_cats_espn("")
@@ -43,9 +43,9 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
         
         def prepare_object(self):
-                self.xx_dbg("LKD_CopyFiles::prepare_object::in::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::prepare_object::in::")
                         
-                self.xx_dbg("LKD_CopyFiles::prepare_object::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::prepare_object::out::")
 
         #def get_generic_cats_items(self,dd)
         #        return self.get_cats_espn("")
@@ -55,7 +55,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
         def execute_main_create_from_source(self):
 
-                self.xx_dbg("LKD_CopyFiles::execute_main_create_from_source::in::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::execute_main_create_from_source::in::")
 
                 paths = self.get_generic_cats_items("")
                 postfixes = []    
@@ -77,11 +77,11 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         for postfix in postfixes:
                                 self.create_execute_source_path_root(lkd_cat_item, postfix)
 
-                self.xx_dbg("LKD_CopyFiles::execute_main::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::execute_main::out::")
 
         def create_execute_source_path_root(self, lkd_cat_item, src_postfix):
 
-                self.xx_dbg("LKD_CopyFiles::create_execute_source_path_root::in::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::create_execute_source_path_root::in::")
                 root_scr_path = self.get_generic_root("")
                 postfix_2_add = ""
                 if( src_postfix != ""):
@@ -108,7 +108,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         java_files  
                         , dest_java_root_idx_0_dir_path)
 
-                self.xx_dbg("LKD_CopyFiles::create_execute_source_path_root::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::create_execute_source_path_root::out::")
 
 
         def create_dir(self, dir_path):
@@ -120,7 +120,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         self.xx_print("dir-created" + dir_path )
 
         def get_class_name(self):
-                return "LKD_CopyFiles"
+                return "LKD_CreateMdFilesFromProjectsSrc"
 
         def read_directory_subdirs_flat(self, psrc_path_project, pcatid):
                 s_fun = self.get_class_name() + "::read_directory_subdirs_flat::"
@@ -155,7 +155,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                                 ,       dest_java_flat_dir_path)
 
 
-                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs_flat::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::read_directory_subdirs_flat::out::")
 
                 return java_files
 
@@ -187,7 +187,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
                         shutil.copy(src_fpath, dest_fpath)
 
-                self.xx_dbg("LKD_CopyFiles::copy_javafiles::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::copy_javafiles::out::")
 
         def check_file_type_is_valid(self, psrc_fpath):
                 s_fun = self.get_class_name() + "::check_file_is_valid::"
@@ -245,7 +245,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 ii = 0
                 for file_item in file_items:
 
-                        self.xx_dbg("LKD_CopyFiles::create_javafiles_md::execute_one_item_start::")
+                        self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::create_javafiles_md::execute_one_item_start::")
 
                         src_fpath = file_item.src_javafile_full_path
 
@@ -270,10 +270,10 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
                         self.copy_lines_from_file(src_fpath, dest_root_fpath , file_header)
 
-                        self.xx_dbg("LKD_CopyFiles::create_javafiles_md::execute_one_item_end::")
+                        self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::create_javafiles_md::execute_one_item_end::")
                         ii = ii + 1
 
-                self.xx_dbg("LKD_CopyFiles::create_javafiles_md::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::create_javafiles_md::out::")
 
 
         def get_files_recur(self, psrc_path_project, pcatid, pdest_java_flat_dir_path):
@@ -324,7 +324,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 self.xx_dbg("[METHOD_OUT]" + "[inplace_change]")
 
         def read_directory_subdirs_only(self, psrc_path_project):
-                #self.xx_dbg("LKD_CopyFiles::read_directory_subdirs_flat::in::")
+                #self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::read_directory_subdirs_flat::in::")
                 print psrc_path_project
 
                 if(os.path.isdir(psrc_path_project) == False):
@@ -336,7 +336,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         if os.path.isdir(x): 
                                 print x
 
-                #self.xx_dbg("LKD_CopyFiles::read_directory_subdirs_flat::out::")
+                #self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::read_directory_subdirs_flat::out::")
 
                 
 
@@ -354,7 +354,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
         def read_directory_subdirs(self):
 
-                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs::in::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::read_directory_subdirs::in::")
                 folders = []
                 for r, d, f in os.walk(lkd_cat_item):
                         for folder in d:
@@ -363,5 +363,76 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 for f in folders:
                         print(f)
 
-                self.xx_dbg("LKD_CopyFiles::read_directory_subdirs::out::")
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::read_directory_subdirs::out::")
 
+
+        def print_cats_for_dirs_db(self, tt):                
+                psrc_path_project = "C:/lkd/ht/apps_spring_pro_jpa_2/app/src/pro-jpa-2/examples"
+                #self.print_cats_for_dirs_lvl2(psrc_path_project)
+                #self.a(psrc_path_project)
+                #self.get_print_files_recur(psrc_path_project)
+                self.get_print_files_l2(psrc_path_project)
+
+
+        def print_cats_for_dirs(self, psrc_path_project):                
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::print_cats_for_dirs::in::")
+                for currentpath, folders, files in os.walk(psrc_path_project):
+                        for folder in folders:
+                                self.xx_dbg(folder)
+
+        def print_cats_for_dirs_lvl2(self, psrc_path_project):                
+                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::print_cats_for_dirs::in::")
+                for folders in os.listdir(psrc_path_project):
+                        for folder in folders:
+                                self.xx_dbg(folder) 
+                                if os.path.isdir(folder):
+                                        self.xx_dbg(folder)                                
+
+
+        def get_print_files_recur(self,psrc_path_project):
+                for x in os.listdir(psrc_path_project):
+                        if os.path.isfile(x): print 'f-', x
+                        elif os.path.isdir(x): print 'd-', x
+                        elif os.path.islink(x): print 'l-', x
+                        else: print '---', x
+
+        def get_print_files_l2(self,psrc_path_project):
+                for x1 in os.listdir(psrc_path_project):                        
+                        p2 = psrc_path_project + "/" + x1
+                        if os.path.isdir(p2): 
+                                print '    ', x1                                
+                                for x2 in os.listdir(p2):    
+                                        p3 = p2 + "/" + x2    
+                                        if os.path.isdir(p3): 
+                                                print '         ', x2
+
+        def a(self,path):
+                list_subfolders_with_paths = [f.path for f in os.scandir(path) if f.is_dir()]
+                # print(len(list_subfolders_with_paths))
+
+
+        def b():
+                list_subfolders_with_paths = [os.path.join(path, f) for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
+                # print(len(list_subfolders_with_paths))
+
+
+        def c():
+                list_subfolders_with_paths = []
+                for root, dirs, files in os.walk(path):
+                        for dir in dirs:
+                                list_subfolders_with_paths.append( os.path.join(root, dir) )
+                        break
+                # print(len(list_subfolders_with_paths))
+
+        def d():
+                list_subfolders_with_paths = glob.glob(path + '/*/')
+        # print(len(list_subfolders_with_paths))
+
+        def e():
+                list_subfolders_with_paths = list(filter(os.path.isdir, [os.path.join(path, f) for f in os.listdir(path)]))
+        # print(len(list(list_subfolders_with_paths)))
+
+        def f():
+                p = pathlib.Path(path)
+                list_subfolders_with_paths = [x for x in p.iterdir() if x.is_dir()]
+                # print(len(list_subfolders_with_paths))
