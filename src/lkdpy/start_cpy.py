@@ -89,6 +89,7 @@ class LKD_MainExec:
 
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-cat-file
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
 if __name__ == "__main__":
 
@@ -99,6 +100,9 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "perform-cat-file"):
                 ddh.create_cats_from_directories("")
+
+        if (s_arg_0 == "perform-src-files"):
+                ddh.create_source_files("")
 
         #ddh.exec_cpy_many_md_files("")
 

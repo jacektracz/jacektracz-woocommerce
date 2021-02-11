@@ -20,6 +20,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 print (tt)       
 
         def get_item(self, id,title):
+                title = title.strip()
+                title = title.replace(" ","-")
                 dd = LKD_CatItem(id,title)
                 return dd
 
@@ -39,7 +41,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_dl_keras("")
                 # return self.get_cats_dl_neural("")
                 # return self.get_cats_rl_37("")
-                return self.get_cats_pro_5("")
+                # return self.get_cats_pro_5("")
+                return self.get_cats_jpa2_ch4("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -57,7 +60,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_dl_keras("")
                 # return self.get_root_dl_neural("")
                 # return self.get_root_rl_37("")
-                return self.get_root_pro_5("")
+                # return self.get_root_pro_5("")
+                return self.get_root_jpa2_ch4("")
 
 
         def get_root_jhreact(self, dd):
@@ -871,4 +875,43 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
                 return cats
 
+        def get_root_jpa2_ch4(self, dd):
+                root_src = "C:\lkd\ht\apps_spring_pro_jpa_2\app\src\pro-jpa-2\examples\Chapter4"
+                return root_src
 
+        def get_cats_jpa2_ch4(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(	11179	,	"01-fieldAccess	"	))
+                return cats
+
+        def get_cats_jpa2_4_all(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(	11179	,	"01-fieldAccess	"	))
+                cats.append(self.get_item(	11180	,	"02-propertyAccess	"	))
+                cats.append(self.get_item(	11181	,	"03-mixedAccess	"	))
+                cats.append(self.get_item(	11182	,	"04-customTableSchema	"	))
+                cats.append(self.get_item(	11183	,	"05-customColumnMapping	"	))
+                cats.append(self.get_item(	11184	,	"06-lobMapping	"	))
+                cats.append(self.get_item(	11185	,	"07-enumMapping	"	))
+                cats.append(self.get_item(	11186	,	"08-temporalMapping	"	))
+                cats.append(self.get_item(	11187	,	"09-transientMapping	"	))
+                cats.append(self.get_item(	11188	,	"10-autoIdGeneration	"	))
+                cats.append(self.get_item(	11189	,	"11-tableIdGeneration	"	))
+                cats.append(self.get_item(	11190	,	"12-sequenceIdGeneration	"	))
+                cats.append(self.get_item(	11191	,	"13-dbIdentityIdGeneration	"	))
+                cats.append(self.get_item(	11192	,	"14-manyToOne	"	))
+                cats.append(self.get_item(	11193	,	"15-joinColumn	"	))
+                cats.append(self.get_item(	11194	,	"16-oneToOneUnidirectional	"	))
+                cats.append(self.get_item(	11195	,	"17-oneToOneBidirectional	"	))
+                cats.append(self.get_item(	11196	,	"18-oneToOnePkMapping	"	))
+                cats.append(self.get_item(	11197	,	"19-oneToManyBidirectional	"	))
+                cats.append(self.get_item(	11198	,	"20-oneToManyTargetEntity	"	))
+                cats.append(self.get_item(	11199	,	"21-manyToManyBidirectional	"	))
+                cats.append(self.get_item(	11200	,	"22-manyToManyJoinTable	"	))
+                cats.append(self.get_item(	11201	,	"23-oneToManyUnidirectional	"	))
+                cats.append(self.get_item(	11202	,	"24-oneToOneLazy	"	))
+                cats.append(self.get_item(	11203	,	"25-embeddedObjects	"	))
+                cats.append(self.get_item(	11204	,	"26-sharingEmbeddedObjects	"	))
+                return cats
+
+        # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
