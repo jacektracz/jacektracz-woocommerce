@@ -42,10 +42,13 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_dl_neural("")
                 # return self.get_cats_rl_37("")
                 # return self.get_cats_pro_5("")
+                return self.get_cats_jpa2_ch3("")
                 # return self.get_cats_jpa2_ch4("")
                 # return self.get_cats_jpa2_ch5("")
                 # return self.get_cats_jpa2_ch6("")
-                return self.get_cats_jpa2_ch7("")
+                #return self.get_cats_jpa2_ch7("")
+                # return self.get_cats_jpa2_ch8("")
+                #return self.get_cats_jpa2_ch9("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -64,10 +67,13 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_dl_neural("")
                 # return self.get_root_rl_37("")
                 # return self.get_root_pro_5("")
+                return self.get_root_jpa2_ch3("")
                 #return self.get_root_jpa2_ch4("")
                 # return self.get_root_jpa2_ch5("")
                 # return self.get_root_jpa2_ch6("")
-                return self.get_root_jpa2_ch7("")
+                #return self.get_root_jpa2_ch7("")
+                # return self.get_root_jpa2_ch8("")
+                #return self.get_root_jpa2_ch9("")
 
 
         def get_root_jhreact(self, dd):
@@ -991,6 +997,52 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	11253	,	"07 messageBoardExample	"	))
                 cats.append(self.get_item(	11254	,	"08 bulkQueryExample	"	))
                 cats.append(self.get_item(	11255	,	"09 queryHintsExample	"	))
+                return cats
+
+        def get_root_jpa2_ch8(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_pro_jpa_2/app/src/pro-jpa-2/examples/Chapter8"
+                return root_src
+
+        def get_cats_jpa2_ch8(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(	11257	,	"jpqlExamples	"	))
+                return cats
+
+        def get_root_jpa2_ch9(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_pro_jpa_2/app/src/pro-jpa-2/examples/Chapter9"
+                return root_src
+
+        def get_cats_jpa2_ch9(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(	11259	,	"01 employeeSearchService	"	))
+                cats.append(self.get_item(	11260	,	"02 predicateConjunction	"	))
+                cats.append(self.get_item(	11261	,	"03 empSearchSubQuery	"	))
+                cats.append(self.get_item(	11262	,	"04 metamodelStronglyTyped	"	))
+                cats.append(self.get_item(	11263	,	"05 canonicalMetamodel	"	))
+                return cats
+
+        def get_root_jpa2_ch3(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_pro_jpa_2/app/src/pro-jpa-2/examples/Chapter3"
+                return root_src
+
+        def get_cats_jpa2_ch3(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(	11162	,	"01 slsbExample	"	))
+                cats.append(self.get_item(	11163	,	"02 slsbLifecycleExample	"	))
+                cats.append(self.get_item(	11164	,	"03 slsbRemoteExample	"	))
+                cats.append(self.get_item(	11165	,	"04 sfsbExample	"	))
+                cats.append(self.get_item(	11166	,	"05 sfsbLifecycleExample	"	))
+                cats.append(self.get_item(	11167	,	"06 singletonBean	"	))
+                cats.append(self.get_item(	11168	,	"07 mdbExample	"	))
+                cats.append(self.get_item(	11169	,	"08 servletExample	"	))
+                cats.append(self.get_item(	11170	,	"09 dependencyLookup	"	))
+                cats.append(self.get_item(	11171	,	"10 ejbContextLookup	"	))
+                cats.append(self.get_item(	11172	,	"11 fieldInjection	"	))
+                cats.append(self.get_item(	11173	,	"12 setterInjection	"	))
+                cats.append(self.get_item(	11174	,	"13 bmtExample	"	))
+                cats.append(self.get_item(	11175	,	"14 cmtExample	"	))
+                cats.append(self.get_item(	11176	,	"15 userTxExample	"	))
+                cats.append(self.get_item(	11177	,	"16 employeeService	"	))
                 return cats
 
         # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
