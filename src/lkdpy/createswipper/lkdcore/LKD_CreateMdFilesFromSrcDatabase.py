@@ -876,17 +876,17 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 return cats
 
         def get_root_jpa2_ch4(self, dd):
-                root_src = "C:\lkd\ht\apps_spring_pro_jpa_2\app\src\pro-jpa-2\examples\Chapter4"
+                root_src = "C:/lkd/ht/apps_spring_pro_jpa_2/app/src/pro-jpa-2/examples/Chapter4"
                 return root_src
 
-        def get_cats_jpa2_ch4(self, psrc_path_project):
+        def get_cats_jpa2_ch4_test(self, psrc_path_project):
                 cats = []
                 cats.append(self.get_item(	11179	,	"01-fieldAccess	"	))
                 return cats
 
-        def get_cats_jpa2_4_all(self, psrc_path_project):
+        def get_cats_jpa2_ch4(self, psrc_path_project):
                 cats = []
-                cats.append(self.get_item(	11179	,	"01-fieldAccess	"	))
+                #cats.append(self.get_item(	11179	,	"01-fieldAccess	"	))
                 cats.append(self.get_item(	11180	,	"02-propertyAccess	"	))
                 cats.append(self.get_item(	11181	,	"03-mixedAccess	"	))
                 cats.append(self.get_item(	11182	,	"04-customTableSchema	"	))
