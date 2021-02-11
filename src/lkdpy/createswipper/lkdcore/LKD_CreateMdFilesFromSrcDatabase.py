@@ -42,7 +42,9 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_dl_neural("")
                 # return self.get_cats_rl_37("")
                 # return self.get_cats_pro_5("")
-                return self.get_cats_jpa2_ch4("")
+                # return self.get_cats_jpa2_ch4("")
+                # return self.get_cats_jpa2_ch5("")
+                return self.get_cats_jpa2_ch6("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -61,7 +63,9 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_dl_neural("")
                 # return self.get_root_rl_37("")
                 # return self.get_root_pro_5("")
-                return self.get_root_jpa2_ch4("")
+                #return self.get_root_jpa2_ch4("")
+                # return self.get_root_jpa2_ch5("")
+                return self.get_root_jpa2_ch6("")
 
 
         def get_root_jhreact(self, dd):
@@ -912,6 +916,62 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	11202	,	"24-oneToOneLazy	"	))
                 cats.append(self.get_item(	11203	,	"25-embeddedObjects	"	))
                 cats.append(self.get_item(	11204	,	"26-sharingEmbeddedObjects	"	))
+                return cats
+
+        def get_root_jpa2_ch5(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_pro_jpa_2/app/src/pro-jpa-2/examples/Chapter5"
+                return root_src
+
+        def get_cats_jpa2_ch5(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(	11206	,	"1-elementCollection	"	))
+                cats.append(self.get_item(	11207	,	"10-embeddableKeyMapping	"	))
+                cats.append(self.get_item(	11208	,	"11-manyToManyEmbeddableKeyOverride	"	))
+                cats.append(self.get_item(	11209	,	"12-elementCollectionMapKeyEntity	"	))
+                cats.append(self.get_item(	11210	,	"13-untypedMaps	"	))
+                cats.append(self.get_item(	11211	,	"2-overrideCollectionTableColumn	"	))
+                cats.append(self.get_item(	11212	,	"3-oneToManyList	"	))
+                cats.append(self.get_item(	11213	,	"4-persistentlyOrderedList	"	))
+                cats.append(self.get_item(	11214	,	"5-elementCollectionStringMap	"	))
+                cats.append(self.get_item(	11215	,	"6-elementCollectionEnumMap	"	))
+                cats.append(self.get_item(	11216	,	"7-oneToManyMap	"	))
+                cats.append(self.get_item(	11217	,	"8-manyToManyMap	"	))
+                cats.append(self.get_item(	11218	,	"9-oneToManyEntityAttributeKey	"	))
+                return cats
+
+        def get_root_jpa2_ch6(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_pro_jpa_2/app/src/pro-jpa-2/examples/Chapter6"
+                return root_src
+
+        def get_cats_jpa2_ch6(self, psrc_path_project):
+                cats = []                
+
+                cats.append(self.get_item(	11220	,	"01 txScopedEmExample	"	))
+                cats.append(self.get_item(	11221	,	"02 extendedEmExample1	"	))
+                cats.append(self.get_item(	11222	,	"03 extendedEmExample2	"	))
+                cats.append(self.get_item(	11223	,	"04 extendedEmExample3	"	))
+                cats.append(self.get_item(	11224	,	"05 applicationManagedSE	"	))
+                cats.append(self.get_item(	11225	,	"06 applicationManagedEE	"	))
+                cats.append(self.get_item(	11226	,	"07 txScopedPersistenceContext	"	))
+                cats.append(self.get_item(	11227	,	"08 extendedPersistenceContext	"	))
+                cats.append(self.get_item(	11228	,	"09 persistenceContextCollision	"	))
+                cats.append(self.get_item(	11229	,	"10 persistenceContextInheritance	"	))
+                cats.append(self.get_item(	11230	,	"11 applicationManagedJTA	"	))
+                cats.append(self.get_item(	11231	,	"12 sharingApplicationManagedJTA	"	))
+                cats.append(self.get_item(	11232	,	"13 resourceLocalTxSE	"	))
+                cats.append(self.get_item(	11233	,	"14 resourceLocalTxEE	"	))
+                cats.append(self.get_item(	11234	,	"15 persistingWithRelationships	"	))
+                cats.append(self.get_item(	11235	,	"16 persistingWithRelationshipsUsingGetReference	"	))
+                cats.append(self.get_item(	11236	,	"17 removingWithRelationships	"	))
+                cats.append(self.get_item(	11237	,	"18 persistingWithRelationshipsCascade	"	))
+                cats.append(self.get_item(	11238	,	"19 removingWithRelationshipsCascade	"	))
+                cats.append(self.get_item(	11239	,	"20 mergingDetachedEntities	"	))
+                cats.append(self.get_item(	11240	,	"21 detachmentWithTriggeredLazyLoading	"	))
+                cats.append(self.get_item(	11241	,	"22 detachmentWithEagerLoading	"	))
+                cats.append(self.get_item(	11242	,	"23 noDetachmentSingleTx	"	))
+                cats.append(self.get_item(	11243	,	"24 noDetachmentAppManagedEm	"	))
+                cats.append(self.get_item(	11244	,	"25 noDetachmentSFSBAndExtendedEm	"	))
+                cats.append(self.get_item(	11245	,	"26 editSessionExample	"	))
                 return cats
 
         # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
