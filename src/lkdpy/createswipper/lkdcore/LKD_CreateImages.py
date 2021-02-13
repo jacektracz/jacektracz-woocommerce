@@ -8,7 +8,8 @@ from LKD_CreateFilesDatabase import *
 from LKD_CatItem import *
 from LKD_MdFilesUtils import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
-
+# cd C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital
+#
 
 class LKD_CreateImages:
 
