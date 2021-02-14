@@ -1185,7 +1185,7 @@ class LKD_CreateCatsFromDirectories:
                 if(sp_0 == sp_1 + 1):
                         self.xx_dbg("cond-2-Y")
                         lines_out.append("mkdir " + curr_line_0_a)       
-                        lines_out.append("cd   .. ")       
+                        lines_out.append("cd  .. ")       
                 else:
                         self.xx_dbg("cond-2-N")
 
