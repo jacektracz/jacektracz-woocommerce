@@ -1,6 +1,6 @@
 package com.jacektracz.letcode.mergeklists;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 import org.junit.Ignore;
 import org.junit.Test;
