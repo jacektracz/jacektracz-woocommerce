@@ -1069,3 +1069,4 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	11759	,"Ecom-shipping"	))
                 cats.append(self.get_item(	11760	,"Ecom-user"	))
                 cats.append(self.get_item(	11761	,"Ecom-web"	))        
+                return cats
