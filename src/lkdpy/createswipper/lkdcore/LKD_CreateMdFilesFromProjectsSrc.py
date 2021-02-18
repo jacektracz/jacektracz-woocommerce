@@ -7,7 +7,7 @@ from LKD_CopyFilesMd import *
 from LKD_CreateMdFilesFromSrcDatabase import *
 from LKD_CatItem import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
-
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
 class LKD_CreateMdFilesFromProjectsSrc:
 

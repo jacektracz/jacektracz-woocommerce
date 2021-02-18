@@ -6,7 +6,7 @@ from LKD_CopyFilesMd import *
 from LKD_CatItem import *
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
-
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 class LKD_CreateMdFilesFromSrcDatabase:
         def __init__(self):                                
                 self.m_initialized = 1
@@ -49,7 +49,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_jpa2_ch7("")
                 # return self.get_cats_jpa2_ch8("")
                 # return self.get_cats_jpa2_ch9("")
-                return ""
+                return self.get_cats_spring_ecomm("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -75,7 +75,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_jpa2_ch7("")
                 # return self.get_root_jpa2_ch8("")
                 # return self.get_root_jpa2_ch9("")
-                return ""
+                return self.get_root_spring_ecomm("")
 
 
         def get_root_jhreact(self, dd):
@@ -1048,3 +1048,24 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 return cats
 
         # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
+
+        def get_root_spring_ecomm(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_micr_practical/app/src/practical-microservices-architectural-patterns/Christudas_Ch18_Source/ch18/ch18-01/Ax2-Ecom-With-Security"
+                return root_src
+
+# C:\lkd\ht\apps_spring_micr_practical\app\src\practical-microservices-architectural-patterns\Christudas_Ch18_Source\ch18\ch18-01\Ax2-Ecom-With-Security
+        def get_cats_spring_ecomm(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(	11749	,"Ecom-cart"	))
+                cats.append(self.get_item(	11750	,"Ecom-common"	))
+                cats.append(self.get_item(	11751	,"Ecom-config"	))
+                cats.append(self.get_item(	11752	,"Ecom-core"	))
+                cats.append(self.get_item(	11753	,"Ecom-delivery"	))
+                cats.append(self.get_item(	11754	,"Ecom-gateway"	))
+                cats.append(self.get_item(	11755	,"Ecom-history"	))
+                cats.append(self.get_item(	11756	,"Ecom-product"	))
+                cats.append(self.get_item(	11757	,"Ecom-registry"	))
+                cats.append(self.get_item(	11758	,"Ecom-security"	))
+                cats.append(self.get_item(	11759	,"Ecom-shipping"	))
+                cats.append(self.get_item(	11760	,"Ecom-user"	))
+                cats.append(self.get_item(	11761	,"Ecom-web"	))        
