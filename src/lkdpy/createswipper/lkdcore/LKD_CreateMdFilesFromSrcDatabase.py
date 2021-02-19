@@ -49,7 +49,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_jpa2_ch7("")
                 # return self.get_cats_jpa2_ch8("")
                 # return self.get_cats_jpa2_ch9("")
-                return self.get_cats_spring_ecomm("")
+                # return self.get_cats_spring_ecomm("")
+                return self.get_cats_java_algho_dt("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -75,7 +76,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_jpa2_ch7("")
                 # return self.get_root_jpa2_ch8("")
                 # return self.get_root_jpa2_ch9("")
-                return self.get_root_spring_ecomm("")
+                # return self.get_root_spring_ecomm("")
+                return self.get_root_java_algho_dt("")
 
 
         def get_root_jhreact(self, dd):
@@ -1069,4 +1071,33 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	11759	,"Ecom-shipping"	))
                 cats.append(self.get_item(	11760	,"Ecom-user"	))
                 cats.append(self.get_item(	11761	,"Ecom-web"	))        
+                return cats
+
+
+        def get_root_java_algho_dt(self, dd):
+                root_src = "C:/lkd/ht/apps_spring_algorithms/app/src/Algorithms-1/src/main/java/com/williamfiset/algorithms/datastructures"
+                return root_src
+
+        def get_cats_java_algho_dt(self, psrc_path_project):
+                cats = []                
+                cats.append(self.get_item(	11771	,	"balancedtree"	))
+                cats.append(self.get_item(	11772	,	"binarysearchtree"	))
+                cats.append(self.get_item(	11773	,	"bloomfilter"	))
+                cats.append(self.get_item(	11774	,	"dynamicarray"	))
+                cats.append(self.get_item(	11775	,	"fenwicktree"	))
+                cats.append(self.get_item(	11776	,	"fibonacciheap"	))
+                cats.append(self.get_item(	11777	,	"hashtable"	))
+                cats.append(self.get_item(	11778	,	"linkedlist"	))
+                cats.append(self.get_item(	11779	,	"priorityqueue"	))
+                cats.append(self.get_item(	11780	,	"quadtree"	))
+                cats.append(self.get_item(	11781	,	"queue"	))
+                cats.append(self.get_item(	11782	,	"segmenttree"	))
+                cats.append(self.get_item(	11783	,	"set"	))
+                cats.append(self.get_item(	11784	,	"skiplist"	))
+                cats.append(self.get_item(	11785	,	"sparsetable"	))
+                cats.append(self.get_item(	11786	,	"stack"	))
+                cats.append(self.get_item(	11787	,	"suffixarray"	))
+                cats.append(self.get_item(	11788	,	"trie"	))
+                cats.append(self.get_item(	11789	,	"unionfind"	))
+                cats.append(self.get_item(	11790	,	"utils"	))
                 return cats

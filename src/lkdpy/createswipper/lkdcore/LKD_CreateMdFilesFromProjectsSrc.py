@@ -396,7 +396,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         elif os.path.islink(x): print 'l-', x
                         else: print '---', x
 
-        def get_print_files_l2(self,psrc_path_project):
+        def get_print_files_l2(self, psrc_path_project):
                 for x1 in os.listdir(psrc_path_project):                        
                         p2 = psrc_path_project + "/" + x1
                         if os.path.isdir(p2): 
@@ -405,6 +405,8 @@ class LKD_CreateMdFilesFromProjectsSrc:
                                         p3 = p2 + "/" + x2    
                                         if os.path.isdir(p3): 
                                                 print '         ', x2
+
+
 
         def a(self,path):
                 list_subfolders_with_paths = [f.path for f in os.scandir(path) if f.is_dir()]

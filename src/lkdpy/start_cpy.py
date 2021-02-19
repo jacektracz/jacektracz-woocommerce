@@ -87,9 +87,15 @@ class LKD_MainExec:
         def add_two(self,a,b):
                 return a+b
 
+        def get_print_files_to_create(self,tt):
+                ddcr = LKD_CreateCatsFromDirectories("")
+                pth = "C:/lkd/ht/apps_spring_algorithms/app/src/Algorithms-1/src/main/java/com/williamfiset/algorithms/datastructures"
+                ddcr.get_print_files_to_create(pth)
+                ddcr.get_crete_files_to_create(pth)
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-cat-file
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py print-to-create
 
 if __name__ == "__main__":
 
@@ -103,6 +109,9 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "perform-src-files"):
                 ddh.create_source_files("")
+
+        if (s_arg_0 == "print-to-create"):
+                ddh.get_print_files_to_create("")
 
         #ddh.exec_cpy_many_md_files("")
 

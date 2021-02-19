@@ -11,7 +11,7 @@ from LKD_CatItem import *
 # C:/lkd/ht/apps_portal/lkduni/app-4/src/modules/mod_ep_articles/content_cats/content_markdown/content_by_groups/cat__8000/cat__000/cat__00/cat__8000/content_idx_0/content__cats_2_add.md
 # C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\createswipper\lkdcore\LKD_CreateCats.py
 
-# select "cats.append(self.get_item(",id,",","\"",trim(title),"\"","))" from joo2_categories where parent_id = 11161
+# select "cats.append(self.get_item(",id,",","\"",trim(title),"\"","))" from joo2_categories where parent_id = 11770
 
 class LKD_CreateCatsFromDirectories:
 
@@ -875,6 +875,26 @@ class LKD_CreateCatsFromDirectories:
 
                 return line
 
+        def get_line_prepare_spaces_to_minus(
+                self
+                , pline):
+
+                s_fun = self.class_name() + "::get_line_prepare_spaces_to_minus::"                
+                self.xx_dbg_1(s_fun + "atart")
+
+                line = pline                
+                line = line.strip()
+
+                for kk in range(10):
+                        line = line.replace("  "," ")
+
+                line = line.replace(" ","-")
+                s_tab_prefix = ""
+                line = s_tab_prefix + line
+                self.xx_dbg_1(s_fun + "line:" + line)                
+
+                return line
+
         def get_line_prepare_xx_to_toc(
                 self
                 , pline):
@@ -1264,9 +1284,27 @@ class LKD_CreateCatsFromDirectories:
 
                 return spaces
 
+        def get_print_files_to_create(self, psrc_path_project):
+                for x1 in os.listdir(psrc_path_project):                        
+                        p2 = psrc_path_project + "/" + x1
+                        if os.path.isdir(p2): 
+                                ss = "C:/lkd/ht/apps_ctx/1/"
+                                x1 = self.get_line_prepare_spaces_to_minus(x1)
+                                xxp = ss + x1
+                                self.xx_dbg( 'mkdir ' + xxp)
+
+        def get_crete_files_to_create(self, psrc_path_project):
+                for x1 in os.listdir(psrc_path_project):                        
+                        p2 = psrc_path_project + "/" + x1
+                        if os.path.isdir(p2): 
+                                ss = "C:/lkd/ht/apps_ctx/1/"
+                                x1 = self.get_line_prepare_spaces_to_minus(x1)
+                                xxp = ss + x1
+                                self.xx_dbg( 'mkdir ' + xxp)
+                                os.mkdir(xxp)
+
+
 if __name__ == "__main__":
 
         ddh = LKD_CreateCats("")
-
-
         ddh.execute_main("")
