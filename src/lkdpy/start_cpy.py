@@ -64,7 +64,7 @@ class LKD_MainExec:
 
         def exec_cpy_many_md_files(self, tt):
                 dd_mdh = LKD_CopyFilesMd("")
-                dd_mdh.exec_cpy_many_md_files(8001,10000,12000) 
+                dd_mdh.exec_cpy_many_md_files(8001,12000,14000) 
 
         def exec_create_images(self,tt):
                 dd_img = LKD_CreateImages("")
@@ -97,7 +97,7 @@ class LKD_MainExec:
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-cat-file
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py print-to-create
-
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-md-files
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
@@ -113,6 +113,9 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "print-to-create"):
                 ddh.get_print_files_to_create("")
+
+        if (s_arg_0 == "create-md-files"):
+                ddh.exec_cpy_many_md_files("")
 
         #ddh.exec_cpy_many_md_files("")
 
