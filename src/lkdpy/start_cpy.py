@@ -91,6 +91,7 @@ class LKD_MainExec:
                 ddcr = LKD_CreateCatsFromDirectories("")
                 pth = "C:/lkd/ht/apps_spring_algorithms/app/src/Algorithms-1/src/main/java/com/williamfiset/algorithms/datastructures"
                 pth = "C:/lkd/ht/apps_spring_algorithms/app/src/Algorithms-1/src/main/java/com/williamfiset/algorithms"
+                pth = "C:/lkd/ht/apps_spring_eugen/app/src/tutorials"
                 ddcr.get_print_files_to_create(pth)
                 ddcr.get_crete_files_to_create(pth)
 
