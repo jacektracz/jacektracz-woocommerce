@@ -206,6 +206,8 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 needles = []
                 needles.append("target")
                 needles.append(".git")
+                needles.append(".svg")
+                needles.append(".png")
                 needles.append("node_modules")
                 is_valid = 1
                 for needle in needles:
