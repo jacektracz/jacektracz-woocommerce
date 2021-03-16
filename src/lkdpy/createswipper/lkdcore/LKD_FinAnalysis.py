@@ -662,7 +662,12 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
 
                 dd = []
-                
+
+                #       
+                #       63 951,11 PLN	280 310,30 PLN	-216 359,19 PLN 
+                #       3100 Rafal
+                #
+
                 # 71 051,33 PLN	280 310,30 PLN	-209 258,97 PLN  25-02-2021
                 # 60 604,79 PLN	280 310,30 PLN	-219 705,51 PLN
                 # 61 386,26 PLN	281 091,69 PLN	-219 705,43 PLN	 23-02-2021 
