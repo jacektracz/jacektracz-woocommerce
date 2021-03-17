@@ -7,6 +7,7 @@ from LKD_CatItem import *
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+# select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
 
 class LKD_CreateMdFilesFromSrcDatabase:
         def __init__(self):                                
@@ -53,7 +54,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_spring_ecomm("")
                 # return self.get_cats_java_algho_dt("")
                 # return self.get_cats_java_algho_science("")
-                return self.get_cats_eugen("")
+                # return self.get_cats_eugen("")
+                return self.get_cats_etherneum_lkdg("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -82,7 +84,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_spring_ecomm("")
                 # return self.get_root_java_algho_dt("")
                 # return self.get_root_java_algho_science("")
-                return self.get_root_eugen("")
+                # return self.get_root_eugen("")
+                return self.get_root_etherneum_lkdg("")
 
 
         def get_root_jhreact(self, dd):
@@ -1440,4 +1443,14 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	12355	,	"	wildfly	"	))
                 cats.append(self.get_item(	12356	,	"	xml	"	))
                 cats.append(self.get_item(	12357	,	"	xstream	"	))
+                return cats
+
+
+        def get_root_etherneum_lkdg(self, dd):
+                root_src = "C:/lkd/ht/apps_ether_currency/app/src/lakida_ether_currency/"
+                return root_src
+
+        def get_cats_etherneum_lkdg(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(12483	,"truffle424"	))
                 return cats

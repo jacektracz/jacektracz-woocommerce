@@ -10,6 +10,7 @@ from createswipper.lkdcore.LKD_CreateCatsFromDirectories import *
 
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 #  600 446 066 Rafal tel
+# select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
 
 class LKD_MainExec:
 
