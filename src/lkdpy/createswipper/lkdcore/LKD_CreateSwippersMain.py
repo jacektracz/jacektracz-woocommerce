@@ -153,7 +153,10 @@ class LKD_CreateSwippersMain:
                 # mod_ep_swipper_md_treebottom_tb9
                 # dd.cpy_one_swipper_all_files("md_treebottom_tb9","md_treecreator_mc2", "all")
 
-                dd.cpy_one_swipper_all_files("treechilds_tc9","treechildsd_td9", "all")
+                # dd.cpy_one_swipper_all_files("treechilds_tc9","treechildsd_td9", "all")
+
+                dd.cpy_one_swipper_all_files("treechilds_tc9","ethereum_contract_et9", "all")
+                
 
         def refill_full_swipper( self ):
                 dd = LKD_CreateSwipperExec("")                 

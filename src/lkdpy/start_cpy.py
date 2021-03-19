@@ -100,6 +100,8 @@ class LKD_MainExec:
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py print-to-create
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-md-files
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-one-swipper
+
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
@@ -121,7 +123,8 @@ if __name__ == "__main__":
 
         #ddh.exec_cpy_many_md_files("")
 
-        # ddh.create_one_swipper("")
+        if (s_arg_0 == "create-one-swipper"):
+                ddh.create_one_swipper("")
 
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")
