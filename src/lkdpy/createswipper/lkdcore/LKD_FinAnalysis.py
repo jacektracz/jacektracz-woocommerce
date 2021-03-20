@@ -662,7 +662,10 @@ class LKD_FinAnalysis:
                 self.xx_dbg("LKD_FinAnalysis::get_items_sum::in::")
 
                 dd = []
-
+                
+                #       61 469,85 PLN	280 310,30 PLN	-218 840,45 PLN
+                #       karta    2 600
+                #       Metamask 4 000
                 #       
                 #       63 951,11 PLN	280 310,30 PLN	-216 359,19 PLN 
                 #       3100 Rafal
