@@ -520,6 +520,17 @@ class LKD_CreateCatsFromDirectories:
                         "get_lines_normalize_multiple_item_direct"
                         , lines)
 
+                lines = self.get_lines_normalize_multiple_item_direct(
+                        "vvv"
+                        , " "
+                        , lines
+                        )
+
+                self.print_lines(
+                        "get_lines_normalize_multiple_item_direct_vvv"
+                        , lines)
+
+
                 return lines
 
         def get_lines_prepare_xx_to_toc_spaces(
