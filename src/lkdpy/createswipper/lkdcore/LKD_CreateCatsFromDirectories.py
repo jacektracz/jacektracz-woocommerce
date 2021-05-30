@@ -32,6 +32,7 @@ class LKD_CreateCatsFromDirectories:
                 self.m_exec_main_prepare_in_buckets = 1
                 self.m_exec_main_create_dirs = 1
                 self.m_override_mode = True
+                self.m_prepare_xx_to_remove_toc = False
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CopyFiles::__init__::out::")
 
@@ -556,9 +557,13 @@ class LKD_CreateCatsFromDirectories:
                 self.xx_dbg(s_fun + "start")
                 lines_out = []
                 for line in lines:                        
-                        line_strip = self.get_line_prepare_xx_to_toc(
-                                line)
-                        lines_out.append(line_strip)      
+                        if(self.m_prepare_xx_to_remove_toc == True):
+                                line_strip = self.get_line_prepare_xx_to_toc(
+                                        line)
+                                lines_out.append(line_strip)  
+                        else:
+                                line_strip = line
+                                lines_out.append(line_strip)  
 
                 self.xx_dbg(s_fun + "end")
                 return lines_out
@@ -664,6 +669,7 @@ class LKD_CreateCatsFromDirectories:
 
                 self.xx_dbg_1(s_fun + "line:" + line)
                 return lineout
+
 
         def get_lines_with_removed_toc(
                 self
