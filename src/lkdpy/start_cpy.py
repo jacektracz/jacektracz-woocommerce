@@ -7,7 +7,7 @@ from createswipper.lkdcore.LKD_FinAnalysis import *
 from createswipper.lkdcore.LKD_CreateImages import *
 from createswipper.lkdcore.LKD_CopyFilesPortal import *
 from createswipper.lkdcore.LKD_CreateCatsFromDirectories import *
-
+from createswipper.lkdcore.country_db.LKD_CreateCountryExec import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 #  600 446 066 Rafal tel
 # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
@@ -96,12 +96,16 @@ class LKD_MainExec:
                 ddcr.get_print_files_to_create(pth)
                 ddcr.get_crete_files_to_create(pth)
 
+        def create_country(self,tt):
+                ddcr = LKD_CreateCountryExec("")
+                ddcr.execute_main("")
+
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-cat-file
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py print-to-create
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-md-files
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-one-swipper
-
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-country
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
@@ -125,6 +129,9 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "create-one-swipper"):
                 ddh.create_one_swipper("")
+
+        if (s_arg_0 == "create-country"):
+                ddh.create_country("")
 
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")
