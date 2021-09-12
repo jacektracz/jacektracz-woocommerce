@@ -227,6 +227,12 @@ class LKD_CopyFilesMd:
                         , "content_idx_0" + DS + "imgs" + DS + "img_300_x_200.png"
                         , "content_idx_0" + DS + "imgs" + DS + "img_300_x_200.png")
 
+                self.static_copy_file( 
+                        root_src
+                        , root_dst
+                        , "content_idx_0" + DS + "imgs" + DS + "img_400_x_600.png"
+                        , "content_idx_0" + DS + "imgs" + DS + "img_400_x_600.png")
+
                 a_files = []
                 a_files.append("content__rel_items_0.md")
                 a_files.append("content__rel_tags_0.md")
@@ -246,6 +252,8 @@ class LKD_CopyFilesMd:
                 a_files.append("content__rel_title_0.md")
                 a_files.append("content___mdcontent_cnt.md")
                 a_files.append("content___mdcontent_toc.md")
+                a_files.append("content__modules_view_active_0.md")
+                a_files.append("content__referenced_modules_view_0.md")
 
                 for a_file in a_files:
 
