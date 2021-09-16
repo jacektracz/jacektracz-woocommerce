@@ -9,16 +9,22 @@ from LKD_CatItem import *
 from LKD_MdFilesUtils import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 # cd C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital
-#
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-sequential-ids
 
 class LKD_CreateImages:
 
         def __init__(self,spar):                                
                 self.xx_dbg("LKD_CreateImages::__init__::in::")
-                self.m_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital"
+                #self.m_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital"
+                #self.m_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\300x200_white"
+                self.m_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs\\300x200_white"
                 self.m_dst = "services_s3"
-                self.m_root_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital"
-                self.m_root_dst = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital_seq"
+                # self.m_root_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital"
+                #self.m_root_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\300x200_white"
+                self.m_root_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs\\300x200_white"
+                #self.m_root_dst = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital_seq"
+                #self.m_root_dst = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\300x200_white_seq"
+                self.m_root_dst = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs\\300x200_white_seq"
                 self.m_test_mode = 0
                 #self.m_override_mode = False
                 self.m_override_mode = True
@@ -39,10 +45,13 @@ class LKD_CreateImages:
 
                 ii = 0
                 for dd_ii in dd_ll:
-                        self.xx_dbg("LKD_CreateImages::image::" + dd_ii.src_javafile_full_path)
+                        # self.xx_dbg("LKD_CreateImages::image::" + dd_ii.src_javafile_full_path)
                         src_fpath = dd_ii.src_javafile_full_path
                         dest_fpath = p_dest + "\\" + "img_" + str(ii) + ".jpg"                        
+                        self.xx_dbg("=====================================================================>>>")
+                        self.xx_dbg("LKD_CreateImages::image::s_src" + src_fpath)
                         self.xx_dbg("LKD_CreateImages::image::s_dest" + dest_fpath)
+                        self.xx_dbg("<<<=====================================================================")
                         shutil.copy(src_fpath, dest_fpath)
                         ii = ii + 1
 

@@ -51,7 +51,7 @@ class LKD_MainExec:
                 #dd_fin.print_data()
                 dd_fin.print_data_processed()
         
-        def images_create_sequential_ids(self, tt):
+        def move_digital_images_to_md(self, tt):
                 dd_img = LKD_CreateImages("")
                 #dd_img.create_sequential_ids()
                 max_img_id_source_bucket = 2000
@@ -62,6 +62,12 @@ class LKD_MainExec:
                         max_img_id_source_bucket
                         ,cat_id_start
                         ,cat_id_end)
+
+        def images_create_sequential_ids(self, tt):
+                dd_img = LKD_CreateImages("")
+                dd_img.create_sequential_ids()
+
+        # create_sequential_ids
 
         def exec_cpy_many_md_files(self, tt):
                 dd_mdh = LKD_CopyFilesMd("")
@@ -106,6 +112,7 @@ class LKD_MainExec:
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-md-files
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-one-swipper
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-country
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-sequential-ids
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
@@ -132,6 +139,9 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "create-country"):
                 ddh.create_country("")
+
+        if (s_arg_0 == "create-sequential-ids"):
+                ddh.images_create_sequential_ids("")
 
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")
