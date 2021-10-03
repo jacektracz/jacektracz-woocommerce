@@ -41,15 +41,19 @@ class LKD_CreateCatsFromDirectories:
 
         def xx_dbg(self, tt ):
                 s_fun = self.class_name() + "::set_execute_main_toc::"
-                print tt
+                # print tt
 
         def xx_dbg_1(self, tt ):
                 s_fun = self.class_name() + "::set_execute_main_toc::"
                 # print tt
 
-        def xx_dbg_line(self, tt ):
+        def xx_dbg_2(self, tt ):
                 s_fun = self.class_name() + "::set_execute_main_toc::"
                 print tt
+
+        def xx_dbg_line(self, tt ):
+                s_fun = self.class_name() + "::set_execute_main_toc::"
+                # print tt
 
         def set_execute_main_toc(self, tt):
                 s_fun = self.class_name() + "::set_execute_main_toc::"
@@ -84,14 +88,29 @@ class LKD_CreateCatsFromDirectories:
                 self.xx_dbg(s_fun + "start")
 
                 src_file = self.m_src
-                src_file_without_empty = src_file
+                dst_file_start = src_file
+
+                #src_file_toc_generic = src_file
+                src_file_toc_generic = dst_file_start
+                dst_file_standalone_toc_generic = src_file + ".tmp.1.0.toc.gen.md"
+                exec_step = 1
+                self.execute_main_lines_with_removed_toc_from_start_generic(
+                        ""
+                        , src_file_toc_generic
+                        , dst_file_standalone_toc_generic
+                        , exec_step)
+
+                src_file_without_empty = dst_file_standalone_toc_generic
                 dst_file_without_empty = src_file + ".tmp.0.1.noempty.md"
+                exec_step = 1
                 self.execute_main_lines_without_empty(
                         ""
                         , src_file_without_empty
-                        , dst_file_without_empty)
+                        , dst_file_without_empty
+                        , exec_step)
 
-                src_file_prepare_xx_to_toc = src_file
+
+                #src_file_prepare_xx_to_toc = src_file
                 src_file_prepare_xx_to_toc = dst_file_without_empty
                 dst_file_prepare_xx_to_toc = src_file + ".tmp.0.2.prepxx.md"
                 self.execute_main_lines_prepare_xx_to_toc(
@@ -99,7 +118,7 @@ class LKD_CreateCatsFromDirectories:
                         , src_file_prepare_xx_to_toc
                         , dst_file_prepare_xx_to_toc)
 
-                src_file_toc = src_file
+                #src_file_toc = src_file
                 src_file_toc = dst_file_prepare_xx_to_toc
                 dst_file_standalone_toc = src_file + ".tmp.1.0.toc.md"
                 self.execute_main_lines_with_removed_toc_from_start(
@@ -126,10 +145,12 @@ class LKD_CreateCatsFromDirectories:
                 src_file_spaces_to_break = src_file
                 src_file_spaces_to_break = dst_file_toc_2
                 dst_file_spaces_to_break = src_file + ".tmp.3.spacestobreak.md"
+                exec_step = 1
                 self.execute_main_lines_spaces_to_break(
                         ""
                         , src_file_spaces_to_break
-                        , dst_file_spaces_to_break)
+                        , dst_file_spaces_to_break
+                        , exec_step)
 
                 src_file_clear_spaces_to_break = src_file
                 src_file_clear_spaces_to_break = dst_file_spaces_to_break                
@@ -183,7 +204,8 @@ class LKD_CreateCatsFromDirectories:
                 self
                 , tt
                 , psrc_file
-                , pdst_file):
+                , pdst_file
+                , pexec_step):
 
                 s_fun = self.class_name() + "::execute_main_lines_without_empty::"
                 self.xx_dbg(s_fun + "start")
@@ -196,9 +218,9 @@ class LKD_CreateCatsFromDirectories:
 
                 lines = self.read_lines_from_file(
                         src_file)
-
-                lines = self.get_lines_without_empty(
-                        lines)
+                if ( pexec_step == 1):
+                        lines = self.get_lines_without_empty(
+                                lines)
 
                 self.print_lines(
                         "execute_main_clear_spaces_to_break"
@@ -216,7 +238,8 @@ class LKD_CreateCatsFromDirectories:
                 self
                 , tt
                 , psrc_file
-                , pdst_file):
+                , pdst_file
+                , pexec_step):
 
                 s_fun = self.class_name() + "::execute_main_lines_spaces_to_break::"
                 self.xx_dbg(s_fun + "start")
@@ -228,9 +251,9 @@ class LKD_CreateCatsFromDirectories:
                 lines = []
                 lines = self.read_lines_from_file(
                         src_file)
-               
-                lines = self.get_lines_spaces_to_break(
-                        lines)
+                if ( pexec_step == 1):
+                        lines = self.get_lines_spaces_to_break(
+                                lines)
 
                 self.print_lines(
                         "execute_main_lines_spaces_to_break"
@@ -321,6 +344,47 @@ class LKD_CreateCatsFromDirectories:
                 self.xx_dbg(s_fun + "end")
 
                 return lines
+
+        def execute_main_lines_with_removed_toc_from_start_generic(
+                self
+                , tt
+                , psrc_file
+                , pdst_file
+                , pexec):
+
+                s_fun = self.class_name() + "::execute_main_lines_with_removed_toc_from_start_generic::"
+                self.xx_dbg(s_fun + "start")
+
+                
+
+                src_file = psrc_file
+                dst_file = pdst_file                
+                dst_file_bat = pdst_file + ".bat"
+
+                lines = []
+                lines = self.read_lines_from_file(
+                        src_file)
+
+                if(pexec == 1):
+                        lines = self.get_lines_with_removed_toc_from_start_generic(
+                                lines)
+
+                self.print_lines(
+                        "get_lines_with_removed_toc_from_start_generic"
+                        , lines)
+
+                self.write_lines(
+                        dst_file
+                        , lines)
+
+                self.create_bat_file(
+                        dst_file_bat
+                        , lines)
+
+                self.xx_dbg(s_fun + "end")
+
+                return lines
+
 
         def execute_main_lines_without_toc(
                 self
@@ -655,19 +719,55 @@ class LKD_CreateCatsFromDirectories:
 
                 self.xx_dbg(s_fun + "end")
                 return lines_out
+
+        def get_lines_with_removed_toc_from_start_generic(
+                self
+                , lines):
+
+                s_fun = self.class_name() + "::get_lines_with_removed_toc_from_start_generic::"
+                self.xx_dbg(s_fun + "start")
+                lines_out = []
+                for line in lines:                        
+                        line_strip = self.get_line_with_removed_toc_from_start(
+                                line)
+                        lines_out.append(line_strip)      
+
+                self.xx_dbg(s_fun + "end")
+                return lines_out
                 
         def get_line_with_removed_toc_from_start(
                 self
                 , pline):
 
+                s_fun = self.class_name() + "::get_line_with_removed_toc_from_start::"     
+                lineout = pline
+                lineout = self.get_line_with_removed_toc_from_start_generic_item (
+                        lineout,
+                        "xx")
+
+                for ii in range(10):
+                        lineout = self.get_line_with_removed_toc_from_start_generic_item (
+                                lineout,
+                                "yy" + str(ii))
+
+                self.xx_dbg_1(s_fun + "end")
+                return lineout
+
+
+        def get_line_with_removed_toc_from_start_generic_item(
+                self
+                , pline
+                , pkey):
+
                 s_fun = self.class_name() + "::get_line_with_removed_toc_from_start::"                
                 line = pline
                 lineout = pline
-                i_idx = line.find("xx")
+                i_idx = line.find( pkey )
                 if(i_idx > 0):
                         lineout = line[0:i_idx]
 
-                self.xx_dbg_1(s_fun + "line:" + line)
+                self.xx_dbg_2(s_fun + "line_no_toc_start:" + line)
+                self.xx_dbg_2(s_fun + "line_no_toc_end:" + line)
                 return lineout
 
 
@@ -953,6 +1053,7 @@ class LKD_CreateCatsFromDirectories:
                 s_tab_prefix = self.get_tabs_prefix(sp_0)
                 line = line.strip()
 
+                line = line.replace("@"," Annotation ") 
                 line = line.replace("?","")                
                 line = line.replace(";","")
                 line = line.replace(",","")
@@ -993,6 +1094,8 @@ class LKD_CreateCatsFromDirectories:
                 line = line.replace("|","")
                 line = line.replace( "xx","")                
                 line = line.replace( "’","")
+                line = line.replace( ":","")
+                line = line.replace( "=","")
 
                 line = s_tab_prefix + line
                 self.xx_dbg_1(s_fun + "line:" + line)                
