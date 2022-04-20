@@ -67,7 +67,10 @@ class LKD_MainExec:
                 dd_img = LKD_CreateImages("")
                 dd_img.create_sequential_ids()
 
-        # create_sequential_ids
+        def set_dirs_sequential_imgs(self, tt):
+                dd_img = LKD_CreateImages("")
+                dd_img.set_dirs_sequential_imgs()
+                dd_img.create_sequential_ids()
 
         def exec_cpy_many_md_files(self, tt):
                 dd_mdh = LKD_CopyFilesMd("")
@@ -77,6 +80,13 @@ class LKD_MainExec:
                 dd_img = LKD_CreateImages("")
                 dd_img.exec_images()
                 dd_img.move_digital_images_to_md()
+
+        def exec_move_images_for_child_directories(self,tt):
+                dd_img = LKD_CreateImages("")                
+                root_dir ="C:\\lkd\\ht\\apps_ctx\\1\\"
+                root_catid = 15944
+                dd_img.move_images_for_child_directories(root_dir,root_catid)
+
 
         def create_source_files(self,tt):
                 ddcr = LKD_CreateMdFilesFromProjectsSrc("")
@@ -113,6 +123,9 @@ class LKD_MainExec:
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-one-swipper
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-country
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-sequential-ids
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py set-sequential-ids
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py set-sequential-ids-ctx
+
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
@@ -142,6 +155,14 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "create-sequential-ids"):
                 ddh.images_create_sequential_ids("")
+
+        if (s_arg_0 == "set-sequential-ids"):
+                ddh.set_dirs_sequential_imgs("")
+
+        if (s_arg_0 == "set-sequential-ids-ctx"):
+                ddh.exec_move_images_for_child_directories("")
+
+
 
         # ddh.refill_full_copy_one("")
         # ddh.exec_fin("")

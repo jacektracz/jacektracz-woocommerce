@@ -11,6 +11,11 @@ from LKD_MdFilesUtils import *
 # cd C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\ep_300x200_all_digital
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create-sequential-ids
 
+# 
+# C:\lkd\ht\apps_portal\lkduni\app-4\src\modules\mod_ep_articles\content_cats\content_markdown\content_by_groups\cat__8000\cat__000\cat__00\cat__8000\content_idx_0\imgs_seq_scr\
+#
+#
+
 class LKD_CreateImages:
 
         def __init__(self,spar):                                
@@ -28,8 +33,75 @@ class LKD_CreateImages:
                 self.m_test_mode = 0
                 #self.m_override_mode = False
                 self.m_override_mode = True
+                self.m_root_sequential_ids_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs_seq_scr\\"
+                self.m_root_sequential_ids_dst = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs_seq_dst\\"
                 self.m_ds = "/"
                 self.xx_dbg("LKD_CreateImages::__init__::out::")
+
+        def move_images_for_ctx(self):
+                root_dir ="C:\\lkd\\ht\\apps_ctx\\1\\"
+                root_catid = 15883
+                self.move_images_for_child_directories(root_dir, root_catid)
+
+        def move_images_for_child_directories(self, proot_dir, pcatid):
+                s_method = "LKD_CreateImages::move_images_for_child_directories"
+                self.xx_dbg(s_method + "::in::")
+                ii = 0
+                for x1 in os.listdir(proot_dir):                        
+                        p2 = proot_dir + "/" + x1
+                        if os.path.isdir(p2): 
+                                self.xx_dbg(s_method + "::id::" + str(pcatid + ii) + "::dir::" + p2)
+                                self.xx_dbg(s_method + "::id::" + str(pcatid + ii))                                
+                                self.move_images_for_directory(p2, pcatid + ii)
+                                ii = ii + 1
+                self.xx_dbg(s_method + "::out::")
+
+        def move_images_for_directory(self, p_dir, pcatid):
+                s_method = "LKD_CreateImages::move_images_for_directory"
+                self.xx_dbg(s_method + "::in::")                
+                self.m_root_sequential_ids_src = p_dir
+
+                srv_handler = LKD_MdFilesUtils("")
+                dd_active_cat_id = pcatid
+                dd_file_idx = 0                
+
+                self.m_root_sequential_ids_dst = srv_handler.get_root_for_groups(  dd_active_cat_id , dd_file_idx)
+                self.m_root_sequential_ids_dst  = self.m_root_sequential_ids_dst  + "\\content_idx_0\\imgs"
+
+                self.xx_dbg(s_method + "::src::" + self.m_root_sequential_ids_src)
+                self.xx_dbg(s_method + "::dest::" + self.m_root_sequential_ids_dst)
+                start_idx = 0
+                self.xx_dbg(s_method + "::start_idx::" + str(start_idx))
+                
+                self.move_sequential_ids(
+                        self.m_root_sequential_ids_src
+                        , self.m_root_sequential_ids_dst
+                        ,start_idx)
+                self.xx_dbg(s_method + "::out::")
+
+        def move_sequential_ids(self,src_path,dst_path,start_idx):
+                self.xx_dbg("LKD_CreateImages::move_sequential_ids::in::")
+
+                dd_ll = self.get_files_recur(
+                        src_path
+                        ,0
+                        ,dst_path)
+
+                p_dest = dst_path
+
+                ii = start_idx
+                for dd_ii in dd_ll:
+                        # self.xx_dbg("LKD_CreateImages::image::" + dd_ii.src_javafile_full_path)
+                        src_fpath = dd_ii.src_javafile_full_path
+                        dest_fpath = p_dest + "\\" + "img__" + str(ii) + ".png"                        
+                        self.xx_dbg("=====================================================================>>>")
+                        self.xx_dbg("LKD_CreateImages::image::s_src" + src_fpath)
+                        self.xx_dbg("LKD_CreateImages::image::s_dest" + dest_fpath)
+                        self.xx_dbg("<<<=====================================================================")
+                        shutil.copy(src_fpath, dest_fpath)
+                        ii = ii + 1
+
+                self.xx_dbg("LKD_CreateImages::create_sequential_ids::out::")
 
         def get_sclass(self):
                 return "LKD_CreateImages"
@@ -38,16 +110,72 @@ class LKD_CreateImages:
                 dir_path = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_images\\assets\\" + ep_300x200_all_digital_seq
                 return dir_path
 
+        def set_dirs_sequential_imgs_raw(self):
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::in::")
+                #self.m_root_sequential_ids_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs_seq_scr\\"
+                self.m_root_sequential_ids_src = "C:\\lkd\\ht\\apps_ctx\\1\\Lakida-Knowledge-Base-Tech-Episodes-Topics\\Lakida-Knowledge-Base-Tech-Episodes-Resources\\Lakida-Knowledge-Base-Tech-Episodes\\Kubernetes-Resources\\"
+                self.m_root_sequential_ids_src = "Installing-Ethereum-On-Kubernetes"
+
+                self.m_root_sequential_ids_dst = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs_seq_dst\\"
+                srv_handler = LKD_MdFilesUtils("")
+                dd_active_cat_id = 15850
+                dd_file_idx = 0
+                self.m_root_sequential_ids_dst = srv_handler.get_root_for_groups(  dd_active_cat_id , dd_file_idx)
+                self.m_root_sequential_ids_dst  = self.m_root_sequential_ids_dst  + "\\content_idx_0\\imgs"
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::src::" + self.m_root_sequential_ids_src)
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::det::" + self.m_root_sequential_ids_dst)
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::out::")
+
+
+        def set_dirs_sequential_imgs(self):
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::in::")                
+                s_root = "C:\\lkd\\ht\\lkd_screens\\app\\src\\lkd-screens\\"
+                s_leaf = "CSharp-Examples-Episode-1"
+                l_cat_id = 15869
+                self.set_dirs_sequential_imgs_generic(l_cat_id, s_root,s_leaf)                
+#
+#
+
+#
+#
+#
+
+        def set_dirs_sequential_imgs_generic(self, catid, path_root,path_file):
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::in::")
+                #self.m_root_sequential_ids_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs_seq_scr\\"
+                self.m_root_sequential_ids_src = path_root + path_file 
+                srv_handler = LKD_MdFilesUtils("")
+                dd_active_cat_id = catid
+                dd_file_idx = 0
+                self.m_root_sequential_ids_dst = dd_out = srv_handler.get_root_for_groups(  dd_active_cat_id , dd_file_idx)
+                self.m_root_sequential_ids_dst  = self.m_root_sequential_ids_dst  + "\\content_idx_0\\imgs"
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::src::" + self.m_root_sequential_ids_src)
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::det::" + self.m_root_sequential_ids_dst)
+                self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::out::")
+
+
+        def create_sequential_ids_screens(self):
+                self.xx_dbg("LKD_CreateImages::create_sequential_ids_screens::in::")
+
         def create_sequential_ids(self):
                 self.xx_dbg("LKD_CreateImages::create_sequential_ids::in::")
-                dd_ll = self.get_files_recur(self.m_root_src,0,self.m_root_dst)
-                p_dest = self.m_root_dst
 
-                ii = 0
+                src_path = self.m_root_sequential_ids_src
+                dst_path = self.m_root_sequential_ids_dst
+                start_idx = 30
+
+                dd_ll = self.get_files_recur(
+                        src_path
+                        ,0
+                        ,dst_path)
+
+                p_dest = dst_path
+
+                ii = start_idx
                 for dd_ii in dd_ll:
                         # self.xx_dbg("LKD_CreateImages::image::" + dd_ii.src_javafile_full_path)
                         src_fpath = dd_ii.src_javafile_full_path
-                        dest_fpath = p_dest + "\\" + "img_" + str(ii) + ".jpg"                        
+                        dest_fpath = p_dest + "\\" + "img__" + str(ii) + ".png"                        
                         self.xx_dbg("=====================================================================>>>")
                         self.xx_dbg("LKD_CreateImages::image::s_src" + src_fpath)
                         self.xx_dbg("LKD_CreateImages::image::s_dest" + dest_fpath)
