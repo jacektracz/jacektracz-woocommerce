@@ -84,7 +84,7 @@ class LKD_MainExec:
         def exec_move_images_for_child_directories(self,tt):
                 dd_img = LKD_CreateImages("")                
                 root_dir ="C:\\lkd\\ht\\apps_ctx\\1\\"
-                root_catid = 15944
+                root_catid = 15948
                 dd_img.move_images_for_child_directories(root_dir,root_catid)
 
 
