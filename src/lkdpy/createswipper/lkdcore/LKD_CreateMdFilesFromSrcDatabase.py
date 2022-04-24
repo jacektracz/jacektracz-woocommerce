@@ -55,7 +55,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_java_algho_dt("")
                 # return self.get_cats_java_algho_science("")
                 # return self.get_cats_eugen("")
-                return self.get_cats_etherneum_lkdg("")
+                return self.get_cats_springboot_examples("")
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -85,7 +85,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_java_algho_dt("")
                 # return self.get_root_java_algho_science("")
                 # return self.get_root_eugen("")
-                return self.get_root_etherneum_lkdg("")
+                # return self.get_root_etherneum_lkdg("")
+                return self.get_root_springboot_examples("")
 
 
         def get_root_jhreact(self, dd):
@@ -1453,4 +1454,58 @@ class LKD_CreateMdFilesFromSrcDatabase:
         def get_cats_etherneum_lkdg(self, psrc_path_project):
                 cats = []
                 cats.append(self.get_item(12483	,"truffle424"	))
+                return cats
+
+        def get_root_springboot_examples(self, dd):
+                root_src = "C:/lkd/ht/apps_springboot_tutorial/src/app/springboot_tutorial/"
+                return root_src
+
+        def get_cats_springboot_examples(self, psrc_path_project):
+                cats = []
+                # cats.append(self.get_item(	15963	,	"login-registration-springboot-hibernate-jsp-auth"))                
+                #cats.append(self.get_item(	15964	,	"registration-login-springboot-security-thymeleaf"))                
+                # cats.append(self.get_item(	15965	,	"spring-aop-advice-examples"))
+                
+                #cats.append(self.get_item(	15966	,	"spring-boot-crud-rest"))
+                #cats.append(self.get_item(	15967	,	"spring-propertysource-example"))
+                #cats.append(self.get_item(	15968	,	"springboot-angular8-helloworld-example"))
+                #cats.append(self.get_item(	15969	,	"springboot-async-example"))
+                #cats.append(self.get_item(	15970	,	"springboot-crud-hibernate-example"))
+                #cats.append(self.get_item(	15971	,	"springboot-crud-rest-api-validation"))
+                #cats.append(self.get_item(	15972	,	"springboot-hibernate-composite-key-demo"))
+                #cats.append(self.get_item(	15973	,	"springboot-hibernate-many-to-many-mapping"))
+                
+                cats.append(self.get_item(	15974	,	"springboot-hibernate-one-many-mapping"))
+                cats.append(self.get_item(	15975	,	"springboot-hibernate-one-one-mapping"))
+                cats.append(self.get_item(	15976	,	"springboot-jms"))
+                cats.append(self.get_item(	15977	,	"springboot-jpa-one-to-one-example"))
+                cats.append(self.get_item(	15978	,	"springboot-jsp-hello-world-example"))
+                cats.append(self.get_item(	15979	,	"springboot-mongodb-crud"))
+                cats.append(self.get_item(	15980	,	"springboot-multiple-datasources"))
+                cats.append(self.get_item(	15981	,	"springboot-stomp-websocket"))
+                cats.append(self.get_item(	15982	,	"springboot-testing-examples"))
+                cats.append(self.get_item(	15983	,	"springboot-thymeleaf-hello-world-example"))
+                cats.append(self.get_item(	15984	,	"springboot-thymeleaf-security-demo"))
+                cats.append(self.get_item(	15985	,	"springboot-upload-download-file-database"))
+                cats.append(self.get_item(	15986	,	"springboot-upload-download-file-rest-api-example"))
+                cats.append(self.get_item(	15987	,	"springboot2-annotation-config"))
+                cats.append(self.get_item(	15988	,	"springboot2-externalizing-conf-properties"))
+                cats.append(self.get_item(	15989	,	"springboot2-freemarker-example"))
+                cats.append(self.get_item(	15990	,	"springboot2-java-config"))
+                cats.append(self.get_item(	15991	,	"springboot2-jdbc-crud-mysql-example"))
+                cats.append(self.get_item(	15992	,	"springboot2-jms-activemq"))
+                cats.append(self.get_item(	15993	,	"springboot2-jpa-auditing"))
+                cats.append(self.get_item(	15994	,	"springboot2-jpa-crud-example"))
+                cats.append(self.get_item(	15995	,	"springboot2-jpa-h2-crud-example"))
+                cats.append(self.get_item(	15996	,	"springboot2-jpa-swagger2"))
+                cats.append(self.get_item(	15997	,	"springboot2-junit5-example"))
+                cats.append(self.get_item(	15998	,	"springboot2-logging"))
+                cats.append(self.get_item(	15999	,	"springboot2-mssql-jpa-hibernate-crud-example"))
+                cats.append(self.get_item(	16000	,	"springboot2-mybatis-mysql-example"))
+                cats.append(self.get_item(	16001	,	"springboot2-postgresql-jpa-hibernate-crud-example"))
+                cats.append(self.get_item(	16002	,	"springboot2-springaop-example"))
+                cats.append(self.get_item(	16003	,	"springboot2-webapp-jsp"))
+                cats.append(self.get_item(	16004	,	"springboot2-webapp-jsp-WAR"))
+                cats.append(self.get_item(	16005	,	"springboot2-webapp-thymeleaf"))
+                cats.append(self.get_item(	16006	,	"springboot2-xml-config"))
                 return cats

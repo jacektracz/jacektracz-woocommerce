@@ -211,6 +211,9 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
                 needles.append(".png")
                 needles.append("node_modules")
+                needles.append("bootstrap.min.css")
+                needles.append("bootstrap.css")
+                needles.append("mvnw.cmd")
                 is_valid = 1
                 for needle in needles:
                         self.xx_dbg(s_fun + "needle:" + needle)

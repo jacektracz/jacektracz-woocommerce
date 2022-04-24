@@ -43,20 +43,27 @@ class LKD_CreateImages:
                 root_catid = 15883
                 self.move_images_for_child_directories(root_dir, root_catid)
 
-        def move_images_for_child_directories(self, proot_dir, pcatid):
+        def move_images_for_child_directories(self, proot_dir, p_catid,pstartidx):
                 s_method = "LKD_CreateImages::move_images_for_child_directories"
-                self.xx_dbg(s_method + "::in::")
+                self.xx_dbg(s_method + "::in::proot_dir:" + proot_dir)
+                self.xx_dbg(s_method + "::in::root_catid:" + str(p_catid))
+                self.xx_dbg(s_method + "::in::pstartidx:" + str(pstartidx))
+
+                pcatid = int(p_catid)
                 ii = 0
                 for x1 in os.listdir(proot_dir):                        
                         p2 = proot_dir + "/" + x1
+                        self.xx_dbg(s_method + "::in::p2:" + p2)
                         if os.path.isdir(p2): 
-                                self.xx_dbg(s_method + "::id::" + str(pcatid + ii) + "::dir::" + p2)
+                                self.xx_dbg(s_method + "::id::" + str(pcatid + ii) + "::dir::" + str(p2))
                                 self.xx_dbg(s_method + "::id::" + str(pcatid + ii))                                
-                                self.move_images_for_directory(p2, pcatid + ii)
+                                self.move_images_for_directory(p2, pcatid + ii, pstartidx)
                                 ii = ii + 1
+                        else:
+                                self.xx_dbg(s_method + "::in::not_is_dir:p2:" + str(p2))
                 self.xx_dbg(s_method + "::out::")
 
-        def move_images_for_directory(self, p_dir, pcatid):
+        def move_images_for_directory(self, p_dir, pcatid, pstartidx):
                 s_method = "LKD_CreateImages::move_images_for_directory"
                 self.xx_dbg(s_method + "::in::")                
                 self.m_root_sequential_ids_src = p_dir
@@ -65,17 +72,20 @@ class LKD_CreateImages:
                 dd_active_cat_id = pcatid
                 dd_file_idx = 0                
 
-                self.m_root_sequential_ids_dst = srv_handler.get_root_for_groups(  dd_active_cat_id , dd_file_idx)
-                self.m_root_sequential_ids_dst  = self.m_root_sequential_ids_dst  + "\\content_idx_0\\imgs"
+                root_sequential_ids_dst = srv_handler.get_root_for_groups(  
+                        dd_active_cat_id , 
+                        dd_file_idx)
 
-                self.xx_dbg(s_method + "::src::" + self.m_root_sequential_ids_src)
-                self.xx_dbg(s_method + "::dest::" + self.m_root_sequential_ids_dst)
-                start_idx = 0
+                root_sequential_ids_dst  = root_sequential_ids_dst  + "\\content_idx_0\\imgs"
+
+                self.xx_dbg(s_method + "::src::" + p_dir)
+                self.xx_dbg(s_method + "::dest::" + root_sequential_ids_dst)
+                start_idx = pstartidx
                 self.xx_dbg(s_method + "::start_idx::" + str(start_idx))
                 
                 self.move_sequential_ids(
-                        self.m_root_sequential_ids_src
-                        , self.m_root_sequential_ids_dst
+                        p_dir
+                        , root_sequential_ids_dst
                         ,start_idx)
                 self.xx_dbg(s_method + "::out::")
 
