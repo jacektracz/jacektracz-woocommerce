@@ -202,30 +202,67 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 if (len(psrc_fpath) > 256):
                         return 0
 
-                
-                needles = []
-                needles.append("target")
-                needles.append(".git")
-                needles.append(".svg")
+                needles_files = []                
+                needles_files.append(".java")
+                needles_files.append(".ts")
+                needles_files.append(".js")
 
+                excludes_files = []
+                excludes_files.append("target")
+                excludes_files.append(".git")
+                excludes_files.append(".svg")
+                excludes_files.append(".class")
+                excludes_files.append(".bin")
 
-                needles.append(".png")
-                needles.append("node_modules")
-                needles.append("bootstrap.min.css")
-                needles.append("bootstrap.css")
-                needles.append("mvnw.cmd")
+                excludes_files.append(".png")
+                excludes_files.append(".lock")
+                excludes_files.append(".jar")
+                excludes_files.append(".xml")
+                excludes_files.append("node_modules")
+                excludes_files.append("bootstrap.min.css")
+                excludes_files.append("bootstrap.css")
+                excludes_files.append("mvnw.cmd")
+                excludes_files.append("npm.cmd")
+                excludes_files.append("npm")
+                excludes_files.append("gradlew")
+                excludes_files.append("gradlew.bat")
+                excludes_files.append("changelog.md")
+                excludes_files.append("SHANGELOG.md.md")
                 is_valid = 1
-                for needle in needles:
+                for exclude_file in excludes_files:
+                        self.xx_dbg(s_fun + "needle:" + exclude_file)
+                        
+                        is_match = self.is_match(psrc_fpath, exclude_file)
+                        self.xx_dbg(s_fun + "is_match_ext:" + str(is_match))
+                        if( is_match == 1):
+                                self.xx_dbg(s_fun + "is_valid_match_0:" + str(is_valid))
+                                is_valid = 0
+                                break   
+
+                if is_valid == 0:
+                        self.xx_dbg(s_fun + "is_valid_end_0:" + str(is_valid))
+                        self.xx_dbg(s_fun + "end")
+                        return 0
+
+                if len(needles_files) == 0 : 
+                        self.xx_dbg(s_fun + "is_valid_end_1:" + str(is_valid))
+                        self.xx_dbg(s_fun + "end")
+                        return is_valid
+                        
+                is_valid = 0
+                for needle in needles_files:
                         self.xx_dbg(s_fun + "needle:" + needle)
                         
                         is_match = self.is_match(psrc_fpath, needle)
                         self.xx_dbg(s_fun + "is_match_ext:" + str(is_match))
                         if( is_match == 1):
-                                is_valid = 0
-                                break
-                
-                self.xx_dbg(s_fun + "is_valid_end:" + str(is_valid))
+                                self.xx_dbg(s_fun + "is_valid_match_1:" + str(is_valid))
+                                is_valid = 1
+                                break   
+
+                self.xx_dbg(s_fun + "is_valid_end_2:" + str(is_valid))
                 self.xx_dbg(s_fun + "end")
+
                 return is_valid
 
         def is_match(self, psrc, needle):

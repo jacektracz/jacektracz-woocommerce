@@ -55,7 +55,10 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_java_algho_dt("")
                 # return self.get_cats_java_algho_science("")
                 # return self.get_cats_eugen("")
-                return self.get_cats_springboot_examples("")
+                #return self.get_cats_springboot_examples("")
+                return self.get_cats_java_8_jacektracz_tutorial("")
+
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -86,7 +89,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_java_algho_science("")
                 # return self.get_root_eugen("")
                 # return self.get_root_etherneum_lkdg("")
-                return self.get_root_springboot_examples("")
+                # return self.get_root_springboot_examples("")
+                return self.get_root_java_8_jacektracz_tutorial("")
 
 
         def get_root_jhreact(self, dd):
@@ -1462,6 +1466,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
         def get_cats_springboot_examples(self, psrc_path_project):
                 cats = []
+                return cats
                 # cats.append(self.get_item(	15963	,	"login-registration-springboot-hibernate-jsp-auth"))                
                 #cats.append(self.get_item(	15964	,	"registration-login-springboot-security-thymeleaf"))                
                 # cats.append(self.get_item(	15965	,	"spring-aop-advice-examples"))
@@ -1509,3 +1514,20 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	16005	,	"springboot2-webapp-thymeleaf"))
                 cats.append(self.get_item(	16006	,	"springboot2-xml-config"))
                 return cats
+
+        def get_root_springboot_examples(self, dd):
+                root_src = "C:/lkd/ht/apps_springboot_tutorial/src/app/springboot_tutorial/"
+                return root_src
+
+        def get_root_java_8_jacektracz_tutorial(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                return root_src
+
+        def get_cats_java_8_jacektracz_tutorial(self, psrc_path_project):
+                cats = []
+               
+                cats.append(self.get_item(	16013	,	"java-8-jacektracz-tutorial"))
+                return cats
+
+
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
