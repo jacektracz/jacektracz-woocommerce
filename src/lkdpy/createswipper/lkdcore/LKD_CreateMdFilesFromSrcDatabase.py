@@ -1567,7 +1567,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
                         cats.append(self.get_item(	16027	,	"jacek-tracz-springboot-design-patterns"))
                         cats.append(self.get_item(	16028	,	"jacektracz-cloud-spring-pet"))
 
-                return cats
+                
 
                 cats.append(self.get_item(	16029	,	"jacektracz-project-springmicro-starters"))
                 cats.append(self.get_item(	16030	,	"jacektracz-spring-boot-cloud-pet"))
@@ -1581,6 +1581,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	16038	,	"java8-guides-tutorials"))
                 cats.append(self.get_item(	16039	,	"java8-tutorial"))
                 cats.append(self.get_item(	16040	,	"Java8InAction"))
+                return cats
+                
                 cats.append(self.get_item(	16041	,	"jee-examples-spring-events"))
                 cats.append(self.get_item(	16042	,	"learning-spring"))
                 cats.append(self.get_item(	16043	,	"lkd-spring-boot-react-app"))
