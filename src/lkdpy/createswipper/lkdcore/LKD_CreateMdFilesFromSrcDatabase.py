@@ -56,9 +56,10 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_java_algho_science("")
                 # return self.get_cats_eugen("")
                 #return self.get_cats_springboot_examples("")
-                return self.get_cats_java_8_jacektracz_tutorial("")
+                #return self.get_cats_java_8_jacektracz_tutorial("")
+                return self.get_cats_java_8_jacektracz_java8inaction_all("")
 
-# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+                # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_generic_root(self,dd):
                 # return self.get_root_espn()
@@ -90,8 +91,9 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_eugen("")
                 # return self.get_root_etherneum_lkdg("")
                 # return self.get_root_springboot_examples("")
-                return self.get_root_java_8_jacektracz_tutorial("")
-
+                #return self.get_root_java_8_jacektracz_tutorial("")
+                return self.get_root_java_8_jacektracz_java8inaction_all("")
+                # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_root_jhreact(self, dd):
                 root_src = "C:/lkd/ht/apps_sb/app/src/"
@@ -106,7 +108,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
 
         def create_cats_titles(self, psrc_path_project):
-                cats = []                                
+                cats = []               
+                return cats                 
                 cats.append(self.get_item(5343,"Abstract Document"))
                 cats.append(self.get_item(5344,"Abstract Factory"))
                 cats.append(self.get_item(5345,"Adapter"))
@@ -1529,5 +1532,107 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats.append(self.get_item(	16013	,	"java-8-jacektracz-tutorial"))
                 return cats
 
+        def get_root_java_8_jacektracz_tests(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_java_8_jacektracz_tests(self, psrc_path_project):
+                cats = []
+               
+                cats.append(self.get_item(	16014	,	"java-8-jacektracz-tutorial"))
+                return cats
+
+        def get_root_java_8_jacektracz_java8inaction_all(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_java_8_jacektracz_java8inaction_all(self, psrc_path_project):
+                cats = []
+                exclude_imported=1
+                if exclude_imported == 0:
+                        cats.append(self.get_item(	16015	,	"blog-tech-spring-boot-jms-chapter-01"))
+                        cats.append(self.get_item(	15974	,	"BookStoreApp-Distributed-Application"))
+                        cats.append(self.get_item(	16017	,	"cloud-espm-cloud-native"))                        
+                        cats.append(self.get_item(	16018	,	"cloud-pet-project"))                        
+                        cats.append(self.get_item(	16019	,	"core-java9-impatient"))
+                        cats.append(self.get_item(	16020	,	"enterprise-development-spring-boot-jms"))
+                        cats.append(self.get_item(	16021	,	"gen-spring-mvc"))
+                        cats.append(self.get_item(	16022	,	"Hibernate-SpringBoot"))
+                        cats.append(self.get_item(	16023	,	"jacek-tracz-java-algorithms"))
+                        cats.append(self.get_item(	16024	,	"jacek-tracz-java-design-patterns"))
+                        cats.append(self.get_item(	16025	,	"jacek-tracz-java-selenium-examples"))
+                        cats.append(self.get_item(	16026	,	"jacek-tracz-spring-oo-design-patterns"))
+                        cats.append(self.get_item(	16027	,	"jacek-tracz-springboot-design-patterns"))
+                        cats.append(self.get_item(	16028	,	"jacektracz-cloud-spring-pet"))
+
+                return cats
+
+                cats.append(self.get_item(	16029	,	"jacektracz-project-springmicro-starters"))
+                cats.append(self.get_item(	16030	,	"jacektracz-spring-boot-cloud-pet"))
+                cats.append(self.get_item(	16031	,	"jacektracz-spring-petclinic-microservices"))
+                cats.append(self.get_item(	16032	,	"jacektracz-springboot-microservices-pet-shop"))
+                cats.append(self.get_item(	16033	,	"java-8-jacektracz-tutorial"))
+                cats.append(self.get_item(	16034	,	"java-activemq"))
+                cats.append(self.get_item(	16035	,	"java-design-patterns"))
+                cats.append(self.get_item(	16036	,	"java-oca-ocp-study"))
+                cats.append(self.get_item(	16037	,	"java8"))
+                cats.append(self.get_item(	16038	,	"java8-guides-tutorials"))
+                cats.append(self.get_item(	16039	,	"java8-tutorial"))
+                cats.append(self.get_item(	16040	,	"Java8InAction"))
+                cats.append(self.get_item(	16041	,	"jee-examples-spring-events"))
+                cats.append(self.get_item(	16042	,	"learning-spring"))
+                cats.append(self.get_item(	16043	,	"lkd-spring-boot-react-app"))
+                cats.append(self.get_item(	16044	,	"micro-services-spring-cloud-config"))
+                cats.append(self.get_item(	16045	,	"microservices-demo"))
+                cats.append(self.get_item(	16046	,	"microservices-v1"))
+                cats.append(self.get_item(	16047	,	"microservices-v10"))
+                cats.append(self.get_item(	16048	,	"microservices-v2"))
+                cats.append(self.get_item(	16049	,	"microservices-v3"))
+                cats.append(self.get_item(	16050	,	"microservices-v4"))                
+                cats.append(self.get_item(	16051	,	"microservices-v5"))
+                cats.append(self.get_item(	16052	,	"microservices-v6"))
+                cats.append(self.get_item(	16053	,	"microservices-v7"))
+                cats.append(self.get_item(	16054	,	"microservices-v8"))
+                cats.append(self.get_item(	16055	,	"microservices-v9"))
+                cats.append(self.get_item(	16056	,	"okta-spring-boot-2-angular-7-example"))
+                cats.append(self.get_item(	16057	,	"pro-spring-5"))
+                cats.append(self.get_item(	16058	,	"rabbitmq-examples"))
+                cats.append(self.get_item(	16059	,	"spark-java8"))
+
+                cats.append(self.get_item(	16060	,	"Spark-Kafka-and-Spring-Boot"))
+                cats.append(self.get_item(	16061	,	"spmia-chapter3"))
+
+                cats.append(self.get_item(	16062	,	"spmia-chapter4"))
+                cats.append(self.get_item(	16063	,	"spmia-chapter7"))
+                cats.append(self.get_item(	16064	,	"spmia-chapter9"))
+                cats.append(self.get_item(	16065	,	"spring-boot"))
+                cats.append(self.get_item(	16066	,	"spring-boot-exception-handling"))
+                cats.append(self.get_item(	16067	,	"spring-boot-in-action-samples"))
+                cats.append(self.get_item(	16068	,	"spring-boot-microservices"))
+                cats.append(self.get_item(	16069	,	"spring-boot-microservices-series"))
+
+                cats.append(self.get_item(	16070	,	"spring-boot-multiple-datasources"))
+
+                cats.append(self.get_item(	16071	,	"spring-boot-react-ecommerce-app"))
+                cats.append(self.get_item(	16072	,	"spring-boot-transaction"))
+                cats.append(self.get_item(	16073	,	"spring-cloud-app-broker"))
+                cats.append(self.get_item(	16074	,	"spring-cloud-netflix"))
+                cats.append(self.get_item(	16075	,	"spring-cloud-netflix-example"))
+                cats.append(self.get_item(	16076	,	"spring-complete-career-path"))
+                cats.append(self.get_item(	16077	,	"spring-data-examples"))
+                cats.append(self.get_item(	16078	,	"spring-in-action-5-samples"))
+                cats.append(self.get_item(	16079	,	"spring-jhipster"))
+
+                cats.append(self.get_item(	16080	,	"spring-jhipster-oauth"))
+                cats.append(self.get_item(	16081	,	"spring-jhipster-with-okta"))
+                cats.append(self.get_item(	16082	,	"spring-petclinic"))
+                cats.append(self.get_item(	16083	,	"spring-petclinic-angular"))
+                cats.append(self.get_item(	16084	,	"spring-petclinic-microservices"))
+                cats.append(self.get_item(	16085	,	"spring-petclinic-reactjs"))
+                cats.append(self.get_item(	16086	,	"spring-petclinic-rest"))
+                cats.append(self.get_item(	16087	,	"spring-xa"))
+                cats.append(self.get_item(	16088	,	"spring-xatranscations"))
 
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files

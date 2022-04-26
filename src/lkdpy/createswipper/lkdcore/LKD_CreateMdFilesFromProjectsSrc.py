@@ -206,6 +206,11 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 needles_files.append(".java")
                 needles_files.append(".ts")
                 needles_files.append(".js")
+                needles_files.append(".yaml")
+                needles_files.append(".properties")
+                needles_files.append(".html")
+                needles_files.append(".htm")
+                needles_files.append(".json")
 
                 excludes_files = []
                 excludes_files.append("target")
@@ -245,22 +250,22 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         return 0
 
                 if len(needles_files) == 0 : 
-                        self.xx_dbg(s_fun + "is_valid_end_1:" + str(is_valid))
+                        self.xx_dbg(s_fun + "is_valid_end_1_needles_count_0:" + str(is_valid))
                         self.xx_dbg(s_fun + "end")
                         return is_valid
-                        
+
                 is_valid = 0
                 for needle in needles_files:
-                        self.xx_dbg(s_fun + "needle:" + needle)
+                        self.xx_dbg(s_fun + "needle_in_needles:" + needle)
                         
                         is_match = self.is_match(psrc_fpath, needle)
-                        self.xx_dbg(s_fun + "is_match_ext:" + str(is_match))
+                        self.xx_dbg(s_fun + "is_match_needle_1_ext:" + str(is_match))
                         if( is_match == 1):
-                                self.xx_dbg(s_fun + "is_valid_match_1:" + str(is_valid))
+                                self.xx_dbg(s_fun + "is_valid_match_needle_1:" + str(is_valid))
                                 is_valid = 1
                                 break   
 
-                self.xx_dbg(s_fun + "is_valid_end_2:" + str(is_valid))
+                self.xx_dbg(s_fun + "is_valid_after_needles_end_2:" + str(is_valid))
                 self.xx_dbg(s_fun + "end")
 
                 return is_valid
@@ -274,10 +279,12 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
                 is_match= 0
                 idxf = psrc.find( needle )
-                self.xx_dbg(s_fun + "idxf:" + str(idxf))
+                self.xx_dbg(s_fun + "idxfound:" + str(idxf))
                 if( idxf >= 0):
                         is_match = 1
 
+                self.xx_dbg(s_fun + "psrc:" + psrc)
+                self.xx_dbg(s_fun + "needle:" + needle)
                 self.xx_dbg(s_fun + "is_match:" + str(is_match))
 
                 self.xx_dbg(s_fun + "end")
