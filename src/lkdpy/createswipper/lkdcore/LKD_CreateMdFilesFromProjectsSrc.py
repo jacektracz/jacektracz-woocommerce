@@ -58,6 +58,10 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::execute_main_create_from_source::in::")
 
                 paths = self.get_generic_cats_items("")
+
+                for lkd_cat_item in paths:
+                        self.xx_dbg("paths::" + lkd_cat_item.src_project_relative_path)
+
                 postfixes = []    
                 direct_subdirs = 0
 
@@ -212,27 +216,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 needles_files.append(".htm")
                 needles_files.append(".json")
 
-                excludes_files = []
-                excludes_files.append("target")
-                excludes_files.append(".git")
-                excludes_files.append(".svg")
-                excludes_files.append(".class")
-                excludes_files.append(".bin")
-
-                excludes_files.append(".png")
-                excludes_files.append(".lock")
-                excludes_files.append(".jar")
-                excludes_files.append(".xml")
-                excludes_files.append("node_modules")
-                excludes_files.append("bootstrap.min.css")
-                excludes_files.append("bootstrap.css")
-                excludes_files.append("mvnw.cmd")
-                excludes_files.append("npm.cmd")
-                excludes_files.append("npm")
-                excludes_files.append("gradlew")
-                excludes_files.append("gradlew.bat")
-                excludes_files.append("changelog.md")
-                excludes_files.append("SHANGELOG.md.md")
+                excludes_files = self.get_exclued_files()
                 is_valid = 1
                 for exclude_file in excludes_files:
                         self.xx_dbg(s_fun + "needle:" + exclude_file)
@@ -270,6 +254,8 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
                 return is_valid
 
+
+
         def is_match(self, psrc, needle):
                 s_fun = self.get_class_name() + "::is_match::"
                 self.xx_dbg(s_fun + "start")
@@ -278,7 +264,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 self.xx_dbg(s_fun + "needle:" + needle)
 
                 is_match= 0
-                idxf = psrc.find( needle )
+                idxf = psrc.lower().find( needle.lower() )
                 self.xx_dbg(s_fun + "idxfound:" + str(idxf))
                 if( idxf >= 0):
                         is_match = 1
@@ -489,3 +475,101 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 p = pathlib.Path(path)
                 list_subfolders_with_paths = [x for x in p.iterdir() if x.is_dir()]
                 # print(len(list_subfolders_with_paths))
+
+
+
+        def get_exclued_files(self):
+                excludes_files = []
+                excludes_files.append("npms")
+                excludes_files.append("target")
+                excludes_files.append("webpack")
+                excludes_files.append(".git")
+                excludes_files.append(".svg")
+                excludes_files.append(".class")
+                excludes_files.append(".bin")
+                excludes_files.append(".png")
+                excludes_files.append(".lock")
+                excludes_files.append(".jar")
+                excludes_files.append(".xml")
+                excludes_files.append("node_modules")
+                excludes_files.append("bootstrap.min.css")
+                excludes_files.append("bootstrap.css")
+                excludes_files.append("mvnw.cmd")
+                excludes_files.append("npm.cmd")
+                excludes_files.append("npm")
+                excludes_files.append("gradlew")
+                excludes_files.append("gradlew.bat")
+                excludes_files.append("changelog.md")
+                excludes_files.append("SHANGELOG.md.md")
+
+                excludes_files.append("Adres")
+                excludes_files.append("Biuro")
+                excludes_files.append("Biurouzytkownik")
+                excludes_files.append("Createagreement")
+                excludes_files.append("Danefirmy")
+                excludes_files.append("Dddw")
+                excludes_files.append("Dochod")
+                excludes_files.append("Dokument")
+                excludes_files.append("Dokwezwaniezawiadomienie")
+                excludes_files.append("Efektdzialania")
+                excludes_files.append("Executecreateagreement")
+                excludes_files.append("GenericRowValue")
+                excludes_files.append("GenericTableRow")
+                excludes_files.append("IssfakturaHistoria")
+                excludes_files.append("Issfaktura")
+                excludes_files.append("IsspodmiotHistoria")
+                excludes_files.append("Isspodmiot")
+                excludes_files.append("Issuzytkownikbank")
+                excludes_files.append("JhiAuthority")
+                excludes_files.append("JhiPersistentAuditEvent")
+                excludes_files.append("JhiUserAuthority")
+                excludes_files.append("JhiUser")
+                excludes_files.append("Joo2Categories")
+                excludes_files.append("Joo2Content")
+                excludes_files.append("Joo2Modules")
+                excludes_files.append("Konfiguracjacrm")
+                excludes_files.append("Kontakt")
+                excludes_files.append("Koszt")
+                excludes_files.append("Kwotapozyczki")
+                excludes_files.append("Loanitemdef")
+                excludes_files.append("Loanpaymentamounts")
+                excludes_files.append("Naleznosc")
+                excludes_files.append("NoClass")
+                excludes_files.append("Notatka")
+                excludes_files.append("Operationstatus")
+                excludes_files.append("Oprepaymentbasic")
+                excludes_files.append("Oprepaymet")
+                excludes_files.append("Osobafizyczna")
+                excludes_files.append("Planprzychodu")
+                excludes_files.append("Podejrzanywpis")
+                excludes_files.append("Produkt")
+                excludes_files.append("Profil")
+                excludes_files.append("Przedmiotprzewlaszczenia")
+                excludes_files.append("Przedmiotprzewlaszczeniaumowa")
+                excludes_files.append("Przewlaszczenie")
+                excludes_files.append("Przewlaszczenieumowa")
+                excludes_files.append("Rata")
+                excludes_files.append("Skandokumentu")
+                excludes_files.append("Splatanaleznosci")
+                excludes_files.append("Splataraty")
+                excludes_files.append("Splata")
+                excludes_files.append("Systemactionctx")
+                excludes_files.append("Systemaction")
+                excludes_files.append("Systemfield")
+                excludes_files.append("Systemgeneralctx")
+                excludes_files.append("Systemparameter")
+                excludes_files.append("Systemprofile")
+                excludes_files.append("Systemviewprofile")
+                excludes_files.append("Systemview")
+                excludes_files.append("Telefon")
+                excludes_files.append("Umorzenienaleznosci")
+                excludes_files.append("Umorzenie")
+                excludes_files.append("Umowa")
+                excludes_files.append("Upowaznienie")
+                excludes_files.append("Uprawnienieprofilu")
+                excludes_files.append("Uprawnienie")
+                excludes_files.append("Uzytkownikbank")
+                excludes_files.append("Uzytkownik")
+                excludes_files.append("Windykacja")
+                excludes_files.append("Zatrudnienie")
+                return excludes_files

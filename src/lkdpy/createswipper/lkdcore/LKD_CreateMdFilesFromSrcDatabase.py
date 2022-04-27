@@ -57,7 +57,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_eugen("")
                 #return self.get_cats_springboot_examples("")
                 #return self.get_cats_java_8_jacektracz_tutorial("")
-                return self.get_cats_java_8_jacektracz_java8inaction_all("")
+                #return self.get_cats_java_8_jacektracz_java8inaction_all("")
+                return self.get_cats_loans("")
 
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
@@ -92,7 +93,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_etherneum_lkdg("")
                 # return self.get_root_springboot_examples("")
                 #return self.get_root_java_8_jacektracz_tutorial("")
-                return self.get_root_java_8_jacektracz_java8inaction_all("")
+                #return self.get_root_java_8_jacektracz_java8inaction_all("")
+                return self.get_root_loans("")
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_root_jhreact(self, dd):
@@ -1606,38 +1608,50 @@ class LKD_CreateMdFilesFromSrcDatabase:
                         cats.append(self.get_item(	16060	,	"Spark-Kafka-and-Spring-Boot"))
                 
 
-                cats.append(self.get_item(	16061	,	"spmia-chapter3"))
+                        cats.append(self.get_item(	16061	,	"spmia-chapter3"))
 
-                cats.append(self.get_item(	16062	,	"spmia-chapter4"))
-                cats.append(self.get_item(	16063	,	"spmia-chapter7"))
-                cats.append(self.get_item(	16064	,	"spmia-chapter9"))
-                cats.append(self.get_item(	16065	,	"spring-boot"))
-                cats.append(self.get_item(	16066	,	"spring-boot-exception-handling"))
-                cats.append(self.get_item(	16067	,	"spring-boot-in-action-samples"))
-                cats.append(self.get_item(	16068	,	"spring-boot-microservices"))
-                cats.append(self.get_item(	16069	,	"spring-boot-microservices-series"))
+                        cats.append(self.get_item(	16062	,	"spmia-chapter4"))
+                        cats.append(self.get_item(	16063	,	"spmia-chapter7"))
+                        cats.append(self.get_item(	16064	,	"spmia-chapter9"))
+                        cats.append(self.get_item(	16065	,	"spring-boot"))
+                        cats.append(self.get_item(	16066	,	"spring-boot-exception-handling"))
+                        cats.append(self.get_item(	16067	,	"spring-boot-in-action-samples"))
+                        cats.append(self.get_item(	16068	,	"spring-boot-microservices"))
+                        cats.append(self.get_item(	16069	,	"spring-boot-microservices-series"))
 
-                cats.append(self.get_item(	16070	,	"spring-boot-multiple-datasources"))
+                        cats.append(self.get_item(	16070	,	"spring-boot-multiple-datasources"))
 
-                cats.append(self.get_item(	16071	,	"spring-boot-react-ecommerce-app"))
-                cats.append(self.get_item(	16072	,	"spring-boot-transaction"))
-                cats.append(self.get_item(	16073	,	"spring-cloud-app-broker"))
-                cats.append(self.get_item(	16074	,	"spring-cloud-netflix"))
-                cats.append(self.get_item(	16075	,	"spring-cloud-netflix-example"))
-                cats.append(self.get_item(	16076	,	"spring-complete-career-path"))
-                cats.append(self.get_item(	16077	,	"spring-data-examples"))
-                cats.append(self.get_item(	16078	,	"spring-in-action-5-samples"))
-                cats.append(self.get_item(	16079	,	"spring-jhipster"))
+                        cats.append(self.get_item(	16071	,	"spring-boot-react-ecommerce-app"))
+                        cats.append(self.get_item(	16072	,	"spring-boot-transaction"))
+                        cats.append(self.get_item(	16073	,	"spring-cloud-app-broker"))
+                        cats.append(self.get_item(	16074	,	"spring-cloud-netflix"))
+                        cats.append(self.get_item(	16075	,	"spring-cloud-netflix-example"))
+                        cats.append(self.get_item(	16076	,	"spring-complete-career-path"))
+                        cats.append(self.get_item(	16077	,	"spring-data-examples"))
+                        cats.append(self.get_item(	16078	,	"spring-in-action-5-samples"))
+                        cats.append(self.get_item(	16079	,	"spring-jhipster"))
 
-                cats.append(self.get_item(	16080	,	"spring-jhipster-oauth"))
-                cats.append(self.get_item(	16081	,	"spring-jhipster-with-okta"))
-                cats.append(self.get_item(	16082	,	"spring-petclinic"))
-                cats.append(self.get_item(	16083	,	"spring-petclinic-angular"))
-                cats.append(self.get_item(	16084	,	"spring-petclinic-microservices"))
-                cats.append(self.get_item(	16085	,	"spring-petclinic-reactjs"))
-                cats.append(self.get_item(	16086	,	"spring-petclinic-rest"))
-                cats.append(self.get_item(	16087	,	"spring-xa"))
-                cats.append(self.get_item(	16088	,	"spring-xatranscations"))
+                        cats.append(self.get_item(	16080	,	"spring-jhipster-oauth"))
+                        cats.append(self.get_item(	16081	,	"spring-jhipster-with-okta"))
+                        cats.append(self.get_item(	16082	,	"spring-petclinic"))
+                        cats.append(self.get_item(	16083	,	"spring-petclinic-angular"))
+                        cats.append(self.get_item(	16084	,	"spring-petclinic-microservices"))
+                        cats.append(self.get_item(	16085	,	"spring-petclinic-reactjs"))
+                        cats.append(self.get_item(	16086	,	"spring-petclinic-rest"))
+                        cats.append(self.get_item(	16087	,	"spring-xa"))
+                        cats.append(self.get_item(	16088	,	"spring-xatranscations"))
                 return cats
+
+        def get_root_loans(self, dd):
+                root_src = "C:/lkd/ht/apps_jee/lkd-vm/src/apps/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_loans(self, psrc_path_project):
+                cats = []
+                cats.append(self.get_item(	16090	,	"lkd-ptp-crm-dirty"))
+                return cats
+                
+
 
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
