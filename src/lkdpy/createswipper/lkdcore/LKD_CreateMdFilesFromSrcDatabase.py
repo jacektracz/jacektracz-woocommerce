@@ -9,6 +9,11 @@ from LKD_CatItem import *
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
 
+class LKD_CreateScrFilesData:
+        def __init__(self):                                
+                self.m_root = ""
+                self.m_cats = []
+
 class LKD_CreateMdFilesFromSrcDatabase:
         def __init__(self):                                
                 self.m_initialized = 1
@@ -26,6 +31,29 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 title = title.replace(" ","-")
                 dd = LKD_CatItem(id,title)
                 return dd
+
+        def get_generic_cats_data(self,dd):
+
+                cats_data = []
+                dd1 = self.create_cats_object(
+                        self.get_root_kafka_1(""),
+                        self.get_cats_kafka_1(""))
+
+                cats_data.append( dd1 )
+
+                dd2 = self.create_cats_object(
+                        self.get_root_reactive_angular_spring(""),
+                        self.get_cats_reactive_angular_spring(""))
+
+                cats_data.append( dd2 )
+
+                return cats_data
+
+        def cretae_cats_object(self, root_str, items):
+                retObj = LKD_CreateScrFilesData()
+                retObj.m_root = root_str
+                retObj.m_cats = items
+                return retObj
 
         def get_generic_cats_items(self,dd):
                 # return self.get_cats_espn("")
@@ -57,9 +85,13 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_eugen("")
                 #return self.get_cats_springboot_examples("")
                 #return self.get_cats_java_8_jacektracz_tutorial("")
-                return self.get_cats_java_8_jacektracz_java8inaction_all("")
+                # return self.get_cats_java_8_jacektracz_java8inaction_all("")
                 #return self.get_cats_loans("")
                 #return self.get_cats_javanew("")
+                # return self.get_cats_kafka_1("")                
+                # return self.get_cats_reactive_angular_spring("")
+                #return self.get_cats_kafka_spring_2("")
+                return self.get_cats_kafka_kubernetes("")
 
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
@@ -94,9 +126,13 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_etherneum_lkdg("")
                 # return self.get_root_springboot_examples("")
                 #return self.get_root_java_8_jacektracz_tutorial("")
-                return self.get_root_java_8_jacektracz_java8inaction_all("")
-                # return self.get_root_loans("")
-                # return self.get_root_javanew("")
+                #return self.get_root_java_8_jacektracz_java8inaction_all("")
+                #return self.get_root_loans("")
+                #return self.get_root_javanew("")
+                # return self.get_root_kafka_1("")
+                #return self.get_root_reactive_angular_spring("")
+                #return self.get_root_kafka_spring_2("")
+                return self.get_root_kafka_kubernetes("")
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_root_jhreact(self, dd):
@@ -1662,6 +1698,58 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 exclude_imported = 1
                 if exclude_imported == 1:
                         cats.append(self.get_item(	16087	,	"spring-xa"))
+                return cats
+
+        def get_root_kafka_1(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_kafka_1(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16095	,	"kafka-spring-boot-example"))
+                return cats
+
+        def get_root_reactive_angular_spring(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_reactive_angular_spring(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16096	,	"angular-spring-reactive-sample"))
+                return cats
+
+#Spring-Boot-Kafka-Producer-and-Consumer-Example
+
+        def get_root_kafka_spring_2(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_kafka_spring_2(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16097	,	"Spring-Boot-Kafka-Producer-and-Consumer-Example"))
+                return cats
+
+
+
+        def get_root_kafka_kubernetes(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_kafka_kubernetes(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16098	,	"Kafka-kubernetes"))
                 return cats
 
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
