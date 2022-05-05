@@ -57,8 +57,9 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_eugen("")
                 #return self.get_cats_springboot_examples("")
                 #return self.get_cats_java_8_jacektracz_tutorial("")
-                #return self.get_cats_java_8_jacektracz_java8inaction_all("")
-                return self.get_cats_loans("")
+                return self.get_cats_java_8_jacektracz_java8inaction_all("")
+                #return self.get_cats_loans("")
+                #return self.get_cats_javanew("")
 
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
@@ -93,8 +94,9 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_etherneum_lkdg("")
                 # return self.get_root_springboot_examples("")
                 #return self.get_root_java_8_jacektracz_tutorial("")
-                #return self.get_root_java_8_jacektracz_java8inaction_all("")
-                return self.get_root_loans("")
+                return self.get_root_java_8_jacektracz_java8inaction_all("")
+                # return self.get_root_loans("")
+                # return self.get_root_javanew("")
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_root_jhreact(self, dd):
@@ -1553,7 +1555,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
         def get_cats_java_8_jacektracz_java8inaction_all(self, psrc_path_project):
                 cats = []
                 exclude_imported=1
-                if exclude_imported == 0:
+                if exclude_imported == 1:
                         cats.append(self.get_item(	16015	,	"blog-tech-spring-boot-jms-chapter-01"))
                         cats.append(self.get_item(	15974	,	"BookStoreApp-Distributed-Application"))
                         cats.append(self.get_item(	16017	,	"cloud-espm-cloud-native"))                        
@@ -1568,9 +1570,6 @@ class LKD_CreateMdFilesFromSrcDatabase:
                         cats.append(self.get_item(	16026	,	"jacek-tracz-spring-oo-design-patterns"))
                         cats.append(self.get_item(	16027	,	"jacek-tracz-springboot-design-patterns"))
                         cats.append(self.get_item(	16028	,	"jacektracz-cloud-spring-pet"))
-
-                
-
                         cats.append(self.get_item(	16029	,	"jacektracz-project-springmicro-starters"))
                         cats.append(self.get_item(	16030	,	"jacektracz-spring-boot-cloud-pet"))
                         cats.append(self.get_item(	16031	,	"jacektracz-spring-petclinic-microservices"))
@@ -1653,5 +1652,16 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 return cats
                 
 
+        def get_root_javanew(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_javanew(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16087	,	"spring-xa"))
+                return cats
 
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files

@@ -311,23 +311,70 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         ii = ii + 1
 
                 self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::create_javafiles_md::out::")
+                self.xx_dbg(s_fun + "end")
 
 
         def get_files_recur(self, psrc_path_project, pcatid, pdest_java_flat_dir_path):
+
+                s_fun = self.get_class_name() + "::get_files_recur::"
+                self.xx_dbg(s_fun + "start")
+                self.xx_dbg(s_fun + "psrc_path_project:" + psrc_path_project)
+
                 fjavafiles = []
                 for root,d_names,f_names in os.walk(psrc_path_project):
 	                for f in f_names:
+
+                                self.xx_dbg(s_fun + "read_file_name:" + f)
+                                self.xx_dbg(s_fun + "read_file_root:" + root)
+
                                 dd = LKD_CatItem(pcatid, psrc_path_project)
                                 dd.catid = pcatid
                                 dd.src_project_relative_path = psrc_path_project
                                 dd.src_javafile_full_path = os.path.join(root, f)
-                                dd.src_javafile_name = f
+                                created_file_name = self.join_java_name_with_path_from_src(root,f)
+                                dd.src_javafile_name = created_file_name
+                                self.xx_dbg(s_fun + "created_file_name:" + created_file_name)
                                 dd.dest_java_flat_dir_path = pdest_java_flat_dir_path
+                                self.xx_dbg(s_fun + "pdest_java_flat_dir_path:" + pdest_java_flat_dir_path)
+
 		                fjavafiles.append(dd)
+
+                self.xx_dbg(s_fun + "end")
 
                 return fjavafiles
 
+
+        def join_java_name_with_path_from_src(self, file_path, file_name):
+                s_fun = self.get_class_name() + "::get_files_recur::"
+                self.xx_dbg(s_fun + "start")
+                self.xx_dbg(s_fun + "file_name:" + file_name)
+                self.xx_dbg(s_fun + "file_path:" + file_path)
+
+                joined_name = file_name
+                idx_src = file_path.find("src")
+                path_from_src = ""
+                if(idx_src >= 0):
+                        path_from_src = file_path[idx_src:]
+                        path_from_src = path_from_src.replace("//","-")
+                        path_from_src = path_from_src.replace("/","-")
+                        path_from_src = path_from_src.replace("\\","-")
+                else:
+                        path_from_src = ""                        
+
+                joined_name = path_from_src + "___" + file_name
+
+                self.xx_dbg(s_fun + "joined_name:" + joined_name)
+                self.xx_dbg(s_fun + "start")
+                return joined_name
+
+
         def create_empty_file(self, filename_src, filename_dest, pfileheader):
+                s_fun = self.get_class_name() + "::create_empty_file::"
+                self.xx_dbg(s_fun + "start")
+                self.xx_dbg(s_fun + "filename_src:" + filename_src)
+                self.xx_dbg(s_fun + "filename_dest:" + filename_dest)
+                self.xx_dbg(s_fun + "pfileheader:" + pfileheader)
+
                 lout = []
                 with open(filename_dest, "w") as f:
                         f.writelines(lout)
