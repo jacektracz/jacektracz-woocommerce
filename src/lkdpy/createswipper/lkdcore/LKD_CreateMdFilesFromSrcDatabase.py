@@ -14,9 +14,19 @@ class LKD_CreateScrFilesData:
                 self.m_root = ""
                 self.m_cats = []
 
+        def get_cats(self):
+                return self.m_cats
+
+        def get_src_root(self):
+                return self.m_root
+
 class LKD_CreateMdFilesFromSrcDatabase:
+
         def __init__(self):                                
                 self.m_initialized = 1
+
+        def get_class_name(self):
+                return "LKD_CreateMdFilesFromSrcDatabase::"
 
         def xx_dbg(self, tt):
                 "" ""
@@ -34,6 +44,35 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
         def get_generic_cats_data(self,dd):
 
+                s_fun = self.get_class_name() + "::get_generic_cats_data::"
+                self.xx_dbg(s_fun + "start::")                
+
+                cats_data = []
+
+
+                cats_data.append( self.create_cats_object(
+                        self.get_root_kafka_with_effectivekafka(""),
+                        self.get_cats_kafka_with_effectivekafka("")) )
+
+                exec_all = 1
+
+                if( exec_all == 1):
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_kafka_kubernetes(""),
+                                self.get_cats_kafka_kubernetes("")) )
+
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_kafka_with_springboot(""),
+                                self.get_cats_kafka_with_springboot("")) )
+
+                self.xx_dbg(s_fun + "end::")                
+                return cats_data
+
+        def get_generic_cats_data_executed(self,dd):
+
+                s_fun = self.get_class_name() + "::get_generic_cats_data_executed::"
+                self.xx_dbg(s_fun + "start::")                
+
                 cats_data = []
                 dd1 = self.create_cats_object(
                         self.get_root_kafka_1(""),
@@ -47,12 +86,23 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
                 cats_data.append( dd2 )
 
+                dd3 = self.create_cats_object(
+                        self.get_root_kafka_with_effectivekafka(""),
+                        self.get_cats_kafka_with_effectivekafka(""))
+
+                cats_data.append( dd3 )
+
+                self.xx_dbg(s_fun + "end::")
                 return cats_data
 
-        def cretae_cats_object(self, root_str, items):
+        def create_cats_object(self, root_str, items):
+                s_fun = self.get_class_name() + "::create_cats_object::"
+                self.xx_dbg(s_fun + "start::")                
+
                 retObj = LKD_CreateScrFilesData()
                 retObj.m_root = root_str
                 retObj.m_cats = items
+                self.xx_dbg(s_fun + "end::")
                 return retObj
 
         def get_generic_cats_items(self,dd):
@@ -91,7 +141,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_kafka_1("")                
                 # return self.get_cats_reactive_angular_spring("")
                 #return self.get_cats_kafka_spring_2("")
-                return self.get_cats_kafka_kubernetes("")
+                #return self.get_cats_kafka_kubernetes("")
+                return self.get_cats_kafka_with_springboot("")
 
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
@@ -132,7 +183,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_root_kafka_1("")
                 #return self.get_root_reactive_angular_spring("")
                 #return self.get_root_kafka_spring_2("")
-                return self.get_root_kafka_kubernetes("")
+                #return self.get_root_kafka_kubernetes("")
+                return self.get_root_kafka_with_springboot("")
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_root_jhreact(self, dd):
@@ -1752,4 +1804,29 @@ class LKD_CreateMdFilesFromSrcDatabase:
                         cats.append(self.get_item(	16098	,	"Kafka-kubernetes"))
                 return cats
 
+        def get_root_kafka_with_springboot(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_kafka_with_springboot(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16099	,	"kafka-with-springboot"))
+                return cats                
+
+        def get_root_kafka_with_effectivekafka(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_kafka_with_effectivekafka(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16100	,	"effectivekafka"))
+                return cats                
+
+# 
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files

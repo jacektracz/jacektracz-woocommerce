@@ -53,40 +53,111 @@ class LKD_CreateMdFilesFromProjectsSrc:
         #def get_generic_root(self,dd)
         #        return self.get_root_espn()
 
+        
+        #
+
         def execute_main_create_from_source(self):
+                s_fun = self.get_class_name() + "::execute_main_create_from_source::"
+                self.xx_dbg(s_fun + "start::")        
+                
+                ddh = LKD_CreateMdFilesFromSrcDatabase()
+                data_items =  ddh.get_generic_cats_data("")
 
-                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::execute_main_create_from_source::in::")
+                for lkd_cats_group_item in data_items:
+                        self.xx_dbg("cat_items_path_start_::" + lkd_cats_group_item.get_src_root())
+                        self.execute_main_create_from_source_one_items_group(
+                                lkd_cats_group_item.get_src_root(),
+                                lkd_cats_group_item.get_cats()
+                        )
+                        self.xx_dbg("cat_items_path_end_::" + lkd_cats_group_item.get_src_root())
 
-                paths = self.get_generic_cats_items("")
+                self.xx_dbg(s_fun + "end::")
+
+        def execute_main_create_from_source_depr(self):
+
+                s_fun = self.get_class_name() + "::execute_main_create_from_source::"
+                self.xx_dbg(s_fun + "start::")                
+
+                cats_items = self.get_generic_cats_items("")
+
+                for lkd_cat_item in cats_items:
+                        self.xx_dbg("cat_items_path::" + lkd_cat_item.src_project_relative_path)
+
+                root_scr_path = self.get_generic_root("")
+
+                self.xx_dbg(s_fun + "root_scr_path::" + root_scr_path)
+
+                self.execute_main_create_from_source_internal(
+                        cats_items
+                        , root_scr_path)
+
+                self.xx_dbg(s_fun + "end::")
+
+        def execute_main_create_from_source_one_items_group(self,root_scr_path,cats_items):
+
+                s_fun = self.get_class_name() + "::execute_main_create_from_source::"
+                self.xx_dbg(s_fun + "start::")                
+
+                for lkd_cat_item in cats_items:
+                        self.xx_dbg("cat_items_path::" + lkd_cat_item.src_project_relative_path)                
+
+                self.xx_dbg(s_fun + "root_scr_path::" + root_scr_path)
+
+                self.execute_main_create_from_source_internal(
+                        cats_items
+                        , root_scr_path)
+
+                self.xx_dbg(s_fun + "end::")
+
+        def execute_main_create_from_source_internal(self, paths, root_scr_path):
+                s_fun = self.get_class_name() + "::execute_main_create_from_source_internal::"
+                self.xx_dbg(s_fun + "start::")                                
 
                 for lkd_cat_item in paths:
                         self.xx_dbg("paths::" + lkd_cat_item.src_project_relative_path)
 
                 postfixes = []    
+
                 direct_subdirs = 0
 
                 if( direct_subdirs == 0):
                         postfixes.append("")
 
-                if( direct_subdirs == 1):
-                        postfixes.append("src")
-                        postfixes.append("service")
-                        postfixes.append("api")
-                        postfixes.append("component-test")
-                        postfixes.append("client")
-                        postfixes.append("server")
-                        postfixes.append("project-files")
+                if( direct_subdirs == 1): # not-used
+                        postfixes = self.get_direct_subdirs_to_execute()
 
                 for lkd_cat_item in paths:
                         for postfix in postfixes:
-                                self.create_execute_source_path_root(lkd_cat_item, postfix)
+                                self.create_execute_source_path_root(
+                                        lkd_cat_item
+                                        , postfix
+                                        , root_scr_path)
 
-                self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::execute_main::out::")
+                self.xx_dbg(s_fun + "end::")
 
-        def create_execute_source_path_root(self, lkd_cat_item, src_postfix):
+        def get_direct_subdirs_to_execute():
+                s_fun = self.get_class_name() + "::create_dir::"
+                self.xx_dbg(s_fun + "start::")
+                postfixes = []
+                postfixes.append("src")
+                postfixes.append("service")
+                postfixes.append("api")
+                postfixes.append("kafka")
+                postfixes.append("scripts")
+                postfixes.append("zookepeer")                        
+                postfixes.append("component-test")
+                postfixes.append("client")
+                postfixes.append("server")
+                postfixes.append("project-files")
+                postfixes.append("")
+                self.xx_dbg(s_fun + "end::")
+                return postfixes
+
+        
+        def create_execute_source_path_root(self, lkd_cat_item, src_postfix, root_scr_path):
 
                 self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::create_execute_source_path_root::in::")
-                root_scr_path = self.get_generic_root("")
+                
                 postfix_2_add = ""
                 if( src_postfix != ""):
                         postfix_2_add = "/" + src_postfix
@@ -116,12 +187,16 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
 
         def create_dir(self, dir_path):
+                s_fun = self.get_class_name() + "::create_dir::"
+                self.xx_dbg(s_fun + "start::")
 
                 if os.path.isdir(dir_path):
                         self.xx_dbg("[dir_exists_no_err]" + dir_path)
                 else:
                         os.makedirs(dir_path)
                         self.xx_print("dir-created" + dir_path )
+                self.xx_dbg(s_fun + "end::")
+
 
         def get_class_name(self):
                 return "LKD_CreateMdFilesFromProjectsSrc"
@@ -129,8 +204,8 @@ class LKD_CreateMdFilesFromProjectsSrc:
         def read_directory_subdirs_flat(self, psrc_path_project, pcatid):
                 s_fun = self.get_class_name() + "::read_directory_subdirs_flat::"
                 self.xx_dbg(s_fun + "in::")
+                self.xx_dbg(s_fun + "in::psrc_path_project::" + psrc_path_project)
                 
-                print psrc_path_project
                 java_files = []
                 if(os.path.isdir(psrc_path_project) == False):
                         self.xx_dbg(s_fun + "no-directory-found-" + psrc_path_project)
@@ -211,12 +286,20 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 needles_files.append(".ts")
                 needles_files.append(".js")
                 needles_files.append(".yaml")
+                needles_files.append(".yml")
                 needles_files.append(".properties")
                 needles_files.append(".html")
                 needles_files.append(".htm")
                 needles_files.append(".json")
 
-                excludes_files = self.get_exclued_files()
+                excludes_files = []
+                exludes_short = 1
+                exludes_long = 0
+
+                if (exludes_long == 1 ) :
+                        excludes_files = self.get_exclued_files()
+                if (exludes_short == 1 ) :
+                        excludes_files = self.get_exclued_files_short()
                 is_valid = 1
                 for exclude_file in excludes_files:
                         self.xx_dbg(s_fun + "needle:" + exclude_file)
@@ -523,6 +606,30 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 list_subfolders_with_paths = [x for x in p.iterdir() if x.is_dir()]
                 # print(len(list_subfolders_with_paths))
 
+        def get_exclued_files_short(self):
+                excludes_files = []
+                excludes_files.append("npms")
+                excludes_files.append("target")
+                excludes_files.append("webpack")
+                excludes_files.append(".git")
+                excludes_files.append(".svg")
+                excludes_files.append(".class")
+                excludes_files.append(".bin")
+                excludes_files.append(".png")
+                excludes_files.append(".lock")
+                excludes_files.append(".jar")
+                excludes_files.append(".xml")
+                excludes_files.append("node_modules")
+                excludes_files.append("bootstrap.min.css")
+                excludes_files.append("bootstrap.css")
+                excludes_files.append("mvnw.cmd")
+                excludes_files.append("npm.cmd")
+                excludes_files.append("npm")
+                excludes_files.append("gradlew")
+                excludes_files.append("gradlew.bat")
+                excludes_files.append("changelog.md")
+                excludes_files.append("SHANGELOG.md.md")
+                return excludes_files
 
 
         def get_exclued_files(self):
