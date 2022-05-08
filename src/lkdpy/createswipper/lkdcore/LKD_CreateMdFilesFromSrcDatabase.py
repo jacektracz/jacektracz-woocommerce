@@ -50,20 +50,47 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats_data = []
 
 
-                cats_data.append( self.create_cats_object(
-                        self.get_root_kafka_with_effectivekafka(""),
-                        self.get_cats_kafka_with_effectivekafka("")) )
+                # 
+                exec_all = 0
 
-                exec_all = 1
+                # 
+
+
+                cats_data.append( self.create_cats_object(
+                        self.get_root_async_servlet_examples(""),
+                        self.get_cats_async_servlet_examples(""),
+                        "https://www.journaldev.com/2008/async-servlet-example") )
+
 
                 if( exec_all == 1):
                         cats_data.append( self.create_cats_object(
+                                self.get_root_reactor_kafka(""),
+                                self.get_cats_reactor_kafka(""),
+                                "git clone https://github.com/reactor/reactor-kafka.git") )
+
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_shopizer_inventory(""),
+                                self.get_cats_shopizer_inventory(""),
+                                "https://github.com/shopizer-ecommerce/shopizer-inventory-csv.git") )
+
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_kafka_with_reactor(""),
+                                self.get_cats_kafka_with_reactor(""),
+                                "https://github.com/reactive-spring-book/reactor.git") )
+
+
+                        cats_data.append( self.create_cats_object(
                                 self.get_root_kafka_kubernetes(""),
-                                self.get_cats_kafka_kubernetes("")) )
+                                self.get_cats_kafka_kubernetes(""),"") )
 
                         cats_data.append( self.create_cats_object(
                                 self.get_root_kafka_with_springboot(""),
-                                self.get_cats_kafka_with_springboot("")) )
+                                self.get_cats_kafka_with_springboot(""),"") )
+
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_kafka_with_effectivekafka(""),
+                                self.get_cats_kafka_with_effectivekafka(""),"") )
+
 
                 self.xx_dbg(s_fun + "end::")                
                 return cats_data
@@ -76,26 +103,26 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats_data = []
                 dd1 = self.create_cats_object(
                         self.get_root_kafka_1(""),
-                        self.get_cats_kafka_1(""))
+                        self.get_cats_kafka_1(""),"")
 
                 cats_data.append( dd1 )
 
                 dd2 = self.create_cats_object(
                         self.get_root_reactive_angular_spring(""),
-                        self.get_cats_reactive_angular_spring(""))
+                        self.get_cats_reactive_angular_spring(""),"")
 
                 cats_data.append( dd2 )
 
                 dd3 = self.create_cats_object(
                         self.get_root_kafka_with_effectivekafka(""),
-                        self.get_cats_kafka_with_effectivekafka(""))
+                        self.get_cats_kafka_with_effectivekafka(""),"")
 
                 cats_data.append( dd3 )
 
                 self.xx_dbg(s_fun + "end::")
                 return cats_data
 
-        def create_cats_object(self, root_str, items):
+        def create_cats_object(self, root_str, items, git_url):
                 s_fun = self.get_class_name() + "::create_cats_object::"
                 self.xx_dbg(s_fun + "start::")                
 
@@ -1828,5 +1855,60 @@ class LKD_CreateMdFilesFromSrcDatabase:
                         cats.append(self.get_item(	16100	,	"effectivekafka"))
                 return cats                
 
+        def get_root_kafka_with_reactor(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        def get_cats_kafka_with_reactor(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16101	,	"reactor"))
+                return cats                
+
+        def get_root_shopizer_inventory(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        # https://github.com/shopizer-ecommerce/shopizer-inventory-csv.git
+
+        def get_cats_shopizer_inventory(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16102	,	"shopizer-inventory-csv"))
+                return cats                
+
+        def get_root_reactor_kafka(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        # https://github.com/shopizer-ecommerce/shopizer-inventory-csv.git
+        def get_cats_reactor_kafka(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16103	,	"reactor-kafka"))
+                return cats                
+
+        def get_root_async_servlet_examples(self, dd):
+                root_src = "C:/lkd/ht/apps_java8_in_action/app/src/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        # https://github.com/shopizer-ecommerce/shopizer-inventory-csv.git
+        def get_cats_async_servlet_examples(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(	16104	,	"async-servlet-example"))
+                return cats                
+
+# reactor-kafka
+# shopizer_inventory
+#get_root_kafka_with_reactor
 # 
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
