@@ -55,18 +55,16 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
                 # 
 
-
-                cats_data.append( self.create_cats_object(
-                        self.get_root_async_servlet_examples(""),
-                        self.get_cats_async_servlet_examples(""),
-                        "https://www.journaldev.com/2008/async-servlet-example") )
-
-
                 if( exec_all == 1):
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_async_servlet_examples(""),
+                                self.get_cats_async_servlet_examples(""),
+                                "https://www.journaldev.com/2008/async-servlet-example") )
+
                         cats_data.append( self.create_cats_object(
                                 self.get_root_reactor_kafka(""),
                                 self.get_cats_reactor_kafka(""),
-                                "git clone https://github.com/reactor/reactor-kafka.git") )
+                                "https://github.com/reactor/reactor-kafka.git") )
 
                         cats_data.append( self.create_cats_object(
                                 self.get_root_shopizer_inventory(""),
