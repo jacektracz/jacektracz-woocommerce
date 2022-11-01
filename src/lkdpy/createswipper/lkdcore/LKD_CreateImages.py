@@ -40,10 +40,10 @@ class LKD_CreateImages:
 
         def move_images_for_ctx(self):
                 root_dir ="C:\\lkd\\ht\\apps_ctx\\1\\"
-                root_catid = 15883
+                root_catid = 16112
                 self.move_images_for_child_directories(root_dir, root_catid)
 
-        def move_images_for_child_directories(self, proot_dir, p_catid,pstartidx):
+        def move_images_for_child_directories(self, proot_dir, p_catid, pstartidx):
                 s_method = "LKD_CreateImages::move_images_for_child_directories"
                 self.xx_dbg(s_method + "::in::proot_dir:" + proot_dir)
                 self.xx_dbg(s_method + "::in::root_catid:" + str(p_catid))
@@ -143,21 +143,16 @@ class LKD_CreateImages:
                 s_leaf = "CSharp-Examples-Episode-1"
                 l_cat_id = 15869
                 self.set_dirs_sequential_imgs_generic(l_cat_id, s_root,s_leaf)                
-#
-#
 
-#
-#
-#
 
-        def set_dirs_sequential_imgs_generic(self, catid, path_root,path_file):
+        def set_dirs_sequential_imgs_generic(self, catid, path_root, path_file):
                 self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::in::")
                 #self.m_root_sequential_ids_src = "C:\\lkd\\ht\\apps_portal\\lkduni\\app-4\\src\\modules\\mod_ep_articles\\content_cats\\content_markdown\\content_by_groups\\cat__8000\\cat__000\\cat__00\\cat__8000\\content_idx_0\\imgs_seq_scr\\"
                 self.m_root_sequential_ids_src = path_root + path_file 
                 srv_handler = LKD_MdFilesUtils("")
                 dd_active_cat_id = catid
                 dd_file_idx = 0
-                self.m_root_sequential_ids_dst = dd_out = srv_handler.get_root_for_groups(  dd_active_cat_id , dd_file_idx)
+                self.m_root_sequential_ids_dst = srv_handler.get_root_for_groups(  dd_active_cat_id , dd_file_idx)
                 self.m_root_sequential_ids_dst  = self.m_root_sequential_ids_dst  + "\\content_idx_0\\imgs"
                 self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::src::" + self.m_root_sequential_ids_src)
                 self.xx_dbg("LKD_CreateImages::set_dirs_sequential_imgs::det::" + self.m_root_sequential_ids_dst)
