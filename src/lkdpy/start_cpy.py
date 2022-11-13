@@ -80,11 +80,12 @@ class LKD_MainExec:
                 dd_img = LKD_CreateImages("")
                 dd_img.exec_images()
                 dd_img.move_digital_images_to_md()
-
+                
+        # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py set-sequential-ids-ctx
         def exec_move_images_for_child_directories(self,tt):
                 dd_img = LKD_CreateImages("")                
-                root_dir ="C:\\lkd\\ht\\apps_ctx\\1\\"
-                root_catid = 16123
+                root_dir ="C:\\lkd\\ht\\apps_ctx\\1\\2022-11-03-Lakida-Loans-Screenshots\\"
+                root_catid = 14509
                 start_idx = 0
                 dd_img.move_images_for_child_directories(root_dir, root_catid, start_idx)
 
