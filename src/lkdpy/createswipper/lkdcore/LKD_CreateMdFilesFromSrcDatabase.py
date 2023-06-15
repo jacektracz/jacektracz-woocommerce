@@ -4,21 +4,11 @@ import logging
 import shutil
 from LKD_CopyFilesMd import *
 from LKD_CatItem import *
-
+from LKD_CreateScrFilesData import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
 
-class LKD_CreateScrFilesData:
-        def __init__(self):                                
-                self.m_root = ""
-                self.m_cats = []
-
-        def get_cats(self):
-                return self.m_cats
-
-        def get_src_root(self):
-                return self.m_root
 
 class LKD_CreateMdFilesFromSrcDatabase:
 
@@ -49,11 +39,22 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
                 cats_data = []
 
-
                 cats_data.append( self.create_cats_object(
-                        self.get_root_js_closures(""),
-                        self.get_cats_js_closures(""),
-                        "") )
+                        self.get_root_js_functional_mastering(""),
+                        self.get_cats_js_functional_mastering(""),
+                        "",
+                        16174) )
+
+
+                self.xx_dbg(s_fun + "end::")                
+                return cats_data
+
+        def get_data_backuped(self,dd):
+
+                s_fun = self.get_class_name() + "::get_generic_cats_data::"
+                self.xx_dbg(s_fun + "start::")
+
+                cats_data = []
 
                 # 
                 exec_all = 0
@@ -61,6 +62,11 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # 
 
                 if( exec_all == 1):
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_js_closures(""),
+                                self.get_cats_js_closures(""),
+                                "") )
+
                         cats_data.append( self.create_cats_object(
                                 self.get_root_js_01(""),
                                 self.get_cats_js_01(""),
@@ -130,13 +136,14 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 self.xx_dbg(s_fun + "end::")
                 return cats_data
 
-        def create_cats_object(self, root_str, items, git_url):
+        def create_cats_object(self, root_str, items, git_url,catid=0):
                 s_fun = self.get_class_name() + "::create_cats_object::"
                 self.xx_dbg(s_fun + "start::")                
 
                 retObj = LKD_CreateScrFilesData()
                 retObj.m_root = root_str
                 retObj.m_cats = items
+                retObj.m_cat_id = catid
                 self.xx_dbg(s_fun + "end::")
                 return retObj
 
@@ -1948,7 +1955,32 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 exclude_imported = 1
                 if exclude_imported == 1:
                         cats.append(self.get_item(16167	,"001-closures"))
-                return cats                
+                return cats    
+
+        def get_root_js_functional_mastering(self, dd):
+                root_src = "C:/lkd/ht/apps_ctx/1-data/a/b/c/FunctionalMastering"
+                return root_src
+
+        def get_cats_js_functional_mastering(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 0
+                        if all_c == 1 :
+                                cats.append(self.get_item(16175, 'Chapter01'))
+                                cats.append(self.get_item(16176, 'Chapter02'))
+                                cats.append(self.get_item(16184, 'Chapter03'))
+                                cats.append(self.get_item(16185, 'Chapter04'))
+                                cats.append(self.get_item(16186, 'Chapter05'))
+                                cats.append(self.get_item(16187, 'Chapter06'))
+                                cats.append(self.get_item(16193, 'Chapter07'))
+                        cats.append(self.get_item(16199, 'Chapter08'))
+                        cats.append(self.get_item(16205, 'Chapter09'))
+                        cats.append(self.get_item(16206, 'Chapter10'))
+                        cats.append(self.get_item(16207, 'Chapter12'))
+                return cats
+
+
 
 # reactor-kafka
 # shopizer_inventory

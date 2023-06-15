@@ -7,6 +7,7 @@ from createswipper.lkdcore.LKD_FinAnalysis import *
 from createswipper.lkdcore.LKD_CreateImages import *
 from createswipper.lkdcore.LKD_CopyFilesPortal import *
 from createswipper.lkdcore.LKD_CreateCatsFromDirectories import *
+from createswipper.lkdcore.LKD_CreateMdFilesFromProjectsParent import *
 from createswipper.lkdcore.country_db.LKD_CreateCountryExec import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
 #  600 446 066 Rafal tel
@@ -152,6 +153,10 @@ class LKD_MainExec:
                 ddcr = LKD_CreateCountryExec("")
                 ddcr.execute_main("")
 
+        def generate_src_articles_subdir(self,tt):
+                ddcr = LKD_CreateMdFilesFromProjectsParent()
+                ddcr.execute_gen_subdirs()
+
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-cat-file
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py print-to-create
@@ -204,6 +209,9 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "create_images_for_source_files"):
                 ddh.create_images_for_source_files("")
+                
+        if (s_arg_0 == "generate_src_articles_subdir"):
+                ddh.generate_src_articles_subdir("")
 
 
         if (s_arg_0 == "move-is"):

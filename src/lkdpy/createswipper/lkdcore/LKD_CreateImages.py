@@ -152,8 +152,8 @@ class LKD_CreateImages:
 
                 for lkd_cats_group_item in data_items:
 
-                        src_root = lkd_cats_group_item.get_src_root()
-                        cats_items = lkd_cats_group_item.get_cats()
+                        src_root = lkd_cats_group_item.get_src_root_dir_path()
+                        cats_items = lkd_cats_group_item.get_src_root_child_cats()
 
                         self.xx_dbg("src_root::" + src_root)
 

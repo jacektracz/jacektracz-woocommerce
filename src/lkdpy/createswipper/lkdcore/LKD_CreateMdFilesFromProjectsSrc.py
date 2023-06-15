@@ -62,12 +62,12 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 data_items =  ddh.get_generic_cats_data("")
 
                 for lkd_cats_group_item in data_items:
-                        self.xx_dbg("cat_items_path_start_::" + lkd_cats_group_item.get_src_root())
+                        self.xx_dbg("cat_items_path_start_::" + lkd_cats_group_item.get_src_root_dir_path())
                         self.execute_main_create_from_source_one_items_group(
-                                lkd_cats_group_item.get_src_root(),
-                                lkd_cats_group_item.get_cats()
+                                lkd_cats_group_item.get_src_root_dir_path(),
+                                lkd_cats_group_item.get_src_root_child_cats()
                         )
-                        self.xx_dbg("cat_items_path_end_::" + lkd_cats_group_item.get_src_root())
+                        self.xx_dbg("cat_items_path_end_::" + lkd_cats_group_item.get_src_root_dir_path())
 
                 self.xx_dbg(s_fun + "end::")
 
@@ -528,6 +528,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 "" ""
                 print ( tt )       
 
+        
         def read_directory_subdirs(self):
 
                 self.xx_dbg("LKD_CreateMdFilesFromProjectsSrc::read_directory_subdirs::in::")
