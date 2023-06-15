@@ -87,8 +87,10 @@ class LKD_MdFilesUtils:
 
 	def xx_dbg(self, tt):
 			"" ""
-			print ( tt )
+			pass
+			#print ( tt )
 
 	def xx_print( self, tt ):
 			"" ""
-			print ( tt )       
+			pass
+			#print ( tt )       

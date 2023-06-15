@@ -49,6 +49,10 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
                 cats_data = []
 
+                cats_data.append( self.create_cats_object(
+                        self.get_root_js_01(""),
+                        self.get_cats_js_01(""),
+                        "") )
 
                 # 
                 exec_all = 0
@@ -131,6 +135,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 return retObj
 
         def get_generic_cats_items(self,dd):
+                return self.get_cats_js_01("")
                 # return self.get_cats_espn("")
                 # return self.get_cats_j8p("")
                 # return self.get_cats_sbms("")
@@ -167,11 +172,13 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # return self.get_cats_reactive_angular_spring("")
                 #return self.get_cats_kafka_spring_2("")
                 #return self.get_cats_kafka_kubernetes("")
-                return self.get_cats_kafka_with_springboot("")
+                #return self.get_cats_kafka_with_springboot("")
+                
 
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_generic_root(self,dd):
+                return self.get_root_js_01("");
                 # return self.get_root_espn()
                 # return self.get_root_j8p()
                 # return self.get_root_sbms("")
@@ -209,7 +216,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 #return self.get_root_reactive_angular_spring("")
                 #return self.get_root_kafka_spring_2("")
                 #return self.get_root_kafka_kubernetes("")
-                return self.get_root_kafka_with_springboot("")
+                #return self.get_root_kafka_with_springboot("")
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_root_jhreact(self, dd):
@@ -1903,6 +1910,38 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 exclude_imported = 1
                 if exclude_imported == 1:
                         cats.append(self.get_item(	16104	,	"async-servlet-example"))
+                return cats                
+
+        def get_root_js_01(self, dd):
+                root_src = "C:/lkd/ht/apps_ctx/1-data/a/b/c/Bindings/"
+                #\c\lkd\ht\apps_java8_in_action\app\src\
+                return root_src
+
+        # https://github.com/shopizer-ecommerce/shopizer-inventory-csv.git
+        def get_cats_js_01(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(16157	,"003-this-default"))
+                        cats.append(self.get_item(16158	,"004-this-explicit"))
+                        cats.append(self.get_item(16159	,"005-this-bind-wrapper"))
+                        cats.append(self.get_item(16160	,"006-this-new-binding"))
+                        cats.append(self.get_item(16161	,"007-determining-this"))
+                        cats.append(self.get_item(16162	,"009-this-arrow-binding"))
+                        cats.append(self.get_item(16163	,"010-this-class-binding"))
+                        cats.append(self.get_item(16164	,"010-this-standard-binding-undefined"))
+                        cats.append(self.get_item(16165	,"011-this-arrow-miscelleanous-binding"))
+                return cats                
+
+        def get_root_js_closures(self, dd):
+                root_src = "C:/lkd/ht/apps_ctx/1-data/a/b/c/Closures/"
+                return root_src
+
+        def get_cats_js_closures(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        cats.append(self.get_item(16157	,"003-this-default"))
                 return cats                
 
 # reactor-kafka

@@ -82,31 +82,58 @@ class LKD_MainExec:
                 dd_img.move_digital_images_to_md()
                 
         # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py set-sequential-ids-ctx
-        def exec_move_images_for_child_directories(self,tt):
+        def exec_move_images_for_child_directories(
+                self,
+                tt):
                 dd_img = LKD_CreateImages("")                
                 root_dir ="C:\\lkd\\ht\\apps_ctx\\1\\"
                 root_catid = 16149
                 start_idx = 0
-                dd_img.move_images_for_child_directories(root_dir, root_catid, start_idx)
+                test_run = 1
+                dd_img.move_images_for_child_directories(
+                        root_dir, 
+                        root_catid, 
+                        start_idx,
+                        test_run)
 
-        def exec_move_images_from_screenshots_to_category(self,tt,catid,startidx):
+        def exec_move_images_from_screenshots_to_category(
+                self,
+                tt,
+                catid,
+                startidx):
+
                 dd_img = LKD_CreateImages("")                
                 root_dir ="C:\\Users\\cp24\\OneDrive\\Obrazy\\Zrzuty ekranu\\1\\"
                 root_catid = catid
-                dd_img.move_images_for_child_directories(root_dir,root_catid,startidx)
+                dd_img.move_images_for_child_directories(
+                        root_dir,
+                        root_catid,
+                        startidx)
 
 
 
-        def create_source_files(self,tt):
+        def create_source_files(
+                self,
+                tt):
+                test_run = 0
                 ddcr = LKD_CreateMdFilesFromProjectsSrc("")
-                ddcr.execute_main_create_from_source()
+                ddcr.execute_main_create_from_source( test_run )
+
+        def create_images_for_source_files(
+                self,
+                tt):
+                test_run = 0
+                dd_img = LKD_CreateImages("")  
+                dd_img.execute_main_create_from_source( test_run )
 
         def create_cats_from_directories(self,tt):
                 ddcr = LKD_CreateCatsFromDirectories("")
                 #ddcr.execute_main("")
 
                 
-        def print_cats_for_dirs_db(self,tt):
+        def print_cats_for_dirs_db(
+                self,
+                tt):
                 ddcr = LKD_CreateMdFilesFromProjectsSrc("")
                 ddcr.print_cats_for_dirs_db("")
 
@@ -135,6 +162,7 @@ class LKD_MainExec:
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py set-sequential-ids
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py set-sequential-ids-ctx
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py move-is 15948 3
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create_images_for_source_files
 
 if __name__ == "__main__":
 
@@ -171,8 +199,12 @@ if __name__ == "__main__":
         if (s_arg_0 == "set-sequential-ids"):
                 ddh.set_dirs_sequential_imgs("")
 
-        if (s_arg_0 == "set-sequential-ids-ctx"):
+        if (s_arg_0 == "move-source-images"):
                 ddh.exec_move_images_for_child_directories("")
+
+        if (s_arg_0 == "create_images_for_source_files"):
+                ddh.create_images_for_source_files("")
+
 
         if (s_arg_0 == "move-is"):
                 s_arg_start_category_idx = 0

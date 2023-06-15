@@ -51,9 +51,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
         #        return self.get_cats_espn("")
 
         #def get_generic_root(self,dd)
-        #        return self.get_root_espn()
-
-        
+        #        return self.get_root_espn()        
         #
 
         def execute_main_create_from_source(self):
@@ -288,8 +286,9 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 needles_files.append(".yaml")
                 needles_files.append(".yml")
                 needles_files.append(".properties")
-                needles_files.append(".html")
-                needles_files.append(".htm")
+                # removed html
+                #needles_files.append(".html")
+                #needles_files.append(".htm")
                 needles_files.append(".json")
 
                 excludes_files = []
@@ -298,8 +297,10 @@ class LKD_CreateMdFilesFromProjectsSrc:
 
                 if (exludes_long == 1 ) :
                         excludes_files = self.get_exclued_files()
+
                 if (exludes_short == 1 ) :
                         excludes_files = self.get_exclued_files_short()
+
                 is_valid = 1
                 for exclude_file in excludes_files:
                         self.xx_dbg(s_fun + "needle:" + exclude_file)
@@ -370,6 +371,14 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         src_fpath = file_item.src_javafile_full_path
 
                         src_fpath = file_item.src_javafile_full_path
+
+                        #
+                        #
+                        #if self.is_match(src_fpath,"png") == 1:
+                        #        continue
+                        #
+                        #
+
                         if(self.check_file_is_valid(src_fpath) == 0):
                                 self.xx_dbg(s_fun + "missed_onf_file_item:" + src_fpath)
                                 continue
@@ -385,7 +394,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
                         if (ii == 1):                                
                                 self.create_empty_file(src_fpath, dest_fpath , file_header)
                                 self.create_empty_file(src_fpath, dest_root_fpath , file_header)
-
+                        
                         self.copy_lines_from_file(src_fpath, dest_fpath , file_header)
 
                         self.copy_lines_from_file(src_fpath, dest_root_fpath , file_header)
@@ -727,3 +736,5 @@ class LKD_CreateMdFilesFromProjectsSrc:
                 excludes_files.append("Windykacja")
                 excludes_files.append("Zatrudnienie")
                 return excludes_files
+
+# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
