@@ -54,7 +54,7 @@ class LKD_CreateMdFilesFromProjectsSrc:
         #        return self.get_root_espn()        
         #
 
-        def execute_main_create_from_source(self):
+        def execute_main_create_content_from_source(self):
                 s_fun = self.get_class_name() + "::execute_main_create_from_source::"
                 self.xx_dbg(s_fun + "start::")        
                 

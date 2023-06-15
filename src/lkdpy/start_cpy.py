@@ -117,7 +117,7 @@ class LKD_MainExec:
                 tt):
                 test_run = 0
                 ddcr = LKD_CreateMdFilesFromProjectsSrc("")
-                ddcr.execute_main_create_from_source( test_run )
+                ddcr.execute_main_create_content_from_source( )
 
         def create_images_for_source_files(
                 self,
@@ -163,7 +163,7 @@ class LKD_MainExec:
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py set-sequential-ids-ctx
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py move-is 15948 3
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create_images_for_source_files
-
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")

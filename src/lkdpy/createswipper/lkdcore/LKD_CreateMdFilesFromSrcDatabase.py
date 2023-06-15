@@ -49,9 +49,10 @@ class LKD_CreateMdFilesFromSrcDatabase:
 
                 cats_data = []
 
+
                 cats_data.append( self.create_cats_object(
-                        self.get_root_js_01(""),
-                        self.get_cats_js_01(""),
+                        self.get_root_js_closures(""),
+                        self.get_cats_js_closures(""),
                         "") )
 
                 # 
@@ -60,6 +61,11 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # 
 
                 if( exec_all == 1):
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_js_01(""),
+                                self.get_cats_js_01(""),
+                                "") )
+
                         cats_data.append( self.create_cats_object(
                                 self.get_root_async_servlet_examples(""),
                                 self.get_cats_async_servlet_examples(""),
@@ -135,7 +141,8 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 return retObj
 
         def get_generic_cats_items(self,dd):
-                return self.get_cats_js_01("")
+                return self.get_cats_js_closures("")
+                #return self.get_cats_js_01("")
                 # return self.get_cats_espn("")
                 # return self.get_cats_j8p("")
                 # return self.get_cats_sbms("")
@@ -173,12 +180,11 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 #return self.get_cats_kafka_spring_2("")
                 #return self.get_cats_kafka_kubernetes("")
                 #return self.get_cats_kafka_with_springboot("")
-                
-
                 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 
         def get_generic_root(self,dd):
-                return self.get_root_js_01("");
+                return self.get_root_js_closures("")
+                #return self.get_root_js_01("");
                 # return self.get_root_espn()
                 # return self.get_root_j8p()
                 # return self.get_root_sbms("")
@@ -1941,11 +1947,16 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 cats = []
                 exclude_imported = 1
                 if exclude_imported == 1:
-                        cats.append(self.get_item(16157	,"003-this-default"))
+                        cats.append(self.get_item(16167	,"001-closures"))
                 return cats                
 
 # reactor-kafka
 # shopizer_inventory
 #get_root_kafka_with_reactor
 # 
+
 # C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create_images_for_source_files
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+
