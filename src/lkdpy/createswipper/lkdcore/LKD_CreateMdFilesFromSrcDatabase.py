@@ -6,9 +6,12 @@ from LKD_CopyFilesMd import *
 from LKD_CatItem import *
 from LKD_CreateScrFilesData import *
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py
-# C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+#       C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
 # select "cats.append(self.get_item(",id,",","\"",title,"\"","))" from joo2_categories where parent_id = 11178
 
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create_images_for_source_files
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py generate_src_articles_subdir
 
 class LKD_CreateMdFilesFromSrcDatabase:
 
@@ -32,19 +35,113 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 dd = LKD_CatItem(id,title)
                 return dd
 
+        #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create_images_for_source_files
+
         def get_generic_cats_data(self,dd):
 
                 s_fun = self.get_class_name() + "::get_generic_cats_data::"
                 self.xx_dbg(s_fun + "start::")                
 
                 cats_data = []
+                git_url = ""
+                        
+                cats_data.extend(
+                        self.get_generic_cats_ovh_cloud("not-excluded"))
+
+                self.xx_dbg(s_fun + "end::")
+
+                return cats_data
+
+
+        def get_generic_cats_ovh_cloud(self,excluded):
+
+                s_fun = self.get_class_name() + "::get_generic_cats_data::"
+                self.xx_dbg(s_fun + "start::")                
+
+                cats_data = []
+
+                cats_data.append( 
+                        self.create_cats_object(
+                                self.get_root_cloud_ovh(""),
+                                self.get_cats_cloud_ovh(""),
+                                "",
+                                16208,
+                                "Generators") 
+                                )
+
+                return cats_data
+
+
+        def get_generic_cats_data_js(self,excluded):
+
+                s_fun = self.get_class_name() + "::get_generic_cats_data::"
+                self.xx_dbg(s_fun + "start::")                
+
+                cats_data = []
+                if excluded != "Generators" :
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_cloud_ovh(""),
+                                self.get_cats_cloud_ovh(""),
+                                "",
+                                16208,
+                                "Generators") )
 
                 cats_data.append( self.create_cats_object(
-                        self.get_root_js_functional_mastering(""),
-                        self.get_cats_js_functional_mastering(""),
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/GridLayout",
+                        self.get_cats_js_GridLayout(""),
                         "",
-                        16174) )
+                        16212,
+                        "GridLayout") )
 
+                cats_data.append( self.create_cats_object(
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/LectureNotes",
+                        self.get_cats_js_LectureNotes(""),
+                        "",
+                        16236,
+                        "LectureNotes") )
+
+                cats_data.append( self.create_cats_object(
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/Objects",
+                        self.get_cats_js_Objects(""),
+                        "",
+                        16240,
+                        "Objects") )
+
+                cats_data.append( self.create_cats_object(
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/Promises",
+                        self.get_cats_js_Promises(""),
+                        "",
+                        16245,
+                        "Promises") )
+
+                cats_data.append( self.create_cats_object(
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/React",
+                        self.get_cats_js_React(""),
+                        "",
+                        16248,
+                        "React") )
+
+                cats_data.append( self.create_cats_object(
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/Spread",
+                        self.get_cats_js_Spread(""),
+                        "",
+                        16250,
+                        "Spread") )
+
+                cats_data.append( self.create_cats_object(
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/Symbols",
+                        self.get_cats_js_Symbols(""),
+                        "",
+                        16252,
+                        "Symbols") )
+
+
+                cats_data.append( self.create_cats_object(
+                        "C:/lkd/ht/apps_ctx/1-data/a/b/c/V8Engine",
+                        self.get_cats_js_V8Engine(""),
+                        "",
+                        16255,
+                        "V8Engine") )
 
                 self.xx_dbg(s_fun + "end::")                
                 return cats_data
@@ -62,6 +159,13 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 # 
 
                 if( exec_all == 1):
+
+                        cats_data.append( self.create_cats_object(
+                                self.get_root_js_functional_mastering(""),
+                                self.get_cats_js_functional_mastering(""),
+                                "",
+                                16174) )
+
                         cats_data.append( self.create_cats_object(
                                 self.get_root_js_closures(""),
                                 self.get_cats_js_closures(""),
@@ -136,7 +240,12 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 self.xx_dbg(s_fun + "end::")
                 return cats_data
 
-        def create_cats_object(self, root_str, items, git_url,catid=0):
+        def create_cats_object(self, 
+                root_str, 
+                items, 
+                git_url,
+                catid=0,
+                selector = ""):
                 s_fun = self.get_class_name() + "::create_cats_object::"
                 self.xx_dbg(s_fun + "start::")                
 
@@ -144,6 +253,7 @@ class LKD_CreateMdFilesFromSrcDatabase:
                 retObj.m_root = root_str
                 retObj.m_cats = items
                 retObj.m_cat_id = catid
+                retObj.m_selector = selector
                 self.xx_dbg(s_fun + "end::")
                 return retObj
 
@@ -1980,6 +2090,190 @@ class LKD_CreateMdFilesFromSrcDatabase:
                         cats.append(self.get_item(16207, 'Chapter12'))
                 return cats
 
+        def get_root_js_root_root(self, dd):
+                root_src = "C:/lkd/ht/apps_ctx/1-data/a/b/c"
+                return root_src
+
+        def get_cats_js_root_root(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 0
+                        if all_c == 1 :
+                                cats.append(self.get_item(16175, 'Chapter01'))
+                return cats
+
+
+        def get_root_js_Generators(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/Generators'
+                return root_src
+
+
+        def get_cats_js_Generators(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16209, '012-iterator-interface'))
+                                cats.append(self.get_item(16210, '013-generator-graph-example'))
+                                cats.append(self.get_item(16211, '014-generator-as-an-iterator'))
+                return cats
+
+
+        def get_root_js_GridLayout(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/GridLayout'
+                return root_src
+
+
+        def get_cats_js_GridLayout(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16213, 'css-grid-layout'))
+                return cats
+
+
+        def get_root_js_LectureNotes(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/LectureNotes'
+                return root_src
+
+
+        def get_cats_js_LectureNotes(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16237, '001-modern-css-master-the-key-concepts'))
+                                cats.append(self.get_item(16238, '002-mastering-functional'))
+                                cats.append(self.get_item(16239, '003-functional-tree'))
+                return cats
+
+
+        def get_root_js_Objects(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/Objects'
+                return root_src
+
+
+        def get_cats_js_Objects(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16241, '001-objects-prototype'))
+                                cats.append(self.get_item(16242, '002-objects-shadowing-property'))
+                                cats.append(self.get_item(16243, '003-constructors-as-functions'))
+                                cats.append(self.get_item(16244, '004-prototype-pattern'))
+                return cats
+
+
+        def get_root_js_Promises(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/Promises'
+                return root_src
+
+
+        def get_cats_js_Promises(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16246, '001-reduce'))
+                                cats.append(self.get_item(16247, '002-trackball-promises'))
+                return cats
+
+
+        def get_root_js_React(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/React'
+                return root_src
+
+
+        def get_cats_js_React(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16249, '008-react-chat-api'))
+                return cats
+
+
+        def get_root_js_Spread(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/Spread'
+                return root_src
+
+
+        def get_cats_js_Spread(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16251, '001-spread'))
+                return cats
+
+
+        def get_root_js_Symbols(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/Symbols'
+                return root_src
+
+
+        def get_cats_js_Symbols(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16253, '001-symbol-toPrimitive'))
+                                cats.append(self.get_item(16254, '002-symbol-split'))
+                return cats
+
+
+        def get_root_js_V8Engine(self, dd):
+                root_src = 'C:/lkd/ht/apps_ctx/1-data/a/b/c/V8Engine'
+                return root_src
+
+
+        def get_cats_js_V8Engine(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16256, '001-hidden-classes'))
+                                cats.append(self.get_item(16257, '002-mastering-functional'))
+                                cats.append(self.get_item(16258, '003-functional-tree'))
+                                cats.append(self.get_item(16259, '004-v8-dev-mathiasbynens-be'))
+                                cats.append(self.get_item(16260, '005-hidden-classes-evaluation'))
+                return cats
+
+
+        def get_root_cloud_ovh(self, dd):
+
+                root_src = self.gg("C:/lkd/ht/apps_ctx/1-cloud-images/")
+
+                return root_src
+
+
+        def get_cats_cloud_ovh(self, psrc_path_project):
+                cats = []
+                exclude_imported = 1
+                if exclude_imported == 1:
+                        all_c = 1
+                        if all_c == 1 :
+                                cats.append(self.get_item(16271, 'ovh-images/'))
+                return cats
+
+        def gg(self, tt):
+                return tt
+
+
+
+# C:\lkd\ht\apps_ctx\1-cloud-images
 
 
 # reactor-kafka

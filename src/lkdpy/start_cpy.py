@@ -169,6 +169,8 @@ class LKD_MainExec:
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py move-is 15948 3
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py create_images_for_source_files
 #  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py perform-src-files
+#  C:\lkd\servers\installed\python27\python C:\lkd\ht\apps_w2_risk\app\src\apps_w2_w2\src\lkdpy\start_cpy.py generate_src_articles_subdir
+
 if __name__ == "__main__":
 
         ddh = LKD_MainExec("")
@@ -209,7 +211,7 @@ if __name__ == "__main__":
 
         if (s_arg_0 == "create_images_for_source_files"):
                 ddh.create_images_for_source_files("")
-                
+
         if (s_arg_0 == "generate_src_articles_subdir"):
                 ddh.generate_src_articles_subdir("")
 

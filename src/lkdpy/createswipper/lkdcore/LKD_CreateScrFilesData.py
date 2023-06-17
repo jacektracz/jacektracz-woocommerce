@@ -14,6 +14,7 @@ class LKD_CreateScrFilesData:
                 self.m_root = ""
                 self.m_cats = []
                 self.m_cat_id = 0
+                self.m_selector = 0
 
         def get_src_root_child_cats( self ):
                 return self.m_cats
@@ -23,3 +24,6 @@ class LKD_CreateScrFilesData:
 
         def get_src_root_cat_id( self ):
                 return self.m_cat_id                
+
+        def get_src_root_selector( self ):
+                return self.m_selector
